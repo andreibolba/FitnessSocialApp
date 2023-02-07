@@ -22,23 +22,10 @@ namespace API.Controllers
             _context = context;
         }
 
-        /*[HttpGet(Name = "GetWeatherForecast")]
-        public IEnumerable<WeatherForecast> Get()
-        {
-            var test = _context.DaysOfWeeks.ToList();
-            return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-            {
-                Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-                TemperatureC = Random.Shared.Next(-20, 55),
-                Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-            })
-            .ToArray();
-        }*/
-
         [HttpGet(Name = "GetWeatherForecast")]
         public IEnumerable<Follow> Get()
         {
-            var test = _context.Follows.Include(x=>x.PersonFollow).ToList();
+            var test = _context.Follows.Include(x=>x.PersonFollow).Include(x=>x.PersonFollowed).ToList();
             return test;
         }
     }

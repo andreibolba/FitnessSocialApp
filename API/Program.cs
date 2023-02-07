@@ -1,5 +1,6 @@
 using System.Text.Json.Serialization;
 using API.FluentMigration;
+using API.Models;
 using Microsoft.EntityFrameworkCore;
 
 internal class Program
@@ -12,8 +13,8 @@ internal class Program
                 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
-        /*builder.Services.AddDbContext<SocialAppContext>(options =>
-            options.UseSqlServer(builder.Configuration.GetConnectionString("dbconn")));*/
+        builder.Services.AddDbContext<SocialAppContext>(options =>
+            options.UseSqlServer(builder.Configuration.GetConnectionString("dbconn")));
 
 
         var app = builder.Build();

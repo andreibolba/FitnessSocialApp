@@ -78,7 +78,7 @@ namespace API.Controllers
             await _context.SaveChangesAsync();
 
             return new PersonDto{
-                Email=newPerson.Email,
+                Username=newPerson.Username,
                 Token=_tokenService.CreateToken(newPerson)
             };
         }
@@ -95,7 +95,7 @@ namespace API.Controllers
                 return Unauthorized("Invalid password");
             }
             return new PersonDto{
-                Email=loggedPerson.Email,
+                Username=loggedPerson.Username,
                 Token=_tokenService.CreateToken(loggedPerson)
             };
         }

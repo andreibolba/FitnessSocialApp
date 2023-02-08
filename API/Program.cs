@@ -1,5 +1,6 @@
 using System.Text;
 using System.Text.Json.Serialization;
+using API.Extensions;
 using API.FluentMigration;
 using API.Interfaces;
 using API.Models;
@@ -16,35 +17,13 @@ internal class Program
 
         builder.Services.AddControllers().AddJsonOptions(x =>
                 x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
-        builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddSwaggerGen();
-        builder.Services.AddDbContext<SocialAppContext>(options =>
-            options.UseSqlServer(builder.Configuration.GetConnectionString("dbconn")));
-        builder.Services.AddCors();
-        builder.Services.AddScoped<ITokenService,TokenService>();
-        builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-        .AddJwtBearer(options=>{
-            options.TokenValidationParameters= new TokenValidationParameters{
-                ValidateIssuerSigningKey = true,
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["TokenKey"])),
-                ValidateIssuer =false,
-                ValidateAudience = false
-            };
-        });
+        builder.Services.AddApplicationServices(builder.Configuration);
+        builder.Services.AddIdentityServices(builder.Configuration);
 
         var app = builder.Build();
 
-        Database.RunMigrations();
+        //Database.RunMigrations();
 
-        if (app.Environment.IsDevelopment())
-        {
-            app.UseSwagger();
-            app.UseSwaggerUI();
-        }
-
-        app.UseHttpsRedirection();
-        app.UseAuthorization();
-        //to change to work with http://localhost/4200
         app.UseCors(b => b.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
         app.UseAuthentication();

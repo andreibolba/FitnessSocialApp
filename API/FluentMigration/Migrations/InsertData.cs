@@ -30,13 +30,6 @@ namespace API.FluentMigration.Migrations
             Insert.IntoTable(AddTableType.tableName).Row(new { TableTypeName = "Lunch", Deleted = false });
             Insert.IntoTable(AddTableType.tableName).Row(new { TableTypeName = "Dinner", Deleted = false });
             Insert.IntoTable(AddTableType.tableName).Row(new { TableTypeName = "Snack", Deleted = false });
-            
-            var hashFirstPerson = Utils.Utils.HashPassword("Mateescu!97",out var saltFirstPerson);
-            Insert.IntoTable(AddPerson.tableName).Row(new { FirstName = "Bolba-Mateescu", LastName = "Andrei", Email = "andrei_bolba@yahoo.com", Username = "anreibolba", PasswordHash = Encoding.ASCII.GetBytes(hashFirstPerson), PasswordSalt=saltFirstPerson, BirthDate= new DateTime(2001, 7, 9), IsAdmin=false,Deleted = false });
-            var hashSecondPerson = Utils.Utils.HashPassword("Mateescu!97",out var saltSecondPerson);
-            Insert.IntoTable(AddPerson.tableName).Row(new { FirstName = "Barna", LastName = "Lusia-Elena", Email = "barnalusia@yahoo.com", Username = "lusiabarna", PasswordHash = Encoding.ASCII.GetBytes(hashSecondPerson), PasswordSalt=saltSecondPerson, BirthDate= new DateTime(2001, 10, 30), IsAdmin=false,Deleted = false });
-        
-            Insert.IntoTable(AddFollow.tableName).Row(new{PersonFollowId=1,PersonFollowedId=2,Deleted=false});
         }
     }
 }

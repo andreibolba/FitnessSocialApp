@@ -6,29 +6,30 @@ namespace API.Utils
 {
     public static class Utils
     {
-        private const int keySize = 64;
-        private const int iterations = 350000;
-        private static HashAlgorithmName hashAlgorithm = HashAlgorithmName.SHA512;
-        public static string HashPassword(string password, out byte[] salt)
+        private static bool RegexMatch(string pattern, string text)
         {
-            salt = RandomNumberGenerator.GetBytes(keySize);
-            var hash = Rfc2898DeriveBytes.Pbkdf2(
-                Encoding.UTF8.GetBytes(password),
-                salt,
-                iterations,
-                hashAlgorithm,
-                keySize);
-            return Convert.ToHexString(hash);
+            Regex regex = new Regex(pattern);
+            Match match = regex.Match(text);
+            return match.Success;
         }
         public static bool IsValidEmail(string email)
         {
-            Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
-            Match match = regex.Match(email);
-            return match.Success;
+            return RegexMatch(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$",email);
         }
         public static int IsPasswordValid(string password)
         {
-            return -1;
+
+            if (password.Length < 8)
+                return 900;
+            if (password.Any(char.IsUpper) == false)
+                return 901;
+            if (password.Any(char.IsLower) == false)
+                return 902;
+            if (password.Any(char.IsNumber) == false)
+                return 903;
+            if (RegexMatch(@"(?=.*\W)",password) == false)
+                return 904;
+            return 200;
         }
         public static string CreatePassword(int length)
         {

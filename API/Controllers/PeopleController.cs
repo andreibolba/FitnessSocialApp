@@ -8,9 +8,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
-    [ApiController]
-    [Route("api/[controller]")]
-    public class PeopleController:ControllerBase
+    public class PeopleController:BaseAPIController
     {
         private readonly SocialAppContext _context;
 

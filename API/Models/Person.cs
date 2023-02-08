@@ -15,9 +15,9 @@ public partial class Person
 
     public string Username { get; set; } = null!;
 
-    public string PasswordHash { get; set; } = null!;
+    public byte[] PasswordHash { get; set; } = null!;
 
-    public string PasswordSalt { get; set; } = null!;
+    public byte[] PasswordSalt { get; set; } = null!;
 
     public DateTime BirthDate { get; set; }
 

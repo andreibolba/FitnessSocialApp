@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -5,24 +6,29 @@ namespace API.Utils
 {
     public static class Utils
     {
+        private const int keySize = 64;
+        private const int iterations = 350000;
+        private static HashAlgorithmName hashAlgorithm = HashAlgorithmName.SHA512;
+        public static string HashPassword(string password, out byte[] salt)
+        {
+            salt = RandomNumberGenerator.GetBytes(keySize);
+            var hash = Rfc2898DeriveBytes.Pbkdf2(
+                Encoding.UTF8.GetBytes(password),
+                salt,
+                iterations,
+                hashAlgorithm,
+                keySize);
+            return Convert.ToHexString(hash);
+        }
         public static bool IsValidEmail(string email)
         {
             Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
             Match match = regex.Match(email);
             return match.Success;
         }
-        public static int IsPasswordValid(string password){
+        public static int IsPasswordValid(string password)
+        {
             return -1;
-        }
-        public static string Base64Encode(string plainText)
-        {
-            byte[] plainTextBytes = System.Text.Encoding.UTF8.GetBytes(plainText);
-            return System.Convert.ToBase64String(plainTextBytes);
-        }
-        public static string Base64Decode(string base64EncodedData)
-        {
-            byte[] base64EncodedBytes = System.Convert.FromBase64String(base64EncodedData);
-            return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
         }
         public static string CreatePassword(int length)
         {

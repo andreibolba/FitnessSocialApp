@@ -72,7 +72,8 @@ public partial class SocialAppContext : DbContext
     public virtual DbSet<VersionInfo> VersionInfos { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-            => optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=FitnessSocialApp;User Id=sa;Password=1234%asd; TrustServerCertificate=True");
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=FitnessSocialApp;User Id=sa;Password=1234%asd; TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -295,8 +296,8 @@ public partial class SocialAppContext : DbContext
             entity.Property(e => e.Email).HasMaxLength(255);
             entity.Property(e => e.FirstName).HasMaxLength(255);
             entity.Property(e => e.LastName).HasMaxLength(255);
-            entity.Property(e => e.PasswordHash).HasMaxLength(255);
-            entity.Property(e => e.PasswordSalt).HasMaxLength(255);
+            entity.Property(e => e.PasswordHash).HasMaxLength(8000);
+            entity.Property(e => e.PasswordSalt).HasMaxLength(8000);
             entity.Property(e => e.Username).HasMaxLength(255);
         });
 

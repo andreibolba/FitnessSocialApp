@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "f:\\FitnessSocialApp\\API\\API.csproj": {}
+    "F:\\FitnessSocialApp\\API\\API.csproj": {}
   },
   "projects": {
-    "f:\\FitnessSocialApp\\API\\API.csproj": {
+    "F:\\FitnessSocialApp\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "f:\\FitnessSocialApp\\API\\API.csproj",
+        "projectUniqueName": "F:\\FitnessSocialApp\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "f:\\FitnessSocialApp\\API\\API.csproj",
+        "projectPath": "F:\\FitnessSocialApp\\API\\API.csproj",
         "packagesPath": "C:\\Users\\andrei.bolba\\.nuget\\packages\\",
-        "outputPath": "f:\\FitnessSocialApp\\API\\obj\\",
+        "outputPath": "F:\\FitnessSocialApp\\API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\ToolboxNuGetPackages"
@@ -25,7 +25,9 @@
           "net7.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.telerik.com/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {
@@ -54,6 +56,10 @@
             "Microsoft.AspNet.WebApi.Core": {
               "target": "Package",
               "version": "[5.2.9, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[7.0.2, )"
             },
             "Microsoft.AspNetCore.OpenApi": {
               "target": "Package",

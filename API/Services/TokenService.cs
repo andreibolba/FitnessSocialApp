@@ -12,7 +12,7 @@ namespace API.Services
         private readonly SymmetricSecurityKey _key;
         public TokenService(IConfiguration config)
         {
-            _key=new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokeKey"]));
+            _key=new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"]));
         }
         public string CreateToken(Person person)
         {
@@ -24,7 +24,8 @@ namespace API.Services
 
             var tokenDesc=new SecurityTokenDescriptor{
                 Subject=new ClaimsIdentity(claims),
-                Expires=DateTime.Now.AddDays(7)
+                Expires=DateTime.Now.AddDays(7),
+                SigningCredentials=creds
             };
 
             var tokenHandler=new JwtSecurityTokenHandler();

@@ -5,6 +5,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using API.Dtos;
+using API.Interfaces;
 using API.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -16,9 +17,11 @@ namespace API.Controllers
     {
 
         private readonly SocialAppContext _context;
+        private readonly ITokenService _tokenService;
 
-        public AccountController(SocialAppContext context)
+        public AccountController(SocialAppContext context,ITokenService tokenService)
         {
+            _tokenService = tokenService;
             _context = context;
         }
 
@@ -31,7 +34,7 @@ namespace API.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<ActionResult<Person>> Register([FromBody] PersonRegisterDto person){
+        public async Task<ActionResult<PersonDto>> Register([FromBody] PersonRegisterDto person){
             
             switch(Utils.Utils.IsPasswordValid(person.Password)){
                 case 900:
@@ -74,11 +77,14 @@ namespace API.Controllers
             _context.People.Add(newPerson);
             await _context.SaveChangesAsync();
 
-            return newPerson;
+            return new PersonDto{
+                Email=newPerson.Email,
+                Token=_tokenService.CreateToken(newPerson)
+            };
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<Person>> LogIn([FromBody] PersonLogInDto person){
+        public async Task<ActionResult<PersonDto>> LogIn([FromBody] PersonLogInDto person){
             var loggedPerson=await _context.People.SingleOrDefaultAsync(p=>p.Email==person.Email);
             if(loggedPerson==null)
                 return Unauthorized("Invalid email!");
@@ -88,7 +94,10 @@ namespace API.Controllers
                 if(compputedHash[i]!=loggedPerson.PasswordHash[i])
                 return Unauthorized("Invalid password");
             }
-            return loggedPerson;
+            return new PersonDto{
+                Email=loggedPerson.Email,
+                Token=_tokenService.CreateToken(loggedPerson)
+            };
         }
     }
 }

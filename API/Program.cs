@@ -1,9 +1,12 @@
+using System.Text;
 using System.Text.Json.Serialization;
 using API.FluentMigration;
 using API.Interfaces;
 using API.Models;
 using API.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 internal class Program
 {
@@ -19,6 +22,15 @@ internal class Program
             options.UseSqlServer(builder.Configuration.GetConnectionString("dbconn")));
         builder.Services.AddCors();
         builder.Services.AddScoped<ITokenService,TokenService>();
+        builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+        .AddJwtBearer(options=>{
+            options.TokenValidationParameters= new TokenValidationParameters{
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["TokenKey"])),
+                ValidateIssuer =false,
+                ValidateAudience = false
+            };
+        });
 
         var app = builder.Build();
 
@@ -30,13 +42,14 @@ internal class Program
             app.UseSwaggerUI();
         }
 
-
+        app.UseHttpsRedirection();
         app.UseAuthorization();
         //to change to work with http://localhost/4200
         app.UseCors(b => b.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 
-        app.UseHttpsRedirection();
-        
+        app.UseAuthentication();
+        app.UseAuthorization();
+
         app.MapControllers();
 
         app.Run();

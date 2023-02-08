@@ -1,6 +1,8 @@
 using System.Text.Json.Serialization;
 using API.FluentMigration;
+using API.Interfaces;
 using API.Models;
+using API.Services;
 using Microsoft.EntityFrameworkCore;
 
 internal class Program
@@ -16,6 +18,7 @@ internal class Program
         builder.Services.AddDbContext<SocialAppContext>(options =>
             options.UseSqlServer(builder.Configuration.GetConnectionString("dbconn")));
         builder.Services.AddCors();
+        builder.Services.AddScoped<ITokenService,TokenService>();
 
         var app = builder.Build();
 

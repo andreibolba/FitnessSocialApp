@@ -1,8 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Text.RegularExpressions;
 
 namespace API.Utils
 {
@@ -10,9 +7,12 @@ namespace API.Utils
     {
         public static bool IsValidEmail(string email)
         {
-            System.Text.RegularExpressions.Regex regex = new System.Text.RegularExpressions.Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
-            System.Text.RegularExpressions.Match match = regex.Match(email);
+            Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+            Match match = regex.Match(email);
             return match.Success;
+        }
+        public static int IsPasswordValid(string password){
+            return -1;
         }
         public static string Base64Encode(string plainText)
         {

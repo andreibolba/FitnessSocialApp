@@ -7,10 +7,11 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { AuthentificationComponent } from './authentification/authentification.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, AuthentificationComponent],
+  declarations: [AppComponent, HeaderComponent, AuthentificationComponent, HomeComponent],
   imports: [BrowserModule, HttpClientModule, FormsModule,AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],

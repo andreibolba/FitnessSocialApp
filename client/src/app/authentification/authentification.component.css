@@ -8,18 +8,18 @@
   height: 100vh;
   background-size: cover;
   background-color: rgba(0, 0, 0, 0.7);
-  padding: 4%;
+  padding: 2%;
 }
 
 .container{
-  height: 80vh;
+  height: 95vh;
   width: 420px;
   border-radius: 10px;
   text-align: center;
 }
 
 form{
-  height: 500px;
+  height: auto;
   width: 390px;
   background-color: rgba(255,255,255,0.13);
   position: absolute;
@@ -27,7 +27,7 @@ form{
   backdrop-filter: blur(10px);
   border: 2px solid rgba(255,255,255,0.1);
   box-shadow: 0 0 40px rgba(8,7,16,0.6);
-  padding: 50px 35px;
+  padding: 20px 35px;
 }
 form *{
   font-family: 'Poppins-Regular',sans-serif;
@@ -45,7 +45,7 @@ form h3{
 
 label{
   display: block;
-  margin-top: 30px;
+  margin-top: 15px;
   font-size: 16px;
   font-weight: 500;
   color: #ffffff;
@@ -59,7 +59,6 @@ input{
   background-color: rgba(255,255,255,0.07);
   border-radius: 3px;
   padding: 0 10px;
-  margin-top: 8px;
   font-size: 14px;
   font-weight: 300;
   color: #ffffff;
@@ -68,7 +67,7 @@ input{
   color: #e5e5e5;
 }
 button{
-  margin-top: 50px;
+  margin-top: 30px;
   width: 100%;
   background-color: rgba(255,255,255,0.07);
   color: #ffffff;
@@ -90,7 +89,21 @@ h6{
   margin-top: 20px;
 }
 
+.register{
+  margin-bottom: -15px;
+}
+
 a{
   color: #ffffff;
   cursor: pointer;
+  text-decoration: underline;
+}
+
+.names{
+  display: flex;
+}
+
+.space{
+  height: 100%;
+  width: 15px;
 }

@@ -7,15 +7,15 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./authentification.component.css'],
 })
 export class AuthentificationComponent implements OnInit, OnDestroy {
-  isLoginMode = true;
+  isLoginMode = false;
 
   constructor() {}
 
   ngOnInit(): void {
-    this.isLoginMode = true;
+    this.isLoginMode = false;
   }
   ngOnDestroy(): void {
-    this.isLoginMode = true;
+    this.isLoginMode = false;
   }
 
   onSwitchMode(form: NgForm) {
@@ -23,7 +23,27 @@ export class AuthentificationComponent implements OnInit, OnDestroy {
     form.reset();
   }
 
-  onSubmit(form: NgForm) {
+  onLogInSubmit(form: NgForm) {
+    const email=form.value.email;
+    const password=form.value.password;
+    console.log(email);
+    console.log(password);
+    form.reset();
+  }
+
+  onSignUpSubmit(form: NgForm) {
+    const email=form.value.email;
+    const password=form.value.password;
+    const username=form.value.username;
+    const fName=form.value.fName;
+    const lName=form.value.lName;
+    const birthdate=form.value.birthDate;
+    console.log(email);
+    console.log(password);
+    console.log(username);
+    console.log(fName);
+    console.log(lName);
+    console.log(birthdate);
     form.reset();
   }
 }

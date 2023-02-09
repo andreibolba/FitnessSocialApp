@@ -1,6 +1,11 @@
-<app-header></app-header>
-<h1>{{title}}</h1>
-<p>test</p>
-<ul>
-  <li *ngFor="let person of people">{{person.personId}} - {{person.username}}</li>
-</ul>
+<div *ngIf="display">
+  <app-header></app-header>
+  <h1>{{title}}</h1>
+  <p>test</p>
+  <ul>
+    <li *ngFor="let person of people">{{person.personId}} - {{person.username}}</li>
+  </ul>
+</div>
+
+
+<router-outlet></router-outlet>

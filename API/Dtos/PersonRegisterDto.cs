@@ -19,6 +19,6 @@ namespace API.Dtos
         [Required]
         public string Password { get; set; }
         [Required]
-        public DateTime birthDate { get; set; }
+        public string Status { get; set; }
     }
 }

@@ -7,13 +7,13 @@ public partial class GroupChat
 {
     public int GroupChatId { get; set; }
 
-    public string GroupChatName { get; set; } = null!;
+    public string GroupChatName { get; set; }
 
-    public int Admin { get; set; }
+    public int AdminId { get; set; }
 
     public bool Deleted { get; set; }
 
-    public virtual Person AdminNavigation { get; set; } = null!;
+    public virtual Person Admin { get; set; }
 
     public virtual ICollection<GroupChatMessage> GroupChatMessages { get; } = new List<GroupChatMessage>();
 

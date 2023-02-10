@@ -11,13 +11,13 @@ public partial class Chat
 
     public int PersonReceiverId { get; set; }
 
-    public string Message { get; set; } = null!;
+    public string Message { get; set; }
 
     public DateTime SendDate { get; set; }
 
     public bool Deleted { get; set; }
 
-    public virtual Person PersonReceiver { get; set; } = null!;
+    public virtual Person PersonReceiver { get; set; }
 
-    public virtual Person PersonSender { get; set; } = null!;
+    public virtual Person PersonSender { get; set; }
 }

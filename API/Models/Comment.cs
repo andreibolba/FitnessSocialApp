@@ -11,15 +11,15 @@ public partial class Comment
 
     public int PostId { get; set; }
 
-    public DateTime CommentContent { get; set; }
+    public string CommentContent { get; set; }
+
+    public DateTime DateOfComment { get; set; }
 
     public bool Deleted { get; set; }
 
-    public virtual Person Person { get; set; } = null!;
+    public virtual Person Person { get; set; }
 
-    public virtual Post Post { get; set; } = null!;
+    public virtual Post Post { get; set; }
 
-    public virtual ICollection<PostCommentLike> PostCommentLikes { get; } = new List<PostCommentLike>();
-
-    public virtual ICollection<PostPic> PostPics { get; } = new List<PostPic>();
+    public virtual ICollection<PostCommentReaction> PostCommentReactions { get; } = new List<PostCommentReaction>();
 }

@@ -9241,11 +9241,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\FitnessSocialApp\\API\\API.csproj",
+      "projectUniqueName": "F:\\InternShipApp\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "F:\\FitnessSocialApp\\API\\API.csproj",
+      "projectPath": "F:\\InternShipApp\\API\\API.csproj",
       "packagesPath": "C:\\Users\\andrei.bolba\\.nuget\\packages\\",
-      "outputPath": "F:\\FitnessSocialApp\\API\\obj\\",
+      "outputPath": "F:\\InternShipApp\\API\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\ToolboxNuGetPackages"

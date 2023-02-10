@@ -13,7 +13,7 @@ public partial class GroupChatPerson
 
     public bool Deleted { get; set; }
 
-    public virtual GroupChat GroupChat { get; set; } = null!;
+    public virtual GroupChat GroupChat { get; set; }
 
-    public virtual Person Person { get; set; } = null!;
+    public virtual Person Person { get; set; }
 }

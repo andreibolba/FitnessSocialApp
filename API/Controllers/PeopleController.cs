@@ -12,9 +12,9 @@ namespace API.Controllers
     [Authorize]
     public class PeopleController:BaseAPIController
     {
-        private readonly SocialAppContext _context;
+        private readonly InternShipAppSystemContext _context;
 
-        public PeopleController(SocialAppContext context)
+        public PeopleController(InternShipAppSystemContext context)
         {
             _context = context;
         }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7f++eEWzOPWJHtWggvfHdECoNXXKRUUFRav88moAKMoPDeM+OhQuTK/3nnPGdGiFhS2yHDboaTCqvgdUY6HiuQ==",
+  "dgSpecHash": "uHi3rv1U0cH4jKY9vVugzDz5GyhMnoP92LsIUvsPo4hg/y0LzZuuupEaSFcgvRG+aeGHXTudNnFetwOdWmMATw==",
   "success": true,
-  "projectFilePath": "F:\\FitnessSocialApp\\API\\API.csproj",
+  "projectFilePath": "F:\\InternShipApp\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\andrei.bolba\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\andrei.bolba\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

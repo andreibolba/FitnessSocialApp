@@ -2,9 +2,8 @@ using System.Text;
 using System.Text.Json.Serialization;
 using API.Extensions;
 using API.FluentMigration;
-using API.Interfaces;
-using API.Models;
-using API.Services;
+//using API.Interfaces;
+//using API.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -22,7 +21,7 @@ internal class Program
 
         var app = builder.Build();
 
-        //Database.RunMigrations();
+        Database.RunMigrations();
 
         app.UseCors(b => b.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 

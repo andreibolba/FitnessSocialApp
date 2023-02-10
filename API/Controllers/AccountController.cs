@@ -16,10 +16,10 @@ namespace API.Controllers
     public class AccountController:BaseAPIController
     {
 
-        private readonly SocialAppContext _context;
+        private readonly InternShipAppSystemContext _context;
         private readonly ITokenService _tokenService;
 
-        public AccountController(SocialAppContext context,ITokenService tokenService)
+        public AccountController(InternShipAppSystemContext context,ITokenService tokenService)
         {
             _tokenService = tokenService;
             _context = context;
@@ -51,8 +51,7 @@ namespace API.Controllers
                 Username=person.Username,
                 PasswordHash=hmac.ComputeHash(Encoding.UTF8.GetBytes(person.Password)),
                 PasswordSalt=hmac.Key,
-                BirthDate=person.birthDate,
-                IsAdmin=false,
+                Status=person.Status,
                 Deleted=false
             };
 

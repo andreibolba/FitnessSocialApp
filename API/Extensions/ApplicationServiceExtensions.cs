@@ -14,7 +14,7 @@ namespace API.Extensions
         public static IServiceCollection AddApplicationServices(this IServiceCollection services,
             IConfiguration config)
         {
-            services.AddDbContext<SocialAppContext>(options =>
+            services.AddDbContext<InternShipAppSystemContext>(options =>
             options.UseSqlServer(config.GetConnectionString("dbconn")));
             services.AddCors();
             services.AddScoped<ITokenService, TokenService>();

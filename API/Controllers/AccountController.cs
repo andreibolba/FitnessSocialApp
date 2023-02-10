@@ -51,6 +51,7 @@ namespace API.Controllers
                 Username=person.Username,
                 PasswordHash=hmac.ComputeHash(Encoding.UTF8.GetBytes(person.Password)),
                 PasswordSalt=hmac.Key,
+                BirthDate=person.BirthDate,
                 Status=person.Status,
                 Deleted=false
             };

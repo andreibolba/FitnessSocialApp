@@ -20,5 +20,7 @@ namespace API.Dtos
         public string Password { get; set; }
         [Required]
         public string Status { get; set; }
+        [Required]
+        public DateTime BirthDate { get; set; }
     }
 }

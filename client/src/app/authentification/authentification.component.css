@@ -107,3 +107,11 @@ a{
   height: 100%;
   width: 15px;
 }
+
+p.info{
+  color: #ffffff84;
+  text-align: left;
+  font-size: x-small;
+  font-family: 'Poppins-Italic';
+  margin-bottom: -10px;
+}

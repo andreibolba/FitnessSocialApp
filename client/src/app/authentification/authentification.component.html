@@ -32,10 +32,11 @@
       </div>
 
       <label for="email">Email</label>
-      <input type="email" id="email" placeholder="Email" ngModel name="email" required email>
+      <input type="email" id="email" placeholder="Email" ngModel name="email" required pattern="^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$">
 
       <label for="username">Username</label>
-      <input type="username" id="username" placeholder="Username" ngModel name="username" required >
+      <input type="username" id="username" placeholder="Username" ngModel name="username" required pattern="^[A-Za-z0-9]*$" >
+      <p class="info">Username must have only letters and digits</p>
 
       <div class="names">
         <div class="fname">

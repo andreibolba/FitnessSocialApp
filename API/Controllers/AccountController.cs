@@ -35,24 +35,6 @@ namespace API.Controllers
 
         [HttpPost("register")]
         public async Task<ActionResult<PersonDto>> Register([FromBody] PersonRegisterDto person){
-            
-            switch(Utils.Utils.IsPasswordValid(person.Password)){
-                case 900:
-                return BadRequest("Password is too short! It must be at least 8 charaters long!");
-                case 901:
-                return BadRequest("Password doesn't have capital letters! It must have at least 1 capital letter!");
-                case 902:
-                return BadRequest("Password doesn't have small letters! It must have at least 1 small letter!");
-                case 903:
-                return BadRequest("Password doesn't have digits! It must have at least 1 digit!");
-                case 904:
-                return BadRequest("Password doesn't have any special charaters! It must have at least 1 special charater!");
-                default:
-                break;
-            }
-
-            if(person.Password!=person.RetypePassword)
-                return BadRequest("Password and retype password are not the same!");
 
             if(await UsernameExists(person.Username))
                 return BadRequest("Username exists!");

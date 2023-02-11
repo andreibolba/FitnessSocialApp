@@ -1,5 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Subscription } from 'rxjs';
+import { AuthService } from 'src/services/auth.service';
 
 @Component({
   selector: 'app-authentification',
@@ -7,20 +9,20 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./authentification.component.css'],
 })
 export class AuthentificationComponent implements OnInit, OnDestroy {
-  isLoginMode = false;
+  isLoginMode = true;
+  sub!: Subscription;
 
-  constructor() {}
+  constructor(private authService:AuthService) {}
 
   ngOnInit(): void {
-    this.isLoginMode = false;
+    this.sub=this.authService.authChanged.subscribe(res=>{
+      this.isLoginMode=res;
+    });
+    console.log(this.isLoginMode);
   }
   ngOnDestroy(): void {
-    this.isLoginMode = false;
-  }
-
-  onSwitchMode(form: NgForm) {
-    this.isLoginMode = !this.isLoginMode;
-    form.reset();
+    if(this.sub)
+      this.sub.unsubscribe();
   }
 
   onLogInSubmit(form: NgForm) {

@@ -11,8 +11,6 @@
       <input type="password" id="password" placeholder="Password" ngModel name="password" required >
 
       <button class="btn btn-light" type="submit" [disabled]="!logInForm.valid"> Log In</button>
-
-      <h6>Don't have an account? <br><a (click)="onSwitchMode(logInForm)">Register Here!</a></h6>
     </form>
 
     <form #registerForm="ngForm" (ngSubmit)="onSignUpSubmit(registerForm)" *ngIf="!isLoginMode" autocomplete="off">
@@ -52,8 +50,6 @@
       </div>
 
       <button class="btn btn-light" type="submit" [disabled]="!registerForm.valid"> Sign Up In</button>
-
-      <h6 class="register">Already have an account <br><a (click)="onSwitchMode(registerForm)">Log In Here!</a></h6>
     </form>
   </div>
   </div>

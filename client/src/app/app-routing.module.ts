@@ -5,8 +5,9 @@ import { AuthentificationComponent } from './authentification/authentification.c
 import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent},
+  { path: '', component:AuthentificationComponent},
   { path: 'authentification', component: AuthentificationComponent },
+  { path: 'dashboard', component:HomeComponent}
 ];
 
 @NgModule({

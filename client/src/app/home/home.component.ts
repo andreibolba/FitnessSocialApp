@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  title = 'Fitness Social App';
+  title = 'InternShip App';
   people: any;
 
   constructor(private http: HttpClient) {}

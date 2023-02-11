@@ -1,4 +1,20 @@
 .main{
-  background-color: white;
+  background-color: black;
   height: 100vh;
+  display: flex;
+}
+
+.nav{
+  height: 100%;
+  width: 20%;
+}
+
+.mainpage{
+  margin-right: -1px;
+  margin-top: 4%;
+  margin-bottom: 4%;
+  width: 76%;
+  height: 88%;
+  background-color: #fff;
+  border-radius: 20px;
 }

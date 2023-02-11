@@ -1,0 +1,78 @@
+*{
+  font-family: 'Poppins-Regular',sans-serif;
+  letter-spacing: 0.5px;
+  outline: none;
+  border: none;
+}
+
+.sidebar{
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 240px;
+  background-color: #11101d;
+}
+
+.sidebar .logo_content .logo{
+  color: #fff;
+  display: flex;
+  height: 50px;
+  width: 100%;
+  align-items: center;
+}
+
+.logo_content .logo i{
+  font-size: 28px;
+  margin-right: 5px;
+}
+
+.logo_content .logo .logo_name{
+  font-size: 28px;
+  margin-right: 5px;
+}
+
+.sidebar ul{
+  margin-top: 20px;
+}
+
+.sidebar ul li{
+  position: relative;
+  height: 50px;
+  width: 100%;
+  margin-top: 10px;
+  list-style: none;
+  line-height: 50px;
+  border-radius: 12px;
+}
+
+.sidebar ul li a{
+  color: #fff;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 12px;
+  width: 90%;
+  padding-left: 5px;
+}
+
+.sidebar ul li a:hover{
+  color: #11101d;
+  background-color: #fff;
+}
+
+.sidebar ul li a img{
+  height: 32px;
+  width: 32px;
+  margin-right: 5px;
+  text-align: center;
+}
+
+.imgicon{
+  height: 32px;
+  width: 32px;
+  margin-right: 5px;
+  text-align: center;
+  background-image: url('../../../img/icons/computer.png');
+  background-size: cover;
+}

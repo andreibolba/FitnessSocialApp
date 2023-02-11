@@ -17,6 +17,7 @@ export class HeaderComponent implements OnInit,OnDestroy{
   ngOnInit(): void {
     this.sub=this.authSer.authChanged.subscribe();
   }
+
   ngOnDestroy(): void {
     if(this.sub)
       this.sub.unsubscribe();
@@ -24,5 +25,9 @@ export class HeaderComponent implements OnInit,OnDestroy{
 
   register(){
     this.authSer.authChanged.next(false);
+  }
+
+  onLogOut(){
+    this.authSer.logout();
   }
 }

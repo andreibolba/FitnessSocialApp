@@ -1,8 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
-import { LoggedPerson } from 'src/model/loggedperson.model';
 import { AuthService } from 'src/services/auth.service';
 import { LogService } from 'src/services/log.service';
 
@@ -11,9 +9,8 @@ import { LogService } from 'src/services/log.service';
   templateUrl: './authentification.component.html',
   styleUrls: ['./authentification.component.css'],
 })
-export class AuthentificationComponent implements OnInit, OnDestroy {
+export class AuthentificationComponent implements OnInit {
   isLoginMode = true;
-  subLogIn!: Subscription;
   error: string | any = '';
 
   constructor(
@@ -23,10 +20,6 @@ export class AuthentificationComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.subLogIn = this.authService.authChanged.subscribe((res) => {
-      this.isLoginMode = res;
-    });
-
     // this.log
     //   .log({
     //     LogType: 'Info',
@@ -42,9 +35,7 @@ export class AuthentificationComponent implements OnInit, OnDestroy {
     //       console.log(error.error);
     //     }
     //   );
-  }
-  ngOnDestroy(): void {
-    if (this.subLogIn) this.subLogIn.unsubscribe();
+    this.authService.logout();
   }
 
   onLogInSubmit(form: NgForm) {
@@ -85,26 +76,6 @@ export class AuthentificationComponent implements OnInit, OnDestroy {
     return formRes;
   }
 
-  private calculateAge(
-    birthMonth: number,
-    birthDay: number,
-    birthYear: number
-  ) {
-    var currentDate = new Date();
-    var currentYear = currentDate.getFullYear();
-    var currentMonth = currentDate.getMonth();
-    var currentDay = currentDate.getDate();
-    var calculatedAge = currentYear - birthYear;
-
-    if (currentMonth < birthMonth - 1) {
-      calculatedAge--;
-    }
-    if (birthMonth - 1 == currentMonth && currentDay < birthDay) {
-      calculatedAge--;
-    }
-    return calculatedAge;
-  }
-
   onSignUpSubmit(form: NgForm) {
     const email = form.value.email;
     const password = form.value.password;
@@ -112,16 +83,10 @@ export class AuthentificationComponent implements OnInit, OnDestroy {
     const fName = form.value.fName;
     const lName = form.value.lName;
     const birthdate = form.value.birthDate;
-    var dateParts = birthdate.split('-');
-    var age = this.calculateAge(+dateParts[2], +dateParts[0], +dateParts[0]);
 
     const res = this.verifyPassword(password);
     if (res == '') {
-      if (age < 13) {
-        console.log('Trebuie sa ai cel putin 13 ani');
-      } else {
-        form.reset();
-      }
+   form.reset();
     } else {
       console.log(res);
     }

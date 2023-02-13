@@ -10,8 +10,8 @@ export class PeopleService {
   constructor(private http: HttpClient) {}
   public loggedPerson = new Person();
 
-  getPerson(username: string) {
-    const headers = { Authorization: 'Bearer my-token' };
-    return this.http.get<Person>(this.baseUrl + 'people/' + username);
+  getPerson(username: string,token:string) {
+    const headers = { Authorization: 'Bearer '+ token };
+    return this.http.get<Person>(this.baseUrl + 'people/' + username,{headers: headers});
   }
 }

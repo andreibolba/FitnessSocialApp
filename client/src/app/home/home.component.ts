@@ -17,6 +17,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   person!: Person;
   authSub!: Subscription;
   peopleSub!: Subscription;
+  isLoading=false;
 
   constructor(
     private http: HttpClient,
@@ -24,26 +25,13 @@ export class HomeComponent implements OnInit, OnDestroy {
     private peopleService: PeopleService
   ) {}
   ngOnDestroy(): void {
-    if (this.authSub) this.authSub.unsubscribe();
+
   }
 
   ngOnInit(): void {
-    this.getPeople();
+    this.isLoading=true;
     this.setCurrentUser();
-  }
-
-  getPeople() {
-    this.http.get('https://localhost:7191/api/people').subscribe({
-      next: (response) => {
-        this.people = response;
-      },
-      error: (error) => {
-        console.log(error);
-      },
-      complete: () => {
-        console.log('Request has finished');
-      },
-    });
+    this.person=new Person();
   }
 
   setCurrentUser() {
@@ -52,13 +40,15 @@ export class HomeComponent implements OnInit, OnDestroy {
       return;
     } else {
       const person: LoggedPerson = JSON.parse(personString);
-      this.authSer.setCurerentPerson(person);
       this.peopleSub = this.peopleService
-        .getPerson(person.username)
+        .getPerson(person.username,person.token)
         .subscribe(
           (res) => {this.person=res},
           (error) => {
             console.log(error.error);
+          },
+          ()=>{
+            this.isLoading=false;
           }
         );
     }

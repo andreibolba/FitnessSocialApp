@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { LoggedPerson } from 'src/model/loggedperson.model';
 import { AuthService } from 'src/services/auth.service';
@@ -9,28 +10,18 @@ import { AuthService } from 'src/services/auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit,OnDestroy{
-  sub!:Subscription;
+export class HeaderComponent implements OnInit{
   loggedPersonUsername!: string | undefined;
 
-  constructor(private authSer:AuthService) {
+  constructor(private authSer:AuthService,private router:Router) {
 
   }
   ngOnInit(): void {
-    this.sub=this.authSer.authChanged.subscribe();
     this.setCurrentUser();
   }
 
-  ngOnDestroy(): void {
-    if(this.sub)
-      this.sub.unsubscribe();
-  }
-
-  register(){
-    this.authSer.authChanged.next(false);
-  }
-
   onLogOut(){
+    this.router.navigate(['']);
     this.authSer.logout();
   }
 
@@ -41,7 +32,6 @@ export class HeaderComponent implements OnInit,OnDestroy{
     } else {
       const person: LoggedPerson = JSON.parse(personString);
       this.loggedPersonUsername = person.username;
-      this.authSer.setCurerentPerson(person);
     }
   }
 }

@@ -1,22 +1,28 @@
-import { Injectable } from "@angular/core";
-import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from "@angular/router";
-import { Observable } from "rxjs";
-import { map, take } from "rxjs/operators";
-import { AuthService } from "./auth.service";
+import { Injectable, OnDestroy, OnInit } from '@angular/core';
+import {
+  ActivatedRouteSnapshot,
+  CanActivate,
+  Router,
+  RouterStateSnapshot,
+  UrlTree,
+} from '@angular/router';
+import { Observable, Subscription } from 'rxjs';
+import { map, take } from 'rxjs/operators';
+import { LoggedPerson } from 'src/model/loggedperson.model';
+import { AuthService } from './auth.service';
 
-@Injectable({providedIn: 'root'})
-export class AuthGuard implements CanActivate{
+@Injectable({ providedIn: 'root' })
+export class AuthGuard implements CanActivate {
+  constructor(private authService: AuthService, private router: Router) {}
 
-    constructor(private authService: AuthService, private router:Router){}
-
-    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean| UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-        return this.authService.currentPerson$.pipe(take(1),map(user=>{
-            const isAuth=!!user;
-            if(isAuth){
-                return true;
-            }
-            return this.router.createUrlTree(['']);
-        }))
+  canActivate(): boolean {
+    const personString = localStorage.getItem('person');
+    if (!personString) {
+      this.router.navigate(['']);
+      return false;
+    } else {
+      return true;
     }
+  }
 
 }

@@ -16,7 +16,6 @@ namespace API.Controllers
             _context = context;
         }
 
-        [AllowAnonymous]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Person>>> GetPeople(){
             return await _context.People.ToListAsync();
@@ -27,7 +26,6 @@ namespace API.Controllers
             return await _context.People.FindAsync(id);
         }
 
-        [AllowAnonymous]
         [HttpGet("{username}")]
         public ActionResult<LoggedPersonDto> GetPersonByUsername(string username)
         {

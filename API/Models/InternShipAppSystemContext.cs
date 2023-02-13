@@ -35,6 +35,8 @@ public partial class InternShipAppSystemContext : DbContext
 
     public virtual DbSet<InternGroup> InternGroups { get; set; }
 
+    public virtual DbSet<Logging> Loggings { get; set; }
+
     public virtual DbSet<Meeting> Meetings { get; set; }
 
     public virtual DbSet<Note> Notes { get; set; }
@@ -252,6 +254,20 @@ public partial class InternShipAppSystemContext : DbContext
                 .HasForeignKey(d => d.InternId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("InternGroupInternFK");
+        });
+
+        modelBuilder.Entity<Logging>(entity =>
+        {
+            entity.ToTable("Logging");
+
+            entity.Property(e => e.DateOfLog).HasColumnType("datetime");
+            entity.Property(e => e.LogMessage)
+                .IsRequired()
+                .HasMaxLength(255);
+            entity.Property(e => e.LogType)
+                .IsRequired()
+                .HasMaxLength(255);
+            entity.Property(e => e.PersonUsername).HasMaxLength(255);
         });
 
         modelBuilder.Entity<Meeting>(entity =>

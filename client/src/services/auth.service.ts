@@ -23,7 +23,6 @@ export class AuthService {
         map((respose: LoggedPerson) => {
           const person = respose;
           if (person) {
-            console.log(JSON.stringify(person));
             localStorage.setItem('person', JSON.stringify(person));
             this.currectPersonSource.next(person);
           }

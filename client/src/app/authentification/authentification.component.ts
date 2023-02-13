@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { LoggedPerson } from 'src/model/loggedperson.model';
 import { AuthService } from 'src/services/auth.service';
+import { LogService } from 'src/services/log.service';
 
 @Component({
   selector: 'app-authentification',
@@ -15,12 +16,32 @@ export class AuthentificationComponent implements OnInit, OnDestroy {
   subLogIn!: Subscription;
   error: string | any = '';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(
+    private authService: AuthService,
+    private router: Router,
+    private log: LogService
+  ) {}
 
   ngOnInit(): void {
     this.subLogIn = this.authService.authChanged.subscribe((res) => {
       this.isLoginMode = res;
     });
+
+    // this.log
+    //   .log({
+    //     LogType: 'Info',
+    //     LogMessage: 'A user wants to log in!',
+    //     DateOfLog: new Date(),
+    //   })
+    //   .subscribe(
+    //     (resData) => {
+    //       console.log('ok');
+    //     },
+    //     (error) => {
+    //       this.error = error;
+    //       console.log(error.error);
+    //     }
+    //   );
   }
   ngOnDestroy(): void {
     if (this.subLogIn) this.subLogIn.unsubscribe();

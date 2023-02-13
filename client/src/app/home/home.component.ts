@@ -3,6 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { LoggedPerson } from 'src/model/loggedperson.model';
+import { Person } from 'src/model/person.model';
 import { AuthService } from 'src/services/auth.service';
 
 @Component({
@@ -13,8 +14,11 @@ import { AuthService } from 'src/services/auth.service';
 export class HomeComponent implements OnInit, OnDestroy {
   title = 'InternShip App';
   people: any;
+  person=new Person();
   authSub!: Subscription;
+  peopleSub!: Subscription;
   loggedPersonusername!: string | undefined;
+  personFirstname!:string|null;
 
   constructor(
     private http: HttpClient,
@@ -32,7 +36,9 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   getPeople() {
     this.http.get('https://localhost:7191/api/people').subscribe({
-      next: (response) => (this.people = response),
+      next: (response) => {
+        this.people=response;
+      },
       error: (error) => {
         console.log(error);
       },
@@ -50,6 +56,21 @@ export class HomeComponent implements OnInit, OnDestroy {
       const person: LoggedPerson = JSON.parse(personString);
       this.loggedPersonusername = person.username;
       this.authSer.setCurerentPerson(person);
+      this.http.get<Person>("https://localhost:7191/api/people/"+this.loggedPersonusername).subscribe({
+      next: (response) => {
+        this.person=response;
+      },
+      error: (error) => {
+        console.log(error);
+      },
+      complete: () => {
+        console.log('Request has finished');
+      },
+    });
     }
+  }
+
+  onProfile() {
+    console.log(this.person.firstName);
   }
 }

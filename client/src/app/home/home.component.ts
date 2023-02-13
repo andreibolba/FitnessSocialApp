@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { LoggedPerson } from 'src/model/loggedperson.model';
 import { Person } from 'src/model/person.model';
@@ -18,13 +17,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   person!: Person;
   authSub!: Subscription;
   peopleSub!: Subscription;
-  loggedPersonusername!: string | undefined;
-  personFirstname!: string | null;
 
   constructor(
     private http: HttpClient,
     private authSer: AuthService,
-    private router: Router,
     private peopleService: PeopleService
   ) {}
   ngOnDestroy(): void {
@@ -56,10 +52,9 @@ export class HomeComponent implements OnInit, OnDestroy {
       return;
     } else {
       const person: LoggedPerson = JSON.parse(personString);
-      this.loggedPersonusername = person.username;
       this.authSer.setCurerentPerson(person);
       this.peopleSub = this.peopleService
-        .getPerson(this.loggedPersonusername)
+        .getPerson(person.username)
         .subscribe(
           (res) => {this.person=res},
           (error) => {

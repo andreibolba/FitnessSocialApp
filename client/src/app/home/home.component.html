@@ -1,18 +1,26 @@
 <div class="dashboard" *ngIf="!isLoading">
-<div class="nav">
-  <app-header></app-header>
-</div>
-<section class="dashboard">
-  <div class="top">
-    <div class="search-box">
-      <i class="uil uil-search"></i>
-      <input type="text" placeholder="Search here...">
-    </div>
-    <div class="profile-details" (click)="onProfile()">
-      <div class="profile_pic"></div>
-      <span class="admin_name">{{ person.firstName }} {{ person.lastName }}</span>
+  <div class="nav">
+    <app-header></app-header>
+  </div>
+  <div class="dashboard">
+    <div class="top">
+      <div class="search-box">
+        <i class="uil uil-search"></i>
+        <input type="text" placeholder="Search here...">
+      </div>
+      <div class="profile-details" (click)="onProfile()">
+        <div class="profile_pic"></div>
+        <span class="admin_name">{{ person.firstName }} {{ person.lastName }}</span>
+      </div>
     </div>
   </div>
-</section>
+  <div class="dashboardPerson" *ngIf="isDashboard">
+    <app-admin-dashboard *ngIf="person.status === 'Admin'"></app-admin-dashboard>
+    <app-trainer-dashboard *ngIf="person.status === 'Trainer'"></app-trainer-dashboard>
+    <app-intern-dashboard *ngIf="person.status === 'Intern'"></app-intern-dashboard>
+  </div>
+  <div class="dashboardPerson" *ngIf="!isDashboard">
+    <router-outlet></router-outlet>
+  </div>
 </div>
 <p *ngIf="isLoading">Loading</p>

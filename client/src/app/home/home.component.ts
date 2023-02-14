@@ -3,8 +3,8 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { LoggedPerson } from 'src/model/loggedperson.model';
 import { Person } from 'src/model/person.model';
-import { AuthService } from 'src/services/auth.service';
-import { PeopleService } from 'src/services/people.service';
+import { DashboardService } from 'src/services/dashboard.service';
+import { DataStorageService } from 'src/services/data-storage.service';
 
 @Component({
   selector: 'app-home',
@@ -16,22 +16,27 @@ export class HomeComponent implements OnInit, OnDestroy {
   people: any;
   person!: Person;
   authSub!: Subscription;
-  peopleSub!: Subscription;
+  dataSub!: Subscription;
+  dashSub!:Subscription;
+  isDashboard=true;
   isLoading=false;
 
   constructor(
     private http: HttpClient,
-    private authSer: AuthService,
-    private peopleService: PeopleService
+    private dataService: DataStorageService,
+    private dashService:DashboardService
   ) {}
-  ngOnDestroy(): void {
 
-  }
+  ngOnDestroy(): void {}
 
   ngOnInit(): void {
+    this.dashSub=this.dashService.dashboardChanged.subscribe(res=>{
+      this.isDashboard=res;
+    });
     this.isLoading=true;
     this.setCurrentUser();
     this.person=new Person();
+    console.log(this.isDashboard);
   }
 
   setCurrentUser() {
@@ -40,7 +45,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       return;
     } else {
       const person: LoggedPerson = JSON.parse(personString);
-      this.peopleSub = this.peopleService
+      this.dataSub = this.dataService
         .getPerson(person.username,person.token)
         .subscribe(
           (res) => {this.person=res},

@@ -11,6 +11,15 @@ nav{
 
 }
 
+.logo{
+  height: 50px;
+  width: 50px;
+  background-image: url('../../../img/logo.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 10px;
+}
+
 nav .logo-name{
   display: flex;
   align-items: center;
@@ -19,7 +28,7 @@ nav .logo-name{
 nav .logo_name{
   font-size: 22px;
   font-weight: 600;
-  color:  #000;
+  color:  #2f2f2f;
   margin-left: 14px;
   transition: all 0.5s ease;
 }
@@ -53,6 +62,10 @@ nav .menu-items{
   width: 5px;
   border-radius: 50%;
   background-color:  #0E4BF1;
+}
+
+.nav-links li:hover{
+  cursor: pointer;
 }
 
 .menu-items li a i{

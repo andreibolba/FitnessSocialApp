@@ -1,0 +1,95 @@
+.dash{
+  width: 79%;
+  height: 85vh;
+}
+
+.dash-content .title{
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.dash-content .title i{
+  position: relative;
+  height: 35px;
+  width: 35px;
+  background-color: #0E4BF1;
+  border-radius: 6px;
+  color:  #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+.dash-content .title .text{
+  font-size: 24px;
+  font-weight: 500;
+  color:  #2f2f2f;
+  margin-left: 10px;
+}
+.dash-content .boxes{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.dash-content .boxes .box{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 12px;
+  width: calc(100% / 3 - 15px);
+  padding: 15px 20px;
+  transition: all 0.5s ease;
+}
+.boxes .box i{
+  font-size: 35px;
+  color:  #2f2f2f;
+}
+.boxes .box .text{
+  white-space: nowrap;
+  font-size: 18px;
+  font-weight: 500;
+  color:  #2f2f2f;
+}
+.boxes .box .number{
+  font-size: 40px;
+  font-weight: 500;
+  color:  #2f2f2f;
+}
+
+.boxes .box.box1{
+  background-color: #4DA3FF;
+}
+.boxes .box.box2{
+  background-color: #FFE6AC;
+}
+.boxes .box.box3{
+  background-color: #E7D1FC;
+}
+.dash-content .activity .activity-data{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.activity .activity-data{
+  display: flex;
+}
+.activity-data .data{
+  display: flex;
+  flex-direction: column;
+  margin: 0 15px;
+}
+.activity-data .data-title{
+  font-size: 20px;
+  font-weight: 500;
+  color:  #707070;
+}
+.activity-data .data .data-list{
+  font-size: 18px;
+  font-weight: 400;
+  margin-top: 20px;
+  white-space: nowrap;
+  color:  #707070;
+}

@@ -3,35 +3,16 @@
 </head>
 <nav>
   <div class="logo-name">
-    <span class="logo_name">CodingLab</span>
+    <div class="logo"></div>
+    <span class="logo_name">InternHub</span>
   </div>
 
   <div class="menu-items">
-    <ul class="nav-links">
-      <li><a href="#">
-          <i class="uil uil-estate"></i>
-          <span class="link-name">Dahsboard</span>
-        </a></li>
-      <li><a href="#">
-          <i class="uil uil-files-landscapes"></i>
-          <span class="link-name">Content</span>
-        </a></li>
-      <li><a href="#">
-          <i class="uil uil-chart"></i>
-          <span class="link-name">Analytics</span>
-        </a></li>
-      <li><a href="#">
-          <i class="uil uil-thumbs-up"></i>
-          <span class="link-name">Like</span>
-        </a></li>
-      <li><a href="#">
-          <i class="uil uil-comments"></i>
-          <span class="link-name">Comment</span>
-        </a></li>
-      <li><a href="#">
-          <i class="uil uil-share"></i>
-          <span class="link-name">Share</span>
-        </a></li>
+    <ul class="nav-links" >
+      <li *ngFor="let button of buttons" (click)="onLeaveDashBoard(button.name)"><a>
+        <i class="{{ button.logo }}"></i>
+        <span class="link-name">{{ button.name }}</span>
+      </a></li>
     </ul>
 
     <ul class="logout-mode">

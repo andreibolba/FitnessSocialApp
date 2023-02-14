@@ -2,12 +2,11 @@ using API.Dtos;
 using API.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
     [Authorize]
-    public class PeopleController:BaseAPIController
+    public class PeopleController : BaseAPIController
     {
         private readonly InternShipAppSystemContext _context;
 
@@ -17,19 +16,39 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Person>>> GetPeople(){
-            return await _context.People.ToListAsync();
+        public ActionResult<IEnumerable<LoggedPersonDto>> GetPeople()
+        {
+            var result = _context.People.ToList().Where(g=>g.Deleted==false);
+            var resultToReturn = new List<LoggedPersonDto>(0);
+
+            foreach (var re in result)
+            {
+                resultToReturn.Add(new LoggedPersonDto
+                {
+                    FirstName = re.FirstName,
+                    LastName = re.LastName,
+                    Email = re.Email,
+                    Username = re.Username,
+                    Status = re.Status,
+                    BirthDate = re.BirthDate
+                });
+            }
+
+            return resultToReturn;
         }
 
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<Person>> GetPerson(int id){
-            return await _context.People.FindAsync(id);
+        public ActionResult<Person> GetPerson(int id)
+        {
+            return _context.People.SingleOrDefault(p=>(p.PersonId == id && p.Deleted==false));
         }
 
         [HttpGet("{username}")]
         public ActionResult<LoggedPersonDto> GetPersonByUsername(string username)
         {
-            var person = _context.People.SingleOrDefault(user => user.Username == username) as Person;
+            var person = _context.People.SingleOrDefault(user =>( user.Username == username && user.Deleted==false));
+            if(person==null)
+                return NoContent();
             var personToSend = new LoggedPersonDto()
             {
                 FirstName = person.FirstName,

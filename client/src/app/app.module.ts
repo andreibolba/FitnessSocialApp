@@ -19,6 +19,7 @@ import { InternsComponent } from './admin/interns/interns.component';
 import { GroupsComponent } from './admin/groups/groups.component';
 import { TaskComponent } from './shared/task/task.component';
 import { MeetingComponent } from './shared/meeting/meeting.component';
+import { ProfileComponent } from './shared/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { MeetingComponent } from './shared/meeting/meeting.component';
     InternsComponent,
     GroupsComponent,
     TaskComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

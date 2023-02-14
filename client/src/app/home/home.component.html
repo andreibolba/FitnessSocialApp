@@ -8,7 +8,7 @@
         <i class="uil uil-search"></i>
         <input type="text" placeholder="Search here...">
       </div>
-      <div class="profile-details" (click)="onProfile()">
+      <div class="profile-details" (click)="onProfile()" [routerLink]="[profile]" >
         <div class="profile_pic"></div>
         <span class="admin_name">{{ person.firstName }} {{ person.lastName }}</span>
       </div>

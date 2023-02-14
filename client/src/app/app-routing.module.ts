@@ -10,6 +10,7 @@ import { AuthentificationComponent } from './authentification/authentification.c
 import { ForumComponent } from './forum/forum/forum.component';
 import { HomeComponent } from './home/home.component';
 import { MeetingComponent } from './shared/meeting/meeting.component';
+import { ProfileComponent } from './shared/profile/profile.component';
 import { TaskComponent } from './shared/task/task.component';
 
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
       { path: 'meetings', component: MeetingComponent },
       { path: 'tasks', component: TaskComponent },
       { path: 'forum', component: ForumComponent },
+      { path: 'profile', component: ProfileComponent },
     ],
   },
   { path: '', component:AuthentificationComponent, pathMatch: 'full' },

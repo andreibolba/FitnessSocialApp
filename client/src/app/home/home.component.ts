@@ -20,9 +20,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   dashSub!:Subscription;
   isDashboard=true;
   isLoading=false;
+  profile='profile';
 
   constructor(
-    private http: HttpClient,
     private dataService: DataStorageService,
     private dashService:DashboardService
   ) {}
@@ -60,8 +60,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   onProfile() {
-    if (this.person != null) {
-      console.log(this.person.firstName);
-    }
+    this.dashService.dashboardChanged.emit(false);
   }
 }

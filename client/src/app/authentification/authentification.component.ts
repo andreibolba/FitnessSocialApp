@@ -86,7 +86,7 @@ export class AuthentificationComponent implements OnInit {
 
     const res = this.verifyPassword(password);
     if (res == '') {
-   form.reset();
+      form.reset();
     } else {
       console.log(res);
     }

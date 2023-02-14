@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { LoggedPerson } from 'src/model/loggedperson.model';
 import { Person } from 'src/model/person.model';
@@ -19,7 +18,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   buttons: any;
   constructor(
     private authSer: AuthService,
-    private router: Router,
     private dataService: DataStorageService,
     private dashService: DashboardService
   ) {}
@@ -32,7 +30,6 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   onLogOut() {
-    this.router.navigate(['']);
     this.authSer.logout();
   }
 

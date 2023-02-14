@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { BehaviorSubject, map, Subject } from 'rxjs';
 import { LoggedPerson } from 'src/model/loggedperson.model';
 
@@ -11,7 +12,7 @@ export class AuthService {
   private currentPersonSource = new BehaviorSubject<LoggedPerson | null>(null);
   currentPerson$ = this.currentPersonSource.asObservable();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) {}
 
   login(model: any) {
     return this.http
@@ -32,6 +33,7 @@ export class AuthService {
   }
 
   logout() {
+    this.router.navigate(['']);
     localStorage.removeItem('person');
   }
 }

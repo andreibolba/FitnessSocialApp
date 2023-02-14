@@ -1,4 +1,3 @@
-import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { LoggedPerson } from 'src/model/loggedperson.model';
@@ -13,29 +12,32 @@ import { DataStorageService } from 'src/services/data-storage.service';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   title = 'InternShip App';
-  people: any;
   person!: Person;
   authSub!: Subscription;
   dataSub!: Subscription;
-  dashSub!:Subscription;
-  isDashboard=true;
-  isLoading=false;
-  profile='profile';
+  dashSub!: Subscription;
+  isDashboard = true;
+  isLoading = false;
+  profile = 'profile';
 
   constructor(
     private dataService: DataStorageService,
-    private dashService:DashboardService
+    private dashService: DashboardService
   ) {}
 
-  ngOnDestroy(): void {}
+  ngOnDestroy(): void {
+    if (this.authSub) this.authSub.unsubscribe();
+    if (this.dataSub) this.dataSub.unsubscribe();
+    if (this.dashSub) this.dashSub.unsubscribe();
+  }
 
   ngOnInit(): void {
-    this.dashSub=this.dashService.dashboardChanged.subscribe(res=>{
-      this.isDashboard=res;
+    this.dashSub = this.dashService.dashboardChanged.subscribe((res) => {
+      this.isDashboard = res;
     });
-    this.isLoading=true;
+    this.isLoading = true;
     this.setCurrentUser();
-    this.person=new Person();
+    this.person = new Person();
     console.log(this.isDashboard);
   }
 
@@ -46,14 +48,16 @@ export class HomeComponent implements OnInit, OnDestroy {
     } else {
       const person: LoggedPerson = JSON.parse(personString);
       this.dataSub = this.dataService
-        .getPerson(person.username,person.token)
+        .getPerson(person.username, person.token)
         .subscribe(
-          (res) => {this.person=res},
+          (res) => {
+            this.person = res;
+          },
           (error) => {
             console.log(error.error);
           },
-          ()=>{
-            this.isLoading=false;
+          () => {
+            this.isLoading = false;
           }
         );
     }

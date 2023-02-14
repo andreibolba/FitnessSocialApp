@@ -60,14 +60,34 @@ export class HeaderComponent implements OnInit, OnDestroy {
             switch (this.person.status) {
               case 'Admin':
                 this.buttons = [
-                  { name: 'Dashboard', logo: 'uil uil-estate' },
-                  { name: 'Admin', logo: 'uil uil-user-md' },
-                  { name: 'Trainer', logo: 'uil uil-user' },
-                  { name: 'Intern', logo: 'uil uil-book-reader' },
-                  { name: 'Group', logo: 'uil uil-users-alt' },
-                  { name: 'Mettings', logo: 'uil uil-meeting-board' },
-                  { name: 'Tasks', logo: 'uil uil-clipboard-notes' },
-                  { name: 'Forum', logo: 'uil uil-font' },
+                  {
+                    name: 'Dashboard',
+                    logo: 'uil uil-estate',
+                    link: '../dashboard',
+                  },
+                  {
+                    name: 'Admin',
+                    logo: 'uil uil-user-md',
+                    link: 'administrators',
+                  },
+                  { name: 'Trainer', logo: 'uil uil-user', link: 'trainers' },
+                  {
+                    name: 'Intern',
+                    logo: 'uil uil-book-reader',
+                    link: 'interns',
+                  },
+                  { name: 'Group', logo: 'uil uil-users-alt', link: 'groups' },
+                  {
+                    name: 'Mettings',
+                    logo: 'uil uil-meeting-board',
+                    link: 'meetings',
+                  },
+                  {
+                    name: 'Tasks',
+                    logo: 'uil uil-clipboard-notes',
+                    link: 'tasks',
+                  },
+                  { name: 'Forum', logo: 'uil uil-font', link: 'forum' },
                 ];
                 break;
               case 'Trainer':

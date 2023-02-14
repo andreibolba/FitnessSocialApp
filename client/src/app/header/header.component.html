@@ -9,7 +9,7 @@
 
   <div class="menu-items">
     <ul class="nav-links" >
-      <li *ngFor="let button of buttons" (click)="onLeaveDashBoard(button.name)"><a>
+      <li *ngFor="let button of buttons" (click)="onLeaveDashBoard(button.name)" [routerLink]="[button.link]"><a >
         <i class="{{ button.logo }}"></i>
         <span class="link-name">{{ button.name }}</span>
       </a></li>

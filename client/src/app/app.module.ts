@@ -13,11 +13,37 @@ import { AdminDashboardComponent } from './admin/admin.dashboard/admin.dashboard
 import { TrainerDashboardComponent } from './trainer/trainer.dashboard/trainer.dashboard.component';
 import { InternDashboardComponent } from './intern/intern.dashboard/intern.dashboard.component';
 import { ForumComponent } from './forum/forum/forum.component';
-
+import { AdministratorsComponent } from './admin/administrators/administrators.component';
+import { TrainersComponent } from './admin/trainers/trainers.component';
+import { InternsComponent } from './admin/interns/interns.component';
+import { GroupsComponent } from './admin/groups/groups.component';
+import { TaskComponent } from './shared/task/task.component';
+import { MeetingComponent } from './shared/meeting/meeting.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, AuthentificationComponent, HomeComponent, AdminDashboardComponent, TrainerDashboardComponent, InternDashboardComponent, ForumComponent],
-  imports: [BrowserModule, HttpClientModule, FormsModule,AppRoutingModule, BrowserAnimationsModule],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    AuthentificationComponent,
+    HomeComponent,
+    AdminDashboardComponent,
+    TrainerDashboardComponent,
+    InternDashboardComponent,
+    ForumComponent,
+    MeetingComponent,
+    AdministratorsComponent,
+    TrainersComponent,
+    InternsComponent,
+    GroupsComponent,
+    TaskComponent,
+  ],
+  imports: [
+    BrowserModule,
+    HttpClientModule,
+    FormsModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -91,7 +91,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
               case 'Trainer':
                 this.buttons = [
                   { name: 'Dashboard', logo: 'uil uil-estate', link: '../dashboard' },
-                  { name: 'Notes', logo: 'uil uil-notes', link: '../dashboard' },
+                  { name: 'My Group', logo: 'uil uil-users-alt', link: 'mygroups' },
+                  { name: 'Tests', logo: 'uil uil-diary', link: 'tests' },
+                  { name: 'Challanges', logo: 'uil uil-brackets-curly',link: 'challanges' },
+                  { name: 'Feedback', logo: 'uil uil-feedback', link: 'feedback' },
+                  { name: 'Notes', logo: 'uil uil-notes', link: 'notes' },
                   {
                     name: 'Mettings',
                     logo: 'uil uil-meeting-board',
@@ -108,7 +112,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
               case 'Intern':
                 this.buttons = [
                   { name: 'Dashboard', logo: 'uil uil-estate', link: '../dashboard' },
-                  { name: 'My Group', logo: 'uil uil-users-alt', link: 'group' },
+                  { name: 'My Groups', logo: 'uil uil-users-alt', link: 'mygroup' },
                   { name: 'Tests', logo: 'uil uil-diary', link: 'tests' },
                   { name: 'Challanges', logo: 'uil uil-brackets-curly',link: 'challanges' },
                   { name: 'Feedback', logo: 'uil uil-feedback', link: 'feedback' },

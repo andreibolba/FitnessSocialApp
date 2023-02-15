@@ -16,6 +16,7 @@ import { NoteComponent } from './shared/note/note.component';
 import { ProfileComponent } from './shared/profile/profile.component';
 import { TaskComponent } from './shared/task/task.component';
 import { TestComponent } from './shared/test/test.component';
+import { MyGroupsComponent } from './trainer/my.groups/my.groups.component';
 
 const routes: Routes = [
   {
@@ -34,7 +35,8 @@ const routes: Routes = [
       { path: 'challanges', component: ChallangeComponent },
       { path: 'feedback', component: FeedbackComponent },
       { path: 'notes', component: NoteComponent },
-      { path: 'group', component: MyGroupComponent },
+      { path: 'mygroup', component: MyGroupComponent },
+      { path: 'mygroups', component: MyGroupsComponent },
       { path: 'profile', component: ProfileComponent },
     ],
   },

@@ -17,6 +17,7 @@ export class AdminDashboardComponent implements OnInit, OnDestroy {
   groupsNumber: number = 0;
   trainersNumber: number = 0;
   internsNumber: number = 0;
+  person!:Person;
 
   constructor(
     private http: HttpClient,
@@ -43,6 +44,7 @@ export class AdminDashboardComponent implements OnInit, OnDestroy {
           let people: Person[] = res;
           this.internsNumber = people.filter(p=>p.status=='Intern').length;
           this.trainersNumber = people.filter(p=>p.status=='Trainer').length;
+          this.person=people.find(p=>p.username==person.username) as Person;
         },
         (error) => {
           console.log(error.error);

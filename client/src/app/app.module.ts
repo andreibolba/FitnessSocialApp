@@ -27,6 +27,7 @@ import { FeedbackComponent } from './shared/feedback/feedback.component';
 import { ChallangeComponent } from './shared/challange/challange.component';
 import { TestComponent } from './shared/test/test.component';
 import { MyGroupComponent } from './intern/my.group/my.group.component';
+import { MyGroupsComponent } from './trainer/my.groups/my.groups.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { MyGroupComponent } from './intern/my.group/my.group.component';
     ChallangeComponent,
     TestComponent,
     MyGroupComponent,
+    MyGroupsComponent,
   ],
   imports: [
     BrowserModule,

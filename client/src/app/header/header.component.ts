@@ -79,6 +79,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
                     logo: 'uil uil-meeting-board',
                     link: 'meetings',
                   },
+                  { name: 'Notes', logo: 'uil uil-notes', link: '../dashboard' },
                   {
                     name: 'Tasks',
                     logo: 'uil uil-clipboard-notes',
@@ -90,6 +91,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
               case 'Trainer':
                 this.buttons = [
                   { name: 'Dashboard', logo: 'uil uil-estate', link: '../dashboard' },
+                  { name: 'Notes', logo: 'uil uil-notes', link: '../dashboard' },
                   {
                     name: 'Mettings',
                     logo: 'uil uil-meeting-board',
@@ -105,9 +107,23 @@ export class HeaderComponent implements OnInit, OnDestroy {
                 break;
               case 'Intern':
                 this.buttons = [
-                  { name: 'Dashboard In', logo: 'uil uil-estate' },
-                  { name: 'Dashboard In', logo: 'uil uil-estate' },
-                  { name: 'Dashboard In', logo: 'uil uil-estate' },
+                  { name: 'Dashboard', logo: 'uil uil-estate', link: '../dashboard' },
+                  { name: 'My Group', logo: 'uil uil-users-alt', link: 'group' },
+                  { name: 'Tests', logo: 'uil uil-diary', link: 'tests' },
+                  { name: 'Challanges', logo: 'uil uil-brackets-curly',link: 'challanges' },
+                  { name: 'Feedback', logo: 'uil uil-feedback', link: 'feedback' },
+                  { name: 'Notes', logo: 'uil uil-notes', link: 'notes' },
+                  {
+                    name: 'Mettings',
+                    logo: 'uil uil-meeting-board',
+                    link: 'meetings',
+                  },
+                  {
+                    name: 'Tasks',
+                    logo: 'uil uil-clipboard-notes',
+                    link: 'tasks',
+                  },
+                  { name: 'Forum', logo: 'uil uil-font', link: 'forum' },
                 ];
                 break;
               default:

@@ -1,44 +1,54 @@
-.dash{
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.dash {
   width: 79%;
   height: 85vh;
 }
 
-.contentbox1, .contentbox2{
+.contentbox1,
+.contentbox2 {
   width: 100%;
   height: 49%;
   display: flex;
 }
-.contentbox1{
+
+.contentbox1 {
   margin-bottom: 0.5%;
 }
-.contentbox2{
+
+.contentbox2 {
   margin-top: 0.5%;
 }
 
-.subcontentbox1left{
+.subcontentbox1left {
   height: 100%;
   width: 70%;
   background-color: orange;
 }
 
-.subcontentbox1right{
+.subcontentbox1right {
   height: 100%;
   width: 30%;
   background-color: burlywood;
 }
 
-.subcontentbox2left{
+.subcontentbox2left {
   height: 100%;
   width: 60%;
   background-color: orange;
 }
 
-.subcontentbox2right{
+.subcontentbox2right {
   height: 100%;
   width: 40%;
 }
 
-.feedback{
+.feedback {
   width: 96%;
   height: 98%;
   margin-top: 1%;
@@ -48,4 +58,95 @@
   border-radius: 10px;
   background-color: #d0d0d3;
   border: 2px solid #EFEEF1;
+}
+
+.feedbacktitle {
+  display: flex;
+  height: 20%;
+  border-bottom: 1px solid #c1c1c1;
+}
+
+.title {
+  width: 60%;
+}
+
+.button {
+  width: 40%;
+  text-align: end;
+}
+
+.button button {
+  margin-top: 5px;
+  margin-right: 10px;
+  color: black;
+  height: 40px;
+  width: 90px;
+  border-radius: 10px;
+  background-color: #EFEEF1;
+  border: none;
+  cursor: pointer;
+}
+
+.button button:hover {
+  background-color: rgb(53, 53, 53);
+  color: #EFEEF1;
+  transition: .5s;
+}
+
+.title h4 {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.feedback-content {
+  width: 100%;
+  height: 80%;
+}
+
+.feedback-place {
+  width: 98%;
+  margin-left: 1%;
+  margin-right: 1%;
+  height: 28%;
+  margin-top: 2%;
+  display: flex;
+}
+
+.pictureOfTrainer {
+  width: 52px;
+  height: 52px;
+  background-image: url('../../../../img/temp_user_photo.jpg');
+  background-size: cover;
+  border-radius: 26px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  margin-right: 10px;
+}
+
+.feedback-message {
+  width: 80%;
+  height: 95%;
+}
+
+.message {
+  width: 100%;
+  height: 65%;
+  line-height: 1.2;
+  color: black;
+  font-size: 15px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.date {
+  width: 100%;
+  height: 35%;
+  font-size: 12px;
+}
+
+.feedback-content p{
+  text-align: center;
+  margin-top: 20%;
 }

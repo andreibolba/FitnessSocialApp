@@ -22,6 +22,11 @@ import { MeetingComponent } from './shared/meeting/meeting.component';
 import { ProfileComponent } from './shared/profile/profile.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { NoteComponent } from './shared/note/note.component';
+import { FeedbackComponent } from './shared/feedback/feedback.component';
+import { ChallangeComponent } from './shared/challange/challange.component';
+import { TestComponent } from './shared/test/test.component';
+import { MyGroupComponent } from './intern/my.group/my.group.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +45,11 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     GroupsComponent,
     TaskComponent,
     ProfileComponent,
+    NoteComponent,
+    FeedbackComponent,
+    ChallangeComponent,
+    TestComponent,
+    MyGroupComponent,
   ],
   imports: [
     BrowserModule,

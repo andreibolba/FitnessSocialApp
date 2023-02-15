@@ -1,7 +1,6 @@
-import { Component, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from 'src/services/auth.guard.service';
-import { AdminDashboardComponent } from './admin/admin.dashboard/admin.dashboard.component';
+import { AuthGuard } from 'src/services/auth.guard.service';;
 import { AdministratorsComponent } from './admin/administrators/administrators.component';
 import { GroupsComponent } from './admin/groups/groups.component';
 import { InternsComponent } from './admin/interns/interns.component';
@@ -9,9 +8,14 @@ import { TrainersComponent } from './admin/trainers/trainers.component';
 import { AuthentificationComponent } from './authentification/authentification.component';
 import { ForumComponent } from './forum/forum/forum.component';
 import { HomeComponent } from './home/home.component';
+import { MyGroupComponent } from './intern/my.group/my.group.component';
+import { ChallangeComponent } from './shared/challange/challange.component';
+import { FeedbackComponent } from './shared/feedback/feedback.component';
 import { MeetingComponent } from './shared/meeting/meeting.component';
+import { NoteComponent } from './shared/note/note.component';
 import { ProfileComponent } from './shared/profile/profile.component';
 import { TaskComponent } from './shared/task/task.component';
+import { TestComponent } from './shared/test/test.component';
 
 const routes: Routes = [
   {
@@ -26,6 +30,11 @@ const routes: Routes = [
       { path: 'meetings', component: MeetingComponent },
       { path: 'tasks', component: TaskComponent },
       { path: 'forum', component: ForumComponent },
+      { path: 'tests', component: TestComponent },
+      { path: 'challanges', component: ChallangeComponent },
+      { path: 'feedback', component: FeedbackComponent },
+      { path: 'notes', component: NoteComponent },
+      { path: 'group', component: MyGroupComponent },
       { path: 'profile', component: ProfileComponent },
     ],
   },

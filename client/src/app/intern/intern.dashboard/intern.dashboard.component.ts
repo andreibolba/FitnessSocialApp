@@ -52,6 +52,7 @@ export class InternDashboardComponent implements OnInit, OnDestroy {
   weekDaysName: string[] = [];
   dataSub!: Subscription;
   person!: Person;
+  isLoading=true;
 
   constructor(
     public calendarCreator: CalendarCreatorService,
@@ -64,6 +65,7 @@ export class InternDashboardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.isLoading=true;
     this.setMonthDays(this.calendarCreator.getCurrentMonth());
 
     this.weekDaysName.push('Mo');
@@ -101,6 +103,9 @@ export class InternDashboardComponent implements OnInit, OnDestroy {
           },
           (error) => {
             console.log(error.error);
+          },
+          ()=>{
+            this.isLoading=false;
           }
         );
     }

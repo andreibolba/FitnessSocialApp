@@ -18,6 +18,7 @@ export class AdminDashboardComponent implements OnInit, OnDestroy {
   trainersNumber: number = 0;
   internsNumber: number = 0;
   person!:Person;
+  isLoading=true;
 
   constructor(
     private http: HttpClient,
@@ -30,6 +31,7 @@ export class AdminDashboardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.isLoading=true;
     this.setCurrentUser();
   }
 
@@ -57,6 +59,9 @@ export class AdminDashboardComponent implements OnInit, OnDestroy {
         },
         (error) => {
           console.log(error.error);
+        },
+        ()=>{
+          this.isLoading=false;
         }
       );
     }

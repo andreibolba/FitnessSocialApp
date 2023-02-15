@@ -38,6 +38,7 @@ export class TrainerDashboardComponent {
   weekDaysName: string[] = [];
   dataSub!: Subscription;
   person!: Person;
+  isLoading=true;
 
   constructor(
     public calendarCreator: CalendarCreatorService,
@@ -50,6 +51,7 @@ export class TrainerDashboardComponent {
   }
 
   ngOnInit(): void {
+    this.isLoading=true;
     this.setMonthDays(this.calendarCreator.getCurrentMonth());
 
     this.weekDaysName.push('Mo');
@@ -87,6 +89,9 @@ export class TrainerDashboardComponent {
           },
           (error) => {
             console.log(error.error);
+          },
+          ()=>{
+            this.isLoading=false;
           }
         );
     }

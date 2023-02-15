@@ -25,24 +25,14 @@
   margin-top: 0.5%;
 }
 
-.subcontentbox1left {
+.subcontentbox2left {
   height: 100%;
   width: 75%;
 }
 
-.subcontentbox1right {
-  height: 100%;
-  width: 25%;
-}
-
-.subcontentbox2left {
-  height: 100%;
-  width: 60%;
-}
-
 .subcontentbox2right {
   height: 100%;
-  width: 40%;
+  width: 25%;
 }
 
 .meetings {
@@ -194,12 +184,12 @@
 
 .welcomemessage {
   height: 100%;
-  width: 65%;
+  width: 72%;
 }
 
 .pic {
   height: 100%;
-  width: 25%;
+  width: 19%;
   background: url('../../../../img/welcome.png');
   background-size: cover;
 }

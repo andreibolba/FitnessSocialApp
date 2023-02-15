@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/services/auth.service';
 import { LogService } from 'src/services/log.service';
 
@@ -16,7 +17,8 @@ export class AuthentificationComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private router: Router,
-    private log: LogService
+    private log: LogService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -49,7 +51,7 @@ export class AuthentificationComponent implements OnInit {
       },
       (error) => {
         this.error = error;
-        console.log(error.error);
+        this.toastr.error(error.error);
       }
     );
     form.reset();

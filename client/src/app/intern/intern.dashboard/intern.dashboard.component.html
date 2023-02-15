@@ -2,6 +2,21 @@
   <div class="contentbox1">
     <div class="subcontentbox1left"></div>
     <div class="subcontentbox1right">
+      <div class="calendarbox">
+        <div class="titleOfMonth">
+          <span> {{ calendarCreator.getMonthName(monthNumber) }} &nbsp; {{ year }} </span>
+        </div>
+        <div class="calendardates">
+          <div class="calendar">
+            <span *ngFor='let weekDay of weekDaysName' class="day">
+              {{ weekDay }}
+            </span>
+            <span *ngFor='let day of monthDays' class="day">
+              {{ day.number }}
+            </span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
   <div class="contentbox2">

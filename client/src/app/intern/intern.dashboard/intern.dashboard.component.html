@@ -46,7 +46,7 @@
           </div>
         </div>
         <div class="meetings-content">
-          <div class="statement" *ngIf="hasFeedback==true">
+          <div class="statement" *ngIf="hasMeetings==true">
             <div class="meetings-place" *ngFor="let m of meetings">
               <div class="meeting-name">
                 {{ m.name }}
@@ -61,7 +61,7 @@
               </div>
             </div>
           </div>
-          <p *ngIf="!hasFeedback"> You have no feedback yet!</p>
+          <p *ngIf="!hasMeetings"> You have no meetings yet!</p>
         </div>
       </div>
     </div>

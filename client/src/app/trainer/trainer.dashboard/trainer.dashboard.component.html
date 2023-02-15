@@ -1,1 +1,71 @@
-<p>trainer.dashboard works!</p>
+<div class="dash">
+  <div class="contentbox1">
+    <div class="subcontentbox1left">
+      <div class="welcome">
+        <div class="welcomemessage">
+          <h2>
+            Welcome back, {{ person.lastName }}!
+          </h2>
+          <h5>
+            You have something new to learn
+            <br> everyday!
+          </h5>
+        </div>
+        <div class="pic">
+        </div>
+      </div>
+    </div>
+    <div class="subcontentbox1right">
+      <div class="calendarbox">
+        <div class="titleOfMonth">
+          <span> {{ calendarCreator.getMonthName(monthNumber) }} &nbsp; {{ year }} </span>
+        </div>
+        <div class="calendardates">
+          <div class="calendar">
+            <span *ngFor='let weekDay of weekDaysName' class="day">
+              {{ weekDay }}
+            </span>
+            <span *ngFor='let day of monthDays' class="day">
+              {{ day.number }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="contentbox2">
+    <div class="subcontentbox2left">
+      <div class="meetings">
+        <div class="conteinertitle">
+          <div class="title">
+            <h4> Next meetings </h4>
+          </div>
+          <div class="button">
+            <button *ngIf="hasMeetings" [routerLink]="[meetingsLink]" (click)="onLeaveDashboardClick()"> View
+              All</button>
+          </div>
+        </div>
+        <div class="meetings-content">
+          <div class="statement" *ngIf="hasMeetings==true">
+            <div class="meetings-place" *ngFor="let m of meetings">
+              <div class="meeting-name">
+                {{ m.name }}
+              </div>
+              <div class="meeting-details">
+                <div class="time">
+                  {{ m.date }}
+                </div>
+                <div class="link">
+                  <a [routerLink]="[m.link]" (click)="onLeaveDashboardClick()">View Meeting</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p *ngIf="!hasMeetings"> You have no meetings yet!</p>
+        </div>
+      </div>
+    </div>
+    <div class="subcontentbox2right">
+    </div>
+  </div>
+</div>

@@ -20,6 +20,8 @@ import { GroupsComponent } from './admin/groups/groups.component';
 import { TaskComponent } from './shared/task/task.component';
 import { MeetingComponent } from './shared/meeting/meeting.component';
 import { ProfileComponent } from './shared/profile/profile.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,8 @@ import { ProfileComponent } from './shared/profile/profile.component';
     FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MatSlideToggleModule,
+    MatDatepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent],

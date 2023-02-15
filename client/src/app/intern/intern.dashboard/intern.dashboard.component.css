@@ -36,6 +36,16 @@
 .subcontentbox2right{
   height: 100%;
   width: 40%;
-  background-color: burlywood;
 }
 
+.feedback{
+  width: 96%;
+  height: 98%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  margin-right: 2%;
+  margin-left: 2%;
+  border-radius: 10px;
+  background-color: #d0d0d3;
+  border: 2px solid #EFEEF1;
+}

@@ -1,4 +1,5 @@
 export class Person{
+  public id: number;
   public firstName:string;
   public lastName:string;
   public email:string;
@@ -6,6 +7,7 @@ export class Person{
   public status:string;
   public birthDate:Date;
   constructor(){
+    this.id=-1;
     this.firstName='';
     this.lastName='';
     this.email='';

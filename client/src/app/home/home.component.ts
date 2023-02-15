@@ -11,7 +11,6 @@ import { DataStorageService } from 'src/services/data-storage.service';
   styleUrls: ['./home.component.css'],
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  title = 'InternShip App';
   person!: Person;
   authSub!: Subscription;
   dataSub!: Subscription;

@@ -5,15 +5,46 @@
     </div>
   </div>
   <div class="contentbox2">
-    <div class="subcontentbox2left"></div>
+    <div class="subcontentbox2left">
+      <div class="meetings">
+        <div class="conteinertitle">
+          <div class="title">
+            <h4> Next meetings </h4>
+          </div>
+          <div class="button">
+            <button *ngIf="hasMeetings" [routerLink]="[meetingsLink]" (click)="onLeaveDashboardClick()"> View
+              All</button>
+          </div>
+        </div>
+        <div class="meetings-content">
+          <div class="statement" *ngIf="hasFeedback==true">
+            <div class="meetings-place" *ngFor="let m of meetings">
+              <div class="meeting-name">
+                {{ m.name }}
+              </div>
+              <div class="meeting-details">
+                <div class="time">
+                  {{ m.date }}
+                </div>
+                <div class="link">
+                  <a [routerLink]="[m.link]" (click)="onLeaveDashboardClick()">View Meeting</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p *ngIf="!hasFeedback"> You have no feedback yet!</p>
+        </div>
+      </div>
+    </div>
     <div class="subcontentbox2right">
       <div class="feedback">
-        <div class="feedbacktitle">
+        <div class="conteinertitle">
           <div class="title">
             <h4> Trainer's feedback </h4>
           </div>
           <div class="button">
-              <button *ngIf="hasFeedback" [routerLink]="[feedbackLink]" (click)="onfeedbackclick()"> View All</button>
+            <button *ngIf="hasFeedback" [routerLink]="[feedbackLink]" (click)="onLeaveDashboardClick()"> View
+              All</button>
           </div>
         </div>
         <div class="feedback-content">
@@ -21,6 +52,9 @@
             <div class="feedback-place" *ngFor="let f of feedback">
               <div class="pictureOfTrainer"></div>
               <div class="feedback-message">
+                <div class="trainer-name">
+                  andreibolba
+                </div>
                 <div class="message">
                   {{ f.feedback }}
                 </div>

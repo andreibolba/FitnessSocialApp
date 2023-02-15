@@ -60,7 +60,6 @@
   position: relative;
   height: 35px;
   width: 35px;
-  background-color: #0E4BF1;
   border-radius: 6px;
   color:  #fff;
   display: flex;
@@ -107,7 +106,7 @@
 }
 
 .boxes .box.box1{
-  background-color: #4DA3FF;
+  background-color: #9dbddf;
 }
 .boxes .box.box2{
   background-color: #FFE6AC;

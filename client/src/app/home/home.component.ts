@@ -38,7 +38,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.isLoading = true;
     this.setCurrentUser();
     this.person = new Person();
-    console.log(this.isDashboard);
   }
 
   setCurrentUser() {

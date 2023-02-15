@@ -89,16 +89,25 @@ export class HeaderComponent implements OnInit, OnDestroy {
                 break;
               case 'Trainer':
                 this.buttons = [
-                  { name: 'Dashboard Tr', logo: 'uil uil-estate' },
-                  { name: 'Dashboard Tr', logo: 'uil uil-estate' },
-                  { name: 'Dashboard Tr', logo: 'uil uil-estate' },
+                  { name: 'Dashboard', logo: 'uil uil-estate', link: '../dashboard' },
+                  {
+                    name: 'Mettings',
+                    logo: 'uil uil-meeting-board',
+                    link: 'meetings',
+                  },
+                  {
+                    name: 'Tasks',
+                    logo: 'uil uil-clipboard-notes',
+                    link: 'tasks',
+                  },
+                  { name: 'Forum', logo: 'uil uil-font', link: 'forum' },
                 ];
                 break;
               case 'Intern':
                 this.buttons = [
-                  { name: 'Dashboard Tr', logo: 'uil uil-estate' },
-                  { name: 'Dashboard Tr', logo: 'uil uil-estate' },
-                  { name: 'Dashboard Tr', logo: 'uil uil-estate' },
+                  { name: 'Dashboard In', logo: 'uil uil-estate' },
+                  { name: 'Dashboard In', logo: 'uil uil-estate' },
+                  { name: 'Dashboard In', logo: 'uil uil-estate' },
                 ];
                 break;
               default:

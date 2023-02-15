@@ -13,10 +13,13 @@ import { DataStorageService } from 'src/services/data-storage.service';
 export class ProfileComponent implements OnInit, OnDestroy {
   dataSub!: Subscription;
   person!: Person;
+  isLoading=true;
 
   constructor(private dataService: DataStorageService, private dashServ:DashboardService) {}
   ngOnInit(): void {
+    this.isLoading=true;
     this.dashServ.dashboardChanged.emit(false);
+    console.log('perosnal');
     this.setCurrentUser();
   }
   ngOnDestroy(): void {
@@ -37,6 +40,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
           },
           (error) => {
             console.log(error.error);
+          },
+          ()=>{
+            this.isLoading=false;
           }
         );
     }

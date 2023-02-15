@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { LoggedPerson } from 'src/model/loggedperson.model';
 import { Person } from 'src/model/person.model';
@@ -34,6 +35,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.dashSub = this.dashService.dashboardChanged.subscribe((res) => {
       this.isDashboard = res;
     });
+
     this.isLoading = true;
     this.setCurrentUser();
     this.person = new Person();

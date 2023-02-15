@@ -1,9 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Group } from 'src/model/group.model';
 import { LoggedPerson } from 'src/model/loggedperson.model';
 import { Person } from 'src/model/person.model';
+import { DashboardService } from 'src/services/dashboard.service';
 import { DataStorageService } from 'src/services/data-storage.service';
 
 @Component({
@@ -22,7 +24,9 @@ export class AdminDashboardComponent implements OnInit, OnDestroy {
 
   constructor(
     private http: HttpClient,
-    private dataService: DataStorageService
+    private dashServ: DashboardService,
+    private dataService: DataStorageService,
+    private router:Router
   ) {}
 
   ngOnDestroy(): void {
@@ -31,6 +35,8 @@ export class AdminDashboardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    if(this.router.url!='/dashboard')
+    this.dashServ.dashboardChanged.emit(false);
     this.isLoading=true;
     this.setCurrentUser();
   }

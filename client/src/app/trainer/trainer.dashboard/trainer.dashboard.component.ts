@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Day } from 'src/model/day.model';
 import { LoggedPerson } from 'src/model/loggedperson.model';
@@ -43,7 +44,8 @@ export class TrainerDashboardComponent {
   constructor(
     public calendarCreator: CalendarCreatorService,
     private dashServ: DashboardService,
-    private dataService: DataStorageService
+    private dataService: DataStorageService,
+    private router:Router
   ) {}
 
   ngOnDestroy(): void {
@@ -51,6 +53,8 @@ export class TrainerDashboardComponent {
   }
 
   ngOnInit(): void {
+    if(this.router.url!='/dashboard')
+    this.dashServ.dashboardChanged.emit(false);
     this.isLoading=true;
     this.setMonthDays(this.calendarCreator.getCurrentMonth());
 

@@ -25,6 +25,7 @@ namespace API.Controllers
             {
                 resultToReturn.Add(new LoggedPersonDto
                 {
+                    PersonId = re.PersonId,
                     FirstName = re.FirstName,
                     LastName = re.LastName,
                     Email = re.Email,
@@ -38,9 +39,22 @@ namespace API.Controllers
         }
 
         [HttpGet("{id:int}")]
-        public ActionResult<Person> GetPerson(int id)
+        public ActionResult<LoggedPersonDto> GetPerson(int id)
         {
-            return _context.People.SingleOrDefault(p=>(p.PersonId == id && p.Deleted==false));
+            var person =_context.People.SingleOrDefault(p=>(p.PersonId == id && p.Deleted==false));
+            if(person==null)
+                return NoContent();
+            var personToSend = new LoggedPersonDto()
+            {
+                PersonId = person.PersonId,
+                FirstName = person.FirstName,
+                LastName = person.LastName,
+                Email = person.Email,
+                Username = person.Username,
+                Status = person.Status,
+                BirthDate = person.BirthDate
+            };
+            return personToSend;
         }
 
         [HttpGet("{username}")]
@@ -51,6 +65,7 @@ namespace API.Controllers
                 return NoContent();
             var personToSend = new LoggedPersonDto()
             {
+                PersonId = person.PersonId,
                 FirstName = person.FirstName,
                 LastName = person.LastName,
                 Email = person.Email,

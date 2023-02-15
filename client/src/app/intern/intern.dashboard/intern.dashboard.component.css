@@ -238,4 +238,5 @@
 .day {
   width: 30px;
   display: inline-block;
+  text-align: center;
 }

@@ -47,28 +47,6 @@ export class InternDashboardComponent {
     this.weekDaysName.push("Su");
   }
 
-  onNextMonth(): void {
-    this.monthNumber++;
-
-    if (this.monthNumber == 13) {
-      this.monthNumber = 1;
-      this.year++;
-    }
-
-    this.setMonthDays(this.calendarCreator.getMonth(this.monthNumber, this.year));
-  }
-
-  onPreviousMonth() : void{
-    this.monthNumber--;
-
-    if (this.monthNumber < 1) {
-      this.monthNumber = 12;
-      this.year--;
-    }
-
-    this.setMonthDays(this.calendarCreator.getMonth(this.monthNumber, this.year));
-  }
-
   private setMonthDays(days: Day[]): void {
     this.monthDays = days;
     this.monthNumber = this.monthDays[0].monthIndex;

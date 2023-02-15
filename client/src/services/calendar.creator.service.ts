@@ -20,10 +20,7 @@ export class CalendarCreatorService {
 
   public getMonth(monthIndex: number, year: number): Day[] {
     let days = [];
-
     let firstday = this.createDay(1, monthIndex, year);
-
-    //create empty days
     for (let i = 1; i < firstday.weekDayNumber; i++) {
       days.push({
         weekDayNumber: i,
@@ -32,41 +29,38 @@ export class CalendarCreatorService {
       } as Day);
     }
     days.push(firstday);
-    //
-
     let countDaysInMonth = new Date(year, monthIndex +1, 0).getDate();
     for (let i = 2; i < countDaysInMonth +1; i++) {
       days.push(this.createDay(i, monthIndex, year));
     }
-
     return days;
   }
 
   public getMonthName(monthIndex: number): string {
     switch (monthIndex) {
-      case 1:
+      case 0:
         return "January";
-      case 2:
+      case 1:
         return "February";
-      case 3:
+      case 2:
         return "March";
-      case 4:
+      case 3:
         return "April";
-      case 5:
+      case 4:
         return "May";
-      case 6:
+      case 5:
         return "June";
-      case 7:
+      case 6:
         return "July";
-      case 8:
+      case 7:
         return "August";
-      case 9:
+      case 8:
         return "September";
-      case 10:
+      case 9:
         return "October";
-      case 11:
+      case 10:
         return "November";
-      case 12:
+      case 11:
         return "December";
 
       default:

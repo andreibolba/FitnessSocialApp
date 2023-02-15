@@ -1,2 +1,35 @@
-<p>profile works!</p>
-{{ person.personId }} {{person.username}}
+<div class="personal">
+  <div class="pic">
+    <div class="picture"></div>
+    <div class="name">
+      <b>
+        {{ person.firstName }} {{ person.lastName}}
+      </b>
+      <br>
+      <i>
+        {{ person.status }}
+      </i>
+    </div>
+  </div>
+  <div class="infos">
+    <div class="information">
+      <h1>Information</h1>
+      <hr>
+      <h3>Email</h3>
+      <br>
+      <p>
+        {{ person.email }}
+      </p>
+      <h3>Username</h3>
+      <br>
+      <p>
+        {{ person.username }}
+      </p>
+      <h3>Birthdate</h3>
+      <br>
+      <p>
+        {{ person.birthDate | date }}
+      </p>
+    </div>
+  </div>
+</div>

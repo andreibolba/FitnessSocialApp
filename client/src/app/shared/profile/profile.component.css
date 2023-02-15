@@ -1,0 +1,62 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.personal {
+  width: 65%;
+  height: 75vh;
+  display: flex;
+  border-radius: 10px;
+  box-shadow: 10px 5px 5px rgb(187, 187, 187);
+  margin-left: 8%;
+  margin-top: 20px;
+}
+
+.pic{
+  height: 100%;
+  width: 40%;
+  border-radius: 10px 0px 0px 10px;
+  background-color: rgb(133, 169, 232);
+}
+
+.picture{
+  height: 120px;
+  width: 120px;
+  border-radius: 60px;
+  background: url('../../../../img/temp_user_photo.jpg');
+  background-size: cover;
+  margin-left: 90px;
+  margin-top: 150px;
+}
+
+.name{
+  text-align: center;
+  margin-top: 20px;
+  color: #303030;
+  font-size: 20px;
+}
+
+.information{
+  width: 400px;
+  margin-left: 20px;
+  height: 210px;
+  margin-top: 50px;
+}
+
+.information h1{
+  margin-bottom: 20px;
+}
+
+.information h3{
+  margin-top: 50px;
+  margin-left: 20px;
+  margin-bottom: -15px;
+}
+
+.information p{
+  margin-left: 20px;
+  color:#515151
+}

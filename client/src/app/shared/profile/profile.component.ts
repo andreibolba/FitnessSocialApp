@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { LoggedPerson } from 'src/model/loggedperson.model';
 import { Person } from 'src/model/person.model';
+import { DashboardService } from 'src/services/dashboard.service';
 import { DataStorageService } from 'src/services/data-storage.service';
 
 @Component({
@@ -13,8 +14,9 @@ export class ProfileComponent implements OnInit, OnDestroy {
   dataSub!: Subscription;
   person!: Person;
 
-  constructor(private dataService: DataStorageService) {}
+  constructor(private dataService: DataStorageService, private dashServ:DashboardService) {}
   ngOnInit(): void {
+    this.dashServ.dashboardChanged.emit(false);
     this.setCurrentUser();
   }
   ngOnDestroy(): void {

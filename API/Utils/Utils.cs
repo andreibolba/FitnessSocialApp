@@ -1,3 +1,5 @@
+using System.Net;
+using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -16,6 +18,40 @@ namespace API.Utils
                 res.Append(valid[rnd.Next(valid.Length)]);
             }
             return res.ToString();
+        }
+
+        public static bool SendEmail(EmailFields details)
+        {
+            String SendMailFrom = "noreply.internhub@gmail.com";
+            String SendMailTo = details.EmailTo;
+            String SendMailSubject = details.EmailSubject;
+            String SendMailBody = details.EmailBody;
+
+            try
+            {
+                SmtpClient SmtpServer = new SmtpClient("smtp.gmail.com", 587);
+                SmtpServer.DeliveryMethod = SmtpDeliveryMethod.Network;
+                MailMessage email = new MailMessage();
+
+                email.From = new MailAddress(SendMailFrom);
+                email.To.Add(SendMailTo);
+                email.Subject = SendMailSubject;
+                email.Body = SendMailBody;
+                SmtpServer.Timeout = 5000;
+                SmtpServer.EnableSsl = true;
+                SmtpServer.UseDefaultCredentials = false;
+                SmtpServer.Credentials = new NetworkCredential(SendMailFrom, "iofawdzjcufnnbso");
+                SmtpServer.Send(email);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                switch(ex){
+                    default:
+                        return false;
+                }
+            }
+
         }
     }
 }

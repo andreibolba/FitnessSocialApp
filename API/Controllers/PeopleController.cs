@@ -1,5 +1,6 @@
 using API.Dtos;
 using API.Models;
+using API.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -18,7 +19,7 @@ namespace API.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<LoggedPersonDto>> GetPeople()
         {
-            var result = _context.People.ToList().Where(g=>g.Deleted==false);
+            var result = _context.People.ToList().Where(g => g.Deleted == false);
             var resultToReturn = new List<LoggedPersonDto>(0);
 
             foreach (var re in result)
@@ -41,8 +42,8 @@ namespace API.Controllers
         [HttpGet("{id:int}")]
         public ActionResult<LoggedPersonDto> GetPerson(int id)
         {
-            var person =_context.People.SingleOrDefault(p=>(p.PersonId == id && p.Deleted==false));
-            if(person==null)
+            var person = _context.People.SingleOrDefault(p => (p.PersonId == id && p.Deleted == false));
+            if (person == null)
                 return NoContent();
             var personToSend = new LoggedPersonDto()
             {
@@ -60,8 +61,8 @@ namespace API.Controllers
         [HttpGet("{username}")]
         public ActionResult<LoggedPersonDto> GetPersonByUsername(string username)
         {
-            var person = _context.People.SingleOrDefault(user =>( user.Username == username && user.Deleted==false));
-            if(person==null)
+            var person = _context.People.SingleOrDefault(user => (user.Username == username && user.Deleted == false));
+            if (person == null)
                 return NoContent();
             var personToSend = new LoggedPersonDto()
             {
@@ -75,5 +76,28 @@ namespace API.Controllers
             };
             return personToSend;
         }
+
+        [HttpPost("forgot")]
+        public ActionResult<PersonDto> Register([FromBody] ForgotPasswordDto password)
+        {
+            EmailFields details = new EmailFields
+            {
+                EmailTo = password.Email,
+                EmailSubject = "Recovery password link",
+                EmailBody = "Hello! \n\n" +
+                "Forgot your password? No worries. It happens to everyone. We’ve made it easy for you to access Intern Hub again.\n\n" +
+                "You can reset your password immediately by clicking here or pasting the following link in your browser:\n\n" +
+                "https://localhost:4200/recovery/" + password.Username + "\n\n" +
+                "Link is available 1 hour!\n\n"+
+                "Cheers,\n" +
+                "The Internhub Team!"
+
+            };
+            if (Utils.Utils.SendEmail(details))
+                return Ok();
+            else
+                return BadRequest();
+        }
+
     }
 }

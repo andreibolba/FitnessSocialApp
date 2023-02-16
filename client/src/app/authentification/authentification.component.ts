@@ -17,7 +17,7 @@ export class AuthentificationComponent implements OnInit {
   isForgotPassword = false;
   isRecoverPassword = false;
   error: string | any = '';
-  username: string | null = '';
+  linkId: string | null = '';
   sub!: Subscription;
 
   constructor(
@@ -40,9 +40,15 @@ export class AuthentificationComponent implements OnInit {
       this.isForgotPassword = false;
       this.isRecoverPassword = true;
       this.sub = this.activatedRoute.paramMap.subscribe((params) => {
-        this.username = params.get('username');
+        this.linkId = params.get('linkid');
+        if(this.linkId)
+          this.dataService.isLinkValid(+this.linkId).subscribe( () => {},
+          (error) => {
+            this.toastr.error(error.error);
+            this.router.navigate(['']);
+          });
       });
-      console.log(this.username);
+
     }
     // this.log
     //   .log({

@@ -28,4 +28,8 @@ export class DataStorageService {
   sendEmail(email:string){
     return this.http.post(this.baseUrl+'people/forgot',{email: email, time: new Date()});
   }
+
+  isLinkValid(linkid:number){
+    return this.http.post(this.baseUrl+'people/link',{linkid: linkid, time: new Date()});
+  }
 }

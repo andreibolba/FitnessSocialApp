@@ -41,7 +41,7 @@ const routes: Routes = [
     ],
   },
   {
-    path: 'recovery/:username',
+    path: 'recovery/:linkid',
     component: AuthentificationComponent
   },
   { path: '', component:AuthentificationComponent, pathMatch: 'full' },

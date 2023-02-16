@@ -1,3 +1,5 @@
+using System.Security.Cryptography;
+using System.Text;
 using API.Dtos;
 using API.Models;
 using API.Utils;
@@ -82,10 +84,11 @@ namespace API.Controllers
         public ActionResult<PersonDto> ForgotPassword([FromBody] ForgotPasswordDto password)
         {
             var person = _context.People.SingleOrDefault(user => (user.Email == password.Email && user.Deleted == false));
-            PasswordkLink link=new PasswordkLink{
-                PersonUsername=person.Username,
-                Time=password.Time.AddHours(2),
-                Deleted=false
+            PasswordkLink link = new PasswordkLink
+            {
+                PersonUsername = person.Username,
+                Time = password.Time.AddHours(2),
+                Deleted = false
             };
 
             _context.PasswordkLinks.Add(link);
@@ -98,7 +101,7 @@ namespace API.Controllers
                 "Forgot your password? No worries. It happens to everyone. We’ve made it easy for you to access Intern Hub again.\n\n" +
                 "You can reset your password immediately by clicking here or pasting the following link in your browser:\n\n" +
                 "https://localhost:4200/recovery/" + link.PasswordLinkId + "\n\n" +
-                "Link is available 1 hour!\n\n"+
+                "Link is available 1 hour!\n\n" +
                 "Cheers,\n" +
                 "The Internhub Team!"
 
@@ -116,11 +119,15 @@ namespace API.Controllers
         public ActionResult<PersonDto> IsValidLink([FromBody] ForgotPasswordDto password)
         {
             var link = _context.PasswordkLinks.SingleOrDefault(link => (link.PasswordLinkId == password.LinkId && link.Deleted == false));
-            if(link==null)
-                return BadRequest();
+            if (link == null)
+                return BadRequest("Invalid link");
             password.Time.AddHours(2);
-            if(link.Time < password.Time)
+            if (link.Time < password.Time){
+                link.Deleted=true;
+                _context.PasswordkLinks.Update(link);
+                _context.SaveChanges();
                 return BadRequest("Link is expired!");
+            }
             return Ok();
         }
 
@@ -128,9 +135,17 @@ namespace API.Controllers
         [HttpPost("reset")]
         public ActionResult<PersonDto> PaswwordReset([FromBody] ForgotPasswordDto password)
         {
-            var link = _context.PasswordkLinks.SingleOrDefault(link => (link.PersonUsername == "password.Username" && link.Deleted == false));
-            if(link==null)
+            var link = _context.PasswordkLinks.SingleOrDefault(link => (link.PasswordLinkId == password.LinkId && link.Deleted == false));
+            var person = _context.People.SingleOrDefault(p => p.Username == link.PersonUsername && p.Deleted == false);
+            if (link == null && person == null)
                 return BadRequest();
+            link.Deleted = true;
+            _context.PasswordkLinks.Update(link);
+            using var hmac = new HMACSHA512();
+            person.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password.Password));
+            person.PasswordSalt = hmac.Key;
+            _context.People.Update(person);
+            _context.SaveChanges();
             return Ok();
         }
     }

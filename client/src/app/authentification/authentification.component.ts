@@ -41,14 +41,15 @@ export class AuthentificationComponent implements OnInit {
       this.isRecoverPassword = true;
       this.sub = this.activatedRoute.paramMap.subscribe((params) => {
         this.linkId = params.get('linkid');
-        if(this.linkId)
-          this.dataService.isLinkValid(+this.linkId).subscribe( () => {},
-          (error) => {
-            this.toastr.error(error.error);
-            this.router.navigate(['']);
-          });
+        if (this.linkId)
+          this.dataService.isLinkValid(+this.linkId).subscribe(
+            () => {},
+            (error) => {
+              this.toastr.error(error.error);
+              this.router.navigate(['']);
+            }
+          );
       });
-
     }
     // this.log
     //   .log({
@@ -84,25 +85,32 @@ export class AuthentificationComponent implements OnInit {
     form.reset();
   }
 
-  private verifyPassword(password: string): string {
-    let formRes = '';
-    if (/[A-Z]/.test(password) == false)
-      formRes = formRes.concat(
-        "Password doesn't have capital letters! It must have at least 1 capital letter!\n"
+  private verifyPassword(password: string): boolean {
+    if (/[A-Z]/.test(password) == false) {
+      this.toastr.error(
+        "Password doesn't have capital letters! It must have at least 1 capital letter!"
       );
-    if (/[a-z]/.test(password) == false)
-      formRes = formRes.concat(
-        "Password doesn't have small letters! It must have at least 1 small letter!\n"
+      return false;
+    }
+    if (/[a-z]/.test(password) == false) {
+      this.toastr.error(
+        "Password doesn't have small letters! It must have at least 1 small letter!"
       );
-    if (/[0-9]/.test(password) == false)
-      formRes = formRes.concat(
-        "Password doesn't have digits! It must have at least 1 digit!\n"
+      return false;
+    }
+    if (/[0-9]/.test(password) == false) {
+      this.toastr.error(
+        "Password doesn't have digits! It must have at least 1 digit!"
       );
-    if (/(?=.*\W)/.test(password) == false)
-      formRes = formRes.concat(
-        "Password doesn't have any special charaters! It must have at least 1 special charater!\n"
+      return false;
+    }
+    if (/(?=.*\W)/.test(password) == false) {
+      this.toastr.error(
+        "Password doesn't have any special charaters! It must have at least 1 special charater!"
       );
-    return formRes;
+      return false;
+    }
+    return true;
   }
 
   onSignUpSubmit(form: NgForm) {
@@ -114,20 +122,42 @@ export class AuthentificationComponent implements OnInit {
     const birthdate = form.value.birthDate;
 
     const res = this.verifyPassword(password);
-    if (res == '') {
+    if (res) {
       form.reset();
-    } else {
-      console.log(res);
     }
   }
 
-  onRecover(form: NgForm) {}
+  onRecover(form: NgForm) {
+    const password = form.value.password;
+    const retypedpass = form.value.retypepassword;
+
+    if (password != retypedpass) {
+      this.toastr.error('Passwords does not match!');
+      form.reset();
+    }
+
+    if (this.verifyPassword(password)) {
+      form.reset();
+    }
+
+    this.dataService.resetPassword(+this.linkId!, password).subscribe(
+      () => {
+        this.toastr.success('Password reset succesfully!');
+        this.router.navigate(['']);
+      },
+      (error) => {
+        this.error = error;
+        this.toastr.error(error.error);
+      }
+    );
+  }
 
   onForgot(form: NgForm) {
     let email = form.value.email;
     this.dataService.sendEmail(email).subscribe(
       () => {
         this.toastr.success('Mail was sent succesfully!');
+        this.router.navigate(['']);
       },
       (error) => {
         this.error = error;

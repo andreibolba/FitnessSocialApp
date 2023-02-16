@@ -32,4 +32,8 @@ export class DataStorageService {
   isLinkValid(linkid:number){
     return this.http.post(this.baseUrl+'people/link',{linkid: linkid, time: new Date()});
   }
+
+  resetPassword(linkId:number,password:string){
+    return this.http.post(this.baseUrl+'people/reset',{linkid: linkId, password: password});
+  }
 }

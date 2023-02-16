@@ -321,6 +321,7 @@ public partial class InternShipAppSystemContext : DbContext
 
             entity.ToTable("PasswordkLink");
 
+            entity.Property(e => e.PersonUsername).IsRequired();
             entity.Property(e => e.Time).HasColumnType("datetime");
         });
 

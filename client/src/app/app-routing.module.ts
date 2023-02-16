@@ -40,6 +40,10 @@ const routes: Routes = [
       { path: 'profile', component: ProfileComponent },
     ],
   },
+  {
+    path: 'recovery/:username',
+    component: AuthentificationComponent
+  },
   { path: '', component:AuthentificationComponent, pathMatch: 'full' },
   { path: 'authentification', component: AuthentificationComponent },
 ];

@@ -77,22 +77,34 @@ namespace API.Controllers
             return personToSend;
         }
 
+        [AllowAnonymous]
         [HttpPost("forgot")]
-        public ActionResult<PersonDto> Register([FromBody] ForgotPasswordDto password)
+        public ActionResult<PersonDto> ForgotPassword([FromBody] ForgotPasswordDto password)
         {
+            var person = _context.People.SingleOrDefault(user => (user.Email == password.Email && user.Deleted == false));
             EmailFields details = new EmailFields
             {
-                EmailTo = password.Email,
+                EmailTo = person.Email,
                 EmailSubject = "Recovery password link",
                 EmailBody = "Hello! \n\n" +
                 "Forgot your password? No worries. It happens to everyone. We’ve made it easy for you to access Intern Hub again.\n\n" +
                 "You can reset your password immediately by clicking here or pasting the following link in your browser:\n\n" +
-                "https://localhost:4200/recovery/" + password.Username + "\n\n" +
+                "https://localhost:4200/recovery/" + person.Username + "\n\n" +
                 "Link is available 1 hour!\n\n"+
                 "Cheers,\n" +
                 "The Internhub Team!"
 
             };
+
+            PasswordkLink link=new PasswordkLink{
+                PersonUsername=person.Username,
+                Time=password.Time,
+                Deleted=false
+            };
+
+            _context.PasswordkLinks.Add(link);
+            _context.SaveChanges();
+
             if (Utils.Utils.SendEmail(details))
                 return Ok();
             else

@@ -1,8 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Subscription } from 'rxjs';
 import { AuthService } from 'src/services/auth.service';
+import { DataStorageService } from 'src/services/data-storage.service';
 import { LogService } from 'src/services/log.service';
 
 @Component({
@@ -11,17 +13,37 @@ import { LogService } from 'src/services/log.service';
   styleUrls: ['./authentification.component.css'],
 })
 export class AuthentificationComponent implements OnInit {
-  isLoginMode = true;
+  isLoginMode = false;
+  isForgotPassword = false;
+  isRecoverPassword = false;
   error: string | any = '';
+  username: string | null = '';
+  sub!: Subscription;
 
   constructor(
     private authService: AuthService,
+    private dataService: DataStorageService,
     private router: Router,
     private log: LogService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private activatedRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
+    this.authService.logout();
+    if (this.router.url == '/') {
+      this.isLoginMode = true;
+      this.isForgotPassword = false;
+      this.isRecoverPassword = false;
+    } else {
+      this.isLoginMode = false;
+      this.isForgotPassword = false;
+      this.isRecoverPassword = true;
+      this.sub = this.activatedRoute.paramMap.subscribe((params) => {
+        this.username = params.get('username');
+      });
+      console.log(this.username);
+    }
     // this.log
     //   .log({
     //     LogType: 'Info',
@@ -37,7 +59,6 @@ export class AuthentificationComponent implements OnInit {
     //       console.log(error.error);
     //     }
     //   );
-    this.authService.logout();
   }
 
   onLogInSubmit(form: NgForm) {
@@ -92,5 +113,36 @@ export class AuthentificationComponent implements OnInit {
     } else {
       console.log(res);
     }
+  }
+
+  onRecover(form: NgForm) {}
+
+  onForgot(form: NgForm) {
+    let email = form.value.email;
+    this.dataService.sendEmail(email).subscribe(
+      () => {
+        this.toastr.success('Mail was sent succesfully!');
+      },
+      (error) => {
+        this.error = error;
+        this.toastr.error(error.error);
+      }
+    );
+  }
+
+  onRecoverPassword() {
+    this.isLoginMode = false;
+    this.isForgotPassword = true;
+    this.isRecoverPassword = false;
+  }
+
+  onRememberPassword() {
+    this.isLoginMode = true;
+    this.isForgotPassword = false;
+    this.isRecoverPassword = false;
+  }
+
+  onGoBack() {
+    this.router.navigate(['']);
   }
 }

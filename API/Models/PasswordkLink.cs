@@ -7,7 +7,7 @@ public partial class PasswordkLink
 {
     public int PasswordLinkId { get; set; }
 
-    public int PersonUsername { get; set; }
+    public string PersonUsername { get; set; }
 
     public DateTime Time { get; set; }
 

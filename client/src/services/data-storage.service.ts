@@ -24,4 +24,8 @@ export class DataStorageService {
     const headers = { Authorization: 'Bearer '+ token };
     return this.http.get<Group[]>(this.baseUrl + 'group',{headers: headers});
   }
+
+  sendEmail(email:string){
+    return this.http.post(this.baseUrl+'people/forgot',{email: email, time: new Date()});
+  }
 }

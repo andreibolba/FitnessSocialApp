@@ -33,7 +33,7 @@ export class AuthService {
   }
 
   logout() {
-    this.router.navigate(['']);
+    if (this.router.url.includes('recovery')==false) this.router.navigate(['']);
     localStorage.removeItem('person');
   }
 }

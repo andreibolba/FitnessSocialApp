@@ -16,7 +16,7 @@ namespace API.FluentMigration.Migrations
         {
             Create.Table(tableName)
                 .WithColumn("PasswordLinkId").AsInt32().PrimaryKey().NotNullable().Identity()
-                .WithColumn("PersonUsername").AsInt32().NotNullable()
+                .WithColumn("PersonUsername").AsString().NotNullable()
                 .WithColumn("Time").AsDateTime().NotNullable()
                 .WithColumn("Deleted").AsBoolean().NotNullable();
         }

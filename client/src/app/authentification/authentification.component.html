@@ -11,9 +11,37 @@
       <input type="password" id="password" placeholder="Password" ngModel name="password" required >
 
       <button class="btn btn-light" type="submit" [disabled]="!logInForm.valid"> Log In</button>
+
+      <h6>Forgot password? <br><a (click)="onRecoverPassword()">Click here to recover it!</a></h6>
     </form>
 
-    <form #registerForm="ngForm" (ngSubmit)="onSignUpSubmit(registerForm)" *ngIf="!isLoginMode" autocomplete="off">
+    <form #logInForm="ngForm" (ngSubmit)="onForgot(logInForm)" *ngIf="isForgotPassword" autocomplete="off">
+      <h3>Recover your pasword here!</h3>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" placeholder="Email" ngModel name="email" required email >
+
+      <button class="btn btn-light" type="submit" [disabled]="!logInForm.valid"> Send recover email!</button>
+
+      <h6>Remeber password? <br><a (click)="onRememberPassword()">Go back to log in!</a></h6>
+    </form>
+
+
+    <form #logInForm="ngForm" (ngSubmit)="onRecover(logInForm)" *ngIf="isRecoverPassword" autocomplete="off">
+      <h3>Change your password here!</h3>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" placeholder="Password" ngModel name="password" required >
+
+      <label for="password">Retype password</label>
+      <input type="password" id="passwordrepeat" placeholder="Retype password" ngModel name="retypepassword" required >
+
+      <button class="btn btn-light" type="submit" [disabled]="!logInForm.valid"> Change password</button>
+
+      <h6><br><a (click)="onGoBack()">Go back to log in!</a></h6>
+    </form>
+
+    <!-- <form #registerForm="ngForm" (ngSubmit)="onSignUpSubmit(registerForm)" *ngIf="!isLoginMode" autocomplete="off">
       <h3>Sing Up Here</h3>
 
       <div class="names">
@@ -50,7 +78,7 @@
       </div>
 
       <button class="btn btn-light" type="submit" [disabled]="!registerForm.valid"> Sign Up In</button>
-    </form>
+    </form> -->
   </div>
   </div>
 </div>

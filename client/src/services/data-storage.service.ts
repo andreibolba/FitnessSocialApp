@@ -21,10 +21,6 @@ export class DataStorageService {
     return this.http.get<Person[]>(this.baseUrl + 'people',{headers: headers});
   }
 
-  getPeopleF() {
-    return this.http.get<Person[]>(this.baseUrl + 'people');
-  }
-
   getGroups(token:string){
     const headers = { Authorization: 'Bearer '+ token };
     return this.http.get<Group[]>(this.baseUrl + 'group',{headers: headers});
@@ -40,10 +36,5 @@ export class DataStorageService {
 
   resetPassword(linkId:number,password:string){
     return this.http.post(this.baseUrl+'people/reset',{linkid: linkId, password: password});
-  }
-
-  private baseURL = 'https://jsonplaceholder.typicode.com/posts';
-  getData() {
-    return this.http.get(this.baseURL);
   }
 }

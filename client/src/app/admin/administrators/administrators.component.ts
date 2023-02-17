@@ -12,32 +12,29 @@ import { LoggedPerson } from 'src/model/loggedperson.model';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 
-export interface UserData {
-  id: string;
-  userId: string;
-  title: any;
-  body: any;
-}
-
-
 @Component({
   selector: 'app-administrators',
   templateUrl: './administrators.component.html',
   styleUrls: ['./administrators.component.css'],
 })
 export class AdministratorsComponent {
-  displayedColumns: string[] = ['id', 'userId', 'title'];
-  dataSource!: MatTableDataSource<UserData>;
-  posts: any;
+  displayedColumns: string[] = ['firstName', 'lastName', 'email',  'username', 'birthDate'];
+  dataSource!: MatTableDataSource<Person>;
+  people!: Person[];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private service: DataStorageService) {
-    this.service.getData().subscribe((data) => {
-      console.log(data);
-      this.posts = data;
-      this.dataSource = new MatTableDataSource(this.posts);
+    const personString = localStorage.getItem('person');
+    if (!personString) {
+      return;
+    } else {
+      const person: LoggedPerson = JSON.parse(personString);
+    this.service.getPeople(person.token).subscribe((data) => {
+      this.people = data;
+      this.dataSource = new MatTableDataSource(this.people.filter(p=>p.status=='Admin'));
       this.dataSource.paginator = this.paginator;
     });
+  }
   }
 }
 

@@ -1,10 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from 'src/services/auth.guard.service';;
-import { AdministratorsComponent } from './admin/administrators/administrators.component';
+import { AuthGuard } from 'src/services/auth.guard.service';import { AdministrationComponent } from './admin/administration/administration.component';
 import { GroupsComponent } from './admin/groups/groups.component';
-import { InternsComponent } from './admin/interns/interns.component';
-import { TrainersComponent } from './admin/trainers/trainers.component';
 import { AuthentificationComponent } from './authentification/authentification.component';
 import { ForumComponent } from './forum/forum/forum.component';
 import { HomeComponent } from './home/home.component';
@@ -24,9 +21,9 @@ const routes: Routes = [
     component: HomeComponent,
     canActivate: [AuthGuard],
     children: [
-      { path: 'administrators', component: AdministratorsComponent },
-      { path: 'trainers', component: TrainersComponent },
-      { path: 'interns', component: InternsComponent },
+      { path: 'administrators', component: AdministrationComponent },
+      { path: 'trainers', component: AdministrationComponent },
+      { path: 'interns', component: AdministrationComponent },
       { path: 'groups', component: GroupsComponent },
       { path: 'meetings', component: MeetingComponent },
       { path: 'tasks', component: TaskComponent },

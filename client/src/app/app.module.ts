@@ -13,9 +13,6 @@ import { AdminDashboardComponent } from './admin/admin.dashboard/admin.dashboard
 import { TrainerDashboardComponent } from './trainer/trainer.dashboard/trainer.dashboard.component';
 import { InternDashboardComponent } from './intern/intern.dashboard/intern.dashboard.component';
 import { ForumComponent } from './forum/forum/forum.component';
-import { AdministratorsComponent } from './admin/administrators/administrators.component';
-import { TrainersComponent } from './admin/trainers/trainers.component';
-import { InternsComponent } from './admin/interns/interns.component';
 import { GroupsComponent } from './admin/groups/groups.component';
 import { TaskComponent } from './shared/task/task.component';
 import { MeetingComponent } from './shared/meeting/meeting.component';
@@ -31,6 +28,7 @@ import { MyGroupsComponent } from './trainer/my.groups/my.groups.component';
 import { ToastrModule } from 'ngx-toastr';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { AdministrationComponent } from './admin/administration/administration.component';
 
 @NgModule({
   declarations: [
@@ -43,9 +41,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     InternDashboardComponent,
     ForumComponent,
     MeetingComponent,
-    AdministratorsComponent,
-    TrainersComponent,
-    InternsComponent,
     GroupsComponent,
     TaskComponent,
     ProfileComponent,
@@ -55,6 +50,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     TestComponent,
     MyGroupComponent,
     MyGroupsComponent,
+    AdministrationComponent,
   ],
   imports: [
     BrowserModule,

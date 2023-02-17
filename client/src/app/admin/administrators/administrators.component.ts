@@ -36,10 +36,8 @@ export class AdministratorsComponent {
       console.log(data);
       this.posts = data;
       this.dataSource = new MatTableDataSource(this.posts);
-
       this.dataSource.paginator = this.paginator;
     });
-
   }
 }
 

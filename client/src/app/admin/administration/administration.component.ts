@@ -19,26 +19,31 @@ export class AdministrationComponent implements OnInit, OnDestroy {
     'email',
     'username',
     'birthDate',
+    'edit',
+    'delete'
   ];
   dataSource!: MatTableDataSource<Person>;
   people!: Person[];
   dataPeopleSub!: Subscription;
+  status: string = '';
+  icon: string = '';
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private service: DataStorageService, private router: Router) {}
 
   ngOnInit(): void {
-    console.log(this.router.url);
-    let status: string = '';
     switch (this.router.url) {
       case '/dashboard/administrators':
-        status = 'Admin';
+        this.status = 'Admin';
+        this.icon = 'uil uil-user-md';
         break;
       case '/dashboard/interns':
-        status = 'Intern';
+        this.status = 'Intern';
+        this.icon = 'uil uil-book-reader';
         break;
       case '/dashboard/trainers':
-        status = 'Trainer';
+        this.status = 'Trainer';
+        this.icon = 'uil uil-user';
         break;
       default:
         break;
@@ -54,7 +59,7 @@ export class AdministrationComponent implements OnInit, OnDestroy {
         .subscribe((data) => {
           this.people = data;
           this.dataSource = new MatTableDataSource(
-            this.people.filter((p) => p.status == status)
+            this.people.filter((p) => p.status == this.status)
           );
           this.dataSource.paginator = this.paginator;
         });
@@ -63,5 +68,13 @@ export class AdministrationComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     if (this.dataPeopleSub) this.dataPeopleSub.unsubscribe();
+  }
+
+  onDelete(obj:Person){
+    console.log(obj);
+  }
+
+  onEdit(obj:Person){
+    console.log(obj);
   }
 }

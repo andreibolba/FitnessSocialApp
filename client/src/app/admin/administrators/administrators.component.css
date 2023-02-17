@@ -5,12 +5,28 @@
   font-family: 'Poppins', sans-serif;
 }
 
-.main {
+#main{
   width: 79%;
-  height: 85vh;
+  height: 58vh;
+}
+
+table {
+  width: 250px;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 20%;
 }
 
 
-table {
-  width: 100%;
+
+.th-center{
+  text-align: center;
+}
+.th-left{
+  text-align: left;
+}
+.th-right{
+  text-align: right;
 }

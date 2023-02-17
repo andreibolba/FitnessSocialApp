@@ -53,6 +53,8 @@ export class AdminDashboardComponent implements OnInit, OnDestroy {
           this.internsNumber = people.filter(p=>p.status=='Intern').length;
           this.trainersNumber = people.filter(p=>p.status=='Trainer').length;
           this.person=people.find(p=>p.username==person.username) as Person;
+
+          this.dataService.people=res;
         },
         (error) => {
           console.log(error.error);

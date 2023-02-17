@@ -1,0 +1,16 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.main {
+  width: 79%;
+  height: 85vh;
+}
+
+
+table {
+  width: 100%;
+}

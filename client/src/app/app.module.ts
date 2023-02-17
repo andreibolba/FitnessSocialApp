@@ -29,6 +29,8 @@ import { TestComponent } from './shared/test/test.component';
 import { MyGroupComponent } from './intern/my.group/my.group.component';
 import { MyGroupsComponent } from './trainer/my.groups/my.groups.component';
 import { ToastrModule } from 'ngx-toastr';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -62,6 +64,8 @@ import { ToastrModule } from 'ngx-toastr';
     BrowserAnimationsModule,
     MatSlideToggleModule,
     MatDatepickerModule,
+    MatTableModule,
+    MatPaginatorModule,
     ToastrModule.forRoot()
   ],
   providers: [],

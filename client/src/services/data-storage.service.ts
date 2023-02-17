@@ -8,6 +8,7 @@ import { Person } from 'src/model/person.model';
 })
 export class DataStorageService {
   baseUrl = 'https://localhost:7191/api/';
+  people:Person[]=[];
   constructor(private http: HttpClient) {}
 
   getPerson(username: string,token:string) {

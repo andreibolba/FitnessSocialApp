@@ -113,20 +113,6 @@ export class AuthentificationComponent implements OnInit {
     return true;
   }
 
-  onSignUpSubmit(form: NgForm) {
-    const email = form.value.email;
-    const password = form.value.password;
-    const username = form.value.username;
-    const fName = form.value.fName;
-    const lName = form.value.lName;
-    const birthdate = form.value.birthDate;
-
-    const res = this.verifyPassword(password);
-    if (res) {
-      form.reset();
-    }
-  }
-
   onRecover(form: NgForm) {
     const password = form.value.password;
     const retypedpass = form.value.retypepassword;

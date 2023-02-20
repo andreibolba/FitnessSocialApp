@@ -37,4 +37,9 @@ export class DataStorageService {
   resetPassword(linkId:number,password:string){
     return this.http.post(this.baseUrl+'people/reset',{linkid: linkId, password: password});
   }
+
+  deletePerson(personId:number, token:string){
+    const headers = { Authorization: 'Bearer '+ token };
+    return this.http.post(this.baseUrl+'people/delete',{PersonId: personId},{headers: headers});
+  }
 }

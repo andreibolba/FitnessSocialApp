@@ -6,7 +6,7 @@
   <button class="btn btn-primary"> Add {{ status | lowercase }} </button>
 </div>
 
-<div class="mat-elevation-z8" id="main">
+<div class="mat-elevation-z8" id="main" [hidden]="!hasTableValues">
   <table mat-table [dataSource]="dataSource" matSort>
 
     <!-- ID Column -->
@@ -58,3 +58,5 @@
 
   <mat-paginator [pageSizeOptions]="[5]" aria-label="Select page of users"></mat-paginator>
 </div>
+
+<p *ngIf="!hasTableValues">No values yet!</p>

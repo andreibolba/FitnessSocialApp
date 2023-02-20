@@ -6,6 +6,7 @@ import { LoggedPerson } from 'src/model/loggedperson.model';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-administration',
@@ -20,16 +21,22 @@ export class AdministrationComponent implements OnInit, OnDestroy {
     'username',
     'birthDate',
     'edit',
-    'delete'
+    'delete',
   ];
+  hasTableValues:boolean=false;
   dataSource!: MatTableDataSource<Person>;
   people!: Person[];
   dataPeopleSub!: Subscription;
   status: string = '';
   icon: string = '';
+  private token: string = '';
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(private service: DataStorageService, private router: Router) {}
+  constructor(
+    private dataService: DataStorageService,
+    private toastr: ToastrService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     switch (this.router.url) {
@@ -54,7 +61,8 @@ export class AdministrationComponent implements OnInit, OnDestroy {
       return;
     } else {
       const person: LoggedPerson = JSON.parse(personString);
-      this.dataPeopleSub = this.service
+      this.token = person.token;
+      this.dataPeopleSub = this.dataService
         .getPeople(person.token)
         .subscribe((data) => {
           this.people = data;
@@ -62,6 +70,11 @@ export class AdministrationComponent implements OnInit, OnDestroy {
             this.people.filter((p) => p.status == this.status)
           );
           this.dataSource.paginator = this.paginator;
+          if(this.dataSource.data.length==0){
+            this.hasTableValues=false;
+          }else{
+            this.hasTableValues = true;
+          }
         });
     }
   }
@@ -70,11 +83,27 @@ export class AdministrationComponent implements OnInit, OnDestroy {
     if (this.dataPeopleSub) this.dataPeopleSub.unsubscribe();
   }
 
-  onDelete(obj:Person){
-    console.log(obj);
+  onDelete(obj: Person) {
+    let id: number = +obj.personId;
+    this.dataService.deletePerson(id, this.token).subscribe(
+      () => {
+        this.toastr.success('Delete was done successfully!');
+        if(this.dataSource.data.length==1){
+          this.dataSource=new MatTableDataSource<Person>();
+          this.hasTableValues=false;
+        }else{
+        let index = this.dataSource.data.findIndex((p) => p.personId == id);
+        this.dataSource.data = this.dataSource.data.splice(index, 1);
+        this.hasTableValues = true;
+        }
+      },
+      () => {
+        this.toastr.error('Delete was not! An error has occured!');
+      }
+    );
   }
 
-  onEdit(obj:Person){
+  onEdit(obj: Person) {
     console.log(obj);
   }
 }

@@ -7,6 +7,8 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import {MatDialog} from '@angular/material/dialog';
+import { CreateEditDialogComponent } from '../create-edit-dialog/create-edit-dialog.component';
 
 @Component({
   selector: 'app-administration',
@@ -35,7 +37,8 @@ export class AdministrationComponent implements OnInit, OnDestroy {
   constructor(
     private dataService: DataStorageService,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit(): void {
@@ -105,5 +108,13 @@ export class AdministrationComponent implements OnInit, OnDestroy {
 
   onEdit(obj: Person) {
     console.log(obj);
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(CreateEditDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 }

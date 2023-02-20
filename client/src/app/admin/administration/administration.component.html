@@ -3,7 +3,7 @@
     <i class="{{ icon }}"></i>
     <h1>All {{ status+'s' | lowercase }}</h1>
   </div>
-  <button class="btn btn-primary"> Add {{ status | lowercase }} </button>
+  <button class="btn btn-primary" mat-button (click)="openDialog()"> Add {{ status | lowercase }} </button>
 </div>
 
 <div class="mat-elevation-z8" id="main" [hidden]="!hasTableValues">
@@ -60,3 +60,4 @@
 </div>
 
 <p *ngIf="!hasTableValues">No values yet!</p>
+

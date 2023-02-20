@@ -29,6 +29,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { AdministrationComponent } from './admin/administration/administration.component';
+import { CreateEditDialogComponent } from './admin/create-edit-dialog/create-edit-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,7 @@ import { AdministrationComponent } from './admin/administration/administration.c
     MyGroupComponent,
     MyGroupsComponent,
     AdministrationComponent,
+    CreateEditDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -62,6 +65,7 @@ import { AdministrationComponent } from './admin/administration/administration.c
     MatDatepickerModule,
     MatTableModule,
     MatPaginatorModule,
+    MatDialogModule,
     ToastrModule.forRoot()
   ],
   providers: [],

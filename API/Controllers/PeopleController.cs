@@ -134,7 +134,7 @@ namespace API.Controllers
 
         [AllowAnonymous]
         [HttpPost("reset")]
-        public ActionResult<PersonDto> PaswwordReset([FromBody] ForgotPasswordDto password)
+        public ActionResult<PersonDto> PasswordReset([FromBody] ForgotPasswordDto password)
         {
             var link = _context.PasswordkLinks.SingleOrDefault(link => (link.PasswordLinkId == password.LinkId && link.Deleted == false));
             var person = _context.People.SingleOrDefault(p => p.Username == link.PersonUsername && p.Deleted == false);
@@ -149,7 +149,30 @@ namespace API.Controllers
             _context.SaveChanges();
             return Ok();
         }
+
+        [HttpPost("delete")]
+        public ActionResult<PersonDto> DeleteAccount([FromBody] LoggedPersonDto person)
+        {
+            var personToDelete=_context.People.SingleOrDefault(p=>p.PersonId == person.PersonId);
+            personToDelete.Deleted=true;
+            _context.People.Update(personToDelete);
+            _context.SaveChanges();
+            return Ok();
+        }
+
+        [HttpPost("update")]
+        public ActionResult<PersonDto> UpdateAccount([FromBody] LoggedPersonDto person)
+        {
+            var personToUpdate=_context.People.SingleOrDefault(p=>p.PersonId == person.PersonId);
+            personToUpdate.FirstName=person.FirstName;
+            personToUpdate.LastName=person.LastName;
+            personToUpdate.Email=person.Email;
+            personToUpdate.Username=person.Username;
+            personToUpdate.Status=person.Status;
+            personToUpdate.BirthDate=person.BirthDate;
+            _context.People.Update(personToUpdate);
+            _context.SaveChanges();
+            return Ok();
+        }
     }
-
-
 }

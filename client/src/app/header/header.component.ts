@@ -79,7 +79,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
                     logo: 'uil uil-meeting-board',
                     link: 'meetings',
                   },
-                  { name: 'Notes', logo: 'uil uil-notes', link: '../dashboard' },
+                  { name: 'Notes', logo: 'uil uil-notes', link: 'notes' },
                   {
                     name: 'Tasks',
                     logo: 'uil uil-clipboard-notes',

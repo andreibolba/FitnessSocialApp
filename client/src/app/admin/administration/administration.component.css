@@ -87,3 +87,7 @@ table {
   color: #515151;
   border: none;
 }
+
+table th, table td{
+  text-align: center;
+}

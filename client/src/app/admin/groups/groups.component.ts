@@ -29,8 +29,6 @@ export class GroupsComponent {
   dataSource!: MatTableDataSource<Group>;
   groups!: Group[];
   dataGroupSub!: Subscription;
-  status: string = '';
-  icon: string = '';
   private token: string = '';
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -42,8 +40,6 @@ export class GroupsComponent {
   ) {}
 
   ngOnInit(): void {
-    this.icon='';
-
     const personString = localStorage.getItem('person');
     if (!personString) {
       return;

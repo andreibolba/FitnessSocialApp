@@ -37,7 +37,7 @@ namespace API.Controllers
                         Status = re.Trainer.Status,
                         BirthDate = re.Trainer.BirthDate
                     },
-                    MembersCount = _context.InternGroups.Count(g=>g.GroupId==re.GroupId)
+                    MembersCount = _context.InternGroups.Where(gi=>gi.Deleted==false).Count(g=>g.GroupId==re.GroupId)
                 });
             }
             return resultToReturn;

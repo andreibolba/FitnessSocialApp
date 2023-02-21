@@ -31,6 +31,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { AdministrationComponent } from './admin/administration/administration.component';
 import { CreateEditDialogComponent } from './admin/create-edit-dialog/create-edit-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { EditGroupDialogComponent } from './admin/edit-group-dialog/edit-group-dialog.component';
+import { EditGroupMembersDialogComponent } from './admin/edit-group-members-dialog/edit-group-members-dialog.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +55,9 @@ import { MatDialogModule } from '@angular/material/dialog';
     MyGroupComponent,
     MyGroupsComponent,
     AdministrationComponent,
-    CreateEditDialogComponent
+    CreateEditDialogComponent,
+    EditGroupDialogComponent,
+    EditGroupMembersDialogComponent
   ],
   imports: [
     BrowserModule,

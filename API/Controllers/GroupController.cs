@@ -25,16 +25,19 @@ namespace API.Controllers
             {
                 resultToReturn.Add(new GroupDto
                 {
+                    GroupId=re.GroupId,
                     Name = re.GroupName,
                     Trainer = new LoggedPersonDto
                     {
+                        PersonId= re.Trainer.PersonId,
                         FirstName = re.Trainer.FirstName,
                         LastName = re.Trainer.LastName,
                         Email = re.Trainer.Email,
                         Username = re.Trainer.Username,
                         Status = re.Trainer.Status,
                         BirthDate = re.Trainer.BirthDate
-                    }
+                    },
+                    MembersCount = _context.InternGroups.Count(g=>g.GroupId==re.GroupId)
                 });
             }
             return resultToReturn;

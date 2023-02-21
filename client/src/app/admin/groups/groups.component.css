@@ -1,0 +1,89 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.buttons{
+  height: 7vh;
+  margin-bottom: 3vh;
+  width: 79%;
+  align-content: end;
+  display: flex;
+}
+
+.title{
+  height: 7vh;
+  margin-bottom: 3vh;
+  width: 90%;
+  display: flex;
+}
+
+h1{
+  color: #515151;
+  font-family: 'Poppins-Italic';
+}
+
+.buttons button{
+  float: right;
+  height: 50px;
+  width: 110px;
+  background-color: rgb(160, 196, 255);
+  color: #515151;
+  border: none;
+}
+
+#main{
+  width: 79%;
+  height: 58vh;
+}
+
+table {
+  width: 250px;
+  color: #515151;
+  border-radius: 10px;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 20%;
+  color: #515151;
+}
+
+.th-center{
+  text-align: center;
+}
+.th-left{
+  text-align: left;
+}
+.th-right{
+  text-align: right;
+}
+
+.title i{
+  font-size: 40px;
+  min-width: 50px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:  #707070;
+  font-style: italic;
+}
+
+#table-button-edit{
+  height: 30px;
+  width: 65px;
+  background-color: rgb(160, 196, 255);
+  color: #515151;
+  border: none;
+}
+
+#table-button-delete{
+  height: 30px;
+  width: 65px;
+  background-color: rgb(255, 119, 119);
+  color: #515151;
+  border: none;
+}

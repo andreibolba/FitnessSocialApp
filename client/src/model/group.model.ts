@@ -1,7 +1,10 @@
-import { Person } from "./person.model";
+import { Person } from './person.model';
 
-export class Group{
-  constructor(public name:string,public trainer:Person){
-    
-  }
+export class Group {
+  constructor(
+    public groupId: number,
+    public name: string,
+    public trainer: Person,
+    public membersCount: number
+  ) {}
 }

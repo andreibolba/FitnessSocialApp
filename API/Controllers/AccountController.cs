@@ -49,7 +49,7 @@ namespace API.Controllers
                 LastName = person.LastName,
                 Email = person.Email,
                 Username = person.Username,
-                PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(person.Password)),
+                PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(Utils.Utils.CreatePassword(20))),
                 PasswordSalt = hmac.Key,
                 BirthDate = person.BirthDate,
                 Status = person.Status,
@@ -59,11 +59,7 @@ namespace API.Controllers
             _context.People.Add(newPerson);
             await _context.SaveChangesAsync();
 
-            return new PersonDto
-            {
-                Username = newPerson.Username,
-                Token = _tokenService.CreateToken(newPerson)
-            };
+            return Ok();
         }
 
         [HttpPost("login")]

@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import {MatDialog} from '@angular/material/dialog';
 import { CreateEditDialogComponent } from '../create-edit-dialog/create-edit-dialog.component';
+import { UtilsService } from 'src/services/utils.service';
 
 @Component({
   selector: 'app-administration',
@@ -38,7 +39,8 @@ export class AdministrationComponent implements OnInit, OnDestroy {
     private dataService: DataStorageService,
     private toastr: ToastrService,
     private router: Router,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private utils:UtilsService
   ) {}
 
   ngOnInit(): void {
@@ -107,7 +109,13 @@ export class AdministrationComponent implements OnInit, OnDestroy {
   }
 
   onEdit(obj: Person) {
-    console.log(obj);
+    this.utils.userToEdit.next(obj);
+    this.openDialog();
+  }
+
+  onAdd(){
+    this.utils.userToEdit.next(null);
+    this.openDialog();
   }
 
   openDialog() {

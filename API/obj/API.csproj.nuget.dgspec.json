@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "http://proget.teamnet.ro/nuget/feed/": {},
           "https://api.nuget.org/v3/index.json": {},
           "https://nuget.telerik.com/v3/index.json": {}
         },

@@ -82,7 +82,6 @@ export class AuthentificationComponent implements OnInit {
         this.toastr.error(error.error);
       }
     );
-    form.reset();
   }
 
   private verifyPassword(password: string): boolean {

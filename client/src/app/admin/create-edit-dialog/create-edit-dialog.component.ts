@@ -1,28 +1,62 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { LoggedPerson } from 'src/model/loggedperson.model';
+import { Person } from 'src/model/person.model';
 import { DataStorageService } from 'src/services/data-storage.service';
+import { UtilsService } from 'src/services/utils.service';
 
 @Component({
   selector: 'app-create-edit-dialog',
   templateUrl: './create-edit-dialog.component.html',
-  styleUrls: ['./create-edit-dialog.component.css']
+  styleUrls: ['./create-edit-dialog.component.css'],
 })
 export class CreateEditDialogComponent implements OnInit, OnDestroy {
+  @Input() regForm!: NgForm;
+  @Input() personData = {
+    fName: '',
+    lName: '',
+    email: '',
+    username: '',
+    bdate: new Date().toISOString()
+  };
+
   dataPeopleSub!: Subscription;
+  utilsSub!: Subscription;
   status: string = '';
   opration: string = '';
+  person!: Person | null;
+  private token: string = '';
 
   constructor(
     private dataService: DataStorageService,
-    private router: Router
+    private router: Router,
+    private utils: UtilsService,
+    private toastr: ToastrService,
+    private dialogRef: MatDialogRef<CreateEditDialogComponent>
   ) {}
 
   ngOnInit(): void {
+    this.utilsSub = this.utils.userToEdit.subscribe((res) => {
+      this.person = res;
+    });
+
+    if (this.person == null) {
+      this.opration = 'Add';
+    } else {
+      this.opration = 'Edit';
+      this.personData = {
+        fName: this.person.firstName,
+        lName: this.person.lastName,
+        email: this.person.email,
+        username: this.person.username,
+        bdate:  new Date(this.person.birthDate).toISOString(),
+      };
+    }
+
     switch (this.router.url) {
       case '/dashboard/administrators':
         this.status = 'Admin';
@@ -36,26 +70,44 @@ export class CreateEditDialogComponent implements OnInit, OnDestroy {
       default:
         break;
     }
-    this.opration='Add';
     const personString = localStorage.getItem('person');
     if (!personString) {
       return;
     } else {
       const person: LoggedPerson = JSON.parse(personString);
+      this.token = person.token;
     }
   }
 
   ngOnDestroy(): void {
+    this.utils.userToEdit.next(null);
     if (this.dataPeopleSub) this.dataPeopleSub.unsubscribe();
+    if (this.utilsSub) this.utilsSub.unsubscribe();
   }
 
-  onSignUpSubmit(form:NgForm){
-    const email = form.value.email;
-    const username = form.value.username;
-    const fName = form.value.fName;
-    const lName = form.value.lName;
-    const birthdate = form.value.birthDate;
+  onSignUpSubmit(form: NgForm) {
+    let person = new Person();
+    person.firstName = form.value.fName;
+    person.lastName = form.value.lName;
+    person.email = form.value.email;
+    person.username = form.value.username;
+    person.birthDate = form.value.birthDate;
+    person.status = this.status;
 
-    console.log(email);
+    if (this.opration == 'Add') {
+      this.dataService.addperson(person, this.token).subscribe(
+        () => {
+          this.toastr.success('An ' + status + ' was added succesfully!');
+          this.dialogRef.close();
+        },
+        (error) => {
+          this.toastr.error(error.error);
+        }
+      );
+    } else {
+      person.personId=this.person!.personId;
+      console.log('Edit');
+      console.log(person);
+    }
   }
 }

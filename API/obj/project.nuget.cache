@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "yeYwMq6eS9cLcMxF9HzmDR22ES49FEoxQqy1+OX+6QERS1mFR8zJ0N0LcyPr7nfNxchczfzAj2UzrnvLScdNmA==",
+  "dgSpecHash": "dTGhMSGC3veighK57O3huWtZixLB8YQSUR7MpsAIi21rOY1EB+XbtEV3ZFjllRXjHq9hzgsM0+T9lQ7yRmEVpw==",
   "success": true,
   "projectFilePath": "F:\\InternShipApp\\API\\API.csproj",
   "expectedPackageFiles": [
@@ -174,6 +174,12 @@
     "C:\\Users\\andrei.bolba\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512"
   ],
   "logs": [
+    {
+      "code": "NU1803",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "You are running the 'restore' operation with an 'HTTP' source, 'http://proget.teamnet.ro/nuget/feed/'. Non-HTTPS access will be removed in a future version. Consider migrating to an 'HTTPS' source."
+    },
     {
       "code": "NU1701",
       "level": "Warning",

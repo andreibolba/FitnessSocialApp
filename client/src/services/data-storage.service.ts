@@ -8,38 +8,73 @@ import { Person } from 'src/model/person.model';
 })
 export class DataStorageService {
   baseUrl = 'https://localhost:7191/api/';
-  people:Person[]=[];
+  people: Person[] = [];
   constructor(private http: HttpClient) {}
 
-  getPerson(username: string,token:string) {
-    const headers = { Authorization: 'Bearer '+ token };
-    return this.http.get<Person>(this.baseUrl + 'people/' + username,{headers: headers});
+  //person CRUD
+  getPerson(username: string, token: string) {
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<Person>(this.baseUrl + 'people/' + username, {
+      headers: headers,
+    });
   }
 
-  getPeople(token:string) {
-    const headers = { Authorization: 'Bearer '+ token };
-    return this.http.get<Person[]>(this.baseUrl + 'people',{headers: headers});
+  getPeople(token: string) {
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<Person[]>(this.baseUrl + 'people', {
+      headers: headers,
+    });
   }
 
-  getGroups(token:string){
-    const headers = { Authorization: 'Bearer '+ token };
-    return this.http.get<Group[]>(this.baseUrl + 'group',{headers: headers});
+  deletePerson(personId: number, token: string) {
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post(
+      this.baseUrl + 'people/delete',
+      { PersonId: personId },
+      { headers: headers }
+    );
   }
 
-  sendEmail(email:string){
-    return this.http.post(this.baseUrl+'people/forgot',{email: email, time: new Date()});
+  addperson(person: Person, token: string) {
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post(
+      this.baseUrl + 'account/register',
+      {
+        FirstName: person.firstName,
+        LastName: person.lastName,
+        Email: person.email,
+        Username: person.username,
+        Status: person.status,
+        BirthDate: person.birthDate,
+      },
+      { headers: headers }
+    );
   }
 
-  isLinkValid(linkid:number){
-    return this.http.post(this.baseUrl+'people/link',{linkid: linkid, time: new Date()});
+  sendEmail(email: string) {
+    return this.http.post(this.baseUrl + 'people/forgot', {
+      email: email,
+      time: new Date(),
+    });
   }
 
-  resetPassword(linkId:number,password:string){
-    return this.http.post(this.baseUrl+'people/reset',{linkid: linkId, password: password});
+  isLinkValid(linkid: number) {
+    return this.http.post(this.baseUrl + 'people/link', {
+      linkid: linkid,
+      time: new Date(),
+    });
   }
 
-  deletePerson(personId:number, token:string){
-    const headers = { Authorization: 'Bearer '+ token };
-    return this.http.post(this.baseUrl+'people/delete',{PersonId: personId},{headers: headers});
+  resetPassword(linkId: number, password: string) {
+    return this.http.post(this.baseUrl + 'people/reset', {
+      linkid: linkId,
+      password: password,
+    });
+  }
+
+  //groups CRUD
+  getGroups(token: string) {
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<Group[]>(this.baseUrl + 'group', { headers: headers });
   }
 }

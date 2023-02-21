@@ -27,6 +27,13 @@
       <td mat-cell *matCellDef="let row"> {{row.membersCount}} </td>
     </ng-container>
 
+    <!-- Name Column -->
+    <ng-container matColumnDef="editMembers">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Edit members</th>
+      <td mat-cell *matCellDef="let row"> <button class="btn btn-primary" id="table-button-edit" (click)="onEditMembers(row)">
+        Edit </button> </td>
+    </ng-container>
+
     <ng-container matColumnDef="edit">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Edit </th>
       <td mat-cell *matCellDef="let row"> <button class="btn btn-primary" id="table-button-edit" (click)="onEdit(row)">

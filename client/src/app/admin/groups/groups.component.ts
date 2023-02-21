@@ -21,6 +21,7 @@ export class GroupsComponent {
     'name',
     'trainer',
     'membersCount',
+    'editMembers',
     'edit',
     'delete',
   ];
@@ -69,6 +70,9 @@ export class GroupsComponent {
   }
 
   onEdit(obj: Group) {
+  }
+
+  onEditMembers(obj: Group) {
   }
 
   onAdd(){

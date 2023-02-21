@@ -1,10 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { LoggedPerson } from 'src/model/loggedperson.model';
 import { Person } from 'src/model/person.model';
-import { DashboardService } from 'src/services/dashboard.service';
 import { DataStorageService } from 'src/services/data-storage.service';
+import { UtilsService } from 'src/services/utils.service';
 
 @Component({
   selector: 'app-home',
@@ -15,24 +14,24 @@ export class HomeComponent implements OnInit, OnDestroy {
   person!: Person;
   authSub!: Subscription;
   dataSub!: Subscription;
-  dashSub!: Subscription;
+  utilsSub!: Subscription;
   isDashboard = true;
   isLoading = false;
   profile = 'profile';
 
   constructor(
     private dataService: DataStorageService,
-    private dashService: DashboardService
+    private utils: UtilsService
   ) {}
 
   ngOnDestroy(): void {
     if (this.authSub) this.authSub.unsubscribe();
     if (this.dataSub) this.dataSub.unsubscribe();
-    if (this.dashSub) this.dashSub.unsubscribe();
+    if (this.utilsSub) this.utilsSub.unsubscribe();
   }
 
   ngOnInit(): void {
-    this.dashSub = this.dashService.dashboardChanged.subscribe((res) => {
+    this.utilsSub = this.utils.dashboardChanged.subscribe((res) => {
       this.isDashboard = res;
     });
 
@@ -64,6 +63,6 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   onProfile() {
-    this.dashService.dashboardChanged.emit(false);
+    this.utils.dashboardChanged.next(false);
   }
 }

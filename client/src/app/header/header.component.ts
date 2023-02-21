@@ -3,8 +3,8 @@ import { Subscription } from 'rxjs';
 import { LoggedPerson } from 'src/model/loggedperson.model';
 import { Person } from 'src/model/person.model';
 import { AuthService } from 'src/services/auth.service';
-import { DashboardService } from 'src/services/dashboard.service';
 import { DataStorageService } from 'src/services/data-storage.service';
+import { UtilsService } from 'src/services/utils.service';
 
 @Component({
   selector: 'app-header',
@@ -19,7 +19,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(
     private authSer: AuthService,
     private dataService: DataStorageService,
-    private dashService: DashboardService
+    private utils:UtilsService
   ) {}
   ngOnDestroy(): void {
     this.dataSub.unsubscribe();
@@ -34,8 +34,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   onLeaveDashBoard(name: string) {
-    if (name == 'Dashboard') this.dashService.dashboardChanged.emit(true);
-    else this.dashService.dashboardChanged.emit(false);
+    if (name == 'Dashboard') this.utils.dashboardChanged.next(true);
+    else this.utils.dashboardChanged.next(false);
   }
 
   setCurrentUser() {

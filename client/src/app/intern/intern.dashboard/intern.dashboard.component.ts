@@ -5,8 +5,8 @@ import { Day } from 'src/model/day.model';
 import { LoggedPerson } from 'src/model/loggedperson.model';
 import { Person } from 'src/model/person.model';
 import { CalendarCreatorService } from 'src/services/calendar.creator.service';
-import { DashboardService } from 'src/services/dashboard.service';
 import { DataStorageService } from 'src/services/data-storage.service';
+import { UtilsService } from 'src/services/utils.service';
 
 @Component({
   selector: 'app-intern-dashboard',
@@ -57,7 +57,7 @@ export class InternDashboardComponent implements OnInit, OnDestroy {
 
   constructor(
     public calendarCreator: CalendarCreatorService,
-    private dashServ: DashboardService,
+    private utils: UtilsService,
     private dataService: DataStorageService,
     private router:Router
   ) {}
@@ -68,7 +68,7 @@ export class InternDashboardComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     if(this.router.url!='/dashboard')
-    this.dashServ.dashboardChanged.emit(false);
+    this.utils.dashboardChanged.next(false);
 
     this.isLoading=true;
     this.setMonthDays(this.calendarCreator.getCurrentMonth());
@@ -91,7 +91,7 @@ export class InternDashboardComponent implements OnInit, OnDestroy {
   }
 
   onLeaveDashboardClick() {
-    this.dashServ.dashboardChanged.emit(false);
+    this.utils.dashboardChanged.next(false);
   }
 
   setCurrentUser() {

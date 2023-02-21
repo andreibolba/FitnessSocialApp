@@ -5,8 +5,8 @@ import { Subscription } from 'rxjs';
 import { Group } from 'src/model/group.model';
 import { LoggedPerson } from 'src/model/loggedperson.model';
 import { Person } from 'src/model/person.model';
-import { DashboardService } from 'src/services/dashboard.service';
 import { DataStorageService } from 'src/services/data-storage.service';
+import { UtilsService } from 'src/services/utils.service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -24,7 +24,7 @@ export class AdminDashboardComponent implements OnInit, OnDestroy {
 
   constructor(
     private http: HttpClient,
-    private dashServ: DashboardService,
+    private utils: UtilsService,
     private dataService: DataStorageService,
     private router:Router
   ) {}
@@ -36,7 +36,7 @@ export class AdminDashboardComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     if(this.router.url!='/dashboard')
-    this.dashServ.dashboardChanged.emit(false);
+    this.utils.dashboardChanged.next(false);
     this.isLoading=true;
     this.setCurrentUser();
   }

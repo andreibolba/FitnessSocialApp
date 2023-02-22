@@ -17,19 +17,19 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<GroupDto>> GetPeople()
+        public ActionResult<IEnumerable<GroupDto>> GetGroups()
         {
-            var result = _context.Groups.Include(g => g.Trainer).ToList().Where(g=>g.Deleted==false);
+            var result = _context.Groups.Include(g => g.Trainer).ToList().Where(g => g.Deleted == false);
             var resultToReturn = new List<GroupDto>(0);
             foreach (var re in result)
             {
                 resultToReturn.Add(new GroupDto
                 {
-                    GroupId=re.GroupId,
+                    GroupId = re.GroupId,
                     Name = re.GroupName,
                     Trainer = new LoggedPersonDto
                     {
-                        PersonId= re.Trainer.PersonId,
+                        PersonId = re.Trainer.PersonId,
                         FirstName = re.Trainer.FirstName,
                         LastName = re.Trainer.LastName,
                         Email = re.Trainer.Email,
@@ -37,10 +37,49 @@ namespace API.Controllers
                         Status = re.Trainer.Status,
                         BirthDate = re.Trainer.BirthDate
                     },
-                    MembersCount = _context.InternGroups.Where(gi=>gi.Deleted==false).Count(g=>g.GroupId==re.GroupId)
+                    MembersCount = _context.InternGroups.Where(gi => gi.Deleted == false).Count(g => g.GroupId == re.GroupId)
                 });
             }
             return resultToReturn;
+        }
+
+        [HttpPost("add")]
+        public ActionResult AddGroup([FromBody] GroupDto group)
+        {
+            Group newGroup = new Group
+            {
+                GroupName = group.Name,
+                TrainerId = group.TrainerId,
+                Deleted = false
+            };
+            _context.Groups.Add(newGroup);
+            _context.SaveChanges();
+            return Ok();
+        }
+
+        [HttpPost("delete/{groupId:int}")]
+        public ActionResult DeleteGroup(int groupId)
+        {
+            var group = _context.Groups.FirstOrDefault(p => p.GroupId == groupId && p.Deleted == false);
+            if (group == null)
+                return BadRequest("Group is already deleted!");
+            group.Deleted = true;
+            _context.Groups.Update(group);
+            _context.SaveChanges();
+            return Ok();
+        }
+
+        [HttpPost("update")]
+        public ActionResult UpdateGroup([FromBody] GroupDto group)
+        {
+            var groupToUpdate = _context.Groups.FirstOrDefault(p => p.GroupId == group.GroupId && p.Deleted == false);
+            if (groupToUpdate == null)
+                return BadRequest("Group does not exists!");
+            groupToUpdate.GroupName = group.Name;
+            groupToUpdate.TrainerId = group.TrainerId;
+            _context.Groups.Update(groupToUpdate);
+            _context.SaveChanges();
+            return Ok();
         }
     }
 }

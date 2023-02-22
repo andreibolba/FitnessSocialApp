@@ -8,9 +8,10 @@ namespace API.Dtos
 {
     public class GroupDto
     {
-        public int GroupId{get;set;}
+        public int GroupId { get; set; }
         public string Name { get; set; }
         public LoggedPersonDto Trainer { get; set; }
-        public int MembersCount {get;set;}
+        public int TrainerId { get; set; }
+        public int MembersCount { get; set; }
     }
 }

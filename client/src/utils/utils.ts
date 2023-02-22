@@ -7,13 +7,4 @@ import { AuthService } from "src/services/auth.service";
 export class Utils{
 
   constructor(private authSer:AuthService){}
-
-  setCurrentUser():LoggedPerson | null{
-    console.log('utils');
-    const personString = localStorage.getItem('person');
-    if(!personString) return null;
-    const person:LoggedPerson = JSON.parse(personString);
-    this.authSer.setCurerentPerson(person);
-    return person;
-  }
 }

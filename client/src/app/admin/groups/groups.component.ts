@@ -2,14 +2,13 @@ import { Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { Group } from 'src/model/group.model';
 import { LoggedPerson } from 'src/model/loggedperson.model';
-import { Person } from 'src/model/person.model';
 import { DataStorageService } from 'src/services/data-storage.service';
 import { UtilsService } from 'src/services/utils.service';
+import { EditGroupDialogComponent } from '../edit-group-dialog/edit-group-dialog.component';
 
 @Component({
   selector: 'app-groups',
@@ -66,18 +65,44 @@ export class GroupsComponent {
   }
 
   onDelete(obj: Group) {
-    let id: number = obj.groupId;
+    let id: number = +obj.groupId;
+    this.dataService.deleteGroup(this.token,id).subscribe(
+      () => {
+        this.toastr.success('Delete was done successfully!');
+        if(this.dataSource.data.length==1){
+          this.dataSource=new MatTableDataSource<Group>();
+          this.hasTableValues=false;
+        }else{
+        this.hasTableValues = true;
+        }
+      },
+      (error) => {
+        console.log(error);
+        this.toastr.error('Delete was not made! An error has occured!');
+      }
+    );
   }
 
   onEdit(obj: Group) {
+    this.utils.groupToEdit.next(obj);
+    this.openDialog();
   }
 
   onEditMembers(obj: Group) {
   }
 
   onAdd(){
+    this.utils.groupToEdit.next(null);
+    this.openDialog();
   }
 
+  openDialog() {
+    const dialogRef = this.dialog.open(EditGroupDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 
 }
 

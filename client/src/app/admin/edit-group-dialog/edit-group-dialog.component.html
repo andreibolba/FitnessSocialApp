@@ -1,1 +1,17 @@
-<p>edit-group-dialog works!</p>
+<h1>{{ opration }} group</h1>
+<mat-dialog-content class="mat-typography">
+  <form #registerForm="ngForm" #regForm (ngSubmit)="onSignUpSubmit(registerForm)" autocomplete="off">
+    <label for="name">Group Name</label>
+    <input type="text" id="name" placeholder="Group Name" [(ngModel)]="groupData.groupName" name="groupName" required autocomplete="off">
+
+    <label for="trainer">Trainer</label>
+    <select #trainer (change)="selectOrganization(trainer.value)" id="trainer" name="trainer" size="1">
+      <option *ngFor="let t of trainers" [value]="t.TrainerId">{{ t.TrainerName }}</option>
+    </select>
+
+    <mat-dialog-actions align="center">
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button type="submit" [disabled]="!registerForm.valid" mat-button cdkFocusInitial> {{ opration }}</button>
+    </mat-dialog-actions>
+  </form>
+</mat-dialog-content>

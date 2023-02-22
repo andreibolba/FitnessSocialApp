@@ -37,6 +37,7 @@ namespace API.Controllers
                         Status = re.Trainer.Status,
                         BirthDate = re.Trainer.BirthDate
                     },
+                    TrainerId=re.Trainer.PersonId,
                     MembersCount = _context.InternGroups.Where(gi => gi.Deleted == false).Count(g => g.GroupId == re.GroupId)
                 });
             }
@@ -65,7 +66,14 @@ namespace API.Controllers
                 return BadRequest("Group is already deleted!");
             group.Deleted = true;
             _context.Groups.Update(group);
+
+            var internGroups=_context.InternGroups.Where(ig=>ig.GroupId==groupId);
+            foreach(var ig in internGroups){
+                ig.Deleted=true;
+                _context.InternGroups.Update(ig);
+            }
             _context.SaveChanges();
+
             return Ok();
         }
 

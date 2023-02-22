@@ -100,8 +100,6 @@ export class AdministrationComponent implements OnInit, OnDestroy, OnChanges {
           this.dataSource=new MatTableDataSource<Person>();
           this.hasTableValues=false;
         }else{
-        let index = this.dataSource.data.findIndex((p) => p.personId == id);
-        this.dataSource.data = this.dataSource.data.splice(index, 1);
         this.hasTableValues = true;
         }
       },

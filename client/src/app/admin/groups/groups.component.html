@@ -30,13 +30,15 @@
     <!-- Name Column -->
     <ng-container matColumnDef="editMembers">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Edit members</th>
-      <td mat-cell *matCellDef="let row"> <button class="btn btn-primary" id="table-button-edit" (click)="onEditMembers(row)">
+      <td mat-cell *matCellDef="let row">
+        <button class="btn btn-primary" id="table-button-edit" (click)="onEditMembers(row)">
         Edit </button> </td>
     </ng-container>
 
     <ng-container matColumnDef="edit">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Edit </th>
-      <td mat-cell *matCellDef="let row"> <button class="btn btn-primary" id="table-button-edit" (click)="onEdit(row)">
+      <td mat-cell *matCellDef="let row">
+        <button class="btn btn-primary" id="table-button-edit" (click)="onEdit(row)">
           Edit </button> </td>
     </ng-container>
 

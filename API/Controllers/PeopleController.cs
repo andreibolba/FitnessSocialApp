@@ -18,7 +18,6 @@ namespace API.Controllers
             _context = context;
         }
 
-        [AllowAnonymous]
         [HttpGet]
         public ActionResult<IEnumerable<LoggedPersonDto>> GetPeople()
         {
@@ -82,7 +81,7 @@ namespace API.Controllers
 
         [AllowAnonymous]
         [HttpPost("forgot")]
-        public ActionResult<PersonDto> ForgotPassword([FromBody] ForgotPasswordDto password)
+        public ActionResult ForgotPassword([FromBody] ForgotPasswordDto password)
         {
             var person = _context.People.SingleOrDefault(user => (user.Email == password.Email && user.Deleted == false));
             PasswordkLink link = new PasswordkLink
@@ -117,7 +116,7 @@ namespace API.Controllers
 
         [AllowAnonymous]
         [HttpPost("link")]
-        public ActionResult<PersonDto> IsValidLink([FromBody] ForgotPasswordDto password)
+        public ActionResult IsValidLink([FromBody] ForgotPasswordDto password)
         {
             var link = _context.PasswordkLinks.SingleOrDefault(link => (link.PasswordLinkId == password.LinkId && link.Deleted == false));
             if (link == null)
@@ -134,7 +133,7 @@ namespace API.Controllers
 
         [AllowAnonymous]
         [HttpPost("reset")]
-        public ActionResult<PersonDto> PasswordReset([FromBody] ForgotPasswordDto password)
+        public ActionResult PasswordReset([FromBody] ForgotPasswordDto password)
         {
             var link = _context.PasswordkLinks.SingleOrDefault(link => (link.PasswordLinkId == password.LinkId && link.Deleted == false));
             var person = _context.People.SingleOrDefault(p => p.Username == link.PersonUsername && p.Deleted == false);
@@ -150,10 +149,10 @@ namespace API.Controllers
             return Ok();
         }
 
-        [HttpPost("delete")]
-        public ActionResult<PersonDto> DeleteAccount([FromBody] LoggedPersonDto person)
+        [HttpPost("delete/{personId:int}")]
+        public ActionResult DeleteAccount(int personId)
         {
-            var personToDelete=_context.People.SingleOrDefault(p=>p.PersonId == person.PersonId);
+            var personToDelete=_context.People.SingleOrDefault(p=>p.PersonId == personId);
             personToDelete.Deleted=true;
             _context.People.Update(personToDelete);
             _context.SaveChanges();
@@ -161,7 +160,7 @@ namespace API.Controllers
         }
 
         [HttpPost("update")]
-        public ActionResult<PersonDto> UpdateAccount([FromBody] LoggedPersonDto person)
+        public ActionResult UpdateAccount([FromBody] LoggedPersonDto person)
         {
             var personToUpdate=_context.People.SingleOrDefault(p=>p.PersonId == person.PersonId);
             if ( Utils.Utils.UsernameExists(person.Username,_context) && person.Username!=personToUpdate.Username)

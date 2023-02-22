@@ -100,6 +100,7 @@ export class CreateEditDialogComponent implements OnInit, OnDestroy {
         () => {
           this.toastr.success('An ' + status + ' was added succesfully!');
           this.dialogRef.close();
+          this.utils.addedPerson.next(person);
         },
         (error) => {
           this.toastr.error(error.error);
@@ -113,6 +114,7 @@ export class CreateEditDialogComponent implements OnInit, OnDestroy {
           this.dialogRef.close();
         },
         (error) => {
+          console.log(error.error);
           this.toastr.error(error.error);
         }
       );

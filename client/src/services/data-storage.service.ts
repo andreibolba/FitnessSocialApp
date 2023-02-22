@@ -29,8 +29,7 @@ export class DataStorageService {
   deletePerson(personId: number, token: string) {
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.post(
-      this.baseUrl + 'people/delete',
-      { PersonId: personId },
+      this.baseUrl + 'people/delete/'+personId,
       { headers: headers }
     );
   }
@@ -46,6 +45,7 @@ export class DataStorageService {
         Username: person.username,
         Status: person.status,
         BirthDate: person.birthDate,
+        Created: new Date()
       },
       { headers: headers }
     );

@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { DataStorageService } from 'src/services/data-storage.service';
 import { Subscription } from 'rxjs';
 import { Person } from 'src/model/person.model';
@@ -16,15 +16,14 @@ import { UtilsService } from 'src/services/utils.service';
   templateUrl: './administration.component.html',
   styleUrls: ['./administration.component.css'],
 })
-export class AdministrationComponent implements OnInit, OnDestroy {
+export class AdministrationComponent implements OnInit, OnDestroy, OnChanges {
   displayedColumns: string[] = [
     'firstName',
     'lastName',
     'email',
     'username',
     'birthDate',
-    'edit',
-    'delete',
+    'edit'
   ];
   hasTableValues:boolean=false;
   dataSource!: MatTableDataSource<Person>;
@@ -42,8 +41,12 @@ export class AdministrationComponent implements OnInit, OnDestroy {
     private dialog: MatDialog,
     private utils:UtilsService
   ) {}
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+  }
 
   ngOnInit(): void {
+    console.log(new Date());
     switch (this.router.url) {
       case '/dashboard/administrators':
         this.status = 'Admin';

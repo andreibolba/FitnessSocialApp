@@ -24,7 +24,7 @@
     <!-- Name Column -->
     <ng-container matColumnDef="email">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
-      <td mat-cell *matCellDef="let row"> {{row.email}} </td>
+      <td mat-cell *matCellDef="let row" > {{row.email}} </td>
     </ng-container>
 
     <!-- Name Column -->
@@ -40,16 +40,11 @@
     </ng-container>
 
     <ng-container matColumnDef="edit">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Edit </th>
+      <th mat-header-cell *matHeaderCellDef mat-sort-header> Actions </th>
       <td mat-cell *matCellDef="let row"> <button class="btn btn-primary" id="table-button-edit" (click)="onEdit(row)">
-          Edit </button> </td>
-    </ng-container>
-
-    <ng-container matColumnDef="delete">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header> Delete </th>
-      <td mat-cell *matCellDef="let row"> <button class="btn btn-danger" id="table-button-delete"
-          (click)="onDelete(row)"> Delete </button>
-      </td>
+          Edit </button>
+          <button class="btn btn-danger" id="table-button-delete"
+          (click)="onDelete(row)"> Delete </button></td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

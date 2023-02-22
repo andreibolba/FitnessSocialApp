@@ -51,6 +51,23 @@ export class DataStorageService {
     );
   }
 
+  editperson(person: Person, token: string) {
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post(
+      this.baseUrl + 'people/update',
+      {
+        PersonId: person.personId,
+        FirstName: person.firstName,
+        LastName: person.lastName,
+        Email: person.email,
+        Username: person.username,
+        Status: person.status,
+        BirthDate: person.birthDate,
+      },
+      { headers: headers }
+    );
+  }
+
   sendEmail(email: string) {
     return this.http.post(this.baseUrl + 'people/forgot', {
       email: email,

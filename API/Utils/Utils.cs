@@ -3,6 +3,7 @@ using System.Net.Mail;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
+using API.Models;
 
 namespace API.Utils
 {
@@ -53,5 +54,16 @@ namespace API.Utils
             }
 
         }
+
+        public static bool UsernameExists(string username, InternShipAppSystemContext context)
+        {
+            return context.People.Any(person => person.Username == username);
+        }
+
+        public static bool EmailExists(string email, InternShipAppSystemContext context)
+        {
+            return context.People.Any(person => person.Email == email);
+        }
+
     }
 }

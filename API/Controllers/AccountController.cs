@@ -21,24 +21,14 @@ namespace API.Controllers
             _context = context;
         }
 
-        private async Task<bool> UsernameExists(string username)
-        {
-            return await _context.People.AnyAsync(person => person.Username == username);
-        }
-
-        private async Task<bool> EmailExists(string email)
-        {
-            return await _context.People.AnyAsync(person => person.Email == email);
-        }
-
         [HttpPost("register")]
         public async Task<ActionResult<PersonDto>> Register([FromBody] PersonRegisterDto person)
         {
 
-            if (await UsernameExists(person.Username))
+            if ( Utils.Utils.UsernameExists(person.Username,_context))
                 return BadRequest("Username exists!");
 
-            if (await EmailExists(person.Email))
+            if ( Utils.Utils.EmailExists(person.Email,_context))
                 return BadRequest("Email exists!");
 
             using var hmac = new HMACSHA512();

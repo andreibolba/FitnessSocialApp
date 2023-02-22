@@ -10,7 +10,7 @@ export class UtilsService {
 
   userToEdit=new BehaviorSubject<Person | null>(null);
   groupToEdit=new BehaviorSubject<Group | null>(null);
-  dashboardChanged=new BehaviorSubject<boolean>(true);
+  dashboardChanged=new EventEmitter<boolean>(true);
 
   constructor() { }
 

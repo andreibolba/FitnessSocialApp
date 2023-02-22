@@ -164,6 +164,12 @@ namespace API.Controllers
         public ActionResult<PersonDto> UpdateAccount([FromBody] LoggedPersonDto person)
         {
             var personToUpdate=_context.People.SingleOrDefault(p=>p.PersonId == person.PersonId);
+            if ( Utils.Utils.UsernameExists(person.Username,_context) && person.Username!=personToUpdate.Username)
+                return BadRequest("Username exists!");
+
+            if ( Utils.Utils.EmailExists(person.Email,_context)&& person.Email!=personToUpdate.Email)
+                return BadRequest("Email exists!");
+                
             personToUpdate.FirstName=person.FirstName;
             personToUpdate.LastName=person.LastName;
             personToUpdate.Email=person.Email;

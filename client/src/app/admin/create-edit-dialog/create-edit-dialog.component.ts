@@ -2,6 +2,7 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import * as moment from 'moment';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { LoggedPerson } from 'src/model/loggedperson.model';
@@ -21,7 +22,7 @@ export class CreateEditDialogComponent implements OnInit, OnDestroy {
     lName: '',
     email: '',
     username: '',
-    bdate: new Date().toISOString()
+    bdate: moment(new Date()).format('YYYY-MM-DD'),
   };
 
   dataPeopleSub!: Subscription;
@@ -53,7 +54,7 @@ export class CreateEditDialogComponent implements OnInit, OnDestroy {
         lName: this.person.lastName,
         email: this.person.email,
         username: this.person.username,
-        bdate:  new Date(this.person.birthDate).toISOString(),
+        bdate: moment(this.person.birthDate).format('YYYY-MM-DD'),
       };
     }
 
@@ -105,9 +106,16 @@ export class CreateEditDialogComponent implements OnInit, OnDestroy {
         }
       );
     } else {
-      person.personId=this.person!.personId;
-      console.log('Edit');
-      console.log(person);
+      person.personId = this.person!.personId;
+      this.dataService.editperson(person, this.token).subscribe(
+        () => {
+          this.toastr.success('The edit was succesfully!');
+          this.dialogRef.close();
+        },
+        (error) => {
+          this.toastr.error(error.error);
+        }
+      );
     }
   }
 }

@@ -21,5 +21,6 @@ namespace API.Dtos
         public string Status { get; set; }
         [Required]
         public DateTime BirthDate { get; set; }
+        public DateTime Created { get; set; }
     }
 }

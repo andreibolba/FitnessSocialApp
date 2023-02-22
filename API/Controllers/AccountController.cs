@@ -22,13 +22,13 @@ namespace API.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<ActionResult<PersonDto>> Register([FromBody] PersonRegisterDto person)
+        public async Task<ActionResult> Register([FromBody] PersonRegisterDto person)
         {
 
-            if ( Utils.Utils.UsernameExists(person.Username,_context))
+            if (Utils.Utils.UsernameExists(person.Username, _context))
                 return BadRequest("Username exists!");
 
-            if ( Utils.Utils.EmailExists(person.Email,_context))
+            if (Utils.Utils.EmailExists(person.Email, _context))
                 return BadRequest("Email exists!");
 
             using var hmac = new HMACSHA512();
@@ -49,7 +49,35 @@ namespace API.Controllers
             _context.People.Add(newPerson);
             await _context.SaveChangesAsync();
 
-            return Ok();
+            PasswordkLink link = new PasswordkLink
+            {
+                PersonUsername = newPerson.Username,
+                Time = person.Created.AddHours(2),
+                Deleted = false
+            };
+
+            _context.PasswordkLinks.Add(link);
+            _context.SaveChanges();
+
+            Utils.EmailFields details = new Utils.EmailFields
+            {
+                EmailTo = person.Email,
+                EmailSubject = "Welcome to Intenr Hub",
+                EmailBody = "Hello! \n\n" +
+                           "We are glad to have you in our team as "+ newPerson.Status +". You have to complete your account by seeting the password!\n\n" +
+                           "You can set your password immediately by clicking here or pasting the following link in your browser:\n\n" +
+                           "https://localhost:4200/recovery/" + link.PasswordLinkId + "\n\n" +
+                           "Link is available 1 hour!\n\n" +
+                           "Set your password and explore the InternHub!\n\n"+
+                           "Cheers,\n" +
+                           "The Internhub Team!"
+
+            };
+
+            if (Utils.Utils.SendEmail(details))
+                return Ok();
+            else
+                return BadRequest("Account was created but the mail was not sent!");
         }
 
         [HttpPost("login")]

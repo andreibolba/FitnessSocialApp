@@ -12,6 +12,6 @@ namespace API.Dtos
         public string Name { get; set; }
         public LoggedPersonDto Trainer { get; set; }
         public int TrainerId { get; set; }
-        public int MembersCount { get; set; }
+        public List<LoggedPersonDto> AllInterns {get;set;}
     }
 }

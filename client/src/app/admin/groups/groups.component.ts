@@ -56,6 +56,8 @@ export class GroupsComponent {
           }else{
             this.hasTableValues = true;
           }
+
+          console.log(data);
         });
     }
   }

@@ -23,6 +23,24 @@ namespace API.Controllers
             var resultToReturn = new List<GroupDto>(0);
             foreach (var re in result)
             {
+                var allInterns = _context.InternGroups.Include(gi => gi.Intern).ToList().Where(gi => gi.Deleted == false && gi.GroupId == re.GroupId);
+
+                List<LoggedPersonDto> interns = new List<LoggedPersonDto>();
+
+                foreach (var i in allInterns)
+                {
+                    interns.Add(new LoggedPersonDto()
+                    {
+                        PersonId = i.Intern.PersonId,
+                        FirstName = i.Intern.FirstName,
+                        LastName = i.Intern.LastName,
+                        Email = i.Intern.Email,
+                        Username = i.Intern.Username,
+                        Status = i.Intern.Status,
+                        BirthDate = i.Intern.BirthDate
+                    });
+                }
+
                 resultToReturn.Add(new GroupDto
                 {
                     GroupId = re.GroupId,
@@ -37,8 +55,8 @@ namespace API.Controllers
                         Status = re.Trainer.Status,
                         BirthDate = re.Trainer.BirthDate
                     },
-                    TrainerId=re.Trainer.PersonId,
-                    MembersCount = _context.InternGroups.Where(gi => gi.Deleted == false).Count(g => g.GroupId == re.GroupId)
+                    TrainerId = re.Trainer.PersonId,
+                    AllInterns = interns
                 });
             }
             return resultToReturn;
@@ -67,9 +85,10 @@ namespace API.Controllers
             group.Deleted = true;
             _context.Groups.Update(group);
 
-            var internGroups=_context.InternGroups.Where(ig=>ig.GroupId==groupId);
-            foreach(var ig in internGroups){
-                ig.Deleted=true;
+            var internGroups = _context.InternGroups.Where(ig => ig.GroupId == groupId);
+            foreach (var ig in internGroups)
+            {
+                ig.Deleted = true;
                 _context.InternGroups.Update(ig);
             }
             _context.SaveChanges();

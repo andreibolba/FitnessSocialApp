@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { AuthentificationComponent } from './authentification/authentification.component';
 import { HomeComponent } from './home/home.component';
@@ -33,6 +33,7 @@ import { CreateEditDialogComponent } from './admin/create-edit-dialog/create-edi
 import { MatDialogModule } from '@angular/material/dialog';
 import { EditGroupDialogComponent } from './admin/edit-group-dialog/edit-group-dialog.component';
 import { EditGroupMembersDialogComponent } from './admin/edit-group-members-dialog/edit-group-members-dialog.component';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -63,6 +64,7 @@ import { EditGroupMembersDialogComponent } from './admin/edit-group-members-dial
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatSlideToggleModule,
@@ -70,6 +72,7 @@ import { EditGroupMembersDialogComponent } from './admin/edit-group-members-dial
     MatTableModule,
     MatPaginatorModule,
     MatDialogModule,
+    MatCheckboxModule,
     ToastrModule.forRoot()
   ],
   providers: [],

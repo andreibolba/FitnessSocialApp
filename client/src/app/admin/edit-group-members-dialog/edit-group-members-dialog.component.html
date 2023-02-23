@@ -1,1 +1,11 @@
-<p>edit-group-members-dialog works!</p>
+<h1>Edit group members into {{ group?.name }}</h1>
+<mat-dialog-content class="mat-typography">
+  <h4>Add and remove intern by select them:</h4>
+  <p><mat-checkbox *ngFor="let i of options" [checked]="i.checked" (change)="valueChange(i)">
+      <div id="option"> {{ i.name }}</div>
+    </mat-checkbox></p>
+
+  <mat-dialog-actions align="center">
+    <button mat-button cdkFocusInitial (click)="save()"> Save </button>
+  </mat-dialog-actions>
+</mat-dialog-content>

@@ -9,6 +9,7 @@ import { LoggedPerson } from 'src/model/loggedperson.model';
 import { DataStorageService } from 'src/services/data-storage.service';
 import { UtilsService } from 'src/services/utils.service';
 import { EditGroupDialogComponent } from '../edit-group-dialog/edit-group-dialog.component';
+import { EditGroupMembersDialogComponent } from '../edit-group-members-dialog/edit-group-members-dialog.component';
 
 @Component({
   selector: 'app-groups',
@@ -56,8 +57,6 @@ export class GroupsComponent {
           }else{
             this.hasTableValues = true;
           }
-
-          console.log(data);
         });
     }
   }
@@ -87,19 +86,21 @@ export class GroupsComponent {
 
   onEdit(obj: Group) {
     this.utils.groupToEdit.next(obj);
-    this.openDialog();
+    this.openDialog(1);
   }
 
   onEditMembers(obj: Group) {
+    this.utils.groupToEdit.next(obj);
+    this.openDialog(2);
   }
 
   onAdd(){
     this.utils.groupToEdit.next(null);
-    this.openDialog();
+    this.openDialog(1);
   }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(EditGroupDialogComponent);
+  openDialog(op:number) {
+    const dialogRef = op==1? this.dialog.open(EditGroupDialogComponent): this.dialog.open(EditGroupMembersDialogComponent);
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);

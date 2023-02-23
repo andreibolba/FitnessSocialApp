@@ -1,8 +1,6 @@
 using System.Net;
 using System.Net.Mail;
-using System.Security.Cryptography;
 using System.Text;
-using System.Text.RegularExpressions;
 using API.Models;
 
 namespace API.Utils
@@ -47,7 +45,8 @@ namespace API.Utils
             }
             catch (Exception ex)
             {
-                switch(ex){
+                switch (ex)
+                {
                     default:
                         return false;
                 }
@@ -63,6 +62,19 @@ namespace API.Utils
         public static bool EmailExists(string email, InternShipAppSystemContext context)
         {
             return context.People.Any(person => person.Email == email);
+        }
+
+        public static List<int> FromStringToInt(string ids)
+        {
+            List<int> idsInt = new List<int>();
+            while (ids != "!")
+            {
+                string id = ids.Substring(0, ids.IndexOf("_"));
+                int internId=Int32.Parse(id);
+                idsInt.Add(internId);
+                ids = ids.Substring(ids.IndexOf("_") + 1);
+            }
+            return idsInt;
         }
 
     }

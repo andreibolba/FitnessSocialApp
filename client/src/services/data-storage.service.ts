@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Group } from 'src/model/group.model';
 import { Person } from 'src/model/person.model';
+import { InternGroup } from 'src/model/interngroup.model';
 
 @Injectable({
   providedIn: 'root',
@@ -120,9 +121,26 @@ export class DataStorageService {
   }
 
   deleteGroup(token: string, groupId: number) {
-    console.log(token);
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.post(this.baseUrl + 'group/delete/' + groupId,{}, {
+      headers: headers,
+    });
+  }
+
+  getAllInternsInGroup(token: string, groupId: number) {
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<InternGroup[]>(this.baseUrl + 'interngroup/interns/' + groupId, {
+      headers: headers,
+    });
+  }
+
+  updateInternInGroup(token: string, ids:string,groupId: number){
+    const headers = { Authorization: 'Bearer ' + token };
+    console.log(ids);
+    return this.http.post(this.baseUrl + 'interngroup/interns/update/' + groupId,{
+      ids: ids
+    },
+     {
       headers: headers,
     });
   }

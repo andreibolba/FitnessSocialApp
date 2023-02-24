@@ -9241,11 +9241,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "F:\\InternShipApp\\API\\API.csproj",
+      "projectUniqueName": "F:\\InternShipApp\\APi\\API.csproj",
       "projectName": "API",
-      "projectPath": "F:\\InternShipApp\\API\\API.csproj",
+      "projectPath": "F:\\InternShipApp\\APi\\API.csproj",
       "packagesPath": "C:\\Users\\andrei.bolba\\.nuget\\packages\\",
-      "outputPath": "F:\\InternShipApp\\API\\obj\\",
+      "outputPath": "F:\\InternShipApp\\APi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\ToolboxNuGetPackages"

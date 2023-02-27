@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'src/services/auth.guard.service';import { AdministrationComponent } from './admin/administration/administration.component';
 import { GroupsComponent } from './admin/groups/groups.component';
 import { AuthentificationComponent } from './authentification/authentification.component';
+import { ErrorComponent } from './error/error.component';
 import { ForumComponent } from './forum/forum/forum.component';
 import { HomeComponent } from './home/home.component';
 import { MyGroupComponent } from './intern/my.group/my.group.component';
@@ -43,6 +44,7 @@ const routes: Routes = [
   },
   { path: '', component:AuthentificationComponent, pathMatch: 'full' },
   { path: 'authentification', component: AuthentificationComponent },
+  { path: 'error', component: ErrorComponent}
 ];
 
 @NgModule({

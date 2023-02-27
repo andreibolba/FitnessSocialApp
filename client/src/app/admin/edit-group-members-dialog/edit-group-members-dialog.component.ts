@@ -45,6 +45,7 @@ export class EditGroupMembersDialogComponent {
   ) {}
 
   ngOnInit(): void {
+    this.utils.initializeError();
     this.groupSub = this.utils.groupToEdit.subscribe((res) => {
       this.group = res;
     });

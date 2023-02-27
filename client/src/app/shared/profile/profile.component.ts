@@ -17,6 +17,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
 
   constructor(private dataService: DataStorageService, private utils:UtilsService) {}
   ngOnInit(): void {
+    this.utils.initializeError();
     this.isLoading=true;
     this.utils.dashboardChanged.next(false);
     console.log('perosnal');

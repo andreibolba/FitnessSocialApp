@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { UtilsService } from 'src/services/utils.service';
 
@@ -29,7 +28,7 @@ export class ErrorComponent implements OnInit,OnDestroy{
         this.errorMessage='Sorry, the page you\'re looking for doesn\'t exist.';
       }else{
         this.errorNumber=res.errorCode;
-        this.errorTitle=this.errorTitle;
+        this.errorTitle=res.errorTitle;
         this.errorMessage=res.errorMessage;
       }
     });

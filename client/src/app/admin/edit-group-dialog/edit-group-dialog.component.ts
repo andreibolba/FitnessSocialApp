@@ -48,6 +48,7 @@ export class EditGroupDialogComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.utils.initializeError();
     this.opration = 'Add';
     const personString = localStorage.getItem('person');
     if (!personString) {

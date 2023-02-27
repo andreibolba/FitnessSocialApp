@@ -46,6 +46,7 @@ export class AdministrationComponent implements OnInit, OnDestroy, OnChanges {
   }
 
   ngOnInit(): void {
+    this.utils.initializeError();
     console.log(new Date());
     switch (this.router.url) {
       case '/dashboard/administrators':

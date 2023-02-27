@@ -26,6 +26,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.utils.initializeError();
     this.setCurrentUser();
   }
 

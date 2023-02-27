@@ -1,14 +1,8 @@
-import { Injectable, OnDestroy, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import {
-  ActivatedRouteSnapshot,
   CanActivate,
-  Router,
-  RouterStateSnapshot,
-  UrlTree,
+  Router
 } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
-import { map, take } from 'rxjs/operators';
-import { LoggedPerson } from 'src/model/loggedperson.model';
 import { AuthService } from './auth.service';
 
 @Injectable({ providedIn: 'root' })

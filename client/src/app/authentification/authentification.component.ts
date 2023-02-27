@@ -6,6 +6,7 @@ import { Subscription } from 'rxjs';
 import { AuthService } from 'src/services/auth.service';
 import { DataStorageService } from 'src/services/data-storage.service';
 import { LogService } from 'src/services/log.service';
+import { UtilsService } from 'src/services/utils.service';
 
 @Component({
   selector: 'app-authentification',
@@ -26,10 +27,12 @@ export class AuthentificationComponent implements OnInit {
     private router: Router,
     private log: LogService,
     private toastr: ToastrService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private utils:UtilsService
   ) {}
 
   ngOnInit(): void {
+    this.utils.initializeError();
     this.authService.logout();
     if (this.router.url == '/') {
       this.isLoginMode = true;

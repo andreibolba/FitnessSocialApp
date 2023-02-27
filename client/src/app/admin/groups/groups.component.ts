@@ -41,6 +41,7 @@ export class GroupsComponent {
   ) {}
 
   ngOnInit(): void {
+    this.utils.initializeError();
     const personString = localStorage.getItem('person');
     if (!personString) {
       return;

@@ -35,6 +35,7 @@ export class AdminDashboardComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.utils.initializeError();
     if(this.router.url!='/dashboard')
     this.utils.dashboardChanged.next(false);
     this.isLoading=true;

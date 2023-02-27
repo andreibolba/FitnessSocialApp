@@ -12,6 +12,12 @@ export class DataStorageService {
   people: Person[] = [];
   constructor(private http: HttpClient) {}
 
+  //connection test
+
+  testConnection(){
+    return this.http.get(this.baseUrl+'serverconnection/test');
+  }
+
   //person CRUD
   getPerson(username: string, token: string) {
     const headers = { Authorization: 'Bearer ' + token };
@@ -144,4 +150,5 @@ export class DataStorageService {
       headers: headers,
     });
   }
+
 }

@@ -31,6 +31,7 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.utils.initializeError();
     this.utilsSub = this.utils.dashboardChanged.subscribe((res) => {
       this.isDashboard = res;
     });

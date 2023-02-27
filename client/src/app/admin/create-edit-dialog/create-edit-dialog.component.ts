@@ -41,6 +41,7 @@ export class CreateEditDialogComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.utils.initializeError();
     this.utilsSub = this.utils.userToEdit.subscribe((res) => {
       this.person = res;
     });

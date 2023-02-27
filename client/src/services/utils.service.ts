@@ -13,6 +13,8 @@ export class UtilsService {
   addedPerson=new BehaviorSubject<Person | null>(null);
   dashboardChanged=new EventEmitter<boolean>(true);
 
+  error=new BehaviorSubject<{errorCode:number,errorTitle:string,errorMessage:string} | null>(null);
+
   constructor() { }
 
   static initialize(){

@@ -15,13 +15,24 @@ export class ErrorComponent implements OnInit,OnDestroy{
 
   private utilsSub!:Subscription;
 
-  constructor(private router:Router,private utils:UtilsService){}
-  
+  constructor(private utils:UtilsService){}
+
   ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
+    if(this.utilsSub!=null)this.utilsSub.unsubscribe();
   }
+
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    this.utilsSub=this.utils.error.subscribe((res)=>{
+      if(res==null){
+        this.errorNumber=404;
+        this.errorTitle='OPPS! PAGE NOT FOUND';
+        this.errorMessage='Sorry, the page you\'re looking for doesn\'t exist.';
+      }else{
+        this.errorNumber=res.errorCode;
+        this.errorTitle=this.errorTitle;
+        this.errorMessage=res.errorMessage;
+      }
+    });
   }
 
 }

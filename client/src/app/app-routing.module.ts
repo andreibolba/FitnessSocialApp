@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from 'src/services/auth.guard.service';import { AdministrationComponent } from './admin/administration/administration.component';
+import { AuthGuard } from 'src/services/auth.guard.service';
+import { AdministrationComponent } from './admin/administration/administration.component';
 import { GroupsComponent } from './admin/groups/groups.component';
 import { AuthentificationComponent } from './authentification/authentification.component';
 import { ErrorComponent } from './error/error.component';
@@ -40,11 +41,12 @@ const routes: Routes = [
   },
   {
     path: 'recovery/:linkid',
-    component: AuthentificationComponent
+    component: AuthentificationComponent,
   },
-  { path: '', component:AuthentificationComponent, pathMatch: 'full' },
+  { path: '', component: AuthentificationComponent, pathMatch: 'full' },
   { path: 'authentification', component: AuthentificationComponent },
-  { path: 'error', component: ErrorComponent}
+  { path: 'error', component: ErrorComponent },
+  { path: '**', redirectTo: 'error' },
 ];
 
 @NgModule({

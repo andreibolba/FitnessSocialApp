@@ -7,7 +7,7 @@ namespace API.Dtos
 {
     public class InternGroupDto
     {
-        public LoggedPersonDto Intern { get; set; }
+        public PersonDto Intern { get; set; }
         public int InternId { get; set; }
         public bool IsChecked { get; set; }
     }

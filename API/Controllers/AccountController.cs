@@ -22,7 +22,7 @@ namespace API.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<ActionResult> Register([FromBody] PersonRegisterDto person)
+        public async Task<ActionResult> Register([FromBody] PersonDto person)
         {
 
             if (Utils.Utils.UsernameExists(person.Username, _context))
@@ -81,7 +81,7 @@ namespace API.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<PersonDto>> LogIn([FromBody] PersonLogInDto person)
+        public async Task<ActionResult<PersonDto>> LogIn([FromBody] PersonDto person)
         {
             var loggedPerson = await _context.People.SingleOrDefaultAsync(p => (p.Email == person.Email && p.Deleted == false));
             if (loggedPerson == null)

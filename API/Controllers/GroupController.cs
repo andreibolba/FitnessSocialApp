@@ -25,11 +25,11 @@ namespace API.Controllers
             {
                 var allInterns = _context.InternGroups.Include(gi => gi.Intern).ToList().Where(gi => gi.Deleted == false && gi.GroupId == re.GroupId);
 
-                List<LoggedPersonDto> interns = new List<LoggedPersonDto>();
+                List<PersonDto> interns = new List<PersonDto>();
 
                 foreach (var i in allInterns)
                 {
-                    interns.Add(new LoggedPersonDto()
+                    interns.Add(new PersonDto()
                     {
                         PersonId = i.Intern.PersonId,
                         FirstName = i.Intern.FirstName,
@@ -45,7 +45,7 @@ namespace API.Controllers
                 {
                     GroupId = re.GroupId,
                     Name = re.GroupName,
-                    Trainer = new LoggedPersonDto
+                    Trainer = new PersonDto
                     {
                         PersonId = re.Trainer.PersonId,
                         FirstName = re.Trainer.FirstName,

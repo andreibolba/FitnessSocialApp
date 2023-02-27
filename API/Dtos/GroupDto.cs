@@ -10,8 +10,8 @@ namespace API.Dtos
     {
         public int GroupId { get; set; }
         public string Name { get; set; }
-        public LoggedPersonDto Trainer { get; set; }
+        public PersonDto Trainer { get; set; }
         public int TrainerId { get; set; }
-        public List<LoggedPersonDto> AllInterns {get;set;}
+        public List<PersonDto> AllInterns {get;set;}
     }
 }

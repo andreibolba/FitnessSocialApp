@@ -19,14 +19,14 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<LoggedPersonDto>> GetPeople()
+        public ActionResult<IEnumerable<PersonDto>> GetPeople()
         {
             var result = _context.People.ToList().Where(g => g.Deleted == false);
-            var resultToReturn = new List<LoggedPersonDto>(0);
+            var resultToReturn = new List<PersonDto>(0);
 
             foreach (var re in result)
             {
-                resultToReturn.Add(new LoggedPersonDto
+                resultToReturn.Add(new PersonDto
                 {
                     PersonId = re.PersonId,
                     FirstName = re.FirstName,
@@ -42,12 +42,12 @@ namespace API.Controllers
         }
 
         [HttpGet("{id:int}")]
-        public ActionResult<LoggedPersonDto> GetPerson(int id)
+        public ActionResult<PersonDto> GetPerson(int id)
         {
             var person = _context.People.SingleOrDefault(p => (p.PersonId == id && p.Deleted == false));
             if (person == null)
                 return NoContent();
-            var personToSend = new LoggedPersonDto()
+            var personToSend = new PersonDto()
             {
                 PersonId = person.PersonId,
                 FirstName = person.FirstName,
@@ -61,12 +61,12 @@ namespace API.Controllers
         }
 
         [HttpGet("{username}")]
-        public ActionResult<LoggedPersonDto> GetPersonByUsername(string username)
+        public ActionResult<PersonDto> GetPersonByUsername(string username)
         {
             var person = _context.People.SingleOrDefault(user => (user.Username == username && user.Deleted == false));
             if (person == null)
                 return NoContent();
-            var personToSend = new LoggedPersonDto()
+            var personToSend = new PersonDto()
             {
                 PersonId = person.PersonId,
                 FirstName = person.FirstName,
@@ -160,7 +160,7 @@ namespace API.Controllers
         }
 
         [HttpPost("update")]
-        public ActionResult UpdateAccount([FromBody] LoggedPersonDto person)
+        public ActionResult UpdateAccount([FromBody] PersonDto person)
         {
             var personToUpdate=_context.People.SingleOrDefault(p=>p.PersonId == person.PersonId);
             if ( Utils.Utils.UsernameExists(person.Username,_context) && person.Username!=personToUpdate.Username)

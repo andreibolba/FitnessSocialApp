@@ -24,7 +24,7 @@ namespace API.Controllers
             {
                 resultToReturn.Add(new InternGroupDto
                 {
-                    Intern = new LoggedPersonDto
+                    Intern = new PersonDto
                     {
                         PersonId = re.PersonId,
                         FirstName = re.FirstName,

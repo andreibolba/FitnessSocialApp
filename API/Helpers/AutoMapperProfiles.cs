@@ -6,7 +6,7 @@ namespace API.Helpers
 {
     public class AutoMapperProfiles : Profile
     {
-        protected AutoMapperProfiles()
+        public AutoMapperProfiles()
         {
             CreateMap<Person, PersonDto>();
             CreateMap<Group, GroupDto>();

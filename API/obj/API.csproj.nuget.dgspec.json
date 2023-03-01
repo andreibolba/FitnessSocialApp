@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "f:\\InternShipApp\\API\\API.csproj": {}
+    "F:\\InternShipApp\\API\\API.csproj": {}
   },
   "projects": {
-    "f:\\InternShipApp\\API\\API.csproj": {
+    "F:\\InternShipApp\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "f:\\InternShipApp\\API\\API.csproj",
+        "projectUniqueName": "F:\\InternShipApp\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "f:\\InternShipApp\\API\\API.csproj",
+        "projectPath": "F:\\InternShipApp\\API\\API.csproj",
         "packagesPath": "C:\\Users\\andrei.bolba\\.nuget\\packages\\",
-        "outputPath": "f:\\InternShipApp\\API\\obj\\",
+        "outputPath": "F:\\InternShipApp\\API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\ToolboxNuGetPackages"
@@ -25,7 +25,10 @@
           "net7.0"
         ],
         "sources": {
-          "https://api.nuget.org/v3/index.json": {}
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "http://proget.teamnet.ro/nuget/feed/": {},
+          "https://api.nuget.org/v3/index.json": {},
+          "https://nuget.telerik.com/v3/index.json": {}
         },
         "frameworks": {
           "net7.0": {

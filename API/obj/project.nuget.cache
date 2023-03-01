@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "XKAzG02z6yKQjt3CvI4jFDXOc8T6deAAWimuFjRayek1xa4uUAXbh4ngJ4g0WlCsdxkCHJ1HO72ShrJVEwmpjA==",
+  "dgSpecHash": "uiB8Hdk/gX5pTFKsEvsFy2i+0gRqfxRt9WeZoCfU1aQ+ZluliwXJl+WodWGqT3kTsKxu9wJgmD4IoSj8sxBgqQ==",
   "success": true,
-  "projectFilePath": "f:\\InternShipApp\\API\\API.csproj",
+  "projectFilePath": "F:\\InternShipApp\\API\\API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\andrei.bolba\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\andrei.bolba\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
@@ -176,6 +176,12 @@
     "C:\\Users\\andrei.bolba\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512"
   ],
   "logs": [
+    {
+      "code": "NU1803",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "You are running the 'restore' operation with an 'HTTP' source, 'http://proget.teamnet.ro/nuget/feed/'. Non-HTTPS access will be removed in a future version. Consider migrating to an 'HTTPS' source."
+    },
     {
       "code": "NU1701",
       "level": "Warning",

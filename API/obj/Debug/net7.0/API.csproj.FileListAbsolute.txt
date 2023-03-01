@@ -202,3 +202,5 @@ F:\InternShipApp\API\obj\Debug\net7.0\refint\API.dll
 F:\InternShipApp\API\obj\Debug\net7.0\API.pdb
 F:\InternShipApp\API\obj\Debug\net7.0\API.genruntimeconfig.cache
 F:\InternShipApp\API\obj\Debug\net7.0\ref\API.dll
+F:\InternShipApp\API\bin\Debug\net7.0\AutoMapper.dll
+F:\InternShipApp\API\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

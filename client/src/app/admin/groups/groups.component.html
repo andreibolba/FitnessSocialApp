@@ -10,9 +10,9 @@
   <table mat-table [dataSource]="dataSource" matSort>
 
     <!-- ID Column -->
-    <ng-container matColumnDef="name">
+    <ng-container matColumnDef="groupName">
       <th mat-header-cell *matHeaderCellDef mat-sort-header> Group Name </th>
-      <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+      <td mat-cell *matCellDef="let row"> {{row.groupName}} </td>
     </ng-container>
 
     <!-- Progress Column -->

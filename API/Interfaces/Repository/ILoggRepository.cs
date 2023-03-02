@@ -5,11 +5,11 @@ namespace API.Interfaces.Repository
 {
     public interface ILoggRepository
     {
-        void Create(Logging log);
+        void Create(LoggingDto logDto);
         IEnumerable<LoggingDto> GetAllLoggs();
         LoggingDto GetLogById(int id);
-        void Update(Logging log);
-        void Delete(Logging log);
+        void Update(LoggingDto logDto);
+        void Delete(int logId);
         bool SaveAll();
     }
 }

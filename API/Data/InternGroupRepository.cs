@@ -6,12 +6,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Data
 {
-    public class InternGroupRepositoy : IInternGroupRepository
+    public class InternGroupRepository : IInternGroupRepository
     {
         private readonly InternShipAppSystemContext _context;
         private readonly IMapper _mapper;
 
-        public InternGroupRepositoy(InternShipAppSystemContext context, IMapper mapper)
+        public InternGroupRepository(InternShipAppSystemContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

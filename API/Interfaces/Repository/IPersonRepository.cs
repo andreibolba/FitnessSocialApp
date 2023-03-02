@@ -1,18 +1,19 @@
 using API.Dtos;
-using API.Models;
 
 namespace API.Interfaces.Repository
 {
     public interface IPersonRepository
     {
-        void Create(Person person);
+        bool Create(PersonDto person);
         IEnumerable<PersonDto> GetAllPerson();
+        IEnumerable<PersonDto> GetAllAdmins();
+        IEnumerable<PersonDto> GetAllInterns();
+        IEnumerable<PersonDto> GetAllTrainers();
         PersonDto GetPersonById(int id);
         PersonDto GetPersonByUsername(string username);
-        void Update(Person person);
-        void Delete(Person person);
-        PersonDto Register(Person person);
-        PersonDto LogIn(Person person);
+        void Update(PersonDto person);
+        void Delete(int personId);
+        PersonDto LogIn(string email, string password);
         bool SaveAll();
     }
 }

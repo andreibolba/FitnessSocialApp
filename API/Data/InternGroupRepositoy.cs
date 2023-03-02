@@ -3,8 +3,6 @@ using API.Interfaces.Repository;
 using API.Models;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
-using System.Text.RegularExpressions;
 
 namespace API.Data
 {
@@ -26,8 +24,8 @@ namespace API.Data
 
         public void Delete(int id)
         {
-            var result = _context.InternGroups.SingleOrDefault(g => g.Deleted == false).Include(g => g.Intern);
-            result.Delete = true;
+            var result = _context.InternGroups.SingleOrDefault(g => g.Deleted == false);
+            result.Deleted = true;
             _context.InternGroups.Update(result);
         }
 

@@ -3,6 +3,7 @@ using System.Text;
 using API.Dtos;
 using API.Models;
 using API.Utils;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,71 +13,39 @@ namespace API.Controllers
     public class PeopleController : BaseAPIController
     {
         private readonly InternShipAppSystemContext _context;
+        private readonly IMapper _mapper;
 
-        public PeopleController(InternShipAppSystemContext context)
+        public PeopleController(InternShipAppSystemContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<LoggedPersonDto>> GetPeople()
+        public ActionResult<IEnumerable<PersonDto>> GetPeople()
         {
-            var result = _context.People.ToList().Where(g => g.Deleted == false);
-            var resultToReturn = new List<LoggedPersonDto>(0);
-
-            foreach (var re in result)
-            {
-                resultToReturn.Add(new LoggedPersonDto
-                {
-                    PersonId = re.PersonId,
-                    FirstName = re.FirstName,
-                    LastName = re.LastName,
-                    Email = re.Email,
-                    Username = re.Username,
-                    Status = re.Status,
-                    BirthDate = re.BirthDate
-                });
-            }
-
-            return resultToReturn;
+            var resultToReturn = _mapper.Map<IEnumerable<PersonDto>>(_context.People.ToList().Where(g => g.Deleted == false));
+            return Ok(resultToReturn);
         }
 
         [HttpGet("{id:int}")]
-        public ActionResult<LoggedPersonDto> GetPerson(int id)
+        public ActionResult<PersonDto> GetPerson(int id)
         {
             var person = _context.People.SingleOrDefault(p => (p.PersonId == id && p.Deleted == false));
             if (person == null)
                 return NoContent();
-            var personToSend = new LoggedPersonDto()
-            {
-                PersonId = person.PersonId,
-                FirstName = person.FirstName,
-                LastName = person.LastName,
-                Email = person.Email,
-                Username = person.Username,
-                Status = person.Status,
-                BirthDate = person.BirthDate
-            };
-            return personToSend;
+            var personToSend = _mapper.Map<PersonDto>(person);
+            return Ok(personToSend);
         }
 
         [HttpGet("{username}")]
-        public ActionResult<LoggedPersonDto> GetPersonByUsername(string username)
+        public ActionResult<PersonDto> GetPersonByUsername(string username)
         {
             var person = _context.People.SingleOrDefault(user => (user.Username == username && user.Deleted == false));
             if (person == null)
                 return NoContent();
-            var personToSend = new LoggedPersonDto()
-            {
-                PersonId = person.PersonId,
-                FirstName = person.FirstName,
-                LastName = person.LastName,
-                Email = person.Email,
-                Username = person.Username,
-                Status = person.Status,
-                BirthDate = person.BirthDate
-            };
-            return personToSend;
+            var personToSend = _mapper.Map<PersonDto>(person);
+            return Ok(personToSend);
         }
 
         [AllowAnonymous]
@@ -122,8 +91,9 @@ namespace API.Controllers
             if (link == null)
                 return BadRequest("Invalid link");
             password.Time.AddHours(2);
-            if (link.Time < password.Time){
-                link.Deleted=true;
+            if (link.Time < password.Time)
+            {
+                link.Deleted = true;
                 _context.PasswordkLinks.Update(link);
                 _context.SaveChanges();
                 return BadRequest("Link is expired!");
@@ -152,29 +122,35 @@ namespace API.Controllers
         [HttpPost("delete/{personId:int}")]
         public ActionResult DeleteAccount(int personId)
         {
-            var personToDelete=_context.People.SingleOrDefault(p=>p.PersonId == personId);
-            personToDelete.Deleted=true;
+            var personToDelete = _context.People.SingleOrDefault(p => p.PersonId == personId);
+            personToDelete.Deleted = true;
             _context.People.Update(personToDelete);
+            var allGroup = _context.InternGroups.ToList().Where(gi=>gi.InternId==personId);
+            foreach (var a in allGroup)
+            {
+                a.Deleted = true;
+                _context.InternGroups.Update(a);
+            }
             _context.SaveChanges();
             return Ok();
         }
 
         [HttpPost("update")]
-        public ActionResult UpdateAccount([FromBody] LoggedPersonDto person)
+        public ActionResult UpdateAccount([FromBody] PersonDto person)
         {
-            var personToUpdate=_context.People.SingleOrDefault(p=>p.PersonId == person.PersonId);
-            if ( Utils.Utils.UsernameExists(person.Username,_context) && person.Username!=personToUpdate.Username)
+            var personToUpdate = _context.People.SingleOrDefault(p => p.PersonId == person.PersonId);
+            if (Utils.Utils.UsernameExists(person.Username, _context) && person.Username != personToUpdate.Username)
                 return BadRequest("Username exists!");
 
-            if ( Utils.Utils.EmailExists(person.Email,_context)&& person.Email!=personToUpdate.Email)
+            if (Utils.Utils.EmailExists(person.Email, _context) && person.Email != personToUpdate.Email)
                 return BadRequest("Email exists!");
-                
-            personToUpdate.FirstName=person.FirstName;
-            personToUpdate.LastName=person.LastName;
-            personToUpdate.Email=person.Email;
-            personToUpdate.Username=person.Username;
-            personToUpdate.Status=person.Status;
-            personToUpdate.BirthDate=person.BirthDate;
+
+            personToUpdate.FirstName = person.FirstName;
+            personToUpdate.LastName = person.LastName;
+            personToUpdate.Email = person.Email;
+            personToUpdate.Username = person.Username;
+            personToUpdate.Status = person.Status;
+            personToUpdate.BirthDate = person.BirthDate;
             _context.People.Update(personToUpdate);
             _context.SaveChanges();
             return Ok();

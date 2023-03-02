@@ -18,6 +18,7 @@ namespace API.Extensions
             options.UseSqlServer(config.GetConnectionString("dbconn")));
             services.AddCors();
             services.AddScoped<ITokenService, TokenService>();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             return services;
         }
     }

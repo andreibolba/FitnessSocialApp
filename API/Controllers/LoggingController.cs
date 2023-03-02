@@ -1,20 +1,19 @@
 using API.Dtos;
-using API.Interfaces;
 using API.Models;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
     public class LoggingController:BaseAPIController
     {
         private readonly InternShipAppSystemContext _context;
-        private readonly ITokenService _tokenService;
+        private readonly IMapper _mapper;
 
-        public LoggingController(InternShipAppSystemContext context, ITokenService tokenService)
+        public LoggingController(InternShipAppSystemContext context, IMapper mapper)
         {
             _context = context;
-            _tokenService = tokenService;
+            _mapper = mapper;
         }
 
         [HttpPost("log")]
@@ -32,8 +31,9 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Logging>>> GetLog(){
-            return await _context.Loggings.ToListAsync();
+        public ActionResult<IEnumerable<LoggingDto>> GetLoggings(){
+            var loggerToReturn = _mapper.Map<IEnumerable<LoggingDto>>( _context.Loggings.ToList());
+            return Ok(loggerToReturn);
         }
     }
 }

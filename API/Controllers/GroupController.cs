@@ -1,5 +1,6 @@
 using API.Dtos;
 using API.Models;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,56 +11,21 @@ namespace API.Controllers
     public class GroupController : BaseAPIController
     {
         private readonly InternShipAppSystemContext _context;
+        private readonly IMapper _mapper;
 
-        public GroupController(InternShipAppSystemContext context)
+        public GroupController(InternShipAppSystemContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         [HttpGet]
         public ActionResult<IEnumerable<GroupDto>> GetGroups()
         {
-            var result = _context.Groups.Include(g => g.Trainer).ToList().Where(g => g.Deleted == false);
-            var resultToReturn = new List<GroupDto>(0);
-            foreach (var re in result)
-            {
-                var allInterns = _context.InternGroups.Include(gi => gi.Intern).ToList().Where(gi => gi.Deleted == false && gi.GroupId == re.GroupId);
-
-                List<LoggedPersonDto> interns = new List<LoggedPersonDto>();
-
-                foreach (var i in allInterns)
-                {
-                    interns.Add(new LoggedPersonDto()
-                    {
-                        PersonId = i.Intern.PersonId,
-                        FirstName = i.Intern.FirstName,
-                        LastName = i.Intern.LastName,
-                        Email = i.Intern.Email,
-                        Username = i.Intern.Username,
-                        Status = i.Intern.Status,
-                        BirthDate = i.Intern.BirthDate
-                    });
-                }
-
-                resultToReturn.Add(new GroupDto
-                {
-                    GroupId = re.GroupId,
-                    Name = re.GroupName,
-                    Trainer = new LoggedPersonDto
-                    {
-                        PersonId = re.Trainer.PersonId,
-                        FirstName = re.Trainer.FirstName,
-                        LastName = re.Trainer.LastName,
-                        Email = re.Trainer.Email,
-                        Username = re.Trainer.Username,
-                        Status = re.Trainer.Status,
-                        BirthDate = re.Trainer.BirthDate
-                    },
-                    TrainerId = re.Trainer.PersonId,
-                    AllInterns = interns
-                });
-            }
-            return resultToReturn;
+            var resultToReturn = _mapper.Map<List<GroupDto>>(_context.Groups.Include(g => g.Trainer).Include(g => g.InternGroups).ToList().Where(g => g.Deleted == false));
+            foreach (var re in resultToReturn)
+                re.AllInterns = _mapper.Map<List<PersonDto>>(_context.InternGroups.Include(gi => gi.Intern).ToList().Where(gi => gi.Deleted == false && gi.GroupId == re.GroupId));
+            return Ok(resultToReturn);
         }
 
         [HttpPost("add")]
@@ -67,7 +33,7 @@ namespace API.Controllers
         {
             Group newGroup = new Group
             {
-                GroupName = group.Name,
+                GroupName = group.GroupName,
                 TrainerId = group.TrainerId,
                 Deleted = false
             };
@@ -102,7 +68,7 @@ namespace API.Controllers
             var groupToUpdate = _context.Groups.FirstOrDefault(p => p.GroupId == group.GroupId && p.Deleted == false);
             if (groupToUpdate == null)
                 return BadRequest("Group does not exists!");
-            groupToUpdate.GroupName = group.Name;
+            groupToUpdate.GroupName = group.GroupName;
             groupToUpdate.TrainerId = group.TrainerId;
             _context.Groups.Update(groupToUpdate);
             _context.SaveChanges();

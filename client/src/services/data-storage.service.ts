@@ -106,7 +106,7 @@ export class DataStorageService {
     return this.http.post(
       this.baseUrl + 'group/add',
       {
-        name: group.name,
+        name: group.groupName,
         trainerId: group.trainerId
       },
       { headers: headers }
@@ -119,7 +119,7 @@ export class DataStorageService {
       this.baseUrl + 'group/update',
       {
         groupId:group.groupId,
-        name: group.name,
+        name: group.groupName,
         trainerId: group.trainerId
       },
       { headers: headers }

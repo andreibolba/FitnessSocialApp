@@ -18,7 +18,7 @@ import { EditGroupMembersDialogComponent } from '../edit-group-members-dialog/ed
 })
 export class GroupsComponent {
   displayedColumns: string[] = [
-    'name',
+    'groupName',
     'trainer',
     'membersCount',
     'editMembers',

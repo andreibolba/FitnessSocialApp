@@ -80,7 +80,7 @@ export class EditGroupDialogComponent implements OnInit, OnDestroy {
             this.currentId=this.trainers[0].TrainerId;
           } else {
             this.opration = 'Edit';
-            this.groupData.groupName = this.group.name;
+            this.groupData.groupName = this.group.groupName;
             this.currentId=this.group?.trainer.personId;
 
             let index=this.trainers.findIndex(g=>g.TrainerId==this.group?.trainer.personId);
@@ -105,7 +105,7 @@ export class EditGroupDialogComponent implements OnInit, OnDestroy {
 
   onSignUpSubmit(form: NgForm) {
     let group = new Group();
-    group.name = form.value.groupName;
+    group.groupName = form.value.groupName;
     group.trainerId = this.currentId;
 
     if (this.opration == 'Add') {

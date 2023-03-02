@@ -1,9 +1,15 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "dTGhMSGC3veighK57O3huWtZixLB8YQSUR7MpsAIi21rOY1EB+XbtEV3ZFjllRXjHq9hzgsM0+T9lQ7yRmEVpw==",
+=======
+  "dgSpecHash": "uiB8Hdk/gX5pTFKsEvsFy2i+0gRqfxRt9WeZoCfU1aQ+ZluliwXJl+WodWGqT3kTsKxu9wJgmD4IoSj8sxBgqQ==",
+>>>>>>> IH-5-Implement-Automapper
   "success": true,
   "projectFilePath": "F:\\InternShipApp\\API\\API.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\andrei.bolba\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
+    "C:\\Users\\andrei.bolba\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.0\\automapper.extensions.microsoft.dependencyinjection.12.0.0.nupkg.sha512",
     "C:\\Users\\andrei.bolba\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\andrei.bolba\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",
     "C:\\Users\\andrei.bolba\\.nuget\\packages\\fluentmigrator\\3.3.2\\fluentmigrator.3.3.2.nupkg.sha512",
@@ -31,7 +37,7 @@
     "C:\\Users\\andrei.bolba\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\7.0.2\\microsoft.aspnetcore.authentication.jwtbearer.7.0.2.nupkg.sha512",
     "C:\\Users\\andrei.bolba\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.2\\microsoft.aspnetcore.openapi.7.0.2.nupkg.sha512",
     "C:\\Users\\andrei.bolba\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
-    "C:\\Users\\andrei.bolba\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\andrei.bolba\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\andrei.bolba\\.nuget\\packages\\microsoft.data.sqlclient\\5.0.1\\microsoft.data.sqlclient.5.0.1.nupkg.sha512",
     "C:\\Users\\andrei.bolba\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\5.0.1\\microsoft.data.sqlclient.sni.runtime.5.0.1.nupkg.sha512",
     "C:\\Users\\andrei.bolba\\.nuget\\packages\\microsoft.entityframeworkcore\\7.0.2\\microsoft.entityframeworkcore.7.0.2.nupkg.sha512",

@@ -3,6 +3,7 @@ using System.Text;
 using API.Dtos;
 using API.Interfaces;
 using API.Models;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,15 +15,17 @@ namespace API.Controllers
 
         private readonly InternShipAppSystemContext _context;
         private readonly ITokenService _tokenService;
+        private readonly IMapper _mapper;
 
-        public AccountController(InternShipAppSystemContext context, ITokenService tokenService)
+        public AccountController(InternShipAppSystemContext context, ITokenService tokenService, IMapper mapper)
         {
-            _tokenService = tokenService;
             _context = context;
+            _tokenService = tokenService;
+            _mapper = mapper;
         }
 
         [HttpPost("register")]
-        public async Task<ActionResult> Register([FromBody] PersonRegisterDto person)
+        public async Task<ActionResult> Register([FromBody] PersonDto person)
         {
 
             if (Utils.Utils.UsernameExists(person.Username, _context))
@@ -81,7 +84,7 @@ namespace API.Controllers
         }
 
         [HttpPost("login")]
-        public async Task<ActionResult<PersonDto>> LogIn([FromBody] PersonLogInDto person)
+        public async Task<ActionResult<PersonDto>> LogIn([FromBody] PersonDto person)
         {
             var loggedPerson = await _context.People.SingleOrDefaultAsync(p => (p.Email == person.Email && p.Deleted == false));
             if (loggedPerson == null)

@@ -63,7 +63,7 @@ export class EditGroupMembersDialogComponent {
         .subscribe((res) => {
           res.forEach((element) => {
             this.options.unshift(
-              new CheckBox(element.internId,element.intern.firstName + " " + element.intern.lastName, element.intern.username,element.isChecked)
+              new CheckBox(element.internId,element.firstName + " " + element.lastName, element.username,element.isChecked)
             );
           });
         });

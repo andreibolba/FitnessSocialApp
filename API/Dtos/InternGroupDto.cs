@@ -7,8 +7,10 @@ namespace API.Dtos
 {
     public class InternGroupDto
     {
-        public LoggedPersonDto Intern { get; set; }
-        public int InternId { get; set; }
+        public int PersonId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Username { get; set; }
         public bool IsChecked { get; set; }
     }
 }

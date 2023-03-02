@@ -27,6 +27,17 @@ namespace API.Helpers
             .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Intern.Email))
             .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Intern.Status))
             .ForMember(dest => dest.BirthDate, opt => opt.MapFrom(src => src.Intern.BirthDate));
+
+
+
+            CreateMap<PersonDto, Person>()
+                .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
+            CreateMap<GroupDto, Group>()
+                .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
+            CreateMap<InternGroupDto, InternGroup>()
+                .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
+            CreateMap<LoggingDto, Logging>()
+                .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
         }
     }
 }

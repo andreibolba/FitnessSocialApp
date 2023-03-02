@@ -125,7 +125,7 @@ namespace API.Controllers
             var personToDelete = _context.People.SingleOrDefault(p => p.PersonId == personId);
             personToDelete.Deleted = true;
             _context.People.Update(personToDelete);
-            var allGroup = _context.InternGroups.ToList();
+            var allGroup = _context.InternGroups.ToList().Where(gi=>gi.InternId==personId);
             foreach (var a in allGroup)
             {
                 a.Deleted = true;

@@ -138,19 +138,13 @@ namespace API.Controllers
         [HttpPost("update")]
         public ActionResult UpdateAccount([FromBody] PersonDto person)
         {
-            var personToUpdate = _context.People.SingleOrDefault(p => p.PersonId == person.PersonId);
+            var personToUpdate = _mapper.Map<Person>(person);
             if (Utils.Utils.UsernameExists(person.Username, _context) && person.Username != personToUpdate.Username)
                 return BadRequest("Username exists!");
 
             if (Utils.Utils.EmailExists(person.Email, _context) && person.Email != personToUpdate.Email)
                 return BadRequest("Email exists!");
 
-            personToUpdate.FirstName = person.FirstName;
-            personToUpdate.LastName = person.LastName;
-            personToUpdate.Email = person.Email;
-            personToUpdate.Username = person.Username;
-            personToUpdate.Status = person.Status;
-            personToUpdate.BirthDate = person.BirthDate;
             _context.People.Update(personToUpdate);
             _context.SaveChanges();
             return Ok();

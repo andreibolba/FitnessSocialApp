@@ -50,12 +50,7 @@ namespace API.Controllers
             {
                 var gi = _context.InternGroups.FirstOrDefault(gi => gi.InternId == id && gi.GroupId == groupId);
                 if (gi == null)
-                    _context.InternGroups.Add(new InternGroup
-                    {
-                        GroupId = groupId,
-                        InternId = id,
-                        Deleted = false
-                    });
+                    _context.InternGroups.Add(_mapper.Map<InternGroup>(gi));
                 else
                 {
                     gi.Deleted = false;

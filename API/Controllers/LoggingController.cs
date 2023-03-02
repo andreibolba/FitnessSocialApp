@@ -17,17 +17,11 @@ namespace API.Controllers
         }
 
         [HttpPost("log")]
-        public async void Log([FromBody] LoggingDto logDto){
-            Logging log=new Logging{
-                LogType=logDto.LogType,
-                LogMessage=logDto.LogMessage,
-                PersonUsername=logDto.PersonUsername,
-                DateOfLog=logDto.DateOfLog,
-                Deleted=false
-            };
+        public void Log([FromBody] LoggingDto logDto){
+            Logging log = _mapper.Map<Logging>(logDto);
 
             _context.Loggings.Add(log);
-            await _context.SaveChangesAsync();
+            _context.SaveChanges();
         }
 
         [HttpGet]

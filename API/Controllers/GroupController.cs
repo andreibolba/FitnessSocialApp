@@ -31,12 +31,7 @@ namespace API.Controllers
         [HttpPost("add")]
         public ActionResult AddGroup([FromBody] GroupDto group)
         {
-            Group newGroup = new Group
-            {
-                GroupName = group.GroupName,
-                TrainerId = group.TrainerId,
-                Deleted = false
-            };
+            Group newGroup = _mapper.Map<Group>(group);
             _context.Groups.Add(newGroup);
             _context.SaveChanges();
             return Ok();

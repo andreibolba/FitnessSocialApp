@@ -35,19 +35,10 @@ namespace API.Controllers
                 return BadRequest("Email exists!");
 
             using var hmac = new HMACSHA512();
+            person.PasswordHash=hmac.ComputeHash(Encoding.UTF8.GetBytes(Utils.Utils.CreatePassword(20)));
+            person.PasswordSalt=hmac.Key;
 
-            Person newPerson = new Person
-            {
-                FirstName = person.FirstName,
-                LastName = person.LastName,
-                Email = person.Email,
-                Username = person.Username,
-                PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(Utils.Utils.CreatePassword(20))),
-                PasswordSalt = hmac.Key,
-                BirthDate = person.BirthDate,
-                Status = person.Status,
-                Deleted = false
-            };
+            Person newPerson = _mapper.Map<Person>(person);
 
             _context.People.Add(newPerson);
             await _context.SaveChangesAsync();
@@ -80,7 +71,7 @@ namespace API.Controllers
             if (Utils.Utils.SendEmail(details))
                 return Ok();
             else
-                return BadRequest("Account was created but the mail was not sent!");
+                return BadRequest("Account was created, but the mail was not sent!");
         }
 
         [HttpPost("login")]

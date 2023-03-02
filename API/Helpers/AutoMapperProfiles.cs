@@ -1,6 +1,9 @@
 using AutoMapper;
 using API.Models;
 using API.Dtos;
+using System.Security.Cryptography;
+using System.Text;
+using System.Diagnostics;
 
 namespace API.Helpers
 {
@@ -27,7 +30,6 @@ namespace API.Helpers
             .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Intern.Email))
             .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Intern.Status))
             .ForMember(dest => dest.BirthDate, opt => opt.MapFrom(src => src.Intern.BirthDate));
-
 
 
             CreateMap<PersonDto, Person>()

@@ -13,11 +13,7 @@
   "ProjectWorkspaceState": {
     "TagHelpers": [
       {
-<<<<<<< HEAD
-        "HashCode": 1295205599,
-=======
-        "HashCode": 1901580168,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1389946004,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -101,11 +97,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -2101912402,
-=======
-        "HashCode": -1856068416,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1132906837,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -190,11 +182,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 148215123,
-=======
-        "HashCode": 1268952961,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -364376882,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView.NotAuthorized",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -227,11 +215,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1121823622,
-=======
-        "HashCode": 292944190,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 2093854303,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView.NotAuthorized",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -265,11 +249,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1671336762,
-=======
-        "HashCode": 1869333834,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1005006693,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView.Authorizing",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -290,11 +270,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 141824989,
-=======
-        "HashCode": 1218279752,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -490266944,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView.Authorizing",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -316,11 +292,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 754205177,
-=======
-        "HashCode": -1058828258,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1592777534,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeView",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -425,11 +397,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 69084072,
-=======
-        "HashCode": 778787122,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -883241649,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeView",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -535,11 +503,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -2125674804,
-=======
-        "HashCode": 394162485,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1685527270,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeView.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -572,11 +536,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1557018820,
-=======
-        "HashCode": -1493818924,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1727756118,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeView.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -610,11 +570,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 655748719,
-=======
-        "HashCode": 902473033,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1298822705,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeView.NotAuthorized",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -647,11 +603,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1468831486,
-=======
-        "HashCode": -831693033,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1955642423,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeView.NotAuthorized",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -685,11 +637,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 871772568,
-=======
-        "HashCode": -1958599054,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -150346215,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeView.Authorized",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -722,11 +670,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1198692163,
-=======
-        "HashCode": 1800866117,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1083105867,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeView.Authorized",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -760,11 +704,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1693764361,
-=======
-        "HashCode": -300258149,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -394335573,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeView.Authorizing",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -785,11 +725,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 791695533,
-=======
-        "HashCode": -336456111,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 940701198,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeView.Authorizing",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -811,11 +747,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1061939848,
-=======
-        "HashCode": 353007534,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -700688540,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -846,11 +778,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -950335329,
-=======
-        "HashCode": 1254916942,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1421034853,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -882,11 +810,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1457526658,
-=======
-        "HashCode": -530546438,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 834198587,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -907,11 +831,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1306963977,
-=======
-        "HashCode": -1546445446,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -325518837,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -933,11 +853,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1078953214,
-=======
-        "HashCode": -1553578819,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -366753771,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.CascadingValue<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1012,11 +928,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 162976538,
-=======
-        "HashCode": -1337550555,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1815695364,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.CascadingValue<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1092,11 +1004,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1692237761,
-=======
-        "HashCode": -1404154819,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1729579541,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.CascadingValue<TValue>.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1117,11 +1025,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -699548281,
-=======
-        "HashCode": 1708151563,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1558647095,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.CascadingValue<TValue>.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1143,11 +1047,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 823860776,
-=======
-        "HashCode": 183994608,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -518701459,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.DynamicComponent",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1189,11 +1089,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -127525897,
-=======
-        "HashCode": -1001647256,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 2033984348,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.DynamicComponent",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1236,11 +1132,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -391154444,
-=======
-        "HashCode": 2058730038,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -784720844,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.LayoutView",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1282,11 +1174,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 961579171,
-=======
-        "HashCode": 810055116,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1910518334,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.LayoutView",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1329,11 +1217,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1930163941,
-=======
-        "HashCode": -473484343,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1814858566,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.LayoutView.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1354,11 +1238,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 946446540,
-=======
-        "HashCode": -574866066,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -507236160,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.LayoutView.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1380,11 +1260,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -2003237466,
-=======
-        "HashCode": 509411556,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 2134928747,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.RouteView",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1426,11 +1302,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1649444350,
-=======
-        "HashCode": -1219720219,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 61408157,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.RouteView",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1473,11 +1345,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1392119320,
-=======
-        "HashCode": 770774877,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1897318626,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Routing.Router",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1585,11 +1453,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1221956370,
-=======
-        "HashCode": -1839969486,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -795931024,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Routing.Router",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1698,11 +1562,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -756190136,
-=======
-        "HashCode": -550569565,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1732287091,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Routing.Router.NotFound",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1723,11 +1583,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1428539869,
-=======
-        "HashCode": -204238344,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1826479025,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Routing.Router.NotFound",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1749,11 +1605,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -639959658,
-=======
-        "HashCode": 165214869,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1095786386,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Routing.Router.Found",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1786,11 +1638,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1581665831,
-=======
-        "HashCode": -395948398,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1416666875,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Routing.Router.Found",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1824,11 +1672,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -375851638,
-=======
-        "HashCode": -382328186,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1683699640,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Routing.Router.Navigating",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1849,11 +1693,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 701501817,
-=======
-        "HashCode": 1897225267,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -437336215,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Routing.Router.Navigating",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1875,11 +1715,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -345983909,
-=======
-        "HashCode": 53319477,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 965143893,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator",
         "AssemblyName": "Microsoft.AspNetCore.Components.Forms",
@@ -1898,11 +1734,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -537552025,
-=======
-        "HashCode": -1942491404,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1542151211,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator",
         "AssemblyName": "Microsoft.AspNetCore.Components.Forms",
@@ -1922,11 +1754,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 521714397,
-=======
-        "HashCode": 2056255402,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 49178297,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.EditForm",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -2031,11 +1859,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1807104046,
-=======
-        "HashCode": 1711372345,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1801767277,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.EditForm",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -2141,11 +1965,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -42048609,
-=======
-        "HashCode": -2040185773,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1113543139,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Forms.EditForm.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -2178,11 +1998,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1763070651,
-=======
-        "HashCode": -1248858135,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1358507000,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Forms.EditForm.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -2216,11 +2032,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 49570792,
-=======
-        "HashCode": 146508446,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -2083028381,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputCheckbox",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -2292,11 +2104,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1884777138,
-=======
-        "HashCode": -1024065190,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 594212032,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputCheckbox",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -2369,11 +2177,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -109983454,
-=======
-        "HashCode": -1034112077,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1607827845,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputDate<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -2481,11 +2285,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -888151358,
-=======
-        "HashCode": -1803572293,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 249922474,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputDate<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -2594,11 +2394,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1534670649,
-=======
-        "HashCode": -80893379,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1964714413,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputFile",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -2640,11 +2436,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -56669522,
-=======
-        "HashCode": -654174657,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -817245721,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputFile",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -2687,11 +2479,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 171675330,
-=======
-        "HashCode": 1421004669,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1484663342,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputNumber<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -2788,11 +2576,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1687992921,
-=======
-        "HashCode": -327620360,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1013365942,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputNumber<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -2890,11 +2674,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -647624156,
-=======
-        "HashCode": -1956489865,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -173152851,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputRadio<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -2958,11 +2738,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 488210424,
-=======
-        "HashCode": -859788203,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 106819665,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputRadio<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3027,11 +2803,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1237835682,
-=======
-        "HashCode": -557200543,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1795783902,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputRadioGroup<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3139,11 +2911,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1937772228,
-=======
-        "HashCode": 1794628118,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -315172126,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputRadioGroup<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3252,11 +3020,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -901863452,
-=======
-        "HashCode": -1989501905,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1376769263,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputRadioGroup<TValue>.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3277,11 +3041,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 280292479,
-=======
-        "HashCode": 1786046213,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1466643236,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputRadioGroup<TValue>.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3303,11 +3063,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1757318047,
-=======
-        "HashCode": -725279266,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1953640574,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputSelect<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3405,11 +3161,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 425099969,
-=======
-        "HashCode": -1814871739,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1404882981,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputSelect<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3508,11 +3260,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1130044468,
-=======
-        "HashCode": -527199124,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1898134836,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputSelect<TValue>.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3533,11 +3281,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1511698107,
-=======
-        "HashCode": 1192718327,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 296463956,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputSelect<TValue>.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3559,11 +3303,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 109263737,
-=======
-        "HashCode": -1515188823,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 964989255,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputText",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3635,11 +3375,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1639729661,
-=======
-        "HashCode": 2003779587,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 206849696,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputText",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3712,11 +3448,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -289836776,
-=======
-        "HashCode": 652324637,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1324827138,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputTextArea",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3788,11 +3520,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -596983369,
-=======
-        "HashCode": -48894451,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1465286801,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputTextArea",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3865,11 +3593,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1900260282,
-=======
-        "HashCode": 267274288,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 771813688,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.ValidationMessage<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3923,11 +3647,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1785108927,
-=======
-        "HashCode": 848458032,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -261463388,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.ValidationMessage<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3982,11 +3702,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1009376269,
-=======
-        "HashCode": 1591329893,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -742332839,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.ValidationSummary",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4027,11 +3743,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 129768977,
-=======
-        "HashCode": -1902381572,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -917518479,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.ValidationSummary",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4073,11 +3785,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 16962879,
-=======
-        "HashCode": 548584483,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1043520408,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Routing.FocusOnNavigate",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4118,11 +3826,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 597751073,
-=======
-        "HashCode": 1508727678,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1296018602,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Routing.FocusOnNavigate",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4164,11 +3868,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1168554828,
-=======
-        "HashCode": 1789595554,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 55966971,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Routing.NavigationLock",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4210,11 +3910,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1102654506,
-=======
-        "HashCode": -302525378,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1605754255,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Routing.NavigationLock",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4257,11 +3953,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -369369575,
-=======
-        "HashCode": 946792405,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1910663914,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Routing.NavLink",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4324,11 +4016,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -639932754,
-=======
-        "HashCode": -1935795433,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1542777635,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Routing.NavLink",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4392,11 +4080,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1241126185,
-=======
-        "HashCode": -12790631,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1071697601,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Routing.NavLink.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4417,11 +4101,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -806421238,
-=======
-        "HashCode": 132436611,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1499108632,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Routing.NavLink.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4443,11 +4123,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 2041376091,
-=======
-        "HashCode": 496703968,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 688798598,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Web.HeadContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4479,11 +4155,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1195927165,
-=======
-        "HashCode": 519791569,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 2061669489,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Web.HeadContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4516,11 +4188,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1111162359,
-=======
-        "HashCode": 1979891074,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 448362987,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.HeadContent.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4541,11 +4209,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -982935477,
-=======
-        "HashCode": -1193178939,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1092801517,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.HeadContent.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4567,11 +4231,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1109617580,
-=======
-        "HashCode": -1128841437,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 31281222,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Web.HeadOutlet",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4590,11 +4250,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1583509868,
-=======
-        "HashCode": -2107183018,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1697005063,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Web.HeadOutlet",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4614,11 +4270,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -426871862,
-=======
-        "HashCode": -40546803,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -315545299,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Web.PageTitle",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4650,11 +4302,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 978621468,
-=======
-        "HashCode": 1954160811,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1910328374,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Web.PageTitle",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4687,11 +4335,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1886916780,
-=======
-        "HashCode": 923298391,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1833144962,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.PageTitle.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4712,11 +4356,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 31195934,
-=======
-        "HashCode": 1771214248,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 2015903485,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.PageTitle.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4738,11 +4378,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -685836930,
-=======
-        "HashCode": -999276610,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1752659676,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Web.ErrorBoundary",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4805,11 +4441,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 497777451,
-=======
-        "HashCode": -1919522087,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 805563522,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Web.ErrorBoundary",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4873,11 +4505,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1865439663,
-=======
-        "HashCode": 1075782512,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1178412986,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.ErrorBoundary.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4898,11 +4526,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 208972476,
-=======
-        "HashCode": 236732809,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 659663874,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.ErrorBoundary.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4924,11 +4548,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 2097398484,
-=======
-        "HashCode": -270287703,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 876656724,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.ErrorBoundary.ErrorContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4961,11 +4581,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1810228922,
-=======
-        "HashCode": 1384076837,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1213604890,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.ErrorBoundary.ErrorContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4999,11 +4615,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -312151663,
-=======
-        "HashCode": -998764879,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1165634060,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize<TItem>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -5135,11 +4747,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 34099225,
-=======
-        "HashCode": -1761341764,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -83089781,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize<TItem>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -5272,11 +4880,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 831462690,
-=======
-        "HashCode": 2066695743,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1700026017,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize<TItem>.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -5309,11 +4913,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1771872908,
-=======
-        "HashCode": -757038024,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1113743375,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize<TItem>.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -5347,11 +4947,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1319458743,
-=======
-        "HashCode": -296505856,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1502419249,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize<TItem>.ItemContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -5384,11 +4980,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 317612955,
-=======
-        "HashCode": -752403930,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -381481790,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize<TItem>.ItemContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -5422,11 +5014,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -939542201,
-=======
-        "HashCode": -2100225488,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1807236922,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize<TItem>.Placeholder",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -5459,11 +5047,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -2114677466,
-=======
-        "HashCode": -211251087,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 510601129,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize<TItem>.Placeholder",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -5497,11 +5081,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 2133556316,
-=======
-        "HashCode": 2126503916,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -731109093,
         "Kind": "Components.EventHandler",
         "Name": "onfocus",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -5584,11 +5164,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -739233942,
-=======
-        "HashCode": 2028355227,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -371738498,
         "Kind": "Components.EventHandler",
         "Name": "onblur",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -5671,11 +5247,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 916677549,
-=======
-        "HashCode": -1171197786,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1632933033,
         "Kind": "Components.EventHandler",
         "Name": "onfocusin",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -5758,11 +5330,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1497311903,
-=======
-        "HashCode": 1607016094,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1301084601,
         "Kind": "Components.EventHandler",
         "Name": "onfocusout",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -5845,11 +5413,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 555047126,
-=======
-        "HashCode": -750935855,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -2002068000,
         "Kind": "Components.EventHandler",
         "Name": "onmouseover",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -5932,11 +5496,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1084180468,
-=======
-        "HashCode": -647391619,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -146397180,
         "Kind": "Components.EventHandler",
         "Name": "onmouseout",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -6019,11 +5579,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1519386659,
-=======
-        "HashCode": -786479029,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 187252632,
         "Kind": "Components.EventHandler",
         "Name": "onmouseleave",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -6106,11 +5662,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1311986039,
-=======
-        "HashCode": 484523408,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 915257271,
         "Kind": "Components.EventHandler",
         "Name": "onmouseenter",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -6193,11 +5745,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 363260935,
-=======
-        "HashCode": -33134387,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -674648901,
         "Kind": "Components.EventHandler",
         "Name": "onmousemove",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -6280,11 +5828,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -180832003,
-=======
-        "HashCode": 2070819611,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1202320721,
         "Kind": "Components.EventHandler",
         "Name": "onmousedown",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -6367,11 +5911,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -680774251,
-=======
-        "HashCode": -1329126820,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 820612381,
         "Kind": "Components.EventHandler",
         "Name": "onmouseup",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -6454,11 +5994,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -874098743,
-=======
-        "HashCode": 810683999,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -2137619832,
         "Kind": "Components.EventHandler",
         "Name": "onclick",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -6541,11 +6077,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 343648070,
-=======
-        "HashCode": 1943321376,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 623825329,
         "Kind": "Components.EventHandler",
         "Name": "ondblclick",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -6628,11 +6160,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1604428922,
-=======
-        "HashCode": -731771655,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1227625708,
         "Kind": "Components.EventHandler",
         "Name": "onwheel",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -6715,11 +6243,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -628683339,
-=======
-        "HashCode": -770814706,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1417778849,
         "Kind": "Components.EventHandler",
         "Name": "onmousewheel",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -6802,11 +6326,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 929649911,
-=======
-        "HashCode": -1374311167,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1727764924,
         "Kind": "Components.EventHandler",
         "Name": "oncontextmenu",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -6889,11 +6409,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1476201376,
-=======
-        "HashCode": -614041903,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -946026064,
         "Kind": "Components.EventHandler",
         "Name": "ondrag",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -6976,11 +6492,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1160555627,
-=======
-        "HashCode": 730724291,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1156643487,
         "Kind": "Components.EventHandler",
         "Name": "ondragend",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -7063,11 +6575,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 371838552,
-=======
-        "HashCode": 438670089,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 618382539,
         "Kind": "Components.EventHandler",
         "Name": "ondragenter",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -7150,11 +6658,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1395627738,
-=======
-        "HashCode": -186222682,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1560031994,
         "Kind": "Components.EventHandler",
         "Name": "ondragleave",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -7237,11 +6741,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1714480781,
-=======
-        "HashCode": 567954424,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 760118920,
         "Kind": "Components.EventHandler",
         "Name": "ondragover",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -7324,11 +6824,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 648839203,
-=======
-        "HashCode": 964048548,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 103218374,
         "Kind": "Components.EventHandler",
         "Name": "ondragstart",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -7411,11 +6907,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1302849484,
-=======
-        "HashCode": 2143779805,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -356403650,
         "Kind": "Components.EventHandler",
         "Name": "ondrop",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -7498,11 +6990,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1714157602,
-=======
-        "HashCode": -1323622584,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1212781649,
         "Kind": "Components.EventHandler",
         "Name": "onkeydown",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -7585,11 +7073,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 97230595,
-=======
-        "HashCode": -365145530,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1635884019,
         "Kind": "Components.EventHandler",
         "Name": "onkeyup",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -7672,11 +7156,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -465332506,
-=======
-        "HashCode": 1435000865,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -707026805,
         "Kind": "Components.EventHandler",
         "Name": "onkeypress",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -7759,11 +7239,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -573921986,
-=======
-        "HashCode": -837868245,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 734995700,
         "Kind": "Components.EventHandler",
         "Name": "onchange",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -7846,11 +7322,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1739831246,
-=======
-        "HashCode": -1960297723,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -501730345,
         "Kind": "Components.EventHandler",
         "Name": "oninput",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -7933,11 +7405,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1225257421,
-=======
-        "HashCode": -135512068,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -126925900,
         "Kind": "Components.EventHandler",
         "Name": "oninvalid",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -8020,11 +7488,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1971942476,
-=======
-        "HashCode": -321411104,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1741545613,
         "Kind": "Components.EventHandler",
         "Name": "onreset",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -8107,11 +7571,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1302904395,
-=======
-        "HashCode": -1772690652,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1400631158,
         "Kind": "Components.EventHandler",
         "Name": "onselect",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -8194,11 +7654,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1487384784,
-=======
-        "HashCode": -882650173,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1845614286,
         "Kind": "Components.EventHandler",
         "Name": "onselectstart",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -8281,11 +7737,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -593369592,
-=======
-        "HashCode": 300620096,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 839223402,
         "Kind": "Components.EventHandler",
         "Name": "onselectionchange",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -8368,11 +7820,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 682124743,
-=======
-        "HashCode": 473506547,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1791853780,
         "Kind": "Components.EventHandler",
         "Name": "onsubmit",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -8455,11 +7903,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1269125257,
-=======
-        "HashCode": -1405357707,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -69702294,
         "Kind": "Components.EventHandler",
         "Name": "onbeforecopy",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -8542,11 +7986,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 462836069,
-=======
-        "HashCode": -1573633970,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1418785915,
         "Kind": "Components.EventHandler",
         "Name": "onbeforecut",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -8629,11 +8069,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 839947291,
-=======
-        "HashCode": -218318184,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1222304984,
         "Kind": "Components.EventHandler",
         "Name": "onbeforepaste",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -8716,11 +8152,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -295341149,
-=======
-        "HashCode": -150510103,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1576544026,
         "Kind": "Components.EventHandler",
         "Name": "oncopy",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -8803,11 +8235,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 962429862,
-=======
-        "HashCode": -1128176876,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1229539891,
         "Kind": "Components.EventHandler",
         "Name": "oncut",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -8890,11 +8318,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 106829782,
-=======
-        "HashCode": -1791153878,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 528987374,
         "Kind": "Components.EventHandler",
         "Name": "onpaste",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -8977,11 +8401,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -915012677,
-=======
-        "HashCode": 1535280805,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 2137515071,
         "Kind": "Components.EventHandler",
         "Name": "ontouchcancel",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -9064,11 +8484,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -451617125,
-=======
-        "HashCode": -1728367639,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 53579483,
         "Kind": "Components.EventHandler",
         "Name": "ontouchend",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -9151,11 +8567,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -279944896,
-=======
-        "HashCode": -1417472266,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -2095252012,
         "Kind": "Components.EventHandler",
         "Name": "ontouchmove",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -9238,11 +8650,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 978527504,
-=======
-        "HashCode": 382425389,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 2143395647,
         "Kind": "Components.EventHandler",
         "Name": "ontouchstart",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -9325,11 +8733,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1601525715,
-=======
-        "HashCode": 2109915086,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1204392930,
         "Kind": "Components.EventHandler",
         "Name": "ontouchenter",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -9412,11 +8816,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 419744885,
-=======
-        "HashCode": -955859040,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1006230770,
         "Kind": "Components.EventHandler",
         "Name": "ontouchleave",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -9499,11 +8899,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1387029814,
-=======
-        "HashCode": -1971175521,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 300584501,
         "Kind": "Components.EventHandler",
         "Name": "ongotpointercapture",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -9586,11 +8982,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1780427002,
-=======
-        "HashCode": 2110325633,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1780020869,
         "Kind": "Components.EventHandler",
         "Name": "onlostpointercapture",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -9673,11 +9065,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 76561720,
-=======
-        "HashCode": -1914092341,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 951561773,
         "Kind": "Components.EventHandler",
         "Name": "onpointercancel",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -9760,11 +9148,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1828222308,
-=======
-        "HashCode": 233422842,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -246348560,
         "Kind": "Components.EventHandler",
         "Name": "onpointerdown",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -9847,11 +9231,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1798860163,
-=======
-        "HashCode": 70296583,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1034884349,
         "Kind": "Components.EventHandler",
         "Name": "onpointerenter",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -9934,11 +9314,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1279201241,
-=======
-        "HashCode": -1772585044,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -271958412,
         "Kind": "Components.EventHandler",
         "Name": "onpointerleave",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -10021,11 +9397,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1206123314,
-=======
-        "HashCode": -789845511,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1618352390,
         "Kind": "Components.EventHandler",
         "Name": "onpointermove",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -10108,11 +9480,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1854717678,
-=======
-        "HashCode": -216925567,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -77060905,
         "Kind": "Components.EventHandler",
         "Name": "onpointerout",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -10195,11 +9563,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1065803861,
-=======
-        "HashCode": -1534406703,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 677204102,
         "Kind": "Components.EventHandler",
         "Name": "onpointerover",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -10282,11 +9646,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1546419406,
-=======
-        "HashCode": 855856993,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -600537903,
         "Kind": "Components.EventHandler",
         "Name": "onpointerup",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -10369,11 +9729,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -792585993,
-=======
-        "HashCode": -1966102993,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 708371017,
         "Kind": "Components.EventHandler",
         "Name": "oncanplay",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -10456,11 +9812,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 46021176,
-=======
-        "HashCode": -59421906,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 649185865,
         "Kind": "Components.EventHandler",
         "Name": "oncanplaythrough",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -10543,11 +9895,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1426368624,
-=======
-        "HashCode": 2050978267,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 282564527,
         "Kind": "Components.EventHandler",
         "Name": "oncuechange",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -10630,11 +9978,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1697451944,
-=======
-        "HashCode": -1277728228,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1813373267,
         "Kind": "Components.EventHandler",
         "Name": "ondurationchange",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -10717,11 +10061,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -24750387,
-=======
-        "HashCode": 528048091,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 41809229,
         "Kind": "Components.EventHandler",
         "Name": "onemptied",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -10804,11 +10144,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 16163553,
-=======
-        "HashCode": 1944653398,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 972175161,
         "Kind": "Components.EventHandler",
         "Name": "onpause",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -10891,11 +10227,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1794053914,
-=======
-        "HashCode": -1163904053,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 49859050,
         "Kind": "Components.EventHandler",
         "Name": "onplay",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -10978,11 +10310,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 2129972336,
-=======
-        "HashCode": 549497599,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -2032566555,
         "Kind": "Components.EventHandler",
         "Name": "onplaying",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -11065,11 +10393,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1545004812,
-=======
-        "HashCode": -850296111,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 998503973,
         "Kind": "Components.EventHandler",
         "Name": "onratechange",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -11152,11 +10476,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1405476580,
-=======
-        "HashCode": 1070634141,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 306010635,
         "Kind": "Components.EventHandler",
         "Name": "onseeked",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -11239,11 +10559,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 974355786,
-=======
-        "HashCode": -1930239648,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1962609117,
         "Kind": "Components.EventHandler",
         "Name": "onseeking",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -11326,11 +10642,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 808429794,
-=======
-        "HashCode": 949019381,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 2132684974,
         "Kind": "Components.EventHandler",
         "Name": "onstalled",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -11413,11 +10725,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 2030979212,
-=======
-        "HashCode": -1911532555,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1201850365,
         "Kind": "Components.EventHandler",
         "Name": "onstop",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -11500,11 +10808,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -205495451,
-=======
-        "HashCode": 393238839,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 2109355953,
         "Kind": "Components.EventHandler",
         "Name": "onsuspend",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -11587,11 +10891,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1891218765,
-=======
-        "HashCode": -1464024321,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 717486757,
         "Kind": "Components.EventHandler",
         "Name": "ontimeupdate",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -11674,11 +10974,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 835191931,
-=======
-        "HashCode": -864896446,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1878400036,
         "Kind": "Components.EventHandler",
         "Name": "onvolumechange",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -11761,11 +11057,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -338243797,
-=======
-        "HashCode": 1138150829,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -506121326,
         "Kind": "Components.EventHandler",
         "Name": "onwaiting",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -11848,11 +11140,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1474550889,
-=======
-        "HashCode": 1471323078,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 278084839,
         "Kind": "Components.EventHandler",
         "Name": "onloadstart",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -11935,11 +11223,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -551095648,
-=======
-        "HashCode": 1012519237,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -2074921024,
         "Kind": "Components.EventHandler",
         "Name": "ontimeout",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -12022,11 +11306,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1976767796,
-=======
-        "HashCode": 1643879442,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -380681235,
         "Kind": "Components.EventHandler",
         "Name": "onabort",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -12109,11 +11389,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -2007902880,
-=======
-        "HashCode": 1007259317,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1384228056,
         "Kind": "Components.EventHandler",
         "Name": "onload",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -12196,11 +11472,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1954459223,
-=======
-        "HashCode": 942727418,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 414737856,
         "Kind": "Components.EventHandler",
         "Name": "onloadend",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -12283,11 +11555,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1780349171,
-=======
-        "HashCode": -106846424,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1751132060,
         "Kind": "Components.EventHandler",
         "Name": "onprogress",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -12370,11 +11638,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -468372202,
-=======
-        "HashCode": -408718076,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -2114045082,
         "Kind": "Components.EventHandler",
         "Name": "onerror",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -12457,11 +11721,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1120368221,
-=======
-        "HashCode": -315131243,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -915847753,
         "Kind": "Components.EventHandler",
         "Name": "onactivate",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -12544,11 +11804,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -331938714,
-=======
-        "HashCode": 1580817789,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 176231466,
         "Kind": "Components.EventHandler",
         "Name": "onbeforeactivate",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -12631,11 +11887,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -374268562,
-=======
-        "HashCode": 869707651,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1223475936,
         "Kind": "Components.EventHandler",
         "Name": "onbeforedeactivate",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -12718,11 +11970,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -874182398,
-=======
-        "HashCode": -32733229,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 397241468,
         "Kind": "Components.EventHandler",
         "Name": "ondeactivate",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -12805,11 +12053,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -981903712,
-=======
-        "HashCode": -1128239846,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 859210017,
         "Kind": "Components.EventHandler",
         "Name": "onended",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -12892,11 +12136,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1019122829,
-=======
-        "HashCode": 1792927814,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1879005510,
         "Kind": "Components.EventHandler",
         "Name": "onfullscreenchange",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -12979,11 +12219,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1642255063,
-=======
-        "HashCode": 2129283890,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1581689172,
         "Kind": "Components.EventHandler",
         "Name": "onfullscreenerror",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -13066,11 +12302,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -362689411,
-=======
-        "HashCode": 1665685614,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -595966822,
         "Kind": "Components.EventHandler",
         "Name": "onloadeddata",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -13153,11 +12385,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -42783578,
-=======
-        "HashCode": 532224426,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -301050387,
         "Kind": "Components.EventHandler",
         "Name": "onloadedmetadata",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -13240,11 +12468,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1371594186,
-=======
-        "HashCode": 936712951,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 2040453734,
         "Kind": "Components.EventHandler",
         "Name": "onpointerlockchange",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -13327,11 +12551,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -2079781459,
-=======
-        "HashCode": -1547666802,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1839141398,
         "Kind": "Components.EventHandler",
         "Name": "onpointerlockerror",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -13414,11 +12634,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -511736902,
-=======
-        "HashCode": -121945148,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1327495932,
         "Kind": "Components.EventHandler",
         "Name": "onreadystatechange",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -13501,11 +12717,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1401412874,
-=======
-        "HashCode": 1794196375,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1196621844,
         "Kind": "Components.EventHandler",
         "Name": "onscroll",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -13588,11 +12800,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1628216734,
-=======
-        "HashCode": -1090660520,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1794802340,
         "Kind": "Components.EventHandler",
         "Name": "ontoggle",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -13675,11 +12883,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1379243486,
-=======
-        "HashCode": -1462240022,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 273312229,
         "Kind": "Components.Splat",
         "Name": "Attributes",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -13718,11 +12922,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -223950779,
-=======
-        "HashCode": -11201652,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1241099061,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.Razor",
@@ -14039,11 +13239,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 2066126255,
-=======
-        "HashCode": -141900315,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 863998680,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -14242,11 +13438,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -2126981487,
-=======
-        "HashCode": -1425804845,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1247824735,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.CacheTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -14375,11 +13567,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 563317445,
-=======
-        "HashCode": -782077162,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -437677445,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -14436,11 +13624,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -508119217,
-=======
-        "HashCode": 1380110777,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1998038807,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.DistributedCacheTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -14574,11 +13758,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -236121056,
-=======
-        "HashCode": 732666139,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 2139795675,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.EnvironmentTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -14626,11 +13806,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 280940928,
-=======
-        "HashCode": 1635346897,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -763020327,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.FormActionTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -15049,11 +14225,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 2076104650,
-=======
-        "HashCode": -697014375,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 258608924,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.FormTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -15157,11 +14329,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -381966130,
-=======
-        "HashCode": -1635093711,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1380323677,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.ImageTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -15209,11 +14377,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1271592250,
-=======
-        "HashCode": -948556915,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1790286991,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -15285,11 +14449,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1416083119,
-=======
-        "HashCode": -1008535550,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1160329350,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.LabelTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -15324,11 +14484,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1691161380,
-=======
-        "HashCode": 1930271829,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1589976370,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -15526,11 +14682,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1937262537,
-=======
-        "HashCode": -1117070079,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -625247360,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.OptionTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -15560,11 +14712,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -107929742,
-=======
-        "HashCode": 205417536,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -2038710538,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.PartialTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -15647,11 +14795,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -2047560765,
-=======
-        "HashCode": -1558403735,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 77829139,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.PersistComponentStateTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -15682,11 +14826,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1667845001,
-=======
-        "HashCode": 282328164,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -286538926,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -15841,11 +14981,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 947033193,
-=======
-        "HashCode": -1066638146,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1319958329,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.SelectTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -15906,11 +15042,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -588683428,
-=======
-        "HashCode": -239802651,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -578790201,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.TextAreaTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -15954,11 +15086,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1352252155,
-=======
-        "HashCode": -832442555,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 67099185,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.ValidationMessageTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -15993,11 +15121,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -21911960,
-=======
-        "HashCode": -780850346,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1919380416,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.ValidationSummaryTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -16033,11 +15157,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1050683659,
-=======
-        "HashCode": 359834466,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1370838698,
         "Kind": "Components.Bind",
         "Name": "Bind",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -16133,11 +15253,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 796897681,
-=======
-        "HashCode": 325524248,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -270462744,
         "Kind": "Components.Bind",
         "Name": "Bind",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -16259,11 +15375,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1029666638,
-=======
-        "HashCode": 1098726846,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -2117028035,
         "Kind": "Components.Bind",
         "Name": "Bind_value",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -16385,11 +15497,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1560959231,
-=======
-        "HashCode": -1121732837,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1732760395,
         "Kind": "Components.Bind",
         "Name": "Bind",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -16522,11 +15630,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1657217789,
-=======
-        "HashCode": -1579392364,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -381259045,
         "Kind": "Components.Bind",
         "Name": "Bind",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -16659,11 +15763,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -2001573063,
-=======
-        "HashCode": 1604980474,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1185574217,
         "Kind": "Components.Bind",
         "Name": "Bind",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -16796,11 +15896,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1766218181,
-=======
-        "HashCode": 690829540,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 933539642,
         "Kind": "Components.Bind",
         "Name": "Bind_value",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -16933,11 +16029,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1358335147,
-=======
-        "HashCode": -503415810,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1451378762,
         "Kind": "Components.Bind",
         "Name": "Bind",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -17070,11 +16162,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -313193176,
-=======
-        "HashCode": -203914525,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1008997735,
         "Kind": "Components.Bind",
         "Name": "Bind_value",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -17207,11 +16295,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -754409736,
-=======
-        "HashCode": -1199572827,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -562604605,
         "Kind": "Components.Bind",
         "Name": "Bind",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -17344,11 +16428,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -684713702,
-=======
-        "HashCode": -739154738,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -857124094,
         "Kind": "Components.Bind",
         "Name": "Bind_value",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -17481,11 +16561,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -510983212,
-=======
-        "HashCode": -1693953992,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1622938618,
         "Kind": "Components.Bind",
         "Name": "Bind",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -17618,11 +16694,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 249215654,
-=======
-        "HashCode": -1788717070,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 114025409,
         "Kind": "Components.Bind",
         "Name": "Bind_value",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -17755,11 +16827,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -559282354,
-=======
-        "HashCode": 795152513,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 559860954,
         "Kind": "Components.Bind",
         "Name": "Bind",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -17892,11 +16960,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -653757697,
-=======
-        "HashCode": -1980470004,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1945799496,
         "Kind": "Components.Bind",
         "Name": "Bind_value",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -18029,11 +17093,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1887728494,
-=======
-        "HashCode": 2127366338,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -639815096,
         "Kind": "Components.Bind",
         "Name": "Bind",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -18155,11 +17215,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1013355566,
-=======
-        "HashCode": -2000305322,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1355848044,
         "Kind": "Components.Bind",
         "Name": "Bind",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -18281,11 +17337,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -947750344,
-=======
-        "HashCode": 2056202168,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1339548753,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputCheckbox",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -18372,11 +17424,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1698870210,
-=======
-        "HashCode": -1458624518,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1424744138,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputCheckbox",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -18464,11 +17512,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1728286482,
-=======
-        "HashCode": -700742848,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 633279990,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputDate<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -18555,11 +17599,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1685615886,
-=======
-        "HashCode": -849974008,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1033601042,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputDate<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -18647,11 +17687,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1772738350,
-=======
-        "HashCode": 2123779506,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 19887189,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputNumber<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -18738,11 +17774,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1430844584,
-=======
-        "HashCode": -1542273835,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1457374860,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputNumber<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -18830,11 +17862,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1546770315,
-=======
-        "HashCode": 119476248,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1959522740,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputRadioGroup<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -18921,11 +17949,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -222879863,
-=======
-        "HashCode": -35312,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -4624069,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputRadioGroup<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -19013,11 +18037,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 638323576,
-=======
-        "HashCode": 633874525,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 864479220,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputSelect<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -19104,11 +18124,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 882728309,
-=======
-        "HashCode": 946930175,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 1027120319,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputSelect<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -19196,11 +18212,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -981322831,
-=======
-        "HashCode": -551521825,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -612922484,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputText",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -19287,11 +18299,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1520997404,
-=======
-        "HashCode": 2082646478,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1466823011,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputText",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -19379,11 +18387,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1077427834,
-=======
-        "HashCode": -2094031909,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -1184205872,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputTextArea",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -19470,11 +18474,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -878159554,
-=======
-        "HashCode": 547826663,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": -966482066,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputTextArea",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -19562,11 +18562,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 341746939,
-=======
-        "HashCode": -1306590582,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 924053255,
         "Kind": "Components.Ref",
         "Name": "Ref",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -19605,11 +18601,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 740940801,
-=======
-        "HashCode": 1684034201,
->>>>>>> IH-5-Implement-Automapper
+        "HashCode": 649916331,
         "Kind": "Components.Key",
         "Name": "Key",
         "AssemblyName": "Microsoft.AspNetCore.Components",

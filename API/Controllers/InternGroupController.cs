@@ -1,52 +1,45 @@
 using API.Dtos;
 using API.Models;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
 namespace API.Controllers
 {
     public class InternGroupController : BaseAPIController
     {
-        private InternShipAppSystemContext _context;
+        private readonly InternShipAppSystemContext _context;
+        private readonly IMapper _mapper;
 
-        public InternGroupController(InternShipAppSystemContext context)
+        public InternGroupController(InternShipAppSystemContext context, IMapper mapper)
         {
+            _mapper = mapper;
             _context = context;
         }
+
 
         [HttpGet("interns/{id:int}")]
         public ActionResult<IEnumerable<InternGroupDto>> GetInternFromGroup(int id)
         {
-            var result = _context.People.ToList().Where(g => g.Deleted == false && g.Status == "Intern");
-            var resultToReturn = new List<InternGroupDto>(0);
+            var result = _context.InternGroups.Where(g => g.Deleted == false && g.GroupId == id).Include(g => g.Intern);
+            var resultToReturn = _mapper.Map<List<InternGroupDto>>(result);
 
-            foreach (var re in result)
-            {
-                resultToReturn.Add(new InternGroupDto
-                {
-                    Intern = new PersonDto
-                    {
-                        PersonId = re.PersonId,
-                        FirstName = re.FirstName,
-                        LastName = re.LastName,
-                        Email = re.Email,
-                        Username = re.Username,
-                        Status = re.Status,
-                        BirthDate = re.BirthDate
-                    },
-                    InternId = re.PersonId,
-                    IsChecked = _context.InternGroups.Any(ig => ig.Deleted == false && ig.InternId == re.PersonId && ig.GroupId == id)
-                });
-            }
-            return resultToReturn;
+            var resultUnchecked = _context.People.Where(g => g.Deleted == false);
+            var resultUncheckedToReturn = _mapper.Map<IEnumerable<InternGroupDto>>(resultUnchecked);
+
+            foreach (var re in resultUncheckedToReturn)
+                if (resultToReturn.Any(r => r.PersonId == re.PersonId) == false)
+                    resultToReturn.Add(re);
+            return Ok(resultToReturn);
         }
 
         [HttpPost("interns/update/{groupId:int}")]
         public ActionResult EditInternIntoGroups([FromBody] object ids, int groupId)
         {
-            Dictionary<string, string> idsData = JsonConvert.DeserializeObject<Dictionary<string, string>>(ids.ToString());;
+            Dictionary<string, string> idsData = JsonConvert.DeserializeObject<Dictionary<string, string>>(ids.ToString()); ;
             var result = _context.InternGroups.Where(g => g.Deleted == false && g.GroupId == groupId);
-            List<int> idList = Utils.Utils.FromStringToInt(idsData["ids"]+= "!");
+            List<int> idList = Utils.Utils.FromStringToInt(idsData["ids"] += "!");
 
             foreach (var res in result)
             {

@@ -3,6 +3,7 @@ using System.Text;
 using API.Dtos;
 using API.Models;
 using API.Utils;
+using AutoMapper;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,33 +13,20 @@ namespace API.Controllers
     public class PeopleController : BaseAPIController
     {
         private readonly InternShipAppSystemContext _context;
+        private readonly IMapper _mapper;
 
-        public PeopleController(InternShipAppSystemContext context)
+        public PeopleController(InternShipAppSystemContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         [HttpGet]
         public ActionResult<IEnumerable<PersonDto>> GetPeople()
         {
             var result = _context.People.ToList().Where(g => g.Deleted == false);
-            var resultToReturn = new List<PersonDto>(0);
-
-            foreach (var re in result)
-            {
-                resultToReturn.Add(new PersonDto
-                {
-                    PersonId = re.PersonId,
-                    FirstName = re.FirstName,
-                    LastName = re.LastName,
-                    Email = re.Email,
-                    Username = re.Username,
-                    Status = re.Status,
-                    BirthDate = re.BirthDate
-                });
-            }
-
-            return resultToReturn;
+            var resultToReturn = _mapper.Map<IEnumerable<PersonDto>>(result);
+            return Ok(resultToReturn);
         }
 
         [HttpGet("{id:int}")]
@@ -47,17 +35,8 @@ namespace API.Controllers
             var person = _context.People.SingleOrDefault(p => (p.PersonId == id && p.Deleted == false));
             if (person == null)
                 return NoContent();
-            var personToSend = new PersonDto()
-            {
-                PersonId = person.PersonId,
-                FirstName = person.FirstName,
-                LastName = person.LastName,
-                Email = person.Email,
-                Username = person.Username,
-                Status = person.Status,
-                BirthDate = person.BirthDate
-            };
-            return personToSend;
+            var personToSend = _mapper.Map<PersonDto>(person);
+            return Ok(personToSend);
         }
 
         [HttpGet("{username}")]
@@ -66,17 +45,8 @@ namespace API.Controllers
             var person = _context.People.SingleOrDefault(user => (user.Username == username && user.Deleted == false));
             if (person == null)
                 return NoContent();
-            var personToSend = new PersonDto()
-            {
-                PersonId = person.PersonId,
-                FirstName = person.FirstName,
-                LastName = person.LastName,
-                Email = person.Email,
-                Username = person.Username,
-                Status = person.Status,
-                BirthDate = person.BirthDate
-            };
-            return personToSend;
+            var personToSend = _mapper.Map<PersonDto>(person);
+            return Ok(personToSend);
         }
 
         [AllowAnonymous]

@@ -3,6 +3,7 @@ using System.Text;
 using API.Dtos;
 using API.Interfaces;
 using API.Models;
+using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -14,11 +15,13 @@ namespace API.Controllers
 
         private readonly InternShipAppSystemContext _context;
         private readonly ITokenService _tokenService;
+        private readonly IMapper _mapper;
 
-        public AccountController(InternShipAppSystemContext context, ITokenService tokenService)
+        public AccountController(InternShipAppSystemContext context, ITokenService tokenService, IMapper mapper)
         {
-            _tokenService = tokenService;
             _context = context;
+            _tokenService = tokenService;
+            _mapper = mapper;
         }
 
         [HttpPost("register")]

@@ -91,8 +91,9 @@ namespace API.Controllers
             if (link == null)
                 return BadRequest("Invalid link");
             password.Time.AddHours(2);
-            if (link.Time < password.Time){
-                link.Deleted=true;
+            if (link.Time < password.Time)
+            {
+                link.Deleted = true;
                 _context.PasswordkLinks.Update(link);
                 _context.SaveChanges();
                 return BadRequest("Link is expired!");
@@ -121,9 +122,15 @@ namespace API.Controllers
         [HttpPost("delete/{personId:int}")]
         public ActionResult DeleteAccount(int personId)
         {
-            var personToDelete=_context.People.SingleOrDefault(p=>p.PersonId == personId);
-            personToDelete.Deleted=true;
+            var personToDelete = _context.People.SingleOrDefault(p => p.PersonId == personId);
+            personToDelete.Deleted = true;
             _context.People.Update(personToDelete);
+            var allGroup = _context.InternGroups.ToList();
+            foreach (var a in allGroup)
+            {
+                a.Deleted = true;
+                _context.InternGroups.Update(a);
+            }
             _context.SaveChanges();
             return Ok();
         }
@@ -131,19 +138,19 @@ namespace API.Controllers
         [HttpPost("update")]
         public ActionResult UpdateAccount([FromBody] PersonDto person)
         {
-            var personToUpdate=_context.People.SingleOrDefault(p=>p.PersonId == person.PersonId);
-            if ( Utils.Utils.UsernameExists(person.Username,_context) && person.Username!=personToUpdate.Username)
+            var personToUpdate = _context.People.SingleOrDefault(p => p.PersonId == person.PersonId);
+            if (Utils.Utils.UsernameExists(person.Username, _context) && person.Username != personToUpdate.Username)
                 return BadRequest("Username exists!");
 
-            if ( Utils.Utils.EmailExists(person.Email,_context)&& person.Email!=personToUpdate.Email)
+            if (Utils.Utils.EmailExists(person.Email, _context) && person.Email != personToUpdate.Email)
                 return BadRequest("Email exists!");
-                
-            personToUpdate.FirstName=person.FirstName;
-            personToUpdate.LastName=person.LastName;
-            personToUpdate.Email=person.Email;
-            personToUpdate.Username=person.Username;
-            personToUpdate.Status=person.Status;
-            personToUpdate.BirthDate=person.BirthDate;
+
+            personToUpdate.FirstName = person.FirstName;
+            personToUpdate.LastName = person.LastName;
+            personToUpdate.Email = person.Email;
+            personToUpdate.Username = person.Username;
+            personToUpdate.Status = person.Status;
+            personToUpdate.BirthDate = person.BirthDate;
             _context.People.Update(personToUpdate);
             _context.SaveChanges();
             return Ok();

@@ -22,7 +22,7 @@ namespace API.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<GroupDto>> GetGroups()
         {
-            var resultToReturn = _mapper.Map<IEnumerable<GroupDto>>(_context.Groups.Include(g => g.Trainer).Include(g => g.InternGroups).ToList().Where(g => g.Deleted == false));
+            var resultToReturn = _mapper.Map<List<GroupDto>>(_context.Groups.Include(g => g.Trainer).Include(g => g.InternGroups).ToList().Where(g => g.Deleted == false));
             foreach (var re in resultToReturn)
                 re.AllInterns = _mapper.Map<List<PersonDto>>(_context.InternGroups.Include(gi => gi.Intern).ToList().Where(gi => gi.Deleted == false && gi.GroupId == re.GroupId));
             return Ok(resultToReturn);

@@ -24,8 +24,7 @@ namespace API.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<PersonDto>> GetPeople()
         {
-            var result = _context.People.ToList().Where(g => g.Deleted == false);
-            var resultToReturn = _mapper.Map<IEnumerable<PersonDto>>(result);
+            var resultToReturn = _mapper.Map<IEnumerable<PersonDto>>(_context.People.ToList().Where(g => g.Deleted == false));
             return Ok(resultToReturn);
         }
 

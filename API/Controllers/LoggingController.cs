@@ -32,8 +32,7 @@ namespace API.Controllers
 
         [HttpGet]
         public ActionResult<IEnumerable<LoggingDto>> GetLoggings(){
-            var logger = _context.Loggings.ToList();
-            var loggerToReturn = _mapper.Map<IEnumerable<LoggingDto>>(logger);
+            var loggerToReturn = _mapper.Map<IEnumerable<LoggingDto>>( _context.Loggings.ToList());
             return Ok(loggerToReturn);
         }
     }

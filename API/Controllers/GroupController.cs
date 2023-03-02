@@ -22,46 +22,9 @@ namespace API.Controllers
         [HttpGet]
         public ActionResult<IEnumerable<GroupDto>> GetGroups()
         {
-            var result = _context.Groups.Include(g => g.Trainer).Include(g=>g.InternGroups).ToList().Where(g => g.Deleted == false);
-            var resultToReturn = _mapper.Map<IEnumerable<GroupDto>>(result);
-            //foreach (var re in result)
-            //{
-            //    var allInterns = _context.InternGroups.Include(gi => gi.Intern).ToList().Where(gi => gi.Deleted == false && gi.GroupId == re.GroupId);
-
-            //    List<PersonDto> interns = new List<PersonDto>();
-
-            //    foreach (var i in allInterns)
-            //    {
-            //        interns.Add(new PersonDto()
-            //        {
-            //            PersonId = i.Intern.PersonId,
-            //            FirstName = i.Intern.FirstName,
-            //            LastName = i.Intern.LastName,
-            //            Email = i.Intern.Email,
-            //            Username = i.Intern.Username,
-            //            Status = i.Intern.Status,
-            //            BirthDate = i.Intern.BirthDate
-            //        });
-            //    }
-
-            //    resultToReturn.Add(new GroupDto
-            //    {
-            //        GroupId = re.GroupId,
-            //        Name = re.GroupName,
-            //        Trainer = new PersonDto
-            //        {
-            //            PersonId = re.Trainer.PersonId,
-            //            FirstName = re.Trainer.FirstName,
-            //            LastName = re.Trainer.LastName,
-            //            Email = re.Trainer.Email,
-            //            Username = re.Trainer.Username,
-            //            Status = re.Trainer.Status,
-            //            BirthDate = re.Trainer.BirthDate
-            //        },
-            //        TrainerId = re.Trainer.PersonId,
-            //        AllInterns = interns
-            //    });
-            //}
+            var resultToReturn = _mapper.Map<IEnumerable<GroupDto>>(_context.Groups.Include(g => g.Trainer).Include(g => g.InternGroups).ToList().Where(g => g.Deleted == false));
+            foreach (var re in resultToReturn)
+                re.AllInterns = _mapper.Map<List<PersonDto>>(_context.InternGroups.Include(gi => gi.Intern).ToList().Where(gi => gi.Deleted == false && gi.GroupId == re.GroupId));
             return Ok(resultToReturn);
         }
 

@@ -22,11 +22,8 @@ namespace API.Controllers
         [HttpGet("interns/{id:int}")]
         public ActionResult<IEnumerable<InternGroupDto>> GetInternFromGroup(int id)
         {
-            var result = _context.InternGroups.Where(g => g.Deleted == false && g.GroupId == id).Include(g => g.Intern);
-            var resultToReturn = _mapper.Map<List<InternGroupDto>>(result);
-
-            var resultUnchecked = _context.People.Where(g => g.Deleted == false);
-            var resultUncheckedToReturn = _mapper.Map<IEnumerable<InternGroupDto>>(resultUnchecked);
+            var resultToReturn = _mapper.Map<List<InternGroupDto>>(_context.InternGroups.Where(g => g.Deleted == false && g.GroupId == id).Include(g => g.Intern));
+            var resultUncheckedToReturn = _mapper.Map<IEnumerable<InternGroupDto>>( _context.People.Where(g => g.Deleted == false));
 
             foreach (var re in resultUncheckedToReturn)
                 if (resultToReturn.Any(r => r.PersonId == re.PersonId) == false)

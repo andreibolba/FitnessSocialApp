@@ -11,6 +11,7 @@ namespace API.Interfaces.Repository
         IEnumerable<PersonDto> GetAllTrainers();
         PersonDto GetPersonById(int id);
         PersonDto GetPersonByUsername(string username);
+        PersonDto GetPersonByEmail(string email);
         void Update(PersonDto person);
         void Delete(int personId);
         PersonDto LogIn(string email, string password);

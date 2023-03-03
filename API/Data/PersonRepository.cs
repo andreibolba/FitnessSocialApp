@@ -3,8 +3,6 @@ using API.Interfaces;
 using API.Interfaces.Repository;
 using API.Models;
 using AutoMapper;
-using Microsoft.EntityFrameworkCore;
-using System;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -141,6 +139,15 @@ namespace API.Data
         public IEnumerable<PersonDto> GetAllTrainers()
         {
             return this.GetAllPerson().Where(g => g.Status == "Trainers");
+        }
+
+        public PersonDto GetPersonByEmail(string email)
+        {
+            var person = _context.People.SingleOrDefault(user => (user.Email == email && user.Deleted == false));
+            if (person == null)
+                return null;
+            var personToSend = _mapper.Map<PersonDto>(person);
+            return personToSend;
         }
     }
 }

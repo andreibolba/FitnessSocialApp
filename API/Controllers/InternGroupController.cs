@@ -20,14 +20,17 @@ namespace API.Controllers
         [HttpGet("interns/{id:int}")]
         public ActionResult<IEnumerable<InternGroupDto>> GetInternFromGroup(int id)
         {
-            return Ok(_repository.GetInternGroupsById(id));
+            return Ok(_repository.GetInternFromGroup(id));
         }
 
         [HttpPost("interns/update/{groupId:int}")]
         public ActionResult EditInternIntoGroups([FromBody] object ids, int groupId)
         {
             Dictionary<string, string> idsData = JsonConvert.DeserializeObject<Dictionary<string, string>>(ids.ToString());
-            _repository.UpdateAllInternsInGroup(idsData["ids"] += "!", groupId);
+
+            var hasSomethingToSave = _repository.UpdateAllInternsInGroup(idsData["ids"] += "!", groupId);
+            if (hasSomethingToSave == false)
+                return Ok();
             return _repository.SaveAll() ? Ok() : BadRequest("Internal Server Error");
         }
     }

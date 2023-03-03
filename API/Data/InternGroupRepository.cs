@@ -57,35 +57,31 @@ namespace API.Data
             return _context.SaveChanges() > 0;
         }
 
-        public void Update(InternGroup internGroup)
+        public bool UpdateAllInternsInGroup(string ids, int groupId)
         {
-            _context.InternGroups.Update(internGroup);
-        }
-
-        public void UpdateAllInternsInGroup(string ids, int groupId)
-        {
-            var result = _mapper.Map<IEnumerable<InternGroup>>(GetAllInternGroups().Where(ig => ig.GroupId == groupId));
+            var result = _context.InternGroups.Where(g => g.Deleted == false && g.GroupId == groupId);
             List<int> idList = Utils.Utils.FromStringToInt(ids);
-
+            if(result.Count()==0&& idList.Count()==0)
+            return false;
             foreach (var res in result)
             {
                 bool delete = idList.IndexOf(res.InternId) == -1 ? true : false;
                 res.Deleted = delete;
                 if (delete == false)
                     idList.Remove(res.InternId);
+                _context.InternGroups.Update(res);
             }
 
             foreach (var id in idList)
             {
-                var gi = _context.InternGroups.FirstOrDefault(gi => gi.InternId == id && gi.GroupId == groupId);
-                if (gi == null)
-                    _context.InternGroups.Add(_mapper.Map<InternGroup>(gi));
-                else
+                _context.InternGroups.Add(new InternGroup
                 {
-                    gi.Deleted = false;
-                    _context.InternGroups.Update(gi);
-                }
+                    GroupId = groupId,
+                    InternId = id,
+                    Deleted = false
+                });
             }
+            return true;
         }
     }
 }

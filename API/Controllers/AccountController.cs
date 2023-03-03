@@ -41,7 +41,7 @@ namespace API.Controllers
         [HttpPost("login")]
         public ActionResult<PersonDto> LogIn([FromBody] PersonDto person)
         {
-            var loggedPerson = _repository.LogIn(person.Email,person.Email);
+            var loggedPerson = _repository.LogIn(person.Email,person.Password);
             if (loggedPerson == null)
                 return Unauthorized("Invalid details!");
             return loggedPerson;

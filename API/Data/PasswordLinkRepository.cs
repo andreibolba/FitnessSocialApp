@@ -20,7 +20,7 @@ namespace API.Data
         public void Delete(PasswordkLink link)
         {
             link.Deleted = true;
-            this.Update(link);
+            _context.PasswordkLinks.Update(link);
         }
 
         public IEnumerable<PasswordkLink> GetAll()
@@ -36,11 +36,6 @@ namespace API.Data
         public bool SaveAll()
         {
             return _context.SaveChanges() > 0;
-        }
-
-        public void Update(PasswordkLink link)
-        {
-            _context.PasswordkLinks.Update(link);
         }
     }
 }

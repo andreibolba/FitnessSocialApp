@@ -1,10 +1,10 @@
-﻿using API.Dtos;
+﻿using System.Security.Cryptography;
+using System.Text;
+using API.Dtos;
 using API.Interfaces;
 using API.Interfaces.Repository;
 using API.Models;
 using AutoMapper;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace API.Data
 {
@@ -84,7 +84,7 @@ namespace API.Data
             return GetAllPerson().SingleOrDefault(p => p.Username == username);
         }
 
-        public PersonDto LogIn(string email,string password)
+        public PersonDto LogIn(string email, string password)
         {
             var loggedPerson = _mapper.Map<Person>(GetPersonByEmail(email));
             if (loggedPerson == null)
@@ -110,6 +110,24 @@ namespace API.Data
 
         public void Update(PersonDto person)
         {
+            var personFromDb = GetPersonById(person.PersonId);
+            if (person.FirstName == null) person.FirstName = personFromDb.FirstName;
+            if (person.LastName == null) person.LastName = personFromDb.LastName;
+            if (person.Username == null) person.Username = personFromDb.Username;
+            if (person.Email == null) person.Email = personFromDb.Email;
+            if (person.BirthDate == null) person.BirthDate = personFromDb.BirthDate;
+            if (person.Status == null) person.Status = personFromDb.Status;
+            if (person.Password == null)
+            {
+                person.PasswordHash = personFromDb.PasswordHash;
+                person.PasswordSalt = personFromDb.PasswordSalt;
+            }
+            else
+            {
+                using var hmac = new HMACSHA512();
+                person.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(person.Password));
+                person.PasswordSalt = hmac.Key;
+            }
             _context.People.Update(_mapper.Map<Person>(person));
         }
 

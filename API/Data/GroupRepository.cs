@@ -60,6 +60,10 @@ namespace API.Data
 
         public void Update(GroupDto groupdto)
         {
+            var groypFromDb = GetGroupById(groupdto.GroupId);
+            if (groupdto.GroupName == null) groupdto.GroupName = groypFromDb.GroupName;
+            // if (groupdto.TrainerId == null) 
+            groupdto.TrainerId = groypFromDb.TrainerId;
             _context.Groups.Update(_mapper.Map<Group>(groupdto));
         }
     }

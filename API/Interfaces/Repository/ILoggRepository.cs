@@ -8,7 +8,6 @@ namespace API.Interfaces.Repository
         void Create(LoggingDto logDto);
         IEnumerable<LoggingDto> GetAllLoggs();
         LoggingDto GetLogById(int id);
-        void Update(LoggingDto logDto);
         void Delete(int logId);
         bool SaveAll();
     }

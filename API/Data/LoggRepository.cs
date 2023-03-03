@@ -42,10 +42,5 @@ namespace API.Data
         {
             return _context.SaveChanges() > 0;
         }
-
-        public void Update(LoggingDto logDto)
-        {
-            _context.Loggings.Update(_mapper.Map<Logging>(logDto));
-        }
     }
 }

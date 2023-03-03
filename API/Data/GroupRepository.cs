@@ -19,12 +19,7 @@ namespace API.Data
 
         public void Create(GroupDto groupdto)
         {
-            Group newGroup = new Group
-            {
-                GroupName = groupdto.GroupName,
-                TrainerId = groupdto.TrainerId,
-                Deleted = false
-            };
+            Group newGroup = _mapper.Map<Group>(groupdto);
             _context.Groups.Add(newGroup);
         }
 
@@ -68,10 +63,7 @@ namespace API.Data
 
         public void Update(GroupDto groupdto)
         {
-            Group groupToUpdate = new Group();
-            groupToUpdate.GroupId = groupdto.GroupId;
-            groupToUpdate.GroupName = groupdto.GroupName;
-            groupToUpdate.TrainerId = groupdto.TrainerId;
+            Group groupToUpdate = _mapper.Map<Group>(groupdto);
             _context.Groups.Update(groupToUpdate);
         }
     }

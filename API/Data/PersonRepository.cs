@@ -26,19 +26,10 @@ namespace API.Data
         public bool Create(PersonDto person)
         {
             using var hmac = new HMACSHA512();
+            person.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(Utils.Utils.CreatePassword(20)));
+            person.PasswordSalt = hmac.Key;
 
-            Person newPerson = new Person
-            {
-                FirstName = person.FirstName,
-                LastName = person.LastName,
-                Email = person.Email,
-                Username = person.Username,
-                PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(Utils.Utils.CreatePassword(20))),
-                PasswordSalt = hmac.Key,
-                BirthDate = person.BirthDate,
-                Status = person.Status,
-                Deleted = false
-            };
+            Person newPerson = _mapper.Map<Person>(person);
 
             _context.People.Add(newPerson);
 
@@ -50,7 +41,6 @@ namespace API.Data
             };
 
             _context.PasswordkLinks.Add(link);
-            _context.SaveChanges();
 
             Utils.EmailFields details = new Utils.EmailFields
             {
@@ -134,14 +124,7 @@ namespace API.Data
 
         public void Update(PersonDto person)
         {
-            Person personToUpdate = new Person();
-            personToUpdate.PersonId = person.PersonId;
-            personToUpdate.FirstName = person.FirstName;
-            personToUpdate.LastName = person.LastName;
-            personToUpdate.Email = person.Email;
-            personToUpdate.Username = person.Username;
-            personToUpdate.Status = person.Status;
-            personToUpdate.BirthDate = person.BirthDate;
+            Person personToUpdate = _mapper.Map<Person>(person);
             _context.People.Update(personToUpdate);
         }
 

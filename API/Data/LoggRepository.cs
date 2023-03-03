@@ -18,15 +18,7 @@ namespace API.Data
 
         public void Create(LoggingDto logDto)
         {
-            Logging log = new Logging
-            {
-                LogType = logDto.LogType,
-                LogMessage = logDto.LogMessage,
-                PersonUsername = logDto.PersonUsername,
-                DateOfLog = logDto.DateOfLog,
-                Deleted = false
-            };
-
+            Logging log = _mapper.Map<Logging>(logDto);
             _context.Loggings.Add(log);
         }
 
@@ -58,15 +50,7 @@ namespace API.Data
 
         public void Update(LoggingDto logDto)
         {
-            Logging log = new Logging
-            {
-                LoggingId=logDto.LogId,
-                LogType = logDto.LogType,
-                LogMessage = logDto.LogMessage,
-                PersonUsername = logDto.PersonUsername,
-                DateOfLog = logDto.DateOfLog,
-                Deleted = false
-            };
+            Logging log = _mapper.Map<Logging>(logDto);
 
             _context.Loggings.Update(log);
         }

@@ -35,7 +35,6 @@ export class EditGroupMembersDialogComponent {
   options: CheckBox[] = [];
 
   private token: string = '';
-  private currentId = -1;
 
   constructor(
     private dataService: DataStorageService,
@@ -56,14 +55,12 @@ export class EditGroupMembersDialogComponent {
       const person: LoggedPerson = JSON.parse(personString);
       this.token = person.token;
 
-      let group:any;
-
       this.dataPeopleSub = this.dataService
         .getAllInternsInGroup(this.token, this.group!.groupId)
         .subscribe((res) => {
           res.forEach((element) => {
             this.options.unshift(
-              new CheckBox(element.internId,element.firstName + " " + element.lastName, element.username,element.isChecked)
+              new CheckBox(element.personId,element.firstName + " " + element.lastName, element.username,element.isChecked)
             );
           });
         });
@@ -74,10 +71,6 @@ export class EditGroupMembersDialogComponent {
     if (this.dataPeopleSub) this.dataPeopleSub.unsubscribe();
     if (this.utilsSub) this.utilsSub.unsubscribe();
     if (this.groupSub) this.groupSub.unsubscribe();
-  }
-
-  selectOrganization(id: string) {
-    this.currentId = +id;
   }
 
   valueChange(op: CheckBox){

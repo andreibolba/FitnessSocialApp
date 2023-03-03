@@ -1,10 +1,6 @@
 {
   "version": 2,
-<<<<<<< HEAD
-  "dgSpecHash": "dTGhMSGC3veighK57O3huWtZixLB8YQSUR7MpsAIi21rOY1EB+XbtEV3ZFjllRXjHq9hzgsM0+T9lQ7yRmEVpw==",
-=======
   "dgSpecHash": "uiB8Hdk/gX5pTFKsEvsFy2i+0gRqfxRt9WeZoCfU1aQ+ZluliwXJl+WodWGqT3kTsKxu9wJgmD4IoSj8sxBgqQ==",
->>>>>>> IH-5-Implement-Automapper
   "success": true,
   "projectFilePath": "F:\\InternShipApp\\API\\API.csproj",
   "expectedPackageFiles": [
@@ -180,6 +176,12 @@
     "C:\\Users\\andrei.bolba\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512"
   ],
   "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file F:\\InternShipApp\\API\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    },
     {
       "code": "NU1803",
       "level": "Warning",

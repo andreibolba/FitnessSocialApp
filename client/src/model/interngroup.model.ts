@@ -1,12 +1,12 @@
 export class InternGroup{
-  public internId:number;
+  public personId:number;
   public firstName:string;
   public lastName:string;
   public username:string;
   public isChecked:boolean;
 
   constructor(){
-    this.internId=-1;
+    this.personId=-1;
     this.firstName='';
     this.lastName='';
     this.username='';

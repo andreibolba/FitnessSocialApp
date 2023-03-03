@@ -1,39 +1,27 @@
 using API.Dtos;
-using API.Models;
-using AutoMapper;
+using API.Interfaces.Repository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
     public class LoggingController:BaseAPIController
     {
-        private readonly InternShipAppSystemContext _context;
-        private readonly IMapper _mapper;
+        private readonly ILoggRepository _repository;
 
-        public LoggingController(InternShipAppSystemContext context, IMapper mapper)
+        public LoggingController(ILoggRepository repository)
         {
-            _context = context;
-            _mapper = mapper;
+            _repository = repository;
         }
 
         [HttpPost("log")]
-        public async void Log([FromBody] LoggingDto logDto){
-            Logging log=new Logging{
-                LogType=logDto.LogType,
-                LogMessage=logDto.LogMessage,
-                PersonUsername=logDto.PersonUsername,
-                DateOfLog=logDto.DateOfLog,
-                Deleted=false
-            };
-
-            _context.Loggings.Add(log);
-            await _context.SaveChangesAsync();
+        public ActionResult Log([FromBody] LoggingDto logDto){
+            _repository.Create(logDto);
+            return _repository.SaveAll() ? Ok() : BadRequest("Internal Server Error");
         }
 
         [HttpGet]
         public ActionResult<IEnumerable<LoggingDto>> GetLoggings(){
-            var loggerToReturn = _mapper.Map<IEnumerable<LoggingDto>>( _context.Loggings.ToList());
-            return Ok(loggerToReturn);
+            return Ok(_repository.GetAllLoggs());
         }
     }
 }

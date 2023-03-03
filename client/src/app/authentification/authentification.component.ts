@@ -54,21 +54,21 @@ export class AuthentificationComponent implements OnInit {
           );
       });
     }
-    // this.log
-    //   .log({
-    //     LogType: 'Info',
-    //     LogMessage: 'A user wants to log in!',
-    //     DateOfLog: new Date(),
-    //   })
-    //   .subscribe(
-    //     (resData) => {
-    //       console.log('ok');
-    //     },
-    //     (error) => {
-    //       this.error = error;
-    //       console.log(error.error);
-    //     }
-    //   );
+    this.log
+      .log({
+        LogType: 'Info',
+        LogMessage: 'A user wants to log in!',
+        DateOfLog: new Date(),
+      })
+      .subscribe(
+        (resData) => {
+          console.log('ok');
+        },
+        (error) => {
+          this.error = error;
+          console.log(error.error);
+        }
+      );
   }
 
   onLogInSubmit(form: NgForm) {

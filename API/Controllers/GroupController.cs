@@ -1,73 +1,45 @@
 using API.Dtos;
-using API.Models;
-using AutoMapper;
+using API.Interfaces.Repository;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace API.Controllers
 {
     [Authorize]
     public class GroupController : BaseAPIController
     {
-        private readonly InternShipAppSystemContext _context;
-        private readonly IMapper _mapper;
+        private readonly IGroupRepository _repository;
 
-        public GroupController(InternShipAppSystemContext context, IMapper mapper)
+        public GroupController(IGroupRepository repository)
         {
-            _context = context;
-            _mapper = mapper;
+            _repository = repository;
         }
 
         [HttpGet]
         public ActionResult<IEnumerable<GroupDto>> GetGroups()
         {
-            var resultToReturn = _mapper.Map<List<GroupDto>>(_context.Groups.Include(g => g.Trainer).Include(g => g.InternGroups).ToList().Where(g => g.Deleted == false));
-            foreach (var re in resultToReturn)
-                re.AllInterns = _mapper.Map<List<PersonDto>>(_context.InternGroups.Include(gi => gi.Intern).ToList().Where(gi => gi.Deleted == false && gi.GroupId == re.GroupId));
-            return Ok(resultToReturn);
+            return Ok(_repository.GetAllGroups());
         }
 
         [HttpPost("add")]
         public ActionResult AddGroup([FromBody] GroupDto group)
         {
-            Group newGroup = _mapper.Map<Group>(group);
-            _context.Groups.Add(newGroup);
-            _context.SaveChanges();
-            return Ok();
+            _repository.Create(group);
+            return _repository.SaveAll() ? Ok() : BadRequest("Internal Server Error");
         }
 
         [HttpPost("delete/{groupId:int}")]
         public ActionResult DeleteGroup(int groupId)
         {
-            var group = _context.Groups.FirstOrDefault(p => p.GroupId == groupId && p.Deleted == false);
-            if (group == null)
-                return BadRequest("Group is already deleted!");
-            group.Deleted = true;
-            _context.Groups.Update(group);
-
-            var internGroups = _context.InternGroups.Where(ig => ig.GroupId == groupId);
-            foreach (var ig in internGroups)
-            {
-                ig.Deleted = true;
-                _context.InternGroups.Update(ig);
-            }
-            _context.SaveChanges();
-
-            return Ok();
+            _repository.Delete(groupId);
+            return _repository.SaveAll() ? Ok() : BadRequest("Internal Server Error");
         }
 
         [HttpPost("update")]
         public ActionResult UpdateGroup([FromBody] GroupDto group)
         {
-            var groupToUpdate = _context.Groups.FirstOrDefault(p => p.GroupId == group.GroupId && p.Deleted == false);
-            if (groupToUpdate == null)
-                return BadRequest("Group does not exists!");
-            groupToUpdate.GroupName = group.GroupName;
-            groupToUpdate.TrainerId = group.TrainerId;
-            _context.Groups.Update(groupToUpdate);
-            _context.SaveChanges();
-            return Ok();
+            _repository.Update(group);
+            return _repository.SaveAll() ? Ok() : BadRequest("Internal Server Error"); ;
         }
     }
 }

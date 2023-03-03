@@ -27,13 +27,11 @@ namespace API.Data
             person.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(Utils.Utils.CreatePassword(20)));
             person.PasswordSalt = hmac.Key;
 
-            Person newPerson = _mapper.Map<Person>(person);
-
-            _context.People.Add(newPerson);
+            _context.People.Add(_mapper.Map<Person>(person));
 
             PasswordkLink link = new PasswordkLink
             {
-                PersonUsername = newPerson.Username,
+                PersonUsername = person.Username,
                 Time = person.Created.AddHours(2),
                 Deleted = false
             };
@@ -45,7 +43,7 @@ namespace API.Data
                 EmailTo = person.Email,
                 EmailSubject = "Welcome to Intenr Hub",
                 EmailBody = "Hello! \n\n" +
-                           "We are glad to have you in our team as " + newPerson.Status + ". You have to complete your account by seeting the password!\n\n" +
+                           "We are glad to have you in our team as " + person.Status + ". You have to complete your account by seeting the password!\n\n" +
                            "You can set your password immediately by clicking here or pasting the following link in your browser:\n\n" +
                            "https://localhost:4200/recovery/" + link.PasswordLinkId + "\n\n" +
                            "Link is available 1 hour!\n\n" +
@@ -60,7 +58,7 @@ namespace API.Data
 
         public void Delete(int personId)
         {
-            var personToDelete = _context.People.SingleOrDefault(p => p.PersonId == personId);
+            var personToDelete = _mapper.Map<Person>(GetPersonById(personId));
             personToDelete.Deleted = true;
             _context.People.Update(personToDelete);
             var allGroup = _context.InternGroups.ToList().Where(gi => gi.InternId == personId);
@@ -73,32 +71,22 @@ namespace API.Data
 
         public IEnumerable<PersonDto> GetAllPerson()
         {
-            var persons = _context.People.ToList().Where(g => g.Deleted == false);
-            var personsToReturn = _mapper.Map<IEnumerable<PersonDto>>(persons);
-            return personsToReturn;
+            return _mapper.Map<IEnumerable<PersonDto>>(_context.People.ToList().Where(g => g.Deleted == false));
         }
 
         public PersonDto GetPersonById(int id)
         {
-            var person = _context.People.SingleOrDefault(p => (p.PersonId == id && p.Deleted == false));
-            if (person == null)
-                return null;
-            var personToSend = _mapper.Map<PersonDto>(person);
-            return personToSend;
+            return GetAllPerson().SingleOrDefault(p => p.PersonId == id);
         }
 
         public PersonDto GetPersonByUsername(string username)
         {
-            var person = _context.People.SingleOrDefault(user => (user.Username == username && user.Deleted == false));
-            if (person == null)
-                return null;
-            var personToSend = _mapper.Map<PersonDto>(person);
-            return personToSend;
+            return GetAllPerson().SingleOrDefault(p => p.Username == username);
         }
 
         public PersonDto LogIn(string email,string password)
         {
-            var loggedPerson = _context.People.SingleOrDefault(p => (p.Email == email && p.Deleted == false));
+            var loggedPerson = _mapper.Map<Person>(GetPersonByEmail(email));
             if (loggedPerson == null)
                 return null;
             using var hmac = new HMACSHA512(loggedPerson.PasswordSalt);
@@ -122,8 +110,7 @@ namespace API.Data
 
         public void Update(PersonDto person)
         {
-            Person personToUpdate = _mapper.Map<Person>(person);
-            _context.People.Update(personToUpdate);
+            _context.People.Update(_mapper.Map<Person>(person));
         }
 
         public IEnumerable<PersonDto> GetAllAdmins()
@@ -143,11 +130,7 @@ namespace API.Data
 
         public PersonDto GetPersonByEmail(string email)
         {
-            var person = _context.People.SingleOrDefault(user => (user.Email == email && user.Deleted == false));
-            if (person == null)
-                return null;
-            var personToSend = _mapper.Map<PersonDto>(person);
-            return personToSend;
+            return GetAllPerson().SingleOrDefault(p => p.Email == email);
         }
     }
 }

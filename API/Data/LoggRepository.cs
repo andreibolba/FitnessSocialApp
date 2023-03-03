@@ -18,8 +18,7 @@ namespace API.Data
 
         public void Create(LoggingDto logDto)
         {
-            Logging log = _mapper.Map<Logging>(logDto);
-            _context.Loggings.Add(log);
+            _context.Loggings.Add(_mapper.Map<Logging>(logDto));
         }
 
         public void Delete(int logId)
@@ -31,16 +30,12 @@ namespace API.Data
 
         public IEnumerable<LoggingDto> GetAllLoggs()
         {
-            var loggings = _context.Loggings.ToList();
-            var loggingsToReturn = _mapper.Map<IEnumerable<LoggingDto>>(loggings);
-            return loggingsToReturn;
+            return _mapper.Map<IEnumerable<LoggingDto>>(_context.Loggings.ToList());
         }
 
         public LoggingDto GetLogById(int id)
         {
-            var loggings = _context.Loggings.ToList().Where(log=>log.LoggingId==id&&log.Deleted==false);
-            var loggingsToReturn = _mapper.Map<LoggingDto>(loggings);
-            return loggingsToReturn;
+            return _mapper.Map<LoggingDto>(GetAllLoggs().SingleOrDefault(l => l.LogId == id));
         }
 
         public bool SaveAll()
@@ -50,9 +45,7 @@ namespace API.Data
 
         public void Update(LoggingDto logDto)
         {
-            Logging log = _mapper.Map<Logging>(logDto);
-
-            _context.Loggings.Update(log);
+            _context.Loggings.Update(_mapper.Map<Logging>(logDto));
         }
     }
 }

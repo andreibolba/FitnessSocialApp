@@ -24,21 +24,19 @@ namespace API.Data
 
         public void Delete(int id)
         {
-            var result = _context.InternGroups.SingleOrDefault(g => g.Deleted == false);
+            var result = _mapper.Map<InternGroup>(GetInternGroupsById(id));
             result.Deleted = true;
             _context.InternGroups.Update(result);
         }
 
         public IEnumerable<InternGroupDto> GetAllInternGroups()
         {
-            var result = _context.InternGroups.Where(g => g.Deleted == false).Include(g => g.Intern);
-            var resultToReturn = _mapper.Map<List<InternGroupDto>>(result);
-            return resultToReturn;
+            return _mapper.Map<List<InternGroupDto>>(_context.InternGroups.Where(g => g.Deleted == false).Include(g => g.Intern));
         }
 
         public IEnumerable<InternGroupDto> GetInternFromGroup(int groupId)
         {
-            var result = _context.InternGroups.Where(g => g.Deleted == false && g.GroupId == groupId).Include(g => g.Intern);
+            var result = GetAllInternGroups().Where(ig => ig.GroupId == groupId);
             var resultToReturn = _mapper.Map<List<InternGroupDto>>(result);
             var resultUnCheched = _context.People.Where(g => g.Deleted == false && g.Status == "Intern");
             var resultUncheckedToReturn = _mapper.Map<IEnumerable<InternGroupDto>>(resultUnCheched);
@@ -51,9 +49,7 @@ namespace API.Data
 
         public InternGroupDto GetInternGroupsById(int id)
         {
-            var result = _context.InternGroups.Where(g => g.Deleted == false).Include(g => g.Intern);
-            var resultToReturn = _mapper.Map<InternGroupDto>(result);
-            return resultToReturn;
+            return _mapper.Map<InternGroupDto>(GetAllInternGroups().SingleOrDefault(ig => ig.InternGroupId == id));
         }
 
         public bool SaveAll()
@@ -68,7 +64,7 @@ namespace API.Data
 
         public void UpdateAllInternsInGroup(string ids, int groupId)
         {
-            var result = _context.InternGroups.Where(g => g.Deleted == false && g.GroupId == groupId);
+            var result = _mapper.Map<IEnumerable<InternGroup>>(GetAllInternGroups().Where(ig => ig.GroupId == groupId));
             List<int> idList = Utils.Utils.FromStringToInt(ids);
 
             foreach (var res in result)

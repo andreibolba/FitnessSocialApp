@@ -19,13 +19,12 @@ namespace API.Data
 
         public void Create(GroupDto groupdto)
         {
-            Group newGroup = _mapper.Map<Group>(groupdto);
-            _context.Groups.Add(newGroup);
+            _context.Groups.Add(_mapper.Map<Group>(groupdto));
         }
-
+        
         public void Delete(int groupId)
         {
-            var group = _context.Groups.FirstOrDefault(p => p.GroupId == groupId && p.Deleted == false);
+            var group = _mapper.Map<Group>(GetGroupById(groupId));
             group.Deleted = true;
             _context.Groups.Update(group);
 
@@ -51,9 +50,7 @@ namespace API.Data
 
         public GroupDto GetGroupById(int id)
         {
-            var group = _context.Groups.Include(g => g.Trainer).Include(g => g.InternGroups).SingleOrDefault(g => g.Deleted == false);
-            var groupToReturn = _mapper.Map<GroupDto>(group);
-            return groupToReturn;
+            return _mapper.Map<GroupDto>(GetAllGroups().SingleOrDefault(g=>g.GroupId==id));
         }
 
         public bool SaveAll()
@@ -63,8 +60,7 @@ namespace API.Data
 
         public void Update(GroupDto groupdto)
         {
-            Group groupToUpdate = _mapper.Map<Group>(groupdto);
-            _context.Groups.Update(groupToUpdate);
+            _context.Groups.Update(_mapper.Map<Group>(groupdto));
         }
     }
 }

@@ -25,6 +25,10 @@ public partial class Question
 
     public string CorrectOption { get; set; }
 
+    public int Points { get; set; }
+
+    public bool CanBeEdited { get; set; }
+
     public bool Deleted { get; set; }
 
     public virtual ICollection<QuestionSolution> QuestionSolutions { get; } = new List<QuestionSolution>();

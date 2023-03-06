@@ -9,7 +9,7 @@ public partial class Group
 
     public string GroupName { get; set; }
 
-    public int TrainerId { get; set; }
+    public int? TrainerId { get; set; }
 
     public bool Deleted { get; set; }
 

@@ -28,6 +28,8 @@ namespace API.FluentMigration.Migrations
                 .WithColumn("E").AsString().Nullable()
                 .WithColumn("F").AsString().Nullable()
                 .WithColumn("CorrectOption").AsString().NotNullable()
+                .WithColumn("Points").AsInt32().NotNullable()
+                .WithColumn("CanBeEdited").AsBoolean().NotNullable()
                 .WithColumn("Deleted").AsBoolean().NotNullable();
 
             Create.ForeignKey(fkNameTest)

@@ -186,7 +186,6 @@ public partial class InternShipAppSystemContext : DbContext
 
             entity.HasOne(d => d.Trainer).WithMany(p => p.Groups)
                 .HasForeignKey(d => d.TrainerId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("GroupTrainerFK");
         });
 
@@ -321,7 +320,9 @@ public partial class InternShipAppSystemContext : DbContext
 
             entity.ToTable("PasswordkLink");
 
-            entity.Property(e => e.PersonUsername).IsRequired();
+            entity.Property(e => e.PersonUsername)
+                .IsRequired()
+                .HasMaxLength(255);
             entity.Property(e => e.Time).HasColumnType("datetime");
         });
 

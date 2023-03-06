@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Data
 {
-    public class InternGroupRepository : IInternGroupRepository
+    public sealed class InternGroupRepository : IInternGroupRepository
     {
         private readonly InternShipAppSystemContext _context;
         private readonly IMapper _mapper;

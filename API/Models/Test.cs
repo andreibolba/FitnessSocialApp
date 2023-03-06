@@ -15,6 +15,8 @@ public partial class Test
 
     public DateTime Deadline { get; set; }
 
+    public bool CanBeDeleted { get; set; }
+
     public bool Deleted { get; set; }
 
     public virtual ICollection<Feedback> Feedbacks { get; } = new List<Feedback>();

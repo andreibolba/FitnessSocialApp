@@ -8,7 +8,7 @@ using AutoMapper;
 
 namespace API.Data
 {
-    public class PersonRepository : IPersonRepository
+    public sealed class PersonRepository : IPersonRepository
     {
         private readonly InternShipAppSystemContext _context;
         private readonly IMapper _mapper;

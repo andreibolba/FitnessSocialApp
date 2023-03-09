@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+h1{
+  text-align: center;
+  margin-top: 30px;
+  margin-left: 60px;
+  margin-right: 60px;
+  color: #515151;
+}
+
+button{
+  height: 35px;
+  width: 70px;
+  background-color: rgb(97, 158, 255);
+  color: #515151;
+  border: none;
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+}
+
+button:hover{
+  cursor: pointer;
+}
+
+form{
+  color: #515151;
+}
+
+form h3{
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 42px;
+  text-align: center;
+}
+
+label{
+  display: block;
+  margin-top: 15px;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: start;
+}
+
+input, select{
+  display: block;
+  height: 30px;
+  width: 100%;
+  border-radius: 2px;
+  padding-left: 5px;
+  font-size: 14px;
+  font-weight: 300;
+  margin-top: 3px;
+  margin-bottom: 15px;
+  border: none;
+  border-bottom: 1px solid #515151;
+}
+::placeholder{
+  color: #515151;
+}
+
+h6{
+  margin-top: 20px;
+}
+
+.fl{
+  display: flex;
+}
+
+.fl input{
+  margin-left: 5px;
+  margin-right: 5px;
+  width: 300px;
+}
+
+.btm{
+  width: 50%;
+}
+
+button[disabled]{
+  background-color: #c8d2ff;
+  color: #727272;
+}
+
+button[disabled]:hover{
+  cursor: default;
+}
+

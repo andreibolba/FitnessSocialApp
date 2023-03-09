@@ -1,0 +1,80 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+.buttons{
+  height: 7vh;
+  margin-bottom: 3vh;
+  width: 79%;
+  display: flex;
+}
+
+.title{
+  height: 7vh;
+  margin-bottom: 3vh;
+  width: 90%;
+  display: flex;
+}
+
+.title i{
+  font-size: 32px;
+  margin-right: 5px;
+  margin-top: -5px;
+  color: #515151;
+}
+
+h2{
+  color: #515151;
+  font-family: 'Poppins-Italic';
+}
+
+.buttons button{
+  float: right;
+  height: 40px;
+  width: 120px;
+  background-color: rgb(160, 196, 255);
+  color: #515151;
+  border: none;
+}
+
+#main{
+  width: 79%;
+  height: 76vh;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+}
+
+.question{
+  border: 1px solid #515151;
+  margin-bottom: 2px;
+}
+
+.row{
+  display: flex;
+  height: 40px;
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.answer{
+  height: 100%;
+  width: calc(100%/3 - 10px);
+  background-color: rgb(160, 196, 255);
+  margin-left: 5px;
+  margin-right: 5px;
+  border-radius: 5px;
+  border: 1px solid white;
+  padding-left: 4px;
+  padding-top: 2px;
+  color: #515151;
+  display: flex;
+}
+
+.answer p{
+  margin-left: 10px;
+  margin-top: 5px;
+  font-size: 17px;
+}

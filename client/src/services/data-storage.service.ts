@@ -15,8 +15,8 @@ export class DataStorageService {
 
   //connection test
 
-  testConnection(){
-    return this.http.get(this.baseUrl+'serverconnection/test');
+  testConnection() {
+    return this.http.get(this.baseUrl + 'serverconnection/test');
   }
 
   //person CRUD
@@ -36,9 +36,13 @@ export class DataStorageService {
 
   deletePerson(personId: number, token: string) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'people/delete/' + personId,{}, {
-      headers: headers,
-    });
+    return this.http.post(
+      this.baseUrl + 'people/delete/' + personId,
+      {},
+      {
+        headers: headers,
+      }
+    );
   }
 
   addperson(person: Person, token: string) {
@@ -108,20 +112,20 @@ export class DataStorageService {
       this.baseUrl + 'group/add',
       {
         groupName: group.groupName,
-        trainerId: group.trainerId
+        trainerId: group.trainerId,
       },
       { headers: headers }
     );
   }
 
-  editGroup(token: string,group: Group) {
+  editGroup(token: string, group: Group) {
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.post(
       this.baseUrl + 'group/update',
       {
-        groupId:group.groupId,
+        groupId: group.groupId,
         name: group.groupName,
-        trainerId: group.trainerId
+        trainerId: group.trainerId,
       },
       { headers: headers }
     );
@@ -129,36 +133,70 @@ export class DataStorageService {
 
   deleteGroup(token: string, groupId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'group/delete/' + groupId,{}, {
-      headers: headers,
-    });
+    return this.http.post(
+      this.baseUrl + 'group/delete/' + groupId,
+      {},
+      {
+        headers: headers,
+      }
+    );
   }
 
   getAllInternsInGroup(token: string, groupId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.get<InternGroup[]>(this.baseUrl + 'interngroup/interns/' + groupId, {
-      headers: headers,
-    });
+    return this.http.get<InternGroup[]>(
+      this.baseUrl + 'interngroup/interns/' + groupId,
+      {
+        headers: headers,
+      }
+    );
   }
 
-  updateInternInGroup(token: string, ids:string,groupId: number){
+  updateInternInGroup(token: string, ids: string, groupId: number) {
     const headers = { Authorization: 'Bearer ' + token };
     console.log(ids);
-    return this.http.post(this.baseUrl + 'interngroup/interns/update/' + groupId,{
-      ids: ids
-    },
-     {
-      headers: headers,
-    });
+    return this.http.post(
+      this.baseUrl + 'interngroup/interns/update/' + groupId,
+      {
+        ids: ids,
+      },
+      {
+        headers: headers,
+      }
+    );
   }
 
   //questions
 
-  getAllQuestionsByTrainer(token:string, trainerId:number){
+  getAllQuestionsByTrainer(token: string, trainerId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.get<Question[]>(this.baseUrl + 'question/trainers/' + trainerId, {
-      headers: headers,
-    });
+    return this.http.get<Question[]>(
+      this.baseUrl + 'question/trainers/' + trainerId,
+      {
+        headers: headers,
+      }
+    );
   }
 
+  addQuestion(token: string, question: Question) {
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post(
+      this.baseUrl + 'question/add',
+      {
+        QuestionName: question.questionName,
+        TrainerId: question.trainerId,
+        A: question.a,
+        B: question.b,
+        C: question.c,
+        D: question.d,
+        E: question.e,
+        F: question.f,
+        CorrectOption: question.correctOption,
+        Points: question.points,
+      },
+      {
+        headers: headers,
+      }
+    );
+  }
 }

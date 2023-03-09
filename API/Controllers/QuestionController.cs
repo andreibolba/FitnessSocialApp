@@ -25,6 +25,12 @@ namespace API.Controllers
             return Ok(_question.GetQuestionById(questionId));
         }
 
+        [HttpGet("trainers/{trainerId:int}")]
+        public ActionResult<IEnumerable<QuestionDto>> GetQuetionByTrainerId(int trainerId)
+        {
+            return Ok(_question.GetAllQuestionsByTrainerId(trainerId));
+        }
+
 
         [HttpPost("add")]
         public ActionResult AddQuestion([FromBody] QuestionDto question)

@@ -42,6 +42,11 @@ namespace API.Data
             return _mapper.Map<IEnumerable<QuestionDto>>(_context.Questions.Where(q => q.Deleted == false).Include(q=>q.Trainer));
         }
 
+        public IEnumerable<QuestionDto> GetAllQuestionsByTrainerId(int trainerId)
+        {
+            return this.GetAllQuestions().Where(q => q.TrainerId == trainerId);
+        }
+
         public QuestionDto GetQuestionById(int id)
         {
             return this.GetAllQuestions().SingleOrDefault(q => q.QuestionId == id);

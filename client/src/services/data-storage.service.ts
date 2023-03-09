@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Group } from 'src/model/group.model';
 import { Person } from 'src/model/person.model';
 import { InternGroup } from 'src/model/interngroup.model';
+import { Question } from 'src/model/question.model';
 
 @Injectable({
   providedIn: 'root',
@@ -147,6 +148,15 @@ export class DataStorageService {
       ids: ids
     },
      {
+      headers: headers,
+    });
+  }
+
+  //questions
+
+  getAllQuestionsByTrainer(token:string, trainerId:number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<Question[]>(this.baseUrl + 'question/trainers/' + trainerId, {
       headers: headers,
     });
   }

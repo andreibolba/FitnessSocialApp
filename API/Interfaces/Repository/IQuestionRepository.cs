@@ -6,6 +6,7 @@ namespace API.Interfaces.Repository
     {
         void Create(QuestionDto questionDto);
         IEnumerable<QuestionDto> GetAllQuestions();
+        IEnumerable<QuestionDto> GetAllQuestionsByTrainerId(int trainerId);
         QuestionDto GetQuestionById(int id);
         void Update(QuestionDto questionDto);
         void Delete(int questionid);

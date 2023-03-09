@@ -36,6 +36,7 @@ import { EditGroupMembersDialogComponent } from './admin/edit-group-members-dial
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { ErrorComponent } from './error/error.component';
 import { QuestionsComponent } from './shared/questions/questions.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { QuestionsComponent } from './shared/questions/questions.component';
     MatPaginatorModule,
     MatDialogModule,
     MatCheckboxModule,
+    MatExpansionModule,
     ToastrModule.forRoot()
   ],
   providers: [],

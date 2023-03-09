@@ -1,9 +1,9 @@
-using AutoMapper;
-using API.Models;
-using API.Dtos;
+using System.Diagnostics;
 using System.Security.Cryptography;
 using System.Text;
-using System.Diagnostics;
+using API.Dtos;
+using API.Models;
+using AutoMapper;
 
 namespace API.Helpers
 {
@@ -30,6 +30,9 @@ namespace API.Helpers
             .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Intern.Email))
             .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Intern.Status))
             .ForMember(dest => dest.BirthDate, opt => opt.MapFrom(src => src.Intern.BirthDate));
+            CreateMap<Test, TestDto>();
+            CreateMap<Question, QuestionDto>();
+            CreateMap<TestGroupIntern, TestGroupInternDto>();
 
 
             CreateMap<PersonDto, Person>()
@@ -39,6 +42,14 @@ namespace API.Helpers
             CreateMap<InternGroupDto, InternGroup>()
                 .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
             CreateMap<LoggingDto, Logging>()
+                .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
+            CreateMap<TestDto, Test>()
+                .ForMember(dest => dest.CanBeEdited, opt => opt.MapFrom(src => src.CanBeEdited==null? true : src.CanBeEdited.Value))
+                .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
+            CreateMap<QuestionDto, Question>()
+                .ForMember(dest => dest.CanBeEdited, opt => opt.MapFrom(src => src.CanBeEdited==null? true : src.CanBeEdited.Value))
+                .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
+            CreateMap<TestGroupInternDto, TestGroupIntern>()
                 .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
         }
     }

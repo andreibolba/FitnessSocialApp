@@ -16,7 +16,7 @@
         <mat-panel-title>
           {{ i + 1 }}. {{ q.questionName }} ({{q.points}}p)
         </mat-panel-title>
-        <button class="btn btn-primary" id="button" (click)="edit(q.questionId)" *ngIf="q.canBeEdited==true"> Edit </button>
+        <button class="btn btn-primary" id="button" (click)="edit(q)" *ngIf="q.canBeEdited==true"> Edit </button>
         <button class="btn btn-danger" id="button" (click)="deletequestion(q.questionId)"> Delete </button>
       </mat-expansion-panel-header>
       <div class="row">

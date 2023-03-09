@@ -28,7 +28,7 @@ export class QuestionsComponent implements OnInit, OnDestroy{
   }
 
   onAdd(){
-    this.utils.groupToEdit.next(null);
+    this.utils.questionToEdit.next(null);
     this.openDialog();
   }
 
@@ -54,8 +54,9 @@ export class QuestionsComponent implements OnInit, OnDestroy{
       });
   }
 
-  edit(questionId:number){
-
+  edit(question:Question){
+    this.utils.questionToEdit.next(question);
+    this.openDialog();
   }
 
   ngOnInit(): void {

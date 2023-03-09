@@ -2,31 +2,31 @@
 <mat-dialog-content class="mat-typography" id="dialog">
   <form #registerForm="ngForm" (ngSubmit)="onSignUpSubmit(registerForm)" autocomplete="off">
     <label for="qName">Question</label>
-    <input type="text" id="qName"  name="qName" ngModel placeholder="Question" required autocomplete="off">
+    <input type="text" id="qName"  name="qName" ngModel placeholder="Question" [(ngModel)]="questionData.questionName" required autocomplete="off">
 
     <label for="answer">Asnwers: </label>
     <div class="fl">
-      <input type="text" id="a" placeholder="A" ngModel name="a" required autocomplete="off">
-      <input type="text" id="b" placeholder="B" ngModel name="b" required autocomplete="off">
+      <input type="text" id="a" placeholder="A" ngModel name="a" [(ngModel)]="questionData.A" required autocomplete="off">
+      <input type="text" id="b" placeholder="B" ngModel name="b" [(ngModel)]="questionData.B" required autocomplete="off">
     </div>
     <div class="fl">
-      <input type="text" id="c" placeholder="C" ngModel name="c" autocomplete="off">
-      <input type="text" id="D" placeholder="D" ngModel name="d" autocomplete="off">
+      <input type="text" id="c" placeholder="C" ngModel name="c" [(ngModel)]="questionData.C" autocomplete="off">
+      <input type="text" id="D" placeholder="D" ngModel name="d" [(ngModel)]="questionData.D" autocomplete="off">
     </div>
     <div class="fl">
-      <input type="text" id="e" placeholder="E" ngModel name="e" autocomplete="off">
-      <input type="text" id="f" placeholder="F" ngModel name="f" autocomplete="off">
+      <input type="text" id="e" placeholder="E" ngModel name="e" [(ngModel)]="questionData.E" autocomplete="off">
+      <input type="text" id="f" placeholder="F" ngModel name="f" [(ngModel)]="questionData.F" autocomplete="off">
     </div>
     <div class="fl">
       <div class="btm">
         <label for="correct_answer">Correct asnwers: </label>
-        <select #correct (change)="changeCorrectAnswer(correct.value)" id="correctanswer" name="correctanswer" size="1">
-          <option *ngFor="let t of ['A','B','C','D','E','F']" [value]="t">{{ t }}</option>
+        <select #correct (change)="changeCorrectAnswer(correct.value)" id="correctanswer" name="correctanswer" size="1" [(ngModel)]="questionData.CorrectAnswer">
+          <option *ngFor="let t of ['A','B','C','D','E','F']">{{ t }}</option>
         </select>
       </div>
       <div class="btm">
         <label for="points">Points: </label>
-        <input type="number" id="points" ngModel placeholder="Points" name="points" required autocomplete="off">
+        <input type="number" id="points" ngModel placeholder="Points" [(ngModel)]="questionData.Points" name="points" required autocomplete="off">
       </div>
     </div>
     <mat-dialog-actions align="center">

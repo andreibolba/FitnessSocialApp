@@ -200,6 +200,29 @@ export class DataStorageService {
     );
   }
 
+  editQuestion(token: string, question: Question) {
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post(
+      this.baseUrl + 'question/update',
+      {
+        QuestionId:question.questionId,
+        QuestionName: question.questionName,
+        TrainerId: question.trainerId,
+        A: question.a,
+        B: question.b,
+        C: question.c,
+        D: question.d,
+        E: question.e,
+        F: question.f,
+        CorrectOption: question.correctOption,
+        Points: question.points,
+      },
+      {
+        headers: headers,
+      }
+    );
+  }
+
   deleteQuestion(token: string, questionId: number) {
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.post(this.baseUrl + 'question/delete/' + questionId, {

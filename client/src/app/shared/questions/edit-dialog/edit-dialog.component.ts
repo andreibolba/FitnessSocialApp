@@ -16,15 +16,28 @@ import { UtilsService } from 'src/services/utils.service';
   styleUrls: ['./edit-dialog.component.css'],
 })
 export class EditDialogComponent implements OnInit, OnDestroy {
+  @Input() questionData:{questionName:string,A:string|null,B:string|null,C:string|null,D:string|null,E:string|null,F:string|null,CorrectAnswer:string,Points:number} = {
+    questionName: '',
+    A: '',
+    B: '',
+    C: '',
+    D: '',
+    E: '',
+    F: '',
+    CorrectAnswer: '',
+    Points: -1,
+  };
+
   dataPeopleSub!: Subscription;
   addQuestion!: Subscription;
+  editQuestion!: Subscription;
   getIdSub!: Subscription;
   utilsSub!: Subscription;
   operation: string = '';
   question!: Question | null;
   private correctAnswer = 'A';
   private token: string = '';
-  private trainerId:number=-1;
+  private trainerId: number = -1;
 
   constructor(
     private dataService: DataStorageService,
@@ -37,6 +50,19 @@ export class EditDialogComponent implements OnInit, OnDestroy {
     this.utils.initializeError();
     this.utilsSub = this.utils.questionToEdit.subscribe((res) => {
       this.question = res;
+      console.log(this.question);
+      this.correctAnswer=res!.correctOption;
+      this.questionData = {
+        questionName: res!.questionName,
+        A: res!.a,
+        B: res!.b,
+        C: res!.c,
+        D: res!.d,
+        E: res!.e,
+        F: res!.f,
+        CorrectAnswer: res!.correctOption,
+        Points: res!.points,
+      };
     });
 
     if (this.question == null) {
@@ -50,9 +76,11 @@ export class EditDialogComponent implements OnInit, OnDestroy {
     } else {
       const person: LoggedPerson = JSON.parse(personString);
       this.token = person.token;
-      this.getIdSub= this.dataService.getPerson(person.username,this.token).subscribe((data)=>{
-        this.trainerId=data.personId;
-      });
+      this.getIdSub = this.dataService
+        .getPerson(person.username, this.token)
+        .subscribe((data) => {
+          this.trainerId = data.personId;
+        });
     }
   }
 
@@ -61,6 +89,8 @@ export class EditDialogComponent implements OnInit, OnDestroy {
     if (this.dataPeopleSub) this.dataPeopleSub.unsubscribe();
     if (this.utilsSub) this.utilsSub.unsubscribe();
     if (this.getIdSub) this.getIdSub.unsubscribe();
+    if (this.addQuestion) this.addQuestion.unsubscribe();
+    if (this.editQuestion) this.editQuestion.unsubscribe();
   }
 
   changeCorrectAnswer(e: string) {
@@ -79,13 +109,13 @@ export class EditDialogComponent implements OnInit, OnDestroy {
     return true;
   }
 
-  veriryCorrectAnswer(question: Question) :boolean{
-    if(question.correctOption=='A' && question.a=='') return false;
-    if(question.correctOption=='B' && question.b=='') return false;
-    if(question.correctOption=='C' && question.c=='') return false;
-    if(question.correctOption=='D' && question.d=='') return false;
-    if(question.correctOption=='E' && question.e=='') return false;
-    if(question.correctOption=='F' && question.f=='') return false;
+  veriryCorrectAnswer(question: Question): boolean {
+    if (question.correctOption == 'A' && question.a == '') return false;
+    if (question.correctOption == 'B' && question.b == '') return false;
+    if (question.correctOption == 'C' && question.c == '') return false;
+    if (question.correctOption == 'D' && question.d == '') return false;
+    if (question.correctOption == 'E' && question.e == '') return false;
+    if (question.correctOption == 'F' && question.f == '') return false;
     return true;
   }
 
@@ -106,20 +136,41 @@ export class EditDialogComponent implements OnInit, OnDestroy {
         'Answers must be one followed be other with no blank spaces!'
       );
     } else {
-      if(this.veriryCorrectAnswer(question)==false){
-        this.toastr.error("Correct answer must be filled!");
-      }else{
-        question.c=question.c==''?null:question.c;
-        question.d=question.d==''?null:question.d;
-        question.e=question.e==''?null:question.e;
-        question.f=question.f==''?null:question.f;
-        question.trainerId=this.trainerId;
-        this.addQuestion = this.dataService.addQuestion(this.token,question).subscribe(()=>{
-          this.toastr.success("Question was added with succes!");
-          this.dialogRef.close();
-        },(error)=>{
-          this.toastr.error(error.error);
-        });
+      if (this.veriryCorrectAnswer(question) == false) {
+        this.toastr.error('Correct answer must be filled!');
+      } else {
+        question.c = question.c == '' ? null : question.c;
+        question.d = question.d == '' ? null : question.d;
+        question.e = question.e == '' ? null : question.e;
+        question.f = question.f == '' ? null : question.f;
+        question.trainerId = this.trainerId;
+        if(this.operation=='Add'){
+        this.addQuestion = this.dataService
+          .addQuestion(this.token, question)
+          .subscribe(
+            () => {
+              this.toastr.success('Question was added with success!');
+              this.dialogRef.close();
+            },
+            (error) => {
+              this.toastr.error(error.error);
+            }
+          );
+        }else{
+          question.questionId=this.question!.questionId;
+          this.addQuestion = this.dataService
+          .editQuestion(this.token, question)
+          .subscribe(
+            () => {
+              this.toastr.success('Question was edited with success!');
+              this.dialogRef.close();
+            },
+            (error) => {
+              this.toastr.error(error.error);
+              console.log(error.error);
+            }
+          );
+        }
       }
     }
   }

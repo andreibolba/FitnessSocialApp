@@ -5,6 +5,7 @@ using API.Interfaces;
 using API.Interfaces.Repository;
 using API.Models;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace API.Data
 {
@@ -37,6 +38,11 @@ namespace API.Data
             };
 
             _context.PasswordkLinks.Add(link);
+
+            if (this.SaveAll()==false)
+            {
+                return false;
+            }
 
             Utils.EmailFields details = new Utils.EmailFields
             {
@@ -115,7 +121,7 @@ namespace API.Data
             if (person.LastName == null) person.LastName = personFromDb.LastName;
             if (person.Username == null) person.Username = personFromDb.Username;
             if (person.Email == null) person.Email = personFromDb.Email;
-            if (person.BirthDate == null) person.BirthDate = personFromDb.BirthDate;
+            if (person.BirthDate == null) person.BirthDate = personFromDb.BirthDate.Value;
             if (person.Status == null) person.Status = personFromDb.Status;
             if (person.Password == null)
             {
@@ -149,6 +155,19 @@ namespace API.Data
         public PersonDto GetPersonByEmail(string email)
         {
             return GetAllPerson().SingleOrDefault(p => p.Email == email);
+        }
+
+        public IEnumerable<TestDto> GetAllInternTests(int personId)
+        {
+            var result = _context.TestGroupInterns.Where(tgi => tgi.Deleted == false && (tgi.InternId != null && tgi.InternId == personId))
+                .Include(tgi => tgi.Test)
+                .Select(tgi => tgi.Test.TestId);
+            var resultReturn = _mapper.Map<IEnumerable<TestDto>>(_context.Tests.Where(t => t.Deleted == false  && result.Contains(t.TestId)).Include(t => t.Trainer));
+            foreach (var res in resultReturn)
+            {
+                res.Questions = _mapper.Map<IEnumerable<QuestionDto>>(_context.TestQuestions.Where(t => t.Deleted == false && t.TestId == res.TestId).Select(t => t.Question));
+            }
+            return resultReturn;
         }
     }
 }

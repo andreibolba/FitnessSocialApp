@@ -11,5 +11,6 @@ namespace API.Interfaces.Repository
         void Update(GroupDto groupdto);
         void Delete(int groupId);
         bool SaveAll();
+        IEnumerable<TestDto> GetAllTestsFromGroup(int groupId);
     }
 }

@@ -16,5 +16,6 @@ namespace API.Interfaces.Repository
         void Delete(int personId);
         PersonDto LogIn(string email, string password);
         bool SaveAll();
+        IEnumerable<TestDto> GetAllInternTests(int personId);
     }
 }

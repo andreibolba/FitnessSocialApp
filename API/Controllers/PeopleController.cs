@@ -50,6 +50,10 @@ namespace API.Controllers
         public ActionResult ForgotPassword([FromBody] ForgotPasswordDto password)
         {
             var person = _personRepository.GetPersonByEmail(password.Email);
+            if(person == null)
+            {
+                return BadRequest("Email is not recognized!");
+            }
             PasswordkLink link = new PasswordkLink
             {
                 PersonUsername = person.Username,
@@ -138,6 +142,12 @@ namespace API.Controllers
 
             _personRepository.Update(person);
             return _personRepository.SaveAll() ? Ok() : BadRequest("Internal Server Error"); ;
+        }
+
+        [HttpGet("tests/{personId:int}")]
+        public ActionResult GetAllInternTest(int personId)
+        {
+            return Ok(_personRepository.GetAllInternTests(personId));
         }
     }
 }

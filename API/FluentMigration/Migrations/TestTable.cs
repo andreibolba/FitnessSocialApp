@@ -23,6 +23,7 @@ namespace API.FluentMigration.Migrations
                 .WithColumn("TrainerId").AsInt32().NotNullable()
                 .WithColumn("DateOfPost").AsDateTime().NotNullable()
                 .WithColumn("Deadline").AsDateTime().NotNullable()
+                .WithColumn("CanBeEdited").AsBoolean().NotNullable()
                 .WithColumn("Deleted").AsBoolean().NotNullable();
 
             Create.ForeignKey(fkNameTrainer)

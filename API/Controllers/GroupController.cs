@@ -1,3 +1,4 @@
+using API.Data;
 using API.Dtos;
 using API.Interfaces.Repository;
 using Microsoft.AspNetCore.Authorization;
@@ -40,6 +41,12 @@ namespace API.Controllers
         {
             _repository.Update(group);
             return _repository.SaveAll() ? Ok() : BadRequest("Internal Server Error"); ;
+        }
+
+        [HttpGet("tests/{groupId:int}")]
+        public ActionResult GetAllGroupTest(int groupId)
+        {
+            return Ok(_repository.GetAllTestsFromGroup(groupId));
         }
     }
 }

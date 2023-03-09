@@ -9,7 +9,7 @@ public partial class Group
 
     public string GroupName { get; set; }
 
-    public int TrainerId { get; set; }
+    public int? TrainerId { get; set; }
 
     public bool Deleted { get; set; }
 
@@ -18,6 +18,8 @@ public partial class Group
     public virtual ICollection<Meeting> Meetings { get; } = new List<Meeting>();
 
     public virtual ICollection<Task> Tasks { get; } = new List<Task>();
+
+    public virtual ICollection<TestGroupIntern> TestGroupInterns { get; } = new List<TestGroupIntern>();
 
     public virtual Person Trainer { get; set; }
 }

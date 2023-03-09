@@ -108,6 +108,8 @@ export class EditGroupDialogComponent implements OnInit, OnDestroy {
     group.groupName = form.value.groupName;
     group.trainerId = this.currentId;
 
+    console.log(group);
+
     if (this.opration == 'Add') {
       this.dataService.addGroup(this.token,group).subscribe(
         () => {

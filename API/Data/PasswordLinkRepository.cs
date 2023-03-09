@@ -3,7 +3,7 @@ using API.Models;
 
 namespace API.Data
 {
-    public class PasswordLinkRepository : IPasswordLinkRepository
+    public sealed class PasswordLinkRepository : IPasswordLinkRepository
     {
         private readonly InternShipAppSystemContext _context;
 

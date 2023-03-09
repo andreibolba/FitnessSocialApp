@@ -1,8 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace API.Dtos
 {
     public class PersonDto
@@ -15,7 +10,7 @@ namespace API.Dtos
         public string Email { get; set; }
         public string Password { get; set; }
         public string Status { get; set; }
-        public DateTime BirthDate { get; set; }
+        public DateTime? BirthDate { get; set; }
         public DateTime Created { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }

@@ -33,7 +33,7 @@ namespace API.Controllers
 
 
             if (_repository.Create(person))
-                return _repository.SaveAll() ? Ok() : BadRequest("Internal Server Error");
+                return Ok();
             else
                 return BadRequest("Account was created, but the mail was not sent!");
         }

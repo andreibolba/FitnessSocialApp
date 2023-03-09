@@ -5,7 +5,7 @@ using AutoMapper;
 
 namespace API.Data
 {
-    public class LoggRepository : ILoggRepository
+    public sealed class LoggRepository : ILoggRepository
     {
         private readonly InternShipAppSystemContext _context;
         private readonly IMapper _mapper;

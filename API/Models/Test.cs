@@ -15,11 +15,15 @@ public partial class Test
 
     public DateTime Deadline { get; set; }
 
+    public bool CanBeEdited { get; set; }
+
     public bool Deleted { get; set; }
 
     public virtual ICollection<Feedback> Feedbacks { get; } = new List<Feedback>();
 
-    public virtual ICollection<Question> Questions { get; } = new List<Question>();
+    public virtual ICollection<TestGroupIntern> TestGroupInterns { get; } = new List<TestGroupIntern>();
+
+    public virtual ICollection<TestQuestion> TestQuestions { get; } = new List<TestQuestion>();
 
     public virtual Person Trainer { get; set; }
 }

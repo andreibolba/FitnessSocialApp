@@ -3,10 +3,11 @@ using API.Interfaces.Repository;
 using API.Models;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using System.Drawing.Printing;
 
 namespace API.Data
 {
-    public class GroupRepository : IGroupRepository
+    public sealed class GroupRepository : IGroupRepository
     {
         private readonly InternShipAppSystemContext _context;
         private readonly IMapper _mapper;
@@ -46,6 +47,15 @@ namespace API.Data
                 re.AllInterns = _mapper.Map<List<PersonDto>>(interns);
             }
             return groupsToReturn;
+        }
+
+        public IEnumerable<TestDto> GetAllTestsFromGroup(int groupId)
+        {
+            var result = _context.TestGroupInterns
+                .Where(tgi => tgi.Deleted == false && (tgi.GroupId != null && tgi.GroupId == groupId))
+                .Include(tgi => tgi.Test)
+                .Select(tgi => tgi.Test);
+            return _mapper.Map<IEnumerable<TestDto>>(result);
         }
 
         public GroupDto GetGroupById(int id)

@@ -93,7 +93,8 @@ export class HeaderComponent implements OnInit, OnDestroy {
                 this.buttons = [
                   { name: 'Dashboard', logo: 'uil uil-estate', link: '../dashboard' },
                   { name: 'My Group', logo: 'uil uil-users-alt', link: 'mygroups' },
-                  { name: 'Tests', logo: 'uil uil-diary', link: 'tests' },
+                  { name: 'Tests', logo: 'uil uil-question-circle', link: 'tests' },
+                  { name: 'Questions', logo: 'uil uil-font', link: 'questions' },
                   { name: 'Challanges', logo: 'uil uil-brackets-curly',link: 'challanges' },
                   { name: 'Feedback', logo: 'uil uil-feedback', link: 'feedback' },
                   { name: 'Notes', logo: 'uil uil-notes', link: 'notes' },
@@ -108,6 +109,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
                     link: 'tasks',
                   },
                   { name: 'Forum', logo: 'uil uil-font', link: 'forum' },
+
                 ];
                 break;
               case 'Intern':

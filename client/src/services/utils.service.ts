@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { Group } from 'src/model/group.model';
 import { Person } from 'src/model/person.model';
+import { Question } from 'src/model/question.model';
 import { DataStorageService } from './data-storage.service';
 
 @Injectable({
@@ -11,6 +12,7 @@ import { DataStorageService } from './data-storage.service';
 export class UtilsService {
 
   userToEdit=new BehaviorSubject<Person | null>(null);
+  questionToEdit=new BehaviorSubject<Question | null>(null);
   groupToEdit=new BehaviorSubject<Group | null>(null);
   addedPerson=new BehaviorSubject<Person | null>(null);
   dashboardChanged=new EventEmitter<boolean>(true);

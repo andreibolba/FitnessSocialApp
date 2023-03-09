@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { LoggedPerson } from 'src/model/loggedperson.model';
 import { Question } from 'src/model/question.model';
@@ -14,13 +15,15 @@ import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 })
 export class QuestionsComponent implements OnInit, OnDestroy{
   panelOpenState = false;
-  questions:Question[] | null=null;
+  deleteQuestion!:Subscription;
+  questions:Question[] | null | undefined =null;
   dataGroupSub!: Subscription;
   token:string='';
 
   constructor(
     private dataService: DataStorageService,
     private dialog: MatDialog,
+    private toastr: ToastrService,
     private utils: UtilsService){
   }
 
@@ -39,6 +42,20 @@ export class QuestionsComponent implements OnInit, OnDestroy{
 
   ngOnDestroy(): void {
     if(this.dataGroupSub!=null) this.dataGroupSub.unsubscribe();
+  }
+
+  deletequestion(questionId:number){
+      this.deleteQuestion = this.dataService.deleteQuestion(this.token,questionId).subscribe(()=>{
+        this.toastr.success("A question was deleted succesfully!");
+        // const index=this.questions?.findIndex(q=>q.questionId==questionId);
+        // this.questions=this.questions?.splice(index!,1);
+      },(error)=>{
+        this.toastr.error(error.error);
+      });
+  }
+
+  edit(questionId:number){
+
   }
 
   ngOnInit(): void {

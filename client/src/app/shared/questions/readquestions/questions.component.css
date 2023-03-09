@@ -35,8 +35,7 @@ h2{
   float: right;
   height: 40px;
   width: 120px;
-  background-color: rgb(160, 196, 255);
-  color: #515151;
+  color: white;
   border: none;
 }
 
@@ -69,7 +68,7 @@ h2{
   border: 1px solid white;
   padding-left: 4px;
   padding-top: 2px;
-  color: #515151;
+  color: white;
   display: flex;
 }
 
@@ -77,4 +76,11 @@ h2{
   margin-left: 10px;
   margin-top: 5px;
   font-size: 17px;
+}
+
+#button{
+  margin-right: 10px;
+  padding-left: 3px;
+  padding-right: 3px;
+  width: 80px;
 }

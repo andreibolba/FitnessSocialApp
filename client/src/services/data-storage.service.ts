@@ -199,4 +199,11 @@ export class DataStorageService {
       }
     );
   }
+
+  deleteQuestion(token: string, questionId: number) {
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post(this.baseUrl + 'question/delete/' + questionId, {
+      headers: headers,
+    });
+  }
 }

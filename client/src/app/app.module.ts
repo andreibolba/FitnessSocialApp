@@ -35,6 +35,7 @@ import { EditGroupDialogComponent } from './admin/edit-group-dialog/edit-group-d
 import { EditGroupMembersDialogComponent } from './admin/edit-group-members-dialog/edit-group-members-dialog.component';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { ErrorComponent } from './error/error.component';
+import { QuestionsComponent } from './shared/questions/questions.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { ErrorComponent } from './error/error.component';
     CreateEditDialogComponent,
     EditGroupDialogComponent,
     EditGroupMembersDialogComponent,
-    ErrorComponent
+    ErrorComponent,
+    QuestionsComponent
   ],
   imports: [
     BrowserModule,

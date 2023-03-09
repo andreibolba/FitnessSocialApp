@@ -106,7 +106,7 @@ export class DataStorageService {
     return this.http.post(
       this.baseUrl + 'group/add',
       {
-        name: group.groupName,
+        groupName: group.groupName,
         trainerId: group.trainerId
       },
       { headers: headers }

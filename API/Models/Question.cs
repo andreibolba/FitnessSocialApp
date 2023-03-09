@@ -9,7 +9,7 @@ public partial class Question
 
     public string QuestionName { get; set; }
 
-    public int TestId { get; set; }
+    public int? TrainerId { get; set; }
 
     public string A { get; set; }
 
@@ -33,5 +33,7 @@ public partial class Question
 
     public virtual ICollection<QuestionSolution> QuestionSolutions { get; } = new List<QuestionSolution>();
 
-    public virtual Test Test { get; set; }
+    public virtual ICollection<TestQuestion> TestQuestions { get; } = new List<TestQuestion>();
+
+    public virtual Person Trainer { get; set; }
 }

@@ -63,6 +63,8 @@ public partial class Person
 
     public virtual ICollection<QuestionSolution> QuestionSolutions { get; } = new List<QuestionSolution>();
 
+    public virtual ICollection<Question> Questions { get; } = new List<Question>();
+
     public virtual ICollection<SubTaskChecked> SubTaskCheckeds { get; } = new List<SubTaskChecked>();
 
     public virtual ICollection<Task> TaskInterns { get; } = new List<Task>();
@@ -70,6 +72,8 @@ public partial class Person
     public virtual ICollection<TaskSolution> TaskSolutions { get; } = new List<TaskSolution>();
 
     public virtual ICollection<Task> TaskTrainers { get; } = new List<Task>();
+
+    public virtual ICollection<TestGroupIntern> TestGroupInterns { get; } = new List<TestGroupIntern>();
 
     public virtual ICollection<Test> Tests { get; } = new List<Test>();
 }

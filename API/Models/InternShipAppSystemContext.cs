@@ -63,10 +63,14 @@ public partial class InternShipAppSystemContext : DbContext
 
     public virtual DbSet<Test> Tests { get; set; }
 
+    public virtual DbSet<TestGroupIntern> TestGroupInterns { get; set; }
+
+    public virtual DbSet<TestQuestion> TestQuestions { get; set; }
+
     public virtual DbSet<VersionInfo> VersionInfos { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-       => optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=InternShipAppSystem;User Id=sa;Password=1234%asd; TrustServerCertificate=True");
+        => optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=InternShipAppSystem;User Id=sa;Password=1234%asd; TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -407,10 +411,9 @@ public partial class InternShipAppSystemContext : DbContext
                 .IsRequired()
                 .HasMaxLength(255);
 
-            entity.HasOne(d => d.Test).WithMany(p => p.Questions)
-                .HasForeignKey(d => d.TestId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("QuestionTestFK");
+            entity.HasOne(d => d.Trainer).WithMany(p => p.Questions)
+                .HasForeignKey(d => d.TrainerId)
+                .HasConstraintName("QuestionTrainerFK");
         });
 
         modelBuilder.Entity<QuestionSolution>(entity =>
@@ -522,6 +525,43 @@ public partial class InternShipAppSystemContext : DbContext
                 .HasForeignKey(d => d.TrainerId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("TestTrainerFK");
+        });
+
+        modelBuilder.Entity<TestGroupIntern>(entity =>
+        {
+            entity.HasKey(e => e.TestGroupId);
+
+            entity.ToTable("TestGroupIntern");
+
+            entity.HasIndex(e => e.TestGroupId, "IX_TestGroupIntern_TestGroupId").IsUnique();
+
+            entity.HasOne(d => d.Group).WithMany(p => p.TestGroupInterns)
+                .HasForeignKey(d => d.GroupId)
+                .HasConstraintName("TestGroupInternGroupFK");
+
+            entity.HasOne(d => d.Intern).WithMany(p => p.TestGroupInterns)
+                .HasForeignKey(d => d.InternId)
+                .HasConstraintName("TestGroupInternInternFK");
+
+            entity.HasOne(d => d.Test).WithMany(p => p.TestGroupInterns)
+                .HasForeignKey(d => d.TestId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("TestGroupInternTestFK");
+        });
+
+        modelBuilder.Entity<TestQuestion>(entity =>
+        {
+            entity.ToTable("TestQuestion");
+
+            entity.HasOne(d => d.Question).WithMany(p => p.TestQuestions)
+                .HasForeignKey(d => d.QuestionId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("TestQuestionQuestionK");
+
+            entity.HasOne(d => d.Test).WithMany(p => p.TestQuestions)
+                .HasForeignKey(d => d.TestId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("TestQuestionTestK");
         });
 
         modelBuilder.Entity<VersionInfo>(entity =>

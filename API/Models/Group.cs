@@ -19,5 +19,7 @@ public partial class Group
 
     public virtual ICollection<Task> Tasks { get; } = new List<Task>();
 
+    public virtual ICollection<TestGroupIntern> TestGroupInterns { get; } = new List<TestGroupIntern>();
+
     public virtual Person Trainer { get; set; }
 }

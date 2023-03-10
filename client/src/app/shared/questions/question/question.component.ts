@@ -10,8 +10,8 @@ import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 
 @Component({
   selector: 'app-questions',
-  templateUrl: './questions.component.html',
-  styleUrls: ['./questions.component.css']
+  templateUrl: './question.component.html',
+  styleUrls: ['./question.component.css']
 })
 export class QuestionsComponent implements OnInit, OnDestroy{
   panelOpenState = false;

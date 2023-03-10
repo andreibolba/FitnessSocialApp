@@ -8,6 +8,7 @@ namespace API.Interfaces.Repository
         IEnumerable<TestDto> GetAllTests();
         IEnumerable<QuestionDto> GettAllQuestionsFromTest(int testId);
         TestDto GetTestById(int id);
+        IEnumerable<TestDto> GetTestByTrainerIdId(int trainerId);
         void AddQuestionToTest(int testId, int questionId);
         void RemoveQuestionFromTest(int testId,int questionId);
         void Update(TestDto test);

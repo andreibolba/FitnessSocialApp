@@ -14,15 +14,21 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<QuestionDto>> GetAllTests()
+        public ActionResult<IEnumerable<TestDto>> GetAllTests()
         {
             return Ok(_test.GetAllTests());
         }
 
         [HttpGet("{testId:int}")]
-        public ActionResult<IEnumerable<QuestionDto>> GetTestById(int testId)
+        public ActionResult<IEnumerable<TestDto>> GetTestById(int testId)
         {
             return Ok(_test.GetTestById(testId));
+        }
+
+        [HttpGet("mytest/{trainerId:int}")]
+        public ActionResult<IEnumerable<TestDto>> GetTestByTrainerId(int trainerId)
+        {
+            return Ok(_test.GetTestByTrainerIdId(trainerId));
         }
 
 

@@ -4,6 +4,7 @@ import { Group } from 'src/model/group.model';
 import { Person } from 'src/model/person.model';
 import { InternGroup } from 'src/model/interngroup.model';
 import { Question } from 'src/model/question.model';
+import { Test } from 'src/model/test.model';
 
 @Injectable({
   providedIn: 'root',
@@ -226,6 +227,22 @@ export class DataStorageService {
   deleteQuestion(token: string, questionId: number) {
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.post(this.baseUrl + 'question/delete/' + questionId, {
+      headers: headers,
+    });
+  }
+
+  //tests
+
+  getMyTests(token:string,trainerId:number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<Test[]>(this.baseUrl + 'test/mytest/' + trainerId, {
+      headers: headers,
+    });
+  }
+
+  deleteTest(token:string, testId:number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post(this.baseUrl + 'test/delete/' + testId, {
       headers: headers,
     });
   }

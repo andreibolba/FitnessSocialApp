@@ -32,4 +32,12 @@ export class UtilsService {
       this.router.navigate(["error"]);
    })
   }
+
+  calculatePoint(questions:Question[]){
+    let result=0;
+    questions.forEach(element => {
+        result=result+element.points
+    });
+    return result;
+  }
 }

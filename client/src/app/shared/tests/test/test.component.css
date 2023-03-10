@@ -1,0 +1,148 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  color: #515151;
+}
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(190, 190, 190);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6b6b6b;
+}
+
+#main {
+  width: 79%;
+  height: 76vh;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+}
+
+.buttons {
+  height: 7vh;
+  margin-bottom: 3vh;
+  width: 79%;
+  display: flex;
+}
+
+h2 {
+  color: #515151;
+  font-family: 'Poppins-Italic';
+}
+
+.title {
+  height: 7vh;
+  margin-bottom: 3vh;
+  width: 90%;
+  display: flex;
+}
+
+.title i {
+  font-size: 32px;
+  margin-right: 5px;
+  margin-top: -5px;
+  color: #515151;
+}
+
+.buttons button {
+  float: right;
+  height: 40px;
+  width: 120px;
+  color: white;
+  border: none;
+}
+
+.row {
+  display: flex;
+  width: 98%;
+  height: 240px;
+  margin-bottom: 5px;
+}
+
+#test {
+  background-color: rgb(236, 236, 236);
+  height: 93%;
+  margin-top: 1%;
+  margin-bottom: 1%;
+  width: calc(100%/3 - 20px);
+  margin-right: 10px;
+  margin-left: 10px;
+  border-radius: 4px;
+  box-shadow: 10px 5px 5px rgb(192, 192, 192);
+}
+
+.question {
+  height: 60%;
+  width: 100%;
+  font-family: 'Poppins-BoldItalic';
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 25px;
+  vertical-align: middle;
+}
+
+.infos {
+  height: 20%;
+  width: 100%;
+  display: flex;
+}
+
+.questions {
+  height: 100%;
+  width: 50%;
+  display: flex;
+}
+
+.number {
+  height: 100%;
+  width: 40%;
+  padding-right: 4px;
+  text-align: end;
+  font-size: 30px;
+  font-family: 'Poppins-Italic';
+}
+
+.content {
+  height: 100%;
+  width: 60%;
+  padding-left: 4px;
+  font-size: 15px;
+  padding-top: 15px;
+  font-family: 'Poppins-Italic';
+}
+
+.points {
+  height: 100%;
+  width: 50%;
+  display: flex;
+}
+
+.button {
+  height: 20%;
+  width: 100%;
+}
+
+.button button {
+  height: 80%;
+  width: calc(100%/3 - 10px);
+  border-radius: 4px;
+  margin-left: 5px;
+  margin-right: 5px;
+  color: white;
+  margin-top: 5px;
+}

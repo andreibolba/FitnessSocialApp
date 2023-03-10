@@ -1,0 +1,34 @@
+<div class="buttons">
+  <div class="title">
+    <i class="uil uil-question-circle"></i>
+    <h2>All of your tests</h2>
+  </div>
+  <button class="btn btn-success" mat-button (click)="onAdd()"> Add test </button>
+</div>
+
+<div id="main" *ngIf="tests!=null">
+  <div class="row">
+    <div id="test" *ngFor="let t of tests">
+      <div class="question">
+        {{ t.testName }}
+      </div>
+      <div class="infos">
+        <div class="questions">
+          <div class="number">{{ t.questions.length }}</div>
+          <div class="content">questions</div>
+        </div>
+        <div class="points">
+          <div class="number">{{ t.points }}</div>
+          <div class="content">points</div>
+        </div>
+      </div>
+      <div class="button">
+        <button class="btn-success">Publish</button>
+        <button class="btn-info">Edit</button>
+        <button class="btn-danger" (click)="deletetest(t.testId)">Delete</button>
+      </div>
+    </div>
+   </div>
+
+</div>
+<p *ngIf="tests==null">You do not have tests!</p>

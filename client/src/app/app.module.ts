@@ -22,7 +22,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NoteComponent } from './shared/note/note.component';
 import { FeedbackComponent } from './shared/feedback/feedback.component';
 import { ChallangeComponent } from './shared/challange/challange.component';
-import { TestComponent } from './shared/test/test.component';
+import { TestComponent } from './shared/tests/test/test.component';
 import { MyGroupComponent } from './intern/my.group/my.group.component';
 import { MyGroupsComponent } from './trainer/my.groups/my.groups.component';
 import { ToastrModule } from 'ngx-toastr';
@@ -33,11 +33,12 @@ import { CreateEditDialogComponent } from './admin/create-edit-dialog/create-edi
 import { MatDialogModule } from '@angular/material/dialog';
 import { EditGroupDialogComponent } from './admin/edit-group-dialog/edit-group-dialog.component';
 import { EditGroupMembersDialogComponent } from './admin/edit-group-members-dialog/edit-group-members-dialog.component';
-import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { ErrorComponent } from './error/error.component';
 import { MatExpansionModule } from '@angular/material/expansion';
-import { QuestionsComponent } from './shared/questions/readquestions/questions.component';
+import { QuestionsComponent } from './shared/questions/question/question.component';
 import { EditDialogComponent } from './shared/questions/edit-dialog/edit-dialog.component';
+import { EditTestsComponent } from './shared/tests/edit-tests/edit-tests.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { EditDialogComponent } from './shared/questions/edit-dialog/edit-dialog.
     EditGroupMembersDialogComponent,
     ErrorComponent,
     QuestionsComponent,
-    EditDialogComponent
+    EditDialogComponent,
+    EditTestsComponent
   ],
   imports: [
     BrowserModule,

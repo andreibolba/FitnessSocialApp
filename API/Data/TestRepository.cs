@@ -114,6 +114,11 @@ namespace API.Data
             return this.GetAllTests().SingleOrDefault(t => t.TestId == id);
         }
 
+        public IEnumerable<TestDto> GetTestByTrainerIdId(int trainerId)
+        {
+            return this.GetAllTests().Where(t => t.TrainerId == trainerId);
+        }
+
         public void RemoveQuestionFromTest(int testId, int questionId)
         {
             var add = _context.TestQuestions.SingleOrDefault(q => q.TestId == testId && q.QuestionId == questionId);

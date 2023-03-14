@@ -42,6 +42,7 @@ h2{
 #main{
   width: 79%;
   height: 76vh;
+  padding-left: 10px;
   scroll-behavior: smooth;
   overflow-y: scroll;
 }

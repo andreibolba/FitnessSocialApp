@@ -246,4 +246,43 @@ export class DataStorageService {
       headers: headers,
     });
   }
+
+  addTest(token:string, test:Test){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post(this.baseUrl + 'test/add',{
+      TestName: test.testName,
+      TrainerId: test.trainerId,
+      DateOfPost:test.dateOfPost,
+      Deadline:test.deadline,
+    }, {
+      headers: headers,
+    });
+  }
+
+  updateTest(token:string, test:Test){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post(this.baseUrl + 'test/update',{
+      TestId: test.testId,
+      TestName: test.testName,
+      TrainerId: test.trainerId,
+      DateOfPost:test.dateOfPost,
+      Deadline:test.deadline,
+    }, {
+      headers: headers,
+    });
+  }
+
+  publish(token:string, testId:number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post(this.baseUrl + 'test/stop/'+testId, {
+      headers: headers,
+    });
+  }
+
+  unselectedQuestions(token:string, testId:number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<Question[]>(this.baseUrl + 'test/unselected/'+testId, {
+      headers: headers,
+    });
+  }
 }

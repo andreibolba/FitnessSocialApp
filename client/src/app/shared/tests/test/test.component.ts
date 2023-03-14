@@ -14,11 +14,13 @@ import { EditTestsComponent } from '../edit-tests/edit-tests.component';
   styleUrls: ['./test.component.css'],
 })
 export class TestComponent implements OnInit, OnDestroy {
-  tests: Test[] | null = null;
+  tests: Test[]=[];
   private token!: string;
   testSub!: Subscription;
   trainerSub!: Subscription;
   deleteSub!: Subscription;
+  publishSub!: Subscription;
+  isTrainer:boolean=false;
 
   constructor(
     private utils: UtilsService,
@@ -30,10 +32,18 @@ export class TestComponent implements OnInit, OnDestroy {
     if (this.testSub != null) this.testSub.unsubscribe();
     if (this.trainerSub != null) this.trainerSub.unsubscribe();
     if (this.deleteSub != null) this.deleteSub.unsubscribe();
+    if (this.publishSub != null) this.publishSub.unsubscribe();
   }
 
   onAdd() {
-    this.utils.questionToEdit.next(null);
+    this.utils.testToEdit.next(null);
+    this.utils.isEditModeForTest.next(true);
+    this.openDialog();
+  }
+
+  onSeeTest(test:Test){
+    this.utils.testToEdit.next(test);
+    this.utils.isEditModeForTest.next(false);
     this.openDialog();
   }
 
@@ -45,8 +55,13 @@ export class TestComponent implements OnInit, OnDestroy {
     });
   }
 
+  edittest(test: Test) {
+    this.utils.testToEdit.next(test);
+    this.utils.isEditModeForTest.next(true);
+    this.openDialog();
+  }
+
   deletetest(id: number) {
-    console.log(id);
     this.deleteSub = this.dataService.deleteTest(this.token, id).subscribe(
       () => {
         this.toastr.success('Test was deleted succesfully!');
@@ -55,6 +70,18 @@ export class TestComponent implements OnInit, OnDestroy {
         this.toastr.error(error.error);
       }
     );
+  }
+
+  publishTest(testId:number){
+    this.publishSub=this.dataService.publish(this.token,testId).subscribe( () => {
+      this.toastr.success('Test was published succesfully!');
+      let index=this.tests.findIndex(t=>t.testId==testId);
+      this.tests[index].canBeEdited=false;
+    },
+    (error) => {
+      this.toastr.error(error.error);
+    }
+  );
   }
 
   ngOnInit(): void {
@@ -71,6 +98,7 @@ export class TestComponent implements OnInit, OnDestroy {
         .subscribe(
           (data) => {
             id = data.personId;
+            this.isTrainer=data.status=='Trainer';
           },
           () => {},
           () => {
@@ -82,7 +110,7 @@ export class TestComponent implements OnInit, OnDestroy {
                 },
                 () => {},
                 () => {
-                  this.tests!.forEach((element) => {
+                  this.tests.forEach((element) => {
                     element.points = this.utils.calculatePoint(
                       element.questions
                     );

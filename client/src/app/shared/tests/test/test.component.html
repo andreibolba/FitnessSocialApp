@@ -3,14 +3,16 @@
     <i class="uil uil-question-circle"></i>
     <h2>All of your tests</h2>
   </div>
-  <button class="btn btn-success" mat-button (click)="onAdd()"> Add test </button>
+  <button class="btn btn-success" mat-button (click)="onAdd()" *ngIf="isTrainer"> Add test </button>
 </div>
 
-<div id="main" *ngIf="tests!=null">
+<div id="main" *ngIf="tests.length!=0">
   <div class="row">
     <div id="test" *ngFor="let t of tests">
       <div class="question">
+        <a (click)="onSeeTest(t)">
         {{ t.testName }}
+        </a>
       </div>
       <div class="infos">
         <div class="questions">
@@ -22,13 +24,18 @@
           <div class="content">points</div>
         </div>
       </div>
-      <div class="button">
-        <button class="btn-success">Publish</button>
-        <button class="btn-info">Edit</button>
+      <div class="button"  *ngIf="isTrainer" align="center">
+        <button class="btn-success" *ngIf="t.canBeEdited" (click)="publishTest(t.testId)">Publish</button>
+        <button class="btn-success" *ngIf="!t.canBeEdited">Add interns</button>
+        <button class="btn-info" *ngIf="t.canBeEdited" (click)="edittest(t)" >Edit</button>
         <button class="btn-danger" (click)="deletetest(t.testId)">Delete</button>
+      </div>
+
+      <div class="buttonIntern"  *ngIf="!isTrainer">
+        <button class="btn-success" >Start Test</button>
       </div>
     </div>
    </div>
 
 </div>
-<p *ngIf="tests==null">You do not have tests!</p>
+<p *ngIf="tests.length==0">You do not have tests!</p>

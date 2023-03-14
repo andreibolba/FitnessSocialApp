@@ -39,6 +39,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { QuestionsComponent } from './shared/questions/question/question.component';
 import { EditDialogComponent } from './shared/questions/edit-dialog/edit-dialog.component';
 import { EditTestsComponent } from './shared/tests/edit-tests/edit-tests.component';
+import { EditIntersComponent } from './shared/tests/edit-inters/edit-inters.component';
+import { EditGroupsComponent } from './shared/tests/edit-groups/edit-groups.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +69,9 @@ import { EditTestsComponent } from './shared/tests/edit-tests/edit-tests.compone
     ErrorComponent,
     QuestionsComponent,
     EditDialogComponent,
-    EditTestsComponent
+    EditTestsComponent,
+    EditIntersComponent,
+    EditGroupsComponent
   ],
   imports: [
     BrowserModule,

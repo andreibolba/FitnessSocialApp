@@ -10,7 +10,7 @@ export class Test{
   public trainer:Person;
   public dateOfPost: Date;
   public deadline:Date;
-  public candBeEdited: boolean;
+  public canBeEdited: boolean;
 
   constructor(){
     this.testId=-1;
@@ -21,6 +21,6 @@ export class Test{
     this.trainer=new Person();
     this.dateOfPost=new Date();
     this.deadline=new Date();
-    this.candBeEdited=false;
+    this.canBeEdited=false;
   }
 }

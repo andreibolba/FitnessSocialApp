@@ -9,6 +9,7 @@ namespace API.Interfaces.Repository
         IEnumerable<QuestionDto> GettAllQuestionsFromTest(int testId);
         TestDto GetTestById(int id);
         IEnumerable<TestDto> GetTestByTrainerIdId(int trainerId);
+        IEnumerable<QuestionDto> GetUnselectedQuestions(int testId);
         void AddQuestionToTest(int testId, int questionId);
         void RemoveQuestionFromTest(int testId,int questionId);
         void Update(TestDto test);
@@ -18,6 +19,9 @@ namespace API.Interfaces.Repository
         void RemoveTestFromStudents(int testId,int internId);
         void Delete(int test);
         void StopEdit(int id);
+        bool UpdateAllQuestions(string obj, int testId);
+        bool UpdateAllTestInters(string obj, int testId);
+        bool UpdateAllTestGroups(string obj, int testId);
         bool SaveAll();
     }
 }

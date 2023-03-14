@@ -119,6 +119,17 @@ namespace API.Data
             return this.GetAllTests().Where(t => t.TrainerId == trainerId);
         }
 
+        public IEnumerable<QuestionDto> GetUnselectedQuestions(int testId)
+        {
+            var allSelected=GettAllQuestionsFromTest(testId);
+            var all=_mapper.Map<IEnumerable<QuestionDto>>(_context.Questions.Where(q=>q.Deleted==false));
+            var allUnseleted=new List<QuestionDto>();
+            foreach(var a in all)
+                if(allSelected.FirstOrDefault(q=>q.QuestionId==a.QuestionId)==null)
+                    allUnseleted.Add(a);
+            return _mapper.Map<IEnumerable<QuestionDto>>(allUnseleted);
+        }
+
         public void RemoveQuestionFromTest(int testId, int questionId)
         {
             var add = _context.TestQuestions.SingleOrDefault(q => q.TestId == testId && q.QuestionId == questionId);
@@ -168,6 +179,87 @@ namespace API.Data
             testUpdate.TrainerId = test.Trainer == null? testUpdate.TrainerId : test.Trainer.PersonId;
 
             _context.Tests.Update(testUpdate);
+        }
+
+        public bool UpdateAllQuestions(string obj, int testId)
+        {
+            var result = _context.TestQuestions.Where(t => t.Deleted == false && t.TestId == testId);
+            List<int> idList = Utils.Utils.FromStringToInt(obj);
+            if (result.Count() == 0 && idList.Count() == 0)
+                return false;
+            foreach (var res in result)
+            {
+                bool delete = idList.IndexOf(res.QuestionId) == -1 ? true : false;
+                res.Deleted = delete;
+                if (delete == false)
+                    idList.Remove(res.QuestionId);
+                _context.TestQuestions.Update(res);
+            }
+
+            foreach (var id in idList)
+            {
+                _context.TestQuestions.Add(new TestQuestion
+                {
+                    TestId = testId,
+                    QuestionId = id,
+                    Deleted = false
+                });
+            }
+            return true;
+        }
+
+        public bool UpdateAllTestGroups(string obj, int testId)
+        {
+            var result = _context.TestGroupInterns.Where(t => t.Deleted == false && t.TestId == testId);
+            List<int> idList = Utils.Utils.FromStringToInt(obj);
+            if (result.Count() == 0 && idList.Count() == 0)
+                return false;
+            foreach (var res in result)
+            {
+                bool delete = idList.IndexOf(res.GroupId.Value) == -1 ? true : false;
+                res.Deleted = delete;
+                if (delete == false)
+                    idList.Remove(res.GroupId.Value);
+                _context.TestGroupInterns.Update(res);
+            }
+
+            foreach (var id in idList)
+            {
+                _context.TestGroupInterns.Add(new TestGroupIntern
+                {
+                    TestId = testId,
+                    GroupId = id,
+                    Deleted = false
+                });
+            }
+            return true;
+        }
+
+        public bool UpdateAllTestInters(string obj, int testId)
+        {
+            var result = _context.TestGroupInterns.Where(t => t.Deleted == false && t.TestId == testId);
+            List<int> idList = Utils.Utils.FromStringToInt(obj);
+            if (result.Count() == 0 && idList.Count() == 0)
+                return false;
+            foreach (var res in result)
+            {
+                bool delete = idList.IndexOf(res.InternId.Value) == -1 ? true : false;
+                res.Deleted = delete;
+                if (delete == false)
+                    idList.Remove(res.InternId.Value);
+                _context.TestGroupInterns.Update(res);
+            }
+
+            foreach (var id in idList)
+            {
+                _context.TestGroupInterns.Add(new TestGroupIntern
+                {
+                    TestId = testId,
+                    InternId = id,
+                    Deleted = false
+                });
+            }
+            return true;
         }
     }
 }

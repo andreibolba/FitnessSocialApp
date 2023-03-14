@@ -1,6 +1,7 @@
 ﻿using API.Dtos;
 using API.Interfaces.Repository;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 
 namespace API.Controllers
 {
@@ -42,7 +43,7 @@ namespace API.Controllers
         [HttpPost("delete/{testId:int}")]
         public ActionResult DeleteTest(int testId)
         {
-           _test.Delete(testId);
+            _test.Delete(testId);
             return _test.SaveAll() ? Ok() : BadRequest("Internal Server Error");
         }
 
@@ -61,7 +62,7 @@ namespace API.Controllers
         }
 
         [HttpPost("addquestion/{questionId:int}")]
-        public ActionResult EditQuestion([FromBody] TestDto test,int questionId)
+        public ActionResult EditQuestion([FromBody] TestDto test, int questionId)
         {
             _test.AddQuestionToTest(test.TestId, questionId);
             return _test.SaveAll() ? Ok() : BadRequest("Internal Server Error");
@@ -73,7 +74,7 @@ namespace API.Controllers
             if (test.InternId != null)
             {
                 if (test.IsDelete == false)
-                _test.AddTestToStudent(test.TestId, test.InternId.Value);
+                    _test.AddTestToStudent(test.TestId, test.InternId.Value);
                 else
                     _test.RemoveTestFromStudents(test.TestId, test.InternId.Value);
             }
@@ -86,6 +87,40 @@ namespace API.Controllers
             }
             return _test.SaveAll() ? Ok() : BadRequest("Internal Server Error");
         }
+
+        [HttpGet("unselected/{testId:int}")]
+        public ActionResult GetAllUnselectedQuestons(int testId)
+        {
+            return Ok(_test.GetUnselectedQuestions(testId));
+        }
+
+
+        [HttpPost("testattribution/update/{testId:int}/{option:string}")]
+        public ActionResult UpdateTestAttributions([FromBody] object ids, int testId,string option)
+        {
+            Dictionary<string,string> idsData = JsonConvert.DeserializeObject<Dictionary<string,string>>(ids.ToString());
+            bool hasSomethingToSave;
+            switch (option)
+            {
+                case "interns":
+                    hasSomethingToSave = _test.UpdateAllTestInters(idsData["ids"] += "!", testId);
+                    break;
+                case "groups":
+                    hasSomethingToSave = _test.UpdateAllTestGroups(idsData["ids"] += "!", testId);
+                    break;
+                case "tests":
+                    hasSomethingToSave = _test.UpdateAllQuestions(idsData["ids"] += "!", testId);
+                    break;
+                default:
+                    return BadRequest("Invalid option!");
+
+            }
+            if (hasSomethingToSave == false)
+                return Ok();
+            return _test.SaveAll() ? Ok() : BadRequest("Internal server error!");
+        }
+
+        
 
     }
 }

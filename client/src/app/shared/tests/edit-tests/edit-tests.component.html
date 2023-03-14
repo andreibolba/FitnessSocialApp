@@ -1,1 +1,125 @@
-<p>edit-tests works!</p>
+<h3>See test's info</h3>
+<div id="main">
+  <form #registerForm="ngForm" (ngSubmit)="onSignUpSubmit(registerForm)" autocomplete="off">
+
+    <div class="infos">
+      <div class="info">
+        <label for="testName">Test Name</label>
+        <input type="text" id="testName" name="testName" ngModel placeholder="Test Name" [(ngModel)]="dates.testName"
+          [readonly]="!editMode" required autocomplete="off">
+      </div>
+      <div class="info">
+        <label for="Deadline">Deadline</label>
+        <input type="date" id="deadline" placeholder="Deadline" [(ngModel)]="dates.deadline" [readonly]="!editMode"
+          name="deadline" required>
+      </div>
+    </div>
+
+    <label for="questions" class="questions">Questions:</label><br>
+    <div class="q" *ngIf="questionsSelected.length>0">
+      <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="question"
+          *ngFor="let q of questionsSelected; let i = index">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{ i + 1 }}. {{ q.questionName }} ({{q.points}}p)
+            </mat-panel-title>
+            <button type="button" class="btn btn-danger" id="button" *ngIf="editMode" (click)="remove(q.questionId)"> Remove </button>
+          </mat-expansion-panel-header>
+          <div class="row">
+            <div class="answer" *ngIf="q.a!=null"
+              [ngStyle]="{'background-color': q.correctOption=='A'? 'green' : 'red'}">
+              <h4>A</h4>
+              <p>{{ q.a }}</p>
+            </div>
+            <div class="answer" *ngIf="q.c!=null"
+              [ngStyle]="{'background-color': q.correctOption=='C'? 'green' : 'red'}">
+              <h4>C</h4>
+              <p>{{ q.c }}</p>
+            </div>
+            <div class="answer" *ngIf="q.e!=null"
+              [ngStyle]="{'background-color': q.correctOption=='E'? 'green' : 'red'}">
+              <h4>E</h4>
+              <p>{{ q.e }}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="answer" *ngIf="q.b!=null"
+              [ngStyle]="{'background-color': q.correctOption=='B'? 'green' : 'red'}">
+              <h4>B</h4>
+              <p>{{ q.b }}</p>
+            </div>
+            <div class="answer" *ngIf="q.d!=null"
+              [ngStyle]="{'background-color': q.correctOption=='D'? 'green' : 'red'}">
+              <h4>D</h4>
+              <p>{{ q.d }}</p>
+            </div>
+            <div class="answer" *ngIf="q.f!=null"
+              [ngStyle]="{'background-color': q.correctOption=='F'? 'green' : 'red'}">
+              <h4>F</h4>
+              <p>{{ q.f }}</p>
+            </div>
+          </div>
+
+        </mat-expansion-panel>
+
+      </mat-accordion>
+    </div>
+    <p *ngIf="questionsSelected.length==0">Select at least one question!</p>
+
+    <hr *ngIf="editMode">
+    <div class="q" *ngIf="questionsUnselected.length>0">
+      <mat-accordion *ngIf="editMode">
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="question"
+          *ngFor="let q of questionsUnselected; let i = index">
+          <mat-expansion-panel-header>
+            <mat-panel-title>
+              {{ i + 1 }}. {{ q.questionName }} ({{q.points}}p)
+            </mat-panel-title>
+            <button type="button" class="btn btn-success" id="button" *ngIf="editMode" (click)="add(q.questionId)"> Add </button>
+          </mat-expansion-panel-header>
+          <div class="row">
+            <div class="answer" *ngIf="q.a!=null"
+              [ngStyle]="{'background-color': q.correctOption=='A'? 'green' : 'red'}">
+              <h4>A</h4>
+              <p>{{ q.a }}</p>
+            </div>
+            <div class="answer" *ngIf="q.c!=null"
+              [ngStyle]="{'background-color': q.correctOption=='C'? 'green' : 'red'}">
+              <h4>C</h4>
+              <p>{{ q.c }}</p>
+            </div>
+            <div class="answer" *ngIf="q.e!=null"
+              [ngStyle]="{'background-color': q.correctOption=='E'? 'green' : 'red'}">
+              <h4>E</h4>
+              <p>{{ q.e }}</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="answer" *ngIf="q.b!=null"
+              [ngStyle]="{'background-color': q.correctOption=='B'? 'green' : 'red'}">
+              <h4>B</h4>
+              <p>{{ q.b }}</p>
+            </div>
+            <div class="answer" *ngIf="q.d!=null"
+              [ngStyle]="{'background-color': q.correctOption=='D'? 'green' : 'red'}">
+              <h4>D</h4>
+              <p>{{ q.d }}</p>
+            </div>
+            <div class="answer" *ngIf="q.f!=null"
+              [ngStyle]="{'background-color': q.correctOption=='F'? 'green' : 'red'}">
+              <h4>F</h4>
+              <p>{{ q.f }}</p>
+            </div>
+          </div>
+
+        </mat-expansion-panel>
+
+      </mat-accordion>
+    </div>
+    <p *ngIf="questionsUnselected.length==0">Create at least one question!</p>
+    <mat-dialog-actions align="center">
+      <button type="submit" class="btn-success" *ngIf="editMode">Save</button>
+    </mat-dialog-actions>
+  </form>
+</div>

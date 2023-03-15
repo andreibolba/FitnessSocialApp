@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "uiB8Hdk/gX5pTFKsEvsFy2i+0gRqfxRt9WeZoCfU1aQ+ZluliwXJl+WodWGqT3kTsKxu9wJgmD4IoSj8sxBgqQ==",
+  "dgSpecHash": "yHR7upDqzkljr2ZTtCPEeR5GVoXwxH210TU4z8rSw6L2UiRcek0bR9PbHXIMMbVppMCYVHkVIsYo/wyW+OFy1w==",
   "success": true,
   "projectFilePath": "F:\\InternShipApp\\API\\API.csproj",
   "expectedPackageFiles": [
@@ -176,12 +176,6 @@
     "C:\\Users\\andrei.bolba\\.nuget\\packages\\system.xml.xmldocument\\4.3.0\\system.xml.xmldocument.4.3.0.nupkg.sha512"
   ],
   "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file F:\\InternShipApp\\API\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    },
     {
       "code": "NU1803",
       "level": "Warning",

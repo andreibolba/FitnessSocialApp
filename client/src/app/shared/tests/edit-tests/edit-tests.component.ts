@@ -26,6 +26,7 @@ export class EditTestsComponent implements OnInit, OnDestroy {
   trainerSub!: Subscription;
   unseledtedQuestionsSub!: Subscription;
   saveSub!: Subscription;
+  saveQuestionSub!: Subscription;
   test!: Test | null;
   panelOpenState = false;
   editMode: boolean = false;
@@ -85,18 +86,29 @@ export class EditTestsComponent implements OnInit, OnDestroy {
     if (this.testSub) this.testSub.unsubscribe();
     if (this.isEditMode) this.isEditMode.unsubscribe();
     if (this.saveSub) this.saveSub.unsubscribe();
+    if (this.saveQuestionSub) this.saveQuestionSub.unsubscribe();
+    if (this.unseledtedQuestionsSub) this.unseledtedQuestionsSub.unsubscribe();
   }
   onSignUpSubmit(form: NgForm) {
     let test = new Test();
     test.testName = form.value.testName;
     test.deadline = form.value.deadline;
     test.trainerId=this.trainerId;
+    let ids='';
+    this.questionsSelected.forEach(element => {
+      ids+=element.questionId.toString()+"_";
+    });
     if (this.test != null) {
       test.testId = this.test.testId;
       test.dateOfPost = this.test.dateOfPost;
       this.saveSub=this.dataService.updateTest(this.token,test).subscribe( () => {
-        this.toastr.success('Test was edited succesfully!');
-        this.dialogRef.close();
+        this.saveQuestionSub=this.dataService.saveSelectedQuestion(this.token,test.testId,ids).subscribe(() => {
+          this.toastr.success("The operations is done succesfully!");
+          this.dialogRef.close();
+         },
+         (error) => {
+           this.toastr.error(error.error);
+         });
       },
       (error) => {
         this.toastr.error(error.error);
@@ -104,9 +116,14 @@ export class EditTestsComponent implements OnInit, OnDestroy {
     );
     }else{
       test.dateOfPost=new Date();
-      this.saveSub=this.dataService.addTest(this.token,test).subscribe( () => {
-        this.toastr.success('Test was added succesfully!');
-        this.dialogRef.close();
+      this.saveSub=this.dataService.addTest(this.token,test).subscribe( (data) => {
+        this.saveQuestionSub=this.dataService.saveSelectedQuestion(this.token,data.testId,ids).subscribe(() => {
+          this.toastr.success("The operations is done succesfully!");
+          this.dialogRef.close();
+         },
+         (error) => {
+           this.toastr.error(error.error);
+         });
       },
       (error) => {
         this.toastr.error(error.error);
@@ -114,10 +131,7 @@ export class EditTestsComponent implements OnInit, OnDestroy {
     );
     }
 
-    let ids='';
-    this.questionsSelected.forEach(element => {
-      ids+=element.questionId.toString()+"_";
-    });
+
   }
 
   remove(id:number){

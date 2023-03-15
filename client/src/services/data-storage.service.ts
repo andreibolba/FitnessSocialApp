@@ -249,7 +249,7 @@ export class DataStorageService {
 
   addTest(token:string, test:Test){
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'test/add',{
+    return this.http.post<Test>(this.baseUrl + 'test/add',{
       TestName: test.testName,
       TrainerId: test.trainerId,
       DateOfPost:test.dateOfPost,
@@ -282,6 +282,13 @@ export class DataStorageService {
   unselectedQuestions(token:string, testId:number){
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.get<Question[]>(this.baseUrl + 'test/unselected/'+testId, {
+      headers: headers,
+    });
+  }
+
+  saveSelectedQuestion(token:string, testId:number,ids:string){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post(this.baseUrl + 'test/testattribution/update/'+testId+'/tests',{ids: ids}, {
       headers: headers,
     });
   }

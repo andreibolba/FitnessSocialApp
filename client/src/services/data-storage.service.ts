@@ -5,6 +5,8 @@ import { Person } from 'src/model/person.model';
 import { InternGroup } from 'src/model/interngroup.model';
 import { Question } from 'src/model/question.model';
 import { Test } from 'src/model/test.model';
+import { TestIntern } from 'src/model/testintern.model';
+import { TestGroup } from 'src/model/testgroup.model';
 
 @Injectable({
   providedIn: 'root',
@@ -289,6 +291,34 @@ export class DataStorageService {
   saveSelectedQuestion(token:string, testId:number,ids:string){
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.post(this.baseUrl + 'test/testattribution/update/'+testId+'/tests',{ids: ids}, {
+      headers: headers,
+    });
+  }
+
+  getAllInternsForTest(token:string, testId:number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<TestIntern[]>(this.baseUrl + 'test/all/'+testId+'/interns', {
+      headers: headers,
+    });
+  }
+
+  getAllGroupsForTest(token:string, testId:number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<TestGroup[]>(this.baseUrl + 'test/all/'+testId+'/groups', {
+      headers: headers,
+    });
+  }
+
+  updateAllInternsFromTest(token:string, testId:number,ids:string){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post(this.baseUrl + 'test/testattribution/update/'+testId+'/interns',{ids: ids}, {
+      headers: headers,
+    });
+  }
+
+  updateAllGroupsFromTest(token:string, testId:number, ids:string){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post(this.baseUrl + 'test/testattribution/update/'+testId+'/groups',{ids: ids}, {
       headers: headers,
     });
   }

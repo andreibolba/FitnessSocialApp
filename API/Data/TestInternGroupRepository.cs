@@ -57,55 +57,96 @@ namespace API.Data
 
         public IEnumerable<T> GettAllChecked<T>(int testId)
         {
-            IQueryable<TestGroupIntern> response = _context.TestGroupInterns.Where(tgi => tgi.Deleted == false && tgi.TestId == testId);
+            var response = _context.TestGroupInterns.Where(tgi => tgi.Deleted == false && tgi.TestId == testId);
             if (typeof(T) == typeof(TestInternDto))
             {
-                var interns = response
-                    .Include(tgi=>tgi.Intern)
-                    .Select(tgi => new TestInternDto { 
-                        InternId = tgi.InternId.Value,
-                        FirstName = tgi.Intern.FirstName, 
-                        LastName = tgi.Intern.LastName, 
-                        IsChecked = true 
-                    }).ToList();
-                foreach(var intern in _mapper.Map<IEnumerable<PersonDto>>(_context.People.Where(p=>p.Deleted==false && p.Status == "Intern")))
+                if (response.Where(r => r.InternId != null).Count() != 0)
                 {
-                    if (interns.FirstOrDefault(i => i.InternId == intern.PersonId) == null)
+                    var interns = response
+                    .Include(tgi => tgi.Intern)
+                    .Select(tgi => new TestInternDto
+                    {
+                        InternId = tgi.InternId.Value,
+                        FirstName = tgi.Intern.FirstName,
+                        LastName = tgi.Intern.LastName,
+                        Username = tgi.Intern.Username,
+                        IsChecked = true
+                    }).ToList();
+                    foreach (var intern in _mapper.Map<IEnumerable<PersonDto>>(_context.People.Where(p => p.Deleted == false && p.Status == "Intern")))
+                    {
+                        if (interns.FirstOrDefault(i => i.InternId == intern.PersonId) == null)
+                        {
+                            interns.Add(new TestInternDto
+                            {
+                                InternId = intern.PersonId,
+                                FirstName = intern.FirstName,
+                                LastName = intern.LastName,
+                                Username = intern.Username,
+                                IsChecked = false
+                            });
+                        }
+                    }
+                    return (IEnumerable<T>)interns;
+                }
+                else
+                {
+                    var interns = new List<TestInternDto>();
+                    foreach (var intern in _mapper.Map<IEnumerable<PersonDto>>(_context.People.Where(p => p.Deleted == false && p.Status == "Intern")))
                     {
                         interns.Add(new TestInternDto
                         {
                             InternId = intern.PersonId,
                             FirstName = intern.FirstName,
                             LastName = intern.LastName,
+                            Username = intern.Username,
                             IsChecked = false
                         });
                     }
+                    return (IEnumerable<T>)interns;
                 }
-                return (IEnumerable<T>)interns;
             }
             else if (typeof(T) == typeof(TestGroupDto))
             {
-                var groups = response
-                    .Include(tgi => tgi.Group)
-                    .Select(tgi => new TestGroupDto
-                    {
-                        GroupId = tgi.GroupId.Value,
-                        GroupName = tgi.Group.GroupName,
-                        IsChecked = true
-                    }).ToList();
-                foreach (var gr in _mapper.Map<IEnumerable<GroupDto>>(_context.Groups.Where(p => p.Deleted == false)))
+                if (response.Where(r => r.GroupId != null).Count() != 0)
                 {
-                    if (groups.FirstOrDefault(i => i.GroupId == gr.GroupId) == null)
+                    var groups = response
+                        .Include(tgi => tgi.Group)
+                        .Select(tgi => new TestGroupDto
+                        {
+                            GroupId = tgi.GroupId.Value,
+                            GroupName = tgi.Group.GroupName,
+                            IsChecked = true
+                        }).ToList();
+                    foreach (var gr in _mapper.Map<IEnumerable<GroupDto>>(_context.Groups.Where(p => p.Deleted == false)))
                     {
+                        if (groups.FirstOrDefault(i => i.GroupId == gr.GroupId) == null)
+                        {
+                            groups.Add(new TestGroupDto
+                            {
+                                GroupId = gr.GroupId,
+                                GroupName = gr.GroupName,
+                                IsChecked = false
+                            });
+                        }
+                    }
+                    return (IEnumerable<T>)groups;
+                }
+                else
+                {
+                    var groups = new List<TestGroupDto>();
+                    foreach (var gr in _mapper.Map<IEnumerable<GroupDto>>(_context.Groups.Where(p => p.Deleted == false)))
+                    {
+
                         groups.Add(new TestGroupDto
                         {
                             GroupId = gr.GroupId,
                             GroupName = gr.GroupName,
                             IsChecked = false
                         });
+
                     }
+                    return (IEnumerable<T>)groups;
                 }
-                return (IEnumerable<T>)groups;
             }
             return null;
         }

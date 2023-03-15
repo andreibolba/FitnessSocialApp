@@ -6,6 +6,8 @@ import { LoggedPerson } from 'src/model/loggedperson.model';
 import { Test } from 'src/model/test.model';
 import { DataStorageService } from 'src/services/data-storage.service';
 import { UtilsService } from 'src/services/utils.service';
+import { EditGroupsComponent } from '../edit-groups/edit-groups.component';
+import { EditIntersComponent } from '../edit-inters/edit-inters.component';
 import { EditTestsComponent } from '../edit-tests/edit-tests.component';
 
 @Component({
@@ -14,13 +16,13 @@ import { EditTestsComponent } from '../edit-tests/edit-tests.component';
   styleUrls: ['./test.component.css'],
 })
 export class TestComponent implements OnInit, OnDestroy {
-  tests: Test[]=[];
+  tests: Test[] = [];
   private token!: string;
   testSub!: Subscription;
   trainerSub!: Subscription;
   deleteSub!: Subscription;
   publishSub!: Subscription;
-  isTrainer:boolean=false;
+  isTrainer: boolean = false;
 
   constructor(
     private utils: UtilsService,
@@ -28,6 +30,7 @@ export class TestComponent implements OnInit, OnDestroy {
     private dataService: DataStorageService,
     private toastr: ToastrService
   ) {}
+
   ngOnDestroy(): void {
     if (this.testSub != null) this.testSub.unsubscribe();
     if (this.trainerSub != null) this.trainerSub.unsubscribe();
@@ -38,17 +41,20 @@ export class TestComponent implements OnInit, OnDestroy {
   onAdd() {
     this.utils.testToEdit.next(null);
     this.utils.isEditModeForTest.next(true);
-    this.openDialog();
+    this.openDialog(1);
   }
 
-  onSeeTest(test:Test){
+  onSeeTest(test: Test) {
     this.utils.testToEdit.next(test);
     this.utils.isEditModeForTest.next(false);
-    this.openDialog();
+    this.openDialog(1);
   }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(EditTestsComponent);
+  openDialog(op: number) {
+    const dialogRef =
+      op == 1
+        ? this.dialog.open(EditTestsComponent)
+        : this.dialog.open(EditIntersComponent);
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
@@ -58,7 +64,19 @@ export class TestComponent implements OnInit, OnDestroy {
   edittest(test: Test) {
     this.utils.testToEdit.next(test);
     this.utils.isEditModeForTest.next(true);
-    this.openDialog();
+    this.openDialog(1);
+  }
+
+  addInterns(test: Test) {
+    this.utils.testToEdit.next(test);
+    this.utils.isInternTest.next(true);
+    this.openDialog(2);
+  }
+
+  addGroups(test: Test) {
+    this.utils.testToEdit.next(test);
+    this.utils.isInternTest.next(false);
+    this.openDialog(2);
   }
 
   deletetest(id: number) {
@@ -72,16 +90,22 @@ export class TestComponent implements OnInit, OnDestroy {
     );
   }
 
-  publishTest(testId:number){
-    this.publishSub=this.dataService.publish(this.token,testId).subscribe( () => {
-      this.toastr.success('Test was published succesfully!');
-      let index=this.tests.findIndex(t=>t.testId==testId);
-      this.tests[index].canBeEdited=false;
-    },
-    (error) => {
-      this.toastr.error(error.error);
+  publishTest(testId: number) {
+    let index = this.tests.findIndex((t) => t.testId == testId);
+    if (this.tests[index].questions.length == 0) {
+      alert("You can't publish a test with no questions!");
+      return;
+    } else {
+      this.publishSub = this.dataService.publish(this.token, testId).subscribe(
+        () => {
+          this.toastr.success('Test was published succesfully!');
+          this.tests[index].canBeEdited = false;
+        },
+        (error) => {
+          this.toastr.error(error.error);
+        }
+      );
     }
-  );
   }
 
   ngOnInit(): void {
@@ -98,7 +122,7 @@ export class TestComponent implements OnInit, OnDestroy {
         .subscribe(
           (data) => {
             id = data.personId;
-            this.isTrainer=data.status=='Trainer';
+            this.isTrainer = data.status == 'Trainer';
           },
           () => {},
           () => {

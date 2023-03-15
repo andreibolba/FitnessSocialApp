@@ -18,6 +18,7 @@ export class UtilsService {
   groupToEdit=new BehaviorSubject<Group | null>(null);
   addedPerson=new BehaviorSubject<Person | null>(null);
   isEditModeForTest=new BehaviorSubject<boolean>(true);
+  isInternTest=new BehaviorSubject<boolean>(true);
   dashboardChanged=new EventEmitter<boolean>(true);
 
   error=new BehaviorSubject<{errorCode:number,errorTitle:string,errorMessage:string} | null>(null);

@@ -9,10 +9,13 @@
 <div id="main" *ngIf="tests.length!=0">
   <div class="row">
     <div id="test" *ngFor="let t of tests">
-      <div class="question">
-        <a (click)="onSeeTest(t)">
+      <div class="question" *ngIf="isTrainer">
+        <a (click)="onSeeTest(t)" >
         {{ t.testName }}
         </a>
+      </div>
+      <div class="question" *ngIf="!isTrainer">
+        {{ t.testName }}
       </div>
       <div class="infos">
         <div class="questions">
@@ -32,7 +35,7 @@
         <button class="btn-danger" (click)="deletetest(t.testId)">Delete</button>
       </div>
 
-      <div class="buttonIntern"  *ngIf="!isTrainer">
+      <div class="buttonIntern"  *ngIf="!isTrainer" align="center">
         <button class="btn-success" >Start Test</button>
       </div>
     </div>

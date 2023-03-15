@@ -6,7 +6,6 @@ import { LoggedPerson } from 'src/model/loggedperson.model';
 import { Test } from 'src/model/test.model';
 import { DataStorageService } from 'src/services/data-storage.service';
 import { UtilsService } from 'src/services/utils.service';
-import { EditGroupsComponent } from '../edit-groups/edit-groups.component';
 import { EditIntersComponent } from '../edit-inters/edit-inters.component';
 import { EditTestsComponent } from '../edit-tests/edit-tests.component';
 
@@ -123,14 +122,12 @@ export class TestComponent implements OnInit, OnDestroy {
           (data) => {
             id = data.personId;
             this.isTrainer = data.status == 'Trainer';
-          },
-          () => {},
-          () => {
             this.testSub = this.dataService
-              .getMyTests(person.token, id)
+              .getMyTests(person.token, id,data.status.toLocaleLowerCase())
               .subscribe(
                 (data) => {
                   this.tests = data;
+                  console.log(this.tests);
                 },
                 () => {},
                 () => {

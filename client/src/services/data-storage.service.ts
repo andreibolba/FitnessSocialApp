@@ -235,9 +235,9 @@ export class DataStorageService {
 
   //tests
 
-  getMyTests(token:string,trainerId:number){
+  getMyTests(token:string,trainerId:number,status:string){
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.get<Test[]>(this.baseUrl + 'test/mytest/' + trainerId, {
+    return this.http.get<Test[]>(this.baseUrl + 'test/mytest/' + trainerId +'/'+status, {
       headers: headers,
     });
   }

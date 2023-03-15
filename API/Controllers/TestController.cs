@@ -30,10 +30,12 @@ namespace API.Controllers
             return Ok(_test.GetTestById(testId));
         }
 
-        [HttpGet("mytest/{trainerId:int}")]
-        public ActionResult<IEnumerable<TestDto>> GetTestByTrainerId(int trainerId)
+        [HttpGet("mytest/{id:int}/{status}")]
+        public ActionResult<IEnumerable<TestDto>> GetTestByTrainerId(int id,string status)
         {
-            return Ok(_test.GetTestByTrainerIdId(trainerId));
+            if(status=="trainer")
+                return Ok(_test.GetTestByTrainerId(id));
+            return Ok(_test.GetInternTest(id));
         }
 
 

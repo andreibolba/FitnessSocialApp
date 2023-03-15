@@ -63,6 +63,7 @@ namespace API.Data
                 if (response.Where(r => r.InternId != null).Count() != 0)
                 {
                     var interns = response
+                    .Where(r=>r.InternId!=null)
                     .Include(tgi => tgi.Intern)
                     .Select(tgi => new TestInternDto
                     {
@@ -110,6 +111,7 @@ namespace API.Data
                 if (response.Where(r => r.GroupId != null).Count() != 0)
                 {
                     var groups = response
+                        .Where(r=>r.GroupId!=null)
                         .Include(tgi => tgi.Group)
                         .Select(tgi => new TestGroupDto
                         {

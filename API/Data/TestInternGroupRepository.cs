@@ -60,37 +60,37 @@ namespace API.Data
             var response = _context.TestGroupInterns.Where(tgi => tgi.Deleted == false && tgi.TestId == testId);
             if (typeof(T) == typeof(TestInternDto))
             {
-               var interns = response
-                    .Where(r=>r.InternId!=null)
-                    .Include(tgi => tgi.Intern)
-                    .Select(tgi => new TestInternDto
+                var interns = response
+                     .Where(r => r.InternId != null)
+                     .Include(tgi => tgi.Intern)
+                     .Select(tgi => new TestInternDto
+                     {
+                         InternId = tgi.InternId.Value,
+                         FirstName = tgi.Intern.FirstName,
+                         LastName = tgi.Intern.LastName,
+                         Username = tgi.Intern.Username,
+                         IsChecked = true
+                     }).ToList();
+                foreach (var intern in _mapper.Map<IEnumerable<PersonDto>>(_context.People.Where(p => p.Deleted == false && p.Status == "Intern")))
+                {
+                    if (interns.FirstOrDefault(i => i.InternId == intern.PersonId) == null)
                     {
-                        InternId = tgi.InternId.Value,
-                        FirstName = tgi.Intern.FirstName,
-                        LastName = tgi.Intern.LastName,
-                        Username = tgi.Intern.Username,
-                        IsChecked = true
-                    }).ToList();
-                    foreach (var intern in _mapper.Map<IEnumerable<PersonDto>>(_context.People.Where(p => p.Deleted == false && p.Status == "Intern")))
-                    {
-                        if (interns.FirstOrDefault(i => i.InternId == intern.PersonId) == null)
+                        interns.Add(new TestInternDto
                         {
-                            interns.Add(new TestInternDto
-                            {
-                                InternId = intern.PersonId,
-                                FirstName = intern.FirstName,
-                                LastName = intern.LastName,
-                                Username = intern.Username,
-                                IsChecked = false
-                            });
-                        }
+                            InternId = intern.PersonId,
+                            FirstName = intern.FirstName,
+                            LastName = intern.LastName,
+                            Username = intern.Username,
+                            IsChecked = false
+                        });
                     }
-                    return (IEnumerable<T>)interns;
+                }
+                return (IEnumerable<T>)interns;
             }
             else if (typeof(T) == typeof(TestGroupDto))
             {
                 var groups = response
-                        .Where(r=>r.GroupId!=null)
+                        .Where(r => r.GroupId != null)
                         .Include(tgi => tgi.Group)
                         .Select(tgi => new TestGroupDto
                         {
@@ -98,19 +98,19 @@ namespace API.Data
                             GroupName = tgi.Group.GroupName,
                             IsChecked = true
                         }).ToList();
-                    foreach (var gr in _mapper.Map<IEnumerable<GroupDto>>(_context.Groups.Where(p => p.Deleted == false)))
+                foreach (var gr in _mapper.Map<IEnumerable<GroupDto>>(_context.Groups.Where(p => p.Deleted == false)))
+                {
+                    if (groups.FirstOrDefault(i => i.GroupId == gr.GroupId) == null)
                     {
-                        if (groups.FirstOrDefault(i => i.GroupId == gr.GroupId) == null)
+                        groups.Add(new TestGroupDto
                         {
-                            groups.Add(new TestGroupDto
-                            {
-                                GroupId = gr.GroupId,
-                                GroupName = gr.GroupName,
-                                IsChecked = false
-                            });
-                        }
+                            GroupId = gr.GroupId,
+                            GroupName = gr.GroupName,
+                            IsChecked = false
+                        });
                     }
-                    return (IEnumerable<T>)groups;
+                }
+                return (IEnumerable<T>)groups;
             }
             return null;
         }

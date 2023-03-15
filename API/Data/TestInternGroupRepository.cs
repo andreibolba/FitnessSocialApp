@@ -60,9 +60,7 @@ namespace API.Data
             var response = _context.TestGroupInterns.Where(tgi => tgi.Deleted == false && tgi.TestId == testId);
             if (typeof(T) == typeof(TestInternDto))
             {
-                if (response.Where(r => r.InternId != null).Count() != 0)
-                {
-                    var interns = response
+               var interns = response
                     .Where(r=>r.InternId!=null)
                     .Include(tgi => tgi.Intern)
                     .Select(tgi => new TestInternDto
@@ -88,29 +86,10 @@ namespace API.Data
                         }
                     }
                     return (IEnumerable<T>)interns;
-                }
-                else
-                {
-                    var interns = new List<TestInternDto>();
-                    foreach (var intern in _mapper.Map<IEnumerable<PersonDto>>(_context.People.Where(p => p.Deleted == false && p.Status == "Intern")))
-                    {
-                        interns.Add(new TestInternDto
-                        {
-                            InternId = intern.PersonId,
-                            FirstName = intern.FirstName,
-                            LastName = intern.LastName,
-                            Username = intern.Username,
-                            IsChecked = false
-                        });
-                    }
-                    return (IEnumerable<T>)interns;
-                }
             }
             else if (typeof(T) == typeof(TestGroupDto))
             {
-                if (response.Where(r => r.GroupId != null).Count() != 0)
-                {
-                    var groups = response
+                var groups = response
                         .Where(r=>r.GroupId!=null)
                         .Include(tgi => tgi.Group)
                         .Select(tgi => new TestGroupDto
@@ -132,23 +111,6 @@ namespace API.Data
                         }
                     }
                     return (IEnumerable<T>)groups;
-                }
-                else
-                {
-                    var groups = new List<TestGroupDto>();
-                    foreach (var gr in _mapper.Map<IEnumerable<GroupDto>>(_context.Groups.Where(p => p.Deleted == false)))
-                    {
-
-                        groups.Add(new TestGroupDto
-                        {
-                            GroupId = gr.GroupId,
-                            GroupName = gr.GroupName,
-                            IsChecked = false
-                        });
-
-                    }
-                    return (IEnumerable<T>)groups;
-                }
             }
             return null;
         }

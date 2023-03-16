@@ -8,6 +8,7 @@ import { NgForm } from '@angular/forms';
 })
 export class EditMeetingDialogComponent {
   editMode=true;
+  today=new Date().toISOString().slice(0, 10);
 
 
   onSignUpSubmit(fomr:NgForm){

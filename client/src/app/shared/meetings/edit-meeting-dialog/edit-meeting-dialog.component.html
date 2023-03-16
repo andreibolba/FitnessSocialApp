@@ -17,12 +17,12 @@
     <div class="infos">
       <div class="info">
         <label for="startTime">Start time</label>
-        <input type="date" id="startTime"
+        <input type="time" id="startTime"
           name="startTime" required>
       </div>
       <div class="info">
         <label for="finishTime">Finish time</label>
-        <input type="date" id="finishTime"
+        <input type="time" id="finishTime"
           name="finishTime" required>
       </div>
     </div>
@@ -35,7 +35,7 @@
       <div class="info">
         <label for="dateOfMeet">Date</label>
         <input type="date" id="dateOfMeet"
-          name="dateOfMeet" required>
+          name="dateOfMeet" [(ngModel)]="today" required>
       </div>
     </div>
     <mat-dialog-actions align="center">

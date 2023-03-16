@@ -4,9 +4,11 @@ namespace API.Interfaces.Repository
 {
     public interface IMeetingRepository
     {
-        void Create(MeetingDto meeting);
+        MeetingDto Create(MeetingDto meeting);
         IEnumerable<MeetingDto> GetAll();
-        IEnumerable<MeetingDto> GetAllByPersonId(int personId);
+        IEnumerable<MeetingDto> GetAllByTrainerId(int trainerId);
+        IEnumerable<MeetingDto> GetAllByGroupId(int groupId);
+        IEnumerable<MeetingDto> GetAllByInternId(int internId);
         MeetingDto GetMeetingById(int id);
         void Update(MeetingDto meeting);
         void Delete(int id);

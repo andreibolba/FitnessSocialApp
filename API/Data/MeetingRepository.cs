@@ -16,29 +16,44 @@ namespace API.Data
             _mapper = mapper;
         }
 
-        public void Create(MeetingDto meeting)
+        public MeetingDto Create(MeetingDto meeting)
         {
-            throw new NotImplementedException();
+            var meet = _mapper.Map<Meeting>(meeting);
+            _context.Meetings.Add(meet);
+            return _mapper.Map<MeetingDto>(meet);
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var meet = _mapper.Map<Meeting>(GetMeetingById(id));
+            meet.Deleted = true;
+            _context.Meetings.Update(meet);
         }
 
         public IEnumerable<MeetingDto> GetAll()
         {
-            throw new NotImplementedException();
+            var result = _context.Meetings.Where(m => m.Deleted == false);
+            return _mapper.Map<IEnumerable<MeetingDto>>(result);
         }
 
-        public IEnumerable<MeetingDto> GetAllByPersonId(int personId)
+        public IEnumerable<MeetingDto> GetAllByTrainerId(int trainerId)
         {
-            throw new NotImplementedException();
+            return GetAll().Where(m => m.TrainerId == trainerId);
+        }
+
+        public IEnumerable<MeetingDto> GetAllByGroupId(int groupId)
+        {
+            return GetAll().Where(m => m.GroupId == groupId);
+        }
+
+        public IEnumerable<MeetingDto> GetAllByInternId(int internId)
+        {
+            return GetAll().Where(m => m.InternId == internId);
         }
 
         public MeetingDto GetMeetingById(int id)
         {
-            throw new NotImplementedException();
+            return GetAll().FirstOrDefault(m => m.MeetingId == id);
         }
 
         public bool SaveAll()
@@ -48,7 +63,12 @@ namespace API.Data
 
         public void Update(MeetingDto meeting)
         {
-            throw new NotImplementedException();
+            var meet = _mapper.Map<Meeting>(GetMeetingById(meeting.MeetingId));
+            meet.MeetingLink = meeting.MeetingLink;
+            meet.MeetingName = meeting.MeetingName;
+            meet.MeetingStartTime = meeting.MeetingStartTime;
+            meet.MeetingFinishTime = meeting.MeetingFinishTime;
+            _context.Meetings.Update(meet);
         }
     }
 }

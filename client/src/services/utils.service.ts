@@ -2,6 +2,7 @@ import { EventEmitter, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { Group } from 'src/model/group.model';
+import { Meeting } from 'src/model/meeting.model';
 import { Person } from 'src/model/person.model';
 import { Question } from 'src/model/question.model';
 import { Test } from 'src/model/test.model';
@@ -15,6 +16,7 @@ export class UtilsService {
   userToEdit=new BehaviorSubject<Person | null>(null);
   questionToEdit=new BehaviorSubject<Question | null>(null);
   testToEdit=new BehaviorSubject<Test | null>(null);
+  meetingToEdit=new BehaviorSubject<Meeting | null>(null);
   groupToEdit=new BehaviorSubject<Group | null>(null);
   addedPerson=new BehaviorSubject<Person | null>(null);
   isEditModeForTest=new BehaviorSubject<boolean>(true);

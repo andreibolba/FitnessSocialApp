@@ -27,6 +27,7 @@ namespace API.Extensions
             services.AddScoped<IQuestionRepository, QuestionRepository>();
             services.AddScoped<ITestQuestionRepository, TestQuestionRepository>();
             services.AddScoped<ITestInternGroupRepository, TestInternGroupRepository>();
+            services.AddScoped<IMeetingRepository, MeetingRepository>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             return services;
         }

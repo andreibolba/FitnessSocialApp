@@ -5,7 +5,7 @@ using AutoMapper;
 
 namespace API.Data
 {
-    public class TestQuestionRepository:ITestQuestionRepository
+    public sealed class TestQuestionRepository:ITestQuestionRepository
     {
         private readonly InternShipAppSystemContext _context;
         private readonly IMapper _mapper;

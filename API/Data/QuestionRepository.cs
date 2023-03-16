@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Data
 {
-    public class QuestionRepository : IQuestionRepository
+    public sealed class QuestionRepository : IQuestionRepository
     {
         private readonly InternShipAppSystemContext _context;
         private readonly IMapper _mapper;

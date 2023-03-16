@@ -10,7 +10,7 @@ import { HomeComponent } from './home/home.component';
 import { MyGroupComponent } from './intern/my.group/my.group.component';
 import { ChallangeComponent } from './shared/challange/challange.component';
 import { FeedbackComponent } from './shared/feedback/feedback.component';
-import { MeetingComponent } from './shared/meeting/meeting.component';
+import { MeetingComponent } from './shared/meetings/meeting/meeting.component';
 import { NoteComponent } from './shared/note/note.component';
 import { ProfileComponent } from './shared/profile/profile.component';
 import { QuestionsComponent } from './shared/questions/question/question.component';

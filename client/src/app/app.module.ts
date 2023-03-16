@@ -15,7 +15,7 @@ import { InternDashboardComponent } from './intern/intern.dashboard/intern.dashb
 import { ForumComponent } from './forum/forum/forum.component';
 import { GroupsComponent } from './admin/groups/groups.component';
 import { TaskComponent } from './shared/task/task.component';
-import { MeetingComponent } from './shared/meeting/meeting.component';
+import { MeetingComponent } from './shared/meetings/meeting/meeting.component';
 import { ProfileComponent } from './shared/profile/profile.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -41,6 +41,7 @@ import { EditDialogComponent } from './shared/questions/edit-dialog/edit-dialog.
 import { EditTestsComponent } from './shared/tests/edit-tests/edit-tests.component';
 import { EditIntersComponent } from './shared/tests/edit-inters/edit-inters.component';
 import { EditGroupsComponent } from './shared/tests/edit-groups/edit-groups.component';
+import { EditMeetingDialogComponent } from './shared/meetings/edit-meeting-dialog/edit-meeting-dialog.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { EditGroupsComponent } from './shared/tests/edit-groups/edit-groups.comp
     EditDialogComponent,
     EditTestsComponent,
     EditIntersComponent,
-    EditGroupsComponent
+    EditGroupsComponent,
+    EditMeetingDialogComponent
   ],
   imports: [
     BrowserModule,

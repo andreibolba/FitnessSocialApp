@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-edit-meeting-dialog',
@@ -6,5 +7,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./edit-meeting-dialog.component.css']
 })
 export class EditMeetingDialogComponent {
+  editMode=true;
 
+
+  onSignUpSubmit(fomr:NgForm){
+
+  }
 }

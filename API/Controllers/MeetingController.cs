@@ -31,11 +31,11 @@ namespace API.Controllers
             switch(status)
             {
                 case "inter":
-                    return Ok(_repository.GetAllByInternId(id));
+                    return Ok(_repository.GetAllByInternId(id, count));
                 case "trainer":
-                    return Ok(_repository.GetAllByTrainerId(id));
+                    return Ok(_repository.GetAllByTrainerId(id, count));
                 case "group":
-                    return Ok(_repository.GetAllByGroupId(id));
+                    return Ok(_repository.GetAllByGroupId(id, count));
                 default:
                     return BadRequest("Invalid option");
 

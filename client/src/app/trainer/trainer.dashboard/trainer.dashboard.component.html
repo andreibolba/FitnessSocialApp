@@ -22,27 +22,26 @@
             <h4> Next meetings </h4>
           </div>
           <div class="button">
-            <button *ngIf="hasMeetings" [routerLink]="[meetingsLink]" (click)="onLeaveDashboardClick()"> View
-              All</button>
+            <button *ngIf="meetings.length!=0" [routerLink]="[meetingsLink]" (click)="onLeaveDashboardClick()"> View All</button>
           </div>
         </div>
         <div class="meetings-content">
-          <div class="statement" *ngIf="hasMeetings==true">
+          <div class="statement" *ngIf="meetings.length!=0">
             <div class="meetings-place" *ngFor="let m of meetings">
               <div class="meeting-name">
-                {{ m.name }}
+                {{ m.meetingName }}
               </div>
               <div class="meeting-details">
                 <div class="time">
-                  {{ m.date }}
+                  {{ m.meetingStartTime | date: 'medium' }}
                 </div>
                 <div class="link">
-                  <a [routerLink]="[m.link]" (click)="onLeaveDashboardClick()">View Meeting</a>
+                  <a href="{{ m.meetingLink }}" target="_blank">Join Meeting</a>
                 </div>
               </div>
             </div>
           </div>
-          <p *ngIf="!hasMeetings"> You have no meetings yet!</p>
+          <p *ngIf="meetings.length==0"> You have no meetings yet!</p>
         </div>
       </div>
     </div>

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Day } from 'src/model/day.model';
 import { LoggedPerson } from 'src/model/loggedperson.model';
+import { Meeting } from 'src/model/meeting.model';
 import { Person } from 'src/model/person.model';
 import { CalendarCreatorService } from 'src/services/calendar.creator.service';
 import { DataStorageService } from 'src/services/data-storage.service';
@@ -14,31 +15,17 @@ import { UtilsService } from 'src/services/utils.service';
   styleUrls: ['./trainer.dashboard.component.css']
 })
 export class TrainerDashboardComponent {
-  meetings = [
-    {
-      name: 'Semestrial Meeting with the team',
-      date: ' 16-Feb-2023 5:00 PM',
-      link: 'meetings',
-    },
-    {
-      name: 'Meeting with the mentor',
-      date: ' 17-Feb-2023 10:00 AM',
-      link: 'meetings',
-    },
-    {
-      name: 'Meeting with the client',
-      date: ' 19-Feb-2023 1:15 PM',
-      link: 'meetings',
-    },
-  ];
-  hasMeetings = true;
   meetingsLink = 'meetings';
   monthDays!: Day[];
   monthNumber!: number;
   year!: number;
   weekDaysName: string[] = [];
+
   dataSub!: Subscription;
+  meetingSub!: Subscription;
+
   person!: Person;
+  meetings:Meeting[]=[];
   isLoading=true;
 
   constructor(
@@ -50,6 +37,7 @@ export class TrainerDashboardComponent {
 
   ngOnDestroy(): void {
     if(this.dataSub) this.dataSub.unsubscribe();
+    if(this.meetingSub) this.meetingSub.unsubscribe();
   }
 
   ngOnInit(): void {
@@ -91,12 +79,17 @@ export class TrainerDashboardComponent {
         .subscribe(
           (res) => {
             this.person = res;
+            this.meetingSub=this.dataService.getANumberOfMeetingsForPerson(person.token,res.personId,res.status.toLocaleLowerCase(),3).subscribe((data)=>{
+              this.meetings=data;
+            },(error) => {
+              console.log(error.error);
+            },
+            ()=>{
+              this.isLoading=false;
+            })
           },
           (error) => {
             console.log(error.error);
-          },
-          ()=>{
-            this.isLoading=false;
           }
         );
     }

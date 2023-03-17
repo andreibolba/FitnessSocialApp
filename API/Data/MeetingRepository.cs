@@ -39,23 +39,26 @@ namespace API.Data
 
         public IEnumerable<MeetingDto> GetAllByTrainerId(int trainerId, int? count=null)
         {
-            if (count != null)
-                return GetAll().Where(m => m.TrainerId == trainerId).Take(count.Value);
-            return GetAll().Where(m => m.TrainerId == trainerId);
+            var getAllMeetings = GetAll().Where(m => m.TrainerId == trainerId);
+            if (count != null && getAllMeetings.Count() >= count.Value)
+                return getAllMeetings.Take(count.Value);
+            return getAllMeetings;
         }
 
         public IEnumerable<MeetingDto> GetAllByGroupId(int groupId, int? count = null)
         {
-            if(count!=null)
-                return GetAll().Where(m => m.GroupId == groupId).Take(count.Value);
-            return GetAll().Where(m => m.GroupId == groupId);
+            var getAllMeetings = GetAll().Where(m => m.GroupId == groupId);
+            if (count != null && getAllMeetings.Count() >= count.Value)
+                return getAllMeetings.Take(count.Value);
+            return getAllMeetings;
         }
 
         public IEnumerable<MeetingDto> GetAllByInternId(int internId, int? count = null)
         {
-            if (count != null)
-                return GetAll().Where(m => m.InternId == internId).Take(count.Value);
-            return GetAll().Where(m => m.InternId == internId);
+            var getAllMeetings = GetAll().Where(m => m.InternId == internId);
+            if (count != null && getAllMeetings.Count()>=count.Value)
+                return getAllMeetings.Take(count.Value);
+            return getAllMeetings;
         }
 
         public MeetingDto GetMeetingById(int id)

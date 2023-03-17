@@ -2,6 +2,7 @@
 using API.Interfaces.Repository;
 using API.Models;
 using AutoMapper;
+using System.Text.RegularExpressions;
 
 namespace API.Data
 {
@@ -36,18 +37,24 @@ namespace API.Data
             return _mapper.Map<IEnumerable<MeetingDto>>(result);
         }
 
-        public IEnumerable<MeetingDto> GetAllByTrainerId(int trainerId)
+        public IEnumerable<MeetingDto> GetAllByTrainerId(int trainerId, int? count=null)
         {
+            if (count != null)
+                return GetAll().Where(m => m.TrainerId == trainerId).Take(count.Value);
             return GetAll().Where(m => m.TrainerId == trainerId);
         }
 
-        public IEnumerable<MeetingDto> GetAllByGroupId(int groupId)
+        public IEnumerable<MeetingDto> GetAllByGroupId(int groupId, int? count = null)
         {
+            if(count!=null)
+                return GetAll().Where(m => m.GroupId == groupId).Take(count.Value);
             return GetAll().Where(m => m.GroupId == groupId);
         }
 
-        public IEnumerable<MeetingDto> GetAllByInternId(int internId)
+        public IEnumerable<MeetingDto> GetAllByInternId(int internId, int? count = null)
         {
+            if (count != null)
+                return GetAll().Where(m => m.InternId == internId).Take(count.Value);
             return GetAll().Where(m => m.InternId == internId);
         }
 

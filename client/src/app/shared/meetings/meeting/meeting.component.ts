@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { LoggedPerson } from 'src/model/loggedperson.model';
+import { Meeting } from 'src/model/meeting.model';
 import { DataStorageService } from 'src/services/data-storage.service';
 import { UtilsService } from 'src/services/utils.service';
 import { EditMeetingDialogComponent } from '../edit-meeting-dialog/edit-meeting-dialog.component';
@@ -13,6 +14,7 @@ import { EditMeetingDialogComponent } from '../edit-meeting-dialog/edit-meeting-
 })
 export class MeetingComponent implements OnInit, OnDestroy {
   isTrainer: boolean = true;
+  allMeetings:Meeting[]=[];
   private token: string = '';
 
   personSub!: Subscription;
@@ -43,9 +45,10 @@ export class MeetingComponent implements OnInit, OnDestroy {
           (data) => {
             id = data.personId;
             this.isTrainer = data.status == 'Trainer';
-          },
-          () => {},
-          () => {}
+            this.meetingSub=this.dataService.getAllMeetingsForPerson(this.token,id,data.status.toLocaleLowerCase()).subscribe((res)=>{
+              this.allMeetings=res;
+            });
+          }
         );
     }
   }
@@ -60,6 +63,11 @@ export class MeetingComponent implements OnInit, OnDestroy {
 
   onAdd() {
     this.utils.meetingToEdit.next(null);
+    this.openDialog();
+  }
+
+  onEdit(meeting:Meeting){
+    this.utils.meetingToEdit.next(meeting);
     this.openDialog();
   }
 }

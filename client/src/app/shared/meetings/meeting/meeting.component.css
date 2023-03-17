@@ -64,3 +64,58 @@ h2 {
   color: white;
   border: none;
 }
+
+.meetings-content {
+  width: 98%;
+  height: 80%;
+}
+
+.meetings-place {
+  height: 70px;
+  background-color: rgb(241, 241, 241);
+  border-radius: 10px;
+  border-left: 2px solid rgb(63, 163, 235);
+  width: 98%;
+  margin-left: 1%;
+  margin-right: 1%;
+  margin-top: 2%;
+  display: flex;
+}
+
+
+.meeting-name {
+  height: 100%;
+  width: 60%;
+  padding-top: 18px;
+  padding-left: 10px;
+  font-size: 20px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.meeting-details {
+  height: 100%;
+  width: 40%;
+}
+
+.time,
+.link {
+  height: 50%;
+  width: 100%;
+  text-align: end;
+  padding-right: 10px;
+  font-size: 15px;
+  padding-top: 5px;
+}
+
+.link a{
+  color: blue;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.link a:hover{
+  cursor: pointer;
+  text-decoration: underline;
+}

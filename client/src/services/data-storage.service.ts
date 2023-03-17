@@ -403,4 +403,11 @@ export class DataStorageService {
       headers: headers,
     });
   }
+
+  getANumberOfMeetingsForPerson(token:string, id:number, status:string,count:number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<Meeting[]>(this.baseUrl + 'meeting/' + id+'/'+status+'/'+count, {
+      headers: headers,
+    });
+  }
 }

@@ -25,8 +25,8 @@ namespace API.Controllers
             return Ok(_repository.GetMeetingById(meetId));
         }
 
-        [HttpGet("{id:int}/{status}")]
-        public ActionResult GetMeetingForPerson(int id, string status)
+        [HttpGet("{id:int}/{status}/{count?}")]
+        public ActionResult GetMeetingForPerson(int id, string status, int? count=null)
         {
             switch(status)
             {

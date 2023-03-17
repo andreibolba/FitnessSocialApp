@@ -6,3 +6,24 @@
   <button class="btn btn-success" mat-button (click)="onAdd()" *ngIf="isTrainer"> Add meeting </button>
 </div>
 
+<div id="main" *ngIf="allMeetings.length!=0">
+  <div class="meetings-content">
+      <div class="meetings-place" *ngFor="let m of allMeetings">
+        <div class="meeting-name">
+          {{ m.meetingName }}
+        </div>
+        <div class="meeting-details">
+          <div class="time">
+            {{ m.meetingStartTime }} to {{ m.meetingFinishTime }}
+          </div>
+          <div class="link">
+            <a href="{{ m.meetingLink }}" target="_blank">View Meeting</a>
+            <a (click)="onEdit(m)">Edit Meeting</a>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+<p *ngIf="allMeetings.length==0">You do not have tests!</p>
+
+

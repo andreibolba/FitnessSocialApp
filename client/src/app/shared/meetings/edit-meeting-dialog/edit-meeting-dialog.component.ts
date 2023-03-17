@@ -17,7 +17,9 @@ export class EditMeetingDialogComponent implements OnInit, OnDestroy {
   editMode = true;
   isTrainer = true;
   operation = '';
-  today = new Date().toISOString().slice(0, 10);
+  date = new Date().toISOString().slice(0, 10);
+  startTimeOfMeetingBind:any;
+  finishTimeOfMeetingBind:any;
   meetingId: number = -1;
   trainerId: number = -1;
   trainerName: string = '';
@@ -57,11 +59,14 @@ export class EditMeetingDialogComponent implements OnInit, OnDestroy {
           this.trainerName = data.firstName + ' ' + data.lastName;
           this.meetingSub = this.utils.meetingToEdit.subscribe((data) => {
             if (data != null) {
+              this.startTimeOfMeetingBind=new Date(new Date(new Date(data.meetingStartTime)+' UTC')).toISOString().slice(11,16);
+              this.finishTimeOfMeetingBind=new Date(new Date(new Date(data.meetingFinishTime)+' UTC')).toISOString().slice(11,16);
+              this.date=new Date(new Date(new Date(data.meetingStartTime)+' UTC')).toISOString().slice(0, 10);
               this.meetingName = data.meetingName;
               this.meetingLink = data.meetingLink;
               this.editMode = true;
               this.operation = 'Edit';
-              this.meetingId = data.meetindId;
+              this.meetingId = data.meetingId;
             } else {
               this.meetingName = '';
               this.meetingLink = '';
@@ -81,20 +86,21 @@ export class EditMeetingDialogComponent implements OnInit, OnDestroy {
       let meet = new Meeting();
       meet.meetingName = form.value.meetingName;
       meet.meetingLink = form.value.meetingLink;
+
       var startOfMeet = new Date(form.value.dateOfMeet);
       startOfMeet.setHours(form.value.startTime.split(' ')[0].split(':')[0]);
       startOfMeet.setMinutes(form.value.startTime.split(' ')[0].split(':')[1]);
-      meet.startTime = new Date(startOfMeet + ' UTC');
+      meet.meetingStartTime = new Date(startOfMeet + ' UTC');
+
       var finishOfMeet = new Date(form.value.dateOfMeet);
       finishOfMeet.setHours(form.value.finishTime.split(' ')[0].split(':')[0]);
-      finishOfMeet.setMinutes(
-        form.value.finishTime.split(' ')[0].split(':')[1]
-      );
-      meet.finishTime = new Date(finishOfMeet + ' UTC');;
+      finishOfMeet.setMinutes(form.value.finishTime.split(' ')[0].split(':')[1]);
+      meet.meetingFinishTime = new Date(finishOfMeet + ' UTC');
+
       meet.traierId = this.trainerId;
 
       if (this.operation == 'Edit') {
-        meet.meetindId = this.meetingId;
+        meet.meetingId = this.meetingId;
         this.modifyMeetingSub = this.dataService
           .updateMeeting(this.token, meet)
           .subscribe(

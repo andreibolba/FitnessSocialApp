@@ -363,8 +363,8 @@ export class DataStorageService {
         MeetingName: meeting.meetingName,
         MeetingLink: meeting.meetingLink,
         TrainerId: meeting.traierId,
-        MeetingStartTime: meeting.startTime,
-        MeetingFinishTime: meeting.finishTime
+        MeetingStartTime: meeting.meetingStartTime,
+        MeetingFinishTime: meeting.meetingFinishTime,
       },
       {
         headers: headers,
@@ -377,12 +377,12 @@ export class DataStorageService {
     return this.http.post(
       this.baseUrl + 'meeting/update',
       {
-        MeetingId: meeting.meetindId,
+        MeetingId: meeting.meetingId,
         MeetingName: meeting.meetingName,
         MeetingLink: meeting.meetingLink,
         TrainerId: meeting.traierId,
-        MeetingStartTime: meeting.startTime,
-        MeetingFinishTime: meeting.finishTime
+        MeetingStartTime: meeting.meetingStartTime,
+        MeetingFinishTime: meeting.meetingFinishTime,
       },
       {
         headers: headers,
@@ -390,13 +390,17 @@ export class DataStorageService {
     );
   }
 
-    deleteMeeting(token: string, meetingId: number) {
+  deleteMeeting(token: string, meetingId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(
-      this.baseUrl + 'meeting/delete/'+meetingId,
-      {
-        headers: headers,
-      }
-    );
+    return this.http.post(this.baseUrl + 'meeting/delete/' + meetingId, {
+      headers: headers,
+    });
+  }
+
+  getAllMeetingsForPerson(token:string, id:number, status:string){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<Meeting[]>(this.baseUrl + 'meeting/' + id+'/'+status, {
+      headers: headers,
+    });
   }
 }

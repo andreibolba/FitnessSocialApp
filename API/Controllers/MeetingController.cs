@@ -19,13 +19,13 @@ namespace API.Controllers
             return Ok(_repository.GetAll());
         }
 
-        [HttpGet("/{meetId:int}")]
+        [HttpGet("{meetId:int}")]
         public ActionResult GetOneMeeting(int meetId)
         {
             return Ok(_repository.GetMeetingById(meetId));
         }
 
-        [HttpGet("/{id:int}/{status}")]
+        [HttpGet("{id:int}/{status}")]
         public ActionResult GetMeetingForPerson(int id, string status)
         {
             switch(status)
@@ -42,21 +42,21 @@ namespace API.Controllers
             }
         }
 
-        [HttpPost("/add")]
+        [HttpPost("add")]
         public ActionResult Create([FromBody] MeetingDto meeting)
         {
             var meet = _repository.Create(meeting);
             return _repository.SaveAll() ? Ok(meet) : BadRequest("Internal Server Error");
         }
 
-        [HttpPost("/update")]
+        [HttpPost("update")]
         public ActionResult Update([FromBody] MeetingDto meeting)
         {
             _repository.Update(meeting);
             return _repository.SaveAll() ? Ok() : BadRequest("Internal Server Error");
         }
 
-        [HttpPost("/delete/{meetId:int}")]
+        [HttpPost("delete/{meetId:int}")]
         public ActionResult Delete(int meetId)
         {
             _repository.Delete(meetId);

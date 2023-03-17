@@ -1,14 +1,14 @@
 import { Time } from "@angular/common";
 
 export class Meeting {
-  meetindId:number;
-  meetingName:string;
-  meetingLink:string;
-  startTime!:Time;
-  finishTime!:Time;
-  traierId:number;
-  internId:number;
-  groupId:number;
+  public meetindId:number;
+  public meetingName:string;
+  public meetingLink:string;
+  public startTime:Date;
+  public finishTime:Date;
+  public traierId:number;
+  public internId:number;
+  public groupId:number;
 
   constructor(){
     this.traierId=-1;
@@ -17,5 +17,7 @@ export class Meeting {
     this.groupId=-1;
     this.meetingName='';
     this.meetingLink='';
+    this.startTime=new Date();
+    this.finishTime=new Date()
   }
 }

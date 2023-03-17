@@ -1,46 +1,45 @@
-<h3>See test's info</h3>
+<h3>{{operation}} meeting</h3>
 <div id="main">
   <form #registerForm="ngForm" (ngSubmit)="onSignUpSubmit(registerForm)" autocomplete="off">
 
     <div class="infos">
       <div class="info">
-        <label for="meetName">Meeting Name</label>
-        <input type="text" id="meetName" name="meetName" ngModel placeholder="Meeting Name" required autocomplete="off">
+        <label for="meetingName">Meeting Name</label>
+        <input type="text" id="meetingName" placeholder="Meeting Name" name="meetingName"
+        [(ngModel)]="meetingName" required>
       </div>
       <div class="info">
         <label for="meetingLink">Meeting Link</label>
-        <input type="text" id="meetingLink" placeholder="Meeting Link"
-          name="meetingLink" required>
+        <input type="text" id="meetingLink" placeholder="Meeting Link" name="meetingLink"
+          [(ngModel)]="meetingLink" required>
       </div>
     </div>
 
     <div class="infos">
       <div class="info">
         <label for="startTime">Start time</label>
-        <input type="time" id="startTime"
-          name="startTime" required>
+        <input type="time" id="startTime" name="startTime" required ngModel>
       </div>
       <div class="info">
         <label for="finishTime">Finish time</label>
-        <input type="time" id="finishTime"
-          name="finishTime" required>
+        <input type="time" id="finishTime" name="finishTime" required ngModel>
       </div>
     </div>
 
     <div class="infos">
       <div class="info">
         <label for="trainer">Trainer</label>
-        <input type="text" id="trainer" name="trainer" ngModel readonly value="test" required autocomplete="off">
+        <input type="text" id="trainer" name="trainer" [(ngModel)]="trainerName" readonly value="test" required
+          autocomplete="off">
       </div>
       <div class="info">
         <label for="dateOfMeet">Date</label>
-        <input type="date" id="dateOfMeet"
-          name="dateOfMeet" [(ngModel)]="today" required>
+        <input type="date" id="dateOfMeet" name="dateOfMeet" [(ngModel)]="today" required>
       </div>
     </div>
     <mat-dialog-actions align="center">
       <button mat-button mat-dialog-close>Cancel</button>
-      <button type="submit" [disabled]="!registerForm.valid" mat-button cdkFocusInitial>Add</button>
+      <button type="submit" [disabled]="!registerForm.valid" mat-button cdkFocusInitial> {{ operation }}</button>
     </mat-dialog-actions>
   </form>
 </div>

@@ -7,6 +7,7 @@ import { Question } from 'src/model/question.model';
 import { Test } from 'src/model/test.model';
 import { TestIntern } from 'src/model/testintern.model';
 import { TestGroup } from 'src/model/testgroup.model';
+import { Meeting } from 'src/model/meeting.model';
 
 @Injectable({
   providedIn: 'root',
@@ -208,7 +209,7 @@ export class DataStorageService {
     return this.http.post(
       this.baseUrl + 'question/update',
       {
-        QuestionId:question.questionId,
+        QuestionId: question.questionId,
         QuestionName: question.questionName,
         TrainerId: question.trainerId,
         A: question.a,
@@ -235,91 +236,167 @@ export class DataStorageService {
 
   //tests
 
-  getMyTests(token:string,trainerId:number){
+  getMyTests(token: string, trainerId: number) {
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.get<Test[]>(this.baseUrl + 'test/mytest/' + trainerId, {
       headers: headers,
     });
   }
 
-  deleteTest(token:string, testId:number){
+  deleteTest(token: string, testId: number) {
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.post(this.baseUrl + 'test/delete/' + testId, {
       headers: headers,
     });
   }
 
-  addTest(token:string, test:Test){
+  addTest(token: string, test: Test) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post<Test>(this.baseUrl + 'test/add',{
-      TestName: test.testName,
-      TrainerId: test.trainerId,
-      DateOfPost:test.dateOfPost,
-      Deadline:test.deadline,
-    }, {
+    return this.http.post<Test>(
+      this.baseUrl + 'test/add',
+      {
+        TestName: test.testName,
+        TrainerId: test.trainerId,
+        DateOfPost: test.dateOfPost,
+        Deadline: test.deadline,
+      },
+      {
+        headers: headers,
+      }
+    );
+  }
+
+  updateTest(token: string, test: Test) {
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post(
+      this.baseUrl + 'test/update',
+      {
+        TestId: test.testId,
+        TestName: test.testName,
+        TrainerId: test.trainerId,
+        DateOfPost: test.dateOfPost,
+        Deadline: test.deadline,
+      },
+      {
+        headers: headers,
+      }
+    );
+  }
+
+  publish(token: string, testId: number) {
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post(this.baseUrl + 'test/stop/' + testId, {
       headers: headers,
     });
   }
 
-  updateTest(token:string, test:Test){
+  unselectedQuestions(token: string, testId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'test/update',{
-      TestId: test.testId,
-      TestName: test.testName,
-      TrainerId: test.trainerId,
-      DateOfPost:test.dateOfPost,
-      Deadline:test.deadline,
-    }, {
-      headers: headers,
-    });
+    return this.http.get<Question[]>(
+      this.baseUrl + 'test/unselected/' + testId,
+      {
+        headers: headers,
+      }
+    );
   }
 
-  publish(token:string, testId:number){
+  saveSelectedQuestion(token: string, testId: number, ids: string) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'test/stop/'+testId, {
-      headers: headers,
-    });
+    return this.http.post(
+      this.baseUrl + 'test/testattribution/update/' + testId + '/tests',
+      { ids: ids },
+      {
+        headers: headers,
+      }
+    );
   }
 
-  unselectedQuestions(token:string, testId:number){
+  getAllInternsForTest(token: string, testId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.get<Question[]>(this.baseUrl + 'test/unselected/'+testId, {
-      headers: headers,
-    });
+    return this.http.get<TestIntern[]>(
+      this.baseUrl + 'test/all/' + testId + '/interns',
+      {
+        headers: headers,
+      }
+    );
   }
 
-  saveSelectedQuestion(token:string, testId:number,ids:string){
+  getAllGroupsForTest(token: string, testId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'test/testattribution/update/'+testId+'/tests',{ids: ids}, {
-      headers: headers,
-    });
+    return this.http.get<TestGroup[]>(
+      this.baseUrl + 'test/all/' + testId + '/groups',
+      {
+        headers: headers,
+      }
+    );
   }
 
-  getAllInternsForTest(token:string, testId:number){
+  updateAllInternsFromTest(token: string, testId: number, ids: string) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.get<TestIntern[]>(this.baseUrl + 'test/all/'+testId+'/interns', {
-      headers: headers,
-    });
+    return this.http.post(
+      this.baseUrl + 'test/testattribution/update/' + testId + '/interns',
+      { ids: ids },
+      {
+        headers: headers,
+      }
+    );
   }
 
-  getAllGroupsForTest(token:string, testId:number){
+  updateAllGroupsFromTest(token: string, testId: number, ids: string) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.get<TestGroup[]>(this.baseUrl + 'test/all/'+testId+'/groups', {
-      headers: headers,
-    });
+    return this.http.post(
+      this.baseUrl + 'test/testattribution/update/' + testId + '/groups',
+      { ids: ids },
+      {
+        headers: headers,
+      }
+    );
   }
 
-  updateAllInternsFromTest(token:string, testId:number,ids:string){
+  //meetings
+
+  addMeeting(token: string, meeting: Meeting) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'test/testattribution/update/'+testId+'/interns',{ids: ids}, {
-      headers: headers,
-    });
+    return this.http.post(
+      this.baseUrl + 'meeting/add',
+      {
+        MeetingName: meeting.meetingName,
+        MeetingLink: meeting.meetingLink,
+        TrainerId: meeting.traierId,
+        MeetingStartTime: meeting.startTime,
+        MeetingFinishTime: meeting.finishTime
+      },
+      {
+        headers: headers,
+      }
+    );
   }
 
-  updateAllGroupsFromTest(token:string, testId:number, ids:string){
+  updateMeeting(token: string, meeting: Meeting) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'test/testattribution/update/'+testId+'/groups',{ids: ids}, {
-      headers: headers,
-    });
+    return this.http.post(
+      this.baseUrl + 'meeting/update',
+      {
+        MeetingId: meeting.meetindId,
+        MeetingName: meeting.meetingName,
+        MeetingLink: meeting.meetingLink,
+        TrainerId: meeting.traierId,
+        MeetingStartTime: meeting.startTime,
+        MeetingFinishTime: meeting.finishTime
+      },
+      {
+        headers: headers,
+      }
+    );
+  }
+
+    deleteMeeting(token: string, meetingId: number) {
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post(
+      this.baseUrl + 'meeting/delete/'+meetingId,
+      {
+        headers: headers,
+      }
+    );
   }
 }

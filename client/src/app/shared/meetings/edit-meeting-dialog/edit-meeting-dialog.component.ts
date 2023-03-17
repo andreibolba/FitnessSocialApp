@@ -84,13 +84,13 @@ export class EditMeetingDialogComponent implements OnInit, OnDestroy {
       var startOfMeet = new Date(form.value.dateOfMeet);
       startOfMeet.setHours(form.value.startTime.split(' ')[0].split(':')[0]);
       startOfMeet.setMinutes(form.value.startTime.split(' ')[0].split(':')[1]);
-      meet.startTime = startOfMeet;
+      meet.startTime = new Date(startOfMeet + ' UTC');
       var finishOfMeet = new Date(form.value.dateOfMeet);
       finishOfMeet.setHours(form.value.finishTime.split(' ')[0].split(':')[0]);
       finishOfMeet.setMinutes(
         form.value.finishTime.split(' ')[0].split(':')[1]
       );
-      meet.finishTime = finishOfMeet;
+      meet.finishTime = new Date(finishOfMeet + ' UTC');;
       meet.traierId = this.trainerId;
 
       if (this.operation == 'Edit') {

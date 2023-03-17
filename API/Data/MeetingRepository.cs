@@ -2,7 +2,6 @@
 using API.Interfaces.Repository;
 using API.Models;
 using AutoMapper;
-using System.Text.RegularExpressions;
 
 namespace API.Data
 {
@@ -39,24 +38,8 @@ namespace API.Data
 
         public IEnumerable<MeetingDto> GetAllByTrainerId(int trainerId, int? count=null)
         {
-            var getAllMeetings = GetAll().Where(m => m.TrainerId == trainerId);
+            var getAllMeetings = GetFutureMeetings().Where(m => m.TrainerId == trainerId);
             if (count != null && getAllMeetings.Count() >= count.Value)
-                return getAllMeetings.Take(count.Value);
-            return getAllMeetings;
-        }
-
-        public IEnumerable<MeetingDto> GetAllByGroupId(int groupId, int? count = null)
-        {
-            var getAllMeetings = GetAll().Where(m => m.GroupId == groupId);
-            if (count != null && getAllMeetings.Count() >= count.Value)
-                return getAllMeetings.Take(count.Value);
-            return getAllMeetings;
-        }
-
-        public IEnumerable<MeetingDto> GetAllByInternId(int internId, int? count = null)
-        {
-            var getAllMeetings = GetAll().Where(m => m.InternId == internId);
-            if (count != null && getAllMeetings.Count()>=count.Value)
                 return getAllMeetings.Take(count.Value);
             return getAllMeetings;
         }
@@ -79,6 +62,11 @@ namespace API.Data
             meet.MeetingStartTime = meeting.MeetingStartTime;
             meet.MeetingFinishTime = meeting.MeetingFinishTime;
             _context.Meetings.Update(meet);
+        }
+
+        public IEnumerable<MeetingDto> GetFutureMeetings()
+        {
+            return GetAll().Where(r => Utils.Utils.IsValidMeeting(r)==true).OrderBy(m => m.MeetingStartTime).ThenBy(m => m.MeetingFinishTime);
         }
     }
 }

@@ -1,6 +1,7 @@
 using System.Net;
 using System.Net.Mail;
 using System.Text;
+using API.Dtos;
 using API.Models;
 
 namespace API.Utils
@@ -77,7 +78,13 @@ namespace API.Utils
             return idsInt;
         }
 
-        
+        public static bool IsValidMeeting(MeetingDto meeting)
+        {
+            DateTime now = DateTime.UtcNow;
+            if (meeting.MeetingStartTime < now)
+                return false;
+            return true;
+        }
 
     }
 }

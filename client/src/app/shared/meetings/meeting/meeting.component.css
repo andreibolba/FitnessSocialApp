@@ -85,7 +85,7 @@ h2 {
 
 .meeting-name {
   height: 100%;
-  width: 60%;
+  width: 50%;
   padding-top: 18px;
   padding-left: 10px;
   font-size: 20px;
@@ -96,7 +96,7 @@ h2 {
 
 .meeting-details {
   height: 100%;
-  width: 40%;
+  width: 50%;
 }
 
 .time,
@@ -118,4 +118,8 @@ h2 {
 .link a:hover{
   cursor: pointer;
   text-decoration: underline;
+}
+
+#delete{
+  color: red;
 }

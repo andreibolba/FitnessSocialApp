@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { LoggedPerson } from 'src/model/loggedperson.model';
 import { Meeting } from 'src/model/meeting.model';
@@ -19,15 +20,18 @@ export class MeetingComponent implements OnInit, OnDestroy {
 
   personSub!: Subscription;
   meetingSub!: Subscription;
+  deleteSub!: Subscription;
 
   constructor(
     private utils: UtilsService,
     private dialog: MatDialog,
-    private dataService: DataStorageService
+    private dataService: DataStorageService,
+     private toastr: ToastrService,
   ) {}
   ngOnDestroy(): void {
     if (this.personSub != null) this.personSub.unsubscribe();
     if (this.meetingSub != null) this.meetingSub.unsubscribe();
+    if (this.deleteSub != null) this.deleteSub.unsubscribe();
   }
 
   ngOnInit(): void {
@@ -69,5 +73,13 @@ export class MeetingComponent implements OnInit, OnDestroy {
   onEdit(meeting:Meeting){
     this.utils.meetingToEdit.next(meeting);
     this.openDialog();
+  }
+
+  onDelete(meetingId:number){
+    this.deleteSub=this.dataService.deleteMeeting(this.token,meetingId).subscribe(()=>{
+      this.toastr.success("Deleted was made succesfully!");
+    },(error)=>{
+      this.toastr.error(error.error);
+    })
   }
 }

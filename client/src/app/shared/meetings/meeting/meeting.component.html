@@ -14,16 +14,17 @@
         </div>
         <div class="meeting-details">
           <div class="time">
-            {{ m.meetingStartTime }} to {{ m.meetingFinishTime }}
+            {{ m.meetingStartTime | date:'medium'}} to {{ m.meetingFinishTime | date:'medium'}}
           </div>
           <div class="link">
-            <a href="{{ m.meetingLink }}" target="_blank">View Meeting</a>
+            <a href="{{ m.meetingLink }}" target="_blank">Join Meeting</a>
             <a (click)="onEdit(m)">Edit Meeting</a>
+            <a (click)="onDelete(m.meetingId)" id="delete">Delete Meeting</a>
           </div>
         </div>
       </div>
     </div>
 </div>
-<p *ngIf="allMeetings.length==0">You do not have tests!</p>
+<p *ngIf="allMeetings.length==0">You do not have meetings!</p>
 
 

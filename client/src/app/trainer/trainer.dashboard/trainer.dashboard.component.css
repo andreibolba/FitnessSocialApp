@@ -208,3 +208,12 @@
   color: #515151;
   margin-left: 60px;
 }
+
+.meeting-name p a{
+  text-decoration: underline;
+}
+
+.meeting-name p a:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}

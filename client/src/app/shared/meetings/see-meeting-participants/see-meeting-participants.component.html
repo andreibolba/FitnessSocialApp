@@ -1,0 +1,9 @@
+<h3>All meeting participants</h3>
+<div id="main">
+  <ul class="a" *ngFor="let p of people">
+    <li>{{p.firstName}} {{p.lastName}}</li>
+  </ul>
+</div>
+<mat-dialog-actions align="center">
+  <button mat-button mat-dialog-close>Exit</button>
+</mat-dialog-actions>

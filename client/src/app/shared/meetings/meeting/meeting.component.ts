@@ -8,6 +8,7 @@ import { Person } from 'src/model/person.model';
 import { DataStorageService } from 'src/services/data-storage.service';
 import { UtilsService } from 'src/services/utils.service';
 import { EditMeetingDialogComponent } from '../edit-meeting-dialog/edit-meeting-dialog.component';
+import { SeeMeetingParticipantsComponent } from '../see-meeting-participants/see-meeting-participants.component';
 
 @Component({
   selector: 'app-meeting',
@@ -73,8 +74,10 @@ export class MeetingComponent implements OnInit, OnDestroy {
     }
   }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(EditMeetingDialogComponent);
+  openDialog(op:number) {
+    const dialogRef = op==1
+    ? this.dialog.open(EditMeetingDialogComponent)
+    : this.dialog.open(SeeMeetingParticipantsComponent);
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
@@ -83,16 +86,17 @@ export class MeetingComponent implements OnInit, OnDestroy {
 
   onAdd() {
     this.utils.meetingToEdit.next(null);
-    this.openDialog();
+    this.openDialog(1);
   }
 
   onEdit(meeting:Meeting){
     this.utils.meetingToEdit.next(meeting);
-    this.openDialog();
+    this.openDialog(1);
   }
 
   seeMeeting(people:Person[]){
-
+    this.utils.meetingParticipants.next(people);
+    this.openDialog(2);
   }
 
   onDelete(meetingId:number){

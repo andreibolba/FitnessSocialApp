@@ -42,6 +42,7 @@ import { EditTestsComponent } from './shared/tests/edit-tests/edit-tests.compone
 import { EditIntersComponent } from './shared/tests/edit-inters/edit-inters.component';
 import { EditGroupsComponent } from './shared/tests/edit-groups/edit-groups.component';
 import { EditMeetingDialogComponent } from './shared/meetings/edit-meeting-dialog/edit-meeting-dialog.component';
+import { SeeMeetingParticipantsComponent } from './shared/meetings/see-meeting-participants/see-meeting-participants.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { EditMeetingDialogComponent } from './shared/meetings/edit-meeting-dialo
     EditTestsComponent,
     EditIntersComponent,
     EditGroupsComponent,
-    EditMeetingDialogComponent
+    EditMeetingDialogComponent,
+    SeeMeetingParticipantsComponent
   ],
   imports: [
     BrowserModule,

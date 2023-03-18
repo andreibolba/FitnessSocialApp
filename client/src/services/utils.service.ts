@@ -21,6 +21,7 @@ export class UtilsService {
   addedPerson=new BehaviorSubject<Person | null>(null);
   isEditModeForTest=new BehaviorSubject<boolean>(true);
   isInternTest=new BehaviorSubject<boolean>(true);
+  meetingParticipants=new BehaviorSubject<Person[]|null>(null);
   dashboardChanged=new EventEmitter<boolean>(true);
 
   error=new BehaviorSubject<{errorCode:number,errorTitle:string,errorMessage:string} | null>(null);

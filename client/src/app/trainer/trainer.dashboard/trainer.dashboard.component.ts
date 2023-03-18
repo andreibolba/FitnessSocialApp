@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { SeeMeetingParticipantsComponent } from 'src/app/shared/meetings/see-meeting-participants/see-meeting-participants.component';
 import { Day } from 'src/model/day.model';
 import { LoggedPerson } from 'src/model/loggedperson.model';
 import { Meeting } from 'src/model/meeting.model';
@@ -20,6 +22,7 @@ export class TrainerDashboardComponent {
   monthNumber!: number;
   year!: number;
   weekDaysName: string[] = [];
+  participants:string=" and other ";
 
   dataSub!: Subscription;
   meetingSub!: Subscription;
@@ -32,7 +35,8 @@ export class TrainerDashboardComponent {
     public calendarCreator: CalendarCreatorService,
     private utils: UtilsService,
     private dataService: DataStorageService,
-    private router:Router
+    private router:Router,
+    private dialog: MatDialog,
   ) {}
 
   ngOnDestroy(): void {
@@ -88,7 +92,6 @@ export class TrainerDashboardComponent {
                 else if(element.allPeopleInMeeting.length>=3){
                   element.participants+=element.allPeopleInMeeting[0].firstName+" "+element.allPeopleInMeeting[0].lastName+", ";
                   element.participants+=element.allPeopleInMeeting[1].firstName+" "+element.allPeopleInMeeting[1].lastName;
-                  element.participants+=" and other "+(element.allPeopleInMeeting.length-2);
                 }else{
                   element.allPeopleInMeeting.forEach(person => {
                     element.participants+=person.firstName+" "+person.lastName+", ";
@@ -107,5 +110,18 @@ export class TrainerDashboardComponent {
           }
         );
     }
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(SeeMeetingParticipantsComponent);
+
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  seeMeeting(people:Person[]){
+    this.utils.meetingParticipants.next(people);
+    this.openDialog();
   }
 }

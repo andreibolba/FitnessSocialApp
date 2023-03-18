@@ -21,6 +21,11 @@ namespace API.Data
         {
             var meet = _mapper.Map<Meeting>(meeting);
             _context.Meetings.Add(meet);
+            if (SaveAll() == false)
+                return null;
+            CreateUpdateDelete(meeting.InterndIds, meet.MeetingId, 1);
+            CreateUpdateDelete(meeting.GroupIds, meet.MeetingId, 2);
+            _context.SaveChanges();
             return _mapper.Map<MeetingDto>(meet);
         }
 
@@ -29,7 +34,7 @@ namespace API.Data
             var meet = _mapper.Map<Meeting>(GetMeetingById(id));
             meet.Deleted = true;
             var allMeetingsConnection = _context.MeetingInternGroups.Where(mg => mg.MeetingId == id);
-            foreach(var meetCon in allMeetingsConnection)
+            foreach (var meetCon in allMeetingsConnection)
             {
                 meetCon.Deleted = true;
                 _context.MeetingInternGroups.Update(meetCon);
@@ -39,30 +44,28 @@ namespace API.Data
 
         public IEnumerable<MeetingDto> GetAll()
         {
-            var result = _mapper.Map<IEnumerable<MeetingDto>>(_context.Meetings.Where(m => m.Deleted == false));
-            foreach(var r in result)
+            var result = _mapper.Map<IEnumerable<MeetingDto>>(_context.Meetings.Where(m => m.Deleted == false).Include(m=>m.Trainer));
+            foreach (var r in result)
             {
                 var allPeopleInMeeting = new List<PersonDto>();
-                var allGroups = _context.MeetingInternGroups.Where(mg => mg.Deleted == false&& mg.InternId==null && mg.MeetingId == r.MeetingId).Include(mg=>mg.Group).Select(mg => mg.Group);
-                foreach (var gr in _context.MeetingInternGroups.Where(mg => mg.Deleted == false && mg.MeetingId == r.MeetingId).Select(mg => mg.Group))
-                {
-                    var allPeople = _context.InternGroups.Where(ig => ig.GroupId == gr.GroupId && ig.Deleted == false).Include(ig => ig.Intern).Select(ig => ig.Intern);
-                    allPeopleInMeeting.AddRange(_mapper.Map<IEnumerable<PersonDto>>(allPeople));
-                }
+                var allPeople = _context.GetPeopleInGroupMeetings.Where(mg => mg.MeetingId == r.MeetingId);
+                foreach(var p in allPeople)
+                    allPeopleInMeeting.Add(_mapper.Map<PersonDto>(p));
 
-                var allinterns = _context.MeetingInternGroups.Where(mg => mg.Deleted == false && mg.GroupId == null && mg.MeetingId == r.MeetingId).Include(mg => mg.Intern).Select(mg => mg.Intern);
-                foreach(var intern in allinterns)
+                var allinterns = _context.MeetingInternGroups.Where(mg => mg.Deleted == false && mg.GroupId == null && mg.MeetingId == r.MeetingId).Include(mg => mg.Intern).Select(mg => mg.Intern).AsEnumerable();
+                foreach (var intern in allinterns)
                 {
                     if (allPeopleInMeeting.FirstOrDefault(all => all.PersonId == intern.PersonId) == null)
                         allPeopleInMeeting.Add(_mapper.Map<PersonDto>(intern));
                 }
 
+                allPeopleInMeeting.Add(r.Trainer);
                 r.AllPeopleInMeeting = allPeopleInMeeting;
             }
             return result;
         }
 
-        public IEnumerable<MeetingDto> GetAllByTrainerId(int trainerId, int? count=null)
+        public IEnumerable<MeetingDto> GetAllByTrainerId(int trainerId, int? count = null)
         {
             var getAllMeetings = GetFutureMeetings().Where(m => m.TrainerId == trainerId);
             if (count != null && getAllMeetings.Count() >= count.Value)
@@ -88,11 +91,13 @@ namespace API.Data
             meet.MeetingStartTime = meeting.MeetingStartTime;
             meet.MeetingFinishTime = meeting.MeetingFinishTime;
             _context.Meetings.Update(meet);
+            CreateUpdateDelete(meeting.InterndIds, meeting.MeetingId, 1);
+            CreateUpdateDelete(meeting.GroupIds, meeting.MeetingId, 2);
         }
 
         public IEnumerable<MeetingDto> GetFutureMeetings()
         {
-            return GetAll().Where(r => Utils.Utils.IsValidMeeting(r)==true).OrderBy(m => m.MeetingStartTime).ThenBy(m => m.MeetingFinishTime);
+            return GetAll().Where(r => Utils.Utils.IsValidDate(r) == true).OrderBy(m => m.MeetingStartTime).ThenBy(m => m.MeetingFinishTime);
         }
 
         //op-1=>intern
@@ -102,7 +107,9 @@ namespace API.Data
             var result = op == 1
                ? _context.MeetingInternGroups.Where(t => t.Deleted == false && t.MeetingId == meetingId && t.GroupId == null)
                : _context.MeetingInternGroups.Where(t => t.Deleted == false && t.MeetingId == meetingId && t.InternId == null);
-            List<int> idList = Utils.Utils.FromStringToInt(obj);
+            if (obj.Length == 0 || obj == null)
+                return false;
+            List<int> idList = Utils.Utils.FromStringToInt(obj + "!");
             if (result.Count() == 0 && idList.Count() == 0)
                 return false;
             foreach (var res in result)
@@ -131,11 +138,11 @@ namespace API.Data
         public IEnumerable<MeetingDto> GetAllByInternId(int internId, int? count = null)
         {
             List<MeetingDto> allMeetingByPerson = new List<MeetingDto>();
-            var allPeople = _context.InternGroups.Where(ig => ig.InternId==internId && ig.Deleted == false);
-            foreach(var person in allPeople)
+            var allPeople = _context.InternGroups.Where(ig => ig.InternId == internId && ig.Deleted == false);
+            foreach (var person in allPeople)
             {
-                var allMeetings=GetAllByGroupId(person.GroupId);
-                foreach(var meet in allMeetings)
+                var allMeetings = GetAllByGroupId(person.GroupId);
+                foreach (var meet in allMeetings)
                 {
                     if (allMeetingByPerson.FirstOrDefault(m => m.MeetingId == meet.MeetingId) == null)
                         allMeetingByPerson.Add(meet);
@@ -143,7 +150,7 @@ namespace API.Data
             }
 
             var allMeetingWithPerson = _context.MeetingInternGroups.Where(m => m.Deleted == false && m.GroupId == null).Include(m => m.Meeting).Select(m => m.Meeting);
-            foreach(var meet in allMeetingByPerson)
+            foreach (var meet in allMeetingByPerson)
                 if (allMeetingByPerson.FirstOrDefault(m => m.MeetingId == meet.MeetingId) == null)
                     allMeetingByPerson.Add(meet);
 
@@ -155,11 +162,101 @@ namespace API.Data
 
         public IEnumerable<MeetingDto> GetAllByGroupId(int groupId, int? count = null)
         {
-            var gettAllGroupsInMeeting = _context.MeetingInternGroups.Where(mg => mg.GroupId == groupId && mg.Deleted == false).Include(mg=>mg.Meeting).Select(mg=>mg.Meeting);
+            var gettAllGroupsInMeeting = _context.MeetingInternGroups.Where(mg => mg.GroupId == groupId && mg.Deleted == false).Include(mg => mg.Meeting).Select(mg => mg.Meeting);
             if (count != null && gettAllGroupsInMeeting.Count() >= count.Value)
                 return _mapper.Map<IEnumerable<MeetingDto>>(gettAllGroupsInMeeting).Take(count.Value);
 
             return _mapper.Map<IEnumerable<MeetingDto>>(gettAllGroupsInMeeting);
+        }
+
+        public IEnumerable<T> GettAllChecked<T>(int meetingId,int? trainerId=null)
+        {
+            var response = _context.MeetingInternGroups.Where(tgi => tgi.Deleted == false && tgi.MeetingId == meetingId);
+            if (typeof(T) == typeof(ObjectInternDto))
+            {
+                if (meetingId == -1)
+                {
+                    var obj = new List<ObjectInternDto>();
+                    foreach (var intern in _mapper.Map<IEnumerable<PersonDto>>(_context.People.Where(p => p.Deleted == false && p.Status == "Intern")))
+                    {
+                        obj.Add(new ObjectInternDto
+                        {
+                            InternId = intern.PersonId,
+                            FirstName = intern.FirstName,
+                            LastName = intern.LastName,
+                            Username = intern.Username,
+                            IsChecked = false
+                        });
+                    }
+                    return (IEnumerable<T>)obj;
+                }
+                var interns = response
+                     .Where(r => r.InternId != null)
+                     .Include(tgi => tgi.Intern)
+                     .Select(tgi => new ObjectInternDto
+                     {
+                         InternId = tgi.InternId.Value,
+                         FirstName = tgi.Intern.FirstName,
+                         LastName = tgi.Intern.LastName,
+                         Username = tgi.Intern.Username,
+                         IsChecked = true
+                     }).ToList();
+                foreach (var intern in _mapper.Map<IEnumerable<PersonDto>>(_context.People.Where(p => p.Deleted == false && p.Status == "Intern")))
+                {
+                    if (interns.FirstOrDefault(i => i.InternId == intern.PersonId) == null)
+                    {
+                        interns.Add(new ObjectInternDto
+                        {
+                            InternId = intern.PersonId,
+                            FirstName = intern.FirstName,
+                            LastName = intern.LastName,
+                            Username = intern.Username,
+                            IsChecked = false
+                        });
+                    }
+                }
+                return (IEnumerable<T>)interns;
+            }
+            else if (typeof(T) == typeof(ObjectGroupDto))
+            {
+                if (meetingId == -1)
+                {
+                    var obj = new List<ObjectGroupDto>();
+                    foreach (var gr in _mapper.Map<IEnumerable<GroupDto>>(_context.Groups.Where(p => p.Deleted == false && p.TrainerId==trainerId.Value)))
+                    {
+                        obj.Add(new ObjectGroupDto
+                        {
+                            GroupId = gr.GroupId,
+                            GroupName = gr.GroupName,
+                            IsChecked = false
+                        });
+                    }
+                    return (IEnumerable<T>)obj;
+                }
+                var groups = response
+                        .Where(r => r.GroupId != null)
+                        .Include(tgi => tgi.Group)
+                        .Select(tgi => new ObjectGroupDto
+                        {
+                            GroupId = tgi.GroupId.Value,
+                            GroupName = tgi.Group.GroupName,
+                            IsChecked = true
+                        }).ToList();
+                foreach (var gr in _mapper.Map<IEnumerable<GroupDto>>(_context.Groups.Where(p => p.Deleted == false && p.TrainerId==trainerId.Value)))
+                {
+                    if (groups.FirstOrDefault(i => i.GroupId == gr.GroupId) == null)
+                    {
+                        groups.Add(new ObjectGroupDto
+                        {
+                            GroupId = gr.GroupId,
+                            GroupName = gr.GroupName,
+                            IsChecked = false
+                        });
+                    }
+                }
+                return (IEnumerable<T>)groups;
+            }
+            return null;
         }
     }
 }

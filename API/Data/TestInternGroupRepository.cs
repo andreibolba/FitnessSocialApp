@@ -58,12 +58,12 @@ namespace API.Data
         public IEnumerable<T> GettAllChecked<T>(int testId)
         {
             var response = _context.TestGroupInterns.Where(tgi => tgi.Deleted == false && tgi.TestId == testId);
-            if (typeof(T) == typeof(TestInternDto))
+            if (typeof(T) == typeof(ObjectInternDto))
             {
                 var interns = response
                      .Where(r => r.InternId != null)
                      .Include(tgi => tgi.Intern)
-                     .Select(tgi => new TestInternDto
+                     .Select(tgi => new ObjectInternDto
                      {
                          InternId = tgi.InternId.Value,
                          FirstName = tgi.Intern.FirstName,
@@ -75,7 +75,7 @@ namespace API.Data
                 {
                     if (interns.FirstOrDefault(i => i.InternId == intern.PersonId) == null)
                     {
-                        interns.Add(new TestInternDto
+                        interns.Add(new ObjectInternDto
                         {
                             InternId = intern.PersonId,
                             FirstName = intern.FirstName,
@@ -87,12 +87,12 @@ namespace API.Data
                 }
                 return (IEnumerable<T>)interns;
             }
-            else if (typeof(T) == typeof(TestGroupDto))
+            else if (typeof(T) == typeof(ObjectGroupDto))
             {
                 var groups = response
                         .Where(r => r.GroupId != null)
                         .Include(tgi => tgi.Group)
-                        .Select(tgi => new TestGroupDto
+                        .Select(tgi => new ObjectGroupDto
                         {
                             GroupId = tgi.GroupId.Value,
                             GroupName = tgi.Group.GroupName,
@@ -102,7 +102,7 @@ namespace API.Data
                 {
                     if (groups.FirstOrDefault(i => i.GroupId == gr.GroupId) == null)
                     {
-                        groups.Add(new TestGroupDto
+                        groups.Add(new ObjectGroupDto
                         {
                             GroupId = gr.GroupId,
                             GroupName = gr.GroupName,

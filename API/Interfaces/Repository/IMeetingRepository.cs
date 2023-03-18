@@ -11,6 +11,7 @@ namespace API.Interfaces.Repository
         IEnumerable<MeetingDto> GetAllByInternId(int internId, int? count = null);
         IEnumerable<MeetingDto> GetAllByGroupId(int groupId, int? count = null);
         IEnumerable<MeetingDto> GetAllByTrainerId(int trainerId, int? count = null);
+        IEnumerable<T> GettAllChecked<T>(int meetingId,int? trainerId=null);
         MeetingDto GetMeetingById(int id);
         void Update(MeetingDto meeting);
         void Delete(int id);

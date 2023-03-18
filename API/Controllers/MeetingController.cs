@@ -32,6 +32,10 @@ namespace API.Controllers
             {
                 case "trainer":
                     return Ok(_repository.GetAllByTrainerId(id, count));
+                case "intern":
+                    return Ok(_repository.GetAllByInternId(id, count));
+                case "group":
+                    return Ok(_repository.GetAllByGroupId(id, count));
                 default:
                     return BadRequest("Invalid option");
 
@@ -42,7 +46,7 @@ namespace API.Controllers
         public ActionResult Create([FromBody] MeetingDto meeting)
         {
             var meet = _repository.Create(meeting);
-            return _repository.SaveAll() ? Ok(meet) : BadRequest("Internal Server Error");
+            return meet!=null ? Ok(meet) : BadRequest("Internal Server Error");
         }
 
         [HttpPost("update")]
@@ -57,6 +61,20 @@ namespace API.Controllers
         {
             _repository.Delete(meetId);
             return _repository.SaveAll() ? Ok() : BadRequest("Internal Server Error");
+        }
+
+        [HttpGet("all/{meetingId:int}/{option}/{trainerId?}")]
+        public ActionResult UpdateTestAttributions(int meetingId, string option,int? trainerId=null)
+        {
+            switch (option)
+            {
+                case "interns":
+                    return Ok(_repository.GettAllChecked<ObjectInternDto>(meetingId));
+                case "groups":
+                    return Ok(_repository.GettAllChecked<ObjectGroupDto>(meetingId,trainerId.Value));
+                default:
+                    return BadRequest("Invalid option!");
+            }
         }
     }
 }

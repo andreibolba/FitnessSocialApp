@@ -87,17 +87,18 @@ namespace API.Controllers
                     return _testQuestion.SaveAll() ? Ok() : BadRequest("Internal server error!");
                 case "interns":
                     hasSomethingToSave = _testInternGroup.UpdateAllTestInternGroup(idsData["ids"] += "!", testId,1);
-                    break;
+                    if (hasSomethingToSave == false)
+                        return Ok();
+                    return _testInternGroup.SaveAll() ? Ok() : BadRequest("Internal server error!");
                 case "groups":
                     hasSomethingToSave = _testInternGroup.UpdateAllTestInternGroup(idsData["ids"] += "!", testId,2);
-                    break;
+                    if (hasSomethingToSave == false)
+                        return Ok();
+                    return _testInternGroup.SaveAll() ? Ok() : BadRequest("Internal server error!");
                 default:
                     return BadRequest("Invalid option!");
 
             }
-            if (hasSomethingToSave == false)
-                return Ok();
-            return _testInternGroup.SaveAll() ? Ok() : BadRequest("Internal server error!");
         }
 
         [HttpGet("all/{testId:int}/{option}")]
@@ -106,9 +107,9 @@ namespace API.Controllers
             switch(option)
             {
                 case "interns":
-                    return Ok(_testInternGroup.GettAllChecked<TestInternDto>(testId));
+                    return Ok(_testInternGroup.GettAllChecked<ObjectInternDto>(testId));
                 case "groups":
-                    return Ok(_testInternGroup.GettAllChecked<TestGroupDto>(testId));
+                    return Ok(_testInternGroup.GettAllChecked<ObjectGroupDto>(testId));
                 default:
                     return BadRequest("Invalid option!");
             }

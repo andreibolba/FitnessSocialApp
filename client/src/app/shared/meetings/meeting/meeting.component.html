@@ -10,7 +10,8 @@
   <div class="meetings-content">
       <div class="meetings-place" *ngFor="let m of allMeetings">
         <div class="meeting-name">
-          {{ m.meetingName }}
+          {{ m.meetingName }}<br>
+          <p>With: {{m.participants}} <a *ngIf="m.allPeopleInMeeting.length>=3" (click)="seeMeeting(m.allPeopleInMeeting)"> {{ participants }} {{m.allPeopleInMeeting.length-2}} </a> </p>
         </div>
         <div class="meeting-details">
           <div class="time">

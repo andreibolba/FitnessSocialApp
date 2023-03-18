@@ -29,7 +29,8 @@
           <div class="statement" *ngIf="meetings.length!=0">
             <div class="meetings-place" *ngFor="let m of meetings">
               <div class="meeting-name">
-                {{ m.meetingName }}
+                {{ m.meetingName }}<br>
+                <p>With: {{ m.participants }}</p>
               </div>
               <div class="meeting-details">
                 <div class="time">

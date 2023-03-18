@@ -81,6 +81,20 @@ export class TrainerDashboardComponent {
             this.person = res;
             this.meetingSub=this.dataService.getANumberOfMeetingsForPerson(person.token,res.personId,res.status.toLocaleLowerCase(),3).subscribe((data)=>{
               this.meetings=data;
+              this.meetings.forEach(element => {
+                element.participants='';
+                if(element.allPeopleInMeeting.length==0)
+                  element.participants='No participants';
+                else if(element.allPeopleInMeeting.length>=3){
+                  element.participants+=element.allPeopleInMeeting[0].firstName+" "+element.allPeopleInMeeting[0].lastName+", ";
+                  element.participants+=element.allPeopleInMeeting[1].firstName+" "+element.allPeopleInMeeting[1].lastName;
+                  element.participants+=" and other "+(element.allPeopleInMeeting.length-2);
+                }else{
+                  element.allPeopleInMeeting.forEach(person => {
+                    element.participants+=person.firstName+" "+person.lastName+", ";
+                  });
+                }
+              });
             },(error) => {
               console.log(error.error);
             },

@@ -1,12 +1,24 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { LoggedPerson } from 'src/model/loggedperson.model';
 import { Meeting } from 'src/model/meeting.model';
 import { DataStorageService } from 'src/services/data-storage.service';
 import { UtilsService } from 'src/services/utils.service';
+
+export class CheckBox {
+  id: number;
+  name: string;
+  checked: boolean;
+
+  constructor(id: number, name: string, checked: boolean) {
+    this.name = name;
+    this.id = id;
+    this.checked = checked;
+  }
+}
 
 @Component({
   selector: 'app-edit-meeting-dialog',
@@ -29,6 +41,11 @@ export class EditMeetingDialogComponent implements OnInit, OnDestroy {
   personSub!: Subscription;
   meetingSub!: Subscription;
   modifyMeetingSub!: Subscription;
+  optionsInternsSub!: Subscription;
+  optionsGroupSub!: Subscription;
+
+  optionsInterns: CheckBox[] = [];
+  optionsGroups: CheckBox[] = [];
 
   private token: string = '';
 
@@ -86,6 +103,36 @@ export class EditMeetingDialogComponent implements OnInit, OnDestroy {
               this.operation = 'Add';
               this.meetingId = -1;
             }
+
+            this.optionsInternsSub = this.dataService
+              .getAllInternsInMeeting(this.token, this.meetingId)
+              .subscribe((res) => {
+                res.forEach((element) => {
+                  this.optionsInterns.unshift(
+                    new CheckBox(
+                      element.internId,
+                      element.firstName + ' ' + element.lastName,
+                      element.isChecked
+                    )
+                  );
+                });
+                console.log(this.optionsInterns);
+              });
+
+              this.optionsGroupSub = this.dataService
+              .getAllGroupsInMeeting(this.token, this.meetingId,this.trainerId)
+              .subscribe((res) => {
+                res.forEach((element) => {
+                  this.optionsGroups.unshift(
+                    new CheckBox(
+                      element.groupId,
+                      element.groupName,
+                      element.isChecked
+                    )
+                  );
+                });
+                console.log(this.optionsGroups);
+              });
           });
         });
     }
@@ -117,6 +164,21 @@ export class EditMeetingDialogComponent implements OnInit, OnDestroy {
 
     meet.traierId = this.trainerId;
 
+    var selected = this.optionsInterns.filter((op) => op.checked == true);
+    var internIds: string = '';
+    selected.forEach((element) => {
+      internIds += element.id.toString() + '_';
+    });
+
+    selected = this.optionsGroups.filter((op) => op.checked == true);
+    var groupIds: string = '';
+    selected.forEach((element) => {
+      groupIds += element.id.toString() + '_';
+    });
+
+    meet.internIds=internIds;
+    meet.groupIds=groupIds;
+
     if (this.operation == 'Edit') {
       meet.meetingId = this.meetingId;
       this.modifyMeetingSub = this.dataService
@@ -128,6 +190,7 @@ export class EditMeetingDialogComponent implements OnInit, OnDestroy {
           },
           (error) => {
             this.toastr.error(error.error);
+            console.log(error.error);
           }
         );
     } else {
@@ -143,5 +206,13 @@ export class EditMeetingDialogComponent implements OnInit, OnDestroy {
           }
         );
     }
+  }
+
+  valueChangeIntern(op: CheckBox) {
+    op.checked = !op.checked;
+  }
+
+  valueChangeGroup(op: CheckBox) {
+    op.checked = !op.checked;
   }
 }

@@ -5,13 +5,13 @@
     <div class="infos">
       <div class="info">
         <label for="meetingName">Meeting Name</label>
-        <input type="text" id="meetingName" placeholder="Meeting Name" name="meetingName"
-        [(ngModel)]="meetingName" required>
+        <input type="text" id="meetingName" placeholder="Meeting Name" name="meetingName" [(ngModel)]="meetingName"
+          required>
       </div>
       <div class="info">
         <label for="meetingLink">Meeting Link</label>
-        <input type="text" id="meetingLink" placeholder="Meeting Link" name="meetingLink"
-          [(ngModel)]="meetingLink" required>
+        <input type="text" id="meetingLink" placeholder="Meeting Link" name="meetingLink" [(ngModel)]="meetingLink"
+          required>
       </div>
     </div>
 
@@ -37,6 +37,19 @@
         <input type="date" id="dateOfMeet" name="dateOfMeet" [(ngModel)]="date" required>
       </div>
     </div>
+
+    <div class="box">
+      <h5>Add and remove intern by select them:</h5>
+      <p><mat-checkbox *ngFor="let i of optionsInterns" [checked]="i.checked" (change)="valueChangeIntern(i)">
+          <div id="option"> {{ i.name }}</div>
+        </mat-checkbox></p>
+
+      <h5>Add and remove groups by select them:</h5>
+      <p><mat-checkbox *ngFor="let i of optionsGroups" [checked]="i.checked" (change)="valueChangeGroup(i)">
+          <div id="option"> {{ i.name }}</div>
+        </mat-checkbox></p>
+    </div>
+
     <mat-dialog-actions align="center">
       <button mat-button mat-dialog-close>Cancel</button>
       <button type="submit" [disabled]="!registerForm.valid" mat-button cdkFocusInitial> {{ operation }}</button>

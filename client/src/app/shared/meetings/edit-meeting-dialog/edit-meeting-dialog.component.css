@@ -79,6 +79,12 @@ input, select{
   display: flex;
 }
 
+.box{
+  width: 1000px;
+  margin-left: 20px;
+  height: auto;
+}
+
 .info{
   height: 100%;
   width: calc(100%/2 - 10px);
@@ -102,4 +108,19 @@ button{
   margin-left: 5px;
   margin-bottom: 30px;
   border-radius: 10px;
+}
+
+#option{
+  color: #515151;
+  font-family: 'Poppins', sans-serif;
+  margin-top: 8px;
+  font-size: 14px;
+  margin-left: -10px;
+  margin-right: 5px;
+}
+
+h5{
+  margin-bottom: 5px;
+  margin-top: 5px;
+  font-size: 17px;
 }

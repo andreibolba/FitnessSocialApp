@@ -109,13 +109,18 @@
 .meeting-name {
   height: 100%;
   width: 65%;
-  padding-top: 15px;
+  padding-top: 9px;
   padding-left: 10px;
+  font-size: 15px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 }
 
+.meeting-name p{
+  margin-top: 3px;
+  font-size: 11px;
+}
 .meeting-details {
   height: 100%;
   width: 35%;

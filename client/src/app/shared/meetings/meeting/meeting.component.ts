@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { LoggedPerson } from 'src/model/loggedperson.model';
 import { Meeting } from 'src/model/meeting.model';
+import { Person } from 'src/model/person.model';
 import { DataStorageService } from 'src/services/data-storage.service';
 import { UtilsService } from 'src/services/utils.service';
 import { EditMeetingDialogComponent } from '../edit-meeting-dialog/edit-meeting-dialog.component';
@@ -16,6 +17,7 @@ import { EditMeetingDialogComponent } from '../edit-meeting-dialog/edit-meeting-
 export class MeetingComponent implements OnInit, OnDestroy {
   isTrainer: boolean = true;
   allMeetings:Meeting[]=[];
+  participants:string=" and other ";
   private token: string = '';
 
   personSub!: Subscription;
@@ -51,6 +53,20 @@ export class MeetingComponent implements OnInit, OnDestroy {
             this.isTrainer = data.status == 'Trainer';
             this.meetingSub=this.dataService.getAllMeetingsForPerson(this.token,id,data.status.toLocaleLowerCase()).subscribe((res)=>{
               this.allMeetings=res;
+              this.allMeetings.forEach(element => {
+                element.participants='';
+                if(element.allPeopleInMeeting.length==0)
+                  element.participants='No participants';
+                else if(element.allPeopleInMeeting.length>=3){
+                  element.participants+=element.allPeopleInMeeting[0].firstName+" "+element.allPeopleInMeeting[0].lastName+", ";
+                  element.participants+=element.allPeopleInMeeting[1].firstName+" "+element.allPeopleInMeeting[1].lastName;
+                }else{
+                  element.allPeopleInMeeting.forEach(person => {
+                    element.participants+=person.firstName+" "+person.lastName+", ";
+                  });
+                }
+              });
+              console.log(this.allMeetings);
             });
           }
         );
@@ -73,6 +89,10 @@ export class MeetingComponent implements OnInit, OnDestroy {
   onEdit(meeting:Meeting){
     this.utils.meetingToEdit.next(meeting);
     this.openDialog();
+  }
+
+  seeMeeting(people:Person[]){
+
   }
 
   onDelete(meetingId:number){

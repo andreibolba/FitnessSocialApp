@@ -10,18 +10,11 @@
 
         public int TrainerId { get; set; }
 
-        public int? GroupId { get; set; }
-
-        public int? InternId { get; set; }
-
         public DateTime MeetingStartTime { get; set; }
 
         public DateTime MeetingFinishTime { get; set; }
 
-        public GroupDto Group { get; set; }
-
-        public PersonDto Intern { get; set; }
-
         public PersonDto Trainer { get; set; }
+        public IEnumerable<PersonDto> AllPeopleInMeeting { get; set; }
     }
 }

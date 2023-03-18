@@ -1,4 +1,4 @@
-export class TestGroup{
+export class ObjectGroup{
   groupId:number;
   groupName:string;
   isChecked:boolean;

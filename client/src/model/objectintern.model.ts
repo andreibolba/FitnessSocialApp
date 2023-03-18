@@ -1,4 +1,4 @@
-export class TestIntern{
+export class ObjectIntern{
   internId:number;
   firstName:string;
   lastName:string;

@@ -5,8 +5,8 @@ import { Person } from 'src/model/person.model';
 import { InternGroup } from 'src/model/interngroup.model';
 import { Question } from 'src/model/question.model';
 import { Test } from 'src/model/test.model';
-import { TestIntern } from 'src/model/testintern.model';
-import { TestGroup } from 'src/model/testgroup.model';
+import { ObjectIntern } from 'src/model/objectintern.model';
+import { ObjectGroup } from 'src/model/objectgroup.model';
 import { Meeting } from 'src/model/meeting.model';
 
 @Injectable({
@@ -313,7 +313,7 @@ export class DataStorageService {
 
   getAllInternsForTest(token: string, testId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.get<TestIntern[]>(
+    return this.http.get<ObjectIntern[]>(
       this.baseUrl + 'test/all/' + testId + '/interns',
       {
         headers: headers,
@@ -323,7 +323,7 @@ export class DataStorageService {
 
   getAllGroupsForTest(token: string, testId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.get<TestGroup[]>(
+    return this.http.get<ObjectGroup[]>(
       this.baseUrl + 'test/all/' + testId + '/groups',
       {
         headers: headers,
@@ -383,6 +383,8 @@ export class DataStorageService {
         TrainerId: meeting.traierId,
         MeetingStartTime: meeting.meetingStartTime,
         MeetingFinishTime: meeting.meetingFinishTime,
+        InterndIds:meeting.internIds,
+        GroupIds:meeting.groupIds
       },
       {
         headers: headers,
@@ -409,5 +411,25 @@ export class DataStorageService {
     return this.http.get<Meeting[]>(this.baseUrl + 'meeting/' + id+'/'+status+'/'+count, {
       headers: headers,
     });
+  }
+
+  getAllInternsInMeeting(token: string, meetingId: number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<ObjectIntern[]>(
+      this.baseUrl + 'meeting/all/' + meetingId + '/interns',
+      {
+        headers: headers,
+      }
+    );
+  }
+
+  getAllGroupsInMeeting(token: string, meetingId: number,trainerId:number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<ObjectGroup[]>(
+      this.baseUrl + 'meeting/all/' + meetingId + '/groups/'+trainerId,
+      {
+        headers: headers,
+      }
+    );
   }
 }

@@ -67,6 +67,8 @@ namespace API.Utils
 
         public static List<int> FromStringToInt(string ids)
         {
+            if (ids.Length == 0)
+                return new List<int>();
             List<int> idsInt = new List<int>();
             while (ids != "!")
             {
@@ -78,7 +80,7 @@ namespace API.Utils
             return idsInt;
         }
 
-        public static bool IsValidMeeting(MeetingDto meeting)
+        public static bool IsValidDate(MeetingDto meeting)
         {
             DateTime now = DateTime.UtcNow;
             if (meeting.MeetingStartTime < now)

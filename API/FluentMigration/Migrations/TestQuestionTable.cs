@@ -2,7 +2,7 @@
 
 namespace API.FluentMigration.Migrations
 {
-    [Migration(202306031311)]
+    [Migration(202303061311)]
     public class TestQuestionTable : Migration
     {
         public const string tableName = "TestQuestion";

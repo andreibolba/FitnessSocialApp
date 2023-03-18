@@ -12,6 +12,7 @@ namespace API.Helpers
         public AutoMapperProfiles()
         {
             CreateMap<Person, PersonDto>();
+            CreateMap<GetPeopleInGroupMeeting, PersonDto>();
             CreateMap<Group, GroupDto>();
             CreateMap<InternGroup, InternGroupDto>()
             .ForMember(dest => dest.PersonId, opt => opt.MapFrom(src => src.Intern.PersonId))

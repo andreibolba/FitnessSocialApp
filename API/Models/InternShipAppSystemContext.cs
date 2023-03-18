@@ -25,6 +25,8 @@ public partial class InternShipAppSystemContext : DbContext
 
     public virtual DbSet<Feedback> Feedbacks { get; set; }
 
+    public virtual DbSet<GetPeopleInGroupMeeting> GetPeopleInGroupMeetings { get; set; }
+
     public virtual DbSet<Group> Groups { get; set; }
 
     public virtual DbSet<GroupChat> GroupChats { get; set; }
@@ -72,7 +74,7 @@ public partial class InternShipAppSystemContext : DbContext
     public virtual DbSet<VersionInfo> VersionInfos { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-      => optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=InternShipAppSystem;User Id=sa;Password=1234%asd; TrustServerCertificate=True");
+       => optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=InternShipAppSystem;User Id=sa;Password=1234%asd; TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -180,6 +182,22 @@ public partial class InternShipAppSystemContext : DbContext
                 .HasForeignKey(d => d.TrainerId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FeedbackTrainerFK");
+        });
+
+        modelBuilder.Entity<GetPeopleInGroupMeeting>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("GetPeopleInGroupMeeting");
+
+            entity.Property(e => e.BirthDate).HasColumnType("datetime");
+            entity.Property(e => e.Email).HasMaxLength(255);
+            entity.Property(e => e.FirstName).HasMaxLength(255);
+            entity.Property(e => e.LastName).HasMaxLength(255);
+            entity.Property(e => e.PasswordHash).HasMaxLength(8000);
+            entity.Property(e => e.PasswordSalt).HasMaxLength(8000);
+            entity.Property(e => e.Status).HasMaxLength(255);
+            entity.Property(e => e.Username).HasMaxLength(255);
         });
 
         modelBuilder.Entity<Group>(entity =>

@@ -15,7 +15,7 @@ public partial class Group
 
     public virtual ICollection<InternGroup> InternGroups { get; } = new List<InternGroup>();
 
-    public virtual ICollection<Meeting> Meetings { get; } = new List<Meeting>();
+    public virtual ICollection<MeetingInternGroup> MeetingInternGroups { get; } = new List<MeetingInternGroup>();
 
     public virtual ICollection<Task> Tasks { get; } = new List<Task>();
 

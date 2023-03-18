@@ -39,6 +39,8 @@ public partial class InternShipAppSystemContext : DbContext
 
     public virtual DbSet<Meeting> Meetings { get; set; }
 
+    public virtual DbSet<MeetingInternGroup> MeetingInternGroups { get; set; }
+
     public virtual DbSet<Note> Notes { get; set; }
 
     public virtual DbSet<PasswordkLink> PasswordkLinks { get; set; }
@@ -70,7 +72,7 @@ public partial class InternShipAppSystemContext : DbContext
     public virtual DbSet<VersionInfo> VersionInfos { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=InternShipAppSystem;User Id=sa;Password=1234%asd; TrustServerCertificate=True");
+      => optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=InternShipAppSystem;User Id=sa;Password=1234%asd; TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -286,18 +288,28 @@ public partial class InternShipAppSystemContext : DbContext
                 .HasMaxLength(255);
             entity.Property(e => e.MeetingStartTime).HasColumnType("datetime");
 
-            entity.HasOne(d => d.Group).WithMany(p => p.Meetings)
-                .HasForeignKey(d => d.GroupId)
-                .HasConstraintName("MeetingGroupFK");
-
-            entity.HasOne(d => d.Intern).WithMany(p => p.MeetingInterns)
-                .HasForeignKey(d => d.InternId)
-                .HasConstraintName("MeetingInternFK");
-
-            entity.HasOne(d => d.Trainer).WithMany(p => p.MeetingTrainers)
+            entity.HasOne(d => d.Trainer).WithMany(p => p.Meetings)
                 .HasForeignKey(d => d.TrainerId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("MeetingTrainerFK");
+        });
+
+        modelBuilder.Entity<MeetingInternGroup>(entity =>
+        {
+            entity.ToTable("MeetingInternGroup");
+
+            entity.HasOne(d => d.Group).WithMany(p => p.MeetingInternGroups)
+                .HasForeignKey(d => d.GroupId)
+                .HasConstraintName("MeetingInternGroupGroup");
+
+            entity.HasOne(d => d.Intern).WithMany(p => p.MeetingInternGroups)
+                .HasForeignKey(d => d.InternId)
+                .HasConstraintName("MeetingInternGroupIntern");
+
+            entity.HasOne(d => d.Meeting).WithMany(p => p.MeetingInternGroups)
+                .HasForeignKey(d => d.MeetingId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("MeetingInternGroupMeeting");
         });
 
         modelBuilder.Entity<Note>(entity =>

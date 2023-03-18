@@ -13,19 +13,13 @@ public partial class Meeting
 
     public int TrainerId { get; set; }
 
-    public int? GroupId { get; set; }
-
-    public int? InternId { get; set; }
-
     public DateTime MeetingStartTime { get; set; }
 
     public DateTime MeetingFinishTime { get; set; }
 
     public bool Deleted { get; set; }
 
-    public virtual Group Group { get; set; }
-
-    public virtual Person Intern { get; set; }
+    public virtual ICollection<MeetingInternGroup> MeetingInternGroups { get; } = new List<MeetingInternGroup>();
 
     public virtual Person Trainer { get; set; }
 }

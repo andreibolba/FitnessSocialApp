@@ -16,5 +16,7 @@
 
         public PersonDto Trainer { get; set; }
         public IEnumerable<PersonDto> AllPeopleInMeeting { get; set; }
+        public string InterndIds { get; set; }
+        public string GroupIds { get; set; }
     }
 }

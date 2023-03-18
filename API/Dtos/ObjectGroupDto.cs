@@ -1,6 +1,6 @@
 ﻿namespace API.Dtos
 {
-    public class TestGroupDto
+    public class ObjectGroupDto
     {
         public int GroupId { get; set; }
         public string GroupName { get; set; }

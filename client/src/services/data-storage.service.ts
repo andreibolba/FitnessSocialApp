@@ -7,6 +7,7 @@ import { Question } from 'src/model/question.model';
 import { Test } from 'src/model/test.model';
 import { TestIntern } from 'src/model/testintern.model';
 import { TestGroup } from 'src/model/testgroup.model';
+import { Asnwer } from 'src/app/shared/tests/start-test/start-test.component';
 
 @Injectable({
   providedIn: 'root',
@@ -319,6 +320,15 @@ export class DataStorageService {
   updateAllGroupsFromTest(token:string, testId:number, ids:string){
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.post(this.baseUrl + 'test/testattribution/update/'+testId+'/groups',{ids: ids}, {
+      headers: headers,
+    });
+  }
+
+  //questionsolution
+
+  sendTest(token:string, internId:number, answers:Asnwer[]){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post(this.baseUrl + 'questionsolution/add/'+internId, answers, {
       headers: headers,
     });
   }

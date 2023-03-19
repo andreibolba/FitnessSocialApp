@@ -16,12 +16,12 @@ namespace API.Controllers
         }
 
         [HttpPost("add/{internId:int}")]
-        public ActionResult EditInternIntoGroups([FromBody] List<Answer> answer, int internId)
+        public ActionResult EditInternIntoGroups([FromBody] List<Answer> answers, int internId)
         {
             ReceiveAnswersDto answersDto = new ReceiveAnswersDto
             {
                 InternId = internId,
-                Answers = answer
+                Answers = answers
             };
             _repository.Create(answersDto);
             return _repository.SaveAll()? Ok() : BadRequest("Internal Server Error");

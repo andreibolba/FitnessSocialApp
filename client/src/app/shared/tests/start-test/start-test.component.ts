@@ -24,6 +24,7 @@ export class Asnwer{
 export class StartTestComponent implements OnInit, OnDestroy {
   testToStartSub!: Subscription;
   peopleSub!: Subscription;
+  finishSub!: Subscription;
   isVisible = false;
   isVisibleFinish = false;
   private token: string = '';
@@ -76,6 +77,13 @@ export class StartTestComponent implements OnInit, OnDestroy {
 
   finishTest(){
     console.log(this.answers);
+    this.finishSub=this.data.sendTest(this.token,this.internId,this.answers).subscribe(()=>{
+      this.toastr.success("You finished the test!");
+    },(error)=>{
+      this.toastr.error(error.error);
+      console.log(error);
+
+    });
   }
 
   ngOnDestroy(): void {

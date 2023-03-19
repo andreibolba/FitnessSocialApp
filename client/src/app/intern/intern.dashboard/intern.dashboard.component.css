@@ -183,6 +183,7 @@
   width: 65%;
   padding-top: 15px;
   padding-left: 10px;
+  font-size: 15px;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
@@ -274,4 +275,17 @@
 .welcomemessage h5 {
   color: #515151;
   margin-left: 60px;
+}
+
+.meeting-name p a{
+  text-decoration: underline;
+}
+
+.meeting-name p a:hover{
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.meeting-name p{
+  font-size: 11px;
 }

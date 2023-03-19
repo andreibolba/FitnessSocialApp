@@ -1,4 +1,26 @@
 <h3>{{ test.testName }}</h3>
 <div id="main">
-
+  <div class="scp-quizzes-main">
+    <div class="scp-quizzes-data">
+      <h4>{{ actualQuestionIndex+1 }}. {{ actualQuestion.questionName }}</h4>
+      <br />
+      <button type="button" class="answer" *ngIf="actualQuestion.a!=null" (click)="answer('A')">
+        A. {{actualQuestion.a}}</button><br />
+      <button type="button" class="answer" *ngIf="actualQuestion.b!=null" (click)="answer('B')">
+        B. {{actualQuestion.b}}</button><br />
+      <button type="button" class="answer" *ngIf="actualQuestion.c!=null" (click)="answer('C')">
+        C. {{actualQuestion.c}}</button><br />
+      <button type="button" class="answer" *ngIf="actualQuestion.d!=null" (click)="answer('D')">
+        D. {{actualQuestion.d}}</button><br />
+      <button type="button" class="answer" *ngIf="actualQuestion.e!=null" (click)="answer('E')">
+        E. {{actualQuestion.e}}</button><br />
+      <button type="button" class="answer" *ngIf="actualQuestion.f!=null" (click)="answer('F')">
+        F. {{actualQuestion.f}}</button><br />
+    </div>
+  </div>
+  <mat-dialog-actions align="center" class="down">
+    <button class="btn btn-info" (click)="prevQuestion()" [hidden]="actualQuestionIndex==0">Prev</button>
+    <button class="btn btn-info" (click)="nextQuestion()"
+      [hidden]="actualQuestionIndex==test.questions.length-1">Next</button>
+  </mat-dialog-actions>
 </div>

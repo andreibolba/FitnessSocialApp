@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { LoggedPerson } from 'src/model/loggedperson.model';
+import { Question } from 'src/model/question.model';
 import { Test } from 'src/model/test.model';
 import { DataStorageService } from 'src/services/data-storage.service';
 import { UtilsService } from 'src/services/utils.service';
@@ -16,9 +17,26 @@ export class StartTestComponent implements OnInit, OnDestroy {
   private token: string = '';
   private internId: number = -1;
 
+  actualQuestion:Question=new Question();
+  actualQuestionIndex:number=-1;
+
   test: Test = new Test();
 
   constructor(private utils: UtilsService, private data: DataStorageService) {}
+
+  answer(op:string){
+    
+  }
+
+  prevQuestion(){
+    this.actualQuestionIndex--;
+    this.actualQuestion=this.test.questions[this.actualQuestionIndex];
+  }
+
+  nextQuestion(){
+    this.actualQuestionIndex++;
+    this.actualQuestion=this.test.questions[this.actualQuestionIndex];
+  }
 
   ngOnDestroy(): void {
     if (this.testToStartSub != null) this.testToStartSub.unsubscribe();
@@ -39,8 +57,10 @@ export class StartTestComponent implements OnInit, OnDestroy {
         });
 
       this.testToStartSub = this.utils.testToStart.subscribe((res) => {
-        if (res) this.test = res;
-        console.log(this.test);
+        if (res) {this.test = res;
+          this.actualQuestion=this.test.questions[0];
+          this.actualQuestionIndex=0;
+        }
       });
     }
   }

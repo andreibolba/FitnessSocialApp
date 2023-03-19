@@ -6,16 +6,47 @@
   width: auto;
 }
 
-h3{
+h3 {
   text-align: center;
   margin-top: 10px;
   margin-bottom: 20px;
 }
 
-#main{
-  height: 76vh;
+#main {
+  height: 70vh;
   width: 1000px;
-  padding-left: 10px;
+  padding-left: 35px;
   scroll-behavior: smooth;
   overflow-y: scroll;
+}
+
+.answer {
+  display: none;
+  display: inline-block;
+  background-color: #ffffff;
+  text-align: left;
+  width: 95%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.answer:hover {
+  border: 1px solid #000000;
+}
+
+.down button {
+  height: 35px;
+  width: 70px;
+  border: none;
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-bottom: 30px;
+  margin-top: 10px;
+  border-radius: 10px;
+}
+
+.scp-quizzes-main {
+  height: 60vh;
 }

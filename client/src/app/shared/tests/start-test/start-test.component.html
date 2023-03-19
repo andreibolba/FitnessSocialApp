@@ -2,25 +2,26 @@
 <div id="main">
   <div class="scp-quizzes-main">
     <div class="scp-quizzes-data">
-      <h4>{{ actualQuestionIndex+1 }}. {{ actualQuestion.questionName }}</h4>
+      <h4>{{ actualQuestionIndex+1 }}. {{ actualQuestion.questionName }} ({{actualQuestion.points}})</h4>
       <br />
-      <button type="button" class="answer" *ngIf="actualQuestion.a!=null" (click)="answer('A')">
+      <button type="button" class="{{opA}}" *ngIf="actualQuestion.a!=null" (click)="answer('A')">
         A. {{actualQuestion.a}}</button><br />
-      <button type="button" class="answer" *ngIf="actualQuestion.b!=null" (click)="answer('B')">
+      <button type="button" class="{{opB}}" *ngIf="actualQuestion.b!=null" (click)="answer('B')">
         B. {{actualQuestion.b}}</button><br />
-      <button type="button" class="answer" *ngIf="actualQuestion.c!=null" (click)="answer('C')">
+      <button type="button" class="{{opC}}" *ngIf="actualQuestion.c!=null" (click)="answer('C')">
         C. {{actualQuestion.c}}</button><br />
-      <button type="button" class="answer" *ngIf="actualQuestion.d!=null" (click)="answer('D')">
+      <button type="button" class="{{opD}}" *ngIf="actualQuestion.d!=null" (click)="answer('D')">
         D. {{actualQuestion.d}}</button><br />
-      <button type="button" class="answer" *ngIf="actualQuestion.e!=null" (click)="answer('E')">
+      <button type="button" class="{{opE}}" *ngIf="actualQuestion.e!=null" (click)="answer('E')">
         E. {{actualQuestion.e}}</button><br />
-      <button type="button" class="answer" *ngIf="actualQuestion.f!=null" (click)="answer('F')">
+      <button type="button" class="{{opF}}" *ngIf="actualQuestion.f!=null" (click)="answer('F')">
         F. {{actualQuestion.f}}</button><br />
     </div>
   </div>
   <mat-dialog-actions align="center" class="down">
-    <button class="btn btn-info" (click)="prevQuestion()" [hidden]="actualQuestionIndex==0">Prev</button>
     <button class="btn btn-info" (click)="nextQuestion()"
-      [hidden]="actualQuestionIndex==test.questions.length-1">Next</button>
+    [hidden]="!isVisibleFinish">Finish</button>
+    <button class="btn btn-info" (click)="nextQuestion()"
+      [hidden]="!isVisible">Next</button>
   </mat-dialog-actions>
 </div>

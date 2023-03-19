@@ -32,6 +32,9 @@ h3 {
   cursor: pointer;
 }
 
+.correct{background-color: #0C0; color: white;}
+.wrong{background-color: rgb(255, 33, 33); color: white;}
+
 .answer:hover {
   border: 1px solid #000000;
 }

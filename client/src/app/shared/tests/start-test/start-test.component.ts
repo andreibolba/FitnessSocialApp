@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { LoggedPerson } from 'src/model/loggedperson.model';
 import { Question } from 'src/model/question.model';
@@ -14,28 +15,51 @@ import { UtilsService } from 'src/services/utils.service';
 export class StartTestComponent implements OnInit, OnDestroy {
   testToStartSub!: Subscription;
   peopleSub!: Subscription;
+  isVisible = false;
+  isVisibleFinish = false;
   private token: string = '';
   private internId: number = -1;
 
-  actualQuestion:Question=new Question();
-  actualQuestionIndex:number=-1;
+  opA: string = '';
+  opB: string = '';
+  opC: string = '';
+  opD: string = '';
+  opE: string = '';
+  opF: string = '';
+
+  actualQuestion: Question = new Question();
+  actualQuestionIndex: number = -1;
 
   test: Test = new Test();
 
-  constructor(private utils: UtilsService, private data: DataStorageService) {}
+  constructor(
+    private utils: UtilsService,
+    private data: DataStorageService,
+    private toastr: ToastrService
+  ) {}
 
-  answer(op:string){
-    
+  answer(op: string) {
+    if (op == this.actualQuestion.correctOption) {
+      this.toastr.success('Correct answer!');
+      this.correctAnswer(op);
+    } else {
+      this.toastr.error('Wrong answer!');
+      this.correctAnswer(this.actualQuestion.correctOption);
+      this.wrongAnswer(op);
+    }
+
+    if (this.actualQuestionIndex != this.test.questions.length - 1)
+      this.isVisible = true;
+    else this.isVisibleFinish = true;
   }
 
-  prevQuestion(){
-    this.actualQuestionIndex--;
-    this.actualQuestion=this.test.questions[this.actualQuestionIndex];
-  }
-
-  nextQuestion(){
-    this.actualQuestionIndex++;
-    this.actualQuestion=this.test.questions[this.actualQuestionIndex];
+  nextQuestion() {
+    if (this.actualQuestionIndex != this.test.questions.length - 1) {
+      this.actualQuestionIndex++;
+      this.actualQuestion = this.test.questions[this.actualQuestionIndex];
+    }
+    this.isVisible = false;
+    this.initializeAnswers();
   }
 
   ngOnDestroy(): void {
@@ -57,11 +81,69 @@ export class StartTestComponent implements OnInit, OnDestroy {
         });
 
       this.testToStartSub = this.utils.testToStart.subscribe((res) => {
-        if (res) {this.test = res;
-          this.actualQuestion=this.test.questions[0];
-          this.actualQuestionIndex=0;
+        if (res) {
+          this.test = res;
+          this.actualQuestion = this.test.questions[0];
+          this.actualQuestionIndex = 0;
+          this.isVisible = false;
+          this.initializeAnswers();
         }
       });
+    }
+  }
+
+  private initializeAnswers() {
+    this.opA = 'answer';
+    this.opB = 'answer';
+    this.opC = 'answer';
+    this.opD = 'answer';
+    this.opE = 'answer';
+    this.opF = 'answer';
+  }
+
+  private correctAnswer(op: string) {
+    switch (op) {
+      case 'A':
+        this.opA = 'answer correct';
+        return;
+      case 'B':
+        this.opB = 'answer correct';
+        return;
+      case 'C':
+        this.opC = 'answer correct';
+        return;
+      case 'D':
+        this.opD = 'answer correct';
+        return;
+      case 'E':
+        this.opE = 'answer correct';
+        return;
+      case 'F':
+        this.opF = 'answer correct';
+        return;
+    }
+  }
+
+  private wrongAnswer(op: string) {
+    switch (op) {
+      case 'A':
+        this.opA = 'answer wrong';
+        return;
+      case 'B':
+        this.opB = 'answer wrong';
+        return;
+      case 'C':
+        this.opC = 'answer wrong';
+        return;
+      case 'D':
+        this.opD = 'answer wrong';
+        return;
+      case 'E':
+        this.opE = 'answer wrong';
+        return;
+      case 'F':
+        this.opF = 'answer wrong';
+        return;
     }
   }
 }

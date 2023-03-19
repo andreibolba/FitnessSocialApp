@@ -31,6 +31,41 @@ export class TestComponent implements OnInit, OnDestroy {
     private toastr: ToastrService
   ) {}
 
+  ngOnInit(): void {
+    this.utils.initializeError();
+    const personString = localStorage.getItem('person');
+    if (!personString) {
+      return;
+    } else {
+      const person: LoggedPerson = JSON.parse(personString);
+      this.token = person.token;
+      let id = -1;
+      this.trainerSub = this.dataService
+        .getPerson(person.username, this.token)
+        .subscribe(
+          (data) => {
+            id = data.personId;
+            this.isTrainer = data.status == 'Trainer';
+            this.testSub = this.dataService
+              .getMyTests(person.token, id,data.status.toLocaleLowerCase())
+              .subscribe(
+                (data) => {
+                  this.tests = data;
+                },
+                () => {},
+                () => {
+                  this.tests.forEach((element) => {
+                    element.points = this.utils.calculatePoint(
+                      element.questions
+                    );
+                  });
+                }
+              );
+          }
+        );
+    }
+  }
+
   ngOnDestroy(): void {
     if (this.testSub != null) this.testSub.unsubscribe();
     if (this.trainerSub != null) this.trainerSub.unsubscribe();
@@ -102,6 +137,7 @@ export class TestComponent implements OnInit, OnDestroy {
       alert("You can't publish a test with no questions!");
       return;
     } else {
+      console.log("Pub "+this.token);
       this.publishSub = this.dataService.publish(this.token, testId).subscribe(
         () => {
           this.toastr.success('Test was published succesfully!');
@@ -114,38 +150,5 @@ export class TestComponent implements OnInit, OnDestroy {
     }
   }
 
-  ngOnInit(): void {
-    this.utils.initializeError();
-    const personString = localStorage.getItem('person');
-    if (!personString) {
-      return;
-    } else {
-      const person: LoggedPerson = JSON.parse(personString);
-      this.token = person.token;
-      let id = -1;
-      this.trainerSub = this.dataService
-        .getPerson(person.username, this.token)
-        .subscribe(
-          (data) => {
-            id = data.personId;
-            this.isTrainer = data.status == 'Trainer';
-            this.testSub = this.dataService
-              .getMyTests(person.token, id,data.status.toLocaleLowerCase())
-              .subscribe(
-                (data) => {
-                  this.tests = data;
-                },
-                () => {},
-                () => {
-                  this.tests.forEach((element) => {
-                    element.points = this.utils.calculatePoint(
-                      element.questions
-                    );
-                  });
-                }
-              );
-          }
-        );
-    }
-  }
+
 }

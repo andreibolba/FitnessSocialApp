@@ -63,11 +63,6 @@ export class EditTestsComponent implements OnInit, OnDestroy {
       });
     });
 
-
-    this.unseledtedQuestionsSub = this.dataService.unselectedQuestions(this.token,id).subscribe((data)=>{
-      this.questionsUnselected = data;
-    });
-
     const personString = localStorage.getItem('person');
     if (!personString) {
       return;
@@ -78,7 +73,12 @@ export class EditTestsComponent implements OnInit, OnDestroy {
         .getPerson(person.username, this.token)
         .subscribe((data) => {
           this.trainerId = data.personId;
+          console.log("Edit "+ this.token);
         });
+        this.unseledtedQuestionsSub = this.dataService.unselectedQuestions(this.token,id).subscribe((data)=>{
+          this.questionsUnselected = data;
+        });
+
     }
   }
 

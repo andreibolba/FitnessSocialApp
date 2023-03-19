@@ -77,7 +77,7 @@ export class StartTestComponent implements OnInit, OnDestroy {
 
   finishTest(){
     console.log(this.answers);
-    this.finishSub=this.data.sendTest(this.token,this.internId,this.answers).subscribe(()=>{
+    this.finishSub=this.data.sendTest(this.token,this.internId,this.test.testId,this.answers).subscribe(()=>{
       this.toastr.success("You finished the test!");
     },(error)=>{
       this.toastr.error(error.error);

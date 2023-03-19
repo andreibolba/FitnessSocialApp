@@ -326,9 +326,9 @@ export class DataStorageService {
 
   //questionsolution
 
-  sendTest(token:string, internId:number, answers:Asnwer[]){
+  sendTest(token:string, internId:number,testId:number, answers:Asnwer[]){
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'questionsolution/add/'+internId, answers, {
+    return this.http.post(this.baseUrl + 'questionsolution/add/'+internId +'/'+testId, answers, {
       headers: headers,
     });
   }

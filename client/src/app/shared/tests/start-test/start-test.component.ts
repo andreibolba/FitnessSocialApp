@@ -7,6 +7,15 @@ import { Test } from 'src/model/test.model';
 import { DataStorageService } from 'src/services/data-storage.service';
 import { UtilsService } from 'src/services/utils.service';
 
+export class Asnwer{
+  public questionId:number;
+  public internOption:string;
+  constructor(questionId:number,internOption:string){
+    this.questionId=questionId;
+    this.internOption=internOption;
+  }
+}
+
 @Component({
   selector: 'app-start-test',
   templateUrl: './start-test.component.html',
@@ -19,6 +28,7 @@ export class StartTestComponent implements OnInit, OnDestroy {
   isVisibleFinish = false;
   private token: string = '';
   private internId: number = -1;
+  private answers:Asnwer[]=[];
 
   opA: string = '';
   opB: string = '';
@@ -48,6 +58,8 @@ export class StartTestComponent implements OnInit, OnDestroy {
       this.wrongAnswer(op);
     }
 
+    this.answers.unshift(new Asnwer(this.actualQuestion.questionId, op));
+
     if (this.actualQuestionIndex != this.test.questions.length - 1)
       this.isVisible = true;
     else this.isVisibleFinish = true;
@@ -60,6 +72,10 @@ export class StartTestComponent implements OnInit, OnDestroy {
     }
     this.isVisible = false;
     this.initializeAnswers();
+  }
+
+  finishTest(){
+    console.log(this.answers);
   }
 
   ngOnDestroy(): void {

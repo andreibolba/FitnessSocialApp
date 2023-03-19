@@ -1,8 +1,8 @@
 <h3>{{ test.testName }}</h3>
-<div id="main">
+<div id="main" *ngIf="results.length==0">
   <div class="scp-quizzes-main">
     <div class="scp-quizzes-data">
-      <h4>{{ actualQuestionIndex+1 }}. {{ actualQuestion.questionName }} ({{actualQuestion.points}})</h4>
+      <h4>{{ actualQuestionIndex+1 }}. {{ actualQuestion.questionName }} ({{actualQuestion.points}} p)</h4>
       <br />
       <button type="button" class="{{opA}}" *ngIf="actualQuestion.a!=null" (click)="answer('A')">
         A. {{actualQuestion.a}}</button><br />
@@ -19,9 +19,34 @@
     </div>
   </div>
   <mat-dialog-actions align="center" class="down">
-    <button class="btn btn-info" (click)="finishTest()"
-    [hidden]="!isVisibleFinish">Finish</button>
-    <button class="btn btn-info" (click)="nextQuestion()"
-      [hidden]="!isVisible">Next</button>
+    <button class="btn btn-info" (click)="finishTest()" [hidden]="!isVisibleFinish">Finish</button>
+    <button class="btn btn-info" (click)="nextQuestion()" [hidden]="!isVisibleNext">Next</button>
+  </mat-dialog-actions>
+</div>
+
+<div id="main" *ngIf="results.length!=0">
+  <div class="scp-quizzes-main">
+    <div class="scp-quizzes-data">
+      <h4>{{ actualQuestionIndex+1 }}. {{ actualQuestion.questionName }} ({{ actualQuestion.correctOption ==
+        results[actualQuestionIndex].internOption ? actualQuestion.points : 0 }}/{{actualQuestion.points}} p)</h4>
+      <br />
+      <div class="{{opA}}" *ngIf="actualQuestion.a!=null">
+        A. {{actualQuestion.a}}</div><br />
+      <div class="{{opB}}" *ngIf="actualQuestion.b!=null">
+        B. {{actualQuestion.b}}</div><br />
+      <div class="{{opC}}" *ngIf="actualQuestion.c!=null">
+        C. {{actualQuestion.c}}</div><br />
+      <div class="{{opD}}" *ngIf="actualQuestion.d!=null">
+        D. {{actualQuestion.d}}</div><br />
+      <div class="{{opE}}" *ngIf="actualQuestion.e!=null">
+        E. {{actualQuestion.e}}</div><br />
+      <div class="{{opF}}" *ngIf="actualQuestion.f!=null">
+        F. {{actualQuestion.f}}</div><br />
+    </div>
+  </div>
+  <mat-dialog-actions align="center" class="down">
+    <button class="btn btn-info" (click)="prevQuestion()" [hidden]="!isVisiblePrev">Prev</button>
+    <button class="btn btn-info" (click)="finishTest()">Finish</button>
+    <button class="btn btn-info" (click)="nextQuestion()" [hidden]="!isVisibleNext">Next</button>
   </mat-dialog-actions>
 </div>

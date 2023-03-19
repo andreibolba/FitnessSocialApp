@@ -33,6 +33,7 @@ namespace API.Helpers
             CreateMap<Test, TestDto>();
             CreateMap<Question, QuestionDto>();
             CreateMap<TestGroupIntern, TestGroupInternDto>();
+            CreateMap<QuestionSolution, Answer>();
 
 
             CreateMap<PersonDto, Person>()

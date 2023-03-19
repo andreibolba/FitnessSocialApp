@@ -47,7 +47,7 @@ export class TestComponent implements OnInit, OnDestroy {
             id = data.personId;
             this.isTrainer = data.status == 'Trainer';
             this.testSub = this.dataService
-              .getMyTests(person.token, id,data.status.toLocaleLowerCase())
+              .getMyTests(this.token, id,data.status.toLocaleLowerCase())
               .subscribe(
                 (data) => {
                   this.tests = data;
@@ -73,10 +73,45 @@ export class TestComponent implements OnInit, OnDestroy {
     if (this.publishSub != null) this.publishSub.unsubscribe();
   }
 
-  onAdd() {
-    this.utils.testToEdit.next(null);
-    this.utils.isEditModeForTest.next(true);
-    this.openDialog(1);
+  deletetest(id: number) {
+    this.deleteSub = this.dataService.deleteOneTest(this.token, id).subscribe(
+      () => {
+        this.toastr.success('Test was deleted succesfully!');
+      },
+      (error) => {
+        this.toastr.error(error.error);
+        console.log(error);
+      }
+    );
+  }
+
+  publishTest(testId: number) {
+    let index = this.tests.findIndex((t) => t.testId == testId);
+    if (this.tests[index].questions.length == 0) {
+      alert("You can't publish a test with no questions!");
+      return;
+    } else {
+      console.log("-"+this.token+"-");
+      this.publishSub = this.dataService.publish(this.token, testId).subscribe(
+        () => {
+          this.toastr.success('Test was published succesfully!');
+          this.tests[index].canBeEdited = false;
+        },
+        (error) => {
+          this.toastr.error(error.error);
+        }
+      );
+    }
+  }
+
+  startTest(test:Test){
+    this.utils.testToStart.next(test);
+    this.openDialog(3);
+  }
+
+  seeResults(test:Test){
+    this.utils.testToStart.next(test);
+    this.openDialog(3);
   }
 
   onSeeTest(test: Test) {
@@ -115,40 +150,10 @@ export class TestComponent implements OnInit, OnDestroy {
     this.openDialog(2);
   }
 
-  deletetest(id: number) {
-    this.deleteSub = this.dataService.deleteTest(this.token, id).subscribe(
-      () => {
-        this.toastr.success('Test was deleted succesfully!');
-      },
-      (error) => {
-        this.toastr.error(error.error);
-      }
-    );
+
+  onAdd() {
+    this.utils.testToEdit.next(null);
+    this.utils.isEditModeForTest.next(true);
+    this.openDialog(1);
   }
-
-  startTest(test:Test){
-    this.utils.testToStart.next(test);
-    this.openDialog(3);
-  }
-
-  publishTest(testId: number) {
-    let index = this.tests.findIndex((t) => t.testId == testId);
-    if (this.tests[index].questions.length == 0) {
-      alert("You can't publish a test with no questions!");
-      return;
-    } else {
-      console.log("Pub "+this.token);
-      this.publishSub = this.dataService.publish(this.token, testId).subscribe(
-        () => {
-          this.toastr.success('Test was published succesfully!');
-          this.tests[index].canBeEdited = false;
-        },
-        (error) => {
-          this.toastr.error(error.error);
-        }
-      );
-    }
-  }
-
-
 }

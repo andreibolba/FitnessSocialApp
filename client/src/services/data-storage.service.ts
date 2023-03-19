@@ -7,7 +7,7 @@ import { Question } from 'src/model/question.model';
 import { Test } from 'src/model/test.model';
 import { TestIntern } from 'src/model/testintern.model';
 import { TestGroup } from 'src/model/testgroup.model';
-import { Asnwer } from 'src/app/shared/tests/start-test/start-test.component';
+import { Answer } from 'src/model/answer.model';
 
 @Injectable({
   providedIn: 'root',
@@ -229,7 +229,7 @@ export class DataStorageService {
 
   deleteQuestion(token: string, questionId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'question/delete/' + questionId, {
+    return this.http.post(this.baseUrl + 'question/delete/' + questionId,{}, {
       headers: headers,
     });
   }
@@ -243,9 +243,9 @@ export class DataStorageService {
     });
   }
 
-  deleteTest(token:string, testId:number){
+  deleteOneTest(token: string, testId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'test/delete/' + testId, {
+    return this.http.post(this.baseUrl + 'test/delete/' + testId,{},{
       headers: headers,
     });
   }
@@ -275,9 +275,10 @@ export class DataStorageService {
     });
   }
 
+
   publish(token:string, testId:number){
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'test/stop/'+testId, {
+    return this.http.post(this.baseUrl + 'test/stop/'+testId,{}, {
       headers: headers,
     });
   }
@@ -326,9 +327,16 @@ export class DataStorageService {
 
   //questionsolution
 
-  sendTest(token:string, internId:number,testId:number, answers:Asnwer[]){
+  sendTest(token:string, internId:number,testId:number, answers:Answer[]){
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.post(this.baseUrl + 'questionsolution/add/'+internId +'/'+testId, answers, {
+      headers: headers,
+    });
+  }
+
+  getResult(token:string, internId:number,testId:number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<Answer[]>(this.baseUrl + 'questionsolution/getanswers/'+internId +'/'+testId, {
       headers: headers,
     });
   }

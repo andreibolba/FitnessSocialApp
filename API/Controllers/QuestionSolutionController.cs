@@ -28,5 +28,12 @@ namespace API.Controllers
             return _repository.SaveAll()? Ok() : BadRequest("Internal Server Error");
         }
 
+        [HttpGet("getanswers/{internId:int}/{testId:int}")]
+        public ActionResult GetAnswers(int internId, int testId)
+        {
+            var allAnswers = _repository.GetAllAnswers(testId, internId);
+            return Ok(allAnswers);
+        }
+
     }
 }

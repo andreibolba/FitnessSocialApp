@@ -1,8 +1,8 @@
 ﻿using API.Dtos;
 using API.Interfaces.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using Microsoft.AspNetCore.Authorization;
 
 namespace API.Controllers
 {
@@ -48,15 +48,15 @@ namespace API.Controllers
             return res!=new TestDto() ? Ok(res) : BadRequest("Internal Server Error");
         }
 
-        [HttpPost("delete/{testId:int}")]
-        public ActionResult DeleteTest(int testId)
+        [HttpPost("delete/{questionId:int}")]
+        public ActionResult DeleteTest(int questionId)
         {
-            _test.Delete(testId);
+            _test.Delete(questionId);
             return _test.SaveAll() ? Ok() : BadRequest("Internal Server Error");
         }
 
         [HttpPost("stop/{testId:int}")]
-        public ActionResult StopEditTest(int testId)
+        public ActionResult StopTest(int testId)
         {
             _test.StopEdit(testId);
             return _test.SaveAll() ? Ok() : BadRequest("Internal Server Error");

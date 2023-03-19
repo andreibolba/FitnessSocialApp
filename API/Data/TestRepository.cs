@@ -65,6 +65,12 @@ namespace API.Data
                 }
             foreach (var t in allInternTests)
                 allTests.Add(GetTestById(t));
+
+            for(int i = 0; i < allTests.Count(); i++)
+            {
+                allTests[i].IsTaken = _context.QuestionSolutions.Where(qs => qs.InternId == internId && qs.TestId == allTests[i].TestId && qs.Deleted == false).Count() != 0;
+                allTests[i].Questions = allTests[i].Questions.OrderBy(q => q.QuestionId);
+            }
             return allTests;
         }
 

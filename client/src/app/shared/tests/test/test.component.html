@@ -36,7 +36,8 @@
       </div>
 
       <div class="buttonIntern"  *ngIf="!isTrainer" align="center">
-        <button class="btn-success" (click)="startTest(t)">Start Test</button>
+        <button class="btn-info" (click)="startTest(t)" *ngIf="t.isTaken==false">Start Test</button>
+        <button class="btn-success" (click)="seeResults(t)" *ngIf="t.isTaken==true">See results</button>
       </div>
     </div>
    </div>

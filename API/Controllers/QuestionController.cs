@@ -1,9 +1,11 @@
 ﻿using API.Dtos;
 using API.Interfaces.Repository;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace API.Controllers
 {
+    [Authorize]
     public class QuestionController : BaseAPIController
     {
         private readonly IQuestionRepository _question;

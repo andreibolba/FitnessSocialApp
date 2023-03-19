@@ -2,9 +2,11 @@
 using API.Interfaces.Repository;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Authorization;
 
 namespace API.Controllers
 {
+    [Authorize]
     public class TestController : BaseAPIController
     {
         private readonly ITestRepository _test;

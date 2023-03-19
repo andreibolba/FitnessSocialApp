@@ -5,9 +5,12 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Authorization;
+
 
 namespace API.Controllers
 {
+    [Authorize]
     public class InternGroupController : BaseAPIController
     {
         private readonly IInternGroupRepository _repository;

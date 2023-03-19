@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  width: auto;
+}
+
+h3{
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+#main{
+  height: 76vh;
+  width: 1000px;
+  padding-left: 10px;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+}

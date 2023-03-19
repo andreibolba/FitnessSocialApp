@@ -15,6 +15,7 @@ export class UtilsService {
   userToEdit=new BehaviorSubject<Person | null>(null);
   questionToEdit=new BehaviorSubject<Question | null>(null);
   testToEdit=new BehaviorSubject<Test | null>(null);
+  testToStart=new BehaviorSubject<Test | null>(null);
   groupToEdit=new BehaviorSubject<Group | null>(null);
   addedPerson=new BehaviorSubject<Person | null>(null);
   isEditModeForTest=new BehaviorSubject<boolean>(true);

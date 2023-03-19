@@ -8,6 +8,7 @@ import { DataStorageService } from 'src/services/data-storage.service';
 import { UtilsService } from 'src/services/utils.service';
 import { EditIntersComponent } from '../edit-inters/edit-inters.component';
 import { EditTestsComponent } from '../edit-tests/edit-tests.component';
+import { StartTestComponent } from '../start-test/start-test.component';
 
 @Component({
   selector: 'app-test',
@@ -53,7 +54,8 @@ export class TestComponent implements OnInit, OnDestroy {
     const dialogRef =
       op == 1
         ? this.dialog.open(EditTestsComponent)
-        : this.dialog.open(EditIntersComponent);
+        : op==2? this.dialog.open(EditIntersComponent)
+        : this.dialog.open(StartTestComponent);
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
@@ -87,6 +89,11 @@ export class TestComponent implements OnInit, OnDestroy {
         this.toastr.error(error.error);
       }
     );
+  }
+
+  startTest(test:Test){
+    this.utils.testToStart.next(test);
+    this.openDialog(3);
   }
 
   publishTest(testId: number) {
@@ -127,7 +134,6 @@ export class TestComponent implements OnInit, OnDestroy {
               .subscribe(
                 (data) => {
                   this.tests = data;
-                  console.log(this.tests);
                 },
                 () => {},
                 () => {

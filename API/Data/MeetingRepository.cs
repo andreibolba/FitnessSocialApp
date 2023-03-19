@@ -44,12 +44,12 @@ namespace API.Data
 
         public IEnumerable<MeetingDto> GetAll()
         {
-            var result = _mapper.Map<IEnumerable<MeetingDto>>(_context.Meetings.Where(m => m.Deleted == false).Include(m=>m.Trainer));
+            var result = _mapper.Map<IEnumerable<MeetingDto>>(_context.Meetings.Where(m => m.Deleted == false).Include(m => m.Trainer));
             foreach (var r in result)
             {
                 var allPeopleInMeeting = new List<PersonDto>();
                 var allPeople = _context.GetPeopleInGroupMeetings.Where(mg => mg.MeetingId == r.MeetingId);
-                foreach(var p in allPeople)
+                foreach (var p in allPeople)
                     allPeopleInMeeting.Add(_mapper.Map<PersonDto>(p));
 
                 var allinterns = _context.MeetingInternGroups.Where(mg => mg.Deleted == false && mg.GroupId == null && mg.MeetingId == r.MeetingId).Include(mg => mg.Intern).Select(mg => mg.Intern).AsEnumerable();
@@ -135,24 +135,28 @@ namespace API.Data
             return true;
         }
 
+        //Pentru mine din viitor. Codul asta merge:)) Facem pariu ca te intorci peste cateva saptamani si o sa stii
+        //ce dracu ai scris aici? Dar partea buna e ca merge:))))
         public IEnumerable<MeetingDto> GetAllByInternId(int internId, int? count = null)
         {
+            var allMeetings=GetAll();
+            var allGroupsInMeeting = _context.MeetingInternGroups.Where(mg => mg.GroupId != null && mg.Deleted == false).ToList();
             List<MeetingDto> allMeetingByPerson = new List<MeetingDto>();
-            var allPeople = _context.InternGroups.Where(ig => ig.InternId == internId && ig.Deleted == false);
+            var allPeople = _context.InternGroups.Where(ig => ig.InternId == internId && ig.Deleted == false).ToList();
             foreach (var person in allPeople)
             {
-                var allMeetings = GetAllByGroupId(person.GroupId);
-                foreach (var meet in allMeetings)
+                var allMeetingsWithGroupId = allGroupsInMeeting.Where(gm=>gm.GroupId==person.GroupId);
+                foreach (var meet in allMeetingsWithGroupId)
                 {
                     if (allMeetingByPerson.FirstOrDefault(m => m.MeetingId == meet.MeetingId) == null)
-                        allMeetingByPerson.Add(meet);
+                        allMeetingByPerson.Add(allMeetings.FirstOrDefault(m=>m.MeetingId==meet.MeetingId));
                 }
             }
 
-            var allMeetingWithPerson = _context.MeetingInternGroups.Where(m => m.Deleted == false && m.GroupId == null).Include(m => m.Meeting).Select(m => m.Meeting);
-            foreach (var meet in allMeetingByPerson)
+            var allMeetingWithPerson = _context.MeetingInternGroups.Where(m => m.Deleted == false && m.InternId == internId).Include(m => m.Meeting).Select(m => m.Meeting);
+            foreach (var meet in allMeetingWithPerson)
                 if (allMeetingByPerson.FirstOrDefault(m => m.MeetingId == meet.MeetingId) == null)
-                    allMeetingByPerson.Add(meet);
+                    allMeetingByPerson.Add(allMeetings.FirstOrDefault(m=>m.MeetingId==meet.MeetingId));
 
             if (count != null && allMeetingByPerson.Count() >= count.Value)
                 return allMeetingByPerson.Take(count.Value);
@@ -162,14 +166,18 @@ namespace API.Data
 
         public IEnumerable<MeetingDto> GetAllByGroupId(int groupId, int? count = null)
         {
-            var gettAllGroupsInMeeting = _context.MeetingInternGroups.Where(mg => mg.GroupId == groupId && mg.Deleted == false).Include(mg => mg.Meeting).Select(mg => mg.Meeting);
+            var allMeetings=GetAll();
+            var gettAllGroupsInMeeting = _context.MeetingInternGroups.Where(mg => mg.GroupId == groupId && mg.Deleted == false);
+            List<MeetingDto> allMetingsWithGroupId=new List<MeetingDto>();
+            foreach(var a in gettAllGroupsInMeeting)
+                allMetingsWithGroupId.Add(allMeetings.FirstOrDefault(m=>m.MeetingId==a.MeetingId));
             if (count != null && gettAllGroupsInMeeting.Count() >= count.Value)
-                return _mapper.Map<IEnumerable<MeetingDto>>(gettAllGroupsInMeeting).Take(count.Value);
+                return _mapper.Map<IEnumerable<MeetingDto>>(allMetingsWithGroupId).Take(count.Value);
 
-            return _mapper.Map<IEnumerable<MeetingDto>>(gettAllGroupsInMeeting);
+            return _mapper.Map<IEnumerable<MeetingDto>>(allMetingsWithGroupId);
         }
 
-        public IEnumerable<T> GettAllChecked<T>(int meetingId,int? trainerId=null)
+        public IEnumerable<T> GettAllChecked<T>(int meetingId, int? trainerId = null)
         {
             var response = _context.MeetingInternGroups.Where(tgi => tgi.Deleted == false && tgi.MeetingId == meetingId);
             if (typeof(T) == typeof(ObjectInternDto))
@@ -222,7 +230,7 @@ namespace API.Data
                 if (meetingId == -1)
                 {
                     var obj = new List<ObjectGroupDto>();
-                    foreach (var gr in _mapper.Map<IEnumerable<GroupDto>>(_context.Groups.Where(p => p.Deleted == false && p.TrainerId==trainerId.Value)))
+                    foreach (var gr in _mapper.Map<IEnumerable<GroupDto>>(_context.Groups.Where(p => p.Deleted == false && p.TrainerId == trainerId.Value)))
                     {
                         obj.Add(new ObjectGroupDto
                         {
@@ -242,7 +250,7 @@ namespace API.Data
                             GroupName = tgi.Group.GroupName,
                             IsChecked = true
                         }).ToList();
-                foreach (var gr in _mapper.Map<IEnumerable<GroupDto>>(_context.Groups.Where(p => p.Deleted == false && p.TrainerId==trainerId.Value)))
+                foreach (var gr in _mapper.Map<IEnumerable<GroupDto>>(_context.Groups.Where(p => p.Deleted == false && p.TrainerId == trainerId.Value)))
                 {
                     if (groups.FirstOrDefault(i => i.GroupId == gr.GroupId) == null)
                     {

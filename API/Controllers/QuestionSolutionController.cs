@@ -15,12 +15,13 @@ namespace API.Controllers
             _repository = repository;
         }
 
-        [HttpPost("add/{internId:int}")]
-        public ActionResult EditInternIntoGroups([FromBody] List<Answer> answers, int internId)
+        [HttpPost("add/{internId:int}/{testId:int}")]
+        public ActionResult EditInternIntoGroups([FromBody] List<Answer> answers, int internId, int testId)
         {
             ReceiveAnswersDto answersDto = new ReceiveAnswersDto
             {
                 InternId = internId,
+                TestId = testId,
                 Answers = answers
             };
             _repository.Create(answersDto);

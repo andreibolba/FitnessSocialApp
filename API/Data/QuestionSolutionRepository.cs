@@ -18,6 +18,7 @@ namespace API.Data
             foreach (var ans in answers.Answers)
                 _context.QuestionSolutions.Add(new QuestionSolution { 
                     InternId = answers.InternId, 
+                    TestId=answers.TestId,
                     QuestionId = ans.QuestionId, 
                     InternOption = ans.InternOption, 
                     Deleted = false });

@@ -25,6 +25,8 @@ public partial class InternShipAppSystemContext : DbContext
 
     public virtual DbSet<Feedback> Feedbacks { get; set; }
 
+    public virtual DbSet<GetPeopleInGroupMeeting> GetPeopleInGroupMeetings { get; set; }
+
     public virtual DbSet<Group> Groups { get; set; }
 
     public virtual DbSet<GroupChat> GroupChats { get; set; }
@@ -38,6 +40,8 @@ public partial class InternShipAppSystemContext : DbContext
     public virtual DbSet<Logging> Loggings { get; set; }
 
     public virtual DbSet<Meeting> Meetings { get; set; }
+
+    public virtual DbSet<MeetingInternGroup> MeetingInternGroups { get; set; }
 
     public virtual DbSet<Note> Notes { get; set; }
 
@@ -70,6 +74,7 @@ public partial class InternShipAppSystemContext : DbContext
     public virtual DbSet<VersionInfo> VersionInfos { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=InternShipAppSystem;User Id=sa;Password=1234%asd; TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -180,6 +185,22 @@ public partial class InternShipAppSystemContext : DbContext
                 .HasConstraintName("FeedbackTrainerFK");
         });
 
+        modelBuilder.Entity<GetPeopleInGroupMeeting>(entity =>
+        {
+            entity
+                .HasNoKey()
+                .ToView("GetPeopleInGroupMeeting");
+
+            entity.Property(e => e.BirthDate).HasColumnType("datetime");
+            entity.Property(e => e.Email).HasMaxLength(255);
+            entity.Property(e => e.FirstName).HasMaxLength(255);
+            entity.Property(e => e.LastName).HasMaxLength(255);
+            entity.Property(e => e.PasswordHash).HasMaxLength(8000);
+            entity.Property(e => e.PasswordSalt).HasMaxLength(8000);
+            entity.Property(e => e.Status).HasMaxLength(255);
+            entity.Property(e => e.Username).HasMaxLength(255);
+        });
+
         modelBuilder.Entity<Group>(entity =>
         {
             entity.ToTable("Group");
@@ -286,18 +307,28 @@ public partial class InternShipAppSystemContext : DbContext
                 .HasMaxLength(255);
             entity.Property(e => e.MeetingStartTime).HasColumnType("datetime");
 
-            entity.HasOne(d => d.Group).WithMany(p => p.Meetings)
-                .HasForeignKey(d => d.GroupId)
-                .HasConstraintName("MeetingGroupFK");
-
-            entity.HasOne(d => d.Intern).WithMany(p => p.MeetingInterns)
-                .HasForeignKey(d => d.InternId)
-                .HasConstraintName("MeetingInternFK");
-
-            entity.HasOne(d => d.Trainer).WithMany(p => p.MeetingTrainers)
+            entity.HasOne(d => d.Trainer).WithMany(p => p.Meetings)
                 .HasForeignKey(d => d.TrainerId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("MeetingTrainerFK");
+        });
+
+        modelBuilder.Entity<MeetingInternGroup>(entity =>
+        {
+            entity.ToTable("MeetingInternGroup");
+
+            entity.HasOne(d => d.Group).WithMany(p => p.MeetingInternGroups)
+                .HasForeignKey(d => d.GroupId)
+                .HasConstraintName("MeetingInternGroupGroup");
+
+            entity.HasOne(d => d.Intern).WithMany(p => p.MeetingInternGroups)
+                .HasForeignKey(d => d.InternId)
+                .HasConstraintName("MeetingInternGroupIntern");
+
+            entity.HasOne(d => d.Meeting).WithMany(p => p.MeetingInternGroups)
+                .HasForeignKey(d => d.MeetingId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("MeetingInternGroupMeeting");
         });
 
         modelBuilder.Entity<Note>(entity =>
@@ -433,6 +464,11 @@ public partial class InternShipAppSystemContext : DbContext
                 .HasForeignKey(d => d.QuestionId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("QuestionSolutionQuestionFK");
+
+            entity.HasOne(d => d.Test).WithMany(p => p.QuestionSolutions)
+                .HasForeignKey(d => d.TestId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("QuestionSolutionTestFK");
         });
 
         modelBuilder.Entity<SubTask>(entity =>

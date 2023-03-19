@@ -8,6 +8,7 @@
     public class ReceiveAnswersDto
     {
         public int InternId { get; set; }
+        public int TestId { get; set; }
         public List<Answer> Answers { get; set;}
     }
 }

@@ -51,9 +51,9 @@ public partial class Person
 
     public virtual ICollection<InternGroup> InternGroups { get; } = new List<InternGroup>();
 
-    public virtual ICollection<Meeting> MeetingInterns { get; } = new List<Meeting>();
+    public virtual ICollection<MeetingInternGroup> MeetingInternGroups { get; } = new List<MeetingInternGroup>();
 
-    public virtual ICollection<Meeting> MeetingTrainers { get; } = new List<Meeting>();
+    public virtual ICollection<Meeting> Meetings { get; } = new List<Meeting>();
 
     public virtual ICollection<Note> Notes { get; } = new List<Note>();
 

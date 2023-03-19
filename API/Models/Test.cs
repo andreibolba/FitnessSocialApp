@@ -21,6 +21,8 @@ public partial class Test
 
     public virtual ICollection<Feedback> Feedbacks { get; } = new List<Feedback>();
 
+    public virtual ICollection<QuestionSolution> QuestionSolutions { get; } = new List<QuestionSolution>();
+
     public virtual ICollection<TestGroupIntern> TestGroupInterns { get; } = new List<TestGroupIntern>();
 
     public virtual ICollection<TestQuestion> TestQuestions { get; } = new List<TestQuestion>();

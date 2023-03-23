@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from 'src/services/auth.guard.service';
 import { AdministrationComponent } from './admin/administration/administration.component';
@@ -7,16 +7,15 @@ import { AuthentificationComponent } from './authentification/authentification.c
 import { ErrorComponent } from './error/error.component';
 import { ForumComponent } from './forum/forum/forum.component';
 import { HomeComponent } from './home/home.component';
-import { MyGroupComponent } from './intern/my.group/my.group.component';
 import { ChallangeComponent } from './shared/challange/challange.component';
 import { FeedbackComponent } from './shared/feedback/feedback.component';
+import { DashboardComponent } from './shared/groups/groups-dashboard/dashboard/dashboard.component';
 import { MeetingComponent } from './shared/meetings/meeting/meeting.component';
 import { NoteComponent } from './shared/note/note.component';
 import { ProfileComponent } from './shared/profile/profile.component';
 import { QuestionsComponent } from './shared/questions/question/question.component';
 import { TaskComponent } from './shared/task/task.component';
 import { TestComponent } from './shared/tests/test/test.component';
-import { MyGroupsComponent } from './trainer/my.groups/my.groups.component';
 
 const routes: Routes = [
   {
@@ -35,8 +34,8 @@ const routes: Routes = [
       { path: 'challanges', component: ChallangeComponent },
       { path: 'feedback', component: FeedbackComponent },
       { path: 'notes', component: NoteComponent },
-      { path: 'mygroup', component: MyGroupComponent },
-      { path: 'mygroups', component: MyGroupsComponent },
+      { path: 'mygroups', component: GroupsComponent },
+      { path: 'main', component: DashboardComponent },
       { path: 'profile', component: ProfileComponent },
       { path: 'questions', component: QuestionsComponent },
     ],

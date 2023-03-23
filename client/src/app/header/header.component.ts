@@ -37,6 +37,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   onLeaveDashBoard(name: string) {
     if (name == 'Dashboard') this.utils.dashboardChanged.next(true);
     else this.utils.dashboardChanged.next(false);
+    if(name == 'Mettings' || name=='Tests') {this.utils.isFromGroupDashboard.next(false);}
   }
 
   setCurrentUser() {
@@ -115,7 +116,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
               case 'Intern':
                 this.buttons = [
                   { name: 'Dashboard', logo: 'uil uil-estate', link: '../dashboard' },
-                  { name: 'My Groups', logo: 'uil uil-users-alt', link: 'mygroup' },
+                  { name: 'My Groups', logo: 'uil uil-users-alt', link: 'mygroups' },
                   { name: 'Tests', logo: 'uil uil-diary', link: 'tests' },
                   { name: 'Challanges', logo: 'uil uil-brackets-curly',link: 'challanges' },
                   { name: 'Feedback', logo: 'uil uil-feedback', link: 'feedback' },

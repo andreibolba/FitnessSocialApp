@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { AuthentificationComponent } from './authentification/authentification.component';
 import { HomeComponent } from './home/home.component';
@@ -23,8 +23,6 @@ import { NoteComponent } from './shared/note/note.component';
 import { FeedbackComponent } from './shared/feedback/feedback.component';
 import { ChallangeComponent } from './shared/challange/challange.component';
 import { TestComponent } from './shared/tests/test/test.component';
-import { MyGroupComponent } from './intern/my.group/my.group.component';
-import { MyGroupsComponent } from './trainer/my.groups/my.groups.component';
 import { ToastrModule } from 'ngx-toastr';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -43,6 +41,9 @@ import { EditIntersComponent } from './shared/tests/edit-inters/edit-inters.comp
 import { EditGroupsComponent } from './shared/tests/edit-groups/edit-groups.component';
 import { EditMeetingDialogComponent } from './shared/meetings/edit-meeting-dialog/edit-meeting-dialog.component';
 import { SeeMeetingParticipantsComponent } from './shared/meetings/see-meeting-participants/see-meeting-participants.component';
+import { GroupComponent } from './shared/groups/groups-dashboard/group/group.component';
+import { DashboardComponent } from './shared/groups/groups-dashboard/dashboard/dashboard.component';
+import { MatTabsModule } from '@angular/material/tabs';
 
 @NgModule({
   declarations: [
@@ -62,8 +63,6 @@ import { SeeMeetingParticipantsComponent } from './shared/meetings/see-meeting-p
     FeedbackComponent,
     ChallangeComponent,
     TestComponent,
-    MyGroupComponent,
-    MyGroupsComponent,
     AdministrationComponent,
     CreateEditDialogComponent,
     EditGroupDialogComponent,
@@ -75,7 +74,9 @@ import { SeeMeetingParticipantsComponent } from './shared/meetings/see-meeting-p
     EditIntersComponent,
     EditGroupsComponent,
     EditMeetingDialogComponent,
-    SeeMeetingParticipantsComponent
+    SeeMeetingParticipantsComponent,
+    GroupComponent,
+    DashboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -91,7 +92,8 @@ import { SeeMeetingParticipantsComponent } from './shared/meetings/see-meeting-p
     MatDialogModule,
     MatCheckboxModule,
     MatExpansionModule,
-    ToastrModule.forRoot()
+    MatTabsModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

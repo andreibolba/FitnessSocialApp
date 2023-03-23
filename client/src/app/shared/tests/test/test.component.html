@@ -1,4 +1,4 @@
-<div class="buttons">
+<div [class]="buttonsClass">
   <div class="title">
     <i class="uil uil-question-circle"></i>
     <h2>All of my tests</h2>
@@ -6,7 +6,7 @@
   <button class="btn btn-success" mat-button (click)="onAdd()" *ngIf="isTrainer"> Add test </button>
 </div>
 
-<div id="main" *ngIf="tests.length!=0">
+<div [id]="mainId" *ngIf="tests.length!=0">
   <div class="row">
     <div id="test" *ngFor="let t of tests">
       <div class="question">

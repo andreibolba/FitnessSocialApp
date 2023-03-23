@@ -17,13 +17,17 @@ import { SeeMeetingParticipantsComponent } from '../see-meeting-participants/see
 })
 export class MeetingComponent implements OnInit, OnDestroy {
   isTrainer: boolean = true;
+  isFromGroup=true;
   allMeetings:Meeting[]=[];
   participants:string=" and other ";
   private token: string = '';
 
   personSub!: Subscription;
+  fromGroupSub!: Subscription;
   meetingSub!: Subscription;
   deleteSub!: Subscription;
+  mainId: string="";
+  buttonsClass: string="";
 
   constructor(
     private utils: UtilsService,
@@ -67,7 +71,20 @@ export class MeetingComponent implements OnInit, OnDestroy {
                   });
                 }
               });
-              console.log(this.allMeetings);
+
+              this.fromGroupSub=this.utils.isFromGroupDashboard.subscribe((res)=>{
+                this.isFromGroup=res;
+                if(this.isFromGroup)
+                {
+                  this.mainId="maingroup"
+                  this.buttonsClass="buttonsgroup";
+                }
+                else{
+                this.mainId="main";
+                this.buttonsClass="buttons";
+                }
+              });
+
             });
           }
         );

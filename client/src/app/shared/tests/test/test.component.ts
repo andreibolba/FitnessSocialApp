@@ -22,7 +22,11 @@ export class TestComponent implements OnInit, OnDestroy {
   trainerSub!: Subscription;
   deleteSub!: Subscription;
   publishSub!: Subscription;
+  fromGroupSub!: Subscription;
   isTrainer: boolean = false;
+  isFromGroup:boolean = false;
+  mainId: string='';
+  buttonsClass: string='';
 
   constructor(
     private utils: UtilsService,
@@ -36,6 +40,7 @@ export class TestComponent implements OnInit, OnDestroy {
     if (this.trainerSub != null) this.trainerSub.unsubscribe();
     if (this.deleteSub != null) this.deleteSub.unsubscribe();
     if (this.publishSub != null) this.publishSub.unsubscribe();
+    if (this.fromGroupSub != null) this.fromGroupSub.unsubscribe();
   }
 
   onAdd() {
@@ -123,6 +128,17 @@ export class TestComponent implements OnInit, OnDestroy {
           (data) => {
             id = data.personId;
             this.isTrainer = data.status == 'Trainer';
+            this.fromGroupSub=this.utils.isFromGroupDashboard.subscribe((res)=>{
+              this.isFromGroup=res;
+              if(this.isFromGroup){
+                this.mainId="maingroup"
+                this.buttonsClass="buttonsgroup";
+              }
+              else{
+              this.mainId="main";
+              this.buttonsClass="buttons";
+              }
+            });
           },
           () => {},
           () => {

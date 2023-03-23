@@ -2,6 +2,7 @@ import { Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { Group } from 'src/model/group.model';
@@ -17,19 +18,14 @@ import { EditGroupMembersDialogComponent } from '../edit-group-members-dialog/ed
   styleUrls: ['./groups.component.css']
 })
 export class GroupsComponent {
-  displayedColumns: string[] = [
-    'groupName',
-    'trainer',
-    'membersCount',
-    'editMembers',
-    'edit',
-    'delete',
-  ];
+  displayedColumns: string[] = [];
 
   hasTableValues:boolean=false;
   dataSource!: MatTableDataSource<Group>;
   groups!: Group[];
   dataGroupSub!: Subscription;
+  peopleSub!: Subscription;
+  isAdmin=false;
   private token: string = '';
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -37,7 +33,9 @@ export class GroupsComponent {
     private dataService: DataStorageService,
     private toastr: ToastrService,
     private dialog: MatDialog,
-    private utils:UtilsService
+    private utils:UtilsService,
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
@@ -48,17 +46,39 @@ export class GroupsComponent {
     } else {
       const person: LoggedPerson = JSON.parse(personString);
       this.token = person.token;
-      this.dataGroupSub = this.dataService
-        .getGroups(person.token)
-        .subscribe((data) => {
-          this.dataSource = new MatTableDataSource(data);
-          this.dataSource.paginator = this.paginator;
-          if(this.dataSource.data.length==0){
-            this.hasTableValues=false;
-          }else{
-            this.hasTableValues = true;
-          }
-        });
+      this.peopleSub=this.dataService.getPerson(person.username,this.token).subscribe((res)=>{
+        this.isAdmin=res.status=="Admin";
+        this.dataGroupSub = this.dataService
+          .getGroups(person.token)
+          .subscribe((data) => {
+            if(this.isAdmin==false)
+              {data=data.filter(g=>g.trainerId==res.personId);
+                this.displayedColumns=[
+                  'groupName',
+                  'trainer',
+                  'membersCount',
+                  'seeInfo'
+                ];
+              }else{
+                this.displayedColumns=[
+                  'groupName',
+                  'trainer',
+                  'membersCount',
+                  'editMembers',
+                  'edit',
+                  'delete',
+                ];
+              }
+            this.dataSource = new MatTableDataSource(data);
+            this.dataSource.paginator = this.paginator;
+            if(this.dataSource.data.length==0){
+              this.hasTableValues=false;
+            }else{
+              this.hasTableValues = true;
+            }
+          });
+      })
+
     }
   }
 
@@ -106,6 +126,11 @@ export class GroupsComponent {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  seeGroupDetails(group:Group){
+    this.utils.isFromGroupDashboard.next(true);
+    this.router.navigate(['main'], { relativeTo: this.route.parent });
   }
 
 }

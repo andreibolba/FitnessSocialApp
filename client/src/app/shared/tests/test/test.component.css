@@ -29,13 +29,23 @@
   height: 76vh;
   scroll-behavior: smooth;
   overflow-y: scroll;
+
 }
 
-.buttons {
+#maingroup {
+  height: 62vh;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+}
+
+.buttons,.buttonsgroup {
   height: 7vh;
   margin-bottom: 3vh;
-  width: 79%;
   display: flex;
+}
+
+.buttons{
+  width: 79%;
 }
 
 h2 {
@@ -57,7 +67,7 @@ h2 {
   color: #515151;
 }
 
-.buttons button {
+.buttons button, .buttonsgroup button {
   float: right;
   height: 40px;
   width: 120px;
@@ -132,12 +142,14 @@ h2 {
   display: flex;
 }
 
-.button, .buttonIntern {
+.button,
+.buttonIntern {
   height: 20%;
   width: 100%;
 }
 
-.button button, .buttonIntern button{
+.button button,
+.buttonIntern button {
   height: 80%;
   border-radius: 4px;
   margin-left: 5px;
@@ -150,11 +162,10 @@ h2 {
   width: calc(100%/3 - 10px);
 }
 
-.buttonIntern button{
+.buttonIntern button {
   width: 90%;
 }
 
-a:hover{
+a:hover {
   cursor: pointer;
 }
-

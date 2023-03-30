@@ -132,12 +132,12 @@ h2 {
   display: flex;
 }
 
-.button, .buttonIntern {
+.button, .buttonIntern, .twoButtons {
   height: 20%;
   width: 100%;
 }
 
-.button button, .buttonIntern button{
+.button button, .buttonIntern button, .twoButtons button{
   height: 80%;
   border-radius: 4px;
   margin-left: 5px;
@@ -152,6 +152,10 @@ h2 {
 
 .buttonIntern button{
   width: 90%;
+}
+
+.twoButtons button{
+  width: calc(100%/2 - 10px);
 }
 
 a:hover{

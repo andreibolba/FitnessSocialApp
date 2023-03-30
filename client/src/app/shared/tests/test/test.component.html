@@ -12,6 +12,7 @@
       <div class="question" *ngIf="isTrainer">
         <a (click)="onSeeTest(t)" >
         {{ t.testName }}
+        <h5>{{t.deadline | date}}</h5>
         </a>
       </div>
       <div class="question" *ngIf="!isTrainer">
@@ -27,7 +28,7 @@
           <div class="content">points</div>
         </div>
       </div>
-      <div class="button"  *ngIf="isTrainer" align="center">
+      <div class="button"  *ngIf="isTrainer && t.isOverDeadline==false" align="center">
         <button class="btn-success" *ngIf="t.canBeEdited" (click)="publishTest(t.testId)">Publish</button>
         <button class="btn-success" *ngIf="!t.canBeEdited" (click)="addInterns(t)">Add interns</button>
         <button class="btn-success" *ngIf="!t.canBeEdited" (click)="addGroups(t)">Add groups</button>
@@ -35,9 +36,15 @@
         <button class="btn-danger" (click)="deletetest(t.testId)">Delete</button>
       </div>
 
+      <div class="twoButtons"  *ngIf="isTrainer && t.isOverDeadline==true" align="center">
+        <button class="btn-info" (click)="seeAllResults(t)">See results</button>
+        <button class="btn-danger" (click)="deletetest(t.testId)">Delete</button>
+      </div>
+
       <div class="buttonIntern"  *ngIf="!isTrainer" align="center">
-        <button class="btn-info" (click)="startTest(t)" *ngIf="t.isTaken==false">Start Test</button>
+        <button class="btn-info" (click)="startTest(t)" *ngIf="t.isTaken==false && t.isOverDeadline==false">Start Test</button>
         <button class="btn-success" (click)="seeResults(t)" *ngIf="t.isTaken==true">See results</button>
+        <p *ngIf="t.isOverDeadline"> You donn't have atemps yet!</p>
       </div>
     </div>
    </div>

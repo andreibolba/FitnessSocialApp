@@ -8,6 +8,7 @@ import { DataStorageService } from 'src/services/data-storage.service';
 import { UtilsService } from 'src/services/utils.service';
 import { EditIntersComponent } from '../edit-inters/edit-inters.component';
 import { EditTestsComponent } from '../edit-tests/edit-tests.component';
+import { SeeAllResultsComponent } from '../see-all-results/see-all-results.component';
 import { StartTestComponent } from '../start-test/start-test.component';
 
 @Component({
@@ -23,6 +24,7 @@ export class TestComponent implements OnInit, OnDestroy {
   deleteSub!: Subscription;
   publishSub!: Subscription;
   isTrainer: boolean = false;
+
 
   constructor(
     private utils: UtilsService,
@@ -58,6 +60,8 @@ export class TestComponent implements OnInit, OnDestroy {
                     element.points = this.utils.calculatePoint(
                       element.questions
                     );
+                    element.isOverDeadline = new Date() > new Date(element.deadline);
+                    console.log(element.isOverDeadline);
                   });
                 }
               );
@@ -125,11 +129,17 @@ export class TestComponent implements OnInit, OnDestroy {
       op == 1
         ? this.dialog.open(EditTestsComponent)
         : op==2? this.dialog.open(EditIntersComponent)
-        : this.dialog.open(StartTestComponent);
+        : op==3? this.dialog.open(StartTestComponent)
+        : this.dialog.open(SeeAllResultsComponent);
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  seeAllResults(test:Test){
+    this.utils.testToSeeAllResult.next(test);
+    this.openDialog(4);
   }
 
   edittest(test: Test) {

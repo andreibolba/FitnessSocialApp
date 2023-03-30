@@ -42,6 +42,7 @@ import { EditTestsComponent } from './shared/tests/edit-tests/edit-tests.compone
 import { EditIntersComponent } from './shared/tests/edit-inters/edit-inters.component';
 import { EditGroupsComponent } from './shared/tests/edit-groups/edit-groups.component';
 import { StartTestComponent } from './shared/tests/start-test/start-test.component';
+import { SeeAllResultsComponent } from './shared/tests/see-all-results/see-all-results.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +74,8 @@ import { StartTestComponent } from './shared/tests/start-test/start-test.compone
     EditTestsComponent,
     EditIntersComponent,
     EditGroupsComponent,
-    StartTestComponent
+    StartTestComponent,
+    SeeAllResultsComponent
   ],
   imports: [
     BrowserModule,

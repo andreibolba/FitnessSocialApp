@@ -48,5 +48,11 @@ namespace API.Controllers
         {
             return Ok(_repository.GetAllTestsFromGroup(groupId));
         }
+
+        [HttpGet("participants/{groupId:int}")]
+        public ActionResult<IEnumerable<PersonDto>> GetAllPersonInGroup(int groupId)
+        {
+            return Ok(_repository.GetAllParticipants(groupId));
+        }
     }
 }

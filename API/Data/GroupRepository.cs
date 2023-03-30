@@ -3,7 +3,6 @@ using API.Interfaces.Repository;
 using API.Models;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using System.Drawing.Printing;
 
 namespace API.Data
 {
@@ -56,6 +55,19 @@ namespace API.Data
                 .Include(tgi => tgi.Test)
                 .Select(tgi => tgi.Test);
             return _mapper.Map<IEnumerable<TestDto>>(result);
+        }
+
+        public IEnumerable<PersonDto> GetAllParticipants(int groupId)
+        {
+            
+            var result = _context.InternGroups
+                .Where(ig => ig.Deleted == false && ig.GroupId == groupId )
+                .Include(tgi => tgi.Intern)
+                .Select(tgi => tgi.Intern)
+                .ToList();
+            var groupAdmin = _mapper.Map<Person>(GetGroupById(groupId).Trainer);
+            result.Add(groupAdmin);
+            return _mapper.Map<IEnumerable<PersonDto>>(result);
         }
 
         public GroupDto GetGroupById(int id)

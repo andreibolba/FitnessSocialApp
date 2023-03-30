@@ -130,7 +130,7 @@ export class GroupsComponent {
 
   seeGroupDetails(group:Group){
     this.utils.isFromGroupDashboard.next(true);
-    this.router.navigate(['main'], { relativeTo: this.route.parent });
+    this.router.navigate(['main/'+group.groupId], { relativeTo: this.route.parent });
   }
 
 }

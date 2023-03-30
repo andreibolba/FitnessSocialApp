@@ -44,6 +44,8 @@ import { SeeMeetingParticipantsComponent } from './shared/meetings/see-meeting-p
 import { GroupComponent } from './shared/groups/groups-dashboard/group/group.component';
 import { DashboardComponent } from './shared/groups/groups-dashboard/dashboard/dashboard.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import { ParticipantsComponent } from './shared/groups/groups-dashboard/participants/participants.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -77,6 +79,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     SeeMeetingParticipantsComponent,
     GroupComponent,
     DashboardComponent,
+    ParticipantsComponent,
   ],
   imports: [
     BrowserModule,
@@ -93,6 +96,7 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatCheckboxModule,
     MatExpansionModule,
     MatTabsModule,
+    MatFormFieldModule,
     ToastrModule.forRoot(),
   ],
   providers: [],

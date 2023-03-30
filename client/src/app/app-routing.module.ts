@@ -35,7 +35,10 @@ const routes: Routes = [
       { path: 'feedback', component: FeedbackComponent },
       { path: 'notes', component: NoteComponent },
       { path: 'mygroups', component: GroupsComponent },
-      { path: 'main', component: DashboardComponent },
+      {
+        path: 'main',
+        children: [{ path: ':id', component: DashboardComponent }],
+      },
       { path: 'profile', component: ProfileComponent },
       { path: 'questions', component: QuestionsComponent },
     ],

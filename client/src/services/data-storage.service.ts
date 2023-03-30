@@ -156,6 +156,16 @@ export class DataStorageService {
     );
   }
 
+  getAllPeopleInGroup(token: string, groupId: number) {
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<Person[]>(
+      this.baseUrl + 'group/participants/' + groupId,
+      {
+        headers: headers,
+      }
+    );
+  }
+
   updateInternInGroup(token: string, ids: string, groupId: number) {
     const headers = { Authorization: 'Bearer ' + token };
     console.log(ids);

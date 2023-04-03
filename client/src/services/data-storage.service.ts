@@ -243,6 +243,13 @@ export class DataStorageService {
     });
   }
 
+  getPeopleRezolvingTest(token:string,testId:number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<Person[]>(this.baseUrl + 'test/results/people/' + testId, {
+      headers: headers,
+    });
+  }
+
   deleteOneTest(token: string, testId: number) {
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.post(this.baseUrl + 'test/delete/' + testId,{},{

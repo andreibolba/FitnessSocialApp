@@ -61,7 +61,6 @@ export class TestComponent implements OnInit, OnDestroy {
                       element.questions
                     );
                     element.isOverDeadline = new Date() > new Date(element.deadline);
-                    console.log(element.isOverDeadline);
                   });
                 }
               );

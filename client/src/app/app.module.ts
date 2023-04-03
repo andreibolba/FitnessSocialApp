@@ -43,6 +43,7 @@ import { EditIntersComponent } from './shared/tests/edit-inters/edit-inters.comp
 import { EditGroupsComponent } from './shared/tests/edit-groups/edit-groups.component';
 import { StartTestComponent } from './shared/tests/start-test/start-test.component';
 import { SeeAllResultsComponent } from './shared/tests/see-all-results/see-all-results.component';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -91,6 +92,7 @@ import { SeeAllResultsComponent } from './shared/tests/see-all-results/see-all-r
     MatDialogModule,
     MatCheckboxModule,
     MatExpansionModule,
+    MatListModule,
     ToastrModule.forRoot()
   ],
   providers: [],

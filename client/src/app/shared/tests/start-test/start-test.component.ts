@@ -19,6 +19,7 @@ export class StartTestComponent implements OnInit, OnDestroy {
   peopleSub!: Subscription;
   finishSub!: Subscription;
   resultsSub!: Subscription;
+  personIdSub!: Subscription;
   isVisibleNext = false;
   isVisiblePrev = false;
   isVisibleFinish = false;
@@ -109,12 +110,12 @@ export class StartTestComponent implements OnInit, OnDestroy {
       this.wrongAnswer(this.results[this.actualQuestionIndex].internOption);
       this.correctAnswer(this.actualQuestion.correctOption);
     }
-    if (this.actualQuestionIndex == 0){
+    if (this.actualQuestionIndex == 0) {
       this.isVisiblePrev = false;
       this.isVisibleNext = true;
     }
-    if(this.actualQuestionIndex!=this.test.questions.length - 1)
-    this.isVisibleNext=true;
+    if (this.actualQuestionIndex != this.test.questions.length - 1)
+      this.isVisibleNext = true;
   }
 
   finishTest() {
@@ -159,21 +160,29 @@ export class StartTestComponent implements OnInit, OnDestroy {
               this.actualQuestionIndex = 0;
               this.initializeAnswers();
             }
-            this.resultsSub = this.data
-              .getResult(this.token, this.internId, this.test.testId)
-              .subscribe((data) => {
-                this.results = data;
-                if (this.results.length == 0) this.isVisibleNext = false;
-                else {
-                  this.isVisibleNext = true;
-                  if (data[0].internOption == this.actualQuestion.correctOption)
-                    this.correctAnswer(data[0].internOption);
-                  else {
-                    this.wrongAnswer(data[0].internOption);
-                    this.correctAnswer(this.actualQuestion.correctOption);
-                  }
-                }
-              });
+            this.personIdSub = this.utils.personIdForResult.subscribe(
+              (result) => {
+                let id = result == -1? this.internId : result;
+                this.resultsSub = this.data
+                  .getResult(this.token, id, this.test.testId)
+                  .subscribe((data) => {
+                    this.results = data;
+                    if (this.results.length == 0) this.isVisibleNext = false;
+                    else {
+                      this.isVisibleNext = true;
+                      if (
+                        data[0].internOption ==
+                        this.actualQuestion.correctOption
+                      )
+                        this.correctAnswer(data[0].internOption);
+                      else {
+                        this.wrongAnswer(data[0].internOption);
+                        this.correctAnswer(this.actualQuestion.correctOption);
+                      }
+                    }
+                  });
+              }
+            );
           });
         });
     }

@@ -44,7 +44,7 @@
       <div class="buttonIntern"  *ngIf="!isTrainer" align="center">
         <button class="btn-info" (click)="startTest(t)" *ngIf="t.isTaken==false && t.isOverDeadline==false">Start Test</button>
         <button class="btn-success" (click)="seeResults(t)" *ngIf="t.isTaken==true">See results</button>
-        <p *ngIf="t.isOverDeadline"> You donn't have atemps yet!</p>
+        <p *ngIf="t.isTaken==false && t.isOverDeadline"> You donn't have atemps yet!</p>
       </div>
     </div>
    </div>

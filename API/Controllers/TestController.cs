@@ -76,6 +76,12 @@ namespace API.Controllers
             return Ok(_testQuestion.GetUnselectedQuestions(testId));
         }
 
+        [HttpGet("results/people/{testId:int}")]
+        public ActionResult GetPeopleRezolvingTest(int testId)
+        {
+            return Ok(_testQuestion.GetAllPersonResolvingTest(testId));
+        }
+
 
         [HttpPost("testattribution/update/{testId:int}/{option}")]
         public ActionResult UpdateTestAttributions([FromBody] object ids, int testId,string option)

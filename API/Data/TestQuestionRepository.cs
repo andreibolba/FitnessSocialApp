@@ -2,6 +2,7 @@
 using API.Interfaces.Repository;
 using API.Models;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace API.Data
 {
@@ -88,6 +89,16 @@ namespace API.Data
         public bool SaveAll()
         {
             return _context.SaveChanges() > 0;
+        }
+
+        public IEnumerable<PersonDto> GetAllPersonResolvingTest(int testId)
+        {
+            var allTestResult = _context.QuestionSolutions.Include(qs => qs.Intern).Where(qs => qs.TestId == testId && qs.Intern.Deleted == false).Select(qs => qs.Intern);
+            var allUniquePerson = new List<Person>();
+            foreach (var res in allTestResult)
+                if(allUniquePerson.Count(q=>q.PersonId == res.PersonId)==0)
+                    allUniquePerson.Add(res);
+            return _mapper.Map<IEnumerable<PersonDto>>(allUniquePerson);
         }
     }
 }

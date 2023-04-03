@@ -6,9 +6,10 @@ import { LoggedPerson } from 'src/model/loggedperson.model';
 import { Test } from 'src/model/test.model';
 import { DataStorageService } from 'src/services/data-storage.service';
 import { UtilsService } from 'src/services/utils.service';
-import { EditGroupsComponent } from '../edit-groups/edit-groups.component';
 import { EditIntersComponent } from '../edit-inters/edit-inters.component';
 import { EditTestsComponent } from '../edit-tests/edit-tests.component';
+import { SeeAllResultsComponent } from '../see-all-results/see-all-results.component';
+import { StartTestComponent } from '../start-test/start-test.component';
 
 @Component({
   selector: 'app-test',
@@ -24,12 +25,49 @@ export class TestComponent implements OnInit, OnDestroy {
   publishSub!: Subscription;
   isTrainer: boolean = false;
 
+
   constructor(
     private utils: UtilsService,
     private dialog: MatDialog,
     private dataService: DataStorageService,
     private toastr: ToastrService
   ) {}
+
+  ngOnInit(): void {
+    this.utils.initializeError();
+    const personString = localStorage.getItem('person');
+    if (!personString) {
+      return;
+    } else {
+      const person: LoggedPerson = JSON.parse(personString);
+      this.token = person.token;
+      let id = -1;
+      this.trainerSub = this.dataService
+        .getPerson(person.username, this.token)
+        .subscribe(
+          (data) => {
+            id = data.personId;
+            this.isTrainer = data.status == 'Trainer';
+            this.testSub = this.dataService
+              .getMyTests(this.token, id,data.status.toLocaleLowerCase())
+              .subscribe(
+                (data) => {
+                  this.tests = data;
+                },
+                () => {},
+                () => {
+                  this.tests.forEach((element) => {
+                    element.points = this.utils.calculatePoint(
+                      element.questions
+                    );
+                    element.isOverDeadline = new Date() > new Date(element.deadline);
+                  });
+                }
+              );
+          }
+        );
+    }
+  }
 
   ngOnDestroy(): void {
     if (this.testSub != null) this.testSub.unsubscribe();
@@ -38,10 +76,45 @@ export class TestComponent implements OnInit, OnDestroy {
     if (this.publishSub != null) this.publishSub.unsubscribe();
   }
 
-  onAdd() {
-    this.utils.testToEdit.next(null);
-    this.utils.isEditModeForTest.next(true);
-    this.openDialog(1);
+  deletetest(id: number) {
+    this.deleteSub = this.dataService.deleteOneTest(this.token, id).subscribe(
+      () => {
+        this.toastr.success('Test was deleted succesfully!');
+      },
+      (error) => {
+        this.toastr.error(error.error);
+        console.log(error);
+      }
+    );
+  }
+
+  publishTest(testId: number) {
+    let index = this.tests.findIndex((t) => t.testId == testId);
+    if (this.tests[index].questions.length == 0) {
+      alert("You can't publish a test with no questions!");
+      return;
+    } else {
+      console.log("-"+this.token+"-");
+      this.publishSub = this.dataService.publish(this.token, testId).subscribe(
+        () => {
+          this.toastr.success('Test was published succesfully!');
+          this.tests[index].canBeEdited = false;
+        },
+        (error) => {
+          this.toastr.error(error.error);
+        }
+      );
+    }
+  }
+
+  startTest(test:Test){
+    this.utils.testToStart.next(test);
+    this.openDialog(3);
+  }
+
+  seeResults(test:Test){
+    this.utils.testToStart.next(test);
+    this.openDialog(3);
   }
 
   onSeeTest(test: Test) {
@@ -54,11 +127,18 @@ export class TestComponent implements OnInit, OnDestroy {
     const dialogRef =
       op == 1
         ? this.dialog.open(EditTestsComponent)
-        : this.dialog.open(EditIntersComponent);
+        : op==2? this.dialog.open(EditIntersComponent)
+        : op==3? this.dialog.open(StartTestComponent)
+        : this.dialog.open(SeeAllResultsComponent);
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
     });
+  }
+
+  seeAllResults(test:Test){
+    this.utils.testToSeeAllResult.next(test);
+    this.openDialog(4);
   }
 
   edittest(test: Test) {
@@ -79,70 +159,10 @@ export class TestComponent implements OnInit, OnDestroy {
     this.openDialog(2);
   }
 
-  deletetest(id: number) {
-    this.deleteSub = this.dataService.deleteTest(this.token, id).subscribe(
-      () => {
-        this.toastr.success('Test was deleted succesfully!');
-      },
-      (error) => {
-        this.toastr.error(error.error);
-      }
-    );
-  }
 
-  publishTest(testId: number) {
-    let index = this.tests.findIndex((t) => t.testId == testId);
-    if (this.tests[index].questions.length == 0) {
-      alert("You can't publish a test with no questions!");
-      return;
-    } else {
-      this.publishSub = this.dataService.publish(this.token, testId).subscribe(
-        () => {
-          this.toastr.success('Test was published succesfully!');
-          this.tests[index].canBeEdited = false;
-        },
-        (error) => {
-          this.toastr.error(error.error);
-        }
-      );
-    }
-  }
-
-  ngOnInit(): void {
-    this.utils.initializeError();
-    const personString = localStorage.getItem('person');
-    if (!personString) {
-      return;
-    } else {
-      const person: LoggedPerson = JSON.parse(personString);
-      this.token = person.token;
-      let id = -1;
-      this.trainerSub = this.dataService
-        .getPerson(person.username, this.token)
-        .subscribe(
-          (data) => {
-            id = data.personId;
-            this.isTrainer = data.status == 'Trainer';
-          },
-          () => {},
-          () => {
-            this.testSub = this.dataService
-              .getMyTests(person.token, id)
-              .subscribe(
-                (data) => {
-                  this.tests = data;
-                },
-                () => {},
-                () => {
-                  this.tests.forEach((element) => {
-                    element.points = this.utils.calculatePoint(
-                      element.questions
-                    );
-                  });
-                }
-              );
-          }
-        );
-    }
+  onAdd() {
+    this.utils.testToEdit.next(null);
+    this.utils.isEditModeForTest.next(true);
+    this.openDialog(1);
   }
 }

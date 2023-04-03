@@ -8,6 +8,7 @@ import { Test } from 'src/model/test.model';
 import { ObjectIntern } from 'src/model/objectintern.model';
 import { ObjectGroup } from 'src/model/objectgroup.model';
 import { Meeting } from 'src/model/meeting.model';
+import { Answer } from 'src/model/answer.model';
 
 @Injectable({
   providedIn: 'root',
@@ -229,23 +230,32 @@ export class DataStorageService {
 
   deleteQuestion(token: string, questionId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'question/delete/' + questionId, {
+    return this.http.post(this.baseUrl + 'question/delete/' + questionId,{}, {
       headers: headers,
     });
   }
 
   //tests
 
-  getMyTests(token: string, trainerId: number) {
+
+  getMyTests(token:string,trainerId:number,status:string){
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.get<Test[]>(this.baseUrl + 'test/mytest/' + trainerId, {
+    return this.http.get<Test[]>(this.baseUrl + 'test/mytest/' + trainerId +'/'+status, {
       headers: headers,
     });
   }
 
-  deleteTest(token: string, testId: number) {
+
+  getPeopleRezolvingTest(token:string,testId:number){
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'test/delete/' + testId, {
+    return this.http.get<Person[]>(this.baseUrl + 'test/results/people/' + testId, {
+      headers: headers,
+    });
+  }
+
+  deleteOneTest(token: string, testId: number) {
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post(this.baseUrl + 'test/delete/' + testId,{},{
       headers: headers,
     });
   }
@@ -431,5 +441,21 @@ export class DataStorageService {
         headers: headers,
       }
     );
+  }
+
+  //questionsolution
+
+  sendTest(token:string, internId:number,testId:number, answers:Answer[]){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post(this.baseUrl + 'questionsolution/add/'+internId +'/'+testId, answers, {
+      headers: headers,
+    });
+  }
+
+  getResult(token:string, internId:number,testId:number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<Answer[]>(this.baseUrl + 'questionsolution/getanswers/'+internId +'/'+testId, {
+      headers: headers,
+    });
   }
 }

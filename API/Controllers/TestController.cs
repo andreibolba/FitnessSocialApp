@@ -1,10 +1,12 @@
 ﻿using API.Dtos;
 using API.Interfaces.Repository;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
 namespace API.Controllers
 {
+    [Authorize]
     public class TestController : BaseAPIController
     {
         private readonly ITestRepository _test;
@@ -30,10 +32,12 @@ namespace API.Controllers
             return Ok(_test.GetTestById(testId));
         }
 
-        [HttpGet("mytest/{trainerId:int}")]
-        public ActionResult<IEnumerable<TestDto>> GetTestByTrainerId(int trainerId)
+        [HttpGet("mytest/{id:int}/{status}")]
+        public ActionResult<IEnumerable<TestDto>> GetTestByTrainerId(int id,string status)
         {
-            return Ok(_test.GetTestByTrainerIdId(trainerId));
+            if(status=="trainer")
+                return Ok(_test.GetTestByTrainerId(id));
+            return Ok(_test.GetInternTest(id));
         }
 
 
@@ -44,15 +48,15 @@ namespace API.Controllers
             return res!=new TestDto() ? Ok(res) : BadRequest("Internal Server Error");
         }
 
-        [HttpPost("delete/{testId:int}")]
-        public ActionResult DeleteTest(int testId)
+        [HttpPost("delete/{questionId:int}")]
+        public ActionResult DeleteTest(int questionId)
         {
-            _test.Delete(testId);
+            _test.Delete(questionId);
             return _test.SaveAll() ? Ok() : BadRequest("Internal Server Error");
         }
 
         [HttpPost("stop/{testId:int}")]
-        public ActionResult StopEditTest(int testId)
+        public ActionResult StopTest(int testId)
         {
             _test.StopEdit(testId);
             return _test.SaveAll() ? Ok() : BadRequest("Internal Server Error");
@@ -70,6 +74,12 @@ namespace API.Controllers
         public ActionResult GetAllUnselectedQuestons(int testId)
         {
             return Ok(_testQuestion.GetUnselectedQuestions(testId));
+        }
+
+        [HttpGet("results/people/{testId:int}")]
+        public ActionResult GetPeopleRezolvingTest(int testId)
+        {
+            return Ok(_testQuestion.GetAllPersonResolvingTest(testId));
         }
 
 

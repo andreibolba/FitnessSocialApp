@@ -52,12 +52,34 @@ namespace API.Data
             return result;
         }
 
+        public IEnumerable<TestDto> GetInternTest(int internId)
+        {
+            var allInternTests = _context.TestGroupInterns.Where(t => t.Deleted == false && t.InternId == internId).Select(t => t.TestId).ToList();
+            List<TestDto> allTests = new List<TestDto>();
+            var allInternGroups = _context.InternGroups.Where(t => t.Deleted == false && t.InternId == internId).Include(t => t.Group).Select(t => t.Group.TestGroupInterns);
+            foreach (var t in allInternGroups)
+                foreach (var r in t)
+                {
+                    if (allInternTests.Where(g => g == r.TestId).Count()==0)
+                        allInternTests.Add(r.TestId);
+                }
+            foreach (var t in allInternTests)
+                allTests.Add(GetTestById(t));
+
+            for(int i = 0; i < allTests.Count(); i++)
+            {
+                allTests[i].IsTaken = _context.QuestionSolutions.Where(qs => qs.InternId == internId && qs.TestId == allTests[i].TestId && qs.Deleted == false).Count() != 0;
+                allTests[i].Questions = allTests[i].Questions.OrderBy(q => q.QuestionId);
+            }
+            return allTests;
+        }
+
         public TestDto GetTestById(int id)
         {
             return this.GetAllTests().SingleOrDefault(t => t.TestId == id);
         }
 
-        public IEnumerable<TestDto> GetTestByTrainerIdId(int trainerId)
+        public IEnumerable<TestDto> GetTestByTrainerId(int trainerId)
         {
             return this.GetAllTests().Where(t => t.TrainerId == trainerId);
         }

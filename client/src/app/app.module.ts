@@ -43,6 +43,9 @@ import { EditIntersComponent } from './shared/tests/edit-inters/edit-inters.comp
 import { EditGroupsComponent } from './shared/tests/edit-groups/edit-groups.component';
 import { EditMeetingDialogComponent } from './shared/meetings/edit-meeting-dialog/edit-meeting-dialog.component';
 import { SeeMeetingParticipantsComponent } from './shared/meetings/see-meeting-participants/see-meeting-participants.component';
+import { StartTestComponent } from './shared/tests/start-test/start-test.component';
+import { SeeAllResultsComponent } from './shared/tests/see-all-results/see-all-results.component';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -76,6 +79,8 @@ import { SeeMeetingParticipantsComponent } from './shared/meetings/see-meeting-p
     EditGroupsComponent,
     EditMeetingDialogComponent,
     SeeMeetingParticipantsComponent
+    StartTestComponent,
+    SeeAllResultsComponent
   ],
   imports: [
     BrowserModule,
@@ -91,6 +96,7 @@ import { SeeMeetingParticipantsComponent } from './shared/meetings/see-meeting-p
     MatDialogModule,
     MatCheckboxModule,
     MatExpansionModule,
+    MatListModule,
     ToastrModule.forRoot()
   ],
   providers: [],

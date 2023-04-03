@@ -11,6 +11,8 @@ export class Test{
   public dateOfPost: Date;
   public deadline:Date;
   public canBeEdited: boolean;
+  public isTaken: boolean;
+  public isOverDeadline: boolean;
 
   constructor(){
     this.testId=-1;
@@ -22,5 +24,7 @@ export class Test{
     this.dateOfPost=new Date();
     this.deadline=new Date();
     this.canBeEdited=false;
+    this.isTaken=false;
+    this.isOverDeadline = false;
   }
 }

@@ -7,6 +7,8 @@ public partial class QuestionSolution
 {
     public int QuestionSolutionId { get; set; }
 
+    public int TestId { get; set; }
+
     public int QuestionId { get; set; }
 
     public int InternId { get; set; }
@@ -18,4 +20,6 @@ public partial class QuestionSolution
     public virtual Person Intern { get; set; }
 
     public virtual Question Question { get; set; }
+
+    public virtual Test Test { get; set; }
 }

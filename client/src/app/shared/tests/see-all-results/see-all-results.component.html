@@ -1,0 +1,7 @@
+<h3>See test's interns who <br>resolved the test</h3>
+<div id="main">
+  <mat-list role="list" *ngIf="interns.length!=0">
+      <mat-list-item role="listitem" class="resultitem" *ngFor="let p of interns;let i=index">{{i+1}}. {{ p.firstName+ ' ' + p.lastName}} <button class="btn btn-info" (click)="seeTestResult(p.personId)">See test</button></mat-list-item>
+  </mat-list>
+  <p *ngIf="interns.length==0" style="text-align: center;"> No intern has finished this test</p>
+</div>

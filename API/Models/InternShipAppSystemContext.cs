@@ -463,6 +463,11 @@ public partial class InternShipAppSystemContext : DbContext
                 .HasForeignKey(d => d.QuestionId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("QuestionSolutionQuestionFK");
+
+            entity.HasOne(d => d.Test).WithMany(p => p.QuestionSolutions)
+                .HasForeignKey(d => d.TestId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("QuestionSolutionTestFK");
         });
 
         modelBuilder.Entity<SubTask>(entity =>

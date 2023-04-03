@@ -17,11 +17,14 @@ export class UtilsService {
   questionToEdit=new BehaviorSubject<Question | null>(null);
   testToEdit=new BehaviorSubject<Test | null>(null);
   meetingToEdit=new BehaviorSubject<Meeting | null>(null);
+  testToStart=new BehaviorSubject<Test | null>(null);
+  personIdForResult=new BehaviorSubject<number>(-1);
   groupToEdit=new BehaviorSubject<Group | null>(null);
   addedPerson=new BehaviorSubject<Person | null>(null);
   isEditModeForTest=new BehaviorSubject<boolean>(true);
   isInternTest=new BehaviorSubject<boolean>(true);
   meetingParticipants=new BehaviorSubject<Person[]|null>(null);
+  testToSeeAllResult = new BehaviorSubject<Test | null>(null);
   dashboardChanged=new EventEmitter<boolean>(true);
 
   error=new BehaviorSubject<{errorCode:number,errorTitle:string,errorMessage:string} | null>(null);

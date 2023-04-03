@@ -7,7 +7,8 @@ namespace API.Interfaces.Repository
         TestDto Create(TestDto test);
         IEnumerable<TestDto> GetAllTests();
         TestDto GetTestById(int id);
-        IEnumerable<TestDto> GetTestByTrainerIdId(int trainerId);
+        IEnumerable<TestDto> GetTestByTrainerId(int trainerId);
+        IEnumerable<TestDto> GetInternTest(int internId);
         void Update(TestDto test);
         void Delete(int test);
         void StopEdit(int id);

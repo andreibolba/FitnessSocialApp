@@ -9,11 +9,13 @@ namespace API.Data
     public sealed class GroupRepository : IGroupRepository
     {
         private readonly InternShipAppSystemContext _context;
+        private readonly ITestRepository _testRepository;
         private readonly IMapper _mapper;
 
-        public GroupRepository(InternShipAppSystemContext context, IMapper mapper)
+        public GroupRepository(InternShipAppSystemContext context, ITestRepository testRepository, IMapper mapper)
         {
             _context = context;
+            _testRepository = testRepository;
             _mapper = mapper;
         }
 
@@ -51,10 +53,9 @@ namespace API.Data
         public IEnumerable<TestDto> GetAllTestsFromGroup(int groupId)
         {
             var result = _context.TestGroupInterns
-                .Where(tgi => tgi.Deleted == false && (tgi.GroupId != null && tgi.GroupId == groupId))
-                .Include(tgi => tgi.Test)
-                .Select(tgi => tgi.Test);
-            return _mapper.Map<IEnumerable<TestDto>>(result);
+                .Where(tgi => tgi.Deleted == false && (tgi.GroupId != null && tgi.GroupId == groupId)).ToList();
+            var resultTests = _testRepository.GetAllTests().Where(t => result.FirstOrDefault(tgi=>tgi.TestId==t.TestId)!=null);
+            return resultTests;
         }
 
         public IEnumerable<PersonDto> GetAllParticipants(int groupId)

@@ -12,6 +12,7 @@
       <div class="question">
         <a (click)="onSeeTest(t)">
         {{ t.testName }}
+        <p>Deadline: {{t.deadline | date}}</p>
         </a>
       </div>
       <div class="infos">

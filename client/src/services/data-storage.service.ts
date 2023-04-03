@@ -253,6 +253,13 @@ export class DataStorageService {
     });
   }
 
+  getMyTestsByGroupId(token: string, groupId: number) {
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<Test[]>(this.baseUrl + 'group/tests/' + groupId, {
+      headers: headers,
+    });
+  }
+
   deleteTest(token: string, testId: number) {
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.post(this.baseUrl + 'test/delete/' + testId, {

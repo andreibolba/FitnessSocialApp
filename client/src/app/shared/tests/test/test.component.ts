@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Params } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { LoggedPerson } from 'src/model/loggedperson.model';
@@ -24,12 +25,13 @@ export class TestComponent implements OnInit, OnDestroy {
   publishSub!: Subscription;
   fromGroupSub!: Subscription;
   isTrainer: boolean = false;
-  isFromGroup:boolean = false;
-  mainId: string='';
-  buttonsClass: string='';
+  isFromGroup: boolean = false;
+  mainId: string = '';
+  buttonsClass: string = '';
 
   constructor(
     private utils: UtilsService,
+    private route: ActivatedRoute,
     private dialog: MatDialog,
     private dataService: DataStorageService,
     private toastr: ToastrService
@@ -124,41 +126,55 @@ export class TestComponent implements OnInit, OnDestroy {
       let id = -1;
       this.trainerSub = this.dataService
         .getPerson(person.username, this.token)
-        .subscribe(
-          (data) => {
-            id = data.personId;
-            this.isTrainer = data.status == 'Trainer';
-            this.fromGroupSub=this.utils.isFromGroupDashboard.subscribe((res)=>{
-              this.isFromGroup=res;
-              if(this.isFromGroup){
-                this.mainId="maingroup"
-                this.buttonsClass="buttonsgroup";
-              }
-              else{
-              this.mainId="main";
-              this.buttonsClass="buttons";
-              }
-            });
-          },
-          () => {},
-          () => {
-            this.testSub = this.dataService
-              .getMyTests(person.token, id)
-              .subscribe(
-                (data) => {
-                  this.tests = data;
-                },
-                () => {},
-                () => {
-                  this.tests.forEach((element) => {
-                    element.points = this.utils.calculatePoint(
-                      element.questions
+        .subscribe((data) => {
+          id = data.personId;
+          this.isTrainer = data.status == 'Trainer';
+          this.fromGroupSub = this.utils.isFromGroupDashboard.subscribe(
+            (res) => {
+              this.isFromGroup = res;
+              if (this.isFromGroup) {
+                this.mainId = 'maingroup';
+                this.buttonsClass = 'buttonsgroup';
+                this.route.params.subscribe((params: Params) => {
+                  let groupId = +params['id'];
+                  this.testSub = this.dataService
+                    .getMyTestsByGroupId(person.token, groupId)
+                    .subscribe(
+                      (data) => {
+                        if (data != null) this.tests = data;
+                      },
+                      () => {},
+                      () => {
+                        this.tests.forEach((element) => {
+                          element.points = this.utils.calculatePoint(
+                            element.questions
+                          );
+                        });
+                      }
                     );
-                  });
-                }
-              );
-          }
-        );
+                });
+              } else {
+                this.mainId = 'main';
+                this.buttonsClass = 'buttons';
+                this.testSub = this.dataService
+                  .getMyTests(person.token, id)
+                  .subscribe(
+                    (data) => {
+                      this.tests = data;
+                    },
+                    () => {},
+                    () => {
+                      this.tests.forEach((element) => {
+                        element.points = this.utils.calculatePoint(
+                          element.questions
+                        );
+                      });
+                    }
+                  );
+              }
+            }
+          );
+        });
     }
   }
 }

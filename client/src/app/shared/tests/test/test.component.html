@@ -28,17 +28,16 @@
           <div class="content">points</div>
         </div>
       </div>
-      <div class="button"  *ngIf="isTrainer && t.isOverDeadline==false" align="center">
+      <div class="button" *ngIf="isTrainer && t.isOverDeadline==false" align="center">
         <button class="btn-success" *ngIf="t.canBeEdited" (click)="publishTest(t.testId)">Publish</button>
         <button class="btn-success" *ngIf="!t.canBeEdited" (click)="addInterns(t)">Add interns</button>
         <button class="btn-success" *ngIf="!t.canBeEdited" (click)="addGroups(t)">Add groups</button>
         <button class="btn-info" *ngIf="t.canBeEdited" (click)="edittest(t)" >Edit</button>
-        <button class="btn-danger" (click)="deletetest(t.testId)">Delete</button>
+        <button class="btn-danger" *ngIf="t.canBeEdited" (click)="deletetest(t.testId)">Delete</button>
       </div>
 
-      <div class="twoButtons"  *ngIf="isTrainer && t.isOverDeadline==true" align="center">
+      <div class="oneButton"  *ngIf="isTrainer && t.isOverDeadline==true" align="center">
         <button class="btn-info" (click)="seeAllResults(t)">See results</button>
-        <button class="btn-danger" (click)="deletetest(t.testId)">Delete</button>
       </div>
 
       <div class="buttonIntern"  *ngIf="!isTrainer" align="center">

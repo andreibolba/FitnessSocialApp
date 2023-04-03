@@ -78,7 +78,7 @@ import {MatListModule} from '@angular/material/list';
     EditIntersComponent,
     EditGroupsComponent,
     EditMeetingDialogComponent,
-    SeeMeetingParticipantsComponent
+    SeeMeetingParticipantsComponent,
     StartTestComponent,
     SeeAllResultsComponent
   ],

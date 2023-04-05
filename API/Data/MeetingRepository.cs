@@ -166,11 +166,15 @@ namespace API.Data
 
         public IEnumerable<MeetingDto> GetAllByGroupId(int groupId, int? count = null)
         {
-            var allMeetings=GetAll();
+            var allMeetings= GetFutureMeetings();
             var gettAllGroupsInMeeting = _context.MeetingInternGroups.Where(mg => mg.GroupId == groupId && mg.Deleted == false);
             List<MeetingDto> allMetingsWithGroupId=new List<MeetingDto>();
-            foreach(var a in gettAllGroupsInMeeting)
-                allMetingsWithGroupId.Add(allMeetings.FirstOrDefault(m=>m.MeetingId==a.MeetingId));
+            foreach (var a in gettAllGroupsInMeeting)
+            {
+                var meet = allMeetings.FirstOrDefault(m => m.MeetingId == a.MeetingId);
+                if (meet!=null)
+                    allMetingsWithGroupId.Add(meet);
+            }
             if (count != null && gettAllGroupsInMeeting.Count() >= count.Value)
                 return _mapper.Map<IEnumerable<MeetingDto>>(allMetingsWithGroupId).Take(count.Value);
 

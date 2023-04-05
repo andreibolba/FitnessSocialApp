@@ -54,7 +54,11 @@ namespace API.Data
         {
             var result = _context.TestGroupInterns
                 .Where(tgi => tgi.Deleted == false && (tgi.GroupId != null && tgi.GroupId == groupId)).ToList();
-            var resultTests = _testRepository.GetAllTests().Where(t => result.FirstOrDefault(tgi=>tgi.TestId==t.TestId)!=null);
+            var allTests = _testRepository.GetAllTests();
+            var resultTests = new List<TestDto>();
+            foreach (var test in allTests)
+                if (result.Count(t => t.TestId == test.TestId) != 0)
+                    resultTests.Add(_testRepository.GetTestById(test.TestId));
             return resultTests;
         }
 

@@ -7,7 +7,6 @@ import { LoggedPerson } from 'src/model/loggedperson.model';
 import { Test } from 'src/model/test.model';
 import { DataStorageService } from 'src/services/data-storage.service';
 import { UtilsService } from 'src/services/utils.service';
-import { EditGroupsComponent } from '../edit-groups/edit-groups.component';
 import { EditIntersComponent } from '../edit-inters/edit-inters.component';
 import { EditTestsComponent } from '../edit-tests/edit-tests.component';
 
@@ -28,6 +27,7 @@ export class TestComponent implements OnInit, OnDestroy {
   isFromGroup: boolean = false;
   mainId: string = '';
   buttonsClass: string = '';
+  isInGroup:boolean=false;
 
   constructor(
     private utils: UtilsService,
@@ -135,6 +135,7 @@ export class TestComponent implements OnInit, OnDestroy {
               if (this.isFromGroup) {
                 this.mainId = 'maingroup';
                 this.buttonsClass = 'buttonsgroup';
+                this.isFromGroup=true;
                 this.route.params.subscribe((params: Params) => {
                   let groupId = +params['id'];
                   this.testSub = this.dataService
@@ -156,6 +157,7 @@ export class TestComponent implements OnInit, OnDestroy {
               } else {
                 this.mainId = 'main';
                 this.buttonsClass = 'buttons';
+                this.isFromGroup=false;
                 this.testSub = this.dataService
                   .getMyTests(person.token, id)
                   .subscribe(

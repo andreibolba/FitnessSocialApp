@@ -3,7 +3,7 @@
     <i class="uil uil-question-circle"></i>
     <h2>All of my tests</h2>
   </div>
-  <button class="btn btn-success" mat-button (click)="onAdd()" *ngIf="isTrainer"> Add test </button>
+  <button class="btn btn-success" mat-button (click)="onAdd()" *ngIf="isTrainer && isFromGroup==false"> Add test </button>
 </div>
 
 <div [id]="mainId" *ngIf="tests.length!=0">

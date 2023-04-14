@@ -20,4 +20,6 @@ public partial class Post
     public virtual Person Person { get; set; }
 
     public virtual ICollection<PostCommentReaction> PostCommentReactions { get; } = new List<PostCommentReaction>();
+
+    public virtual ICollection<PostPicture> PostPictures { get; } = new List<PostPicture>();
 }

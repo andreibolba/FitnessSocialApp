@@ -2,6 +2,7 @@
 
 namespace API.FluentMigration.Migrations
 {
+    [Migration(202304140905)]
     public class PostPicturesTable : Migration
     {
         public const string tableName = "PostPictures";

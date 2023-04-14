@@ -14,7 +14,7 @@
       <div class="name">
         {{ post.person.firstName + ' ' + post.person.lastName}}
       </div>
-      <button class="btn-info" *ngIf="post.canEdit">Edit post</button>
+      <button class="btn-info" *ngIf="post.canEdit" (click)="onEdit(post)">Edit post</button>
     </div>
     <div class="post">
       <div class="title" (click)="onSeePost(post)">

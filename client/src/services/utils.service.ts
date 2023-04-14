@@ -7,6 +7,7 @@ import { Person } from 'src/model/person.model';
 import { Question } from 'src/model/question.model';
 import { Test } from 'src/model/test.model';
 import { DataStorageService } from './data-storage.service';
+import { Post } from 'src/model/post.model';
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +26,7 @@ export class UtilsService {
   isInternTest=new BehaviorSubject<boolean>(true);
   meetingParticipants=new BehaviorSubject<Person[]|null>(null);
   testToSeeAllResult = new BehaviorSubject<Test | null>(null);
+  postToEdit = new BehaviorSubject<Post | null>(null);
   dashboardChanged=new EventEmitter<boolean>(true);
 
   error=new BehaviorSubject<{errorCode:number,errorTitle:string,errorMessage:string} | null>(null);

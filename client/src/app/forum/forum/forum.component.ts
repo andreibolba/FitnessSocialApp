@@ -66,4 +66,9 @@ export class ForumComponent implements OnInit, OnDestroy {
     this.openDialog(2);
   }
 
+  onEdit(post:Post){
+    this.utils.postToEdit.next(post);
+    this.openDialog(1);
+  }
+
 }

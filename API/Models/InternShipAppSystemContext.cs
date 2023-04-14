@@ -53,6 +53,8 @@ public partial class InternShipAppSystemContext : DbContext
 
     public virtual DbSet<PostCommentReaction> PostCommentReactions { get; set; }
 
+    public virtual DbSet<PostPicture> PostPictures { get; set; }
+
     public virtual DbSet<Question> Questions { get; set; }
 
     public virtual DbSet<QuestionSolution> QuestionSolutions { get; set; }
@@ -423,6 +425,18 @@ public partial class InternShipAppSystemContext : DbContext
             entity.HasOne(d => d.Post).WithMany(p => p.PostCommentReactions)
                 .HasForeignKey(d => d.PostId)
                 .HasConstraintName("PostCommentReactionsPostFK");
+        });
+
+        modelBuilder.Entity<PostPicture>(entity =>
+        {
+            entity.HasKey(e => e.PostPicturesId);
+
+            entity.Property(e => e.Picture).HasMaxLength(8000);
+
+            entity.HasOne(d => d.Post).WithMany(p => p.PostPictures)
+                .HasForeignKey(d => d.PostId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("PostPicturesPostFK");
         });
 
         modelBuilder.Entity<Question>(entity =>

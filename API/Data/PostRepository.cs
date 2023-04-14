@@ -40,7 +40,13 @@ namespace API.Data
             var allPosts = _context.Posts.Where(p => p.Deleted == false)
                 .OrderBy(p => p.DateOfPost)
                 .Include(p=>p.Person);
-            return _mapper.Map<IEnumerable<PostDto>>(allPosts);
+            var allPostsToSend = _mapper.Map<IEnumerable<PostDto>>(allPosts);
+            foreach (var a in allPostsToSend)
+            {
+                a.Karma = new Random().Next(10000);
+                a.Views = new Random().Next(10000);
+            }
+            return allPostsToSend;
         }
 
         public PostDto GetPost(int postId)

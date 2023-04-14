@@ -9,6 +9,7 @@ import { ObjectIntern } from 'src/model/objectintern.model';
 import { ObjectGroup } from 'src/model/objectgroup.model';
 import { Meeting } from 'src/model/meeting.model';
 import { Answer } from 'src/model/answer.model';
+import { Post } from 'src/model/post.model';
 
 @Injectable({
   providedIn: 'root',
@@ -455,6 +456,15 @@ export class DataStorageService {
   getResult(token:string, internId:number,testId:number){
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.get<Answer[]>(this.baseUrl + 'questionsolution/getanswers/'+internId +'/'+testId, {
+      headers: headers,
+    });
+  }
+
+  //posts
+
+  getAllPosts(token:string){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<Post[]>(this.baseUrl + 'posts', {
       headers: headers,
     });
   }

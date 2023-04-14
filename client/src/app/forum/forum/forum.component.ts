@@ -1,19 +1,43 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { LoggedPerson } from 'src/model/loggedperson.model';
+import { Post } from 'src/model/post.model';
+import { DataStorageService } from 'src/services/data-storage.service';
 import { UtilsService } from 'src/services/utils.service';
 
 @Component({
   selector: 'app-forum',
   templateUrl: './forum.component.html',
-  styleUrls: ['./forum.component.css']
+  styleUrls: ['./forum.component.css'],
 })
-export class ForumComponent implements OnInit{
+export class ForumComponent implements OnInit, OnDestroy {
+  date!: Date;
+  token: string='';
+  postsSubscription!:Subscription;
+  posts:Post[]=[];
 
-  constructor(private utils:UtilsService){
-
+  constructor(
+    private utils: UtilsService,
+    private dataStorage: DataStorageService
+  ) {}
+  ngOnDestroy(): void {
+    if(this.postsSubscription) this.postsSubscription.unsubscribe();
   }
 
   ngOnInit(): void {
     this.utils.initializeError();
+    this.date = new Date();
+    const personString = localStorage.getItem('person');
+    if (!personString) {
+      return;
+    } else {
+      const person: LoggedPerson = JSON.parse(personString);
+      this.token = person.token;
+      this.postsSubscription = this.dataStorage.getAllPosts(this.token).subscribe((res)=>{
+        if(res!=null){
+          this.posts = res;
+        }
+      })
+    }
   }
-
 }

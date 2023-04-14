@@ -13,5 +13,8 @@
         public string Content { get; set; }
 
         public DateTime? DateOfPost { get; set; }
+
+        public int Karma { get; set; }
+        public int Views { get; set; }
     }
 }

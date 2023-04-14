@@ -1,0 +1,183 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  color: #515151;
+}
+
+h2 {
+  color: #515151;
+  font-family: 'Poppins-Italic';
+}
+
+::-webkit-scrollbar {
+  width: 20px;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(190, 190, 190);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #6b6b6b;
+}
+
+#main {
+  width: 79%;
+  height: 76vh;
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+}
+
+
+.forum {
+  background-color: rgb(235, 235, 235);
+  height: 150px;
+  width: 98%;
+  display: flex;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.person {
+  height: 100%;
+  width: 15%;
+}
+
+.picture {
+  height: 70px;
+  width: 70px;
+  border-radius: 35px;
+  background-image: url('../../../../img/temp_user_photo.jpg');
+  background-size: cover;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.name {
+  width: 98%;
+  margin-left: 1%;
+  height: 45px;
+  font-weight: bold;
+  font-size: 12px;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.stats {
+  height: 100%;
+  width: 18%;
+  margin: auto;
+}
+
+.karma {
+  width: 100%;
+  height: 65%;
+  padding-top: 10px;
+}
+
+.views {
+  width: 100%;
+  height: 15%;
+  text-align: center;
+  font-size: 15px;
+  border-top: 1px solid #b1b0b0;
+}
+
+.date {
+  height: 20%;
+  width: 100%;
+  font-size: 12px;
+  padding-top: 5px;
+  border-top: 1px solid #b1b0b0;
+  text-align: center;
+}
+
+
+.post {
+  height: 100%;
+  width: 72%;
+  border-right: 1px solid #b1b0b0;
+}
+
+.title {
+  width: 98%;
+  margin-left: 1%;
+  height: 70px;
+  margin-top: 5px;
+  font-size: xx-large;
+  padding-top: 8px;
+}
+
+.content {
+  width: 98%;
+  margin-left: 1%;
+  height: 50px;
+  margin-top: 5px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  color: #6d6d6d;
+}
+
+.buttons {
+  height: 7vh;
+  margin-bottom: 3vh;
+  width: 79%;
+  display: flex;
+}
+
+.title {
+  height: 7vh;
+  margin-bottom: 3vh;
+  width: 90%;
+  display: flex;
+}
+
+.title i {
+  font-size: 32px;
+  margin-right: 5px;
+  margin-top: -5px;
+  color: #515151;
+}
+
+.buttons button {
+  float: right;
+  height: 40px;
+  width: 120px;
+  color: white;
+  border: none;
+}
+
+.place{
+  height: 55px;
+  width: 85px;
+  border-radius: 5px;
+  background-color: #c4c4c4;
+  margin:auto;
+  text-align: center;
+  padding-top: 15px;
+}
+
+#triangle{
+  width: 0;
+  height: 0;
+  border-top: 20px solid #c4c4c4;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  margin: auto;
+}
+
+.karmaPoints{
+  height: 20px;
+  width: 100%;
+  font-size: 18px;
+}

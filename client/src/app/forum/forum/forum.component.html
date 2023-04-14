@@ -1,1 +1,40 @@
-<p>forum works!</p>
+<div class="buttons">
+  <div class="title">
+    <i class="uil uil-meeting-board"></i>
+    <h2>Forum</h2>
+  </div>
+  <button class="btn btn-success" mat-button> Add forum </button>
+</div>
+
+
+<div id="main">
+  <div class="forum" *ngFor="let post of posts">
+    <div class="person">
+      <div class="picture"></div>
+      <div class="name">
+        {{ post.person.firstName + ' ' + post.person.lastName}}
+      </div>
+    </div>
+    <div class="post">
+      <div class="title">
+        {{ post.title }}
+      </div>
+      <div class="content">
+        {{post.content}}
+      </div>
+    </div>
+    <div class="stats">
+      <div class="karma">
+        <div class="place">
+          <p class="karmaPoints">{{post.karma}}</p>
+        </div>
+        <div id="triangle"></div>
+      </div>
+      <div class="views">
+        {{post.views}}
+      </div>
+      <div class="date">
+        {{post.dateOfPost  | date:'medium' }}
+    </div>
+  </div>
+</div>

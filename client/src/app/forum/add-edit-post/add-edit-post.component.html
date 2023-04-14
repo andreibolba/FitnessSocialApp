@@ -1,16 +1,16 @@
 <h3>{{operation}} post</h3>
 <div id="main">
-  <form #registerForm="ngForm" (ngSubmit)="onSignUpSubmit(registerForm)" autocomplete="off">
+  <form #registerForm="ngForm" (ngSubmit)="onSignUpSubmit()" autocomplete="off">
 
     <div class="infos">
       <div class="info">
         <label for="postTitle">Post Title</label>
-        <input type="text" id="postTitle" placeholder="Post Title" name="postTitle"
+        <input type="text" id="postTitle" placeholder="Post Title" name="postTitle" [(ngModel)]="title"
           required>
       </div>
       <div class="info">
         <label for="postContent">Post Content</label>
-        <textarea id="postContent" placeholder="Post Content" name="postContent"
+        <textarea id="postContent" placeholder="Post Content" name="postContent" [(ngModel)]="content"
           required>
         </textarea>
       </div>

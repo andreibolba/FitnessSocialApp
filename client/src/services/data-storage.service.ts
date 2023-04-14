@@ -468,4 +468,13 @@ export class DataStorageService {
       headers: headers,
     });
   }
+
+  addPost(token:string, post:Post){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post(this.baseUrl + 'posts/add',{
+      Title: post.title,
+      Content: post.content,
+      PersonId: post.person.personId
+    },{headers: headers})
+  }
 }

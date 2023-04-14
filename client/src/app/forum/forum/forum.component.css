@@ -58,7 +58,7 @@ h2 {
   background-image: url('../../../../img/temp_user_photo.jpg');
   background-size: cover;
   margin: auto;
-  margin-top: 20px;
+  margin-top: 5px;
 }
 
 .name {
@@ -69,6 +69,7 @@ h2 {
   font-size: 12px;
   margin-top: 10px;
   text-align: center;
+  margin-bottom: -7px;
 }
 
 .stats {
@@ -114,6 +115,19 @@ h2 {
   margin-top: 5px;
   font-size: xx-large;
   padding-top: 8px;
+}
+
+.title:hover{
+  cursor: pointer;
+}
+
+.person button{
+  color:white;
+  height: 22px;
+  width: 50%;
+  margin-left: 25%;
+  font-size: 12px;
+  border: none;
 }
 
 .content {

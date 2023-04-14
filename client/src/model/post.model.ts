@@ -8,7 +8,7 @@ export class Post{
   public dateOfPost:Date;
   public karma:number;
   public views:number;
-
+  public canEdit:boolean;
   constructor() {
     this.postId=-1;
     this.person=new Person();
@@ -17,5 +17,6 @@ export class Post{
     this.dateOfPost=new Date();
     this.karma=-1;
     this.views=-1;
+    this.canEdit=false;
   }
 }

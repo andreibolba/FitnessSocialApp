@@ -21,7 +21,7 @@ namespace API.Data
         public void CreatePost(PostDto post)
         {
             var postToAdd = _mapper.Map<Post>(post);
-            postToAdd.DateOfPost = DateTime.UtcNow;
+            postToAdd.DateOfPost = DateTime.Now;
             _context.Posts.Add(postToAdd);
         }
 

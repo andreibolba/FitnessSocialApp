@@ -3,7 +3,7 @@
     <i class="uil uil-meeting-board"></i>
     <h2>Forum</h2>
   </div>
-  <button class="btn btn-success" mat-button> Add forum </button>
+  <button class="btn btn-success" mat-button (click)="onAdd()"> Add forum </button>
 </div>
 
 
@@ -14,9 +14,10 @@
       <div class="name">
         {{ post.person.firstName + ' ' + post.person.lastName}}
       </div>
+      <button class="btn-info" *ngIf="post.canEdit">Edit post</button>
     </div>
     <div class="post">
-      <div class="title">
+      <div class="title" (click)="onSeePost(post)">
         {{ post.title }}
       </div>
       <div class="content">

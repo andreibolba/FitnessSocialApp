@@ -46,6 +46,8 @@ import { SeeMeetingParticipantsComponent } from './shared/meetings/see-meeting-p
 import { StartTestComponent } from './shared/tests/start-test/start-test.component';
 import { SeeAllResultsComponent } from './shared/tests/see-all-results/see-all-results.component';
 import {MatListModule} from '@angular/material/list';
+import { SeePostComponent } from './forum/see-post/see-post.component';
+import { AddEditPostComponent } from './forum/add-edit-post/add-edit-post.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +82,9 @@ import {MatListModule} from '@angular/material/list';
     EditMeetingDialogComponent,
     SeeMeetingParticipantsComponent,
     StartTestComponent,
-    SeeAllResultsComponent
+    SeeAllResultsComponent,
+    SeePostComponent,
+    AddEditPostComponent
   ],
   imports: [
     BrowserModule,

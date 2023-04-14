@@ -29,11 +29,11 @@ namespace API.Controllers
         public ActionResult AddPost([FromBody]PostDto post)
         {
             if (post.PersonId == null
-                || post.Content == null
-                || post.DateOfPost == null)
+                || post.Title == null
+                || post.Content == null)
                 return BadRequest("There are some empty fields!");
             _post.CreatePost(post);
-            return Ok(_post.SaveAll());
+            return _post.SaveAll() ? Ok() : BadRequest("Internal server error");
         }
 
 
@@ -48,12 +48,12 @@ namespace API.Controllers
         public ActionResult UpdatePost([FromBody] PostDto post)
         {
             if (post.PersonId == null
+                || post.Title == null
                 || post.Content == null
-                || post.DateOfPost == null
                 || post.PostId == null)
                 return BadRequest("There are some empty fields!");
             _post.UpdatePost(post);
-            return Ok(_post.SaveAll());
+            return _post.SaveAll() ? Ok() : BadRequest("Internal server error");
         }
 
     }

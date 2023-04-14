@@ -5,7 +5,10 @@
         public int? PostId { get; set; }
 
         public int? PersonId { get; set; }
+
         public PersonDto Person { get; set; }
+
+        public string Title { get; set; }
 
         public string Content { get; set; }
 

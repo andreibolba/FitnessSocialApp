@@ -400,6 +400,7 @@ public partial class InternShipAppSystemContext : DbContext
         {
             entity.ToTable("Post");
 
+            entity.Property(e => e.Title).HasMaxLength(255);
             entity.Property(e => e.Content).HasMaxLength(255);
             entity.Property(e => e.DateOfPost).HasColumnType("datetime");
 

@@ -21,7 +21,7 @@ namespace API.Data
         public void CreatePost(PostDto post)
         {
             var postToAdd = _mapper.Map<Post>(post);
-
+            postToAdd.DateOfPost = DateTime.UtcNow;
             _context.Posts.Add(postToAdd);
         }
 
@@ -58,6 +58,7 @@ namespace API.Data
             var postToUpdate = GetPost(post.PostId.Value);
             if (postToUpdate == null)
                 return false;
+            postToUpdate.Title = post.Title == null ? postToUpdate.Title : post.Title;
             postToUpdate.Content = post.Content == null ? postToUpdate.Content : post.Content;
             _context.Posts.Update(_mapper.Map<Post>(postToUpdate));
             return true;

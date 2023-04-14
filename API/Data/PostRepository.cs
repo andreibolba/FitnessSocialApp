@@ -2,6 +2,7 @@
 using API.Interfaces.Repository;
 using API.Models;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using System.Runtime.CompilerServices;
 
 namespace API.Data
@@ -26,16 +27,19 @@ namespace API.Data
 
         public bool DeletePost(int postId)
         {
-            var post = GetPost(postId);
+            var post = _mapper.Map<Post>(GetPost(postId));
             if (post == null)
                 return false;
             post.Deleted = true;
+            _context.Posts.Update(post);
             return true;
         }
 
         public IEnumerable<PostDto> GetAllPosts()
         {
-            var allPosts = _context.Posts.Where(p => p.Deleted == false).OrderBy(p => p.DateOfPost);
+            var allPosts = _context.Posts.Where(p => p.Deleted == false)
+                .OrderBy(p => p.DateOfPost)
+                .Include(p=>p.Person);
             return _mapper.Map<IEnumerable<PostDto>>(allPosts);
         }
 
@@ -51,7 +55,7 @@ namespace API.Data
 
         public bool UpdatePost(PostDto post)
         {
-            var postToUpdate = GetPost(post.PostId);
+            var postToUpdate = GetPost(post.PostId.Value);
             if (postToUpdate == null)
                 return false;
             postToUpdate.Content = post.Content == null ? postToUpdate.Content : post.Content;

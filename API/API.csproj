@@ -6,6 +6,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Interfaces\Repository\IPostRepository.cs~RF516d709.TMP" />
     <None Remove="Interfaces\Repository\ITestInternGroupRepository.cs~RF1acfb1d5.TMP" />
   </ItemGroup>
 

@@ -36,6 +36,7 @@ namespace API.Helpers
             CreateMap<TestGroupIntern, TestGroupInternDto>();
             CreateMap<Meeting, MeetingDto>();
             CreateMap<QuestionSolution, Answer>();
+            CreateMap<Post,PostDto>();
 
 
             CreateMap<PersonDto, Person>()
@@ -53,6 +54,8 @@ namespace API.Helpers
                 .ForMember(dest => dest.CanBeEdited, opt => opt.MapFrom(src => src.CanBeEdited==null? true : src.CanBeEdited.Value))
                 .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
             CreateMap<MeetingDto, Meeting>()
+                .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
+            CreateMap<PostDto, Post>()
                 .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
         }
     }

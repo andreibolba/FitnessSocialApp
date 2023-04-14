@@ -5,8 +5,8 @@ namespace API.Interfaces.Repository
     public interface IPostRepository
     {
         void CreatePost(PostDto post);
-        void UpdatePost(PostDto post);
-        void DeletePost(int postId);
+        bool UpdatePost(PostDto post);
+        bool DeletePost(int postId);
         IEnumerable<PostDto> GetAllPosts();
         PostDto GetPost(int postId);
         bool SaveAll();

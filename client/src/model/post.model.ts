@@ -9,6 +9,8 @@ export class Post{
   public karma:number;
   public views:number;
   public canEdit:boolean;
+  public upvote:boolean;
+  public downvote:boolean;
   constructor() {
     this.postId=-1;
     this.person=new Person();
@@ -18,5 +20,7 @@ export class Post{
     this.karma=-1;
     this.views=-1;
     this.canEdit=false;
+    this.upvote=false;
+    this.downvote=false;
   }
 }

@@ -30,6 +30,7 @@ namespace API.Extensions
             services.AddScoped<IMeetingRepository, MeetingRepository>();
             services.AddScoped<IQuestionSolutionRepository, QuestionSolutionRepository>();
             services.AddScoped<IPostRepository, PostRepository>();
+            services.AddScoped<IStatsRepository, StatsRepository>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             return services;
         }

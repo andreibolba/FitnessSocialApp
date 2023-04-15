@@ -13,9 +13,9 @@
 
     <div class="post-content">
       <div class="karma">
-        <div id="up-checked"></div>
+        <div [id]="up"></div>
         <div class="point">{{post.karma}}</div>
-        <div id="down"></div>
+        <div [id]="down"></div>
         <button class="btn-info">Answer</button>
       </div>
       <div class="content-of-post">
@@ -29,8 +29,8 @@
               <div class="name">{{ post.person.firstName+ ' ' +post.person.lastName}}</div>
               <div class="posted">posted on {{post.dateOfPost  | date:'medium'}} </div>
               <div class="stats">
-                <div class="karma-person">Karma: {{post.person.karma}}</div>
-                <div class="answers">Asnwers: {{post.person.answers}}</div>
+                <div class="karma-person">Karma: {{person.karma}}</div>
+                <div class="answers">Asnwers: {{person.answers}}</div>
               </div>
             </div>
           </div>

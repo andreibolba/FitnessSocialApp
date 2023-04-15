@@ -462,9 +462,9 @@ export class DataStorageService {
 
   //posts
 
-  getAllPosts(token:string){
+  getAllPostsCompleted(token:string,personId:number){
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.get<Post[]>(this.baseUrl + 'posts', {
+    return this.http.get<Post[]>(this.baseUrl + 'posts/completed/'+personId, {
       headers: headers,
     });
   }
@@ -485,6 +485,14 @@ export class DataStorageService {
       Title: post.title,
       Content: post.content,
       PersonId: post.person.personId
+    },{headers: headers});
+  }
+
+  addView(token:string, postId:number, personId:number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post(this.baseUrl + 'posts/view',{
+      PostId: postId,
+      PersonId: personId
     },{headers: headers});
   }
 }

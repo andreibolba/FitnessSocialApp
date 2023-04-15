@@ -157,6 +157,16 @@ h3 {
   margin: auto;
 }
 
+.karma button {
+  margin: auto;
+  height: 30px;
+  width: 75px;
+  margin-left: 5px;
+  margin-top: 10px;
+  color: white;
+  border: none;
+}
+
 .content-of-post{
   min-height: 250px;
   width: 90%;

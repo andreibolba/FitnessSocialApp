@@ -1,4 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { LoggedPerson } from 'src/model/loggedperson.model';
+import { Person } from 'src/model/person.model';
+import { Post } from 'src/model/post.model';
+import { DataStorageService } from 'src/services/data-storage.service';
+import { UtilsService } from 'src/services/utils.service';
 
 @Component({
   selector: 'app-see-post',
@@ -7,15 +13,39 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 })
 export class SeePostComponent implements OnInit, OnDestroy{
   date: Date=new Date();
+  post:Post=new Post();
+  postSub!:Subscription;
+  dataSub!:Subscription;
+  person:Person=new Person();
 
-  constructor(){
+  constructor(private utils: UtilsService,private dataService:DataStorageService){
 
   }
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    const personString = localStorage.getItem('person');
+    if (!personString) {
+      return;
+    } else {
+      const person: LoggedPerson = JSON.parse(personString);
+      this.dataSub = this.dataService
+        .getPerson(person.username, person.token)
+        .subscribe(
+          (res) => {
+            this.person = res;
+            this.postSub = this.utils.postToEdit.subscribe((res)=>{
+              if(res)
+              this.post=res;
+            });
+          },
+          (error) => {
+            console.log(error.error);
+          }
+        );
+    }
   }
   ngOnDestroy(): void {
-    throw new Error('Method not implemented.');
+    if(this.postSub!=null) this.postSub.unsubscribe();
+    if(this.dataSub!=null) this.dataSub.unsubscribe();
   }
 
 

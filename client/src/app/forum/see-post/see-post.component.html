@@ -2,33 +2,32 @@
   <div class="post">
     <div class="post-header">
       <div class="title">
-        How to do a Anglar App?
+        {{post.title}}
       </div>
       <div class="dates">
-        <div class="date-of-post"><div class="text">Asked</div>{{date | date:'medium'}}</div>
-        <div class="date-of-edit"><div class="text">Edited </div> {{date | date:'medium'}}</div>
-        <div class="views"><div class="text">Viewed </div> 253k</div>
+        <div class="date-of-post"><div class="text">Asked</div>{{post.dateOfPost | date:'medium'}}</div>
+        <div class="date-of-edit"><div class="text">Edited </div> {{post.dateOfPost  | date:'medium'}}</div>
+        <div class="views"><div class="text">Viewed </div> {{post.views}}</div>
       </div>
     </div>
 
     <div class="post-content">
       <div class="karma">
         <div id="up-checked"></div>
-        <div class="point">-5482</div>
+        <div class="point">{{post.karma}}</div>
         <div id="down"></div>
+        <button class="btn-info">Answer</button>
       </div>
       <div class="content-of-post">
         <div class="content">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima autem eaque veritatis, maiores natus nesciunt distinctio debitis, ducimus doloremque commodi accusantium a nam repellat suscipit? Molestias perspiciatis dolorem est aliquid?
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae unde vitae quisquam sed, quis magnam distinctio totam illo dolor ut odio vel culpa porro similique a perspiciatis laboriosam voluptatum voluptates!
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ipsum, tempora quis, eveniet labore nulla asperiores, ex sed sapiente alias nisi deserunt iste sit odio. Laboriosam, suscipit laborum? Molestiae, saepe quis?
+          {{post.content}}
         </div>
         <div class="information">
           <div class="person">
             <div class="pic"></div>
             <div class="person-info">
-              <div class="name">Bolba-Mateescu Andrei-Ioan</div>
-              <div class="posted">posted on {{date | date:'medium'}} </div>
+              <div class="name">{{ post.person.firstName+ ' ' +post.person.lastName}}</div>
+              <div class="posted">posted on {{post.dateOfPost  | date:'medium'}} </div>
               <div class="stats">
                 <div class="karma-person">Karma: 251</div>
                 <div class="answers">Asnwers: 251</div>

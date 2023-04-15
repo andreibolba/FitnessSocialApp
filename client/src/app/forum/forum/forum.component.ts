@@ -63,6 +63,7 @@ export class ForumComponent implements OnInit, OnDestroy {
   }
 
   onSeePost(post: Post){
+    this.utils.postToEdit.next(post);
     this.openDialog(2);
   }
 

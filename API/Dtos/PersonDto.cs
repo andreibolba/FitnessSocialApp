@@ -10,6 +10,8 @@ namespace API.Dtos
         public string Email { get; set; }
         public string Password { get; set; }
         public string Status { get; set; }
+        public int Karma { get; set; }
+        public int Answers { get; set; }
         public DateTime? BirthDate { get; set; }
         public DateTime Created { get; set; }
         public byte[] PasswordHash { get; set; }

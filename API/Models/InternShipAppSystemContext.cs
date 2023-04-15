@@ -55,6 +55,8 @@ public partial class InternShipAppSystemContext : DbContext
 
     public virtual DbSet<PostPicture> PostPictures { get; set; }
 
+    public virtual DbSet<PostView> PostViews { get; set; }
+
     public virtual DbSet<Question> Questions { get; set; }
 
     public virtual DbSet<QuestionSolution> QuestionSolutions { get; set; }
@@ -76,8 +78,7 @@ public partial class InternShipAppSystemContext : DbContext
     public virtual DbSet<VersionInfo> VersionInfos { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=InternShipAppSystem;User Id=sa;Password=1234%asd; TrustServerCertificate=True");
+       => optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=InternShipAppSystem;User Id=sa;Password=1234%asd; TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -400,9 +401,11 @@ public partial class InternShipAppSystemContext : DbContext
         {
             entity.ToTable("Post");
 
-            entity.Property(e => e.Title).HasMaxLength(255);
             entity.Property(e => e.Content).HasMaxLength(255);
             entity.Property(e => e.DateOfPost).HasColumnType("datetime");
+            entity.Property(e => e.Title)
+                .IsRequired()
+                .HasMaxLength(255);
 
             entity.HasOne(d => d.Person).WithMany(p => p.Posts)
                 .HasForeignKey(d => d.PersonId)
@@ -438,6 +441,20 @@ public partial class InternShipAppSystemContext : DbContext
                 .HasForeignKey(d => d.PostId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("PostPicturesPostFK");
+        });
+
+        modelBuilder.Entity<PostView>(entity =>
+        {
+            entity.ToTable("PostView");
+
+            entity.HasOne(d => d.Person).WithMany(p => p.PostViews)
+                .HasForeignKey(d => d.PersonId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("PostViewPersonFK");
+
+            entity.HasOne(d => d.Post).WithMany(p => p.PostViews)
+                .HasForeignKey(d => d.PostId)
+                .HasConstraintName("PostViewPostFK");
         });
 
         modelBuilder.Entity<Question>(entity =>

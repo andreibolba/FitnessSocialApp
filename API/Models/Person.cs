@@ -59,6 +59,8 @@ public partial class Person
 
     public virtual ICollection<PostCommentReaction> PostCommentReactions { get; } = new List<PostCommentReaction>();
 
+    public virtual ICollection<PostView> PostViews { get; } = new List<PostView>();
+
     public virtual ICollection<Post> Posts { get; } = new List<Post>();
 
     public virtual ICollection<QuestionSolution> QuestionSolutions { get; } = new List<QuestionSolution>();

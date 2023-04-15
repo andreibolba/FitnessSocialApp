@@ -77,7 +77,27 @@ namespace API.Data
 
         public IEnumerable<PersonDto> GetAllPerson()
         {
-            return _mapper.Map<IEnumerable<PersonDto>>(_context.People.ToList().Where(g => g.Deleted == false));
+            var allPerson = _mapper.Map<IEnumerable<PersonDto>>(_context.People.ToList().Where(g => g.Deleted == false));
+            foreach(var p in allPerson)
+            {
+                var likes = _context.PostCommentReactions.Where(p =>
+                p.Deleted == false
+                && p.PersonId == p.PersonId
+                && p.PostId == null
+                && p.CommentId == null
+                && p.Upvote != null
+                && p.DoenVote == null).Count();
+                var dislikes = _context.PostCommentReactions.Where(p =>
+                p.Deleted == false
+                && p.PersonId == p.PersonId
+                && p.PostId == null
+                && p.CommentId == null
+                && p.Upvote == null
+                && p.DoenVote != null).Count();
+                p.Karma = likes - dislikes;
+                p.Answers = _context.Comments.Where(c => c.Deleted == false && c.PersonId == p.PersonId).Count();
+            }
+            return allPerson;
         }
 
         public PersonDto GetPersonById(int id)

@@ -3,6 +3,7 @@ using API.Interfaces.Repository;
 using API.Models;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using System.Runtime.CompilerServices;
 
 namespace API.Data
@@ -43,8 +44,22 @@ namespace API.Data
             var allPostsToSend = _mapper.Map<IEnumerable<PostDto>>(allPosts);
             foreach (var a in allPostsToSend)
             {
-                a.Karma = new Random().Next(10000);
-                a.Views = new Random().Next(10000);
+                var likes = _context.PostCommentReactions.Where(p=>
+                p.Deleted==false
+                && p.PostId!=null
+                && p.PostId==a.PostId
+                && p.CommentId==null
+                && p.Upvote!=null
+                && p.DoenVote==null).Count();
+                var dislikes = _context.PostCommentReactions.Where(p =>
+                p.Deleted == false
+                && p.PostId != null
+                && p.PostId == a.PostId
+                && p.CommentId == null
+                && p.Upvote == null
+                && p.DoenVote != null).Count();
+                a.Karma = likes - dislikes;
+                a.Views = _context.PostViews.Where(pw=>pw.Deleted==false && pw.PostId == a.PostId).Count();
             }
             return allPostsToSend;
         }

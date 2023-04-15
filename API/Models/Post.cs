@@ -10,6 +10,7 @@ public partial class Post
     public int PersonId { get; set; }
 
     public string Title { get; set; }
+
     public string Content { get; set; }
 
     public DateTime DateOfPost { get; set; }
@@ -23,4 +24,6 @@ public partial class Post
     public virtual ICollection<PostCommentReaction> PostCommentReactions { get; } = new List<PostCommentReaction>();
 
     public virtual ICollection<PostPicture> PostPictures { get; } = new List<PostPicture>();
+
+    public virtual ICollection<PostView> PostViews { get; } = new List<PostView>();
 }

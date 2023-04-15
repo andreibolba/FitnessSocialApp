@@ -6,6 +6,8 @@ export class Person{
   public username:string;
   public status:string;
   public birthDate:Date;
+  public karma:number;
+  public answers: number;
   constructor(){
     this.personId=-1;
     this.firstName='';
@@ -14,5 +16,7 @@ export class Person{
     this.username='';
     this.status='';
     this.birthDate=new Date();
+    this.karma=-1;
+    this.answers=-1;
   }
 }

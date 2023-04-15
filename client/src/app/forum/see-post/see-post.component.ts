@@ -46,6 +46,7 @@ export class SeePostComponent implements OnInit, OnDestroy{
   ngOnDestroy(): void {
     if(this.postSub!=null) this.postSub.unsubscribe();
     if(this.dataSub!=null) this.dataSub.unsubscribe();
+    this.utils.postToEdit.next(null);
   }
 
 

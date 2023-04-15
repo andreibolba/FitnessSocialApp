@@ -111,10 +111,13 @@ h2 {
 .title {
   width: 98%;
   margin-left: 1%;
-  height: 70px;
-  margin-top: 5px;
+  height: 95px;
+  margin-top: 2px;
   font-size: xx-large;
-  padding-top: 8px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
 }
 
 .title:hover{

@@ -64,6 +64,7 @@ export class AddEditPostComponent implements OnInit, OnDestroy {
     if (this.dataSub != null) this.dataSub.unsubscribe();
     if (this.sendSub != null) this.sendSub.unsubscribe();
     if (this.getSub != null) this.getSub.unsubscribe();
+    this.utils.postToEdit.next(null);
   }
 
   onSignUpSubmit() {

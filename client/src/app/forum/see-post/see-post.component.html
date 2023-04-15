@@ -29,8 +29,8 @@
               <div class="name">{{ post.person.firstName+ ' ' +post.person.lastName}}</div>
               <div class="posted">posted on {{post.dateOfPost  | date:'medium'}} </div>
               <div class="stats">
-                <div class="karma-person">Karma: 251</div>
-                <div class="answers">Asnwers: 251</div>
+                <div class="karma-person">Karma: {{post.person.karma}}</div>
+                <div class="answers">Asnwers: {{post.person.answers}}</div>
               </div>
             </div>
           </div>

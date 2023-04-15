@@ -13,9 +13,9 @@
 
     <div class="post-content">
       <div class="karma">
-        <div [id]="up"></div>
+        <div [id]="up" (click)="upvote(post)"></div>
         <div class="point">{{post.karma}}</div>
-        <div [id]="down"></div>
+        <div [id]="down" (click)="downvote(post)"></div>
         <button class="btn-info">Answer</button>
       </div>
       <div class="content-of-post">

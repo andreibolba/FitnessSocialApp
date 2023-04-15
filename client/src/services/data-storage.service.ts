@@ -495,4 +495,14 @@ export class DataStorageService {
       PersonId: personId
     },{headers: headers});
   }
+
+  vote(token:string, postId:number, personId:number, upvote:boolean,downvote:boolean){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post(this.baseUrl + 'posts/vote',{
+      PostId: postId,
+      PersonId: personId,
+      Upvote: upvote,
+      Downvote:downvote
+    },{headers: headers});
+  }
 }

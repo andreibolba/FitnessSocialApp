@@ -2,6 +2,7 @@
 using API.Interfaces.Repository;
 using API.Models;
 using AutoMapper;
+using Microsoft.Extensions.Options;
 
 namespace API.Data
 {
@@ -29,34 +30,25 @@ namespace API.Data
             return false;
         }
 
-        public void AddVote(PostCommentReaction vote)
+        public void Vote(PostCommentReactionDto vote)
         {
-            var reaction = _context.PostCommentReactions.SingleOrDefault(v=>
+            var reaction = _context.PostCommentReactions.FirstOrDefault(v=>
             v.PersonId == vote.PersonId 
             && (v.PostId == vote.PostId || v.CommentId == vote.CommentId));
             if(reaction != null)
             {
+                reaction.Upvote = vote.Upvote.Value;
+                reaction.DoenVote = vote.Downvote.Value;
                 reaction.Deleted = false;
                 _context.PostCommentReactions.Update(reaction);
                 return;
             }
-            
-            _context.PostCommentReactions.Add(vote);
+            var voteToAdd = _mapper.Map<PostCommentReaction>(vote);
+            voteToAdd.Deleted = false;
+            _context.PostCommentReactions.Add(voteToAdd);
         }
 
-        public void RemoveVote(PostCommentReaction vote)
-        {
-            var reaction = _context.PostCommentReactions.SingleOrDefault(v =>
-            v.PersonId == vote.PersonId
-            && (v.PostId == vote.PostId || v.CommentId == vote.CommentId));
-            if (reaction != null)
-            {
-                reaction.Deleted = true;
-                _context.PostCommentReactions.Update(reaction);
-                return;
-            }
-        }
-
+        
         public bool SaveAll()
         {
             return _context.SaveChanges() > 0;

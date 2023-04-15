@@ -6,8 +6,7 @@ namespace API.Interfaces.Repository
     public interface IStatsRepository
     {
         bool AddView(PostViewDto post);
-        void AddVote(PostCommentReaction vote);
-        void RemoveVote(PostCommentReaction vote);
+        void Vote(PostCommentReactionDto vote);
         bool SaveAll();
     }
 }

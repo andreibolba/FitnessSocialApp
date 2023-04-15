@@ -80,5 +80,17 @@ namespace API.Controllers
             return Ok(null);
         }
 
+        [HttpPost("vote")]
+        public ActionResult VotePost([FromBody] PostCommentReactionDto post)
+        {
+            if (post.PersonId == null
+                || post.PostId == null
+                || post.Upvote == null
+                || post.Downvote == null)
+                return BadRequest("There are some empty fields!");
+            _stats.Vote(post);
+            return _stats.SaveAll() ? Ok() : BadRequest("Internal server error");
+        }
+
     }
 }

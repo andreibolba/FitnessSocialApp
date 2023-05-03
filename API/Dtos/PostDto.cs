@@ -11,7 +11,9 @@
         public string Title { get; set; }
 
         public string Content { get; set; }
+
         public bool Upvote { get; set; }
+
         public bool Downvote { get; set; }
 
         public DateTime? DateOfPost { get; set; }

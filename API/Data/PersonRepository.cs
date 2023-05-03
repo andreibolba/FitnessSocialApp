@@ -78,20 +78,31 @@ namespace API.Data
         public IEnumerable<PersonDto> GetAllPerson()
         {
             var allPerson = _mapper.Map<IEnumerable<PersonDto>>(_context.People.ToList().Where(g => g.Deleted == false));
-            foreach(var p in allPerson)
+            foreach(var pers in allPerson)
             {
-                var likes = _context.PostCommentReactions.Where(p =>
-                p.Deleted == false
-                && p.PersonId == p.PersonId
+                var allReactionsPosts = _context.PostCommentReactions.Where(r => r.Deleted == false && r.PostId!=null).Include(r => r.Post).ToList();
+                var allReactionsComments = _context.PostCommentReactions.Where(r => r.Deleted == false && r.CommentId !=null).Include(r => r.Comment).ToList();
+
+                var likesPost = allReactionsPosts.Where(p =>
+                p.Post.PersonId == pers.PersonId
                 && p.Upvote == true
                 && p.DoenVote == false).Count();
-                var dislikes = _context.PostCommentReactions.Where(p =>
-                p.Deleted == false
-                && p.PersonId == p.PersonId
+                var likesComment = allReactionsComments.Where(p =>
+                p.Comment.PersonId == pers.PersonId
+                && p.Upvote == true
+                && p.DoenVote == false).Count();
+
+                var dislikesPost = allReactionsPosts.Where(p =>
+                p.Post.PersonId == pers.PersonId
                 && p.Upvote == false
                 && p.DoenVote == true).Count();
-                p.Karma = likes - dislikes;
-                p.Answers = _context.Comments.Where(c => c.Deleted == false && c.PersonId == p.PersonId).Count();
+                var dislikesComment = allReactionsComments.Where(p =>
+                p.Comment.PersonId == pers.PersonId
+                && p.Upvote == false
+                && p.DoenVote == true).Count();
+
+                pers.Karma = (likesComment+ likesPost) - (dislikesComment+dislikesPost);
+                pers.Answers = _context.Comments.Where(c => c.Deleted == false && c.PersonId == pers.PersonId).Count();
             }
             return allPerson;
         }

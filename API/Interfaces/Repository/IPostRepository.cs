@@ -7,7 +7,7 @@ namespace API.Interfaces.Repository
         void CreatePost(PostDto post);
         bool UpdatePost(PostDto post);
         bool DeletePost(int postId);
-        IEnumerable<PostDto> GetAllPostsComplete(int personId);
+        IEnumerable<PostDto> GetAllPostsByPersonId(int personId);
         IEnumerable<PostDto> GetAllPosts();
         PostDto GetPost(int postId);
         bool SaveAll();

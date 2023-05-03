@@ -13,11 +13,7 @@
   "ProjectWorkspaceState": {
     "TagHelpers": [
       {
-<<<<<<< HEAD
-        "HashCode": -1341987270,
-=======
-        "HashCode": -1442872548,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 495669141,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -101,11 +97,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -966430388,
-=======
-        "HashCode": 1832664614,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 877367478,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -190,11 +182,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1880769966,
-=======
-        "HashCode": -1141241926,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1931088328,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView.NotAuthorized",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -227,11 +215,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -274295402,
-=======
-        "HashCode": -561111404,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -833680532,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView.NotAuthorized",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -265,11 +249,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -2102245382,
-=======
-        "HashCode": 27439811,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 2059589621,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView.Authorizing",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -290,11 +270,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 2104383163,
-=======
-        "HashCode": 2098091734,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1312955066,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView.Authorizing",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -316,11 +292,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1810329567,
-=======
-        "HashCode": -1739262825,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -923722262,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeView",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -425,11 +397,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -2053613373,
-=======
-        "HashCode": 961992729,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1597907178,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeView",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -535,11 +503,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 884406198,
-=======
-        "HashCode": 965021212,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1365932475,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeView.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -572,11 +536,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1091927658,
-=======
-        "HashCode": -1259928164,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 328407354,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeView.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -610,11 +570,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1253241118,
-=======
-        "HashCode": -1155681857,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 523231934,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeView.NotAuthorized",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -647,11 +603,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -114307562,
-=======
-        "HashCode": 1297636432,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1486695191,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeView.NotAuthorized",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -685,11 +637,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -2014292889,
-=======
-        "HashCode": 382967539,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1534560235,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeView.Authorized",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -722,11 +670,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1822073591,
-=======
-        "HashCode": 1485967019,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1234224051,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeView.Authorized",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -760,11 +704,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 2045897266,
-=======
-        "HashCode": 860990350,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1843612953,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeView.Authorizing",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -785,11 +725,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1183800380,
-=======
-        "HashCode": -1258752057,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1449878270,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeView.Authorizing",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -811,11 +747,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 2075061273,
-=======
-        "HashCode": 919242400,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1786088883,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -846,11 +778,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1515192730,
-=======
-        "HashCode": -1395918488,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1826454574,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -882,11 +810,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 227286996,
-=======
-        "HashCode": 1248695745,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -377688703,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -907,11 +831,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1242041017,
-=======
-        "HashCode": -918343248,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 608040503,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -933,11 +853,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 2130471390,
-=======
-        "HashCode": 810100782,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -326620981,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.CascadingValue<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1012,11 +928,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1490679672,
-=======
-        "HashCode": -833926176,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -620383932,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.CascadingValue<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1092,11 +1004,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1824284221,
-=======
-        "HashCode": 533198618,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 2020416841,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.CascadingValue<TValue>.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1117,11 +1025,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1162426747,
-=======
-        "HashCode": 1040950114,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1616677371,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.CascadingValue<TValue>.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1143,11 +1047,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1059704075,
-=======
-        "HashCode": 1087187948,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 564415697,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.DynamicComponent",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1189,11 +1089,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -504568175,
-=======
-        "HashCode": 722550388,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1879204004,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.DynamicComponent",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1236,11 +1132,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1957083162,
-=======
-        "HashCode": -780133574,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1839162993,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.LayoutView",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1282,11 +1174,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -657106027,
-=======
-        "HashCode": 945141129,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -427473833,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.LayoutView",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1329,11 +1217,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1456849812,
-=======
-        "HashCode": 604820052,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1694440984,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.LayoutView.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1354,11 +1238,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1393036083,
-=======
-        "HashCode": -212358211,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1007914484,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.LayoutView.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1380,11 +1260,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 803137496,
-=======
-        "HashCode": 1170454099,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1630470306,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.RouteView",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1426,11 +1302,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1024751130,
-=======
-        "HashCode": 1938448495,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -860755891,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.RouteView",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1473,11 +1345,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -565506864,
-=======
-        "HashCode": 828252537,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1581869324,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Routing.Router",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1585,11 +1453,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1818054458,
-=======
-        "HashCode": -1365001775,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -487048077,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Routing.Router",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1698,11 +1562,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1326220258,
-=======
-        "HashCode": -797361010,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -280491337,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Routing.Router.NotFound",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1723,11 +1583,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -182599218,
-=======
-        "HashCode": -1925668905,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1490080969,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Routing.Router.NotFound",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1749,11 +1605,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -364024954,
-=======
-        "HashCode": 871623335,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1044060785,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Routing.Router.Found",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1786,11 +1638,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1978876104,
-=======
-        "HashCode": 1455097428,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 519517764,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Routing.Router.Found",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1824,11 +1672,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1453082798,
-=======
-        "HashCode": 1067580118,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1832431795,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Routing.Router.Navigating",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1849,11 +1693,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1287873660,
-=======
-        "HashCode": -736755687,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 554333576,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Routing.Router.Navigating",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1875,11 +1715,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1576717810,
-=======
-        "HashCode": 680232002,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -469138853,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator",
         "AssemblyName": "Microsoft.AspNetCore.Components.Forms",
@@ -1898,11 +1734,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1235857979,
-=======
-        "HashCode": 595881175,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -27866026,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator",
         "AssemblyName": "Microsoft.AspNetCore.Components.Forms",
@@ -1922,11 +1754,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -369366242,
-=======
-        "HashCode": -466177866,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1618187269,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.EditForm",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -2031,11 +1859,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 18625278,
-=======
-        "HashCode": 1823848331,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1927052224,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.EditForm",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -2141,11 +1965,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 2006198948,
-=======
-        "HashCode": 1272639441,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1820427342,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Forms.EditForm.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -2178,11 +1998,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1178393485,
-=======
-        "HashCode": -833328220,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 892458990,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Forms.EditForm.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -2216,11 +2032,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -707018674,
-=======
-        "HashCode": -258514526,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1230090030,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputCheckbox",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -2292,11 +2104,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -811909171,
-=======
-        "HashCode": 643957762,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1984445155,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputCheckbox",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -2369,11 +2177,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 2103754197,
-=======
-        "HashCode": 251662722,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1830741082,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputDate<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -2481,11 +2285,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1318051332,
-=======
-        "HashCode": -1190682845,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1791531692,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputDate<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -2594,11 +2394,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1387693445,
-=======
-        "HashCode": 146531098,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1165219015,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputFile",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -2640,11 +2436,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -526428149,
-=======
-        "HashCode": 1033496201,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 760568326,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputFile",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -2687,11 +2479,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1009982583,
-=======
-        "HashCode": 525206107,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1479828216,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputNumber<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -2788,11 +2576,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 762815091,
-=======
-        "HashCode": -1207632637,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1528623951,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputNumber<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -2890,11 +2674,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1326814593,
-=======
-        "HashCode": 1722766301,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 993821554,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputRadio<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -2958,11 +2738,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1518337137,
-=======
-        "HashCode": -1008348758,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 774688015,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputRadio<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3027,11 +2803,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1661100179,
-=======
-        "HashCode": 1673973453,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1922173139,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputRadioGroup<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3139,11 +2911,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1944744586,
-=======
-        "HashCode": 1266824094,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1524360163,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputRadioGroup<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3252,11 +3020,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -426550339,
-=======
-        "HashCode": 598308026,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -75497079,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputRadioGroup<TValue>.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3277,11 +3041,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1619220190,
-=======
-        "HashCode": 1672328176,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1710908285,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputRadioGroup<TValue>.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3303,11 +3063,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1839174142,
-=======
-        "HashCode": -2108012964,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1981882797,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputSelect<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3405,11 +3161,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -2011620351,
-=======
-        "HashCode": 1358154142,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -830398938,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputSelect<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3508,11 +3260,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 203775287,
-=======
-        "HashCode": 704183632,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -2126816846,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputSelect<TValue>.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3533,11 +3281,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 668954315,
-=======
-        "HashCode": 2060792233,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1558354217,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputSelect<TValue>.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3559,11 +3303,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1175447545,
-=======
-        "HashCode": -1279867595,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 814417818,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputText",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3635,11 +3375,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1928367819,
-=======
-        "HashCode": -1738020385,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -2058407835,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputText",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3712,11 +3448,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -870609295,
-=======
-        "HashCode": -1972489151,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -939670398,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputTextArea",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3788,11 +3520,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 75476828,
-=======
-        "HashCode": 1338253450,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -903324516,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputTextArea",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3865,11 +3593,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -199140419,
-=======
-        "HashCode": 1214180409,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1378219274,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.ValidationMessage<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3923,11 +3647,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 2112491828,
-=======
-        "HashCode": 1580485527,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1923647710,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.ValidationMessage<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3982,11 +3702,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1330329761,
-=======
-        "HashCode": -1170063805,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1903708995,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.ValidationSummary",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4027,11 +3743,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1399821814,
-=======
-        "HashCode": 489238197,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1908247984,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.ValidationSummary",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4073,11 +3785,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 541034502,
-=======
-        "HashCode": -1694273324,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -782940636,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Routing.FocusOnNavigate",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4118,11 +3826,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 49230373,
-=======
-        "HashCode": -1294043061,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1638731604,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Routing.FocusOnNavigate",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4164,11 +3868,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -294361647,
-=======
-        "HashCode": 401756364,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 528604896,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Routing.NavigationLock",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4210,11 +3910,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 515459981,
-=======
-        "HashCode": 1473272903,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 634329441,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Routing.NavigationLock",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4257,11 +3953,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1961809899,
-=======
-        "HashCode": 1363700546,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1055599976,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Routing.NavLink",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4324,11 +4016,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1710355938,
-=======
-        "HashCode": -332089422,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -308295222,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Routing.NavLink",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4392,11 +4080,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1769634921,
-=======
-        "HashCode": 1739179272,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1050341713,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Routing.NavLink.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4417,11 +4101,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -689179516,
-=======
-        "HashCode": 1744836130,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 39183685,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Routing.NavLink.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4443,11 +4123,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 463209901,
-=======
-        "HashCode": -1390943879,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 243971378,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Web.HeadContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4479,11 +4155,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 394851081,
-=======
-        "HashCode": -1339248978,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 794491068,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Web.HeadContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4516,11 +4188,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 2104147863,
-=======
-        "HashCode": -813427591,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -978748224,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.HeadContent.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4541,11 +4209,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1854037015,
-=======
-        "HashCode": 2098736503,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -977729639,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.HeadContent.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4567,11 +4231,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 94760307,
-=======
-        "HashCode": 704534146,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1526408158,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Web.HeadOutlet",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4590,11 +4250,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1375059962,
-=======
-        "HashCode": 650916134,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1684761037,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Web.HeadOutlet",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4614,11 +4270,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 107477929,
-=======
-        "HashCode": -883691211,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -732327201,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Web.PageTitle",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4650,11 +4302,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 809801539,
-=======
-        "HashCode": -221567852,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -203035901,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Web.PageTitle",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4687,11 +4335,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -620747505,
-=======
-        "HashCode": 2144513780,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1696769269,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.PageTitle.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4712,11 +4356,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -819223813,
-=======
-        "HashCode": -1878914466,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 293313856,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.PageTitle.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4738,11 +4378,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1826674686,
-=======
-        "HashCode": 2040770869,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -861484189,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Web.ErrorBoundary",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4805,11 +4441,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1660643432,
-=======
-        "HashCode": -610675872,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -271947889,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Web.ErrorBoundary",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4873,11 +4505,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -2122393085,
-=======
-        "HashCode": -886813288,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 167328061,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.ErrorBoundary.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4898,11 +4526,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1252109761,
-=======
-        "HashCode": 475058920,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 910451675,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.ErrorBoundary.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4924,11 +4548,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 367026332,
-=======
-        "HashCode": -847930107,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1961933126,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.ErrorBoundary.ErrorContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4961,11 +4581,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1108243428,
-=======
-        "HashCode": 781050235,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -759598308,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.ErrorBoundary.ErrorContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4999,11 +4615,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1403942689,
-=======
-        "HashCode": 2145844632,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 827096559,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize<TItem>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -5135,11 +4747,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1894712464,
-=======
-        "HashCode": 349161886,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -946493845,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize<TItem>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -5272,11 +4880,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 953682250,
-=======
-        "HashCode": 1356759563,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 827915361,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize<TItem>.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -5309,11 +4913,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1481537662,
-=======
-        "HashCode": -607632754,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 601183791,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize<TItem>.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -5347,11 +4947,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1130737438,
-=======
-        "HashCode": -651530306,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -556271598,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize<TItem>.ItemContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -5384,11 +4980,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1286233529,
-=======
-        "HashCode": -723386107,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -597108408,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize<TItem>.ItemContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -5422,11 +5014,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1266394387,
-=======
-        "HashCode": 1069945003,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -459874101,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize<TItem>.Placeholder",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -5459,11 +5047,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -2056537845,
-=======
-        "HashCode": -33252971,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -681213356,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize<TItem>.Placeholder",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -5497,11 +5081,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1401265983,
-=======
-        "HashCode": 2082622532,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1116675195,
         "Kind": "Components.EventHandler",
         "Name": "onfocus",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -5584,11 +5164,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1148080022,
-=======
-        "HashCode": 2052543314,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -697657382,
         "Kind": "Components.EventHandler",
         "Name": "onblur",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -5671,11 +5247,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 102597534,
-=======
-        "HashCode": -603265906,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1404104411,
         "Kind": "Components.EventHandler",
         "Name": "onfocusin",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -5758,11 +5330,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1411668736,
-=======
-        "HashCode": -1516010109,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -850454292,
         "Kind": "Components.EventHandler",
         "Name": "onfocusout",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -5845,11 +5413,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 11341160,
-=======
-        "HashCode": 1117419380,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1912029728,
         "Kind": "Components.EventHandler",
         "Name": "onmouseover",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -5932,11 +5496,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 545655474,
-=======
-        "HashCode": 1749765068,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -545107787,
         "Kind": "Components.EventHandler",
         "Name": "onmouseout",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -6019,11 +5579,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -662726226,
-=======
-        "HashCode": 456198182,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -304092017,
         "Kind": "Components.EventHandler",
         "Name": "onmouseleave",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -6106,11 +5662,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -653644079,
-=======
-        "HashCode": -1905469144,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1428882507,
         "Kind": "Components.EventHandler",
         "Name": "onmouseenter",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -6193,11 +5745,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1532480916,
-=======
-        "HashCode": 830068904,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1174938548,
         "Kind": "Components.EventHandler",
         "Name": "onmousemove",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -6280,11 +5828,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1142123443,
-=======
-        "HashCode": -1413391692,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1299068989,
         "Kind": "Components.EventHandler",
         "Name": "onmousedown",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -6367,11 +5911,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1172537365,
-=======
-        "HashCode": 688889601,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 296710731,
         "Kind": "Components.EventHandler",
         "Name": "onmouseup",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -6454,11 +5994,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1577718651,
-=======
-        "HashCode": -1307285198,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 915923069,
         "Kind": "Components.EventHandler",
         "Name": "onclick",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -6541,11 +6077,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1521410574,
-=======
-        "HashCode": 1972736600,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -962206614,
         "Kind": "Components.EventHandler",
         "Name": "ondblclick",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -6628,11 +6160,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -818111688,
-=======
-        "HashCode": -299390773,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 120840166,
         "Kind": "Components.EventHandler",
         "Name": "onwheel",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -6715,11 +6243,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1354796586,
-=======
-        "HashCode": 1820960190,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1137335917,
         "Kind": "Components.EventHandler",
         "Name": "onmousewheel",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -6802,11 +6326,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1729629634,
-=======
-        "HashCode": -2078929797,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -762035372,
         "Kind": "Components.EventHandler",
         "Name": "oncontextmenu",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -6889,11 +6409,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 560709633,
-=======
-        "HashCode": 369592890,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 226428896,
         "Kind": "Components.EventHandler",
         "Name": "ondrag",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -6976,11 +6492,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1819140877,
-=======
-        "HashCode": 1310105376,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1392863229,
         "Kind": "Components.EventHandler",
         "Name": "ondragend",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -7063,11 +6575,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -889196020,
-=======
-        "HashCode": 375259859,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -339584273,
         "Kind": "Components.EventHandler",
         "Name": "ondragenter",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -7150,11 +6658,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1760038567,
-=======
-        "HashCode": 1610824045,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 123473706,
         "Kind": "Components.EventHandler",
         "Name": "ondragleave",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -7237,11 +6741,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 738650851,
-=======
-        "HashCode": -1704459359,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 60747829,
         "Kind": "Components.EventHandler",
         "Name": "ondragover",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -7324,11 +6824,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1688920943,
-=======
-        "HashCode": -946359746,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1032011200,
         "Kind": "Components.EventHandler",
         "Name": "ondragstart",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -7411,11 +6907,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1313116118,
-=======
-        "HashCode": 1602019126,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -645662851,
         "Kind": "Components.EventHandler",
         "Name": "ondrop",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -7498,11 +6990,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -2098566733,
-=======
-        "HashCode": 2116055705,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1039151997,
         "Kind": "Components.EventHandler",
         "Name": "onkeydown",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -7585,11 +7073,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1955607476,
-=======
-        "HashCode": -221071185,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 62249209,
         "Kind": "Components.EventHandler",
         "Name": "onkeyup",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -7672,11 +7156,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1813999717,
-=======
-        "HashCode": -1277734475,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 2061945818,
         "Kind": "Components.EventHandler",
         "Name": "onkeypress",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -7759,11 +7239,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -220587231,
-=======
-        "HashCode": -8168905,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1023971332,
         "Kind": "Components.EventHandler",
         "Name": "onchange",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -7846,11 +7322,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 687297871,
-=======
-        "HashCode": -1620741172,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 176262199,
         "Kind": "Components.EventHandler",
         "Name": "oninput",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -7933,11 +7405,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -240692278,
-=======
-        "HashCode": 935489093,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -180103917,
         "Kind": "Components.EventHandler",
         "Name": "oninvalid",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -8020,11 +7488,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -30712585,
-=======
-        "HashCode": -146554723,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -523053238,
         "Kind": "Components.EventHandler",
         "Name": "onreset",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -8107,11 +7571,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 581541895,
-=======
-        "HashCode": 1691603674,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 2135596046,
         "Kind": "Components.EventHandler",
         "Name": "onselect",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -8194,11 +7654,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1464838168,
-=======
-        "HashCode": -191182733,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1175463723,
         "Kind": "Components.EventHandler",
         "Name": "onselectstart",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -8281,11 +7737,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -354549551,
-=======
-        "HashCode": 267422472,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1496751372,
         "Kind": "Components.EventHandler",
         "Name": "onselectionchange",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -8368,11 +7820,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -2011209238,
-=======
-        "HashCode": -508173333,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 677028383,
         "Kind": "Components.EventHandler",
         "Name": "onsubmit",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -8455,11 +7903,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1657369031,
-=======
-        "HashCode": 1661599408,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1454451948,
         "Kind": "Components.EventHandler",
         "Name": "onbeforecopy",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -8542,11 +7986,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 968435266,
-=======
-        "HashCode": -289240428,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -99232607,
         "Kind": "Components.EventHandler",
         "Name": "onbeforecut",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -8629,11 +8069,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1407193189,
-=======
-        "HashCode": 597327289,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -120731332,
         "Kind": "Components.EventHandler",
         "Name": "onbeforepaste",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -8716,11 +8152,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1568778884,
-=======
-        "HashCode": -1897937071,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -998660876,
         "Kind": "Components.EventHandler",
         "Name": "oncopy",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -8803,11 +8235,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1821685189,
-=======
-        "HashCode": 1453080287,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1139821627,
         "Kind": "Components.EventHandler",
         "Name": "oncut",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -8890,11 +8318,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 957078382,
-=======
-        "HashCode": -5999868,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 94092036,
         "Kind": "Components.EventHandler",
         "Name": "onpaste",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -8977,11 +8401,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -993072382,
-=======
-        "HashCode": 153499555,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1975289169,
         "Kind": "Components.EventHandler",
         "Name": "ontouchcancel",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -9064,11 +8484,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -742334073,
-=======
-        "HashCode": 102392629,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1339273114,
         "Kind": "Components.EventHandler",
         "Name": "ontouchend",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -9151,11 +8567,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1419024376,
-=======
-        "HashCode": 1869767208,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1782726756,
         "Kind": "Components.EventHandler",
         "Name": "ontouchmove",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -9238,11 +8650,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1003296140,
-=======
-        "HashCode": -2072794932,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -649579193,
         "Kind": "Components.EventHandler",
         "Name": "ontouchstart",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -9325,11 +8733,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1460244007,
-=======
-        "HashCode": 874185612,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -530927114,
         "Kind": "Components.EventHandler",
         "Name": "ontouchenter",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -9412,11 +8816,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -404624325,
-=======
-        "HashCode": 29914403,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -159183898,
         "Kind": "Components.EventHandler",
         "Name": "ontouchleave",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -9499,11 +8899,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1643463963,
-=======
-        "HashCode": -481510780,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -894848758,
         "Kind": "Components.EventHandler",
         "Name": "ongotpointercapture",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -9586,11 +8982,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1400076690,
-=======
-        "HashCode": 684221038,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 29421104,
         "Kind": "Components.EventHandler",
         "Name": "onlostpointercapture",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -9673,11 +9065,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1633875631,
-=======
-        "HashCode": 790345442,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1477770906,
         "Kind": "Components.EventHandler",
         "Name": "onpointercancel",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -9760,11 +9148,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1503985258,
-=======
-        "HashCode": -1157269149,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -454693337,
         "Kind": "Components.EventHandler",
         "Name": "onpointerdown",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -9847,11 +9231,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -817757943,
-=======
-        "HashCode": -1925745522,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 111320566,
         "Kind": "Components.EventHandler",
         "Name": "onpointerenter",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -9934,11 +9314,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1506123683,
-=======
-        "HashCode": -946666321,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1741041894,
         "Kind": "Components.EventHandler",
         "Name": "onpointerleave",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -10021,11 +9397,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1037241296,
-=======
-        "HashCode": 1896580300,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 52490289,
         "Kind": "Components.EventHandler",
         "Name": "onpointermove",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -10108,11 +9480,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 2000747197,
-=======
-        "HashCode": 892121700,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -2125230464,
         "Kind": "Components.EventHandler",
         "Name": "onpointerout",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -10195,11 +9563,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -2118647784,
-=======
-        "HashCode": -1373288471,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1597214981,
         "Kind": "Components.EventHandler",
         "Name": "onpointerover",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -10282,11 +9646,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -447357271,
-=======
-        "HashCode": 1207637917,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1529492161,
         "Kind": "Components.EventHandler",
         "Name": "onpointerup",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -10369,11 +9729,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1207778374,
-=======
-        "HashCode": -1850205994,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 732059048,
         "Kind": "Components.EventHandler",
         "Name": "oncanplay",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -10456,11 +9812,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1480060360,
-=======
-        "HashCode": -1022443226,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1509406463,
         "Kind": "Components.EventHandler",
         "Name": "oncanplaythrough",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -10543,11 +9895,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1588202560,
-=======
-        "HashCode": -158771781,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 607109439,
         "Kind": "Components.EventHandler",
         "Name": "oncuechange",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -10630,11 +9978,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 2116524362,
-=======
-        "HashCode": -1757975848,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1697746302,
         "Kind": "Components.EventHandler",
         "Name": "ondurationchange",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -10717,11 +10061,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -782125546,
-=======
-        "HashCode": -1379430085,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 179057216,
         "Kind": "Components.EventHandler",
         "Name": "onemptied",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -10804,11 +10144,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 619861407,
-=======
-        "HashCode": 360031088,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1762410644,
         "Kind": "Components.EventHandler",
         "Name": "onpause",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -10891,11 +10227,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1982282043,
-=======
-        "HashCode": 148247020,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 16562715,
         "Kind": "Components.EventHandler",
         "Name": "onplay",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -10978,11 +10310,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -669441498,
-=======
-        "HashCode": -227944288,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 2013448496,
         "Kind": "Components.EventHandler",
         "Name": "onplaying",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -11065,11 +10393,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -317893369,
-=======
-        "HashCode": -807703314,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1242161386,
         "Kind": "Components.EventHandler",
         "Name": "onratechange",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -11152,11 +10476,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -810238862,
-=======
-        "HashCode": -567775611,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1777317672,
         "Kind": "Components.EventHandler",
         "Name": "onseeked",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -11239,11 +10559,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1240191726,
-=======
-        "HashCode": -1866529537,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 359063561,
         "Kind": "Components.EventHandler",
         "Name": "onseeking",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -11326,11 +10642,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -381209295,
-=======
-        "HashCode": -1708542040,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1655488533,
         "Kind": "Components.EventHandler",
         "Name": "onstalled",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -11413,11 +10725,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1639810505,
-=======
-        "HashCode": -177325210,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1007765678,
         "Kind": "Components.EventHandler",
         "Name": "onstop",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -11500,11 +10808,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1169496437,
-=======
-        "HashCode": 1213698187,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1787444648,
         "Kind": "Components.EventHandler",
         "Name": "onsuspend",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -11587,11 +10891,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 451451617,
-=======
-        "HashCode": 2059670787,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 140491358,
         "Kind": "Components.EventHandler",
         "Name": "ontimeupdate",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -11674,11 +10974,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 45190522,
-=======
-        "HashCode": 918283001,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 472499344,
         "Kind": "Components.EventHandler",
         "Name": "onvolumechange",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -11761,11 +11057,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 803581604,
-=======
-        "HashCode": 303080572,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 169599062,
         "Kind": "Components.EventHandler",
         "Name": "onwaiting",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -11848,11 +11140,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -302752265,
-=======
-        "HashCode": 1381488325,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 271457398,
         "Kind": "Components.EventHandler",
         "Name": "onloadstart",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -11935,11 +11223,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1821048324,
-=======
-        "HashCode": 1235657383,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1020844390,
         "Kind": "Components.EventHandler",
         "Name": "ontimeout",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -12022,11 +11306,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1384120181,
-=======
-        "HashCode": -92865368,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -711298110,
         "Kind": "Components.EventHandler",
         "Name": "onabort",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -12109,11 +11389,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 746486916,
-=======
-        "HashCode": 1841282326,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1031514341,
         "Kind": "Components.EventHandler",
         "Name": "onload",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -12196,11 +11472,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1136370000,
-=======
-        "HashCode": -1960130322,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1362871978,
         "Kind": "Components.EventHandler",
         "Name": "onloadend",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -12283,11 +11555,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1888752719,
-=======
-        "HashCode": -1129625725,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1989504231,
         "Kind": "Components.EventHandler",
         "Name": "onprogress",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -12370,11 +11638,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1780905440,
-=======
-        "HashCode": -1477885161,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 519131684,
         "Kind": "Components.EventHandler",
         "Name": "onerror",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -12457,11 +11721,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 782182740,
-=======
-        "HashCode": -1227415021,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -763669723,
         "Kind": "Components.EventHandler",
         "Name": "onactivate",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -12544,11 +11804,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1582336748,
-=======
-        "HashCode": -142982971,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1340210902,
         "Kind": "Components.EventHandler",
         "Name": "onbeforeactivate",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -12631,11 +11887,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 634829452,
-=======
-        "HashCode": -1796700648,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 11541279,
         "Kind": "Components.EventHandler",
         "Name": "onbeforedeactivate",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -12718,11 +11970,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1646189948,
-=======
-        "HashCode": 1867449712,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1047463354,
         "Kind": "Components.EventHandler",
         "Name": "ondeactivate",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -12805,11 +12053,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1166157193,
-=======
-        "HashCode": 468343006,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -2056282647,
         "Kind": "Components.EventHandler",
         "Name": "onended",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -12892,11 +12136,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1674703525,
-=======
-        "HashCode": -1276954556,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -935260716,
         "Kind": "Components.EventHandler",
         "Name": "onfullscreenchange",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -12979,11 +12219,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1059433027,
-=======
-        "HashCode": 1758862985,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 511378275,
         "Kind": "Components.EventHandler",
         "Name": "onfullscreenerror",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -13066,11 +12302,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 95584602,
-=======
-        "HashCode": 2091888031,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1585696417,
         "Kind": "Components.EventHandler",
         "Name": "onloadeddata",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -13153,11 +12385,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -797953459,
-=======
-        "HashCode": 651732929,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1224709830,
         "Kind": "Components.EventHandler",
         "Name": "onloadedmetadata",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -13240,11 +12468,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -436251913,
-=======
-        "HashCode": 211226048,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -98503867,
         "Kind": "Components.EventHandler",
         "Name": "onpointerlockchange",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -13327,11 +12551,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1157826769,
-=======
-        "HashCode": -18564347,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 439771332,
         "Kind": "Components.EventHandler",
         "Name": "onpointerlockerror",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -13414,11 +12634,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -507273384,
-=======
-        "HashCode": -1623708330,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1669259911,
         "Kind": "Components.EventHandler",
         "Name": "onreadystatechange",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -13501,11 +12717,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -702386207,
-=======
-        "HashCode": 1757840976,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -205849351,
         "Kind": "Components.EventHandler",
         "Name": "onscroll",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -13588,11 +12800,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 466229446,
-=======
-        "HashCode": -112941594,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 112586837,
         "Kind": "Components.EventHandler",
         "Name": "ontoggle",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -13675,11 +12883,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1986637940,
-=======
-        "HashCode": -1281495156,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1294856768,
         "Kind": "Components.Splat",
         "Name": "Attributes",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -13718,11 +12922,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 466493388,
-=======
-        "HashCode": -784671434,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 2051000996,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.Razor",
@@ -14039,11 +13239,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 528067219,
-=======
-        "HashCode": 2072660240,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -19218936,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -14242,11 +13438,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1009207443,
-=======
-        "HashCode": -1496507951,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -914509863,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.CacheTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -14375,11 +13567,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 2114032399,
-=======
-        "HashCode": 777207498,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1761450384,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -14436,11 +13624,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -545263068,
-=======
-        "HashCode": 1294069353,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -893050393,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.DistributedCacheTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -14574,11 +13758,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 577110785,
-=======
-        "HashCode": 1010603806,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1557861956,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.EnvironmentTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -14626,11 +13806,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1794948917,
-=======
-        "HashCode": 353809053,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1503618116,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.FormActionTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -15049,11 +14225,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1633142352,
-=======
-        "HashCode": -1990267943,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -578185645,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.FormTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -15157,11 +14329,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 2082812272,
-=======
-        "HashCode": 1599486135,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -422134041,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.ImageTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -15209,11 +14377,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1287588412,
-=======
-        "HashCode": -1816106603,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -762281783,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -15285,11 +14449,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1114717771,
-=======
-        "HashCode": 1940241994,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1506266319,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.LabelTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -15324,11 +14484,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1397635842,
-=======
-        "HashCode": -186040411,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1551766369,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -15526,11 +14682,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1140246812,
-=======
-        "HashCode": 1588808896,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 311998402,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.OptionTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -15560,11 +14712,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1190433599,
-=======
-        "HashCode": 1552671651,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 950354883,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.PartialTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -15647,11 +14795,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 336336911,
-=======
-        "HashCode": 898309903,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 596231666,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.PersistComponentStateTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -15682,11 +14826,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1305641440,
-=======
-        "HashCode": -1984170930,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -149728034,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -15841,11 +14981,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -760623704,
-=======
-        "HashCode": -1347948246,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1205440678,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.SelectTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -15906,11 +15042,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1838247389,
-=======
-        "HashCode": -957705927,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 116625803,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.TextAreaTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -15954,11 +15086,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1664993691,
-=======
-        "HashCode": -1143652995,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 50284942,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.ValidationMessageTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -15993,11 +15121,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1358822565,
-=======
-        "HashCode": 1245353640,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -454818351,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.ValidationSummaryTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -16033,11 +15157,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 808259704,
-=======
-        "HashCode": 714276322,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 691717962,
         "Kind": "Components.Bind",
         "Name": "Bind",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -16133,11 +15253,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 680603682,
-=======
-        "HashCode": 2107707623,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 607940276,
         "Kind": "Components.Bind",
         "Name": "Bind",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -16259,11 +15375,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 126315216,
-=======
-        "HashCode": -2035731828,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1973792003,
         "Kind": "Components.Bind",
         "Name": "Bind_value",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -16385,11 +15497,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1254231182,
-=======
-        "HashCode": 695589204,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 964962693,
         "Kind": "Components.Bind",
         "Name": "Bind",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -16522,11 +15630,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -334079829,
-=======
-        "HashCode": 248391483,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 2047769556,
         "Kind": "Components.Bind",
         "Name": "Bind",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -16659,11 +15763,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 699234085,
-=======
-        "HashCode": -1414754320,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -115531485,
         "Kind": "Components.Bind",
         "Name": "Bind",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -16796,11 +15896,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1235206122,
-=======
-        "HashCode": -507789178,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1940854256,
         "Kind": "Components.Bind",
         "Name": "Bind_value",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -16933,11 +16029,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1180335179,
-=======
-        "HashCode": 1492563299,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1769488084,
         "Kind": "Components.Bind",
         "Name": "Bind",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -17070,11 +16162,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1691613514,
-=======
-        "HashCode": -1704139388,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1724216755,
         "Kind": "Components.Bind",
         "Name": "Bind_value",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -17207,11 +16295,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1655965798,
-=======
-        "HashCode": -592947609,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1377631388,
         "Kind": "Components.Bind",
         "Name": "Bind",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -17344,11 +16428,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1768796375,
-=======
-        "HashCode": -1307918710,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -123235242,
         "Kind": "Components.Bind",
         "Name": "Bind_value",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -17481,11 +16561,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1126091159,
-=======
-        "HashCode": -117445540,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 82526260,
         "Kind": "Components.Bind",
         "Name": "Bind",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -17618,11 +16694,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 687163794,
-=======
-        "HashCode": -1688406983,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1488441320,
         "Kind": "Components.Bind",
         "Name": "Bind_value",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -17755,11 +16827,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 728634620,
-=======
-        "HashCode": -1273937017,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1496650047,
         "Kind": "Components.Bind",
         "Name": "Bind",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -17892,11 +16960,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -535300597,
-=======
-        "HashCode": -2083589120,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1960798389,
         "Kind": "Components.Bind",
         "Name": "Bind_value",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -18029,11 +17093,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 109280645,
-=======
-        "HashCode": 1405201406,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -2047281324,
         "Kind": "Components.Bind",
         "Name": "Bind",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -18155,11 +17215,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 2141967508,
-=======
-        "HashCode": -697257438,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1021004597,
         "Kind": "Components.Bind",
         "Name": "Bind",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -18281,11 +17337,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 424852184,
-=======
-        "HashCode": -1840977345,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1283614997,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputCheckbox",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -18372,11 +17424,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 427783658,
-=======
-        "HashCode": 796883843,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 335201691,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputCheckbox",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -18464,11 +17512,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1430172211,
-=======
-        "HashCode": 1159328221,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -2029630522,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputDate<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -18555,11 +17599,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -559327394,
-=======
-        "HashCode": 1016818801,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 434331693,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputDate<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -18647,11 +17687,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1220951348,
-=======
-        "HashCode": -358031575,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 2133776583,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputNumber<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -18738,11 +17774,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -764090316,
-=======
-        "HashCode": -1765894747,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 916950216,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputNumber<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -18830,11 +17862,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1123645924,
-=======
-        "HashCode": 1460025697,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -2021844595,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputRadioGroup<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -18921,11 +17949,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 504451519,
-=======
-        "HashCode": 1166978217,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1905491330,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputRadioGroup<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -19013,11 +18037,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 116426511,
-=======
-        "HashCode": 2103911025,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 629134837,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputSelect<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -19104,11 +18124,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 123573401,
-=======
-        "HashCode": -546395202,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1132484989,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputSelect<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -19196,11 +18212,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -2116151077,
-=======
-        "HashCode": -2025866362,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -91719771,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputText",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -19287,11 +18299,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1915523556,
-=======
-        "HashCode": 176911401,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -599607998,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputText",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -19379,11 +18387,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1590902268,
-=======
-        "HashCode": -1548944581,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -947817064,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputTextArea",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -19470,11 +18474,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 810779019,
-=======
-        "HashCode": 826603216,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 384343627,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputTextArea",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -19562,11 +18562,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1317362275,
-=======
-        "HashCode": -851202896,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": 1109119378,
         "Kind": "Components.Ref",
         "Name": "Ref",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -19605,11 +18601,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -2022420418,
-=======
-        "HashCode": 2014781377,
->>>>>>> IH-11-Create-Tests-component-for-Intern
+        "HashCode": -1045618854,
         "Kind": "Components.Key",
         "Name": "Key",
         "AssemblyName": "Microsoft.AspNetCore.Components",

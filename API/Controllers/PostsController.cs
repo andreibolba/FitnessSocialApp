@@ -26,7 +26,7 @@ namespace API.Controllers
         [HttpGet("completed/{personId:int}")]
         public ActionResult GetAllPostsCompleted(int personId)
         {
-            return Ok(_post.GetAllPostsComplete(personId));
+            return Ok(_post.GetAllPostsByPersonId(personId));
         }
 
         [HttpGet("{postId:int}")]

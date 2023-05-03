@@ -3,19 +3,19 @@ using API.Interfaces.Repository;
 using API.Models;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using System.Runtime.CompilerServices;
 
 namespace API.Data
 {
     public class PostRepository : IPostRepository
     {
         private readonly InternShipAppSystemContext _context;
+        private readonly IPersonRepository _personRepository;
         private readonly IMapper _mapper;
 
-        public PostRepository(InternShipAppSystemContext context, IMapper mapper)
+        public PostRepository(InternShipAppSystemContext context, IPersonRepository personRepository, IMapper mapper)
         {
             _context = context;
+            _personRepository = personRepository;
             _mapper = mapper;
         }
 
@@ -31,6 +31,12 @@ namespace API.Data
             var post = _mapper.Map<Post>(GetPost(postId));
             if (post == null)
                 return false;
+            var allcomments = _context.Comments.Where(d => d.PostId == postId);
+            foreach (var comment in allcomments)
+            {
+                comment.Deleted = true;
+                _context.Comments.Update(comment);
+            }
             post.Deleted = true;
             _context.Posts.Update(post);
             return true;
@@ -39,38 +45,30 @@ namespace API.Data
         public IEnumerable<PostDto> GetAllPosts()
         {
             var allPosts = _context.Posts.Where(p => p.Deleted == false)
-                .OrderBy(p => p.DateOfPost)
-                .Include(p => p.Person);
-            return _mapper.Map<IEnumerable<PostDto>>(allPosts);
-        }
-
-        public IEnumerable<PostDto> GetAllPostsComplete(int personId)
-        {
-            var allPosts = _context.Posts.Where(p => p.Deleted == false)
-                .OrderBy(p => p.DateOfPost)
-                .Include(p=>p.Person);
-            var allPostsToSend = _mapper.Map<IEnumerable<PostDto>>(allPosts);
-            foreach (var a in allPostsToSend)
+                .OrderBy(p => p.DateOfPost);
+            var allPostsDto = _mapper.Map<IEnumerable<PostDto>>(allPosts);
+            foreach (var a in allPostsDto)
             {
-                var isUp = _context.PostCommentReactions.SingleOrDefault(p => p.PostId == a.PostId && p.PersonId == personId && p.Deleted == false);
-                if(isUp==null)
+                a.Person = _personRepository.GetPersonById(a.PersonId.Value);
+                var isUp = _context.PostCommentReactions.SingleOrDefault(p => p.PostId == a.PostId && p.PersonId == a.PersonId && p.Deleted == false);
+                if (isUp == null)
                 {
                     a.Upvote = false;
                     a.Downvote = false;
                 }
                 else
                 {
-                        a.Upvote = isUp.Upvote;
-                        a.Downvote = isUp.DoenVote;
+                    a.Upvote = isUp.Upvote;
+                    a.Downvote = isUp.DoenVote;
 
                 }
-                var likes = _context.PostCommentReactions.Where(p=>
-                p.Deleted==false
-                && p.PostId!=null
-                && p.PostId==a.PostId
-                && p.CommentId==null
-                && p.Upvote==true
-                && p.DoenVote==false).Count();
+                var likes = _context.PostCommentReactions.Where(p =>
+                p.Deleted == false
+                && p.PostId != null
+                && p.PostId == a.PostId
+                && p.CommentId == null
+                && p.Upvote == true
+                && p.DoenVote == false).Count();
                 var dislikes = _context.PostCommentReactions.Where(p =>
                 p.Deleted == false
                 && p.PostId != null
@@ -79,9 +77,14 @@ namespace API.Data
                 && p.Upvote == false
                 && p.DoenVote == true).Count();
                 a.Karma = likes - dislikes;
-                a.Views = _context.PostViews.Where(pw=>pw.Deleted==false && pw.PostId == a.PostId).Count();
+                a.Views = _context.PostViews.Where(pw => pw.Deleted == false && pw.PostId == a.PostId).Count();
             }
-            return allPostsToSend;
+            return allPostsDto;
+        }
+
+        public IEnumerable<PostDto> GetAllPostsByPersonId(int personId)
+        {
+            return GetAllPosts().Where(p=>p.PersonId.Value == personId);
         }
 
         public PostDto GetPost(int postId)

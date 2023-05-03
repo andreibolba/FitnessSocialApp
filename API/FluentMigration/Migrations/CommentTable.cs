@@ -21,7 +21,7 @@ namespace API.FluentMigration.Migrations
                 .WithColumn("CommentId").AsInt32().PrimaryKey().NotNullable().Identity()
                 .WithColumn("PersonId").AsInt32().NotNullable()
                 .WithColumn("PostId").AsInt32().NotNullable()
-                .WithColumn("CommentContent").AsString().NotNullable()
+                .WithColumn("CommentContent").AsString(int.MaxValue).NotNullable()
                 .WithColumn("DateOfComment").AsDateTime().NotNullable()
                 .WithColumn("Deleted").AsBoolean().NotNullable();
 

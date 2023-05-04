@@ -8,6 +8,7 @@ import { UtilsService } from 'src/services/utils.service';
 import { AddEditPostComponent } from '../add-edit-post/add-edit-post.component';
 import { SeePostComponent } from '../see-post/see-post.component';
 import { Person } from 'src/model/person.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-forum',
@@ -20,12 +21,14 @@ export class ForumComponent implements OnInit, OnDestroy {
   postsSubscription!: Subscription;
   viewSubscription!: Subscription;
   personSubscription!: Subscription;
+  deletePostSubscription!: Subscription;
   person: Person = new Person();
   posts: Post[] = [];
 
   constructor(
     private utils: UtilsService,
     private dataStorage: DataStorageService,
+    private toastr: ToastrService,
     private dialog: MatDialog
   ) {}
   ngOnDestroy(): void {
@@ -92,5 +95,14 @@ export class ForumComponent implements OnInit, OnDestroy {
   onEdit(post: Post) {
     this.utils.postToEdit.next(post);
     this.openDialog(1);
+  }
+
+  onDelete(post: Post) {
+    this.deletePostSubscription = this.dataStorage.deletePost(this.token, post.postId).subscribe(
+      () => {
+        this.toastr.success("Post was deleted succesfully delete!");
+      },(error)=>{
+        this.toastr.error(error.error);}
+    );
   }
 }

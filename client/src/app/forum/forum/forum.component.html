@@ -14,7 +14,10 @@
       <div class="name">
         {{ post.person.firstName + ' ' + post.person.lastName}}
       </div>
-      <button class="btn-info" *ngIf="post.canEdit" (click)="onEdit(post)">Edit post</button>
+      <div class="btns">
+        <button class="btn-info" *ngIf="post.canEdit" (click)="onEdit(post)">Edit</button>
+        <button class="btn-danger" *ngIf="post.canEdit" (click)="onDelete(post)">Delete</button>
+      </div>
     </div>
     <div class="post">
       <div class="title" (click)="onSeePost(post)">
@@ -35,7 +38,7 @@
         <i class="uil uil-eye"></i>{{post.views}}
       </div>
       <div class="date">
-        {{post.dateOfPost  | date:'medium' }}
+        {{post.dateOfPost | date:'medium' }}
+      </div>
     </div>
   </div>
-</div>

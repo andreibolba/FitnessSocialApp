@@ -1,0 +1,20 @@
+<h3>{{operation}} post</h3>
+<div id="main">
+  <form #registerForm="ngForm" (ngSubmit)="onSignUpSubmit()" autocomplete="off">
+    <div class="infos">
+      <div class="info">
+        <label for="postContent">Comment Content</label>
+        <textarea id="postContent" placeholder="Post Content" name="postContent" [(ngModel)]="content"
+          required>
+        </textarea>
+      </div>
+    </div>
+
+
+    <mat-dialog-actions align="center">
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button type="submit" [disabled]="!registerForm.valid" mat-button cdkFocusInitial> {{ operation }}</button>
+    </mat-dialog-actions>
+  </form>
+</div>
+

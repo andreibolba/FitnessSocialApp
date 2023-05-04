@@ -8,6 +8,7 @@ import { Question } from 'src/model/question.model';
 import { Test } from 'src/model/test.model';
 import { DataStorageService } from './data-storage.service';
 import { Post } from 'src/model/post.model';
+import { Comment } from 'src/model/comment.model';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,8 @@ export class UtilsService {
   meetingParticipants=new BehaviorSubject<Person[]|null>(null);
   testToSeeAllResult = new BehaviorSubject<Test | null>(null);
   postToEdit = new BehaviorSubject<Post | null>(null);
+  commentToEdit = new BehaviorSubject<Comment | null>(null);
+  postIdToComment = new BehaviorSubject<number | null>(null);
   dashboardChanged=new EventEmitter<boolean>(true);
 
   error=new BehaviorSubject<{errorCode:number,errorTitle:string,errorMessage:string} | null>(null);

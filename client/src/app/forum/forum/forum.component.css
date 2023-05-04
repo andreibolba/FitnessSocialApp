@@ -127,10 +127,12 @@ h2 {
 .person button{
   color:white;
   height: 22px;
-  width: 50%;
-  margin-left: 25%;
+  width: 65px;
+  margin-left: 5px;
+  margin-right: 5px;
   font-size: 12px;
   border: none;
+  border-radius: 5px;
 }
 
 .content {
@@ -197,4 +199,9 @@ h2 {
   height: 20px;
   width: 100%;
   font-size: 18px;
+}
+
+.btns{
+  display: flex;
+  width: 100%;
 }

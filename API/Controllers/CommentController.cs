@@ -32,7 +32,6 @@ namespace API.Controllers
         public ActionResult AddComment([FromBody] CommentDto comment) {
             if(comment.PersonId == null
                 || comment.PostId == null
-                || comment.DateOfComment == null
                 || comment.CommentContent == null)
                 return BadRequest("There are some empty fields!");
             var res = _comment.AddComm(comment);

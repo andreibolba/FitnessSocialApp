@@ -48,6 +48,7 @@ import { SeeAllResultsComponent } from './shared/tests/see-all-results/see-all-r
 import {MatListModule} from '@angular/material/list';
 import { SeePostComponent } from './forum/see-post/see-post.component';
 import { AddEditPostComponent } from './forum/add-edit-post/add-edit-post.component';
+import { AddEditCommentComponent } from './forum/add-edit-comment/add-edit-comment.component';
 
 @NgModule({
   declarations: [
@@ -84,7 +85,8 @@ import { AddEditPostComponent } from './forum/add-edit-post/add-edit-post.compon
     StartTestComponent,
     SeeAllResultsComponent,
     SeePostComponent,
-    AddEditPostComponent
+    AddEditPostComponent,
+    AddEditCommentComponent
   ],
   imports: [
     BrowserModule,

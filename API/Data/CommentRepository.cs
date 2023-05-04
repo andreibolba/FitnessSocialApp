@@ -22,6 +22,7 @@ namespace API.Data
         public CommentDto AddComm(CommentDto comment)
         {
             var comm = _mapper.Map<Comment>(comment);
+            comm.DateOfComment = DateTime.Now;
             _context.Comments.Add(comm);
             return _mapper.Map<CommentDto>(comm);
         }

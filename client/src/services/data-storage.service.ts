@@ -110,6 +110,11 @@ export class DataStorageService {
     return this.http.get<Group[]>(this.baseUrl + 'group', { headers: headers });
   }
 
+  getGroupById(token: string,groupId:number) {
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<Group>(this.baseUrl + 'group/'+groupId, { headers: headers });
+  }
+
   addGroup(token: string, group: Group) {
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.post(

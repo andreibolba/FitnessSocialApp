@@ -1,1 +1,83 @@
-<p>group works!</p>
+<div id="main">
+  <div class="picture">
+    <div class="pic"></div>
+    <div class="name">{{group.groupName}}</div>
+    <div class="edit" (click)="edit()">
+      <img src="../../../../../assets/img/edit_pen.png" height="22px" width="22px" style="margin-top: 7px; margin-left: 7px;"/>
+    </div>
+  </div>
+  <div class="informations">
+    <div class="description">
+      <label for="trainer">Description</label>
+      <div class="description_group">
+        {{description}}
+      </div>
+    </div>
+    <div class="trainer">
+      <div class="row">
+        <div class="answer">
+          <div class="info">
+            <label for="trainer">First Name</label>
+            <input type="text" id="trainer" name="trainer" readonly [value]="person.firstName" required
+              autocomplete="off">
+          </div>
+        </div>
+        <div class="answer">
+          <div class="info">
+            <label for="trainer">Last Name</label>
+            <input type="text" id="trainer" name="trainer" readonly [value]="person.lastName" required
+              autocomplete="off">
+          </div>
+        </div>
+        <div class="answer">
+          <div class="info">
+            <label for="trainer">Username</label>
+            <input type="text" id="trainer" name="trainer" readonly [value]="person.username" required
+              autocomplete="off">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="answer">
+          <div class="info">
+            <label for="trainer">Email</label>
+            <input type="text" id="trainer" name="trainer" readonly [value]="person.email" required autocomplete="off">
+          </div>
+        </div>
+        <div class="answer">
+          <div class="info">
+            <label for="trainer">Birthdate</label>
+            <input type="text" id="trainer" name="trainer" readonly [value]="person.birthDate | date" required
+              autocomplete="off">
+          </div>
+        </div>
+        <div class="answer">
+          <div class="info">
+            <label for="trainer">Status</label>
+            <input type="text" id="trainer" name="trainer" readonly [value]="person.status" required autocomplete="off">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="group_info">
+      <div class="participants">
+        <label for="trainer">Participats</label>
+        <input type="text" id="trainer" name="trainer" readonly [value]="person.status" required autocomplete="off">
+      </div>
+      <div class="tests">
+        <label for="trainer">Tests</label>
+        <input type="text" id="trainer" name="trainer" readonly [value]="person.status" required autocomplete="off">
+      </div>
+    </div>
+    <div class="group_info">
+      <div class="tasks">
+        <label for="trainer">Tasks</label>
+        <input type="text" id="trainer" name="trainer" readonly [value]="person.status" required autocomplete="off">
+      </div>
+      <div class="challanges">
+        <label for="trainer">Challanges</label>
+        <input type="text" id="trainer" name="trainer" readonly [value]="person.status" required autocomplete="off">
+      </div>
+    </div>
+  </div>
+</div>

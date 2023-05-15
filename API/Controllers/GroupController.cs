@@ -22,6 +22,12 @@ namespace API.Controllers
             return Ok(_repository.GetAllGroups());
         }
 
+        [HttpGet("{groupId:int}")]
+        public ActionResult<GroupDto> GetGroupById(int groupId)
+        {
+            return Ok(_repository.GetGroupById(groupId));
+        }
+
         [HttpPost("add")]
         public ActionResult AddGroup([FromBody] GroupDto group)
         {

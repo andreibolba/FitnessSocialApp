@@ -208,6 +208,7 @@ public partial class InternShipAppSystemContext : DbContext
         {
             entity.ToTable("Group");
 
+            entity.Property(e => e.Description).IsRequired();
             entity.Property(e => e.GroupName)
                 .IsRequired()
                 .HasMaxLength(255);

@@ -1,18 +1,19 @@
-<div class="buttons">
+<div [class]="buttonsClass">
   <div class="title">
     <i class="uil uil-question-circle"></i>
     <h2>All of my tests</h2>
   </div>
-  <button class="btn btn-success" mat-button (click)="onAdd()" *ngIf="isTrainer"> Add test </button>
+  <button class="btn btn-success" mat-button (click)="onAdd()" *ngIf="isTrainer && isFromGroup==false"> Add test </button>
 </div>
 
-<div id="main" *ngIf="tests.length!=0">
+<div [id]="mainId" *ngIf="tests.length!=0">
   <div class="row">
     <div id="test" *ngFor="let t of tests">
       <div class="question" *ngIf="isTrainer">
         <a (click)="onSeeTest(t)" >
         {{ t.testName }}
         <h5>{{t.deadline | date}}</h5>
+        <p>Deadline: {{t.deadline | date}}</p>
         </a>
       </div>
       <div class="question" *ngIf="!isTrainer">

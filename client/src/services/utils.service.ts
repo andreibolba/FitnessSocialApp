@@ -25,6 +25,7 @@ export class UtilsService {
   addedPerson=new BehaviorSubject<Person | null>(null);
   isEditModeForTest=new BehaviorSubject<boolean>(true);
   isInternTest=new BehaviorSubject<boolean>(true);
+  isFromGroupDashboard = new BehaviorSubject<boolean>(true);
   meetingParticipants=new BehaviorSubject<Person[]|null>(null);
   testToSeeAllResult = new BehaviorSubject<Test | null>(null);
   postToEdit = new BehaviorSubject<Post | null>(null);

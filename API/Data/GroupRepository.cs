@@ -3,18 +3,19 @@ using API.Interfaces.Repository;
 using API.Models;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using System.Drawing.Printing;
 
 namespace API.Data
 {
     public sealed class GroupRepository : IGroupRepository
     {
         private readonly InternShipAppSystemContext _context;
+        private readonly ITestRepository _testRepository;
         private readonly IMapper _mapper;
 
-        public GroupRepository(InternShipAppSystemContext context, IMapper mapper)
+        public GroupRepository(InternShipAppSystemContext context, ITestRepository testRepository, IMapper mapper)
         {
             _context = context;
+            _testRepository = testRepository;
             _mapper = mapper;
         }
 
@@ -52,10 +53,26 @@ namespace API.Data
         public IEnumerable<TestDto> GetAllTestsFromGroup(int groupId)
         {
             var result = _context.TestGroupInterns
-                .Where(tgi => tgi.Deleted == false && (tgi.GroupId != null && tgi.GroupId == groupId))
-                .Include(tgi => tgi.Test)
-                .Select(tgi => tgi.Test);
-            return _mapper.Map<IEnumerable<TestDto>>(result);
+                .Where(tgi => tgi.Deleted == false && (tgi.GroupId != null && tgi.GroupId == groupId)).ToList();
+            var allTests = _testRepository.GetAllTests();
+            var resultTests = new List<TestDto>();
+            foreach (var test in allTests)
+                if (result.Count(t => t.TestId == test.TestId) != 0)
+                    resultTests.Add(_testRepository.GetTestById(test.TestId));
+            return resultTests;
+        }
+
+        public IEnumerable<PersonDto> GetAllParticipants(int groupId)
+        {
+            
+            var result = _context.InternGroups
+                .Where(ig => ig.Deleted == false && ig.GroupId == groupId )
+                .Include(tgi => tgi.Intern)
+                .Select(tgi => tgi.Intern)
+                .ToList();
+            var groupAdmin = _mapper.Map<Person>(GetGroupById(groupId).Trainer);
+            result.Add(groupAdmin);
+            return _mapper.Map<IEnumerable<PersonDto>>(result);
         }
 
         public GroupDto GetGroupById(int id)
@@ -72,8 +89,8 @@ namespace API.Data
         {
             var groypFromDb = GetGroupById(groupdto.GroupId);
             if (groupdto.GroupName == null) groupdto.GroupName = groypFromDb.GroupName;
-            // if (groupdto.TrainerId == null) 
-            groupdto.TrainerId = groypFromDb.TrainerId;
+            if (groupdto.TrainerId == null) groupdto.TrainerId = groypFromDb.TrainerId.Value;
+            if (groupdto.Description == null) groupdto.Description = groypFromDb.Description;
             _context.Groups.Update(_mapper.Map<Group>(groupdto));
         }
     }

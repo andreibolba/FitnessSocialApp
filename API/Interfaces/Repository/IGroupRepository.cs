@@ -7,6 +7,7 @@ namespace API.Interfaces.Repository
     {
         void Create(GroupDto groupdto);
         IEnumerable<GroupDto> GetAllGroups();
+        IEnumerable<PersonDto> GetAllParticipants(int groupId);
         GroupDto GetGroupById(int id);
         void Update(GroupDto groupdto);
         void Delete(int groupId);

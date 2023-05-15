@@ -19,6 +19,7 @@ namespace API.FluentMigration.Migrations
                 .WithColumn("GroupId").AsInt32().PrimaryKey().NotNullable().Identity()
                 .WithColumn("GroupName").AsString().NotNullable()
                 .WithColumn("TrainerId").AsInt32().Nullable()
+                .WithColumn("Description").AsString(int.MaxValue).NotNullable()
                 .WithColumn("Deleted").AsBoolean().NotNullable();
 
             Create.ForeignKey(fkTrainerName)

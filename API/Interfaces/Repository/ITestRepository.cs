@@ -9,6 +9,8 @@ namespace API.Interfaces.Repository
         TestDto GetTestById(int id);
         IEnumerable<TestDto> GetTestByTrainerId(int trainerId);
         IEnumerable<TestDto> GetInternTest(int internId);
+        IEnumerable<TestDto> GetTestByTrainerIdId(int trainerId);
+        int GetTestForGroup(int groupId);
         void Update(TestDto test);
         void Delete(int test);
         void StopEdit(int id);

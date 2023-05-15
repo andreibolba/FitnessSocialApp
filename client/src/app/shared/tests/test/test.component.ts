@@ -1,5 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Params } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { LoggedPerson } from 'src/model/loggedperson.model';
@@ -23,57 +24,28 @@ export class TestComponent implements OnInit, OnDestroy {
   trainerSub!: Subscription;
   deleteSub!: Subscription;
   publishSub!: Subscription;
+  fromGroupSub!: Subscription;
   isTrainer: boolean = false;
+  isFromGroup: boolean = false;
+  mainId: string = '';
+  buttonsClass: string = '';
+  isInGroup:boolean=false;
 
 
   constructor(
     private utils: UtilsService,
+    private route: ActivatedRoute,
     private dialog: MatDialog,
     private dataService: DataStorageService,
     private toastr: ToastrService
   ) {}
-
-  ngOnInit(): void {
-    this.utils.initializeError();
-    const personString = localStorage.getItem('person');
-    if (!personString) {
-      return;
-    } else {
-      const person: LoggedPerson = JSON.parse(personString);
-      this.token = person.token;
-      let id = -1;
-      this.trainerSub = this.dataService
-        .getPerson(person.username, this.token)
-        .subscribe(
-          (data) => {
-            id = data.personId;
-            this.isTrainer = data.status == 'Trainer';
-            this.testSub = this.dataService
-              .getMyTests(this.token, id,data.status.toLocaleLowerCase())
-              .subscribe(
-                (data) => {
-                  this.tests = data;
-                },
-                () => {},
-                () => {
-                  this.tests.forEach((element) => {
-                    element.points = this.utils.calculatePoint(
-                      element.questions
-                    );
-                    element.isOverDeadline = new Date() > new Date(element.deadline);
-                  });
-                }
-              );
-          }
-        );
-    }
-  }
 
   ngOnDestroy(): void {
     if (this.testSub != null) this.testSub.unsubscribe();
     if (this.trainerSub != null) this.trainerSub.unsubscribe();
     if (this.deleteSub != null) this.deleteSub.unsubscribe();
     if (this.publishSub != null) this.publishSub.unsubscribe();
+    if (this.fromGroupSub != null) this.fromGroupSub.unsubscribe();
   }
 
   deletetest(id: number) {
@@ -86,25 +58,6 @@ export class TestComponent implements OnInit, OnDestroy {
         console.log(error);
       }
     );
-  }
-
-  publishTest(testId: number) {
-    let index = this.tests.findIndex((t) => t.testId == testId);
-    if (this.tests[index].questions.length == 0) {
-      alert("You can't publish a test with no questions!");
-      return;
-    } else {
-      console.log("-"+this.token+"-");
-      this.publishSub = this.dataService.publish(this.token, testId).subscribe(
-        () => {
-          this.toastr.success('Test was published succesfully!');
-          this.tests[index].canBeEdited = false;
-        },
-        (error) => {
-          this.toastr.error(error.error);
-        }
-      );
-    }
   }
 
   startTest(test:Test){
@@ -164,5 +117,88 @@ export class TestComponent implements OnInit, OnDestroy {
     this.utils.testToEdit.next(null);
     this.utils.isEditModeForTest.next(true);
     this.openDialog(1);
+  }
+
+  publishTest(testId: number) {
+    let index = this.tests.findIndex((t) => t.testId == testId);
+    if (this.tests[index].questions.length == 0) {
+      alert("You can't publish a test with no questions!");
+      return;
+    } else {
+      this.publishSub = this.dataService.publish(this.token, testId).subscribe(
+        () => {
+          this.toastr.success('Test was published succesfully!');
+          this.tests[index].canBeEdited = false;
+        },
+        (error) => {
+          this.toastr.error(error.error);
+        }
+      );
+    }
+  }
+
+  ngOnInit(): void {
+    this.utils.initializeError();
+    const personString = localStorage.getItem('person');
+    if (!personString) {
+      return;
+    } else {
+      const person: LoggedPerson = JSON.parse(personString);
+      this.token = person.token;
+      let id = -1;
+      this.trainerSub = this.dataService
+        .getPerson(person.username, this.token)
+        .subscribe((data) => {
+          id = data.personId;
+          this.isTrainer = data.status == 'Trainer';
+          this.fromGroupSub = this.utils.isFromGroupDashboard.subscribe(
+            (res) => {
+              this.isFromGroup = res;
+              if (this.isFromGroup) {
+                this.mainId = 'maingroup';
+                this.buttonsClass = 'buttonsgroup';
+                this.isFromGroup=true;
+                this.route.params.subscribe((params: Params) => {
+                  let groupId = +params['id'];
+                  this.testSub = this.dataService
+                    .getMyTestsByGroupId(person.token, groupId)
+                    .subscribe(
+                      (data) => {
+                        if (data != null) this.tests = data;
+                      },
+                      () => {},
+                      () => {
+                        this.tests.forEach((element) => {
+                          element.points = this.utils.calculatePoint(
+                            element.questions
+                          );
+                        });
+                      }
+                    );
+                });
+              } else {
+                this.mainId = 'main';
+                this.buttonsClass = 'buttons';
+                this.isFromGroup=false;
+                this.testSub = this.dataService
+                  .getMyTests(person.token, id,data.status)
+                  .subscribe(
+                    (data) => {
+                      this.tests = data;
+                    },
+                    () => {},
+                    () => {
+                      this.tests.forEach((element) => {
+                        element.points = this.utils.calculatePoint(
+                          element.questions
+                        );
+                      });
+                    }
+                  );
+              }
+            }
+          );
+        });
+    }
   }
 }

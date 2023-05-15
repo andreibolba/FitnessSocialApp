@@ -11,6 +11,8 @@ public partial class Group
 
     public int? TrainerId { get; set; }
 
+    public string Description { get; set; }
+
     public bool Deleted { get; set; }
 
     public virtual ICollection<InternGroup> InternGroups { get; } = new List<InternGroup>();

@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import { AuthentificationComponent } from './authentification/authentification.component';
 import { HomeComponent } from './home/home.component';
@@ -23,8 +23,6 @@ import { NoteComponent } from './shared/note/note.component';
 import { FeedbackComponent } from './shared/feedback/feedback.component';
 import { ChallangeComponent } from './shared/challange/challange.component';
 import { TestComponent } from './shared/tests/test/test.component';
-import { MyGroupComponent } from './intern/my.group/my.group.component';
-import { MyGroupsComponent } from './trainer/my.groups/my.groups.component';
 import { ToastrModule } from 'ngx-toastr';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
@@ -49,6 +47,11 @@ import {MatListModule} from '@angular/material/list';
 import { SeePostComponent } from './forum/see-post/see-post.component';
 import { AddEditPostComponent } from './forum/add-edit-post/add-edit-post.component';
 import { AddEditCommentComponent } from './forum/add-edit-comment/add-edit-comment.component';
+import { GroupComponent } from './shared/groups/groups-dashboard/group/group.component';
+import { DashboardComponent } from './shared/groups/groups-dashboard/dashboard/dashboard.component';
+import { MatTabsModule } from '@angular/material/tabs';
+import { ParticipantsComponent } from './shared/groups/groups-dashboard/participants/participants.component';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -68,8 +71,6 @@ import { AddEditCommentComponent } from './forum/add-edit-comment/add-edit-comme
     FeedbackComponent,
     ChallangeComponent,
     TestComponent,
-    MyGroupComponent,
-    MyGroupsComponent,
     AdministrationComponent,
     CreateEditDialogComponent,
     EditGroupDialogComponent,
@@ -86,7 +87,10 @@ import { AddEditCommentComponent } from './forum/add-edit-comment/add-edit-comme
     SeeAllResultsComponent,
     SeePostComponent,
     AddEditPostComponent,
-    AddEditCommentComponent
+    AddEditCommentComponent,
+    GroupComponent,
+    DashboardComponent,
+    ParticipantsComponent,
   ],
   imports: [
     BrowserModule,
@@ -103,7 +107,10 @@ import { AddEditCommentComponent } from './forum/add-edit-comment/add-edit-comme
     MatCheckboxModule,
     MatExpansionModule,
     MatListModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    MatTabsModule,
+    MatFormFieldModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

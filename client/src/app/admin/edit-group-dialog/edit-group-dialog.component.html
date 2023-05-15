@@ -4,10 +4,13 @@
     <label for="name">Group Name</label>
     <input type="text" id="name" placeholder="Group Name" [(ngModel)]="groupData.groupName" name="groupName" required autocomplete="off">
 
-    <label for="trainer">Trainer</label>
-    <select #trainer (change)="selectOrganization(trainer.value)" id="trainer" name="trainer" size="1">
+    <label for="trainer" *ngIf="show">Trainer</label>
+    <select #trainer (change)="selectOrganization(trainer.value)" id="trainer" name="trainer" size="1" *ngIf="show">
       <option *ngFor="let t of trainers" [value]="t.TrainerId">{{ t.TrainerName }}</option>
     </select>
+
+    <label for="trainer">Description</label>
+    <input type="text" id="name" placeholder="Group Description" [(ngModel)]="groupData.groupDescription" name="groupDescription" required autocomplete="off">
 
     <mat-dialog-actions align="center">
       <button mat-button mat-dialog-close>Cancel</button>

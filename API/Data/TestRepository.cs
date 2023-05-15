@@ -80,6 +80,12 @@ namespace API.Data
         }
 
         public IEnumerable<TestDto> GetTestByTrainerId(int trainerId)
+        public int GetTestForGroup(int groupId)
+        {
+            return _context.TestGroupInterns.Where(t => t.GroupId != null && t.GroupId == groupId).Count();
+        }
+
+        public IEnumerable<TestDto> GetTestByTrainerIdId(int trainerId)
         {
             return this.GetAllTests().Where(t => t.TrainerId == trainerId);
         }

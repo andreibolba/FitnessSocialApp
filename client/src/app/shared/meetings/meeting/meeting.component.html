@@ -1,12 +1,12 @@
-<div class="buttons">
+<div [class]="buttonsClass">
   <div class="title">
     <i class="uil uil-meeting-board"></i>
     <h2>All of my meetings</h2>
   </div>
-  <button class="btn btn-success" mat-button (click)="onAdd()" *ngIf="isTrainer"> Add meeting </button>
+  <button class="btn btn-success" mat-button (click)="onAdd()" *ngIf="isTrainer && isFromGroup==false"> Add meeting </button>
 </div>
 
-<div id="main" *ngIf="allMeetings.length!=0">
+<div [id]="mainId" *ngIf="allMeetings.length!=0">
   <div class="meetings-content">
       <div class="meetings-place" *ngFor="let m of allMeetings">
         <div class="meeting-name">

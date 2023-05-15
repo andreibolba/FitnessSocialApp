@@ -1,0 +1,71 @@
+<div class="buttons">
+  <div class="title">
+    <i class="uil uil-question-circle"></i>
+    <h2>All participants in group</h2>
+  </div>
+</div>
+
+<div id="main" *ngIf="people!=null">
+  <mat-accordion >
+    <mat-expansion-panel (opened)="panelOpenState = true"
+                         (closed)="panelOpenState = false"
+                         class="people"
+                         *ngFor="let p of people; let i = index">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <h5>{{ i + 1 }}. {{ p.firstName + ' ' + p.lastName }}</h5>
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      <div class="row">
+        <div class="answer">
+          <div class="info">
+            <label for="trainer">Username</label>
+            <input type="text" id="trainer" name="trainer" readonly [value]="p.username" required
+              autocomplete="off">
+          </div>
+        </div>
+        <div class="answer">
+          <div class="info">
+            <label for="trainer">Email</label>
+            <input type="text" id="trainer" name="trainer" readonly [value]="p.email" required
+              autocomplete="off">
+          </div>
+        </div>
+        <div class="answer">
+          <div class="info">
+            <label for="trainer">Birthdate</label>
+            <input type="text" id="trainer" name="trainer" readonly [value]="p.birthDate | date" required
+              autocomplete="off">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="answer">
+          <div class="info">
+            <label for="trainer">Status</label>
+            <input type="text" id="trainer" name="trainer" readonly [value]="p.status" required
+              autocomplete="off">
+          </div>
+        </div>
+        <div class="answer">
+          <div class="info">
+            <label for="trainer">Challanges</label>
+            <input type="text" id="trainer" name="trainer" readonly value="0/5 ( 0 %)" required
+              autocomplete="off">
+          </div>
+        </div>
+        <div class="answer">
+          <div class="info">
+            <label for="trainer">Tests</label>
+            <input type="text" id="trainer" name="trainer" readonly value="0/5 ( 0 %)" required
+              autocomplete="off">
+          </div>
+        </div>
+      </div>
+
+    </mat-expansion-panel>
+
+  </mat-accordion>
+</div>
+<p *ngIf="people==null">You do not have participants!</p>
+

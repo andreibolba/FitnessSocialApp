@@ -26,6 +26,7 @@ export class TrainerCombo {
 export class EditGroupDialogComponent implements OnInit, OnDestroy {
   @Input() groupData = {
     groupName: '',
+    groupDescription:'',
     trainer: new TrainerCombo(),
   };
 
@@ -33,6 +34,7 @@ export class EditGroupDialogComponent implements OnInit, OnDestroy {
   groupSub!: Subscription;
   utilsSub!: Subscription;
   opration: string = '';
+  show:boolean=false;
 
   trainers: TrainerCombo[] = [];
   group!: Group | null;
@@ -59,6 +61,8 @@ export class EditGroupDialogComponent implements OnInit, OnDestroy {
       this.dataPeopleSub = this.dataService
         .getPeople(person.token)
         .subscribe((data) => {
+          let obj = data.find((t)=>t.username ==person.username);
+          this.show= obj?.status=='Admin';
           data = data.filter((t) => t.status == 'Trainer');
           data.forEach((element) => {
             let trainer: TrainerCombo = {
@@ -81,6 +85,7 @@ export class EditGroupDialogComponent implements OnInit, OnDestroy {
           } else {
             this.opration = 'Edit';
             this.groupData.groupName = this.group.groupName;
+            this.groupData.groupDescription = this.group.description;
             this.currentId=this.group?.trainer.personId;
 
             let index=this.trainers.findIndex(g=>g.TrainerId==this.group?.trainer.personId);
@@ -106,14 +111,13 @@ export class EditGroupDialogComponent implements OnInit, OnDestroy {
   onSignUpSubmit(form: NgForm) {
     let group = new Group();
     group.groupName = form.value.groupName;
+    group.description = form.value.groupDescription;
     group.trainerId = this.currentId;
-
-    console.log(group);
 
     if (this.opration == 'Add') {
       this.dataService.addGroup(this.token,group).subscribe(
         () => {
-          this.toastr.success('An ' + status + ' was added succesfully!');
+          this.toastr.success('A group was added succesfully!');
           this.dialogRef.close();;
         },
         (error) => {
@@ -122,6 +126,7 @@ export class EditGroupDialogComponent implements OnInit, OnDestroy {
       );
     } else {
       group.groupId = this.group!.groupId;
+      console.log(group);
       this.dataService.editGroup(this.token,group).subscribe(
         () => {
           this.toastr.success('The edit was succesfully!');

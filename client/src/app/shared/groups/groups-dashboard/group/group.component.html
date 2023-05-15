@@ -5,12 +5,13 @@
     <div class="edit" (click)="edit()">
       <img src="../../../../../assets/img/edit_pen.png" height="22px" width="22px" style="margin-top: 7px; margin-left: 7px;"/>
     </div>
+    <button class="btn btn-info" id="edit" *ngIf="canEdit" (click)="editGroup(group)">Edit</button>
   </div>
   <div class="informations">
     <div class="description">
       <label for="trainer">Description</label>
       <div class="description_group">
-        {{description}}
+        {{group.description}}
       </div>
     </div>
     <div class="trainer">
@@ -62,21 +63,21 @@
     <div class="group_info">
       <div class="participants">
         <label for="trainer">Participats</label>
-        <input type="text" id="trainer" name="trainer" readonly [value]="person.status" required autocomplete="off">
+        <input type="text" id="trainer" name="trainer" readonly [value]="participants" required autocomplete="off">
       </div>
       <div class="tests">
         <label for="trainer">Tests</label>
-        <input type="text" id="trainer" name="trainer" readonly [value]="person.status" required autocomplete="off">
+        <input type="text" id="trainer" name="trainer" readonly [value]="tests" required autocomplete="off">
       </div>
     </div>
     <div class="group_info">
       <div class="tasks">
         <label for="trainer">Tasks</label>
-        <input type="text" id="trainer" name="trainer" readonly [value]="person.status" required autocomplete="off">
+        <input type="text" id="trainer" name="trainer" readonly [value]="tasks" required autocomplete="off">
       </div>
       <div class="challanges">
         <label for="trainer">Challanges</label>
-        <input type="text" id="trainer" name="trainer" readonly [value]="person.status" required autocomplete="off">
+        <input type="text" id="trainer" name="trainer" readonly [value]="challanges" required autocomplete="off">
       </div>
     </div>
   </div>

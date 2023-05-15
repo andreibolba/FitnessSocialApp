@@ -112,7 +112,7 @@ export class DataStorageService {
 
   getGroupById(token: string,groupId:number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.get<Group>(this.baseUrl + 'group/'+groupId, { headers: headers });
+    return this.http.get<Object>(this.baseUrl + 'group/'+groupId, { headers: headers });
   }
 
   addGroup(token: string, group: Group) {
@@ -121,6 +121,7 @@ export class DataStorageService {
       this.baseUrl + 'group/add',
       {
         groupName: group.groupName,
+        description: group.description,
         trainerId: group.trainerId,
       },
       { headers: headers }
@@ -129,11 +130,13 @@ export class DataStorageService {
 
   editGroup(token: string, group: Group) {
     const headers = { Authorization: 'Bearer ' + token };
+    console.log(group);
     return this.http.post(
       this.baseUrl + 'group/update',
       {
         groupId: group.groupId,
-        name: group.groupName,
+        groupName: group.groupName,
+        description: group.description,
         trainerId: group.trainerId,
       },
       { headers: headers }

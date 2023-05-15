@@ -89,8 +89,8 @@ namespace API.Data
         {
             var groypFromDb = GetGroupById(groupdto.GroupId);
             if (groupdto.GroupName == null) groupdto.GroupName = groypFromDb.GroupName;
-            // if (groupdto.TrainerId == null) 
-            groupdto.TrainerId = groypFromDb.TrainerId;
+            if (groupdto.TrainerId == null) groupdto.TrainerId = groypFromDb.TrainerId.Value;
+            if (groupdto.Description == null) groupdto.Description = groypFromDb.Description;
             _context.Groups.Update(_mapper.Map<Group>(groupdto));
         }
     }

@@ -1,0 +1,16 @@
+<form id="main" #registerForm="ngForm" (ngSubmit)="onUpload()" autocomplete="off">
+    <div class="upload_zone">
+      <div class="upload_icon">
+        <i class="uil uil-export"></i>
+      </div>
+      <div class="drag_and_drop_text">
+        Drag & drop any file here
+      </div>
+      <div class="info">
+        or <input type="file" id="upload" (change)="onFileSelected($event)" hidden/>
+        <label for="upload">browse file</label> from device
+      </div>
+    </div>
+    <p>{{text}}</p>
+    <button class="btn btn-info" id="upload" [disabled]="!canUpload"> Upload </button>
+</form>

@@ -79,7 +79,9 @@ namespace API.Data
             return this.GetAllTests().SingleOrDefault(t => t.TestId == id);
         }
 
-        public IEnumerable<TestDto> GetTestByTrainerId(int trainerId)
+        public IEnumerable<TestDto> GetTestByTrainerId(int trainerId){
+            return GetAllTests().Where(t=>t.TrainerId == trainerId);
+        }
         public int GetTestForGroup(int groupId)
         {
             return _context.TestGroupInterns.Where(t => t.GroupId != null && t.GroupId == groupId).Count();

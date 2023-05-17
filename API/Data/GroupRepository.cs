@@ -93,5 +93,12 @@ namespace API.Data
             if (groupdto.Description == null) groupdto.Description = groypFromDb.Description;
             _context.Groups.Update(_mapper.Map<Group>(groupdto));
         }
+
+        public void SetPicture(int groupId, byte[] picture)
+        {
+            var group = GetGroupById(groupId);
+            group.Picture = picture;
+            Update(group);
+        }
     }
 }

@@ -1,8 +1,9 @@
-using API.Data;
+﻿using API.Data;
 using API.Dtos;
 using API.Interfaces.Repository;
 using API.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -57,6 +58,35 @@ namespace API.Controllers
         {
             _groupRepository.Update(group);
             return _groupRepository.SaveAll() ? Ok() : BadRequest("Internal Server Error"); ;
+        }
+
+        [HttpPost("upload/image/{groupId:int}")]
+        public ActionResult UpdateImage(int groupId)
+        {
+            IFormFile file = Request.Form.Files[0];
+
+            if (file == null || file.Length == 0)
+                return BadRequest("No image received!");
+
+            if (!file.ContentType.StartsWith("image/"))
+                return BadRequest("File is not a valid image!");
+
+            long fileSize = file.Length;
+
+            if (fileSize > 0)
+            {
+                using (var stream = new MemoryStream())
+                {
+                    file.CopyTo(stream);
+                    byte[] picture = stream.ToArray();
+
+                    _groupRepository.SetPicture(groupId, picture);
+
+                    return _groupRepository.SaveAll() ? Ok("The picture was set!") : BadRequest("Internal Server Error");
+                }
+            }
+
+            return BadRequest("Internal Server Error");
         }
 
         [HttpGet("tests/{groupId:int}")]

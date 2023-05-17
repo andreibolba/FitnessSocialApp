@@ -7,6 +7,7 @@ namespace API.Dtos
         public string Description { get; set; }
         public PersonDto Trainer { get; set; }
         public int? TrainerId { get; set; }
+        public byte[] Picture { get; set; }
         public List<PersonDto> AllInterns {get;set;}
     }
 }

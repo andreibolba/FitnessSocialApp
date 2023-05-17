@@ -49,8 +49,8 @@ namespace API.Data
                 }
                 else
                 {
-                    comm.Upvote = isUp.Upvote;
-                    comm.Downvote = isUp.DoenVote;
+                    comm.Upvote = isUp.Upvote.Value;
+                    comm.Downvote = isUp.DoenVote.Value;
 
                 }
                 var likes = _context.PostCommentReactions.Where(p =>

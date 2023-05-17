@@ -118,6 +118,11 @@ export class DataStorageService {
     return this.http.get<Object>(this.baseUrl + 'group/'+groupId, { headers: headers });
   }
 
+  sendPictureForGroup(token:string,fd:FormData,groupId:number){
+    const headers = { Authorization: 'Bearer ' + token, Accept: 'application/json'};
+    return this.http.post(this.baseUrl + 'group/upload/image/'+groupId, fd, { headers: headers });
+  }
+
   addGroup(token: string, group: Group) {
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.post(

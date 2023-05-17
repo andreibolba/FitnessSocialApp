@@ -145,9 +145,7 @@ public partial class InternShipAppSystemContext : DbContext
         {
             entity.ToTable("Comment");
 
-            entity.Property(e => e.CommentContent)
-                .IsRequired()
-                .HasMaxLength(255);
+            entity.Property(e => e.CommentContent).IsRequired();
             entity.Property(e => e.DateOfComment).HasColumnType("datetime");
 
             entity.HasOne(d => d.Person).WithMany(p => p.Comments)
@@ -389,7 +387,6 @@ public partial class InternShipAppSystemContext : DbContext
             entity.Property(e => e.PasswordSalt)
                 .IsRequired()
                 .HasMaxLength(8000);
-            entity.Property(e => e.Picture).HasMaxLength(8000);
             entity.Property(e => e.Status)
                 .IsRequired()
                 .HasMaxLength(255);
@@ -402,7 +399,6 @@ public partial class InternShipAppSystemContext : DbContext
         {
             entity.ToTable("Post");
 
-            entity.Property(e => e.Content).HasMaxLength(255);
             entity.Property(e => e.DateOfPost).HasColumnType("datetime");
             entity.Property(e => e.Title)
                 .IsRequired()

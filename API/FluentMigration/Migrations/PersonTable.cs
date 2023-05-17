@@ -22,7 +22,7 @@ namespace API.FluentMigration.Migrations
                 .WithColumn("PasswordHash").AsBinary().NotNullable()
                 .WithColumn("PasswordSalt").AsBinary().NotNullable()
                 .WithColumn("Status").AsString().NotNullable()
-                .WithColumn("Picture").AsBinary().Nullable()
+                .WithColumn("Picture").AsBinary(int.MaxValue).Nullable()
                 .WithColumn("BirthDate").AsDateTime().NotNullable()
                 .WithColumn("Deleted").AsBoolean().NotNullable();
         }

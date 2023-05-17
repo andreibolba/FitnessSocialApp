@@ -15,7 +15,7 @@ internal class Program
 
         var app = builder.Build();
 
-        //Database.RunMigrations();
+        Database.RunMigrations();
 
         app.UseCors(b => b.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 

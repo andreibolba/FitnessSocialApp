@@ -7,6 +7,7 @@ export class Group {
   public description: string;
   public trainer: Person;
   public allInterns: Person[];
+  public picture:ArrayBuffer | null;
   constructor() {
     this.groupId = -1;
     this.trainerId = -1;
@@ -14,5 +15,6 @@ export class Group {
     this.description = '';
     this.trainer = new Person();
     this.allInterns=[];
+    this.picture=null;
   }
 }

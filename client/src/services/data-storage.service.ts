@@ -11,6 +11,7 @@ import { Meeting } from 'src/model/meeting.model';
 import { Answer } from 'src/model/answer.model';
 import { Post } from 'src/model/post.model';
 import { Comment } from 'src/model/comment.model';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -121,6 +122,14 @@ export class DataStorageService {
   sendPictureForGroup(token:string,fd:FormData,groupId:number){
     const headers = { Authorization: 'Bearer ' + token, Accept: 'application/json'};
     return this.http.post(this.baseUrl + 'group/upload/image/'+groupId, fd, { headers: headers });
+  }
+
+  getPictureForGroup(token:string,groupId:number){
+    const headers = { Authorization: 'Bearer ' + token, Accept: 'application/json'};
+    return this.http.get(this.baseUrl + 'group/image/'+groupId,{
+      headers:headers,
+      responseType: 'blob'
+    });
   }
 
   addGroup(token: string, group: Group) {

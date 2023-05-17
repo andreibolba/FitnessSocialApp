@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { NgModel } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { EditGroupDialogComponent } from 'src/app/admin/edit-group-dialog/edit-group-dialog.component';
@@ -18,6 +19,7 @@ import { UtilsService } from 'src/services/utils.service';
 })
 export class GroupComponent implements OnInit, OnDestroy {
   groupSubscription!: Subscription;
+  pictureForGroupSubscription!: Subscription;
   group: Group = new Group();
   person:Person=new Person();
   description:string='Lorem ipsum dolor sit amet, ';
@@ -26,13 +28,15 @@ export class GroupComponent implements OnInit, OnDestroy {
   tasks:number=-1;
   challanges:number=-1;
   canEdit:boolean=false;
+  imageDataUrl:SafeUrl='';
   private token: string = '';
 
   constructor(
     private dataService: DataStorageService,
     private route: ActivatedRoute,
     private utils: UtilsService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit(): void {
@@ -54,6 +58,12 @@ export class GroupComponent implements OnInit, OnDestroy {
             this.group=res.group;
             this.person = res.group.trainer;
             this.canEdit = person.username == res.group.trainer.username;
+            const blob = new Blob([res.body], { type: 'image/*' });
+            this.pictureForGroupSubscription = this.dataService.getPictureForGroup(this.token,6).subscribe((data)=>{
+              this.imageDataUrl = this.sanitizer.bypassSecurityTrustUrl(URL.createObjectURL(blob));
+              console.log(this.imageDataUrl);
+            }
+            );
           }
         });
       });

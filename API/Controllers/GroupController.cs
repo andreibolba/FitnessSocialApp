@@ -29,6 +29,7 @@ namespace API.Controllers
         [HttpGet("{groupId:int}")]
         public ActionResult GetGroupById(int groupId)
         {
+            var group = _groupRepository.GetGroupById(groupId);
             return Ok(new
             {
                 Tests = _testRepository.GetTestForGroup(groupId),
@@ -36,6 +37,17 @@ namespace API.Controllers
                 Tasks = 0,
                 Challanges = 0,
                 Group = _groupRepository.GetGroupById(groupId),
+            });
+        }
+
+        [HttpGet("image/{groupId:int}")]
+        public ActionResult GetImageForGroup(int groupId)
+        {
+            var group = _groupRepository.GetGroupById(groupId);
+            var picture = File(group.Picture, "image/jpeg");
+            return Ok(new
+            {
+                Picture = group.Picture.Length <= 0 ? null : picture
             });
         }
 

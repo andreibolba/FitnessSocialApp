@@ -53,6 +53,7 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { ParticipantsComponent } from './shared/groups/groups-dashboard/participants/participants.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { ChatComponent } from './chat-system/chat/chat.component';
+import { ChatMessagesComponent } from './chat-system/chat-messages/chat-messages.component';
 
 @NgModule({
   declarations: [
@@ -93,6 +94,7 @@ import { ChatComponent } from './chat-system/chat/chat.component';
     DashboardComponent,
     ParticipantsComponent,
     ChatComponent,
+    ChatMessagesComponent,
   ],
   imports: [
     BrowserModule,

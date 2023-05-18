@@ -13,6 +13,8 @@ public partial class Group
 
     public string Description { get; set; }
 
+    public byte[] Picture { get; set; }
+
     public bool Deleted { get; set; }
 
     public virtual ICollection<InternGroup> InternGroups { get; } = new List<InternGroup>();

@@ -52,6 +52,7 @@ import { DashboardComponent } from './shared/groups/groups-dashboard/dashboard/d
 import { MatTabsModule } from '@angular/material/tabs';
 import { ParticipantsComponent } from './shared/groups/groups-dashboard/participants/participants.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import { ChatComponent } from './chat-system/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +92,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     GroupComponent,
     DashboardComponent,
     ParticipantsComponent,
+    ChatComponent,
   ],
   imports: [
     BrowserModule,

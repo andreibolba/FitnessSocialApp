@@ -147,15 +147,11 @@ h2 {
 }
 
 .button, .buttonIntern, .oneButton {
-.button,
-.buttonIntern {
   height: 20%;
   width: 100%;
 }
 
 .button button, .buttonIntern button, .oneButton button{
-.button button,
-.buttonIntern button {
   height: 80%;
   border-radius: 4px;
   margin-left: 5px;

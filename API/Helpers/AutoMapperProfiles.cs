@@ -40,6 +40,7 @@ namespace API.Helpers
             CreateMap<PostView,PostViewDto>();
             CreateMap<Comment, CommentDto>();
             CreateMap<PostCommentReaction, PostCommentReactionDto>();
+            CreateMap<Chat, MessageDto>();
 
 
             CreateMap<PersonDto, Person>()
@@ -65,6 +66,8 @@ namespace API.Helpers
             CreateMap<CommentDto, Comment>()
                 .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
             CreateMap<PostCommentReactionDto, PostCommentReaction>()
+                .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
+            CreateMap<MessageDto, Chat>()
                 .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
         }
     }

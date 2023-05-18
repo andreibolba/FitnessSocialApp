@@ -1,10 +1,12 @@
 ﻿using API.Dtos;
 using API.Interfaces.Repository;
 using API.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
 {
+    [Authorize]
     public class CommentController : BaseAPIController
     {
         private readonly ICommentRepository _comment;

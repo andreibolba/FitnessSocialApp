@@ -16,6 +16,7 @@ import { ProfileComponent } from './shared/profile/profile.component';
 import { QuestionsComponent } from './shared/questions/question/question.component';
 import { TaskComponent } from './shared/task/task.component';
 import { TestComponent } from './shared/tests/test/test.component';
+import { ChatComponent } from './chat-system/chat/chat.component';
 
 const routes: Routes = [
   {
@@ -35,6 +36,7 @@ const routes: Routes = [
       { path: 'feedback', component: FeedbackComponent },
       { path: 'notes', component: NoteComponent },
       { path: 'mygroups', component: GroupsComponent },
+      { path: 'chat', component: ChatComponent },
       {
         path: 'main',
         children: [{ path: ':id', component: DashboardComponent }],

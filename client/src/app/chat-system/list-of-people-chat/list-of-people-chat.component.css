@@ -65,3 +65,7 @@
 h5{
   margin-left: 10px;
 }
+
+.chat_message:hover{
+  cursor: pointer;
+}

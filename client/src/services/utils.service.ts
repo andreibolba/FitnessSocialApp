@@ -31,6 +31,7 @@ export class UtilsService {
   postToEdit = new BehaviorSubject<Post | null>(null);
   commentToEdit = new BehaviorSubject<Comment | null>(null);
   postIdToComment = new BehaviorSubject<number | null>(null);
+  selectChat = new BehaviorSubject<boolean>(false);
   dashboardChanged=new EventEmitter<boolean>(true);
 
   error=new BehaviorSubject<{errorCode:number,errorTitle:string,errorMessage:string} | null>(null);

@@ -15,5 +15,6 @@
       </div>
     </div>
   </div>
-  <app-chat-messages></app-chat-messages>
+  <p *ngIf="!haveChat">Select a chat to start!</p>
+  <app-chat-messages *ngIf="haveChat"></app-chat-messages>
 </div>

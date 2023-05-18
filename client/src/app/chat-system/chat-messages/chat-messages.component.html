@@ -18,11 +18,13 @@
   </div>
   <div class="chat_content">
     <div class="messages">
+      <p>{{ date  | date: 'short' }}</p>
       <div class="message_from_him">
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit, consequuntur accusantium repellendus quas incidunt modi aut dolores similique earum nobis odit quam, a ex? Officiis ut necessitatibus culpa fugiat maiores.
       </div>
     </div>
     <div class="messages">
+      <p style="float: right;">{{ date  | date: 'short' }}</p><br>
       <div class="message_from_me">
         Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit, consequuntur accusantium repellendus quas incidunt modi aut dolores similique earum nobis odit quam, a ex? Officiis ut necessitatibus culpa fugiat maiores.
       </div>

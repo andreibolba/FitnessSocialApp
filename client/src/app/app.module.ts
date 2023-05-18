@@ -54,6 +54,8 @@ import { ParticipantsComponent } from './shared/groups/groups-dashboard/particip
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { ChatComponent } from './chat-system/chat/chat.component';
 import { ChatMessagesComponent } from './chat-system/chat-messages/chat-messages.component';
+import { ListOfPeopleChatComponent } from './chat-system/list-of-people-chat/list-of-people-chat.component';
+import { ListOfGroupsChatComponent } from './chat-system/list-of-groups-chat/list-of-groups-chat.component';
 
 @NgModule({
   declarations: [
@@ -95,6 +97,8 @@ import { ChatMessagesComponent } from './chat-system/chat-messages/chat-messages
     ParticipantsComponent,
     ChatComponent,
     ChatMessagesComponent,
+    ListOfPeopleChatComponent,
+    ListOfGroupsChatComponent,
   ],
   imports: [
     BrowserModule,

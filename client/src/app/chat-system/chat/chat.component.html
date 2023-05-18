@@ -6,19 +6,12 @@
         <input type="text" placeholder="Search here...">
       </div>
     </div>
-    <div class="person_chats">
-      <div class="chat_message" *ngFor="let i of [1,2,3,4,5,6,7,8,9]">
-        <div class="pic">
-          <img src="../../../assets/img/temp_user_photo.jpg"/>
-        </div>
-        <div class="message">
-          <div class="full-name">
-            Popescu Mihai
-          </div>
-          <div class="last-message">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce sed nisi sed sapien tincidunt ultrices sed sed sapien tincidunt ultrices sed sed
-          </div>
-        </div>
+    <div class="all-messages">
+      <div class="people">
+        <app-list-of-people-chat></app-list-of-people-chat>
+      </div>
+      <div class="groups">
+        <app-list-of-groups-chat></app-list-of-groups-chat>
       </div>
     </div>
   </div>

@@ -36,11 +36,14 @@ namespace API.Helpers
             CreateMap<TestGroupIntern, TestGroupInternDto>();
             CreateMap<Meeting, MeetingDto>();
             CreateMap<QuestionSolution, Answer>();
-            CreateMap<Post,PostDto>();
-            CreateMap<PostView,PostViewDto>();
+            CreateMap<Post, PostDto>();
+            CreateMap<PostView, PostViewDto>();
             CreateMap<Comment, CommentDto>();
             CreateMap<PostCommentReaction, PostCommentReactionDto>();
             CreateMap<Chat, MessageDto>();
+            CreateMap<GroupChat, GroupChatDto>();
+            CreateMap<GroupChatMessage, GroupChatMessageDto>();
+            CreateMap<GroupChatPerson, GroupChatPersonDto>();
 
 
             CreateMap<PersonDto, Person>()
@@ -52,10 +55,10 @@ namespace API.Helpers
             CreateMap<LoggingDto, Logging>()
                 .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
             CreateMap<TestDto, Test>()
-                .ForMember(dest => dest.CanBeEdited, opt => opt.MapFrom(src => src.CanBeEdited==null? true : src.CanBeEdited.Value))
+                .ForMember(dest => dest.CanBeEdited, opt => opt.MapFrom(src => src.CanBeEdited == null ? true : src.CanBeEdited.Value))
                 .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
             CreateMap<QuestionDto, Question>()
-                .ForMember(dest => dest.CanBeEdited, opt => opt.MapFrom(src => src.CanBeEdited==null? true : src.CanBeEdited.Value))
+                .ForMember(dest => dest.CanBeEdited, opt => opt.MapFrom(src => src.CanBeEdited == null ? true : src.CanBeEdited.Value))
                 .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
             CreateMap<MeetingDto, Meeting>()
                 .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
@@ -68,6 +71,12 @@ namespace API.Helpers
             CreateMap<PostCommentReactionDto, PostCommentReaction>()
                 .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
             CreateMap<MessageDto, Chat>()
+                .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
+            CreateMap<GroupChatDto, GroupChat>()
+                .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
+            CreateMap<GroupChatMessageDto, GroupChatMessage>()
+                .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
+            CreateMap<GroupChatPersonDto, GroupChatPerson>()
                 .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
         }
     }

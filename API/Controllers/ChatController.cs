@@ -30,9 +30,9 @@ namespace API.Controllers
         [HttpPost("add")]
         public ActionResult AddMessage([FromBody] MessageDto message)
         {
-            _messageRepository.AddMessage(message);
+            var res = _messageRepository.AddMessage(message);
 
-            return _messageRepository.SaveAll() ? Ok() : BadRequest("Internal Server Error");
+            return _messageRepository.SaveAll() ? Ok(res) : BadRequest("Internal Server Error");
         }
 
         [HttpPost("delete/{meesageId:int}")]

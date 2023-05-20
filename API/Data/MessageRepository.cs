@@ -17,10 +17,12 @@ namespace API.Data
             _mapper = mapper;
         }
 
-        public void AddMessage(MessageDto chat)
+        public MessageDto AddMessage(MessageDto chat)
         {
             var message = _mapper.Map<Chat>(chat);
+            message.SendDate = DateTime.Now;
             _context.Chats.Add(message);
+            return _mapper.Map<MessageDto>(message);
         }
 
         public void DeleteMessage(int id)

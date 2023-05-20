@@ -21,7 +21,7 @@ namespace API.FluentMigration.Migrations
                 .WithColumn("ChatId").AsInt32().PrimaryKey().NotNullable().Identity()
                 .WithColumn("PersonSenderId").AsInt32().NotNullable()
                 .WithColumn("PersonReceiverId").AsInt32().NotNullable()
-                .WithColumn("Message").AsString().NotNullable()
+                .WithColumn("Message").AsString(int.MaxValue).NotNullable()
                 .WithColumn("SendDate").AsDateTime().NotNullable()
                 .WithColumn("Deleted").AsBoolean().NotNullable();
 

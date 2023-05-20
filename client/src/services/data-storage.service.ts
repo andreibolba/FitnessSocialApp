@@ -594,4 +594,13 @@ export class DataStorageService {
     return this.http.get<Message[]>(this.baseUrl + 'chat/messages/' + currentPersonId + '/' + chatPersonId, {headers: headers});
   }
 
+  addMessage(token:string, message:Message){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post<Message>(this.baseUrl + 'chat/add',{
+      PersonSenderId: message.personSenderId,
+      PersonReceiverId: message.personReceiverId,
+      Message: message.message
+    },{headers: headers});
+  }
+
 }

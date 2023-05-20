@@ -17,9 +17,9 @@ export class AllChatsComponent implements OnInit,OnDestroy{
   getAllChatsSubscription!:Subscription;
   allChats:Message[]=[];
   currentPerson:Person=new Person();
+  newChatSubscription!:Subscription;
 
   constructor(private utils:UtilsService,private dataStorage:DataStorageService){
-
   }
 
   ngOnInit(): void {
@@ -40,7 +40,18 @@ export class AllChatsComponent implements OnInit,OnDestroy{
               element.youOrThem = element.personReceiverId == data.personId? 'He: ' : 'You: ';
             });
           });
-      })
+      });
+      this.newChatSubscription = this.utils.newChat.subscribe((res)=>{
+        if(res!=null){
+          res.chatPerson = res.personReceiverId == this.currentPerson.personId? res.personSender : res.personReceiver;
+          res.youOrThem = res.personReceiverId == this.currentPerson.personId? 'He: ' : 'You: ';
+          let index = this.allChats.findIndex(c=>c.personReceiverId === res.personReceiverId && c.personSenderId === res.personSenderId);
+          this.allChats.splice(index,1);
+          this.allChats.unshift(res);
+        }
+      },()=>{},()=>{
+        this.utils.newChat.next(null);
+      });
     }
   }
 

@@ -44,8 +44,8 @@
   </div>
 
   <div class="chat_send">
-    <input type="text" placeholder="Type someting...">
-    <button class="btn btn-info"> Send </button>
+    <input type="text" placeholder="Type someting..." [(ngModel)]="message" (keyup.enter)="onSend()">
+    <button class="btn btn-info" (click)="onSend()"> Send </button>
   </div>
 </div>
 

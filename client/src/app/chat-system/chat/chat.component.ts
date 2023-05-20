@@ -8,7 +8,7 @@ import { UtilsService } from 'src/services/utils.service';
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements OnInit, OnDestroy{
-  haveChat=false;
+  haveChat=-1;
   haveChatSubscription!:Subscription;
 
   constructor(private utils:UtilsService){
@@ -20,11 +20,7 @@ export class ChatComponent implements OnInit, OnDestroy{
     });
   }
 
-
-
   ngOnDestroy(): void {
     if(this.haveChatSubscription!=null)this.haveChatSubscription.unsubscribe();
   }
-
-
 }

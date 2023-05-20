@@ -1,11 +1,11 @@
 <div class="chat">
   <div class="chat_header">
     <div class="chat_header_left">
-      <img src="../../../assets/img/temp_user_photo.jpg"/>
+      <img src="../../../assets/img/temp_user_photo.jpg" />
     </div>
     <div class="chat_header_right">
       <div class="full-name">
-        Popescu Mihai
+        {{ chatPerson.firstName + ' ' +chatPerson.lastName }}
       </div>
       <div class="active-last-time">
         <div class="circle" style="background-color: grey;"></div>
@@ -16,22 +16,36 @@
       <button class="btn btn-info" id="see-info">See details</button>
     </div>
   </div>
-  <div class="chat_content">
-    <div class="messages">
-      <p>{{ date  | date: 'short' }}</p>
-      <div class="message_from_him">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit, consequuntur accusantium repellendus quas incidunt modi aut dolores similique earum nobis odit quam, a ex? Officiis ut necessitatibus culpa fugiat maiores.
+
+  <div class="chat_content" id="chat_content">
+   <div class="message" *ngFor="let message of allChats">
+    <div class="big_message" *ngIf="message.personSenderId!=chatPerson.personId">
+      <div class="messages">
+        <p style="float: right;">{{ message.sendDate | date: 'short' }}</p><br>
+          <div class="message_from_me">
+            {{ message.message }}
+          </div>
       </div>
     </div>
-    <div class="messages">
-      <p style="float: right;">{{ date  | date: 'short' }}</p><br>
-      <div class="message_from_me">
-        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit, consequuntur accusantium repellendus quas incidunt modi aut dolores similique earum nobis odit quam, a ex? Officiis ut necessitatibus culpa fugiat maiores.
+
+    <div class="big_message" *ngIf="message.personSenderId==chatPerson.personId">
+      <div class="pic">
+        <img src="../../../assets/img/temp_user_photo.jpg" />
+      </div>
+      <div class="messages">
+        <p>{{ message.sendDate | date: 'short' }}</p>
+          <div class="message_from_him">
+            {{ message.message }}
+        </div>
       </div>
     </div>
+
+   </div>
   </div>
+
   <div class="chat_send">
     <input type="text" placeholder="Type someting...">
     <button class="btn btn-info"> Send </button>
   </div>
 </div>
+

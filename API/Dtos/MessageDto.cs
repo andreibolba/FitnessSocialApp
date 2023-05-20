@@ -16,8 +16,8 @@ namespace API.Dtos
 
         public bool Deleted { get; set; }
 
-        public virtual Person PersonReceiver { get; set; }
+        public PersonDto PersonReceiver { get; set; }
 
-        public virtual Person PersonSender { get; set; }
+        public PersonDto PersonSender { get; set; }
     }
 }

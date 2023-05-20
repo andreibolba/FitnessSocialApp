@@ -66,4 +66,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   onProfile() {
     this.utils.dashboardChanged.next(false);
   }
+
+  onChatClick(){
+    this.utils.dashboardChanged.next(false);
+  }
 }

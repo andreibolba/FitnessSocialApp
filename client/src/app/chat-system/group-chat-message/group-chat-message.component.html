@@ -1,0 +1,45 @@
+<div class="chat">
+  <div class="chat_header">
+    <div class="chat_header_left">
+      <img src="../../../assets/img/temp_user_photo.jpg"/>
+    </div>
+    <div class="chat_header_right">
+      <div class="full-name">
+        .NET Juniors
+      </div>
+      <div class="active-last-time">
+        Andrei, Anca, Bogdan, Cristian and other 10
+      </div>
+    </div>
+    <div class="buttons-people">
+      <button class="btn btn-info" id="see-info">See details</button>
+    </div>
+  </div>
+  <div class="chat_content">
+    <div class="big_message">
+      <div class="pic">
+        <img src="../../../assets/img/temp_user_photo.jpg"/>
+      </div>
+      <div class="messages">
+        <p>sent by Andrei at {{ date  | date: 'short' }}</p>
+        <div class="message_from_him">
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit, consequuntur accusantium repellendus quas incidunt modi aut dolores similique earum nobis odit quam, a ex? Officiis ut necessitatibus culpa fugiat maiores.
+        </div>
+      </div>
+    </div>
+    <div class="big_message">
+    <div class="messages">
+      <p style="float: right;">{{ date  | date: 'short' }}</p><br>
+      <div class="message_from_me">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Velit, consequuntur accusantium repellendus quas incidunt modi aut dolores similique earum nobis odit quam, a ex? Officiis ut necessitatibus culpa fugiat maiores.
+      </div>
+    </div>
+  </div>
+  </div>
+  <div class="chat_send">
+    <input type="text" placeholder="Type someting...">
+    <button class="btn btn-info"> Send </button>
+  </div>
+</div>
+
+

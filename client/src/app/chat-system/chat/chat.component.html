@@ -7,14 +7,12 @@
       </div>
     </div>
     <div class="all-messages">
-      <div class="people">
-        <app-list-of-people-chat></app-list-of-people-chat>
-      </div>
-      <div class="groups">
-        <app-list-of-groups-chat></app-list-of-groups-chat>
-      </div>
+      <app-all-chats></app-all-chats>
     </div>
   </div>
-  <p *ngIf="!haveChat">Select a chat to start!</p>
-  <app-chat-messages *ngIf="haveChat"></app-chat-messages>
+  <div class="chats_message">
+    <p *ngIf="haveChat==-1">Select a chat to start!</p>
+    <app-chat-messages *ngIf="haveChat==1"></app-chat-messages>
+    <app-group-chat-message *ngIf="haveChat==2"></app-group-chat-message>
+  </div>
 </div>

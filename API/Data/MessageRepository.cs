@@ -2,6 +2,7 @@
 using API.Interfaces.Repository;
 using API.Models;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace API.Data
 {
@@ -31,29 +32,23 @@ namespace API.Data
 
         public IEnumerable<MessageDto> GetAllMessages()
         {
-            var allMessages = _context.Chats.Where(c => c.Deleted == false);
+            var allMessages = _context.Chats.Where(c => c.Deleted == false).Include(m=>m.PersonReceiver).Include(m=>m.PersonSender);
             return _mapper.Map<IEnumerable<MessageDto>>(allMessages);
         }
 
         public IEnumerable<MessageDto> GetLastMessages(int currentPersonId)
         {
-            var allMessagesCurrentPersonAsSender = GetAllMessages().Where(m => m.PersonSenderId == currentPersonId);
-            var allMessagesCurrentPersonAsReceiver = GetAllMessages().Where(m => m.PersonReceiverId == currentPersonId);
+            var allMessageForCurentPerson = GetAllMessages().Where(m => m.PersonSenderId == currentPersonId || m.PersonReceiverId == currentPersonId).OrderByDescending(m => m.SendDate);
 
             var allLastMessages = new List<MessageDto>();
 
-            foreach(var m in allMessagesCurrentPersonAsSender)
+            foreach(var m in allMessageForCurentPerson)
             {
-                if (allLastMessages.Where(m => m.PersonReceiverId == m.PersonReceiverId).Count() == 0)
+                int findId = m.PersonReceiverId == currentPersonId ? m.PersonSenderId : m.PersonReceiverId;
+
+                if (allLastMessages.Where(mes => mes.PersonReceiverId == findId || mes.PersonSenderId == findId).Count() == 0)
                     allLastMessages.Add(m);
             }
-
-            foreach (var m in allMessagesCurrentPersonAsReceiver)
-            {
-                if (allLastMessages.Where(m => m.PersonSenderId == m.PersonSenderId).Count() == 0)
-                    allLastMessages.Add(m);
-            }
-
             return allLastMessages;
         }
 

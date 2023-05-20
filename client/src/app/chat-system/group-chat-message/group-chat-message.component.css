@@ -3,10 +3,11 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
+  ;
 }
 
 .chat {
-  height: 85vh;
+  height: 100%;
   width: 100%;
 }
 
@@ -83,9 +84,8 @@
 }
 
 .message {
-  height: auto;
-  width: 100%;
-  margin-top: 10px;
+  height: 100%;
+  width: 80%;
 }
 
 .last-message {
@@ -118,20 +118,21 @@
 
 .chat_content {
   width: 100%;
-  height: 78%;
+  height: 80%;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
   padding-left: 10px;
   padding-right: 10px;
-  overflow-y: scroll;
 }
 
 .big_message{
   display: flex;
-  height: 100%;
 }
 
 .chat_send {
   width: 100%;
-  height: 12%;
+  height: 10%;
   border-top: 0.5px solid #d4d4d4;
 }
 
@@ -157,7 +158,7 @@ button{
 }
 
 .message_from_him, .message_from_me{
-  min-height: 30px;
+  min-height: 50px;
   height: auto;
   width: auto;
   max-width: 60%;
@@ -172,10 +173,6 @@ button{
   float: right;
 }
 
-.message_from_him{
-  float: left;
-}
-
 p{
   margin-left: 10px;
   margin-right: 10px;
@@ -185,14 +182,15 @@ p{
 
 .pic{
   height: 100%;
-  width: 35px;
+  width: 55px;
   display: flex;
   justify-content: flex-end;
   flex-direction: column;
+  padding-bottom: 10px;
 }
 
 .pic img{
-  height: 30px;
-  width: 30px;
+  height: 45px;
+  width: 45px;
   border-radius: 50%;
 }

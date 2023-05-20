@@ -11,6 +11,7 @@ import { Meeting } from 'src/model/meeting.model';
 import { Answer } from 'src/model/answer.model';
 import { Post } from 'src/model/post.model';
 import { Comment } from 'src/model/comment.model';
+import { Message } from 'src/model/message.model';
 
 @Injectable({
   providedIn: 'root',
@@ -579,6 +580,18 @@ export class DataStorageService {
       PersonId: comment.person.personId,
       DateOfComment: comment.dateOfComment
     },{headers: headers});
+  }
+
+  //chat
+
+  getLastMessagesFormChatForCurrentPerson(token:string, personId:number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<Message[]>(this.baseUrl + 'chat/' + personId, {headers: headers});
+  }
+
+  getAllMessagesFromAChat(token:string,currentPersonId:number,chatPersonId:number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<Message[]>(this.baseUrl + 'chat/messages/' + currentPersonId + '/' + chatPersonId, {headers: headers});
   }
 
 }

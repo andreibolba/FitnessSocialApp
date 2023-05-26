@@ -22,7 +22,7 @@ namespace API.Data
             var message = _mapper.Map<Chat>(chat);
             message.SendDate = DateTime.Now;
             _context.Chats.Add(message);
-            return _mapper.Map<MessageDto>(message);
+            return SaveAll() ? _mapper.Map<MessageDto>(message) : null;
         }
 
         public void DeleteMessage(int id)

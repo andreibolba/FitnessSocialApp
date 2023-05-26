@@ -1,0 +1,45 @@
+<h3 *ngIf="step==1">Add group</h3>
+<div id="main" *ngIf="step==1">
+  <form #registerForm="ngForm" (ngSubmit)="onSignUpSubmit()" autocomplete="off">
+    <div class="infos">
+      <div class="info">
+        <label for="groupName">Group Name</label>
+        <input type="text" id="groupName" placeholder="Post Content" name="groupName" [(ngModel)]="nameOfGroup"
+          required/>
+
+        <label for="groupName">Group Description</label>
+        <textarea id="groupName" placeholder="Post Content" name="groupName" [(ngModel)]="descriptionOfGroup"
+          required>
+        </textarea>
+      </div>
+    </div>
+
+    <mat-dialog-actions align="center">
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button [disabled]="!registerForm.valid" mat-button cdkFocusInitial (click)="onNext()"> Next </button>
+    </mat-dialog-actions>
+  </form>
+</div>
+
+<h3 *ngIf="step==2">Add people to group</h3>
+<div id="main" *ngIf="step==2">
+  <form #registerForm="ngForm" (ngSubmit)="onSignUpSubmit()" autocomplete="off">
+    <div class="search-box">
+      <i class="uil uil-search"></i>
+      <input type="text" [(ngModel)]="searchText" name="search" placeholder="Search here...">
+    </div>
+    <div class="infos">
+      <div class="info">
+        <p><mat-checkbox *ngFor="let i of options |filter:searchText" [checked]="i.checked" (change)="valueChange(i)">
+          <div id="option"> {{ i.name }}</div>
+        </mat-checkbox></p>
+      </div>
+    </div>
+
+    <mat-dialog-actions align="center">
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button type="submit" [disabled]="!registerForm.valid" mat-button cdkFocusInitial> Create </button>
+    </mat-dialog-actions>
+  </form>
+</div>
+

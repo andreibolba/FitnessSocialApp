@@ -8,8 +8,11 @@ namespace API.Dtos
 
         public string GroupChatName { get; set; }
 
-        public int AdminId { get; set; }
+        public int? AdminId { get; set; }
 
         public PersonDto Admin { get; set; }
+
+        public IEnumerable<PersonDto> Participants { get; set; }
+        public IEnumerable<GroupChatMessageDto> GroupChatMessages { get; set; }
     }
 }

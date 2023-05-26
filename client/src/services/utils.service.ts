@@ -10,6 +10,8 @@ import { DataStorageService } from './data-storage.service';
 import { Post } from 'src/model/post.model';
 import { Comment } from 'src/model/comment.model';
 import { Message } from 'src/model/message.model';
+import { GroupChat } from 'src/model/groupchat.model';
+import { GroupChatMessage } from 'src/model/groupchatmessage.model';
 
 @Injectable({
   providedIn: 'root'
@@ -34,7 +36,9 @@ export class UtilsService {
   postIdToComment = new BehaviorSubject<number | null>(null);
   selectChat = new BehaviorSubject<number>(-1);
   chatPersonChat = new BehaviorSubject<number>(-1);
+  groupChatPersonChat = new BehaviorSubject<GroupChat | null>(null);
   newChat = new BehaviorSubject<Message | null>(null);
+  newGroupChatMessage = new BehaviorSubject<GroupChatMessage | null>(null);
   dashboardChanged=new EventEmitter<boolean>(true);
 
   error=new BehaviorSubject<{errorCode:number,errorTitle:string,errorMessage:string} | null>(null);

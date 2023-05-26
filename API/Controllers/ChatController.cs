@@ -32,7 +32,7 @@ namespace API.Controllers
         {
             var res = _messageRepository.AddMessage(message);
 
-            return _messageRepository.SaveAll() ? Ok(res) : BadRequest("Internal Server Error");
+            return res!=null ? Ok(res) : BadRequest("Internal Server Error");
         }
 
         [HttpPost("delete/{meesageId:int}")]

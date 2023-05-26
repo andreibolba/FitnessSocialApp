@@ -5,11 +5,13 @@ namespace API.Interfaces.Repository
     public interface IGroupChatRepository
     {
         public IEnumerable<GroupChatDto> GetAllGroupChats(); 
-        public IEnumerable<GroupChatDto> GetAllGroupChatsForLeggedPerson(int personId);
-        public void CreateGroupChat(GroupChatDto model);
-        public void UpdateGroupChat(GroupChatDto model);
+        public GroupChatDto GetGroupChatById(int groupChatId);
+        public IEnumerable<GroupChatMessageDto> GetAllLastMessagesForAPerson(int personId);
+        public IEnumerable<GroupChatDto> GetAllGroupChatsForAPerson(int personId);
+        public GroupChatDto CreateGroupChat(GroupChatDto model, List<int> groupMembers);
+        public GroupChatDto UpdateGroupChat(GroupChatDto model);
         public void DeleteGroupChat(int groupChatID);
-        public void UpdateMembers(IEnumerable<GroupChatPersonDto> memebers);
+        public bool UpdateMembers(List<int> memebers, int groupChatId);
         public bool SaveAll();
     }
 }

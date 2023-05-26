@@ -12,6 +12,8 @@ import { Answer } from 'src/model/answer.model';
 import { Post } from 'src/model/post.model';
 import { Comment } from 'src/model/comment.model';
 import { Message } from 'src/model/message.model';
+import { GroupChat } from 'src/model/groupchat.model';
+import { GroupChatMessage } from 'src/model/groupchatmessage.model';
 
 @Injectable({
   providedIn: 'root',
@@ -601,6 +603,36 @@ export class DataStorageService {
       PersonReceiverId: message.personReceiverId,
       Message: message.message
     },{headers: headers});
+  }
+
+  //groupchat
+
+  addGroupChat(token:string, nameOfGroup:string,descriptionOfGroup:string, adminId:number,ids:number[]){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post<GroupChatMessage>(this.baseUrl + 'groupchat/add',{
+      NameOfGroup: nameOfGroup,
+      DescriptionOfGroup: descriptionOfGroup,
+      AdminId: adminId,
+      Ids:ids},{headers: headers});
+  }
+
+  getAllGroupChatsLastMessages(token:string, personId:number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<GroupChatMessage[]>(this.baseUrl + 'groupchat/' + personId, {headers: headers});
+  }
+
+  getAllMessagesForGroup(token:string, geroupId:number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<GroupChatMessage[]>(this.baseUrl + 'groupchat/messages/' + geroupId, {headers: headers});
+  }
+
+  sendMessageToGroupChat(token:string, personId:number,groupId:number,message:string){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post<GroupChatMessage>(this.baseUrl + 'groupchat/message/add',{
+      PersonId:personId,
+      GroupChatId:groupId,
+      Message:message
+    },{headers:headers});
   }
 
 }

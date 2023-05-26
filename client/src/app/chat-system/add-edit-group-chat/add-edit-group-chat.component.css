@@ -1,0 +1,162 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  width: auto;
+}
+
+#main{
+  max-height: 60vh;
+}
+
+.buttons{
+  height: 7vh;
+  margin-bottom: 3vh;
+  width: 79%;
+  display: flex;
+}
+
+.title{
+  height: 7vh;
+  margin-bottom: 3vh;
+  width: 90%;
+  display: flex;
+}
+
+.title i{
+  font-size: 32px;
+  margin-right: 5px;
+  margin-top: -5px;
+  color: #515151;
+}
+
+h2{
+  color: #515151;
+  font-family: 'Poppins-Italic';
+}
+
+.buttons button{
+  float: right;
+  height: 40px;
+  width: 120px;
+  color: white;
+  border: none;
+}
+
+form h3{
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 42px;
+  text-align: center;
+}
+
+label{
+  display: block;
+  margin-top: 15px;
+  font-size: 16px;
+  font-weight: 500;
+  text-align: start;
+}
+
+input, select, textarea{
+  display: block;
+  height: 30px;
+  width: 100%;
+  border-radius: 2px;
+  padding-left: 5px;
+  font-size: 14px;
+  font-weight: 300;
+  margin-top: 3px;
+  margin-bottom: 15px;
+  border: none;
+  border-bottom: 1px solid #515151;
+}
+
+::placeholder{
+  color: #515151;
+}
+
+.infos{
+  width: 500px;
+  margin-left: 20px;
+  height: auto;
+}
+
+.info{
+  height: 100%;
+  width: calc(100% - 20px);
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+h3{
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+button{
+  height: 35px;
+  width: 70px;
+  background-color: rgb(160, 196, 255);
+  color: #515151;
+  border: none;
+  margin-right: 5px;
+  margin-left: 5px;
+  margin-bottom: 30px;
+  border-radius: 10px;
+}
+
+h5{
+  margin-bottom: 5px;
+  margin-top: 5px;
+  font-size: 17px;
+}
+
+#option{
+  color: #515151;
+  font-family: 'Poppins', sans-serif;
+  margin-top: 8px;
+  font-size: 20px;
+  margin-left: -10px;
+  margin-right: 5px;
+}
+
+.top .search-box{
+  position: relative;
+  height: 45px;
+  max-width: 600px;
+  width: 100%;
+  margin: 0 30px;
+}
+.search-box{
+  position: relative;
+  height: 45px;
+  width: 90%;
+  margin: auto;
+}
+
+.search-box input{
+  position: absolute;
+  border: 1px solid #e6e5e5;
+  background-color:  #fff;
+  padding: 0 25px 0 50px;
+  border-radius: 5px;
+  height: 85%;
+  width: 100%;
+  color:  #000;
+  font-size: 15px;
+  font-weight: 400;
+  outline: none;
+}
+
+.search-box i{
+  position: absolute;
+  left: 15px;
+  font-size: 22px;
+  z-index: 10;
+  top: 45%;
+  transform: translateY(-50%);
+  color:  #707070;
+}

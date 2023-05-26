@@ -56,6 +56,8 @@ import { ChatComponent } from './chat-system/chat/chat.component';
 import { ChatMessagesComponent } from './chat-system/chat-messages/chat-messages.component';
 import { GroupChatMessageComponent } from './chat-system/group-chat-message/group-chat-message.component';
 import { AllChatsComponent } from './chat-system/all-chats/all-chats.component';
+import { AddEditGroupChatComponent } from './chat-system/add-edit-group-chat/add-edit-group-chat.component';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -99,8 +101,10 @@ import { AllChatsComponent } from './chat-system/all-chats/all-chats.component';
     ChatMessagesComponent,
     GroupChatMessageComponent,
     AllChatsComponent,
+    AddEditGroupChatComponent
   ],
   imports: [
+    Ng2SearchPipeModule,
     BrowserModule,
     HttpClientModule,
     FormsModule,
@@ -124,3 +128,4 @@ import { AllChatsComponent } from './chat-system/all-chats/all-chats.component';
   bootstrap: [AppComponent],
 })
 export class AppModule {}
+

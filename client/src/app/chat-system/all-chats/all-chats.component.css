@@ -68,3 +68,8 @@ h5{
 .chat_message:hover{
   cursor: pointer;
 }
+
+button{
+  float: right;
+  
+}

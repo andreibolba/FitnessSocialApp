@@ -9,6 +9,8 @@ public partial class GroupChat
 
     public string GroupChatName { get; set; }
 
+    public string GroupChatDescription { get; set; }
+
     public int AdminId { get; set; }
 
     public bool Deleted { get; set; }

@@ -7,6 +7,7 @@ namespace API.Dtos
         public int GroupChatId { get; set; }
 
         public string GroupChatName { get; set; }
+        public string GroupChatDescription { get; set; }
 
         public int? AdminId { get; set; }
 

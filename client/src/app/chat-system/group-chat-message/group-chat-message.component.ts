@@ -75,13 +75,15 @@ export class GroupChatMessageComponent implements OnInit, OnDestroy {
                   .subscribe((mess) => {
                     this.messages = mess;
                   });
+                  setTimeout(() => {
+                    var objDiv = document.getElementById('chat_content');
+                    console.log(objDiv);
+                    if (objDiv) {
+                      objDiv.scrollTop = objDiv.scrollHeight - objDiv.clientHeight;
+                      console.log("ok");
+                    }
+                  }, 0);
               }
-              setTimeout(() => {
-                var objDiv = document.getElementById('chat_content');
-                if (objDiv) {
-                  objDiv.scrollTop = objDiv.scrollHeight - objDiv.clientHeight;
-                }
-              }, 0);
             }
           );
         });
@@ -97,6 +99,11 @@ export class GroupChatMessageComponent implements OnInit, OnDestroy {
       this.addMessageSubscription.unsubscribe();
     if (this.sendMessagesSubscription != null)
       this.sendMessagesSubscription.unsubscribe();
+  }
+
+  seeDetails(groupChat : GroupChat){
+    this.utils.selectChat.next(3);
+    this.utils.groupChatPersonChat.next(groupChat);
   }
 
   onSend() {

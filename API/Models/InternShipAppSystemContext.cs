@@ -78,7 +78,7 @@ public partial class InternShipAppSystemContext : DbContext
     public virtual DbSet<VersionInfo> VersionInfos { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-      => optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=InternShipAppSystem;User Id=sa;Password=1234%asd; TrustServerCertificate=True");
+        => optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=InternShipAppSystem;User Id=sa;Password=1234%asd; TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

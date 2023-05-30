@@ -91,11 +91,10 @@ export class AllChatsComponent implements OnInit, OnDestroy {
       );
       this.newGroupChatSubscription = this.utils.newGroupChatMessage.subscribe(
         (res) => {
-          console.log(res);
           if (res != null) {
             let index = this.allGroupChats.findIndex(
               (c) =>
-                c.groupChatMessageId == res.groupChatMessageId
+                c.groupChatId == res.groupChatId
             );
             if(index!=-1)
               this.allGroupChats.splice(index, 1);

@@ -57,7 +57,8 @@ namespace API.Controllers
                 GroupChatDto groupChatDto = new GroupChatDto()
                 {
                     AdminId = groupChatModel.AdminId,
-                    GroupChatName = groupChatModel.NameOfGroup
+                    GroupChatName = groupChatModel.NameOfGroup,
+                    GroupChatDescription = groupChatModel.DescriptionOfGroup
                 };
                 var res = _groupChatRepository.CreateGroupChat(groupChatDto, groupChatModel.Ids);
                 var message = _groupChatMessageRepository.GetAllMessagesForAGroup(res.GroupChatId).Last();

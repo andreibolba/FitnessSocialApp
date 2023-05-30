@@ -51,6 +51,6 @@ namespace API.FluentMigration
             runner.MigrateUp();
         }
 
-        private const string ConnectionString = "Data Source=localhost;Initial Catalog=InternShipAppSystem;User Id=sa;Password=1234%asd; TrustServerCertificate=True";
+        private const string ConnectionString = "Data Source=ANDREIB;Initial Catalog=InternShipAppSystem;User Id=sa;Password=1234%asd; TrustServerCertificate=True";
     }
 }

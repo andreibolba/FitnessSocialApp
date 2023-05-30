@@ -1,0 +1,80 @@
+<div class="details">
+  <div class="header">
+    <img src="../../../assets/img/Microsoft_.NET_logo.svg.png" class="main"/>
+    <h4>{{ groupChat.groupChatName }}</h4>
+  </div>
+  <div class="description">
+    <h4>Descrption: </h4>
+    <textarea id="groupDescription" name="groupName" [(ngModel)]="groupChat.groupChatDescription" readonly ></textarea>
+  </div>
+  <div class="participants">
+    <h4>Participants: </h4>
+    <mat-accordion class="people">
+      <mat-expansion-panel (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false"
+                           class="people"
+                           *ngFor="let p of groupChat.participants let i = index">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h5>{{ i + 1 }}. {{ p.firstName + ' ' + p.lastName }}</h5>
+          </mat-panel-title>
+          <button class="btn btn-danger" id="button"> Remove </button>
+        </mat-expansion-panel-header>
+        <div class="row">
+          <div class="answer">
+            <div class="info">
+              <label for="trainer">Username</label>
+              <input type="text" id="trainer" name="trainer" readonly [value]="p.username" required
+                autocomplete="off">
+            </div>
+          </div>
+          <div class="answer">
+            <div class="info">
+              <label for="trainer">Email</label>
+              <input type="text" id="trainer" name="trainer" readonly [value]="p.email" required
+                autocomplete="off">
+            </div>
+          </div>
+          <div class="answer">
+            <div class="info">
+              <label for="trainer">Birthdate</label>
+              <input type="text" id="trainer" name="trainer" readonly [value]="p.birthDate | date" required
+                autocomplete="off">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="answer">
+            <div class="info">
+              <label for="trainer">Status</label>
+              <input type="text" id="trainer" name="trainer" readonly [value]="p.status" required
+                autocomplete="off">
+            </div>
+          </div>
+          <div class="answer">
+            <div class="info">
+              <label for="trainer">Challanges</label>
+              <input type="text" id="trainer" name="trainer" readonly value="0/5 ( 0 %)" required
+                autocomplete="off">
+            </div>
+          </div>
+          <div class="answer">
+            <div class="info">
+              <label for="trainer">Tests</label>
+              <input type="text" id="trainer" name="trainer" readonly value="0/5 ( 0 %)" required
+                autocomplete="off">
+            </div>
+          </div>
+        </div>
+
+      </mat-expansion-panel>
+
+    </mat-accordion>
+  </div>
+  <div class="footer">
+    <button class="btn btn-info">Edit group</button>
+    <button class="btn btn-success">Add people</button>
+    <button class="btn btn-danger">Delete</button>
+    <button class="btn btn-danger">Back</button>
+  </div>
+</div>

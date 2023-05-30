@@ -18,6 +18,7 @@ namespace API.FluentMigration.Migrations
             Create.Table(tableName)
                 .WithColumn("GroupChatId").AsInt32().PrimaryKey().NotNullable().Identity()
                 .WithColumn("GroupChatName").AsString().NotNullable()
+                .WithColumn("Description").AsString(int.MaxValue).Nullable()
                 .WithColumn("AdminId").AsInt32().NotNullable()
                 .WithColumn("Deleted").AsBoolean().NotNullable();
 

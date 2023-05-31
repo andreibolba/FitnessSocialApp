@@ -37,6 +37,13 @@ export class DataStorageService {
     });
   }
 
+  getPersonById(id: number, token: string) {
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<Person>(this.baseUrl + 'people/' + id, {
+      headers: headers,
+    });
+  }
+
   getPeople(token: string) {
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.get<Person[]>(this.baseUrl + 'people', {
@@ -605,6 +612,11 @@ export class DataStorageService {
     },{headers: headers});
   }
 
+  deleteChat(token:string, personId:number, chatPersonId:number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post(this.baseUrl + 'chat/deletechat/'+personId + '/' + chatPersonId,{},{headers:headers});
+  }
+
   //groupchat
 
   addGroupChat(token:string, nameOfGroup:string,descriptionOfGroup:string, adminId:number,ids:number[]){
@@ -614,6 +626,16 @@ export class DataStorageService {
       DescriptionOfGroup: descriptionOfGroup,
       AdminId: adminId,
       Ids:ids},{headers: headers});
+  }
+
+  editGroupChat(token:string, group:GroupChat){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post(this.baseUrl + 'groupchat/edit',{
+      GroupChatId: group.groupChatId,
+      GroupChatName: group.groupChatName,
+      GroupChatDescription: group.groupChatDescription,
+      AdminId: group.adminId
+    },{headers: headers});
   }
 
   getAllGroupChatsLastMessages(token:string, personId:number){
@@ -635,4 +657,23 @@ export class DataStorageService {
     },{headers:headers});
   }
 
+  deleteGroupChat(token:string, groupChatId:number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post(this.baseUrl + 'groupchat/delete/'+groupChatId,{},{headers:headers});
+  }
+
+  removeMemberFromGroupChat(token:string, groupChatId:number, memberId:number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post(this.baseUrl + 'groupchat/deleteperson/'+groupChatId +'/'+memberId,{},{headers:headers});
+  }
+
+  makeAdminGroupChat(token:string, groupChatId:number, memberId:number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post(this.baseUrl + 'groupchat/makeadmin/'+groupChatId +'/'+memberId,{},{headers:headers});
+  }
+
+  updateMembersGroupChat(token:string, groupChatId:number, ids:string){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post<GroupChat>(this.baseUrl + 'groupchat/update/members/'+groupChatId,{ids:ids},{headers:headers});
+  }
 }

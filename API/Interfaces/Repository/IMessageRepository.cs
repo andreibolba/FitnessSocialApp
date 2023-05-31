@@ -10,6 +10,7 @@ namespace API.Interfaces.Repository
         public MessageDto GetMessageById(int id);
         public MessageDto AddMessage(MessageDto chat);
         public void DeleteMessage(int id);
+        public void DeleteChat(int personId,int chatPersonId);
         public bool SaveAll();
     }
 }

@@ -4,7 +4,7 @@
     <h4>{{ groupChat.groupChatName }}</h4>
   </div>
   <div class="description">
-    <h4>Descrption: </h4>
+    <h4>Description: </h4>
     <textarea id="groupDescription" name="groupName" [(ngModel)]="groupChat.groupChatDescription" readonly ></textarea>
   </div>
   <div class="participants">
@@ -18,7 +18,8 @@
           <mat-panel-title>
             <h5>{{ i + 1 }}. {{ p.firstName + ' ' + p.lastName }}</h5>
           </mat-panel-title>
-          <button class="btn btn-danger" id="button"> Remove </button>
+          <button class="btn btn-success" id="button" *ngIf="loggedPerson.personId == groupChat.adminId" (click)="onMakeAdmin(p)"> Make Admin </button>
+          <button class="btn btn-danger" id="button" *ngIf="loggedPerson.personId == groupChat.adminId" (click)="onRemove(p)"> Remove </button>
         </mat-expansion-panel-header>
         <div class="row">
           <div class="answer">
@@ -72,9 +73,10 @@
     </mat-accordion>
   </div>
   <div class="footer">
-    <button class="btn btn-info">Edit group</button>
-    <button class="btn btn-success">Add people</button>
-    <button class="btn btn-danger">Delete</button>
-    <button class="btn btn-danger">Back</button>
+    <button class="btn btn-info" (click)="onEdit()">Edit group</button>
+    <button class="btn btn-success" *ngIf="loggedPerson.personId == groupChat.adminId" (click)="onAdd()">Add people</button>
+    <button class="btn btn-danger" *ngIf="loggedPerson.personId == groupChat.adminId" (click)="onDelete()" >Delete</button>
+    <button class="btn btn-danger" *ngIf="loggedPerson.personId != groupChat.adminId" (click)="onLeave()">Leave</button>
+    <button class="btn btn-danger" (click)="onBack()">Back</button>
   </div>
 </div>

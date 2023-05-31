@@ -1,10 +1,13 @@
 ﻿using API.Dtos;
 using API.Interfaces.Repository;
+using API.Models;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System.Drawing.Text;
 using System.Runtime.Serialization.Json;
 using System.Text;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 
 namespace API.Controllers
 {
@@ -13,6 +16,11 @@ namespace API.Controllers
         public string NameOfGroup { get; set; }
         public string DescriptionOfGroup { get; set; }
         public int AdminId { get; set; }
+        public List<int> Ids { get; set; }
+    }
+
+    public class PersonIds
+    {
         public List<int> Ids { get; set; }
     }
 
@@ -62,8 +70,16 @@ namespace API.Controllers
                 };
                 var res = _groupChatRepository.CreateGroupChat(groupChatDto, groupChatModel.Ids);
                 var message = _groupChatMessageRepository.GetAllMessagesForAGroup(res.GroupChatId).Last();
-                return res!=null? Ok(message):BadRequest("InternalServerError");
+                return res != null ? Ok(message) : BadRequest("InternalServerError");
             }
+        }
+
+        [HttpPost("edit")]
+        public ActionResult EditGroupChat([FromBody] GroupChatDto group)
+        {
+            var res = _groupChatRepository.UpdateGroupChat(group);
+
+            return res != null ? Ok() : BadRequest("Internal Server Error");
         }
 
         [HttpPost("message/add")]
@@ -74,12 +90,42 @@ namespace API.Controllers
             return res != null ? Ok(res) : BadRequest("Internal Server Error");
         }
 
-        [HttpPost("message/delete")]
-        public ActionResult DeleteMessageToGroup([FromBody] GroupChatMessageDto messageDto)
+        [HttpPost("delete/{groupChatId}")]
+        public ActionResult DeleteGroupChat(int groupChatId)
         {
-            _groupChatMessageRepository.SendMessage(messageDto);
+            _groupChatRepository.DeleteGroupChat(groupChatId);
 
-            return _groupChatMessageRepository.SaveAll() ? Ok() : BadRequest("Internal Server Error");
+            return _groupChatRepository.SaveAll() ? Ok() : BadRequest("Internal Server Error");
+        }
+
+        [HttpPost("deleteperson/{groupChatId}/{personId}")]
+        public ActionResult DeletePersonGroupChat(int groupChatId, int personId)
+        {
+            _groupChatRepository.DeleteMember(personId, groupChatId);
+
+            return _groupChatRepository.SaveAll() ? Ok() : BadRequest("Internal Server Error");
+        }
+
+        [HttpPost("makeadmin/{groupChatId}/{personId}")]
+        public ActionResult MakeAdmin(int groupChatId, int personId)
+        {
+            _groupChatRepository.MakeAdmin(personId, groupChatId);
+
+            return _groupChatRepository.SaveAll() ? Ok() : BadRequest("Internal Server Error");
+        }
+
+
+        [HttpPost("update/members/{groupChatId}")]
+        public ActionResult UpdateMembers(int groupChatId, [FromBody] object members)
+        {
+            Dictionary<string, string> idsData = JsonConvert.DeserializeObject<Dictionary<string, string>>(members.ToString());
+
+            var hasSomethingToSave = _groupChatRepository.UpdateMembers(groupChatId,Utils.Utils.FromStringToInt(idsData["ids"] += "!"));
+
+            if(hasSomethingToSave==false)
+                return Ok();
+
+            return _groupChatRepository.SaveAll() ? Ok(_groupChatRepository.GetGroupChatById(groupChatId)) : BadRequest("Internal Server Error");
         }
 
     }

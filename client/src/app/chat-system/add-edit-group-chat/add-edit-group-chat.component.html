@@ -8,7 +8,7 @@
           required/>
 
         <label for="groupName">Group Description</label>
-        <textarea id="groupName" placeholder="Group description" name="groupName" [(ngModel)]="descriptionOfGroup"
+        <textarea id="groupDescription" placeholder="Group description" name="groupDescription" [(ngModel)]="descriptionOfGroup"
           required>
         </textarea>
       </div>
@@ -16,7 +16,8 @@
 
     <mat-dialog-actions align="center">
       <button mat-button mat-dialog-close>Cancel</button>
-      <button [disabled]="!registerForm.valid" mat-button cdkFocusInitial (click)="onNext()"> Next </button>
+      <button [disabled]="!registerForm.valid" *ngIf="option==1" mat-button cdkFocusInitial (click)="onNext()"> Next </button>
+      <button [disabled]="!registerForm.valid" *ngIf="option==2" mat-button cdkFocusInitial (click)="onSave()"> Save </button>
     </mat-dialog-actions>
   </form>
 </div>
@@ -38,7 +39,8 @@
 
     <mat-dialog-actions align="center">
       <button mat-button mat-dialog-close>Cancel</button>
-      <button type="submit" [disabled]="!registerForm.valid" mat-button cdkFocusInitial> Create </button>
+      <button type="submit" [disabled]="!registerForm.valid" *ngIf="option==1" mat-button cdkFocusInitial> Create </button>
+      <button type="submit" [disabled]="!registerForm.valid" *ngIf="option==3" mat-button cdkFocusInitial (click)="onSave()"> Save </button>
     </mat-dialog-actions>
   </form>
 </div>

@@ -140,3 +140,16 @@ p{
   font-weight: bold;
 }
 
+select{
+  width: 70%;
+  height: 70%;
+  border-radius: 10px;
+  background-color: #fff;
+  border: 1px solid #707070;
+}
+
+button{
+  height: 70%;
+  width: 25%;
+  margin-left: 10px;
+}

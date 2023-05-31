@@ -12,8 +12,9 @@
         Active Since 1 hour ago
       </div>
     </div>
-    <div class="buttons-people">
-      <button class="btn btn-info" id="see-info">See details</button>
+    <div class="buttons-people" style="display: flex;">
+      <button class="btn btn-info" id="see-info" (click)="onDetails()">See details</button>
+      <button class="btn btn-danger" id="see-info" (click)="delete()" *ngIf="allChats.length != 0">Delete</button>
     </div>
   </div>
 

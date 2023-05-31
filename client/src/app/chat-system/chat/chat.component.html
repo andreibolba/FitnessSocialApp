@@ -2,8 +2,13 @@
   <div class="person">
     <div class="person_header">
       <div class="search-box">
-        <i class="uil uil-search"></i>
-        <input type="text" placeholder="Search here...">
+        <select name="people" id="people">
+          <option *ngFor="let p of searchPeople" 
+            [value]="p.id">
+            {{ p.firstName + ' ' + p.lastName + ' ' + p.id }}
+          </option>
+        </select>
+        <button class="btn btn-info" (click)="onSend()">Send</button>
       </div>
     </div>
     <div class="all-messages">

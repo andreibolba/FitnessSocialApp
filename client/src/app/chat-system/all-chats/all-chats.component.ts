@@ -30,7 +30,7 @@ export class AllChatsComponent implements OnInit, OnDestroy {
     private utils: UtilsService,
     private dataStorage: DataStorageService,
     private dialog: MatDialog
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.utils.initializeError();
@@ -59,10 +59,10 @@ export class AllChatsComponent implements OnInit, OnDestroy {
                   element.personReceiverId == data.personId ? 'He: ' : 'You: ';
               });
             });
-            this.getAllGroupChatsSubscription = this.dataStorage
-            .getAllGroupChatsLastMessages(person.token,data.personId)
+          this.getAllGroupChatsSubscription = this.dataStorage
+            .getAllGroupChatsLastMessages(person.token, data.personId)
             .subscribe((chats) => {
-             this.allGroupChats = chats;
+              this.allGroupChats = chats;
             });
         });
       this.newChatSubscription = this.utils.newChat.subscribe(
@@ -78,13 +78,15 @@ export class AllChatsComponent implements OnInit, OnDestroy {
                 : 'You: ';
             let index = this.allChats.findIndex(
               (c) =>
-                c.id == res.id
+                ((c.chatId == res.chatId)||(c.chatPerson.personId == res.chatPerson.personId))
             );
-            this.allChats.splice(index, 1);
-            this.allChats.unshift(res);
+            if (index != -1)
+              this.allChats.splice(index, 1);
+            if (res.message != '')
+              this.allChats.unshift(res);
           }
         },
-        () => {},
+        () => { },
         () => {
           this.utils.newChat.next(null);
         }
@@ -96,12 +98,13 @@ export class AllChatsComponent implements OnInit, OnDestroy {
               (c) =>
                 c.groupChatId == res.groupChatId
             );
-            if(index!=-1)
+            if (index != -1)
               this.allGroupChats.splice(index, 1);
-            this.allGroupChats.unshift(res);
+            if (res.message != '')
+              this.allGroupChats.unshift(res);
           }
         },
-        () => {},
+        () => { },
         () => {
           this.utils.newGroupChatMessage.next(null);
         }
@@ -114,7 +117,7 @@ export class AllChatsComponent implements OnInit, OnDestroy {
       this.selectChatSubscription.unsubscribe();
     if (this.getAllChatsSubscription != null)
       this.getAllChatsSubscription.unsubscribe();
-      if (this.getAllGroupChatsSubscription != null)
+    if (this.getAllGroupChatsSubscription != null)
       this.getAllGroupChatsSubscription.unsubscribe();
   }
 
@@ -123,7 +126,7 @@ export class AllChatsComponent implements OnInit, OnDestroy {
     this.utils.selectChat.next(1);
   }
 
-  onGroupChatClick(groupchat:GroupChat) {
+  onGroupChatClick(groupchat: GroupChat) {
     this.utils.selectChat.next(2);
     this.utils.groupChatPersonChat.next(groupchat);
   }
@@ -137,6 +140,7 @@ export class AllChatsComponent implements OnInit, OnDestroy {
   }
 
   addGroup() {
+    this.utils.editGroupChatOption.next(1);
     this.openDialog();
   }
 }

@@ -1,5 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
+import { GroupChat } from 'src/model/groupchat.model';
 import { LoggedPerson } from 'src/model/loggedperson.model';
 import { Message } from 'src/model/message.model';
 import { Person } from 'src/model/person.model';
@@ -14,9 +17,11 @@ import { UtilsService } from 'src/services/utils.service';
 export class ChatMessagesComponent implements OnInit, OnDestroy {
   message:string='';
   getCurrentPersonSubscription!:Subscription;
+  getChatPersonSubscription!:Subscription;
   getMessagesFromChatSubscription!:Subscription;
   getChatPersonIdSubcription!:Subscription;
   addMessageSubscription!:Subscription;
+  deleteChatSubscription!:Subscription;
   allChats:Message[]=[];
   chatPerson:Person=new Person();
   loggedPerson:Person=new Person();
@@ -25,7 +30,9 @@ export class ChatMessagesComponent implements OnInit, OnDestroy {
 
   constructor(
     private utils: UtilsService,
-    private dataStorage: DataStorageService
+    private dataStorage: DataStorageService,
+    private toastr:ToastrService,
+    private router:Router
   ) {}
 
   ngOnInit(): void {
@@ -42,8 +49,15 @@ export class ChatMessagesComponent implements OnInit, OnDestroy {
           this.getMessagesFromChatSubscription = this.dataStorage
             .getAllMessagesFromAChat(person.token,data.personId,personId)
             .subscribe((res) => {
-              this.allChats = res;
-              this.chatPerson = this.allChats[0].personReceiverId == data.personId? this.allChats[0].personSender : this.allChats[0].personReceiver;
+              if(res.length==0){
+                this.allChats=[];
+                this.getChatPersonSubscription=this.dataStorage.getPersonById(personId,this.token).subscribe((data)=>{
+                  this.chatPerson = data;
+                })
+              }else{
+                this.allChats = res;
+                this.chatPerson = this.allChats[0].personReceiverId == data.personId? this.allChats[0].personSender : this.allChats[0].personReceiver;
+              }
             },()=>{},()=>{
               setTimeout(() => {
               var objDiv = document.getElementById("chat_content");
@@ -82,5 +96,24 @@ export class ChatMessagesComponent implements OnInit, OnDestroy {
           objDiv.scrollTop = objDiv.scrollHeight - objDiv.clientHeight;
         },0);
       });
+  }
+
+  delete(){
+    this.utils.selectChat.next(-1);
+    this.deleteChatSubscription = this.dataStorage.deleteChat(this.token,this.loggedPerson.personId, this.chatPerson.personId).subscribe(()=>{
+      this.toastr.success("Delete chat successfully!");
+      this.utils.selectChat.next(-1);
+      let lenght = this.allChats.length;
+      let mess =  this.allChats[lenght-1];
+      mess.message='';
+      this.utils.newChat.next(mess);
+    },(error)=>{
+      this.toastr.success(error.error);
+    });
+  }
+
+  onDetails(){
+    this.utils.userToSeeDetailst.next(this.chatPerson.username);
+    this.router.navigate(["dashboard/profile"]);
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription, ignoreElements } from 'rxjs';
 import { GroupChat } from 'src/model/groupchat.model';
@@ -32,7 +33,8 @@ export class GroupChatMessageComponent implements OnInit, OnDestroy {
   constructor(
     private utils: UtilsService,
     private dataStorage: DataStorageService,
-    private taostr: ToastrService
+    private taostr: ToastrService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {

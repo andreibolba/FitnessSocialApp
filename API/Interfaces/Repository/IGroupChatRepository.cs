@@ -12,6 +12,9 @@ namespace API.Interfaces.Repository
         public GroupChatDto UpdateGroupChat(GroupChatDto model);
         public void DeleteGroupChat(int groupChatID);
         public bool UpdateMembers(List<int> memebers, int groupChatId);
+        public void DeleteMember(int personId, int groupChatId);
+        public void MakeAdmin(int personId, int groupChatId);
+        public bool UpdateMembers(int groupChatId, List<int> members);
         public bool SaveAll();
     }
 }

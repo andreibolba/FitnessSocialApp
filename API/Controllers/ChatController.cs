@@ -48,5 +48,12 @@ namespace API.Controllers
         {
             return Ok(_messageRepository.GetMessages(currentPeronId, chatPersonId));
         }
+
+        [HttpPost("deletechat/{currentPersonId}/{chatPersonId}")]
+        public ActionResult DeleteChat(int currentPersonId, int chatPersonId)
+        {
+            _messageRepository.DeleteChat(currentPersonId, chatPersonId);
+            return _messageRepository.SaveAll() ? Ok() : BadRequest("Internal Server Error");
+        }
     }
 }

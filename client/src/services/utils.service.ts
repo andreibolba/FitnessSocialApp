@@ -19,6 +19,7 @@ import { GroupChatMessage } from 'src/model/groupchatmessage.model';
 export class UtilsService {
 
   userToEdit=new BehaviorSubject<Person | null>(null);
+  userToSeeDetailst=new BehaviorSubject<string | null>(null);
   questionToEdit=new BehaviorSubject<Question | null>(null);
   testToEdit=new BehaviorSubject<Test | null>(null);
   meetingToEdit=new BehaviorSubject<Meeting | null>(null);
@@ -35,6 +36,7 @@ export class UtilsService {
   commentToEdit = new BehaviorSubject<Comment | null>(null);
   postIdToComment = new BehaviorSubject<number | null>(null);
   selectChat = new BehaviorSubject<number>(-1);
+  editGroupChatOption = new BehaviorSubject<number>(-1);
   chatPersonChat = new BehaviorSubject<number>(-1);
   groupChatPersonChat = new BehaviorSubject<GroupChat | null>(null);
   newChat = new BehaviorSubject<Message | null>(null);

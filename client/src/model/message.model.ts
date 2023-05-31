@@ -1,7 +1,7 @@
 import { Person } from "./person.model";
 
 export class Message{
-  public id:number;
+  public chatId:number;
   public message:string;
   public personSenderId:number;
   public personSender:Person;
@@ -12,7 +12,7 @@ export class Message{
   public youOrThem:string;
 
   constructor(){
-    this.id=-1;
+    this.chatId=-1;
     this.message='';
     this.personReceiverId=-1;
     this.personReceiver=new Person();

@@ -39,6 +39,7 @@ namespace API.Data
                 if (SaveAll() == false)
                     return null;
             }
+
             var message = new GroupChatMessage()
             {
                 GroupChatId = modelToDb.GroupChatId,
@@ -52,7 +53,7 @@ namespace API.Data
 
         public void DeleteGroupChat(int groupChatID)
         {
-            var group = _mapper.Map<GroupChat>(GetGroupChatById(groupChatID));
+            var group = _mapper.Map<GroupChat>(_context.GroupChats.SingleOrDefault(g => g.GroupChatId == groupChatID));
             group.Deleted = true;
             _context.GroupChats.Update(group);
             foreach(var g in _context.GroupChatPeople.Where(p=>p.GroupChatId == group.GroupChatId))
@@ -66,6 +67,13 @@ namespace API.Data
                 g.Deleted = true;
                 _context.GroupChatMessages.Update(g);
             }
+        }
+
+        public void DeleteMember(int personId, int groupChatId)
+        {
+            var res = _context.GroupChatPeople.FirstOrDefault(p=>p.PersonId == personId && p.GroupChatId == groupChatId);
+            res.Deleted = true;
+            _context.GroupChatPeople.Update(res);
         }
 
         public IEnumerable<GroupChatDto> GetAllGroupChats()
@@ -82,11 +90,18 @@ namespace API.Data
         public IEnumerable<GroupChatDto> GetAllGroupChatsForAPerson(int personId)
         {
             var group = GetAllGroupChats().Where(g => g.AdminId == personId).ToList();
-            var other = _context.GroupChatPeople.Where(g => g.PersonId == personId && g.Deleted == false).Include(g => g.GroupChat).Select(g => g.GroupChat);
-            foreach(var o in other)
+            var groupThatIAmNotAdmin = _context.GroupChatMessages.Where(g=>g.PersonId == personId && g.Deleted==false).ToList();
+
+            foreach(var o in groupThatIAmNotAdmin)
             {
-                group.Add(_mapper.Map<GroupChatDto>(o)); 
+                if (group.Where(g => g.GroupChatId == o.GroupChatId).Count() == 0)
+                {
+                    var groupT = GetGroupChatById(o.GroupChatId);
+                    if(groupT != null)
+                    group.Add(groupT);
+                }
             }
+
             return group;
         }
 
@@ -110,6 +125,26 @@ namespace API.Data
             return GetAllGroupChats().SingleOrDefault(g => g.GroupChatId == groupChatId);
         }
 
+        public void MakeAdmin(int personId, int groupChatId)
+        {
+            var res = _context.GroupChats.FirstOrDefault(p => p.GroupChatId == groupChatId);
+            var id = res.AdminId;
+            res.AdminId = personId;
+            _context.GroupChats.Update(res);
+            var p = _context.GroupChatPeople.FirstOrDefault(g => g.GroupChatId == groupChatId && g.PersonId == personId);
+            if(p != null)
+            {
+                p.Deleted = false;
+                _context.GroupChatPeople.Update(p);
+            }else
+            _context.GroupChatPeople.Add(new GroupChatPerson()
+            {
+                PersonId = id,
+                GroupChatId = groupChatId,
+                Deleted = false
+            });
+        }
+
         public bool SaveAll()
         {
             return _context.SaveChanges() > 0;
@@ -120,6 +155,7 @@ namespace API.Data
             var groupChat = _mapper.Map<GroupChat>(GetGroupChatById(model.GroupChatId));
 
             groupChat.GroupChatName = model.GroupChatName == null ? groupChat.GroupChatName : model.GroupChatName;
+            groupChat.GroupChatDescription = model.GroupChatDescription;
             groupChat.AdminId = model.AdminId == null ? groupChat.AdminId : model.AdminId.Value;
 
             _context.GroupChats.Update(groupChat);
@@ -147,6 +183,43 @@ namespace API.Data
                 {
                     PersonId = id,
                     GroupChatId = groupChatId,
+                    Deleted = false
+                });
+            }
+            return true;
+        }
+
+        public bool UpdateMembers(int groupChatId, List<int> members)
+        {
+            var result = _context.GroupChatPeople.Where(g => g.Deleted == false && g.GroupChatId == groupChatId);
+            if (result.Count() == 0 && members.Count() == 0)
+                return false;
+            if (members.Count() == 0)
+            {
+                foreach (var res in result)
+                {
+                    res.Deleted = true;
+                    _context.GroupChatPeople.Update(res);
+                }
+
+                return true;
+            }  
+
+            foreach (var res in result)
+            {
+                bool delete = members.IndexOf(res.PersonId) == -1 ? true : false;
+                res.Deleted = delete;
+                if (delete == false)
+                    members.Remove(res.PersonId);
+                _context.GroupChatPeople.Update(res);
+            }
+
+            foreach (var id in members)
+            {
+                _context.GroupChatPeople.Add(new GroupChatPerson
+                {
+                    GroupChatId = groupChatId,
+                    PersonId = id,
                     Deleted = false
                 });
             }

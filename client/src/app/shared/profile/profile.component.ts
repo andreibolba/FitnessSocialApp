@@ -12,29 +12,26 @@ import { UtilsService } from 'src/services/utils.service';
 })
 export class ProfileComponent implements OnInit, OnDestroy {
   dataSub!: Subscription;
+  personSub!: Subscription;
   person!: Person;
   isLoading=true;
 
   constructor(private dataService: DataStorageService, private utils:UtilsService) {}
+
   ngOnInit(): void {
     this.utils.initializeError();
     this.isLoading=true;
     this.utils.dashboardChanged.next(false);
-    console.log('perosnal');
-    this.setCurrentUser();
-  }
-  ngOnDestroy(): void {
-    if(this.dataSub) this.dataSub.unsubscribe();
-  }
-
-  setCurrentUser() {
     const personString = localStorage.getItem('person');
     if (!personString) {
       return;
     } else {
       const person: LoggedPerson = JSON.parse(personString);
-      this.dataSub = this.dataService
-        .getPerson(person.username, person.token)
+
+      this.personSub = this.utils.userToSeeDetailst.subscribe((res)=>{
+        let user = res!=null? res : person.username;
+        this.dataSub = this.dataService
+        .getPerson(user, person.token)
         .subscribe(
           (res) => {
             this.person = res;
@@ -46,6 +43,10 @@ export class ProfileComponent implements OnInit, OnDestroy {
             this.isLoading=false;
           }
         );
+      });
     }
+  }
+  ngOnDestroy(): void {
+    if(this.dataSub) this.dataSub.unsubscribe();
   }
 }

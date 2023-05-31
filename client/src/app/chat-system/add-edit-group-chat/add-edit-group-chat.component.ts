@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
+import { GroupChat } from 'src/model/groupchat.model';
 import { LoggedPerson } from 'src/model/loggedperson.model';
 import { DataStorageService } from 'src/services/data-storage.service';
 import { UtilsService } from 'src/services/utils.service';
@@ -26,14 +27,20 @@ export class CheckBox {
   styleUrls: ['./add-edit-group-chat.component.css'],
 })
 export class AddEditGroupChatComponent implements OnInit, OnDestroy {
+  group: GroupChat = new GroupChat();
   nameOfGroup: string = '';
   descriptionOfGroup: string = '';
   step: number = 1;
   getAllPersonSubcription!: Subscription;
   addGroupchatSubcription!: Subscription;
   getPersonSubcription!: Subscription;
+  optionSubcription!: Subscription;
+  editGroupSubcription!: Subscription;
+  saveEditGroupSubcription!: Subscription;
+  updateMembersGroupSubcription!: Subscription;
   options: CheckBox[] = [];
   searchText: string = '';
+  option: number = 1;
   private token: string = '';
   private adminId: number = -1;
 
@@ -42,7 +49,7 @@ export class AddEditGroupChatComponent implements OnInit, OnDestroy {
     private dataStorage: DataStorageService,
     private toastr: ToastrService,
     private dialog: MatDialogRef<AddEditGroupChatComponent>
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.utils.initializeError();
@@ -69,6 +76,22 @@ export class AddEditGroupChatComponent implements OnInit, OnDestroy {
                       false
                     )
                   );
+                this.optionSubcription = this.utils.editGroupChatOption.subscribe((res) => {
+                  this.option = res;
+                  this.step = res == 1 || res == 2 ? 1 : 2;
+                  this.editGroupSubcription = this.utils.groupChatPersonChat.subscribe((data) => {
+                    if (data) {
+                      this.nameOfGroup = data.groupChatName;
+                      this.descriptionOfGroup = data.groupChatDescription ? data.groupChatDescription : '';
+                      this.group = data;
+                      this.group.participants.forEach(element => {
+                        let index = this.options.findIndex(c => c.id == element.personId);
+                        if (index != -1)
+                          this.options[index].checked = true;
+                      });
+                    }
+                  })
+                });
               });
             });
         });
@@ -82,23 +105,26 @@ export class AddEditGroupChatComponent implements OnInit, OnDestroy {
   }
 
   onSignUpSubmit() {
-    let ids: number[] = [];
-    this.options.forEach((element) => {
-      if (element.checked) ids.push(element.id);
-    });
-    this.addGroupchatSubcription = this.dataStorage
-      .addGroupChat(
-        this.token,
-        this.nameOfGroup,
-        this.descriptionOfGroup,
-        this.adminId,
-        ids
-      )
-      .subscribe((res) => {
-        this.toastr.success('Group was created!');
-        this.dialog.close();
-        this.utils.newGroupChatMessage.next(res);
+    if (this.option == 1) {
+      let ids: number[] = [];
+      this.options.forEach((element) => {
+        if (element.checked) ids.push(element.id);
       });
+      ids.push(this.adminId);
+      this.addGroupchatSubcription = this.dataStorage
+        .addGroupChat(
+          this.token,
+          this.nameOfGroup,
+          this.descriptionOfGroup,
+          this.adminId,
+          ids
+        )
+        .subscribe((res) => {
+          this.toastr.success('Group was created!');
+          this.dialog.close();
+          this.utils.newGroupChatMessage.next(res);
+        });
+    }
   }
 
   onNext() {
@@ -107,5 +133,32 @@ export class AddEditGroupChatComponent implements OnInit, OnDestroy {
 
   valueChange(op: CheckBox) {
     op.checked = !op.checked;
+  }
+
+  onSave() {
+    if (this.option == 2) {
+      this.group.groupChatName = this.nameOfGroup;
+      this.group.groupChatDescription = this.descriptionOfGroup == '' ? null : this.descriptionOfGroup;
+      this.saveEditGroupSubcription = this.dataStorage.editGroupChat(this.token, this.group).subscribe(() => {
+        this.toastr.success("Group updates successfully!");
+        this.dialog.close();
+      }, (error) => {
+        this.toastr.error(error.error);
+      });
+    } else if (this.option == 3) {
+      var ids: string = '';
+      this.options.forEach(element => {
+        if(element.checked==true)
+        ids += element.id.toString() + "_";
+      });
+      ids+= this.adminId+"_";
+      this.updateMembersGroupSubcription = this.dataStorage.updateMembersGroupChat(this.token, this.group.groupChatId, ids).subscribe((res) => {
+        this.utils.groupChatPersonChat.next(res);
+        this.toastr.success("Group members updates successfully!");
+        this.dialog.close();
+      }, (error) => {
+        this.toastr.error(error.error);
+      });
+    }
   }
 }

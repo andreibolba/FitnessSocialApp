@@ -59,6 +59,7 @@ import { AllChatsComponent } from './chat-system/all-chats/all-chats.component';
 import { AddEditGroupChatComponent } from './chat-system/add-edit-group-chat/add-edit-group-chat.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { GroupChatDetailsComponent } from './chat-system/group-chat-details/group-chat-details.component';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 
 @NgModule({
   declarations: [
@@ -125,6 +126,8 @@ import { GroupChatDetailsComponent } from './chat-system/group-chat-details/grou
     MatTabsModule,
     MatFormFieldModule,
     ToastrModule.forRoot(),
+    NgxMatSelectSearchModule 
+
   ],
   providers: [],
   bootstrap: [AppComponent],

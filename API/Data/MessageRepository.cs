@@ -25,6 +25,16 @@ namespace API.Data
             return SaveAll() ? _mapper.Map<MessageDto>(message) : null;
         }
 
+        public void DeleteChat(int personId, int chatPersonId)
+        {
+            var chat = _context.Chats.Where(r => (r.PersonSenderId == personId && r.PersonReceiverId == chatPersonId) || (r.PersonSenderId == chatPersonId && r.PersonReceiverId == personId)).ToList();
+            foreach(var c in chat)
+            {
+                c.Deleted = true;
+                _context.Chats.Update(c);
+            }
+        }
+
         public void DeleteMessage(int id)
         {
             var message = GetMessageById(id);

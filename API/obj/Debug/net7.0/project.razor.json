@@ -1,6 +1,6 @@
 {
-  "SerializedFilePath": "f:\\InternShipApp\\API\\obj\\Debug\\net7.0\\project.razor.json",
-  "FilePath": "f:\\InternShipApp\\API\\API.csproj",
+  "SerializedFilePath": "g:\\InternShipApp\\API\\obj\\Debug\\net7.0\\project.razor.json",
+  "FilePath": "g:\\InternShipApp\\API\\API.csproj",
   "Configuration": {
     "ConfigurationName": "MVC-3.0",
     "LanguageVersion": "7.0",
@@ -13,11 +13,7 @@
   "ProjectWorkspaceState": {
     "TagHelpers": [
       {
-<<<<<<< HEAD
-        "HashCode": 495669141,
-=======
-        "HashCode": 1225970895,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1636879595,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -101,11 +97,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 877367478,
-=======
-        "HashCode": -252785602,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -965691304,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -190,11 +182,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1931088328,
-=======
-        "HashCode": 1775517237,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 250051118,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView.NotAuthorized",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -227,11 +215,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -833680532,
-=======
-        "HashCode": 1633119295,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -951174914,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView.NotAuthorized",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -265,11 +249,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 2059589621,
-=======
-        "HashCode": -1585951634,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -111455242,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView.Authorizing",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -290,11 +270,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1312955066,
-=======
-        "HashCode": 1046699829,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1922799867,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView.Authorizing",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -316,11 +292,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -923722262,
-=======
-        "HashCode": 550743512,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1497154776,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeView",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -425,11 +397,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1597907178,
-=======
-        "HashCode": -604433192,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1350782230,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeView",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -535,11 +503,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1365932475,
-=======
-        "HashCode": -50600867,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -298542990,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeView.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -572,11 +536,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 328407354,
-=======
-        "HashCode": -880145596,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -2028135304,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeView.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -610,11 +570,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 523231934,
-=======
-        "HashCode": -243403866,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -56018611,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeView.NotAuthorized",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -647,11 +603,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1486695191,
-=======
-        "HashCode": 1404164268,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -21701404,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeView.NotAuthorized",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -685,11 +637,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1534560235,
-=======
-        "HashCode": 57948684,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -984863847,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeView.Authorized",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -722,11 +670,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1234224051,
-=======
-        "HashCode": 1831847733,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1930193094,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeView.Authorized",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -760,11 +704,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1843612953,
-=======
-        "HashCode": -633799545,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -75680566,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeView.Authorizing",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -785,11 +725,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1449878270,
-=======
-        "HashCode": -82415453,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -267841902,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.AuthorizeView.Authorizing",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -811,11 +747,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1786088883,
-=======
-        "HashCode": -1157837657,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -2022070796,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -846,11 +778,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1826454574,
-=======
-        "HashCode": 1981622191,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1327833316,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -882,11 +810,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -377688703,
-=======
-        "HashCode": -1508415520,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1269768470,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -907,11 +831,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 608040503,
-=======
-        "HashCode": 1600081934,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1060227680,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Authorization",
@@ -933,11 +853,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -326620981,
-=======
-        "HashCode": 1714663467,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1928941859,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.CascadingValue<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1012,11 +928,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -620383932,
-=======
-        "HashCode": 1159155348,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 309820772,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.CascadingValue<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1092,11 +1004,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 2020416841,
-=======
-        "HashCode": -67481486,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 64470937,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.CascadingValue<TValue>.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1117,11 +1025,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1616677371,
-=======
-        "HashCode": -1490416493,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1275928077,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.CascadingValue<TValue>.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1143,11 +1047,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 564415697,
-=======
-        "HashCode": 544709513,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 223691498,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.DynamicComponent",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1189,11 +1089,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1879204004,
-=======
-        "HashCode": -1247814049,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1831074951,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.DynamicComponent",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1236,11 +1132,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1839162993,
-=======
-        "HashCode": 2031324020,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -206512515,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.LayoutView",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1282,11 +1174,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -427473833,
-=======
-        "HashCode": 1387120613,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1672398819,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.LayoutView",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1329,11 +1217,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1694440984,
-=======
-        "HashCode": -1407639165,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1987912589,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.LayoutView.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1354,11 +1238,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1007914484,
-=======
-        "HashCode": 2129266805,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -966045509,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.LayoutView.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1380,11 +1260,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1630470306,
-=======
-        "HashCode": 1851319193,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1887856023,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.RouteView",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1426,11 +1302,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -860755891,
-=======
-        "HashCode": -63183872,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1863624062,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.RouteView",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1473,11 +1345,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1581869324,
-=======
-        "HashCode": -1855691337,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1977030206,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Routing.Router",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1585,11 +1453,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -487048077,
-=======
-        "HashCode": -1949593586,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -934598071,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Routing.Router",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1698,11 +1562,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -280491337,
-=======
-        "HashCode": 996348166,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -157381082,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Routing.Router.NotFound",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1723,11 +1583,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1490080969,
-=======
-        "HashCode": 734076821,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1043956529,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Routing.Router.NotFound",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1749,11 +1605,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1044060785,
-=======
-        "HashCode": 1386665254,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1932987624,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Routing.Router.Found",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1786,11 +1638,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 519517764,
-=======
-        "HashCode": -1152292555,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1415175704,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Routing.Router.Found",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1824,11 +1672,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1832431795,
-=======
-        "HashCode": 1380381064,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -566095003,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Routing.Router.Navigating",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1849,11 +1693,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 554333576,
-=======
-        "HashCode": 1572558938,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -669925201,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Routing.Router.Navigating",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -1875,11 +1715,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -469138853,
-=======
-        "HashCode": 1401868516,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1552958742,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator",
         "AssemblyName": "Microsoft.AspNetCore.Components.Forms",
@@ -1898,11 +1734,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -27866026,
-=======
-        "HashCode": -577784261,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -306983454,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator",
         "AssemblyName": "Microsoft.AspNetCore.Components.Forms",
@@ -1922,11 +1754,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1618187269,
-=======
-        "HashCode": -1988818126,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1618490132,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.EditForm",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -2031,11 +1859,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1927052224,
-=======
-        "HashCode": 1154676345,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -130772057,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.EditForm",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -2141,11 +1965,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1820427342,
-=======
-        "HashCode": -594676901,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 720059408,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Forms.EditForm.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -2178,11 +1998,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 892458990,
-=======
-        "HashCode": 1896078758,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1028337865,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Forms.EditForm.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -2216,11 +2032,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1230090030,
-=======
-        "HashCode": 1111841404,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1773792950,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputCheckbox",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -2292,11 +2104,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1984445155,
-=======
-        "HashCode": -1220506456,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1012100717,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputCheckbox",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -2369,11 +2177,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1830741082,
-=======
-        "HashCode": 892130289,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 973541692,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputDate<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -2481,11 +2285,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1791531692,
-=======
-        "HashCode": -1366082961,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1891564985,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputDate<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -2594,11 +2394,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1165219015,
-=======
-        "HashCode": 304264216,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1579269090,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputFile",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -2640,11 +2436,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 760568326,
-=======
-        "HashCode": -1756946106,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1885830728,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputFile",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -2687,11 +2479,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1479828216,
-=======
-        "HashCode": 1174465820,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 334561532,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputNumber<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -2788,11 +2576,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1528623951,
-=======
-        "HashCode": 1916725106,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -368527377,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputNumber<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -2890,11 +2674,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 993821554,
-=======
-        "HashCode": 1809390286,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -988605913,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputRadio<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -2958,11 +2738,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 774688015,
-=======
-        "HashCode": 1117610956,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 2128291892,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputRadio<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3027,11 +2803,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1922173139,
-=======
-        "HashCode": 581391132,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1706644984,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputRadioGroup<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3139,11 +2911,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1524360163,
-=======
-        "HashCode": -580171811,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 981244478,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputRadioGroup<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3252,11 +3020,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -75497079,
-=======
-        "HashCode": -781875274,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -2019187976,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputRadioGroup<TValue>.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3277,11 +3041,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1710908285,
-=======
-        "HashCode": 1349267109,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1257261215,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputRadioGroup<TValue>.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3303,11 +3063,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1981882797,
-=======
-        "HashCode": 771938921,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -279277865,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputSelect<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3405,11 +3161,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -830398938,
-=======
-        "HashCode": -724649314,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -675747982,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputSelect<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3508,11 +3260,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -2126816846,
-=======
-        "HashCode": 1687710782,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -461553455,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputSelect<TValue>.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3533,11 +3281,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1558354217,
-=======
-        "HashCode": 622005727,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1265326042,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputSelect<TValue>.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3559,11 +3303,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 814417818,
-=======
-        "HashCode": 1791974660,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 433080595,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputText",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3635,11 +3375,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -2058407835,
-=======
-        "HashCode": -2011796769,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1502210933,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputText",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3712,11 +3448,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -939670398,
-=======
-        "HashCode": -1929928382,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -276014177,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputTextArea",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3788,11 +3520,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -903324516,
-=======
-        "HashCode": 384556851,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -516816895,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputTextArea",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3865,11 +3593,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1378219274,
-=======
-        "HashCode": -459205134,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -369225901,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.ValidationMessage<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3923,11 +3647,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1923647710,
-=======
-        "HashCode": -898486755,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1956884230,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.ValidationMessage<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -3982,11 +3702,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1903708995,
-=======
-        "HashCode": 1188653652,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1846474172,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.ValidationSummary",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4027,11 +3743,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1908247984,
-=======
-        "HashCode": 232730271,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1437563268,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Forms.ValidationSummary",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4073,11 +3785,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -782940636,
-=======
-        "HashCode": -273237001,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 2099369479,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Routing.FocusOnNavigate",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4118,11 +3826,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1638731604,
-=======
-        "HashCode": -444778325,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -141405536,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Routing.FocusOnNavigate",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4164,11 +3868,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 528604896,
-=======
-        "HashCode": 356387113,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1309519829,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Routing.NavigationLock",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4210,11 +3910,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 634329441,
-=======
-        "HashCode": -97291259,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -887492563,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Routing.NavigationLock",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4257,11 +3953,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1055599976,
-=======
-        "HashCode": -212751294,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -935226249,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Routing.NavLink",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4324,11 +4016,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -308295222,
-=======
-        "HashCode": -1689772854,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1470855354,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Routing.NavLink",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4392,11 +4080,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1050341713,
-=======
-        "HashCode": 1889196099,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1497356308,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Routing.NavLink.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4417,11 +4101,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 39183685,
-=======
-        "HashCode": -1608154650,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -377651923,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Routing.NavLink.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4443,11 +4123,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 243971378,
-=======
-        "HashCode": -481558156,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1335290769,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Web.HeadContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4479,11 +4155,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 794491068,
-=======
-        "HashCode": -235481569,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1513433625,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Web.HeadContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4516,11 +4188,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -978748224,
-=======
-        "HashCode": 2113424050,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -2081714199,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.HeadContent.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4541,11 +4209,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -977729639,
-=======
-        "HashCode": 391247201,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 93002229,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.HeadContent.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4567,11 +4231,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1526408158,
-=======
-        "HashCode": -1445829330,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -838111442,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Web.HeadOutlet",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4590,11 +4250,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1684761037,
-=======
-        "HashCode": -813285240,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1628048780,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Web.HeadOutlet",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4614,11 +4270,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -732327201,
-=======
-        "HashCode": 1052211374,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1793764191,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Web.PageTitle",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4650,11 +4302,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -203035901,
-=======
-        "HashCode": 1068012669,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -492705604,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Web.PageTitle",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4687,11 +4335,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1696769269,
-=======
-        "HashCode": -175807681,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -443981740,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.PageTitle.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4712,11 +4356,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 293313856,
-=======
-        "HashCode": 1014145208,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 671948990,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.PageTitle.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4738,11 +4378,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -861484189,
-=======
-        "HashCode": -580903955,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1027334815,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Web.ErrorBoundary",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4805,11 +4441,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -271947889,
-=======
-        "HashCode": 902958482,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 290416677,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Web.ErrorBoundary",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4873,11 +4505,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 167328061,
-=======
-        "HashCode": 1292195060,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1131599233,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.ErrorBoundary.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4898,11 +4526,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 910451675,
-=======
-        "HashCode": 1723642500,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -989730816,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.ErrorBoundary.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4924,11 +4548,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1961933126,
-=======
-        "HashCode": 1132041900,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1082231672,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.ErrorBoundary.ErrorContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4961,11 +4581,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -759598308,
-=======
-        "HashCode": 1134527706,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -102329987,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.ErrorBoundary.ErrorContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -4999,11 +4615,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 827096559,
-=======
-        "HashCode": -1875879279,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1347399230,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize<TItem>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -5135,11 +4747,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -946493845,
-=======
-        "HashCode": -1078043456,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 580183,
         "Kind": "Components.Component",
         "Name": "Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize<TItem>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -5272,11 +4880,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 827915361,
-=======
-        "HashCode": 345926527,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 383235242,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize<TItem>.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -5309,11 +4913,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 601183791,
-=======
-        "HashCode": -1330818485,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1827903957,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize<TItem>.ChildContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -5347,11 +4947,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -556271598,
-=======
-        "HashCode": 1170125098,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1640254285,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize<TItem>.ItemContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -5384,11 +4980,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -597108408,
-=======
-        "HashCode": -1472593679,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -111291773,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize<TItem>.ItemContent",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -5422,11 +5014,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -459874101,
-=======
-        "HashCode": 880478071,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -460971384,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize<TItem>.Placeholder",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -5459,11 +5047,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -681213356,
-=======
-        "HashCode": 585140987,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 443312613,
         "Kind": "Components.ChildContent",
         "Name": "Microsoft.AspNetCore.Components.Web.Virtualization.Virtualize<TItem>.Placeholder",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -5497,11 +5081,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1116675195,
-=======
-        "HashCode": -1031646652,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1913782958,
         "Kind": "Components.EventHandler",
         "Name": "onfocus",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -5584,11 +5164,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -697657382,
-=======
-        "HashCode": 1542980119,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -9391290,
         "Kind": "Components.EventHandler",
         "Name": "onblur",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -5671,11 +5247,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1404104411,
-=======
-        "HashCode": 1595977308,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -620932958,
         "Kind": "Components.EventHandler",
         "Name": "onfocusin",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -5758,11 +5330,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -850454292,
-=======
-        "HashCode": 1737179851,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1199698520,
         "Kind": "Components.EventHandler",
         "Name": "onfocusout",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -5845,11 +5413,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1912029728,
-=======
-        "HashCode": -1681493671,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1951966505,
         "Kind": "Components.EventHandler",
         "Name": "onmouseover",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -5932,11 +5496,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -545107787,
-=======
-        "HashCode": -1334609854,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1786171291,
         "Kind": "Components.EventHandler",
         "Name": "onmouseout",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -6019,11 +5579,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -304092017,
-=======
-        "HashCode": 1073854363,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1846623268,
         "Kind": "Components.EventHandler",
         "Name": "onmouseleave",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -6106,11 +5662,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1428882507,
-=======
-        "HashCode": -1253792163,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -261291240,
         "Kind": "Components.EventHandler",
         "Name": "onmouseenter",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -6193,11 +5745,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1174938548,
-=======
-        "HashCode": 419667810,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 32950247,
         "Kind": "Components.EventHandler",
         "Name": "onmousemove",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -6280,11 +5828,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1299068989,
-=======
-        "HashCode": 2085355049,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -2098835127,
         "Kind": "Components.EventHandler",
         "Name": "onmousedown",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -6367,11 +5911,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 296710731,
-=======
-        "HashCode": -482379815,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -213472732,
         "Kind": "Components.EventHandler",
         "Name": "onmouseup",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -6454,11 +5994,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 915923069,
-=======
-        "HashCode": 297658,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 857272223,
         "Kind": "Components.EventHandler",
         "Name": "onclick",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -6541,11 +6077,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -962206614,
-=======
-        "HashCode": 2041997990,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1784060452,
         "Kind": "Components.EventHandler",
         "Name": "ondblclick",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -6628,11 +6160,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 120840166,
-=======
-        "HashCode": 388624912,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 784331120,
         "Kind": "Components.EventHandler",
         "Name": "onwheel",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -6715,11 +6243,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1137335917,
-=======
-        "HashCode": 51046744,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1345912563,
         "Kind": "Components.EventHandler",
         "Name": "onmousewheel",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -6802,11 +6326,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -762035372,
-=======
-        "HashCode": 734923190,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 2077789655,
         "Kind": "Components.EventHandler",
         "Name": "oncontextmenu",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -6889,11 +6409,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 226428896,
-=======
-        "HashCode": -609361766,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 2109092758,
         "Kind": "Components.EventHandler",
         "Name": "ondrag",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -6976,11 +6492,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1392863229,
-=======
-        "HashCode": 1233097823,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 296353773,
         "Kind": "Components.EventHandler",
         "Name": "ondragend",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -7063,11 +6575,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -339584273,
-=======
-        "HashCode": 1048014459,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 731071576,
         "Kind": "Components.EventHandler",
         "Name": "ondragenter",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -7150,11 +6658,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 123473706,
-=======
-        "HashCode": -1694510117,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -621108132,
         "Kind": "Components.EventHandler",
         "Name": "ondragleave",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -7237,11 +6741,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 60747829,
-=======
-        "HashCode": 2043862898,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1097733638,
         "Kind": "Components.EventHandler",
         "Name": "ondragover",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -7324,11 +6824,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1032011200,
-=======
-        "HashCode": -341523438,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 137223977,
         "Kind": "Components.EventHandler",
         "Name": "ondragstart",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -7411,11 +6907,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -645662851,
-=======
-        "HashCode": -657260333,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1143644287,
         "Kind": "Components.EventHandler",
         "Name": "ondrop",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -7498,11 +6990,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1039151997,
-=======
-        "HashCode": 744307702,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -279680192,
         "Kind": "Components.EventHandler",
         "Name": "onkeydown",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -7585,11 +7073,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 62249209,
-=======
-        "HashCode": -357515594,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 2031081489,
         "Kind": "Components.EventHandler",
         "Name": "onkeyup",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -7672,11 +7156,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 2061945818,
-=======
-        "HashCode": 443412416,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 790555295,
         "Kind": "Components.EventHandler",
         "Name": "onkeypress",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -7759,11 +7239,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1023971332,
-=======
-        "HashCode": 882085039,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -474005439,
         "Kind": "Components.EventHandler",
         "Name": "onchange",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -7846,11 +7322,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 176262199,
-=======
-        "HashCode": -940414567,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 407439426,
         "Kind": "Components.EventHandler",
         "Name": "oninput",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -7933,11 +7405,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -180103917,
-=======
-        "HashCode": 1687464380,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -288740556,
         "Kind": "Components.EventHandler",
         "Name": "oninvalid",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -8020,11 +7488,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -523053238,
-=======
-        "HashCode": -955650061,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 237571845,
         "Kind": "Components.EventHandler",
         "Name": "onreset",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -8107,11 +7571,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 2135596046,
-=======
-        "HashCode": 2048175557,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1591601690,
         "Kind": "Components.EventHandler",
         "Name": "onselect",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -8194,11 +7654,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1175463723,
-=======
-        "HashCode": -1796638984,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 643145163,
         "Kind": "Components.EventHandler",
         "Name": "onselectstart",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -8281,11 +7737,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1496751372,
-=======
-        "HashCode": -1024894965,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 992240887,
         "Kind": "Components.EventHandler",
         "Name": "onselectionchange",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -8368,11 +7820,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 677028383,
-=======
-        "HashCode": -1416105664,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 194773171,
         "Kind": "Components.EventHandler",
         "Name": "onsubmit",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -8455,11 +7903,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1454451948,
-=======
-        "HashCode": 51661157,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1969107736,
         "Kind": "Components.EventHandler",
         "Name": "onbeforecopy",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -8542,11 +7986,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -99232607,
-=======
-        "HashCode": -1883380234,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1723245323,
         "Kind": "Components.EventHandler",
         "Name": "onbeforecut",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -8629,11 +8069,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -120731332,
-=======
-        "HashCode": -1224196270,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -161438421,
         "Kind": "Components.EventHandler",
         "Name": "onbeforepaste",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -8716,11 +8152,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -998660876,
-=======
-        "HashCode": 139708581,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -737110884,
         "Kind": "Components.EventHandler",
         "Name": "oncopy",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -8803,11 +8235,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1139821627,
-=======
-        "HashCode": 1261443924,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1576586802,
         "Kind": "Components.EventHandler",
         "Name": "oncut",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -8890,11 +8318,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 94092036,
-=======
-        "HashCode": -1232037736,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1203345942,
         "Kind": "Components.EventHandler",
         "Name": "onpaste",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -8977,11 +8401,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1975289169,
-=======
-        "HashCode": -1786420142,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -898162076,
         "Kind": "Components.EventHandler",
         "Name": "ontouchcancel",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -9064,11 +8484,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1339273114,
-=======
-        "HashCode": -1804049036,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1021153247,
         "Kind": "Components.EventHandler",
         "Name": "ontouchend",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -9151,11 +8567,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1782726756,
-=======
-        "HashCode": 700623898,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -3673720,
         "Kind": "Components.EventHandler",
         "Name": "ontouchmove",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -9238,11 +8650,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -649579193,
-=======
-        "HashCode": 1153754879,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1542129301,
         "Kind": "Components.EventHandler",
         "Name": "ontouchstart",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -9325,11 +8733,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -530927114,
-=======
-        "HashCode": -596852978,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 798631057,
         "Kind": "Components.EventHandler",
         "Name": "ontouchenter",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -9412,11 +8816,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -159183898,
-=======
-        "HashCode": -1494249101,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -890532335,
         "Kind": "Components.EventHandler",
         "Name": "ontouchleave",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -9499,11 +8899,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -894848758,
-=======
-        "HashCode": -243183694,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1546762835,
         "Kind": "Components.EventHandler",
         "Name": "ongotpointercapture",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -9586,11 +8982,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 29421104,
-=======
-        "HashCode": 843257050,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1856840445,
         "Kind": "Components.EventHandler",
         "Name": "onlostpointercapture",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -9673,11 +9065,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1477770906,
-=======
-        "HashCode": -401209513,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1989621549,
         "Kind": "Components.EventHandler",
         "Name": "onpointercancel",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -9760,11 +9148,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -454693337,
-=======
-        "HashCode": 549529450,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1229797763,
         "Kind": "Components.EventHandler",
         "Name": "onpointerdown",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -9847,11 +9231,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 111320566,
-=======
-        "HashCode": 1886722070,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1104082353,
         "Kind": "Components.EventHandler",
         "Name": "onpointerenter",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -9934,11 +9314,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1741041894,
-=======
-        "HashCode": 1213082985,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 898573774,
         "Kind": "Components.EventHandler",
         "Name": "onpointerleave",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -10021,11 +9397,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 52490289,
-=======
-        "HashCode": 1638573702,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1659266227,
         "Kind": "Components.EventHandler",
         "Name": "onpointermove",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -10108,11 +9480,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -2125230464,
-=======
-        "HashCode": -1348114657,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -753590159,
         "Kind": "Components.EventHandler",
         "Name": "onpointerout",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -10195,11 +9563,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1597214981,
-=======
-        "HashCode": 1266376389,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -147386993,
         "Kind": "Components.EventHandler",
         "Name": "onpointerover",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -10282,11 +9646,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1529492161,
-=======
-        "HashCode": -1922935649,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1036868657,
         "Kind": "Components.EventHandler",
         "Name": "onpointerup",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -10369,11 +9729,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 732059048,
-=======
-        "HashCode": 1710071220,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1846085190,
         "Kind": "Components.EventHandler",
         "Name": "oncanplay",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -10456,11 +9812,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1509406463,
-=======
-        "HashCode": -954345869,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 652585631,
         "Kind": "Components.EventHandler",
         "Name": "oncanplaythrough",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -10543,11 +9895,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 607109439,
-=======
-        "HashCode": -1353191793,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1903697467,
         "Kind": "Components.EventHandler",
         "Name": "oncuechange",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -10630,11 +9978,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1697746302,
-=======
-        "HashCode": -1123794388,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 5254832,
         "Kind": "Components.EventHandler",
         "Name": "ondurationchange",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -10717,11 +10061,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 179057216,
-=======
-        "HashCode": 234755028,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1324624157,
         "Kind": "Components.EventHandler",
         "Name": "onemptied",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -10804,11 +10144,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1762410644,
-=======
-        "HashCode": -856129478,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1440870965,
         "Kind": "Components.EventHandler",
         "Name": "onpause",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -10891,11 +10227,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 16562715,
-=======
-        "HashCode": -995505430,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1856730303,
         "Kind": "Components.EventHandler",
         "Name": "onplay",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -10978,11 +10310,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 2013448496,
-=======
-        "HashCode": -1515924639,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -801285898,
         "Kind": "Components.EventHandler",
         "Name": "onplaying",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -11065,11 +10393,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1242161386,
-=======
-        "HashCode": 688885805,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -311042510,
         "Kind": "Components.EventHandler",
         "Name": "onratechange",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -11152,11 +10476,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1777317672,
-=======
-        "HashCode": -541724279,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -212975821,
         "Kind": "Components.EventHandler",
         "Name": "onseeked",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -11239,11 +10559,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 359063561,
-=======
-        "HashCode": -586905570,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -275244982,
         "Kind": "Components.EventHandler",
         "Name": "onseeking",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -11326,11 +10642,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1655488533,
-=======
-        "HashCode": 626919325,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1154931550,
         "Kind": "Components.EventHandler",
         "Name": "onstalled",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -11413,11 +10725,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1007765678,
-=======
-        "HashCode": 1659958699,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1208929918,
         "Kind": "Components.EventHandler",
         "Name": "onstop",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -11500,11 +10808,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1787444648,
-=======
-        "HashCode": -1030151984,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1604181108,
         "Kind": "Components.EventHandler",
         "Name": "onsuspend",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -11587,11 +10891,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 140491358,
-=======
-        "HashCode": -1629677322,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1469269434,
         "Kind": "Components.EventHandler",
         "Name": "ontimeupdate",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -11674,11 +10974,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 472499344,
-=======
-        "HashCode": 1056123073,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1900232067,
         "Kind": "Components.EventHandler",
         "Name": "onvolumechange",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -11761,11 +11057,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 169599062,
-=======
-        "HashCode": 1605159849,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -40988232,
         "Kind": "Components.EventHandler",
         "Name": "onwaiting",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -11848,11 +11140,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 271457398,
-=======
-        "HashCode": -1649939611,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1525885769,
         "Kind": "Components.EventHandler",
         "Name": "onloadstart",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -11935,11 +11223,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1020844390,
-=======
-        "HashCode": 364238898,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1147866239,
         "Kind": "Components.EventHandler",
         "Name": "ontimeout",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -12022,11 +11306,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -711298110,
-=======
-        "HashCode": -2018213729,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -428062562,
         "Kind": "Components.EventHandler",
         "Name": "onabort",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -12109,11 +11389,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1031514341,
-=======
-        "HashCode": -1774636397,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 2040912406,
         "Kind": "Components.EventHandler",
         "Name": "onload",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -12196,11 +11472,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1362871978,
-=======
-        "HashCode": -1759285033,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1862568913,
         "Kind": "Components.EventHandler",
         "Name": "onloadend",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -12283,11 +11555,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1989504231,
-=======
-        "HashCode": 1999302615,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1506744994,
         "Kind": "Components.EventHandler",
         "Name": "onprogress",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -12370,11 +11638,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 519131684,
-=======
-        "HashCode": 989100704,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1957209875,
         "Kind": "Components.EventHandler",
         "Name": "onerror",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -12457,11 +11721,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -763669723,
-=======
-        "HashCode": 622301123,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1629385527,
         "Kind": "Components.EventHandler",
         "Name": "onactivate",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -12544,11 +11804,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1340210902,
-=======
-        "HashCode": -855676694,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -154396147,
         "Kind": "Components.EventHandler",
         "Name": "onbeforeactivate",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -12631,11 +11887,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 11541279,
-=======
-        "HashCode": 1508236660,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1526617703,
         "Kind": "Components.EventHandler",
         "Name": "onbeforedeactivate",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -12718,11 +11970,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1047463354,
-=======
-        "HashCode": -628079112,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -520806884,
         "Kind": "Components.EventHandler",
         "Name": "ondeactivate",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -12805,11 +12053,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -2056282647,
-=======
-        "HashCode": -1512100324,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 427033265,
         "Kind": "Components.EventHandler",
         "Name": "onended",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -12892,11 +12136,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -935260716,
-=======
-        "HashCode": 1948592491,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -412167682,
         "Kind": "Components.EventHandler",
         "Name": "onfullscreenchange",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -12979,11 +12219,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 511378275,
-=======
-        "HashCode": 686538532,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 2125239994,
         "Kind": "Components.EventHandler",
         "Name": "onfullscreenerror",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -13066,11 +12302,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1585696417,
-=======
-        "HashCode": 164779891,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1393799992,
         "Kind": "Components.EventHandler",
         "Name": "onloadeddata",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -13153,11 +12385,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1224709830,
-=======
-        "HashCode": -1225743731,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1323585362,
         "Kind": "Components.EventHandler",
         "Name": "onloadedmetadata",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -13240,11 +12468,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -98503867,
-=======
-        "HashCode": -523801278,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 75871076,
         "Kind": "Components.EventHandler",
         "Name": "onpointerlockchange",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -13327,11 +12551,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 439771332,
-=======
-        "HashCode": 8777196,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 279652175,
         "Kind": "Components.EventHandler",
         "Name": "onpointerlockerror",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -13414,11 +12634,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1669259911,
-=======
-        "HashCode": 1506910765,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1947858291,
         "Kind": "Components.EventHandler",
         "Name": "onreadystatechange",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -13501,11 +12717,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -205849351,
-=======
-        "HashCode": 1869340592,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 643542756,
         "Kind": "Components.EventHandler",
         "Name": "onscroll",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -13588,11 +12800,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 112586837,
-=======
-        "HashCode": 214437781,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -121695547,
         "Kind": "Components.EventHandler",
         "Name": "ontoggle",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -13675,11 +12883,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1294856768,
-=======
-        "HashCode": 1436054245,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 85366335,
         "Kind": "Components.Splat",
         "Name": "Attributes",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -13718,11 +12922,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 2051000996,
-=======
-        "HashCode": -980619678,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1569792550,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.Razor",
@@ -14039,11 +13239,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -19218936,
-=======
-        "HashCode": 698172185,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 184878395,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.AnchorTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -14242,11 +13438,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -914509863,
-=======
-        "HashCode": -1541963180,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -91567459,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.CacheTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -14375,11 +13567,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1761450384,
-=======
-        "HashCode": -608294770,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 402744272,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.ComponentTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -14436,11 +13624,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -893050393,
-=======
-        "HashCode": 1875839213,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1672019642,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.DistributedCacheTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -14574,11 +13758,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1557861956,
-=======
-        "HashCode": 1593087553,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 313898598,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.EnvironmentTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -14626,11 +13806,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1503618116,
-=======
-        "HashCode": 217689335,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 239228740,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.FormActionTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -15049,11 +14225,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -578185645,
-=======
-        "HashCode": -526291883,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1676925226,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.FormTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -15157,11 +14329,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -422134041,
-=======
-        "HashCode": -594162299,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 233286581,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.ImageTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -15209,11 +14377,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -762281783,
-=======
-        "HashCode": 601664348,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1833517532,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -15285,11 +14449,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1506266319,
-=======
-        "HashCode": -1081234029,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -560026093,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.LabelTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -15324,11 +14484,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1551766369,
-=======
-        "HashCode": 1143394659,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1132783912,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.LinkTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -15526,11 +14682,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 311998402,
-=======
-        "HashCode": 837783088,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1084245276,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.OptionTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -15560,11 +14712,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 950354883,
-=======
-        "HashCode": -2042388858,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1175414550,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.PartialTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -15647,11 +14795,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 596231666,
-=======
-        "HashCode": 1107498628,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1710983632,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.PersistComponentStateTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -15682,11 +14826,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -149728034,
-=======
-        "HashCode": -334599793,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1901200533,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.ScriptTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -15841,11 +14981,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1205440678,
-=======
-        "HashCode": 373639471,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1795327570,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.SelectTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -15906,11 +15042,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 116625803,
-=======
-        "HashCode": -1575562093,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 2008156513,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.TextAreaTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -15954,11 +15086,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 50284942,
-=======
-        "HashCode": 1615064273,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1361981069,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.ValidationMessageTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -15993,11 +15121,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -454818351,
-=======
-        "HashCode": -1555802035,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -82471812,
         "Kind": "ITagHelper",
         "Name": "Microsoft.AspNetCore.Mvc.TagHelpers.ValidationSummaryTagHelper",
         "AssemblyName": "Microsoft.AspNetCore.Mvc.TagHelpers",
@@ -16033,11 +15157,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 691717962,
-=======
-        "HashCode": -1958431427,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1654990502,
         "Kind": "Components.Bind",
         "Name": "Bind",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -16133,11 +15253,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 607940276,
-=======
-        "HashCode": 636479167,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -235418783,
         "Kind": "Components.Bind",
         "Name": "Bind",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -16259,11 +15375,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1973792003,
-=======
-        "HashCode": -123160671,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1041699883,
         "Kind": "Components.Bind",
         "Name": "Bind_value",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -16385,11 +15497,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 964962693,
-=======
-        "HashCode": 269994872,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -709746533,
         "Kind": "Components.Bind",
         "Name": "Bind",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -16522,11 +15630,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 2047769556,
-=======
-        "HashCode": 1975452535,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 933938295,
         "Kind": "Components.Bind",
         "Name": "Bind",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -16659,11 +15763,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -115531485,
-=======
-        "HashCode": 634416987,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 499464957,
         "Kind": "Components.Bind",
         "Name": "Bind",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -16796,11 +15896,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1940854256,
-=======
-        "HashCode": -1744964571,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 808441654,
         "Kind": "Components.Bind",
         "Name": "Bind_value",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -16933,11 +16029,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1769488084,
-=======
-        "HashCode": 1228892007,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -754341257,
         "Kind": "Components.Bind",
         "Name": "Bind",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -17070,11 +16162,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1724216755,
-=======
-        "HashCode": -682585724,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 356527096,
         "Kind": "Components.Bind",
         "Name": "Bind_value",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -17207,11 +16295,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1377631388,
-=======
-        "HashCode": 882687173,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1710381878,
         "Kind": "Components.Bind",
         "Name": "Bind",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -17344,11 +16428,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -123235242,
-=======
-        "HashCode": 390089946,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1935761044,
         "Kind": "Components.Bind",
         "Name": "Bind_value",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -17481,11 +16561,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 82526260,
-=======
-        "HashCode": -225761083,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 2060963994,
         "Kind": "Components.Bind",
         "Name": "Bind",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -17618,11 +16694,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1488441320,
-=======
-        "HashCode": -1590841836,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1788241940,
         "Kind": "Components.Bind",
         "Name": "Bind_value",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -17755,11 +16827,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1496650047,
-=======
-        "HashCode": 1125010415,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1737084670,
         "Kind": "Components.Bind",
         "Name": "Bind",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -17892,11 +16960,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1960798389,
-=======
-        "HashCode": -1657098097,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -875088671,
         "Kind": "Components.Bind",
         "Name": "Bind_value",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -18029,11 +17093,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -2047281324,
-=======
-        "HashCode": 76571629,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 736845607,
         "Kind": "Components.Bind",
         "Name": "Bind",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -18155,11 +17215,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1021004597,
-=======
-        "HashCode": 473643311,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 680131635,
         "Kind": "Components.Bind",
         "Name": "Bind",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -18281,11 +17337,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1283614997,
-=======
-        "HashCode": -540436897,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 31172681,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputCheckbox",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -18362,97 +17414,6 @@
         ],
         "Metadata": {
           "Common.TypeName": "Microsoft.AspNetCore.Components.Forms.InputCheckbox",
-<<<<<<< HEAD
-          "Common.TypeNamespace": "Microsoft.AspNetCore.Components.Forms",
-          "Common.TypeNameIdentifier": "InputCheckbox"
-        }
-      },
-      {
-        "HashCode": 335201691,
-        "Kind": "Components.Bind",
-        "Name": "Microsoft.AspNetCore.Components.Forms.InputCheckbox",
-        "AssemblyName": "Microsoft.AspNetCore.Components.Web",
-        "Documentation": "Binds the provided expression to the 'Value' property and a change event delegate to the 'ValueChanged' property of the component.",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Microsoft.AspNetCore.Components.Forms.InputCheckbox",
-            "Attributes": [
-              {
-                "Name": "@bind-Value",
-                "Metadata": {
-                  "Common.DirectiveAttribute": "True"
-                }
-              }
-            ]
-          },
-          {
-            "TagName": "Microsoft.AspNetCore.Components.Forms.InputCheckbox",
-            "Attributes": [
-              {
-                "Name": "@bind-Value:get",
-                "Metadata": {
-                  "Common.DirectiveAttribute": "True"
-                }
-              },
-              {
-                "Name": "@bind-Value:set",
-                "Metadata": {
-                  "Common.DirectiveAttribute": "True"
-                }
-              }
-            ]
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Bind",
-            "Name": "@bind-Value",
-            "TypeName": "Microsoft.AspNetCore.Components.EventCallback<System.Boolean>",
-            "Documentation": "Binds the provided expression to the 'Value' property and a change event delegate to the 'ValueChanged' property of the component.",
-            "Metadata": {
-              "Common.DirectiveAttribute": "True",
-              "Common.PropertyName": "Value"
-            },
-            "BoundAttributeParameters": [
-              {
-                "Name": "get",
-                "TypeName": "System.Object",
-                "Documentation": "Specifies the expression to use for binding the value to the attribute.",
-                "Metadata": {
-                  "Common.PropertyName": "Get",
-                  "Components.Bind.AlternativeNotation": "True"
-                }
-              },
-              {
-                "Name": "set",
-                "TypeName": "System.Delegate",
-                "Documentation": "Specifies the expression to use for updating the bound value when a new value is available.",
-                "Metadata": {
-                  "Common.PropertyName": "Set"
-                }
-              },
-              {
-                "Name": "after",
-                "TypeName": "System.Delegate",
-                "Documentation": "Specifies an action to run after the new value has been set.",
-                "Metadata": {
-                  "Common.PropertyName": "After"
-                }
-              }
-            ]
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.None",
-          "Components.IsSpecialKind": "Components.Bind",
-          "Components.Bind.ValueAttribute": "Value",
-          "Components.Bind.ChangeAttribute": "ValueChanged",
-          "Components.Bind.ExpressionAttribute": "ValueExpression",
-          "Common.TypeName": "Microsoft.AspNetCore.Components.Forms.InputCheckbox",
-          "Common.TypeNamespace": "Microsoft.AspNetCore.Components.Forms",
-=======
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
           "Common.TypeNameIdentifier": "InputCheckbox",
           "Common.TypeNamespace": "Microsoft.AspNetCore.Components.Forms",
           "Components.Bind.ChangeAttribute": "ValueChanged",
@@ -18463,10 +17424,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -2029630522,
-=======
-        "HashCode": 1531325677,
+        "HashCode": 1173923198,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputCheckbox",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -18554,8 +17512,7 @@
         }
       },
       {
-        "HashCode": -754225730,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -591934602,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputDate<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -18632,97 +17589,6 @@
         ],
         "Metadata": {
           "Common.TypeName": "Microsoft.AspNetCore.Components.Forms.InputDate<TValue>",
-<<<<<<< HEAD
-          "Common.TypeNamespace": "Microsoft.AspNetCore.Components.Forms",
-          "Common.TypeNameIdentifier": "InputDate"
-        }
-      },
-      {
-        "HashCode": 434331693,
-        "Kind": "Components.Bind",
-        "Name": "Microsoft.AspNetCore.Components.Forms.InputDate<TValue>",
-        "AssemblyName": "Microsoft.AspNetCore.Components.Web",
-        "Documentation": "Binds the provided expression to the 'Value' property and a change event delegate to the 'ValueChanged' property of the component.",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Microsoft.AspNetCore.Components.Forms.InputDate",
-            "Attributes": [
-              {
-                "Name": "@bind-Value",
-                "Metadata": {
-                  "Common.DirectiveAttribute": "True"
-                }
-              }
-            ]
-          },
-          {
-            "TagName": "Microsoft.AspNetCore.Components.Forms.InputDate",
-            "Attributes": [
-              {
-                "Name": "@bind-Value:get",
-                "Metadata": {
-                  "Common.DirectiveAttribute": "True"
-                }
-              },
-              {
-                "Name": "@bind-Value:set",
-                "Metadata": {
-                  "Common.DirectiveAttribute": "True"
-                }
-              }
-            ]
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Bind",
-            "Name": "@bind-Value",
-            "TypeName": "Microsoft.AspNetCore.Components.EventCallback<TValue>",
-            "Documentation": "Binds the provided expression to the 'Value' property and a change event delegate to the 'ValueChanged' property of the component.",
-            "Metadata": {
-              "Common.DirectiveAttribute": "True",
-              "Common.PropertyName": "Value"
-            },
-            "BoundAttributeParameters": [
-              {
-                "Name": "get",
-                "TypeName": "System.Object",
-                "Documentation": "Specifies the expression to use for binding the value to the attribute.",
-                "Metadata": {
-                  "Common.PropertyName": "Get",
-                  "Components.Bind.AlternativeNotation": "True"
-                }
-              },
-              {
-                "Name": "set",
-                "TypeName": "System.Delegate",
-                "Documentation": "Specifies the expression to use for updating the bound value when a new value is available.",
-                "Metadata": {
-                  "Common.PropertyName": "Set"
-                }
-              },
-              {
-                "Name": "after",
-                "TypeName": "System.Delegate",
-                "Documentation": "Specifies an action to run after the new value has been set.",
-                "Metadata": {
-                  "Common.PropertyName": "After"
-                }
-              }
-            ]
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.None",
-          "Components.IsSpecialKind": "Components.Bind",
-          "Components.Bind.ValueAttribute": "Value",
-          "Components.Bind.ChangeAttribute": "ValueChanged",
-          "Components.Bind.ExpressionAttribute": "ValueExpression",
-          "Common.TypeName": "Microsoft.AspNetCore.Components.Forms.InputDate<TValue>",
-          "Common.TypeNamespace": "Microsoft.AspNetCore.Components.Forms",
-=======
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
           "Common.TypeNameIdentifier": "InputDate",
           "Common.TypeNamespace": "Microsoft.AspNetCore.Components.Forms",
           "Components.Bind.ChangeAttribute": "ValueChanged",
@@ -18733,10 +17599,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 2133776583,
-=======
-        "HashCode": -433368982,
+        "HashCode": -250370855,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputDate<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -18824,8 +17687,7 @@
         }
       },
       {
-        "HashCode": -897487941,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -1648464284,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputNumber<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -18902,97 +17764,6 @@
         ],
         "Metadata": {
           "Common.TypeName": "Microsoft.AspNetCore.Components.Forms.InputNumber<TValue>",
-<<<<<<< HEAD
-          "Common.TypeNamespace": "Microsoft.AspNetCore.Components.Forms",
-          "Common.TypeNameIdentifier": "InputNumber"
-        }
-      },
-      {
-        "HashCode": 916950216,
-        "Kind": "Components.Bind",
-        "Name": "Microsoft.AspNetCore.Components.Forms.InputNumber<TValue>",
-        "AssemblyName": "Microsoft.AspNetCore.Components.Web",
-        "Documentation": "Binds the provided expression to the 'Value' property and a change event delegate to the 'ValueChanged' property of the component.",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Microsoft.AspNetCore.Components.Forms.InputNumber",
-            "Attributes": [
-              {
-                "Name": "@bind-Value",
-                "Metadata": {
-                  "Common.DirectiveAttribute": "True"
-                }
-              }
-            ]
-          },
-          {
-            "TagName": "Microsoft.AspNetCore.Components.Forms.InputNumber",
-            "Attributes": [
-              {
-                "Name": "@bind-Value:get",
-                "Metadata": {
-                  "Common.DirectiveAttribute": "True"
-                }
-              },
-              {
-                "Name": "@bind-Value:set",
-                "Metadata": {
-                  "Common.DirectiveAttribute": "True"
-                }
-              }
-            ]
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Bind",
-            "Name": "@bind-Value",
-            "TypeName": "Microsoft.AspNetCore.Components.EventCallback<TValue>",
-            "Documentation": "Binds the provided expression to the 'Value' property and a change event delegate to the 'ValueChanged' property of the component.",
-            "Metadata": {
-              "Common.DirectiveAttribute": "True",
-              "Common.PropertyName": "Value"
-            },
-            "BoundAttributeParameters": [
-              {
-                "Name": "get",
-                "TypeName": "System.Object",
-                "Documentation": "Specifies the expression to use for binding the value to the attribute.",
-                "Metadata": {
-                  "Common.PropertyName": "Get",
-                  "Components.Bind.AlternativeNotation": "True"
-                }
-              },
-              {
-                "Name": "set",
-                "TypeName": "System.Delegate",
-                "Documentation": "Specifies the expression to use for updating the bound value when a new value is available.",
-                "Metadata": {
-                  "Common.PropertyName": "Set"
-                }
-              },
-              {
-                "Name": "after",
-                "TypeName": "System.Delegate",
-                "Documentation": "Specifies an action to run after the new value has been set.",
-                "Metadata": {
-                  "Common.PropertyName": "After"
-                }
-              }
-            ]
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.None",
-          "Components.IsSpecialKind": "Components.Bind",
-          "Components.Bind.ValueAttribute": "Value",
-          "Components.Bind.ChangeAttribute": "ValueChanged",
-          "Components.Bind.ExpressionAttribute": "ValueExpression",
-          "Common.TypeName": "Microsoft.AspNetCore.Components.Forms.InputNumber<TValue>",
-          "Common.TypeNamespace": "Microsoft.AspNetCore.Components.Forms",
-=======
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
           "Common.TypeNameIdentifier": "InputNumber",
           "Common.TypeNamespace": "Microsoft.AspNetCore.Components.Forms",
           "Components.Bind.ChangeAttribute": "ValueChanged",
@@ -19003,10 +17774,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -2021844595,
-=======
-        "HashCode": 305049868,
+        "HashCode": 425316314,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputNumber<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -19094,8 +17862,7 @@
         }
       },
       {
-        "HashCode": -1432684154,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -905266221,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputRadioGroup<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -19172,97 +17939,6 @@
         ],
         "Metadata": {
           "Common.TypeName": "Microsoft.AspNetCore.Components.Forms.InputRadioGroup<TValue>",
-<<<<<<< HEAD
-          "Common.TypeNamespace": "Microsoft.AspNetCore.Components.Forms",
-          "Common.TypeNameIdentifier": "InputRadioGroup"
-        }
-      },
-      {
-        "HashCode": 1905491330,
-        "Kind": "Components.Bind",
-        "Name": "Microsoft.AspNetCore.Components.Forms.InputRadioGroup<TValue>",
-        "AssemblyName": "Microsoft.AspNetCore.Components.Web",
-        "Documentation": "Binds the provided expression to the 'Value' property and a change event delegate to the 'ValueChanged' property of the component.",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Microsoft.AspNetCore.Components.Forms.InputRadioGroup",
-            "Attributes": [
-              {
-                "Name": "@bind-Value",
-                "Metadata": {
-                  "Common.DirectiveAttribute": "True"
-                }
-              }
-            ]
-          },
-          {
-            "TagName": "Microsoft.AspNetCore.Components.Forms.InputRadioGroup",
-            "Attributes": [
-              {
-                "Name": "@bind-Value:get",
-                "Metadata": {
-                  "Common.DirectiveAttribute": "True"
-                }
-              },
-              {
-                "Name": "@bind-Value:set",
-                "Metadata": {
-                  "Common.DirectiveAttribute": "True"
-                }
-              }
-            ]
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Bind",
-            "Name": "@bind-Value",
-            "TypeName": "Microsoft.AspNetCore.Components.EventCallback<TValue>",
-            "Documentation": "Binds the provided expression to the 'Value' property and a change event delegate to the 'ValueChanged' property of the component.",
-            "Metadata": {
-              "Common.DirectiveAttribute": "True",
-              "Common.PropertyName": "Value"
-            },
-            "BoundAttributeParameters": [
-              {
-                "Name": "get",
-                "TypeName": "System.Object",
-                "Documentation": "Specifies the expression to use for binding the value to the attribute.",
-                "Metadata": {
-                  "Common.PropertyName": "Get",
-                  "Components.Bind.AlternativeNotation": "True"
-                }
-              },
-              {
-                "Name": "set",
-                "TypeName": "System.Delegate",
-                "Documentation": "Specifies the expression to use for updating the bound value when a new value is available.",
-                "Metadata": {
-                  "Common.PropertyName": "Set"
-                }
-              },
-              {
-                "Name": "after",
-                "TypeName": "System.Delegate",
-                "Documentation": "Specifies an action to run after the new value has been set.",
-                "Metadata": {
-                  "Common.PropertyName": "After"
-                }
-              }
-            ]
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.None",
-          "Components.IsSpecialKind": "Components.Bind",
-          "Components.Bind.ValueAttribute": "Value",
-          "Components.Bind.ChangeAttribute": "ValueChanged",
-          "Components.Bind.ExpressionAttribute": "ValueExpression",
-          "Common.TypeName": "Microsoft.AspNetCore.Components.Forms.InputRadioGroup<TValue>",
-          "Common.TypeNamespace": "Microsoft.AspNetCore.Components.Forms",
-=======
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
           "Common.TypeNameIdentifier": "InputRadioGroup",
           "Common.TypeNamespace": "Microsoft.AspNetCore.Components.Forms",
           "Components.Bind.ChangeAttribute": "ValueChanged",
@@ -19273,10 +17949,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 629134837,
-=======
-        "HashCode": -16288701,
+        "HashCode": -2105803849,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputRadioGroup<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -19364,8 +18037,7 @@
         }
       },
       {
-        "HashCode": -238430774,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1869358319,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputSelect<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -19442,97 +18114,6 @@
         ],
         "Metadata": {
           "Common.TypeName": "Microsoft.AspNetCore.Components.Forms.InputSelect<TValue>",
-<<<<<<< HEAD
-          "Common.TypeNamespace": "Microsoft.AspNetCore.Components.Forms",
-          "Common.TypeNameIdentifier": "InputSelect"
-        }
-      },
-      {
-        "HashCode": -1132484989,
-        "Kind": "Components.Bind",
-        "Name": "Microsoft.AspNetCore.Components.Forms.InputSelect<TValue>",
-        "AssemblyName": "Microsoft.AspNetCore.Components.Web",
-        "Documentation": "Binds the provided expression to the 'Value' property and a change event delegate to the 'ValueChanged' property of the component.",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Microsoft.AspNetCore.Components.Forms.InputSelect",
-            "Attributes": [
-              {
-                "Name": "@bind-Value",
-                "Metadata": {
-                  "Common.DirectiveAttribute": "True"
-                }
-              }
-            ]
-          },
-          {
-            "TagName": "Microsoft.AspNetCore.Components.Forms.InputSelect",
-            "Attributes": [
-              {
-                "Name": "@bind-Value:get",
-                "Metadata": {
-                  "Common.DirectiveAttribute": "True"
-                }
-              },
-              {
-                "Name": "@bind-Value:set",
-                "Metadata": {
-                  "Common.DirectiveAttribute": "True"
-                }
-              }
-            ]
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Bind",
-            "Name": "@bind-Value",
-            "TypeName": "Microsoft.AspNetCore.Components.EventCallback<TValue>",
-            "Documentation": "Binds the provided expression to the 'Value' property and a change event delegate to the 'ValueChanged' property of the component.",
-            "Metadata": {
-              "Common.DirectiveAttribute": "True",
-              "Common.PropertyName": "Value"
-            },
-            "BoundAttributeParameters": [
-              {
-                "Name": "get",
-                "TypeName": "System.Object",
-                "Documentation": "Specifies the expression to use for binding the value to the attribute.",
-                "Metadata": {
-                  "Common.PropertyName": "Get",
-                  "Components.Bind.AlternativeNotation": "True"
-                }
-              },
-              {
-                "Name": "set",
-                "TypeName": "System.Delegate",
-                "Documentation": "Specifies the expression to use for updating the bound value when a new value is available.",
-                "Metadata": {
-                  "Common.PropertyName": "Set"
-                }
-              },
-              {
-                "Name": "after",
-                "TypeName": "System.Delegate",
-                "Documentation": "Specifies an action to run after the new value has been set.",
-                "Metadata": {
-                  "Common.PropertyName": "After"
-                }
-              }
-            ]
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.None",
-          "Components.IsSpecialKind": "Components.Bind",
-          "Components.Bind.ValueAttribute": "Value",
-          "Components.Bind.ChangeAttribute": "ValueChanged",
-          "Components.Bind.ExpressionAttribute": "ValueExpression",
-          "Common.TypeName": "Microsoft.AspNetCore.Components.Forms.InputSelect<TValue>",
-          "Common.TypeNamespace": "Microsoft.AspNetCore.Components.Forms",
-=======
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
           "Common.TypeNameIdentifier": "InputSelect",
           "Common.TypeNamespace": "Microsoft.AspNetCore.Components.Forms",
           "Components.Bind.ChangeAttribute": "ValueChanged",
@@ -19543,10 +18124,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -91719771,
-=======
-        "HashCode": 1285090283,
+        "HashCode": 992234348,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputSelect<TValue>",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -19634,8 +18212,7 @@
         }
       },
       {
-        "HashCode": 2093121628,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1960086510,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputText",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -19712,97 +18289,6 @@
         ],
         "Metadata": {
           "Common.TypeName": "Microsoft.AspNetCore.Components.Forms.InputText",
-<<<<<<< HEAD
-          "Common.TypeNamespace": "Microsoft.AspNetCore.Components.Forms",
-          "Common.TypeNameIdentifier": "InputText"
-        }
-      },
-      {
-        "HashCode": -599607998,
-        "Kind": "Components.Bind",
-        "Name": "Microsoft.AspNetCore.Components.Forms.InputText",
-        "AssemblyName": "Microsoft.AspNetCore.Components.Web",
-        "Documentation": "Binds the provided expression to the 'Value' property and a change event delegate to the 'ValueChanged' property of the component.",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Microsoft.AspNetCore.Components.Forms.InputText",
-            "Attributes": [
-              {
-                "Name": "@bind-Value",
-                "Metadata": {
-                  "Common.DirectiveAttribute": "True"
-                }
-              }
-            ]
-          },
-          {
-            "TagName": "Microsoft.AspNetCore.Components.Forms.InputText",
-            "Attributes": [
-              {
-                "Name": "@bind-Value:get",
-                "Metadata": {
-                  "Common.DirectiveAttribute": "True"
-                }
-              },
-              {
-                "Name": "@bind-Value:set",
-                "Metadata": {
-                  "Common.DirectiveAttribute": "True"
-                }
-              }
-            ]
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Bind",
-            "Name": "@bind-Value",
-            "TypeName": "Microsoft.AspNetCore.Components.EventCallback<System.String>",
-            "Documentation": "Binds the provided expression to the 'Value' property and a change event delegate to the 'ValueChanged' property of the component.",
-            "Metadata": {
-              "Common.DirectiveAttribute": "True",
-              "Common.PropertyName": "Value"
-            },
-            "BoundAttributeParameters": [
-              {
-                "Name": "get",
-                "TypeName": "System.Object",
-                "Documentation": "Specifies the expression to use for binding the value to the attribute.",
-                "Metadata": {
-                  "Common.PropertyName": "Get",
-                  "Components.Bind.AlternativeNotation": "True"
-                }
-              },
-              {
-                "Name": "set",
-                "TypeName": "System.Delegate",
-                "Documentation": "Specifies the expression to use for updating the bound value when a new value is available.",
-                "Metadata": {
-                  "Common.PropertyName": "Set"
-                }
-              },
-              {
-                "Name": "after",
-                "TypeName": "System.Delegate",
-                "Documentation": "Specifies an action to run after the new value has been set.",
-                "Metadata": {
-                  "Common.PropertyName": "After"
-                }
-              }
-            ]
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.None",
-          "Components.IsSpecialKind": "Components.Bind",
-          "Components.Bind.ValueAttribute": "Value",
-          "Components.Bind.ChangeAttribute": "ValueChanged",
-          "Components.Bind.ExpressionAttribute": "ValueExpression",
-          "Common.TypeName": "Microsoft.AspNetCore.Components.Forms.InputText",
-          "Common.TypeNamespace": "Microsoft.AspNetCore.Components.Forms",
-=======
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
           "Common.TypeNameIdentifier": "InputText",
           "Common.TypeNamespace": "Microsoft.AspNetCore.Components.Forms",
           "Components.Bind.ChangeAttribute": "ValueChanged",
@@ -19813,10 +18299,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -947817064,
-=======
-        "HashCode": 559082968,
+        "HashCode": -1976816426,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputText",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -19904,8 +18387,7 @@
         }
       },
       {
-        "HashCode": 1873717998,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 938236487,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputTextArea",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -19982,97 +18464,6 @@
         ],
         "Metadata": {
           "Common.TypeName": "Microsoft.AspNetCore.Components.Forms.InputTextArea",
-<<<<<<< HEAD
-          "Common.TypeNamespace": "Microsoft.AspNetCore.Components.Forms",
-          "Common.TypeNameIdentifier": "InputTextArea"
-        }
-      },
-      {
-        "HashCode": 384343627,
-        "Kind": "Components.Bind",
-        "Name": "Microsoft.AspNetCore.Components.Forms.InputTextArea",
-        "AssemblyName": "Microsoft.AspNetCore.Components.Web",
-        "Documentation": "Binds the provided expression to the 'Value' property and a change event delegate to the 'ValueChanged' property of the component.",
-        "CaseSensitive": true,
-        "TagMatchingRules": [
-          {
-            "TagName": "Microsoft.AspNetCore.Components.Forms.InputTextArea",
-            "Attributes": [
-              {
-                "Name": "@bind-Value",
-                "Metadata": {
-                  "Common.DirectiveAttribute": "True"
-                }
-              }
-            ]
-          },
-          {
-            "TagName": "Microsoft.AspNetCore.Components.Forms.InputTextArea",
-            "Attributes": [
-              {
-                "Name": "@bind-Value:get",
-                "Metadata": {
-                  "Common.DirectiveAttribute": "True"
-                }
-              },
-              {
-                "Name": "@bind-Value:set",
-                "Metadata": {
-                  "Common.DirectiveAttribute": "True"
-                }
-              }
-            ]
-          }
-        ],
-        "BoundAttributes": [
-          {
-            "Kind": "Components.Bind",
-            "Name": "@bind-Value",
-            "TypeName": "Microsoft.AspNetCore.Components.EventCallback<System.String>",
-            "Documentation": "Binds the provided expression to the 'Value' property and a change event delegate to the 'ValueChanged' property of the component.",
-            "Metadata": {
-              "Common.DirectiveAttribute": "True",
-              "Common.PropertyName": "Value"
-            },
-            "BoundAttributeParameters": [
-              {
-                "Name": "get",
-                "TypeName": "System.Object",
-                "Documentation": "Specifies the expression to use for binding the value to the attribute.",
-                "Metadata": {
-                  "Common.PropertyName": "Get",
-                  "Components.Bind.AlternativeNotation": "True"
-                }
-              },
-              {
-                "Name": "set",
-                "TypeName": "System.Delegate",
-                "Documentation": "Specifies the expression to use for updating the bound value when a new value is available.",
-                "Metadata": {
-                  "Common.PropertyName": "Set"
-                }
-              },
-              {
-                "Name": "after",
-                "TypeName": "System.Delegate",
-                "Documentation": "Specifies an action to run after the new value has been set.",
-                "Metadata": {
-                  "Common.PropertyName": "After"
-                }
-              }
-            ]
-          }
-        ],
-        "Metadata": {
-          "Runtime.Name": "Components.None",
-          "Components.IsSpecialKind": "Components.Bind",
-          "Components.Bind.ValueAttribute": "Value",
-          "Components.Bind.ChangeAttribute": "ValueChanged",
-          "Components.Bind.ExpressionAttribute": "ValueExpression",
-          "Common.TypeName": "Microsoft.AspNetCore.Components.Forms.InputTextArea",
-          "Common.TypeNamespace": "Microsoft.AspNetCore.Components.Forms",
-=======
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
           "Common.TypeNameIdentifier": "InputTextArea",
           "Common.TypeNamespace": "Microsoft.AspNetCore.Components.Forms",
           "Components.Bind.ChangeAttribute": "ValueChanged",
@@ -20083,10 +18474,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": 1109119378,
-=======
-        "HashCode": 32055223,
+        "HashCode": -564871857,
         "Kind": "Components.Bind",
         "Name": "Microsoft.AspNetCore.Components.Forms.InputTextArea",
         "AssemblyName": "Microsoft.AspNetCore.Components.Web",
@@ -20174,8 +18562,7 @@
         }
       },
       {
-        "HashCode": 1609010534,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": 1348978790,
         "Kind": "Components.Ref",
         "Name": "Ref",
         "AssemblyName": "Microsoft.AspNetCore.Components",
@@ -20214,11 +18601,7 @@
         }
       },
       {
-<<<<<<< HEAD
-        "HashCode": -1045618854,
-=======
-        "HashCode": 226594601,
->>>>>>> IH-34-Create-group-component-for-intern-and-trainer
+        "HashCode": -858985294,
         "Kind": "Components.Key",
         "Name": "Key",
         "AssemblyName": "Microsoft.AspNetCore.Components",

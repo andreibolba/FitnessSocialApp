@@ -74,19 +74,18 @@ export class GroupChatMessageComponent implements OnInit, OnDestroy {
                   .getAllMessagesForGroup(this.token, res.groupChatId)
                   .subscribe((mess) => {
                     this.messages = mess;
-                  });
-                  setTimeout(() => {
-                    var objDiv = document.getElementById('chat_content');
-                    console.log(objDiv);
-                    if (objDiv) {
-                      objDiv.scrollTop = objDiv.scrollHeight - objDiv.clientHeight;
-                      console.log("ok");
-                    }
-                  }, 0);
+                    setTimeout(() => {
+                      var objDiv = document.getElementById('chat_content');
+                      if (objDiv) {
+                        objDiv.scrollTop = objDiv.scrollHeight - objDiv.clientHeight;
+                      }
+                    }, 0);
+                  });                 
               }
             }
           );
         });
+        
     }
   }
 

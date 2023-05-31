@@ -47,14 +47,14 @@ export class UtilsService {
 
   initializeError(){
    this.data.testConnection().subscribe(()=>{
-   },()=>{
+   },(error)=>{
       this.error.next({
         errorCode: 500,
         errorTitle: 'Internal Server Error!',
         errorMessage:' An error has occured! We apologise and we are fixing the problem! Please try again later!'
       });
       this.router.navigate(["error"]);
-   })
+   });
   }
 
   calculatePoint(questions:Question[]){

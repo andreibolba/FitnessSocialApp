@@ -11,6 +11,15 @@ namespace API.Data
         private readonly InternShipAppSystemContext _context;
         private readonly IMapper _mapper;
 
+        public void ApproveDeclineSolutin(int solutionId, bool approved)
+        {
+            var sol = _mapper.Map<ChallangeSolution>(GetSolutionById(solutionId));
+
+            sol.Approved = approved;
+
+            _context.ChallangeSolutions.Update(sol);
+        }
+
         public ChallengeSolutionDto CreateSolution(ChallengeSolutionDto solution)
         {
             var sol = _mapper.Map<ChallangeSolution>(solution);

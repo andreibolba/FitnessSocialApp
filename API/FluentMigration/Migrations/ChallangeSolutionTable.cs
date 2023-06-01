@@ -25,6 +25,7 @@ namespace API.FluentMigration.Migrations
                 .WithColumn("InternId").AsInt32().NotNullable()
                 .WithColumn("SolutionContent").AsString(int.MaxValue).NotNullable()
                 .WithColumn("SolutionFile").AsBinary(int.MaxValue).Nullable()
+                .WithColumn("Approved").AsBoolean().NotNullable()
                 .WithColumn("Deleted").AsBoolean().NotNullable();
 
             Create.ForeignKey(fkNameChallange)

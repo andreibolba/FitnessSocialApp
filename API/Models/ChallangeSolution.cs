@@ -17,6 +17,8 @@ public partial class ChallangeSolution
 
     public byte[] SolutionFile { get; set; }
 
+    public bool Approved { get; set; }
+
     public bool Deleted { get; set; }
 
     public virtual Challange Challange { get; set; }

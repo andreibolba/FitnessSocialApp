@@ -67,16 +67,18 @@ namespace API.Controllers
             return Ok(_challangeSolutionRepository.GetAllSolutionsForIntern(personId));
         }
 
-        [HttpPost("solutions/{challangeId}/{personId}")]
-        public ActionResult ApproveSolution(int challangeId,int personId)
+        [HttpPost("solutions/{solutionId}")]
+        public ActionResult ApproveSolution(int solutionId)
         {
-            return Ok();
+            _challangeSolutionRepository.ApproveDeclineSolutin(solutionId, true);
+            return _challangeSolutionRepository.SaveAll() ? Ok() : BadRequest("Internal Server Error");
         }
 
-        [HttpPost("solutions/{challangeId}/{personId}/decline")]
-        public ActionResult DeclineSolution(int challangeId, int personId)
+        [HttpPost("solutions/{solutionId}/decline")]
+        public ActionResult DeclineSolution(int solutionId)
         {
-            return Ok();
+            _challangeSolutionRepository.ApproveDeclineSolutin(solutionId, false);
+            return _challangeSolutionRepository.SaveAll() ? Ok() : BadRequest("Internal Server Error");
         }
 
         [HttpPost("solutions/add")]

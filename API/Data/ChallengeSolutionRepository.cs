@@ -6,12 +6,12 @@ using Microsoft.EntityFrameworkCore;
 
 namespace API.Data
 {
-    public class ChallangeSolutionRepository : IChallangeSolutionRpository
+    public class ChallengeSolutionRepository : IChallengeSolutionRepository
     {
         private readonly InternShipAppSystemContext _context;
         private readonly IMapper _mapper;
 
-        public ChallangeSolutionDto CreateSolution(ChallangeSolutionDto solution)
+        public ChallengeSolutionDto CreateSolution(ChallengeSolutionDto solution)
         {
             var sol = _mapper.Map<ChallangeSolution>(solution);
 
@@ -19,7 +19,7 @@ namespace API.Data
             
             _context.ChallangeSolutions.Add(sol);
 
-            return SaveAll() ? _mapper.Map<ChallangeSolutionDto>(sol) : null;
+            return SaveAll() ? _mapper.Map<ChallengeSolutionDto>(sol) : null;
         }
 
         public void DeleteSolution(int id)
@@ -31,28 +31,28 @@ namespace API.Data
             _context.ChallangeSolutions.Update(sol);    
         }
 
-        public IEnumerable<ChallangeSolutionDto> GetAllSolutions()
+        public IEnumerable<ChallengeSolutionDto> GetAllSolutions()
         {
             var res = _context.ChallangeSolutions.Where(c => c.Deleted == false).Include(c=>c.Intern).Include(c=>c.Challange);
-            return _mapper.Map<IEnumerable<ChallangeSolutionDto>>(res);
+            return _mapper.Map<IEnumerable<ChallengeSolutionDto>>(res);
         }
 
-        public IEnumerable<ChallangeSolutionDto> GetAllSolutionsForChallange(int challangeId)
+        public IEnumerable<ChallengeSolutionDto> GetAllSolutionsForChallange(int challangeId)
         {
             return GetAllSolutions().Where(c=>c.ChallangeId == challangeId);  
         }
 
-        public IEnumerable<ChallangeSolutionDto> GetAllSolutionsForIntern(int internId)
+        public IEnumerable<ChallengeSolutionDto> GetAllSolutionsForIntern(int internId)
         {
             return GetAllSolutions().Where(c => c.InternId == internId);
         }
 
-        public IEnumerable<ChallangeSolutionDto> GetAllSolutionsForSpecificDay(DateTime time)
+        public IEnumerable<ChallengeSolutionDto> GetAllSolutionsForSpecificDay(DateTime time)
         {
             return GetAllSolutions().Where(c => c.DateOfSolution.Value.Day == time.Day && c.DateOfSolution.Value.Month == time.Month && c.DateOfSolution.Value.Year == time.Year);
         }
 
-        public ChallangeSolutionDto GetSolutionById(int id)
+        public ChallengeSolutionDto GetSolutionById(int id)
         {
             return GetAllSolutions().FirstOrDefault(c => c.ChallangeSolutionId == id);
         }
@@ -62,7 +62,7 @@ namespace API.Data
             return _context.SaveChanges()>0;
         }
 
-        public ChallangeSolutionDto UpdateSolution(ChallangeSolutionDto solution)
+        public ChallengeSolutionDto UpdateSolution(ChallengeSolutionDto solution)
         {
             var sol = _mapper.Map<ChallangeSolution>(GetSolutionById(solution.ChallangeSolutionId));
 
@@ -71,7 +71,7 @@ namespace API.Data
             
             _context.ChallangeSolutions.Update(sol);
 
-            return SaveAll() ? _mapper.Map<ChallangeSolutionDto>(sol) : null;
+            return SaveAll() ? _mapper.Map<ChallengeSolutionDto>(sol) : null;
         }
     }
 }

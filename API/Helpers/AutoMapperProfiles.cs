@@ -46,8 +46,8 @@ namespace API.Helpers
             CreateMap<GroupChatMessage, GroupChatMessageDto>();
             CreateMap<GroupChatPerson, GroupChatPersonDto>();
             CreateMap<Note, NoteDto>();
-            CreateMap<Challange, ChallangeDto>();
-            CreateMap<ChallangeSolution, ChallangeSolutionDto>();
+            CreateMap<Challange, ChallengeDto>();
+            CreateMap<ChallangeSolution, ChallengeSolutionDto>();
 
 
             CreateMap<PersonDto, Person>()
@@ -84,9 +84,9 @@ namespace API.Helpers
                 .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
             CreateMap<NoteDto, Note>()
                 .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
-            CreateMap<ChallangeSolutionDto, ChallangeSolution>()
+            CreateMap<ChallengeSolutionDto, ChallangeSolution>()
                .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
-            CreateMap<ChallangeDto, Challange>()
+            CreateMap<ChallengeDto, Challange>()
                .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
         }
     }

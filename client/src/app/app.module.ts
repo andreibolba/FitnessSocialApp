@@ -19,7 +19,7 @@ import { MeetingComponent } from './shared/meetings/meeting/meeting.component';
 import { ProfileComponent } from './shared/profile/profile.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { NoteComponent } from './shared/note/note.component';
+import { NoteComponent } from './shared/notes/note/note.component';
 import { FeedbackComponent } from './shared/feedback/feedback.component';
 import { ChallangeComponent } from './shared/challange/challange.component';
 import { TestComponent } from './shared/tests/test/test.component';
@@ -60,6 +60,7 @@ import { AddEditGroupChatComponent } from './chat-system/add-edit-group-chat/add
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { GroupChatDetailsComponent } from './chat-system/group-chat-details/group-chat-details.component';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import { AddEditNoteComponent } from './shared/notes/add-edit-note/add-edit-note.component';
 
 @NgModule({
   declarations: [
@@ -104,7 +105,8 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
     GroupChatMessageComponent,
     AllChatsComponent,
     AddEditGroupChatComponent,
-    GroupChatDetailsComponent
+    GroupChatDetailsComponent,
+    AddEditNoteComponent
   ],
   imports: [
     Ng2SearchPipeModule,

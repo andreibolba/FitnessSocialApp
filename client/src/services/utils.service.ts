@@ -12,6 +12,7 @@ import { Comment } from 'src/model/comment.model';
 import { Message } from 'src/model/message.model';
 import { GroupChat } from 'src/model/groupchat.model';
 import { GroupChatMessage } from 'src/model/groupchatmessage.model';
+import { Note } from 'src/model/note.model';
 
 @Injectable({
   providedIn: 'root'
@@ -41,6 +42,7 @@ export class UtilsService {
   groupChatPersonChat = new BehaviorSubject<GroupChat | null>(null);
   newChat = new BehaviorSubject<Message | null>(null);
   newGroupChatMessage = new BehaviorSubject<GroupChatMessage | null>(null);
+  noteToEdit = new BehaviorSubject<Note | null>(null);
   dashboardChanged=new EventEmitter<boolean>(true);
 
   error=new BehaviorSubject<{errorCode:number,errorTitle:string,errorMessage:string} | null>(null);

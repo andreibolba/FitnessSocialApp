@@ -1,0 +1,25 @@
+<h3>{{operation}} post</h3>
+<div id="main">
+  <form #registerForm="ngForm" (ngSubmit)="onSignUpSubmit()" autocomplete="off">
+
+    <div class="infos">
+      <div class="info">
+        <label for="noteTitle">Note Title</label>
+        <input type="text" id="noteTitle" placeholder="Note Title" name="noteTitle" [(ngModel)]="title"
+          required>
+      </div>
+      <div class="info">
+        <label for="noteContent">Note Content</label>
+        <textarea id="noteContent" placeholder="Note Content" name="noteContent" [(ngModel)]="content"
+          required>
+        </textarea>
+      </div>
+    </div>
+
+
+    <mat-dialog-actions align="center">
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button type="submit" [disabled]="!registerForm.valid" mat-button cdkFocusInitial> {{ operation }}</button>
+    </mat-dialog-actions>
+  </form>
+</div>

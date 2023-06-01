@@ -695,7 +695,7 @@ export class DataStorageService {
     return this.http.post<Note>(this.baseUrl + 'note/add',{
       noteTitle: note.noteTitle,
       noteBody: note.noteBody,
-      persoId: note.personId
+      personId: note.personId
     },{headers:headers});
   }
 

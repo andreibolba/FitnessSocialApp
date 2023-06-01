@@ -11,7 +11,7 @@ import { ChallangeComponent } from './shared/challange/challange.component';
 import { FeedbackComponent } from './shared/feedback/feedback.component';
 import { DashboardComponent } from './shared/groups/groups-dashboard/dashboard/dashboard.component';
 import { MeetingComponent } from './shared/meetings/meeting/meeting.component';
-import { NoteComponent } from './shared/note/note.component';
+import { NoteComponent } from './shared/notes/note/note.component';
 import { ProfileComponent } from './shared/profile/profile.component';
 import { QuestionsComponent } from './shared/questions/question/question.component';
 import { TaskComponent } from './shared/task/task.component';

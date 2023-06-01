@@ -23,7 +23,7 @@ namespace API.FluentMigration.Migrations
             Create.Table(tableName)
                 .WithColumn("TaskId").AsInt32().PrimaryKey().NotNullable().Identity()
                 .WithColumn("TaskName").AsString().NotNullable()
-                .WithColumn("TaskDescription").AsString().NotNullable()
+                .WithColumn("TaskDescription").AsString(int.MaxValue).NotNullable()
                 .WithColumn("TrainerId").AsInt32().NotNullable()
                 .WithColumn("DateOfPost").AsDateTime().NotNullable()
                 .WithColumn("Deadline").AsDateTime().NotNullable()

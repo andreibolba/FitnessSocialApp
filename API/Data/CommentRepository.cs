@@ -50,7 +50,7 @@ namespace API.Data
                 else
                 {
                     comm.Upvote = isUp.Upvote.Value;
-                    comm.Downvote = isUp.DoenVote.Value;
+                    comm.Downvote = isUp.DownVote.Value;
 
                 }
                 var likes = _context.PostCommentReactions.Where(p =>
@@ -59,14 +59,14 @@ namespace API.Data
                 && p.CommentId != null
                 && p.CommentId == comm.CommentId
                 && p.Upvote == true
-                && p.DoenVote == false).Count();
+                && p.DownVote == false).Count();
                 var dislikes = _context.PostCommentReactions.Where(p =>
                 p.Deleted == false
                 && p.PostId == null
                 && p.CommentId != null
                 && p.CommentId == comm.CommentId
                 && p.Upvote == false
-                && p.DoenVote == true).Count();
+                && p.DownVote == true).Count();
                 comm.Karma = likes - dislikes;
             }
             return comms;

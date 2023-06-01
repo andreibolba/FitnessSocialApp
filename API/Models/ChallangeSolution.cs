@@ -13,7 +13,9 @@ public partial class ChallangeSolution
 
     public int InternId { get; set; }
 
-    public string SolutionLink { get; set; }
+    public string SolutionContent { get; set; }
+
+    public byte[] SolutionFile { get; set; }
 
     public bool Deleted { get; set; }
 

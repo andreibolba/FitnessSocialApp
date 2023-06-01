@@ -37,7 +37,7 @@ namespace API.Data
             return _mapper.Map<IEnumerable<ChallengeSolutionDto>>(res);
         }
 
-        public IEnumerable<ChallengeSolutionDto> GetAllSolutionsForChallange(int challangeId)
+        public IEnumerable<ChallengeSolutionDto> GetAllSolutionsForChallenge(int challangeId)
         {
             return GetAllSolutions().Where(c=>c.ChallangeId == challangeId);  
         }
@@ -66,7 +66,8 @@ namespace API.Data
         {
             var sol = _mapper.Map<ChallangeSolution>(GetSolutionById(solution.ChallangeSolutionId));
 
-            sol.SolutionLink = solution.SolutionLink==null ? sol.SolutionLink : solution.SolutionLink;
+            sol.SolutionContent = solution.SolutionContent==null ? sol.SolutionContent : solution.SolutionContent;
+            sol.SolutionFile = solution.SolutionFile == null ? sol.SolutionFile : solution.SolutionFile;
             sol.DateOfSolution = DateTime.Now;
             
             _context.ChallangeSolutions.Update(sol);

@@ -19,7 +19,7 @@ namespace API.FluentMigration.Migrations
             Create.Table(tableName)
                 .WithColumn("NoteId").AsInt32().PrimaryKey().NotNullable().Identity()
                 .WithColumn("NoteTitle").AsString().NotNullable()
-                .WithColumn("NoteBody").AsString().NotNullable()
+                .WithColumn("NoteBody").AsString(int.MaxValue).NotNullable()
                 .WithColumn("PersonId").AsInt32().NotNullable()
                 .WithColumn("PostingDate").AsDateTime().NotNullable()
                 .WithColumn("Deleted").AsBoolean().NotNullable();

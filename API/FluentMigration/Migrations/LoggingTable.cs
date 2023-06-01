@@ -20,7 +20,7 @@ namespace API.FluentMigration.Migrations
             Create.Table(tableName)
                 .WithColumn("LoggingId").AsInt32().PrimaryKey().NotNullable().Identity()
                 .WithColumn("LogType").AsString().NotNullable()
-                .WithColumn("LogMessage").AsString().NotNullable()
+                .WithColumn("LogMessage").AsString(int.MaxValue).NotNullable()
                 .WithColumn("PersonUsername").AsString().Nullable()
                 .WithColumn("DateOfLog").AsDateTime().NotNullable()
                 .WithColumn("Deleted").AsBoolean().NotNullable();

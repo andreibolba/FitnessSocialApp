@@ -86,20 +86,20 @@ namespace API.Data
                 var likesPost = allReactionsPosts.Where(p =>
                 p.Post.PersonId == pers.PersonId
                 && p.Upvote == true
-                && p.DoenVote == false).Count();
+                && p.DownVote == false).Count();
                 var likesComment = allReactionsComments.Where(p =>
                 p.Comment.PersonId == pers.PersonId
                 && p.Upvote == true
-                && p.DoenVote == false).Count();
+                && p.DownVote == false).Count();
 
                 var dislikesPost = allReactionsPosts.Where(p =>
                 p.Post.PersonId == pers.PersonId
                 && p.Upvote == false
-                && p.DoenVote == true).Count();
+                && p.DownVote == true).Count();
                 var dislikesComment = allReactionsComments.Where(p =>
                 p.Comment.PersonId == pers.PersonId
                 && p.Upvote == false
-                && p.DoenVote == true).Count();
+                && p.DownVote == true).Count();
 
                 pers.Karma = (likesComment+ likesPost) - (dislikesComment+dislikesPost);
                 pers.Answers = _context.Comments.Where(c => c.Deleted == false && c.PersonId == pers.PersonId).Count();

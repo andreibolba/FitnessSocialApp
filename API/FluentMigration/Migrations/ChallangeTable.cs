@@ -19,7 +19,7 @@ namespace API.FluentMigration.Migrations
             Create.Table(tableName)
                 .WithColumn("ChallangeId").AsInt32().PrimaryKey().NotNullable().Identity()
                 .WithColumn("ChallangeName").AsString().NotNullable()
-                .WithColumn("ChallangeDescription").AsString().NotNullable()
+                .WithColumn("ChallangeDescription").AsString(int.MaxValue).NotNullable()
                 .WithColumn("TrainerId").AsInt32().NotNullable()
                 .WithColumn("DateOfPost").AsDateTime().NotNullable()
                 .WithColumn("Deadline").AsDateTime().NotNullable()

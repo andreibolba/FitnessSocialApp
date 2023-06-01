@@ -11,7 +11,7 @@ public partial class TaskSolution
 
     public int InternId { get; set; }
 
-    public string SolutionLink { get; set; }
+    public string SolutionContent { get; set; }
 
     public DateTime DateOfSolution { get; set; }
 

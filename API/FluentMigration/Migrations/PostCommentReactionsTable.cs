@@ -25,7 +25,7 @@ namespace API.FluentMigration.Migrations
                 .WithColumn("PostId").AsInt32().Nullable()
                 .WithColumn("CommentId").AsInt32().Nullable()
                 .WithColumn("Upvote").AsBoolean().Nullable()
-                .WithColumn("DoenVote").AsBoolean().Nullable()
+                .WithColumn("DownVote").AsBoolean().Nullable()
                 .WithColumn("Deleted").AsBoolean().NotNullable();
 
             Create.ForeignKey(fkNamePerson)

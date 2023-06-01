@@ -18,7 +18,7 @@ namespace API.FluentMigration.Migrations
             Create.Table(tableName)
                 .WithColumn("PostPicturesId").AsInt32().PrimaryKey().NotNullable().Identity()
                 .WithColumn("PostId").AsInt32().NotNullable()
-                .WithColumn("Picture").AsBinary().Nullable()
+                .WithColumn("Picture").AsString(int.MaxValue).Nullable()
                 .WithColumn("Deleted").AsBoolean().NotNullable();
 
             Create.ForeignKey(fkName)

@@ -59,7 +59,7 @@ namespace API.Data
                 else
                 {
                     a.Upvote = isUp.Upvote.Value;
-                    a.Downvote = isUp.DoenVote.Value;
+                    a.Downvote = isUp.DownVote.Value;
 
                 }
                 var likes = _context.PostCommentReactions.Where(p =>
@@ -68,14 +68,14 @@ namespace API.Data
                 && p.PostId == a.PostId
                 && p.CommentId == null
                 && p.Upvote == true
-                && p.DoenVote == false).Count();
+                && p.DownVote == false).Count();
                 var dislikes = _context.PostCommentReactions.Where(p =>
                 p.Deleted == false
                 && p.PostId != null
                 && p.PostId == a.PostId
                 && p.CommentId == null
                 && p.Upvote == false
-                && p.DoenVote == true).Count();
+                && p.DownVote == true).Count();
                 a.Karma = likes - dislikes;
                 a.Views = _context.PostViews.Where(pw => pw.Deleted == false && pw.PostId == a.PostId).Count();
             }

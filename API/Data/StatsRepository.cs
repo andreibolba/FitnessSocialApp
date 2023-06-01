@@ -38,7 +38,7 @@ namespace API.Data
             if(reaction != null)
             {
                 reaction.Upvote = vote.Upvote.Value;
-                reaction.DoenVote = vote.Downvote.Value;
+                reaction.DownVote = vote.Downvote.Value;
                 reaction.Deleted = false;
                 _context.PostCommentReactions.Update(reaction);
                 return;

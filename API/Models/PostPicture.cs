@@ -9,7 +9,7 @@ public partial class PostPicture
 
     public int PostId { get; set; }
 
-    public byte[] Picture { get; set; }
+    public string Picture { get; set; }
 
     public bool Deleted { get; set; }
 

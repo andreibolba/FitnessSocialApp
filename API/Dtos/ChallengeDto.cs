@@ -2,7 +2,7 @@
 
 namespace API.Dtos
 {
-    public class ChallangeDto
+    public class ChallengeDto
     {
         public int ChallangeId { get; set; }
 

@@ -78,7 +78,8 @@ public partial class InternShipAppSystemContext : DbContext
     public virtual DbSet<VersionInfo> VersionInfos { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=InternShipAppSystem;User Id=sa;Password=1234%asd; TrustServerCertificate=True");
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Data Source=ANDREIB;Initial Catalog=InternShipAppSystem;User Id=sa;Password=1234%asd; TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -86,9 +87,7 @@ public partial class InternShipAppSystemContext : DbContext
         {
             entity.ToTable("Challange");
 
-            entity.Property(e => e.ChallangeDescription)
-                .IsRequired()
-                .HasMaxLength(255);
+            entity.Property(e => e.ChallangeDescription).IsRequired();
             entity.Property(e => e.ChallangeName)
                 .IsRequired()
                 .HasMaxLength(255);
@@ -106,9 +105,7 @@ public partial class InternShipAppSystemContext : DbContext
             entity.ToTable("ChallangeSolution");
 
             entity.Property(e => e.DateOfSolution).HasColumnType("datetime");
-            entity.Property(e => e.SolutionLink)
-                .IsRequired()
-                .HasMaxLength(255);
+            entity.Property(e => e.SolutionContent).IsRequired();
 
             entity.HasOne(d => d.Challange).WithMany(p => p.ChallangeSolutions)
                 .HasForeignKey(d => d.ChallangeId)
@@ -125,9 +122,7 @@ public partial class InternShipAppSystemContext : DbContext
         {
             entity.ToTable("Chat");
 
-            entity.Property(e => e.Message)
-                .IsRequired()
-                .HasMaxLength(255);
+            entity.Property(e => e.Message).IsRequired();
             entity.Property(e => e.SendDate).HasColumnType("datetime");
 
             entity.HasOne(d => d.PersonReceiver).WithMany(p => p.ChatPersonReceivers)
@@ -162,6 +157,8 @@ public partial class InternShipAppSystemContext : DbContext
         modelBuilder.Entity<Feedback>(entity =>
         {
             entity.ToTable("Feedback");
+
+            entity.Property(e => e.Content).IsRequired();
 
             entity.HasOne(d => d.Challange).WithMany(p => p.Feedbacks)
                 .HasForeignKey(d => d.ChallangeId)
@@ -234,9 +231,7 @@ public partial class InternShipAppSystemContext : DbContext
         {
             entity.ToTable("GroupChatMessage");
 
-            entity.Property(e => e.Message)
-                .IsRequired()
-                .HasMaxLength(255);
+            entity.Property(e => e.Message).IsRequired();
             entity.Property(e => e.SendDate).HasColumnType("datetime");
 
             entity.HasOne(d => d.GroupChat).WithMany(p => p.GroupChatMessages)
@@ -287,9 +282,7 @@ public partial class InternShipAppSystemContext : DbContext
             entity.ToTable("Logging");
 
             entity.Property(e => e.DateOfLog).HasColumnType("datetime");
-            entity.Property(e => e.LogMessage)
-                .IsRequired()
-                .HasMaxLength(255);
+            entity.Property(e => e.LogMessage).IsRequired();
             entity.Property(e => e.LogType)
                 .IsRequired()
                 .HasMaxLength(255);
@@ -337,9 +330,7 @@ public partial class InternShipAppSystemContext : DbContext
         {
             entity.ToTable("Note");
 
-            entity.Property(e => e.NoteBody)
-                .IsRequired()
-                .HasMaxLength(255);
+            entity.Property(e => e.NoteBody).IsRequired();
             entity.Property(e => e.NoteTitle)
                 .IsRequired()
                 .HasMaxLength(255);
@@ -432,8 +423,6 @@ public partial class InternShipAppSystemContext : DbContext
         {
             entity.HasKey(e => e.PostPicturesId);
 
-            entity.Property(e => e.Picture).HasMaxLength(8000);
-
             entity.HasOne(d => d.Post).WithMany(p => p.PostPictures)
                 .HasForeignKey(d => d.PostId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
@@ -467,9 +456,7 @@ public partial class InternShipAppSystemContext : DbContext
             entity.Property(e => e.D).HasMaxLength(255);
             entity.Property(e => e.E).HasMaxLength(255);
             entity.Property(e => e.F).HasMaxLength(255);
-            entity.Property(e => e.QuestionName)
-                .IsRequired()
-                .HasMaxLength(255);
+            entity.Property(e => e.QuestionName).IsRequired();
 
             entity.HasOne(d => d.Trainer).WithMany(p => p.Questions)
                 .HasForeignKey(d => d.TrainerId)
@@ -535,9 +522,7 @@ public partial class InternShipAppSystemContext : DbContext
 
             entity.Property(e => e.DateOfPost).HasColumnType("datetime");
             entity.Property(e => e.Deadline).HasColumnType("datetime");
-            entity.Property(e => e.TaskDescription)
-                .IsRequired()
-                .HasMaxLength(255);
+            entity.Property(e => e.TaskDescription).IsRequired();
             entity.Property(e => e.TaskName)
                 .IsRequired()
                 .HasMaxLength(255);
@@ -561,7 +546,7 @@ public partial class InternShipAppSystemContext : DbContext
             entity.ToTable("TaskSolution");
 
             entity.Property(e => e.DateOfSolution).HasColumnType("datetime");
-            entity.Property(e => e.SolutionLink)
+            entity.Property(e => e.SolutionContent)
                 .IsRequired()
                 .HasMaxLength(255);
 

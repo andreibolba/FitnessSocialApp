@@ -17,7 +17,7 @@ public partial class Feedback
 
     public int? TestId { get; set; }
 
-    public bool Content { get; set; }
+    public string Content { get; set; }
 
     public bool Deleted { get; set; }
 

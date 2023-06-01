@@ -15,7 +15,7 @@ public partial class PostCommentReaction
 
     public bool? Upvote { get; set; }
 
-    public bool? DoenVote { get; set; }
+    public bool? DownVote { get; set; }
 
     public bool Deleted { get; set; }
 

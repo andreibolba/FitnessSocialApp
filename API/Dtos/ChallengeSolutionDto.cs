@@ -2,7 +2,7 @@
 
 namespace API.Dtos
 {
-    public class ChallangeSolutionDto
+    public class ChallengeSolutionDto
     {
         public int ChallangeSolutionId { get; set; }
 
@@ -12,9 +12,11 @@ namespace API.Dtos
 
         public int InternId { get; set; }
 
-        public string SolutionLink { get; set; }
+        public string SolutionContent { get; set; }
 
-        public ChallangeDto Challange { get; set; }
+        public byte[] SolutionFile { get; set; }
+
+        public ChallengeDto Challange { get; set; }
 
         public PersonDto Intern { get; set; }
     }

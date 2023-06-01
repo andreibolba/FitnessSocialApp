@@ -19,7 +19,7 @@ namespace API.FluentMigration.Migrations
         {
             Create.Table(tableName)
                 .WithColumn("QuestionId").AsInt32().PrimaryKey().NotNullable().Identity()
-                .WithColumn("QuestionName").AsString().NotNullable()
+                .WithColumn("QuestionName").AsString(int.MaxValue).NotNullable()
                 .WithColumn("TrainerId").AsInt32().Nullable()
                 .WithColumn("A").AsString().Nullable()
                 .WithColumn("B").AsString().Nullable()

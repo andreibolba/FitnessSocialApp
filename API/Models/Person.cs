@@ -21,7 +21,7 @@ public partial class Person
 
     public string Status { get; set; }
 
-    public byte[] Picture { get; set; }
+    public string Picture { get; set; }
 
     public DateTime BirthDate { get; set; }
 

@@ -45,6 +45,7 @@ namespace API.Helpers
             CreateMap<GroupChat, GroupChatDto>();
             CreateMap<GroupChatMessage, GroupChatMessageDto>();
             CreateMap<GroupChatPerson, GroupChatPersonDto>();
+            CreateMap<Note, NoteDto>();
 
 
             CreateMap<PersonDto, Person>()
@@ -78,6 +79,8 @@ namespace API.Helpers
             CreateMap<GroupChatMessageDto, GroupChatMessage>()
                 .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
             CreateMap<GroupChatPersonDto, GroupChatPerson>()
+                .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
+            CreateMap<NoteDto, Note>()
                 .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
         }
     }

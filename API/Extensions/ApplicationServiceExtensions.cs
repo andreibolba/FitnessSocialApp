@@ -35,6 +35,7 @@ namespace API.Extensions
             services.AddScoped<IMessageRepository,MessageRepository>();
             services.AddScoped<IGroupChatRepository,GroupChatRepository>();
             services.AddScoped<IGroupChatMessagesRepostitory,GroupChatMessageRepository>();
+            services.AddScoped<INoteRepository,NoteRepository>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             return services;
         }

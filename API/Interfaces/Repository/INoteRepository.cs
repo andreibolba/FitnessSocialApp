@@ -6,9 +6,9 @@ namespace API.Interfaces.Repository
     {
         public NoteDto CreateNote(NoteDto note);
         public NoteDto UpdateNote(NoteDto note);
-        public NoteDto DeleteNote(int noteId);
-        public IEnumerable<NoteDto> GetAll();
-        public NoteDto GetNote(int noteId);
+        public void DeleteNote(int noteId);
+        public IEnumerable<NoteDto> GetAllNotes();
+        public NoteDto GetNoteById(int noteId);
         public bool SaveAll();
     }
 }

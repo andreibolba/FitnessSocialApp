@@ -185,6 +185,7 @@ export class TestComponent implements OnInit, OnDestroy {
                   .subscribe(
                     (data) => {
                       this.tests = data;
+                      console.log(data);
                       console.log(this.tests);
                     },
                     () => {},

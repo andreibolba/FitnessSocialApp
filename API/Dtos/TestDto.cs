@@ -12,6 +12,7 @@ namespace API.Dtos
         public DateTime DateOfPost { get; set; }
 
         public DateTime? Deadline { get; set; }
+        public bool IsOverDeadline { get; set; }
 
         public bool? CanBeEdited { get; set; }
         public bool? IsTaken { get; set; }

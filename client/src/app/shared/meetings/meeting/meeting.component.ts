@@ -57,6 +57,7 @@ export class MeetingComponent implements OnInit, OnDestroy {
       this.fromGroupSub = this.utils.isFromGroupDashboard.subscribe(
         (res) => {
           this.isFromGroup = res;
+          console.log(res);
           if (this.isFromGroup) {
             this.mainId = 'maingroup';
             this.buttonsClass = 'buttonsgroup';

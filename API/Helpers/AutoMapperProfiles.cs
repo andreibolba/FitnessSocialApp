@@ -31,7 +31,8 @@ namespace API.Helpers
             .ForMember(dest => dest.Email, opt => opt.MapFrom(src => src.Intern.Email))
             .ForMember(dest => dest.Status, opt => opt.MapFrom(src => src.Intern.Status))
             .ForMember(dest => dest.BirthDate, opt => opt.MapFrom(src => src.Intern.BirthDate));
-            CreateMap<Test, TestDto>();
+            CreateMap<Test, TestDto>()
+            .ForMember(dest => dest.IsOverDeadline, opt=>opt.MapFrom(src=>src.Deadline<DateTime.Now));
             CreateMap<Question, QuestionDto>();
             CreateMap<TestGroupIntern, TestGroupInternDto>();
             CreateMap<Meeting, MeetingDto>();

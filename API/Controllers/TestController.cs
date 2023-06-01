@@ -35,8 +35,10 @@ namespace API.Controllers
         [HttpGet("mytest/{id:int}/{status}")]
         public ActionResult<IEnumerable<TestDto>> GetTestByTrainerId(int id,string status)
         {
-            if(status=="trainer")
+            if (status.ToLower() == "trainer")
+            {
                 return Ok(_test.GetTestByTrainerId(id));
+            }
             return Ok(_test.GetInternTest(id));
         }
 

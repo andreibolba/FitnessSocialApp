@@ -14,6 +14,7 @@ import { Comment } from 'src/model/comment.model';
 import { Message } from 'src/model/message.model';
 import { GroupChat } from 'src/model/groupchat.model';
 import { GroupChatMessage } from 'src/model/groupchatmessage.model';
+import { Note } from 'src/model/note.model';
 
 @Injectable({
   providedIn: 'root',
@@ -675,5 +676,41 @@ export class DataStorageService {
   updateMembersGroupChat(token:string, groupChatId:number, ids:string){
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.post<GroupChat>(this.baseUrl + 'groupchat/update/members/'+groupChatId,{ids:ids},{headers:headers});
+  }
+
+  //note
+
+  getAllNotes(token:string){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<Note[]>(this.baseUrl+'note',{headers:headers});
+  }
+
+  getNoteById(token:string, noteId:number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<Note>(this.baseUrl+'note/'+noteId,{headers:headers});
+  }
+
+  createNote(token:string,note:Note){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post<Note>(this.baseUrl + 'note/add',{
+      noteTitle: note.noteTitle,
+      noteBody: note.noteBody,
+      persoId: note.personId
+    },{headers:headers});
+  }
+
+  updateNote(token:string,note:Note){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post<Note>(this.baseUrl + 'note/edit',{
+      noteId:note.noteId,
+      noteTitle: note.noteTitle,
+      noteBody: note.noteBody,
+      persoId: note.personId
+    },{headers:headers});
+  }
+
+  deleteNote(token:string,noteId:number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post<Note>(this.baseUrl + 'note/delete/'+noteId,{},{headers:headers});
   }
 }

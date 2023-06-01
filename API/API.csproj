@@ -8,6 +8,7 @@
   <ItemGroup>
     <None Remove="Dtos\ChallangeDto.cs~RF35403b9.TMP" />
     <None Remove="Dtos\ChallangeSolutionDto.cs~RF354805b.TMP" />
+    <None Remove="Interfaces\Repository\IChallangeRepository.cs~RF35b0414.TMP" />
     <None Remove="Interfaces\Repository\IPostRepository.cs~RF516d709.TMP" />
     <None Remove="Interfaces\Repository\ITestInternGroupRepository.cs~RF1acfb1d5.TMP" />
     <None Remove="Models\TaskSolution.cs~RF33e720e.TMP" />

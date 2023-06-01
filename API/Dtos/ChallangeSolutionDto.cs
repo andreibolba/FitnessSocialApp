@@ -8,7 +8,7 @@ namespace API.Dtos
 
         public int ChallangeId { get; set; }
 
-        public DateTime DateOfSolution { get; set; }
+        public DateTime? DateOfSolution { get; set; }
 
         public int InternId { get; set; }
 

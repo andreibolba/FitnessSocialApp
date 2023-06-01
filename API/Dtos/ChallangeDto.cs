@@ -12,7 +12,7 @@ namespace API.Dtos
 
         public int TrainerId { get; set; }
 
-        public DateTime DateOfPost { get; set; }
+        public DateTime? DateOfPost { get; set; }
 
         public DateTime Deadline { get; set; }
 

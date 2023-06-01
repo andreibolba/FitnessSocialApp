@@ -32,7 +32,7 @@ namespace API.Controllers
         {
             var res = _noteRepository.CreateNote(note);
 
-            return res != null? Ok(res) : BadRequest();
+            return res != null? Ok(res) : BadRequest("Internal Server Error");
         }
 
         [HttpPost("edit")]
@@ -40,7 +40,15 @@ namespace API.Controllers
         {
             var res = _noteRepository.UpdateNote(note);
 
-            return res != null ? Ok(res) : BadRequest();
+            return res != null ? Ok(res) : BadRequest("Internal Server Error");
+        }
+
+        [HttpPost("delete/{noteId}")]
+        public ActionResult DeleteNote(int noteId)
+        {
+            _noteRepository.DeleteNote(noteId);
+
+            return _noteRepository.SaveAll() ? Ok() : BadRequest("Internal Server Error");
         }
     }
 }

@@ -20,7 +20,7 @@ namespace API.Data
         public NoteDto CreateNote(NoteDto note)
         {
             var noteToAdd = _mapper.Map<Note>(note);
-            note.PostingDate = DateTime.Now;
+            noteToAdd.PostingDate = DateTime.Now;
             _context.Notes.Add(noteToAdd);
 
             return SaveAll() ? _mapper.Map<NoteDto>(noteToAdd) : null;
@@ -30,12 +30,12 @@ namespace API.Data
         {
             var note = _mapper.Map<Note>(GetNoteById(noteId));
             note.Deleted = true;
-            _context.SaveChanges();
+            _context.Notes.Update(note);
         }
 
         public IEnumerable<NoteDto> GetAllNotes()
         {
-            var allNotes = _context.Notes.Where(n => n.Deleted == false).Include(n => n.Person);
+            var allNotes = _context.Notes.Where(n => n.Deleted == false).Include(n => n.Person).OrderByDescending(n=>n.PostingDate);
             return _mapper.Map<IEnumerable<NoteDto>>(allNotes);
         }
 

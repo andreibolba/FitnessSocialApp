@@ -15,6 +15,8 @@ import { Message } from 'src/model/message.model';
 import { GroupChat } from 'src/model/groupchat.model';
 import { GroupChatMessage } from 'src/model/groupchatmessage.model';
 import { Note } from 'src/model/note.model';
+import { Challenge } from 'src/model/challenge.model';
+import { ChallengeSolution } from 'src/model/challengesolution.model';
 
 @Injectable({
   providedIn: 'root',
@@ -713,4 +715,90 @@ export class DataStorageService {
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.post<Note>(this.baseUrl + 'note/delete/'+noteId,{},{headers:headers});
   }
+
+  //challenge
+
+  getAllChallenges(token:string){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<Challenge[]>(this.baseUrl + 'challenge',{headers:headers});
+  }
+
+  addChallenge(token:string,challenge:Challenge){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post<Challenge>(this.baseUrl + 'challenge/add',{
+      challangeName:challenge.challangeName,
+      challangeDescription:challenge.challangeDescription,
+      trainerId:challenge.trainerId,
+      deadline:challenge.deadline
+    },{headers:headers});
+  }
+
+  editChallenge(token:string,challenge:Challenge){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post<Challenge>(this.baseUrl + 'challenge/edit',{
+      challangeId:challenge.challangeId,
+      challangeName:challenge.challangeName,
+      challangeDescription:challenge.challangeDescription,
+      trainerId:challenge.trainerId,
+      deadline:challenge.deadline
+    },{headers:headers});
+  }
+
+  deleteChallenge(token:string,challengeId:number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post(this.baseUrl + 'challenge/delete/'+challengeId,{},{headers:headers});
+  }
+
+  //challengeSolution
+
+  getSolutions(token:string){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<ChallengeSolution[]>(this.baseUrl + 'challenge/solutions',{headers:headers});
+  }
+
+  getSolutionsForSpecificChallenge(token:string,challengeId:number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<ChallengeSolution[]>(this.baseUrl + 'challenge/solutions/'+challengeId,{headers:headers});
+  }
+
+  getSolutionsForSpecificPerson(token:string,personId:number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<ChallengeSolution[]>(this.baseUrl + 'challenge/solutions/mine/'+personId,{headers:headers});
+  }
+
+  approveSolution(token:string,solutionId:number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post(this.baseUrl + 'challenge/solutions/approve/'+solutionId,{headers:headers});
+  }
+
+  declineSolution(token:string,solutionId:number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post(this.baseUrl + 'challenge/solutions/decline/'+solutionId,{headers:headers});
+  }
+
+  addSolution(token:string,solution:ChallengeSolution){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post<ChallengeSolution>(this.baseUrl + 'challenge/solution/add',{
+      challangeId:solution.challangeId,
+      dateOfSolution:solution.dateOfSolution,
+      internId:solution.internId,
+      solutionFile:solution.solutionFile,
+      solutionContent:solution.solutionContent
+    },{headers:headers});
+  }
+
+
+  editSolution(token:string,solution:ChallengeSolution){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post<ChallengeSolution>(this.baseUrl + 'challenge/solution/edit',{
+      solutionChallengeId:solution.challangeSolutionId,
+      challangeId:solution.challangeId,
+      dateOfSolution:solution.dateOfSolution,
+      internId:solution.internId,
+      solutionFile:solution.solutionFile,
+      solutionContent:solution.solutionContent
+    },{headers:headers});
+  }
+
+
 }

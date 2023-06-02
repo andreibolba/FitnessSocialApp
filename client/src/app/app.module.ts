@@ -21,7 +21,6 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NoteComponent } from './shared/notes/note/note.component';
 import { FeedbackComponent } from './shared/feedback/feedback.component';
-import { ChallangeComponent } from './shared/challange/challange.component';
 import { TestComponent } from './shared/tests/test/test.component';
 import { ToastrModule } from 'ngx-toastr';
 import { MatTableModule } from '@angular/material/table';
@@ -61,6 +60,7 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { GroupChatDetailsComponent } from './chat-system/group-chat-details/group-chat-details.component';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { AddEditNoteComponent } from './shared/notes/add-edit-note/add-edit-note.component';
+import { ChallengesComponent } from './shared/challenge/challenges/challenges.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +78,6 @@ import { AddEditNoteComponent } from './shared/notes/add-edit-note/add-edit-note
     ProfileComponent,
     NoteComponent,
     FeedbackComponent,
-    ChallangeComponent,
     TestComponent,
     AdministrationComponent,
     CreateEditDialogComponent,
@@ -106,7 +105,8 @@ import { AddEditNoteComponent } from './shared/notes/add-edit-note/add-edit-note
     AllChatsComponent,
     AddEditGroupChatComponent,
     GroupChatDetailsComponent,
-    AddEditNoteComponent
+    AddEditNoteComponent,
+    ChallengesComponent
   ],
   imports: [
     Ng2SearchPipeModule,

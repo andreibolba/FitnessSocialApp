@@ -7,7 +7,6 @@ import { AuthentificationComponent } from './authentification/authentification.c
 import { ErrorComponent } from './error/error.component';
 import { ForumComponent } from './forum/forum/forum.component';
 import { HomeComponent } from './home/home.component';
-import { ChallangeComponent } from './shared/challange/challange.component';
 import { FeedbackComponent } from './shared/feedback/feedback.component';
 import { DashboardComponent } from './shared/groups/groups-dashboard/dashboard/dashboard.component';
 import { MeetingComponent } from './shared/meetings/meeting/meeting.component';
@@ -17,6 +16,7 @@ import { QuestionsComponent } from './shared/questions/question/question.compone
 import { TaskComponent } from './shared/task/task.component';
 import { TestComponent } from './shared/tests/test/test.component';
 import { ChatComponent } from './chat-system/chat/chat.component';
+import { ChallengesComponent } from './shared/challenge/challenges/challenges.component';
 
 const routes: Routes = [
   {
@@ -32,7 +32,7 @@ const routes: Routes = [
       { path: 'tasks', component: TaskComponent },
       { path: 'forum', component: ForumComponent },
       { path: 'tests', component: TestComponent },
-      { path: 'challanges', component: ChallangeComponent },
+      { path: 'challenges', component: ChallengesComponent },
       { path: 'feedback', component: FeedbackComponent },
       { path: 'notes', component: NoteComponent },
       { path: 'mygroups', component: GroupsComponent },

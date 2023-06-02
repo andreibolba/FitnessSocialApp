@@ -96,7 +96,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
                   { name: 'My Group', logo: 'uil uil-users-alt', link: 'mygroups' },
                   { name: 'Tests', logo: 'uil uil-question-circle', link: 'tests' },
                   { name: 'Questions', logo: 'uil uil-font', link: 'questions' },
-                  { name: 'Challanges', logo: 'uil uil-brackets-curly',link: 'challanges' },
+                  { name: 'Challenges', logo: 'uil uil-brackets-curly',link: 'challenges' },
                   { name: 'Feedback', logo: 'uil uil-feedback', link: 'feedback' },
                   { name: 'Notes', logo: 'uil uil-notes', link: 'notes' },
                   {
@@ -118,7 +118,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
                   { name: 'Dashboard', logo: 'uil uil-estate', link: '../dashboard' },
                   { name: 'My Groups', logo: 'uil uil-users-alt', link: 'mygroups' },
                   { name: 'Tests', logo: 'uil uil-diary', link: 'tests' },
-                  { name: 'Challanges', logo: 'uil uil-brackets-curly',link: 'challanges' },
+                  { name: 'Challenges', logo: 'uil uil-brackets-curly',link: 'challenges' },
                   { name: 'Feedback', logo: 'uil uil-feedback', link: 'feedback' },
                   { name: 'Notes', logo: 'uil uil-notes', link: 'notes' },
                   {

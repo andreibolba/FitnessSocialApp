@@ -11,7 +11,8 @@ namespace API.Data
         private readonly InternShipAppSystemContext _context;
         private readonly IMapper _mapper;
 
-        public ChallengeRepository(InternShipAppSystemContext context, IMapper mapper)
+        public ChallengeRepository(InternShipAppSystemContext context, 
+            IMapper mapper)
         {
             _context = context;
             _mapper = mapper;

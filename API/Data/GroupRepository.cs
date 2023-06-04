@@ -19,9 +19,12 @@ namespace API.Data
             _mapper = mapper;
         }
 
-        public void Create(GroupDto groupdto)
+        public GroupDto Create(GroupDto groupdto)
         {
-            _context.Groups.Add(_mapper.Map<Group>(groupdto));
+            var group = _mapper.Map<Group>(groupdto);
+            _context.Groups.Add(group);
+
+            return SaveAll() ? _mapper.Map<GroupDto>(group) : null;
         }
         
         public void Delete(int groupId)
@@ -85,13 +88,15 @@ namespace API.Data
             return _context.SaveChanges() > 0;
         }
 
-        public void Update(GroupDto groupdto)
+        public GroupDto Update(GroupDto groupdto)
         {
             var groypFromDb = GetGroupById(groupdto.GroupId);
             if (groupdto.GroupName == null) groupdto.GroupName = groypFromDb.GroupName;
             if (groupdto.TrainerId == null) groupdto.TrainerId = groypFromDb.TrainerId.Value;
             if (groupdto.Description == null) groupdto.Description = groypFromDb.Description;
             _context.Groups.Update(_mapper.Map<Group>(groupdto));
+
+            return SaveAll() ? _mapper.Map<GroupDto>(groypFromDb) : null;
         }
     }
 }

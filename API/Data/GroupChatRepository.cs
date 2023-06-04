@@ -15,7 +15,9 @@ namespace API.Data
         private readonly IPersonRepository _person;
         private readonly IMapper _mapper;
 
-        public GroupChatRepository(InternShipAppSystemContext context, IPersonRepository person, IMapper mapper)
+        public GroupChatRepository(InternShipAppSystemContext context, 
+            IPersonRepository person, 
+            IMapper mapper)
         {
             _context = context;
             _person = person;

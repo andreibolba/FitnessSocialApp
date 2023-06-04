@@ -13,7 +13,9 @@ namespace API.Controllers
         private readonly IChallengeSolutionRepository _challangeSolutionRepository;
         private readonly IPersonRepository _personRepository;
 
-        public ChallengeController(IChallengeRepository challangeRepository, IChallengeSolutionRepository challangeSolutionRepository, IPersonRepository personRepository)
+        public ChallengeController(IChallengeRepository challangeRepository, 
+            IChallengeSolutionRepository challangeSolutionRepository, 
+            IPersonRepository personRepository)
         {
             _challangeRepository = challangeRepository;
             _challangeSolutionRepository = challangeSolutionRepository;

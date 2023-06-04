@@ -41,8 +41,8 @@ namespace API.Controllers
         [HttpPost("add")]
         public ActionResult AddGroup([FromBody] GroupDto group)
         {
-            _groupRepository.Create(group);
-            return _groupRepository.SaveAll() ? Ok() : BadRequest("Internal Server Error");
+            var res = _groupRepository.Create(group);
+            return res!=null ? Ok(res) : BadRequest("Internal Server Error");
         }
 
         [HttpPost("delete/{groupId:int}")]
@@ -55,8 +55,8 @@ namespace API.Controllers
         [HttpPost("update")]
         public ActionResult UpdateGroup([FromBody] GroupDto group)
         {
-            _groupRepository.Update(group);
-            return _groupRepository.SaveAll() ? Ok() : BadRequest("Internal Server Error"); ;
+            var res = _groupRepository.Update(group);
+            return res!=null ? Ok(res) : BadRequest("Internal Server Error"); ;
         }
 
         [HttpGet("tests/{groupId:int}")]

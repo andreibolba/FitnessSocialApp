@@ -5,11 +5,11 @@ namespace API.Interfaces.Repository
 {
     public interface IGroupRepository
     {
-        void Create(GroupDto groupdto);
+        GroupDto Create(GroupDto groupdto);
         IEnumerable<GroupDto> GetAllGroups();
         IEnumerable<PersonDto> GetAllParticipants(int groupId);
         GroupDto GetGroupById(int id);
-        void Update(GroupDto groupdto);
+        GroupDto Update(GroupDto groupdto);
         void Delete(int groupId);
         bool SaveAll();
         IEnumerable<TestDto> GetAllTestsFromGroup(int groupId);

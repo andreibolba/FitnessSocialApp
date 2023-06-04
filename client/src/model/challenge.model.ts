@@ -8,6 +8,8 @@ export class Challenge {
     public trainer:Person;
     public dateOfPost:Date;
     public deadline:Date;
+    public canDelete:boolean;
+    public points:number;
 
     constructor(){
         this.challangeId=-1;
@@ -17,5 +19,7 @@ export class Challenge {
         this.trainer= new Person();
         this.dateOfPost=new Date();
         this.deadline=new Date();
+        this.canDelete=false;
+        this.points=0;
     }
 }

@@ -13,11 +13,11 @@ public partial class ChallangeSolution
 
     public int InternId { get; set; }
 
-    public string SolutionContent { get; set; }
-
     public byte[] SolutionFile { get; set; }
 
-    public bool Approved { get; set; }
+    public int Points { get; set; }
+
+    public bool? Approved { get; set; }
 
     public bool Deleted { get; set; }
 

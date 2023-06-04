@@ -13,6 +13,8 @@ public partial class Challange
 
     public int TrainerId { get; set; }
 
+    public int Points { get; set; }
+
     public DateTime DateOfPost { get; set; }
 
     public DateTime Deadline { get; set; }

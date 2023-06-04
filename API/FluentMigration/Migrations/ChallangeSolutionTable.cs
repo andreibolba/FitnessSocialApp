@@ -23,9 +23,9 @@ namespace API.FluentMigration.Migrations
                 .WithColumn("ChallangeId").AsInt32().NotNullable()
                 .WithColumn("DateOfSolution").AsDateTime().NotNullable()
                 .WithColumn("InternId").AsInt32().NotNullable()
-                .WithColumn("SolutionContent").AsString(int.MaxValue).NotNullable()
                 .WithColumn("SolutionFile").AsBinary(int.MaxValue).Nullable()
-                .WithColumn("Approved").AsBoolean().NotNullable()
+                .WithColumn("Points").AsInt32().NotNullable()
+                .WithColumn("Approved").AsBoolean().Nullable()
                 .WithColumn("Deleted").AsBoolean().NotNullable();
 
             Create.ForeignKey(fkNameChallange)

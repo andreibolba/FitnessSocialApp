@@ -1,0 +1,15 @@
+<h3>See challenges results</h3>
+<div id="main">
+  <mat-list role="list" *ngIf="solutions.length!=0">
+      <mat-list-item role="listitem" class="resultitem" *ngFor="let solution of solutions;let i=index">
+        <div style="display: flex;">
+          <div (click)="downloadFile(solution.challangeSolutionId)" id="name">{{i+1}}. {{ solution.intern.username }}</div> 
+          <button class="btn btn-success" id="answer" (click)="approve(solution)" *ngIf="solution.approved==null">Approve</button>
+          <button class="btn btn-danger" id="answer" (click)="decline(solution)" *ngIf="solution.approved==null">Decline</button>
+          <p id="message" class="accept" *ngIf="solution.approved==true">Approved</p>
+          <p id="message" class="decline" *ngIf="solution.approved==false">Declined</p>
+        </div>
+    </mat-list-item>
+  </mat-list>
+  <p *ngIf="solutions.length==0" style="text-align: center;"> No intern has finished this challenge</p>
+</div>

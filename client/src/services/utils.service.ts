@@ -13,6 +13,8 @@ import { Message } from 'src/model/message.model';
 import { GroupChat } from 'src/model/groupchat.model';
 import { GroupChatMessage } from 'src/model/groupchatmessage.model';
 import { Note } from 'src/model/note.model';
+import { Challenge } from 'src/model/challenge.model';
+import { ChallengeSolution } from 'src/model/challengesolution.model';
 
 @Injectable({
   providedIn: 'root'
@@ -43,6 +45,11 @@ export class UtilsService {
   newChat = new BehaviorSubject<Message | null>(null);
   newGroupChatMessage = new BehaviorSubject<GroupChatMessage | null>(null);
   noteToEdit = new BehaviorSubject<Note | null>(null);
+  challengeToEdit = new BehaviorSubject<Challenge | null>(null);
+  challengeSolutionToEdit = new BehaviorSubject<ChallengeSolution | null>(null);
+  challengeIdForSolutionsToEdit = new BehaviorSubject<number>(-1);
+  pointToSolutionApprove = new BehaviorSubject<number | null>(null);
+  maxpointToSolutionApprove = new BehaviorSubject<number>(-1);
   dashboardChanged=new EventEmitter<boolean>(true);
 
   error=new BehaviorSubject<{errorCode:number,errorTitle:string,errorMessage:string} | null>(null);

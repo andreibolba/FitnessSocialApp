@@ -10,6 +10,7 @@ namespace API.Interfaces.Repository
         public ChallengeDto GetChallengeById(int id);
         public IEnumerable<ChallengeDto> GetAllChallenges();
         public ChallengeDto GetAllChallengeForSpecificDay(DateTime time);
+        public bool ExistsChallengeForSpecificDate(int year, int month, int day, int id = -1);
         public bool SaveAll();
     }
 }

@@ -11,10 +11,17 @@ namespace API.Data
         private readonly InternShipAppSystemContext _context;
         private readonly IMapper _mapper;
 
-        public void ApproveDeclineSolutin(int solutionId, bool approved)
+        public ChallengeSolutionRepository(InternShipAppSystemContext context, IMapper mapper)
+        {
+            _context = context;
+            _mapper = mapper;
+        }
+
+        public void ApproveDeclineSolutin(int solutionId, bool approved,int points)
         {
             var sol = _mapper.Map<ChallangeSolution>(GetSolutionById(solutionId));
 
+            sol.Points = points;
             sol.Approved = approved;
 
             _context.ChallangeSolutions.Update(sol);
@@ -25,6 +32,8 @@ namespace API.Data
             var sol = _mapper.Map<ChallangeSolution>(solution);
 
             sol.DateOfSolution = DateTime.Now;
+            sol.Approved = null;
+            sol.Points = 0;
             
             _context.ChallangeSolutions.Add(sol);
 
@@ -58,7 +67,7 @@ namespace API.Data
 
         public IEnumerable<ChallengeSolutionDto> GetAllSolutionsForSpecificDay(DateTime time)
         {
-            return GetAllSolutions().Where(c => c.DateOfSolution.Value.Day == time.Day && c.DateOfSolution.Value.Month == time.Month && c.DateOfSolution.Value.Year == time.Year);
+            return GetAllSolutions().Where(c => c.DateOfSolution.Day == time.Day && c.DateOfSolution.Month == time.Month && c.DateOfSolution.Year == time.Year);
         }
 
         public ChallengeSolutionDto GetSolutionById(int id)
@@ -75,10 +84,10 @@ namespace API.Data
         {
             var sol = _mapper.Map<ChallangeSolution>(GetSolutionById(solution.ChallangeSolutionId));
 
-            sol.SolutionContent = solution.SolutionContent==null ? sol.SolutionContent : solution.SolutionContent;
             sol.SolutionFile = solution.SolutionFile == null ? sol.SolutionFile : solution.SolutionFile;
             sol.DateOfSolution = DateTime.Now;
-            
+            sol.Points = sol.Points;
+
             _context.ChallangeSolutions.Update(sol);
 
             return SaveAll() ? _mapper.Map<ChallengeSolutionDto>(sol) : null;

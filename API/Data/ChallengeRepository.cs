@@ -32,6 +32,7 @@ namespace API.Data
         {
             var challange = _mapper.Map<Challange>(GetChallengeById(id));
             challange.Deleted= true;
+            _context.Challanges.Update(challange);
             foreach(var s in _context.ChallangeSolutions.Where(d=>d.Deleted==false&& d.ChallangeId == id))
             {
                 s.Deleted= true;
@@ -41,7 +42,7 @@ namespace API.Data
 
         public IEnumerable<ChallengeDto> GetAllChallenges()
         {
-            var res = _context.Challanges.Where(d => d.Deleted == false).Include(g => g.Trainer);
+            var res = _context.Challanges.Where(d => d.Deleted == false).Include(g => g.Trainer).OrderByDescending(g=>g.Deadline);
             return _mapper.Map<IEnumerable<ChallengeDto>>(res);
         }
 
@@ -64,6 +65,7 @@ namespace API.Data
         {
             var challangeToUpdate = _mapper.Map<Challange>(GetChallengeById(challange.ChallangeId));
 
+            challange.Points = challangeToUpdate.Points==0? challange.Points : challangeToUpdate.Points;
             challangeToUpdate.ChallangeName = challange.ChallangeName==null? challangeToUpdate.ChallangeName : challange.ChallangeName;
             challangeToUpdate.ChallangeDescription = challange.ChallangeDescription == null? challangeToUpdate.ChallangeDescription : challange.ChallangeDescription;
             challangeToUpdate.Deadline = challange.Deadline == null? challangeToUpdate.Deadline : challange.Deadline;
@@ -71,6 +73,19 @@ namespace API.Data
             _context.Challanges.Update(challangeToUpdate);
 
             return SaveAll() ? _mapper.Map<ChallengeDto>(challangeToUpdate) : null;
+        }
+
+        public bool ExistsChallengeForSpecificDate(int year, int month, int day, int id = -1)
+        {
+            var challenge = _context.Challanges.Where(c => c.Deadline.Year == year && c.Deadline.Month == month && c.Deadline.Day == day);
+            if (id == -1)
+            {
+                return challenge.Count() > 0;
+            }
+            var challengeId=challenge.FirstOrDefault(c=>c.ChallangeId==id);
+            if (challengeId == null)
+                return true;
+            return false;
         }
     }
 }

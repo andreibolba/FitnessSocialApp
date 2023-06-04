@@ -1,0 +1,38 @@
+<h3>{{operation}} challenge</h3>
+<div id="main">
+  <form #registerForm="ngForm" (ngSubmit)="onSignUpSubmit()" autocomplete="off">
+
+    <div class="infos">
+      <div style="display: flex; padding-right: 10px;">
+        <div class="info">
+          <label for="challengeName">Challenge name</label>
+          <input type="text" id="challengeName" placeholder="Challenge Name" name="challengeName" [(ngModel)]="challengeName"
+            required>
+        </div>
+
+        <div class="info">
+          <label for="challengeDeadline">Challenge deadline</label>
+          <input type="date" id="challengeDeadline" [(ngModel)]="challengeDeadline" (value)="today" name="challengeDeadline" required >
+        </div>
+
+        <div class="info">
+          <label for="challengePoints">Points</label>
+          <input type="number" min="0" id="challengePoints" [(ngModel)]="challengePoints" name="challengePoints" required >
+        </div>
+
+      </div>
+      <div class="info">
+        <label for="challengeDescription">Challenge description</label>
+        <textarea id="challengeDescription" placeholder="Challenge description" name="challengeDescription" [(ngModel)]="challengeDescription"
+          required>
+        </textarea>
+      </div>
+    </div>
+
+
+    <mat-dialog-actions align="center">
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button type="submit" [disabled]="!registerForm.valid" mat-button cdkFocusInitial> {{ operation }}</button>
+    </mat-dialog-actions>
+  </form>
+</div>

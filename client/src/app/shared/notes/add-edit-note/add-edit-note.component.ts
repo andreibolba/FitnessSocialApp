@@ -21,7 +21,6 @@ export class AddEditNoteComponent implements OnInit, OnDestroy {
   content: string = '';
   operation: string = '';
   person: Person = new Person();
-  canDelete:boolean=false;
   private token: string = '';
   private noteId: number = -1;
 
@@ -51,10 +50,8 @@ export class AddEditNoteComponent implements OnInit, OnDestroy {
             this.title = res.noteTitle;
             this.content = res.noteBody;
             this.noteId = res.noteId;
-            this.canDelete=true;
           } else {
             this.operation = "Add";
-            this.canDelete = false;
           }
         });
       });

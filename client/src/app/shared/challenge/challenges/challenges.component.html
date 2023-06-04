@@ -1,1 +1,44 @@
-<p>challenges works!</p>
+<div id="main">
+    <div style="display: flex;">
+        <div style="display: flex; height: 10%; width:100%;">
+            <i class="uil uil-brackets-curly" style="font-size: 35px; margin-top: -7px;"></i>
+            <h2>Challenges</h2>
+        </div>
+        <button class="btn btn-success" id="add" *ngIf="canAddEdit" (click)="onAdd()">Add challenge</button>
+    </div>
+    <div class="challenges" *ngIf="challenges.length!=0">
+        <div class="row">
+            <div class="challenge" *ngFor="let challenge of challenges">
+                <div class="challenge-title">
+                    <h4 *ngIf="!canAddEdit || !challenge.canDelete"> {{ challenge.challangeName }}</h4>
+                    <h4 *ngIf="canAddEdit && challenge.canDelete" class="title-click" (click)="onEdit(challenge)"> {{ challenge.challangeName }}</h4>
+                </div>
+                <div class="info" style="display: flex;">
+                    <div class="deadline" style="text-align: center; width: 70%;">
+                        <h6 style="font-weight: bold;"> Deadline:<br> {{ challenge.deadline | date:'medium' }}</h6>
+                    </div>
+                    <div class="points" style="text-align: center; width: 30%;">
+                        <h6 style="font-weight: bold; text-align: center;"> Points:<br> {{ challenge.points }}</h6>
+                    </div>
+                </div>
+                <div class="challenge-body">
+                    <h6 style="margin-top: 5px; font-weight: bold;"> Requirement:  </h6>
+                    <p style="padding-left: 2px; padding-right: 2px">
+                        {{ challenge.challangeDescription }}
+                    </p>
+                </div>
+                <div class="footer">
+                    {{ challenge.trainer.username }} at {{ challenge.dateOfPost | date:'medium' }}<br>
+                    <div>
+                        <button class="btn btn-success" *ngIf="!canAddEdit && challenge.canDelete" id="sol-btn" (click)="onPostSolution(challenge)">Post solution</button>
+                        <button class="btn btn-success" *ngIf="!canAddEdit" id="sol-btn">See solution</button>
+                        <button class="btn btn-success" *ngIf="canAddEdit" id="sol-btn" (click)="onSeeAllSolutions(challenge)">See all solutions</button>
+                        <button class="btn btn-danger" *ngIf="canAddEdit && challenge.canDelete" id="sol-btn" (click)="onDelete(challenge)">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <p *ngIf="challenges.length==0"> There are no challenges! </p>
+
+</div>

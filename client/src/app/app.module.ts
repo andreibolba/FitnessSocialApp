@@ -61,6 +61,11 @@ import { GroupChatDetailsComponent } from './chat-system/group-chat-details/grou
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { AddEditNoteComponent } from './shared/notes/add-edit-note/add-edit-note.component';
 import { ChallengesComponent } from './shared/challenge/challenges/challenges.component';
+import { AddEditChallengeComponent } from './shared/challenge/add-edit-challenge/add-edit-challenge.component';
+import { SeeSolutionsComponent } from './shared/challenge/see-solutions/see-solutions.component';
+import { AddEditSolutionComponent } from './shared/challenge/add-edit-solution/add-edit-solution.component';
+import { SolutionPointsComponent } from './shared/challenge/solution-points/solution-points.component';
+import { Ng5SliderModule } from 'ng5-slider';
 
 @NgModule({
   declarations: [
@@ -106,7 +111,11 @@ import { ChallengesComponent } from './shared/challenge/challenges/challenges.co
     AddEditGroupChatComponent,
     GroupChatDetailsComponent,
     AddEditNoteComponent,
-    ChallengesComponent
+    ChallengesComponent,
+    AddEditChallengeComponent,
+    SeeSolutionsComponent,
+    AddEditSolutionComponent,
+    SolutionPointsComponent
   ],
   imports: [
     Ng2SearchPipeModule,
@@ -128,7 +137,8 @@ import { ChallengesComponent } from './shared/challenge/challenges/challenges.co
     MatTabsModule,
     MatFormFieldModule,
     ToastrModule.forRoot(),
-    NgxMatSelectSearchModule 
+    NgxMatSelectSearchModule ,
+    Ng5SliderModule
 
   ],
   providers: [],

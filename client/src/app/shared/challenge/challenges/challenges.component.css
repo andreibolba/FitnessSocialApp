@@ -1,0 +1,100 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    color: #515151;
+}
+
+
+#main {
+    width: 82%;
+    height: 84vh;
+}
+
+h2 {
+    color: #515151;
+    font-family: 'Poppins-Italic';
+}
+
+#add{
+    float: right;
+    height: 40px;
+    color: white;
+    width: 120px;
+    margin-right: 20px;
+}
+
+.challenges {
+    width: 100%;
+    height: 90%;
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+}
+
+.row {
+    height: 63%;
+    width: 99%;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.challenge {
+    width: calc(100%/4 - 20px);
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 40px;
+    height: 96%;
+    background-color: #e9e7e7;
+    border-radius: 7px;
+    border: 1px solid #d4d4d4;
+    padding-top: 10px;
+}
+
+.challenge-title {
+    height: 55px;
+    margin: auto;
+    width: 95%;
+    margin-top: 5px;
+    text-align: center;
+    color: black;
+}
+
+.challenge-body {
+    height: 179px;
+    margin: auto;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    margin-top: 5px;
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+    padding: 5px;
+}
+
+.footer{
+    height: 12px;
+    width: 100%;
+    background-color: #e9e7e7;
+    text-align: end;
+    padding-right: 5px;
+    font-family: 'Poppins-Italic';
+    font-size: 11px;
+    color: #515151;
+}
+
+.title-click{
+    text-decoration: underline;
+}
+
+.title-click:hover{
+    cursor: pointer;
+}
+
+#sol-btn{
+    color: white;
+    width: calc(100%/2 - 10px);
+    margin-left: 5px;
+    margin-right: 5px;
+    text-align: center;
+    height: 30px;
+}

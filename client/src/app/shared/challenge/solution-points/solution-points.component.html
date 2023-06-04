@@ -1,0 +1,9 @@
+<div id="main">
+  <h3>Give points to this solutions </h3>
+
+  <div class="slidecontainer">
+    <input type="range" min="0" max="100" [(ngModel)]="value" class="slider" id="myRange">
+    <p>Value: <span id="demo">{{value}}</span></p>
+  </div>
+  <button class="btn btn-success" id="pnt" (click)="onClose()"> Send </button>
+</div>

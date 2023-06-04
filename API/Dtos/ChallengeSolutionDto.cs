@@ -8,14 +8,15 @@ namespace API.Dtos
 
         public int ChallangeId { get; set; }
 
-        public DateTime? DateOfSolution { get; set; }
+        public DateTime DateOfSolution { get; set; }
 
         public int InternId { get; set; }
 
-        public string SolutionContent { get; set; }
-
         public byte[] SolutionFile { get; set; }
-        public bool Approved { get; set; }
+
+        public int Points { get; set; }
+
+        public bool? Approved { get; set; }
 
         public ChallengeDto Challange { get; set; }
 

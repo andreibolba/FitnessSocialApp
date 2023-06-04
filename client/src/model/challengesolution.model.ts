@@ -10,7 +10,8 @@ export class ChallengeSolution {
     public intern:Person;
     public solutionContent:string;
     public solutionFile:File | null;
-    public approved:boolean;
+    public approved:boolean | null;
+    public points:number;
 
     constructor(){
         this.challangeSolutionId=-1;
@@ -20,7 +21,8 @@ export class ChallengeSolution {
         this.intern=new Person();
         this.dateOfSolution=new Date();
         this.solutionContent='';
-        this.approved=false;
+        this.approved=null;
         this.solutionFile=null;
+        this.points=0;
     }
 }

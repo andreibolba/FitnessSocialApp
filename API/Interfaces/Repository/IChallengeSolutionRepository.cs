@@ -12,7 +12,7 @@ namespace API.Interfaces.Repository
         public IEnumerable<ChallengeSolutionDto> GetAllSolutionsForIntern(int internId);
         public IEnumerable<ChallengeSolutionDto> GetAllSolutionsForChallenge(int ChallengeId);
         public IEnumerable<ChallengeSolutionDto> GetAllSolutionsForSpecificDay(DateTime time);
-        public void ApproveDeclineSolutin(int solutionId, bool approved);
+        public void ApproveDeclineSolutin(int solutionId, bool approved, int points);
         public bool SaveAll();
 
     }

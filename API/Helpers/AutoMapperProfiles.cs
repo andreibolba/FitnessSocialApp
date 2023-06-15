@@ -48,6 +48,10 @@ namespace API.Helpers
             CreateMap<Note, NoteDto>();
             CreateMap<Challange, ChallengeDto>();
             CreateMap<ChallangeSolution, ChallengeSolutionDto>();
+            CreateMap<Models.Task, TaskExtensions>();
+            CreateMap<TaskSolution, TaskSolutionDto>();
+            CreateMap<SubTask, SubTaskDto>();
+            CreateMap<SubTaskChecked, SubTaskCheckedDto>();
 
 
             CreateMap<PersonDto, Person>()

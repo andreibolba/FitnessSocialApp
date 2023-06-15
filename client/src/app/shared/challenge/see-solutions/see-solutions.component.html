@@ -4,12 +4,14 @@
       <mat-list-item role="listitem" class="resultitem" *ngFor="let solution of solutions;let i=index">
         <div style="display: flex;">
           <div (click)="downloadFile(solution.challangeSolutionId)" id="name">{{i+1}}. {{ solution.intern.username }}</div> 
-          <button class="btn btn-success" id="answer" (click)="approve(solution)" *ngIf="solution.approved==null">Approve</button>
-          <button class="btn btn-danger" id="answer" (click)="decline(solution)" *ngIf="solution.approved==null">Decline</button>
-          <p id="message" class="accept" *ngIf="solution.approved==true">Approved</p>
+          <button class="btn btn-success" id="answer" (click)="approve(solution)" *ngIf="solution.approved==null && isReadOnly == false">Approve</button>
+          <button class="btn btn-danger" id="answer" (click)="decline(solution)" *ngIf="solution.approved==null && isReadOnly == false">Decline</button>
+          <button class="btn btn-danger" id="answer" (click)="delete(solution)" *ngIf="solution.approved==null && isReadOnly == true">Delete</button>
+          <p id="message" class="accept" *ngIf="solution.approved==true">Approved ({{solution.points + ' p'}})</p>
           <p id="message" class="decline" *ngIf="solution.approved==false">Declined</p>
         </div>
     </mat-list-item>
   </mat-list>
-  <p *ngIf="solutions.length==0" style="text-align: center;"> No intern has finished this challenge</p>
+  <p *ngIf="solutions.length==0 && isReadOnly==false" style="text-align: center;"> No intern has finished this challenge</p>
+  <p *ngIf="solutions.length==0 && isReadOnly" style="text-align: center;"> You did not upload any solutions</p>
 </div>

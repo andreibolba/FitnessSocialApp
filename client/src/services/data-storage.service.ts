@@ -17,6 +17,7 @@ import { GroupChatMessage } from 'src/model/groupchatmessage.model';
 import { Note } from 'src/model/note.model';
 import { Challenge } from 'src/model/challenge.model';
 import { ChallengeSolution } from 'src/model/challengesolution.model';
+import { Ranking } from 'src/model/ranking.mode';
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +25,7 @@ import { ChallengeSolution } from 'src/model/challengesolution.model';
 export class DataStorageService {
   baseUrl = 'https://localhost:7191/api/';
   people: Person[] = [];
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
   //connection test
 
@@ -126,9 +127,9 @@ export class DataStorageService {
     return this.http.get<Group[]>(this.baseUrl + 'group', { headers: headers });
   }
 
-  getGroupById(token: string,groupId:number) {
+  getGroupById(token: string, groupId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.get<Object>(this.baseUrl + 'group/'+groupId, { headers: headers });
+    return this.http.get<Object>(this.baseUrl + 'group/' + groupId, { headers: headers });
   }
 
   addGroup(token: string, group: Group) {
@@ -263,7 +264,7 @@ export class DataStorageService {
 
   deleteQuestion(token: string, questionId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'question/delete/' + questionId,{}, {
+    return this.http.post(this.baseUrl + 'question/delete/' + questionId, {}, {
       headers: headers,
     });
   }
@@ -271,9 +272,9 @@ export class DataStorageService {
   //tests
 
 
-  getMyTests(token:string,trainerId:number,status:string){
+  getMyTests(token: string, trainerId: number, status: string) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.get<Test[]>(this.baseUrl + 'test/mytest/' + trainerId +'/'+status, {
+    return this.http.get<Test[]>(this.baseUrl + 'test/mytest/' + trainerId + '/' + status, {
       headers: headers,
     });
   }
@@ -285,7 +286,7 @@ export class DataStorageService {
     });
   }
 
-  getPeopleRezolvingTest(token:string,testId:number){
+  getPeopleRezolvingTest(token: string, testId: number) {
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.get<Person[]>(this.baseUrl + 'test/results/people/' + testId, {
       headers: headers,
@@ -294,7 +295,7 @@ export class DataStorageService {
 
   deleteOneTest(token: string, testId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'test/delete/' + testId,{},{
+    return this.http.post(this.baseUrl + 'test/delete/' + testId, {}, {
       headers: headers,
     });
   }
@@ -432,8 +433,8 @@ export class DataStorageService {
         TrainerId: meeting.traierId,
         MeetingStartTime: meeting.meetingStartTime,
         MeetingFinishTime: meeting.meetingFinishTime,
-        InterndIds:meeting.internIds,
-        GroupIds:meeting.groupIds
+        InterndIds: meeting.internIds,
+        GroupIds: meeting.groupIds
       },
       {
         headers: headers,
@@ -448,21 +449,21 @@ export class DataStorageService {
     });
   }
 
-  getAllMeetingsForPerson(token:string, id:number, status:string){
+  getAllMeetingsForPerson(token: string, id: number, status: string) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.get<Meeting[]>(this.baseUrl + 'meeting/' + id+'/'+status, {
+    return this.http.get<Meeting[]>(this.baseUrl + 'meeting/' + id + '/' + status, {
       headers: headers,
     });
   }
 
-  getANumberOfMeetingsForPerson(token:string, id:number, status:string,count:number){
+  getANumberOfMeetingsForPerson(token: string, id: number, status: string, count: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.get<Meeting[]>(this.baseUrl + 'meeting/' + id+'/'+status+'/'+count, {
+    return this.http.get<Meeting[]>(this.baseUrl + 'meeting/' + id + '/' + status + '/' + count, {
       headers: headers,
     });
   }
 
-  getAllInternsInMeeting(token: string, meetingId: number){
+  getAllInternsInMeeting(token: string, meetingId: number) {
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.get<ObjectIntern[]>(
       this.baseUrl + 'meeting/all/' + meetingId + '/interns',
@@ -472,10 +473,10 @@ export class DataStorageService {
     );
   }
 
-  getAllGroupsInMeeting(token: string, meetingId: number,trainerId:number){
+  getAllGroupsInMeeting(token: string, meetingId: number, trainerId: number) {
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.get<ObjectGroup[]>(
-      this.baseUrl + 'meeting/all/' + meetingId + '/groups/'+trainerId,
+      this.baseUrl + 'meeting/all/' + meetingId + '/groups/' + trainerId,
       {
         headers: headers,
       }
@@ -484,324 +485,336 @@ export class DataStorageService {
 
   //questionsolution
 
-  sendTest(token:string, internId:number,testId:number, answers:Answer[]){
+  sendTest(token: string, internId: number, testId: number, answers: Answer[]) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'questionsolution/add/'+internId +'/'+testId, answers, {
+    return this.http.post(this.baseUrl + 'questionsolution/add/' + internId + '/' + testId, answers, {
       headers: headers,
     });
   }
 
-  getResult(token:string, internId:number,testId:number){
+  getResult(token: string, internId: number, testId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.get<Answer[]>(this.baseUrl + 'questionsolution/getanswers/'+internId +'/'+testId, {
+    return this.http.get<Answer[]>(this.baseUrl + 'questionsolution/getanswers/' + internId + '/' + testId, {
       headers: headers,
     });
   }
 
   //posts
 
-  getAllPostsCompleted(token:string,personId:number){
+  getAllPostsCompleted(token: string, personId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.get<Post[]>(this.baseUrl + 'posts/completed/'+personId, {
+    return this.http.get<Post[]>(this.baseUrl + 'posts/completed/' + personId, {
       headers: headers,
     });
   }
 
-  addPost(token:string, post:Post){
+  addPost(token: string, post: Post) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'posts/add',{
+    return this.http.post(this.baseUrl + 'posts/add', {
       Title: post.title,
       Content: post.content,
       PersonId: post.person.personId
-    },{headers: headers})
+    }, { headers: headers })
   }
 
-  editPost(token:string, post:Post){
+  editPost(token: string, post: Post) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'posts/edit',{
+    return this.http.post(this.baseUrl + 'posts/edit', {
       PostId: post.postId,
       Title: post.title,
       Content: post.content,
       PersonId: post.person.personId
-    },{headers: headers});
+    }, { headers: headers });
   }
 
-  addView(token:string, postId:number, personId:number){
+  addView(token: string, postId: number, personId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'posts/view',{
+    return this.http.post(this.baseUrl + 'posts/view', {
       PostId: postId,
       PersonId: personId
-    },{headers: headers});
+    }, { headers: headers });
   }
 
-  votePost(token:string, postId:number, personId:number, upvote:boolean,downvote:boolean){
+  votePost(token: string, postId: number, personId: number, upvote: boolean, downvote: boolean) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'posts/vote',{
+    return this.http.post(this.baseUrl + 'posts/vote', {
       PostId: postId,
       PersonId: personId,
       Upvote: upvote,
-      Downvote:downvote
-    },{headers: headers});
+      Downvote: downvote
+    }, { headers: headers });
   }
 
-  deletePost(token:string, postId:number){
+  deletePost(token: string, postId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'posts/delete/' + postId,{},{headers: headers});
+    return this.http.post(this.baseUrl + 'posts/delete/' + postId, {}, { headers: headers });
   }
 
   //comment
 
-  getAllCommForPostAndPerson(token:string,postId:number,personId:number){
+  getAllCommForPostAndPerson(token: string, postId: number, personId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.get<Comment[]>(this.baseUrl + 'comment/post/'+postId + '/'+personId, {
+    return this.http.get<Comment[]>(this.baseUrl + 'comment/post/' + postId + '/' + personId, {
       headers: headers,
     });
   }
 
-  voteComment(token:string, commentId:number, personId:number, upvote:boolean,downvote:boolean){
+  voteComment(token: string, commentId: number, personId: number, upvote: boolean, downvote: boolean) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'comment/vote',{
+    return this.http.post(this.baseUrl + 'comment/vote', {
       CommentId: commentId,
       PersonId: personId,
       Upvote: upvote,
-      Downvote:downvote
-    },{headers: headers});
+      Downvote: downvote
+    }, { headers: headers });
   }
 
-  deleteComment(token:string, commentId:number){
+  deleteComment(token: string, commentId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'comment/delete/' + commentId,{},{headers: headers});
+    return this.http.post(this.baseUrl + 'comment/delete/' + commentId, {}, { headers: headers });
   }
 
-  addComment(token:string, comment:Comment){
+  addComment(token: string, comment: Comment) {
     console.log(comment);
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'comment/add',{
+    return this.http.post(this.baseUrl + 'comment/add', {
       CommentContent: comment.commentContent,
-      PostId:comment.postId,
+      PostId: comment.postId,
       PersonId: comment.person.personId
-    },{headers: headers})
+    }, { headers: headers })
   }
 
-  editComment(token:string, comment:Comment){
+  editComment(token: string, comment: Comment) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'comment/edit',{
+    return this.http.post(this.baseUrl + 'comment/edit', {
       CommentId: comment.commentId,
       CommentContent: comment.commentContent,
-      PostId:comment.postId,
+      PostId: comment.postId,
       PersonId: comment.person.personId,
       DateOfComment: comment.dateOfComment
-    },{headers: headers});
+    }, { headers: headers });
   }
 
   //chat
 
-  getLastMessagesFormChatForCurrentPerson(token:string, personId:number){
+  getLastMessagesFormChatForCurrentPerson(token: string, personId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.get<Message[]>(this.baseUrl + 'chat/' + personId, {headers: headers});
+    return this.http.get<Message[]>(this.baseUrl + 'chat/' + personId, { headers: headers });
   }
 
-  getAllMessagesFromAChat(token:string,currentPersonId:number,chatPersonId:number){
+  getAllMessagesFromAChat(token: string, currentPersonId: number, chatPersonId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.get<Message[]>(this.baseUrl + 'chat/messages/' + currentPersonId + '/' + chatPersonId, {headers: headers});
+    return this.http.get<Message[]>(this.baseUrl + 'chat/messages/' + currentPersonId + '/' + chatPersonId, { headers: headers });
   }
 
-  addMessage(token:string, message:Message){
+  addMessage(token: string, message: Message) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post<Message>(this.baseUrl + 'chat/add',{
+    return this.http.post<Message>(this.baseUrl + 'chat/add', {
       PersonSenderId: message.personSenderId,
       PersonReceiverId: message.personReceiverId,
       Message: message.message
-    },{headers: headers});
+    }, { headers: headers });
   }
 
-  deleteChat(token:string, personId:number, chatPersonId:number){
+  deleteChat(token: string, personId: number, chatPersonId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'chat/deletechat/'+personId + '/' + chatPersonId,{},{headers:headers});
+    return this.http.post(this.baseUrl + 'chat/deletechat/' + personId + '/' + chatPersonId, {}, { headers: headers });
   }
 
   //groupchat
 
-  addGroupChat(token:string, nameOfGroup:string,descriptionOfGroup:string, adminId:number,ids:number[]){
+  addGroupChat(token: string, nameOfGroup: string, descriptionOfGroup: string, adminId: number, ids: number[]) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post<GroupChatMessage>(this.baseUrl + 'groupchat/add',{
+    return this.http.post<GroupChatMessage>(this.baseUrl + 'groupchat/add', {
       NameOfGroup: nameOfGroup,
       DescriptionOfGroup: descriptionOfGroup,
       AdminId: adminId,
-      Ids:ids},{headers: headers});
+      Ids: ids
+    }, { headers: headers });
   }
 
-  editGroupChat(token:string, group:GroupChat){
+  editGroupChat(token: string, group: GroupChat) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'groupchat/edit',{
+    return this.http.post(this.baseUrl + 'groupchat/edit', {
       GroupChatId: group.groupChatId,
       GroupChatName: group.groupChatName,
       GroupChatDescription: group.groupChatDescription,
       AdminId: group.adminId
-    },{headers: headers});
+    }, { headers: headers });
   }
 
-  getAllGroupChatsLastMessages(token:string, personId:number){
+  getAllGroupChatsLastMessages(token: string, personId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.get<GroupChatMessage[]>(this.baseUrl + 'groupchat/' + personId, {headers: headers});
+    return this.http.get<GroupChatMessage[]>(this.baseUrl + 'groupchat/' + personId, { headers: headers });
   }
 
-  getAllMessagesForGroup(token:string, geroupId:number){
+  getAllMessagesForGroup(token: string, geroupId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.get<GroupChatMessage[]>(this.baseUrl + 'groupchat/messages/' + geroupId, {headers: headers});
+    return this.http.get<GroupChatMessage[]>(this.baseUrl + 'groupchat/messages/' + geroupId, { headers: headers });
   }
 
-  sendMessageToGroupChat(token:string, personId:number,groupId:number,message:string){
+  sendMessageToGroupChat(token: string, personId: number, groupId: number, message: string) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post<GroupChatMessage>(this.baseUrl + 'groupchat/message/add',{
-      PersonId:personId,
-      GroupChatId:groupId,
-      Message:message
-    },{headers:headers});
+    return this.http.post<GroupChatMessage>(this.baseUrl + 'groupchat/message/add', {
+      PersonId: personId,
+      GroupChatId: groupId,
+      Message: message
+    }, { headers: headers });
   }
 
-  deleteGroupChat(token:string, groupChatId:number){
+  deleteGroupChat(token: string, groupChatId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'groupchat/delete/'+groupChatId,{},{headers:headers});
+    return this.http.post(this.baseUrl + 'groupchat/delete/' + groupChatId, {}, { headers: headers });
   }
 
-  removeMemberFromGroupChat(token:string, groupChatId:number, memberId:number){
+  removeMemberFromGroupChat(token: string, groupChatId: number, memberId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'groupchat/deleteperson/'+groupChatId +'/'+memberId,{},{headers:headers});
+    return this.http.post(this.baseUrl + 'groupchat/deleteperson/' + groupChatId + '/' + memberId, {}, { headers: headers });
   }
 
-  makeAdminGroupChat(token:string, groupChatId:number, memberId:number){
+  makeAdminGroupChat(token: string, groupChatId: number, memberId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'groupchat/makeadmin/'+groupChatId +'/'+memberId,{},{headers:headers});
+    return this.http.post(this.baseUrl + 'groupchat/makeadmin/' + groupChatId + '/' + memberId, {}, { headers: headers });
   }
 
-  updateMembersGroupChat(token:string, groupChatId:number, ids:string){
+  updateMembersGroupChat(token: string, groupChatId: number, ids: string) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post<GroupChat>(this.baseUrl + 'groupchat/update/members/'+groupChatId,{ids:ids},{headers:headers});
+    return this.http.post<GroupChat>(this.baseUrl + 'groupchat/update/members/' + groupChatId, { ids: ids }, { headers: headers });
   }
 
   //note
 
-  getAllNotes(token:string){
+  getAllNotes(token: string) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.get<Note[]>(this.baseUrl+'note',{headers:headers});
+    return this.http.get<Note[]>(this.baseUrl + 'note', { headers: headers });
   }
 
-  getNoteById(token:string, noteId:number){
+  getNoteById(token: string, noteId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.get<Note>(this.baseUrl+'note/'+noteId,{headers:headers});
+    return this.http.get<Note>(this.baseUrl + 'note/' + noteId, { headers: headers });
   }
 
-  createNote(token:string,note:Note){
+  createNote(token: string, note: Note) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post<Note>(this.baseUrl + 'note/add',{
+    return this.http.post<Note>(this.baseUrl + 'note/add', {
       noteTitle: note.noteTitle,
       noteBody: note.noteBody,
       personId: note.personId
-    },{headers:headers});
+    }, { headers: headers });
   }
 
-  updateNote(token:string,note:Note){
+  updateNote(token: string, note: Note) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post<Note>(this.baseUrl + 'note/edit',{
-      noteId:note.noteId,
+    return this.http.post<Note>(this.baseUrl + 'note/edit', {
+      noteId: note.noteId,
       noteTitle: note.noteTitle,
       noteBody: note.noteBody,
       persoId: note.personId
-    },{headers:headers});
+    }, { headers: headers });
   }
 
-  deleteNote(token:string,noteId:number){
+  deleteNote(token: string, noteId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post<Note>(this.baseUrl + 'note/delete/'+noteId,{},{headers:headers});
+    return this.http.post<Note>(this.baseUrl + 'note/delete/' + noteId, {}, { headers: headers });
   }
 
   //challenge
 
-  getAllChallenges(token:string){
+  getAllChallenges(token: string, status: string) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.get<Challenge[]>(this.baseUrl + 'challenge',{headers:headers});
+    return status == "Trainer" ? this.http.get<Challenge[]>(this.baseUrl + 'challenge', { headers: headers }) : this.http.get<Challenge[]>(this.baseUrl + 'challenge/intern', { headers: headers });
   }
 
-  addChallenge(token:string,challenge:Challenge){
+  addChallenge(token: string, challenge: Challenge) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post<Challenge>(this.baseUrl + 'challenge/add',{
-      challangeName:challenge.challangeName,
-      challangeDescription:challenge.challangeDescription,
-      trainerId:challenge.trainerId,
-      deadline:challenge.deadline,
+    return this.http.post<Challenge>(this.baseUrl + 'challenge/add', {
+      challangeName: challenge.challangeName,
+      challangeDescription: challenge.challangeDescription,
+      trainerId: challenge.trainerId,
+      deadline: challenge.deadline,
       points: challenge.points
-    },{headers:headers});
+    }, { headers: headers });
   }
 
-  editChallenge(token:string,challenge:Challenge){
+  editChallenge(token: string, challenge: Challenge) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post<Challenge>(this.baseUrl + 'challenge/edit',{
-      challangeId:challenge.challangeId,
-      challangeName:challenge.challangeName,
-      challangeDescription:challenge.challangeDescription,
-      trainerId:challenge.trainerId,
-      deadline:challenge.deadline,
+    return this.http.post<Challenge>(this.baseUrl + 'challenge/edit', {
+      challangeId: challenge.challangeId,
+      challangeName: challenge.challangeName,
+      challangeDescription: challenge.challangeDescription,
+      trainerId: challenge.trainerId,
+      deadline: challenge.deadline,
       points: challenge.points
-    },{headers:headers});
+    }, { headers: headers });
   }
 
-  deleteChallenge(token:string,challengeId:number){
+  deleteChallenge(token: string, challengeId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'challenge/delete/'+challengeId,{},{headers:headers});
+    return this.http.post(this.baseUrl + 'challenge/delete/' + challengeId, {}, { headers: headers });
+  }
+
+  rankings(token: string) {
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<Ranking[]>(this.baseUrl + 'challenge/ranking', { headers: headers });
   }
 
   //challengeSolution
 
-  getSolutions(token:string){
+  getSolutions(token: string) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.get<ChallengeSolution[]>(this.baseUrl + 'challenge/solutions',{headers:headers});
+    return this.http.get<ChallengeSolution[]>(this.baseUrl + 'challenge/solutions', { headers: headers });
   }
 
-  getSolutionsForSpecificChallenge(token:string,challengeId:number){
+  getSolutionsForSpecificChallenge(token: string, challengeId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.get<ChallengeSolution[]>(this.baseUrl + 'challenge/solutions/'+challengeId,{headers:headers});
+    return this.http.get<ChallengeSolution[]>(this.baseUrl + 'challenge/solutions/' + challengeId, { headers: headers });
   }
 
-  getSolutionsForSpecificPerson(token:string,personId:number){
+  getSolutionsForSpecificPerson(token: string, personId: number) {
     const headers = { Authorization: 'Bearer ' + token };
     console.log(token);
-    return this.http.get<ChallengeSolution[]>(this.baseUrl + 'challenge/solutions/mine/'+personId,{headers:headers});
+    return this.http.get<ChallengeSolution[]>(this.baseUrl + 'challenge/solutions/mine/' + personId, { headers: headers });
   }
 
-  approveSolution(token:string,solutionId:number, points:number,){
+  getSolutionsForSpecificPersonForChallenge(token: string, personId: number, challengeId:number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'challenge/solutions/aprrove/'+solutionId +'/'+points,{},{headers:headers});
+    console.log(token);
+    return this.http.get<ChallengeSolution[]>(this.baseUrl + 'challenge/solutions/mine/' + personId+'/'+challengeId, { headers: headers });
   }
 
-  declineSolution(token:string,solutionId:number){
+  approveSolution(token: string, solutionId: number, points: number,) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'challenge/solutions/decline/'+solutionId,{},{headers:headers});
+    return this.http.post(this.baseUrl + 'challenge/solutions/aprrove/' + solutionId + '/' + points, {}, { headers: headers });
   }
 
-  addSolution(token:string,personId:number,challangeId:number, file:File){
+  declineSolution(token: string, solutionId: number) {
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post(this.baseUrl + 'challenge/solutions/decline/' + solutionId, {}, { headers: headers });
+  }
+
+  deleteSolution(token: string, solutionId: number) {
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post(this.baseUrl + 'challenge/solutions/delete/' + solutionId, {}, { headers: headers });
+  }
+
+  addSolution(token: string, personId: number, challangeId: number, file: File) {
     const headers = { Authorization: 'Bearer ' + token };
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
-    return this.http.post<ChallengeSolution>(this.baseUrl + 'challenge/solutions/add/'+personId+'/'+challangeId,formData,{headers:headers});
+    return this.http.post<ChallengeSolution>(this.baseUrl + 'challenge/solutions/add/' + personId + '/' + challangeId, formData, { headers: headers });
   }
 
 
-  editSolution(token:string,solution:ChallengeSolution){
+  editSolution(token: string, personId: number, challangeId: number, file: File) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post<ChallengeSolution>(this.baseUrl + 'challenge/solution/edit',{
-      solutionChallengeId:solution.challangeSolutionId,
-      challangeId:solution.challangeId,
-      dateOfSolution:solution.dateOfSolution,
-      internId:solution.internId,
-      solutionFile:solution.solutionFile,
-      solutionContent:solution.solutionContent
-    },{headers:headers});
+    const formData: FormData = new FormData();
+    formData.append('file', file, file.name);
+    return this.http.post<ChallengeSolution>(this.baseUrl + 'challenge/solutions/edit/'+personId+'/'+challangeId, formData, { headers: headers });
   }
 
-  downloadFile(token:string,solid:number) {
-    const headers = { Accept: 'application/octet-stream',Authorization: 'Bearer ' + token };
-    this.http.get(this.baseUrl+'challenge/solutions/download/'+solid, { headers: headers, responseType: 'blob' }).subscribe(response => {
+  downloadFile(token: string, solid: number) {
+    const headers = { Accept: 'application/octet-stream', Authorization: 'Bearer ' + token };
+    this.http.get(this.baseUrl + 'challenge/solutions/download/' + solid, { headers: headers, responseType: 'blob' }).subscribe(response => {
       this.saveFile(response);
     });
   }

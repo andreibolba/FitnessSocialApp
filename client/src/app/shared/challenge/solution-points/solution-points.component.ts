@@ -12,6 +12,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 })
 export class SolutionPointsComponent implements OnInit, OnDestroy{
   getPointsSubscription!:Subscription;
+  getMaxPointsSubscription!:Subscription;
   value: number = 0;
   maxValue:number = 0;
 
@@ -23,12 +24,19 @@ export class SolutionPointsComponent implements OnInit, OnDestroy{
   ngOnInit(): void {
     this.getPointsSubscription = this.utils.pointToSolutionApprove.subscribe((res)=>{
       if(res)
+      {
         this.value = res;
+      }
+      this.getMaxPointsSubscription = this.utils.maxpointToSolutionApprove.subscribe((data)=>{
+        this.maxValue = data;
+      });
     });
   }
+
   ngOnDestroy(): void {
     this.utils.pointToSolutionApprove.next(null);
     if(this.getPointsSubscription!=null) this.getPointsSubscription.unsubscribe();
+    if(this.getMaxPointsSubscription!=null) this.getMaxPointsSubscription.unsubscribe();
   }
 
   onClose(){

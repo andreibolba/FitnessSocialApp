@@ -1,10 +1,18 @@
-<div id="main">
+<router-outlet></router-outlet>
+<div id="main" *ngIf="isOnChallanges">
     <div style="display: flex;">
-        <div style="display: flex; height: 10%; width:100%;">
+        <div style="display: flex; height: 10%; width:20%;">
             <i class="uil uil-brackets-curly" style="font-size: 35px; margin-top: -7px;"></i>
             <h2>Challenges</h2>
         </div>
-        <button class="btn btn-success" id="add" *ngIf="canAddEdit" (click)="onAdd()">Add challenge</button>
+        <div class="text"
+        style="height:50px; width: 60%; margin-left: 10px;margin-right: 15px;">
+        <h3 *ngIf="isIntern" style="text-align: center; margin-top: 7px;">
+         {{text}}
+        </h3>
+        </div>
+        <button class="btn btn-success" id="add" *ngIf="canAddEdit"(click)="onAdd()">Add challenge</button>
+        <button class="btn btn-success" id="add" (click)="onRanking()" routerLink="ranking">Rankings</button>
     </div>
     <div class="challenges" *ngIf="challenges.length!=0">
         <div class="row">
@@ -29,11 +37,12 @@
                 </div>
                 <div class="footer">
                     {{ challenge.trainer.username }} at {{ challenge.dateOfPost | date:'medium' }}<br>
-                    <div>
-                        <button class="btn btn-success" *ngIf="!canAddEdit && challenge.canDelete" id="sol-btn" (click)="onPostSolution(challenge)">Post solution</button>
-                        <button class="btn btn-success" *ngIf="!canAddEdit" id="sol-btn">See solution</button>
+                    <div style="display: flex;">
+                        <button class="btn btn-success" *ngIf="!canAddEdit" id="sol-btn" (click)="onSeeAllSolutions(challenge)">See solution</button>
+                        <button class="btn btn-success" *ngIf="!canAddEdit && challenge.canDelete && challenge.canAddSolution" id="sol-btn" (click)="onPostSolution(challenge)">Post solution</button>
                         <button class="btn btn-success" *ngIf="canAddEdit" id="sol-btn" (click)="onSeeAllSolutions(challenge)">See all solutions</button>
                         <button class="btn btn-danger" *ngIf="canAddEdit && challenge.canDelete" id="sol-btn" (click)="onDelete(challenge)">Delete</button>
+                        <p style="color: green; font-size: large;"  *ngIf="!canAddEdit && challenge.canDelete && challenge.canAddSolution == false " id="sol-btn">Approved</p>
                     </div>
                 </div>
             </div>

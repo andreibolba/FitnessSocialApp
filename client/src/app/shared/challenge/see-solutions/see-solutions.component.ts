@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { ChallengeSolution } from 'src/model/challengesolution.model';
@@ -15,17 +15,24 @@ import { SolutionPointsComponent } from '../solution-points/solution-points.comp
 })
 export class SeeSolutionsComponent implements OnInit, OnDestroy {
   getSolutionsSubscription!: Subscription;
+  getPersonSubscription!: Subscription;
+  deleteSubscription!:Subscription;
   getIdSubscription!: Subscription;
   approveSubscription!: Subscription;
   declineSubscription!: Subscription;
   pointsSubscription!: Subscription;
+  challengeSubscription!: Subscription;
   solutions: ChallengeSolution[] = [];
-  point: number = 0;
+  isReadOnly:boolean=true;
+  point:number=0;
+  private personId:number=-1;
+  private maxPoints:number=-1;
   private token: string = '';
 
   constructor(
     private utils: UtilsService,
     private dataStorage: DataStorageService,
+    private dial: MatDialogRef<SeeSolutionsComponent>,
     private toastr: ToastrService,
     private dialog: MatDialog
   ) {
@@ -40,10 +47,26 @@ export class SeeSolutionsComponent implements OnInit, OnDestroy {
     } else {
       const person: LoggedPerson = JSON.parse(personString);
       this.token = person.token;
-      this.getIdSubscription = this.utils.challengeIdForSolutionsToEdit.subscribe((res) => {
-        this.getSolutionsSubscription = this.dataStorage.getSolutionsForSpecificChallenge(this.token, res).subscribe((data) => {
-          this.solutions = data;
-        });
+      this.getPersonSubscription = this.dataStorage.getPerson(person.username,person.token).subscribe((data)=>{
+        this.personId = data.personId;
+        this.isReadOnly =  data.status == "Intern";
+        if(this.isReadOnly){
+          this.getIdSubscription = this.utils.challengeIdForSolutionsToEdit.subscribe((res) => {
+            this.getSolutionsSubscription = this.dataStorage.getSolutionsForSpecificPersonForChallenge(this.token,data.personId, res).subscribe((data) => {
+              this.solutions = data;
+            });
+          });
+        }else{
+          this.getIdSubscription = this.utils.challengeIdForSolutionsToEdit.subscribe((res) => {
+            this.challengeSubscription = this.dataStorage.getAllChallenges(this.token, data.status).subscribe((ch)=>{
+              let challenge = ch.find(f=>f.challangeId == res);
+              this.maxPoints = challenge?.points!;
+            });
+            this.getSolutionsSubscription = this.dataStorage.getSolutionsForSpecificChallenge(this.token, res).subscribe((data) => {
+              this.solutions = data;
+            });
+          });
+        }
       });
     }
   }
@@ -52,12 +75,13 @@ export class SeeSolutionsComponent implements OnInit, OnDestroy {
     if (this.getSolutionsSubscription != null) this.getSolutionsSubscription.unsubscribe();
     if (this.approveSubscription != null) this.approveSubscription.unsubscribe();
     if (this.declineSubscription != null) this.declineSubscription.unsubscribe();
+    if (this.getPersonSubscription != null) this.getPersonSubscription.unsubscribe();
+    if (this.deleteSubscription != null) this.getPersonSubscription.unsubscribe();
   }
 
   approve(solution: ChallengeSolution) {
     this.utils.pointToSolutionApprove.next(this.point);
-    console.log(solution);
-    this.utils.maxpointToSolutionApprove.next(this.point);
+    this.utils.maxpointToSolutionApprove.next(this.maxPoints);
     this.openDialog(solution);
   }
 
@@ -65,6 +89,16 @@ export class SeeSolutionsComponent implements OnInit, OnDestroy {
     this.declineSubscription = this.dataStorage.declineSolution(this.token, solution.challangeSolutionId).subscribe(() => {
       this.toastr.success("Solution was declined!");
       solution.approved = false;
+    }, (error) => {
+      this.toastr.error(error.error);
+    });
+  }
+
+  delete(solution: ChallengeSolution) {
+    this.deleteSubscription = this.dataStorage.deleteSolution(this.token, solution.challangeSolutionId).subscribe(() => {
+      this.toastr.success("Solution was declined!");
+      solution.approved = false;
+      this.dial.close();
     }, (error) => {
       this.toastr.error(error.error);
     });

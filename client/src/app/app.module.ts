@@ -66,6 +66,7 @@ import { SeeSolutionsComponent } from './shared/challenge/see-solutions/see-solu
 import { AddEditSolutionComponent } from './shared/challenge/add-edit-solution/add-edit-solution.component';
 import { SolutionPointsComponent } from './shared/challenge/solution-points/solution-points.component';
 import { Ng5SliderModule } from 'ng5-slider';
+import { RankingsComponent } from './shared/challenge/rankings/rankings.component';
 
 @NgModule({
   declarations: [
@@ -115,7 +116,8 @@ import { Ng5SliderModule } from 'ng5-slider';
     AddEditChallengeComponent,
     SeeSolutionsComponent,
     AddEditSolutionComponent,
-    SolutionPointsComponent
+    SolutionPointsComponent,
+    RankingsComponent
   ],
   imports: [
     Ng2SearchPipeModule,

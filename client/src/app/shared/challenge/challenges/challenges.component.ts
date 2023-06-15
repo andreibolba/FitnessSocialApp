@@ -19,8 +19,14 @@ export class ChallengesComponent implements OnInit, OnDestroy {
   getChallengesSubscription!: Subscription;
   getPersonSubscription!: Subscription;
   deleteChallengesSubscription!: Subscription;
+  challengesSubscription!: Subscription;
+  getSolutionSubecription!: Subscription;
+  getRankingPositionSubscription!: Subscription;
   challenges: Challenge[] = [];
   canAddEdit: boolean = false;
+  isOnChallanges:boolean=false;
+  isIntern:boolean=false;
+  text:string='';
   private token: string = '';
 
   constructor(
@@ -41,12 +47,24 @@ export class ChallengesComponent implements OnInit, OnDestroy {
       this.token = person.token;
       this.getPersonSubscription = this.dataStorage.getPerson(person.username, person.token).subscribe((res) => {
         this.canAddEdit = res.status == 'Trainer';
-        this.getChallengesSubscription = this.dataStorage.getAllChallenges(this.token).subscribe((data) => {
+        this.isIntern = res.status =="Intern";
+        this.getChallengesSubscription = this.dataStorage.getAllChallenges(this.token, res.status).subscribe((data) => {
           this.challenges = data;
           this.challenges.forEach(element => {
             element.canDelete = new Date(element.deadline) > new Date;
-            console.log(element.canDelete);
+            this.getSolutionSubecription = this.dataStorage.getSolutionsForSpecificPersonForChallenge(this.token,res.personId, element.challangeId).subscribe((r) => {
+              element.canAddSolution = r.filter(s=>s.approved==true).length>0? false:true;
+            });
           });
+          this.challengesSubscription = this.utils.isOnChallanges.subscribe((result)=>{
+            this.isOnChallanges=result;
+          });
+          this.getRankingPositionSubscription = this.dataStorage.rankings(this.token).subscribe((rank)=>{
+            let personRank = rank.find(p=>p.personId == res.personId);
+            let posTest = personRank?.position ==1 ? "1st": personRank?.position == 2? "2nd":
+            personRank?.position == 3? "3rd" : personRank?.position.toString()+"th";
+            this.text = "You have "+ personRank?.points +" point and you are "+ posTest+" in the rankings!"
+          })
         });
       });
     }
@@ -55,6 +73,10 @@ export class ChallengesComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     if (this.getChallengesSubscription != null) this.getChallengesSubscription.unsubscribe();
     if (this.deleteChallengesSubscription != null) this.deleteChallengesSubscription.unsubscribe();
+    if (this.challengesSubscription != null) this.challengesSubscription.unsubscribe();
+    if (this.getSolutionSubecription != null) this.getSolutionSubecription.unsubscribe();
+    if (this.getPersonSubscription != null) this.getPersonSubscription.unsubscribe();
+    if (this.getRankingPositionSubscription != null) this.getRankingPositionSubscription.unsubscribe();
   }
 
   openDialog(op: number) {
@@ -97,6 +119,10 @@ export class ChallengesComponent implements OnInit, OnDestroy {
   onPostSolution(challenge: Challenge){
     this.utils.challengeIdForSolutionsToEdit.next(challenge.challangeId);
     this.openDialog(3);
+  }
+
+  onRanking(){
+    this.isOnChallanges=false;
   }
 
 }

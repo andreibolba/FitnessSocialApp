@@ -46,7 +46,6 @@ export class AddEditChallengeComponent implements OnInit, OnDestroy {
       this.getPersonSubscription = this.dataStorage.getPerson(person.username, this.token).subscribe((data) => {
         if (data) {
           this.person = data;
-          console.log(this.person);
         }
         this.getChallengeSubscription = this.utils.challengeToEdit.subscribe((res)=>{
           if(res){

@@ -50,6 +50,7 @@ export class UtilsService {
   challengeIdForSolutionsToEdit = new BehaviorSubject<number>(-1);
   pointToSolutionApprove = new BehaviorSubject<number | null>(null);
   maxpointToSolutionApprove = new BehaviorSubject<number>(-1);
+  isOnChallanges=new BehaviorSubject<boolean>(true);
   dashboardChanged=new EventEmitter<boolean>(true);
 
   error=new BehaviorSubject<{errorCode:number,errorTitle:string,errorMessage:string} | null>(null);

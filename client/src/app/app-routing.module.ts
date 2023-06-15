@@ -17,6 +17,7 @@ import { TaskComponent } from './shared/task/task.component';
 import { TestComponent } from './shared/tests/test/test.component';
 import { ChatComponent } from './chat-system/chat/chat.component';
 import { ChallengesComponent } from './shared/challenge/challenges/challenges.component';
+import { RankingsComponent } from './shared/challenge/rankings/rankings.component';
 
 const routes: Routes = [
   {
@@ -32,7 +33,11 @@ const routes: Routes = [
       { path: 'tasks', component: TaskComponent },
       { path: 'forum', component: ForumComponent },
       { path: 'tests', component: TestComponent },
-      { path: 'challenges', component: ChallengesComponent },
+      {
+        path: 'challenges', component: ChallengesComponent, children: [{
+          path: 'ranking', component: RankingsComponent
+        }]
+      },
       { path: 'feedback', component: FeedbackComponent },
       { path: 'notes', component: NoteComponent },
       { path: 'mygroups', component: GroupsComponent },
@@ -59,4 +64,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

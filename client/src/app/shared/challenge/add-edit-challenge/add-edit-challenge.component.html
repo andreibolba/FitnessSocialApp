@@ -12,7 +12,7 @@
 
         <div class="info">
           <label for="challengeDeadline">Challenge deadline</label>
-          <input type="date" id="challengeDeadline" [(ngModel)]="challengeDeadline" (value)="today" name="challengeDeadline" required >
+          <input type="date" id="challengeDeadline" [(ngModel)]="challengeDeadline" (value)="today" name="challengeDeadline | date:'dd/mm/yyyy" required >
         </div>
 
         <div class="info">

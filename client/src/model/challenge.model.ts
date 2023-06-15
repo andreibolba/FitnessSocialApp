@@ -9,6 +9,7 @@ export class Challenge {
     public dateOfPost:Date;
     public deadline:Date;
     public canDelete:boolean;
+    public canAddSolution:boolean;
     public points:number;
 
     constructor(){
@@ -20,6 +21,7 @@ export class Challenge {
         this.dateOfPost=new Date();
         this.deadline=new Date();
         this.canDelete=false;
+        this.canAddSolution=false;
         this.points=0;
     }
 }

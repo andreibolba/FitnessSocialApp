@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatDialogRef } from '@angular/material/dialog';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { LoggedPerson } from 'src/model/loggedperson.model';
@@ -14,6 +15,7 @@ import { UtilsService } from 'src/services/utils.service';
 export class AddEditSolutionComponent implements OnInit, OnDestroy {
   selectedFile = null;
   text: string = 'No file selected';
+  hasSolution: boolean = false;
   canUpload: boolean = false;
   sendFileSubscription!: Subscription;
   getPersonSubscription!: Subscription;
@@ -27,7 +29,8 @@ export class AddEditSolutionComponent implements OnInit, OnDestroy {
   constructor(
     private dataStorage: DataStorageService,
     private utils: UtilsService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private dialog: MatDialogRef<AddEditSolutionComponent>
   ) { }
 
   ngOnInit(): void {
@@ -42,11 +45,15 @@ export class AddEditSolutionComponent implements OnInit, OnDestroy {
         this.person = res;
         this.getChallangeIdSubecription = this.utils.challengeIdForSolutionsToEdit.subscribe((id) => {
           this.challangeId=id;
-          console.log(id);
-          this.getSolutionSubecription = this.dataStorage.getSolutionsForSpecificChallenge(this.token, id).subscribe((res) => {
-            console.log(res);
-            if(res.length>0)
+          this.getSolutionSubecription = this.dataStorage.getSolutionsForSpecificPersonForChallenge(this.token,res.personId, id).subscribe((res) => {
+            let ans = res.filter(r=>r.approved==null).length;
+            if(ans>0)
+            {
               this.text = "You have an attempt sent!";
+              this.hasSolution = true;
+            }else{
+              this.hasSolution = false;
+            }
           });
         });
       });
@@ -61,11 +68,21 @@ export class AddEditSolutionComponent implements OnInit, OnDestroy {
 
   onUpload() {
     if (this.selectedFile) {
-      this.sendFileSubscription = this.dataStorage.addSolution(this.token, this.person.personId, this.challangeId, this.selectedFile).subscribe((res) => {
-        this.toastr.success("Solution uploaded succesfully");
-      },(error)=>{
-        this.toastr.error(error.error);
-      });
+      if(this.hasSolution){
+        this.sendFileSubscription = this.dataStorage.editSolution(this.token, this.person.personId,this.challangeId, this.selectedFile).subscribe((res) => {
+          this.toastr.success("Solution uploaded succesfully");
+          this.dialog.close();
+        },(error)=>{
+          this.toastr.error(error.error);
+        });
+      }else{
+        this.sendFileSubscription = this.dataStorage.addSolution(this.token, this.person.personId, this.challangeId, this.selectedFile).subscribe((res) => {
+          this.toastr.success("Solution uploaded succesfully");
+          this.dialog.close();
+        },(error)=>{
+          this.toastr.error(error.error);
+        });
+      }
     }
   }
 

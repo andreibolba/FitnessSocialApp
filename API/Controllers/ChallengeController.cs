@@ -25,13 +25,17 @@ namespace API.Controllers
         [HttpGet()]
         public ActionResult GetAllChallenges()
         {
-            var challenges = _challangeRepository.GetAllChallenges();
             return Ok(_challangeRepository.GetAllChallenges());
+        }
+
+        [HttpGet("intern")]
+        public ActionResult GetAllChallengesForInterns()
+        {
+            return Ok(_challangeRepository.GetAllChallengesForInterns());
         }
 
         [HttpPost("people")]
         public ActionResult GetPoeple([FromBody] Person person) 
-        
         {
             return Ok();
         }
@@ -53,7 +57,7 @@ namespace API.Controllers
         [HttpPost("edit")]
         public ActionResult EditChallenge([FromBody] ChallengeDto challenge)
         {
-            var isChallange = _challangeRepository.ExistsChallengeForSpecificDate(challenge.Deadline.Year, challenge.Deadline.Month, challenge.Deadline.Day);
+            var isChallange = _challangeRepository.ExistsChallengeForSpecificDate(challenge.Deadline.Year, challenge.Deadline.Month, challenge.Deadline.Day, challenge.ChallangeId);
             if (isChallange)
                 return BadRequest("Is one challange with this dealine");
             if (challenge.Deadline < DateTime.Now)
@@ -69,6 +73,12 @@ namespace API.Controllers
             _challangeRepository.DeleteChallenge(challangeId);
 
             return _challangeRepository.SaveAll() ? Ok() : BadRequest("Internal Server Error");
+        }
+
+        [HttpGet("ranking")]
+        public ActionResult Ranking()
+        {
+            return Ok(_challangeRepository.GetRankings());
         }
 
         [HttpGet("solutions")]
@@ -87,6 +97,12 @@ namespace API.Controllers
         public ActionResult GetAllChallengeSolutinsForIntern(int personId)
         {
             return Ok(_challangeSolutionRepository.GetAllSolutionsForIntern(personId));
+        }
+
+        [HttpGet("solutions/mine/{personId}/{challengeId}")]
+        public ActionResult GetAllChallengeSolutinsForInternForChallenge(int personId, int challengeId)
+        {
+            return Ok(_challangeSolutionRepository.GetAllSolutionsForInternForChallenge(personId,challengeId));
         }
 
         [HttpPost("solutions/aprrove/{solutionId}/{points}")]
@@ -137,15 +153,38 @@ namespace API.Controllers
             return BadRequest("Internal Server Error");
         }
 
-        [HttpPost("solutions/edit")]
-        public ActionResult EditSolution([FromBody] ChallengeSolutionDto challengeSolution)
+        [HttpPost("solutions/edit/{personId}/{challengeId}")]
+        public ActionResult EditSolution(int personId, int challengeId)
         {
-            var challenge = _challangeRepository.GetChallengeById(challengeSolution.ChallangeId);
+            var challenge = _challangeRepository.GetChallengeById(challengeId);
             if (DateTime.Now > challenge.Deadline)
                 return BadRequest("Deadline is overdue!");
-            var res = _challangeSolutionRepository.UpdateSolution(challengeSolution);
 
-            return res != null ? Ok(res) : BadRequest("Internal Server Error");
+            IFormFile file = Request.Form.Files[0];
+
+            if (file == null || file.Length == 0)
+                return BadRequest("No file received!");
+
+            long fileSize = file.Length;
+
+            if (fileSize > 0)
+            {
+                using (var stream = new MemoryStream())
+                {
+                    file.CopyTo(stream);
+                    byte[] zipFile = stream.ToArray();
+
+                    var challengeSolution = new ChallengeSolutionDto();
+                    challengeSolution.ChallangeId = challengeId;
+                    challengeSolution.InternId = personId;
+                    challengeSolution.SolutionFile = zipFile;
+
+                    var res = _challangeSolutionRepository.UpdateSolution(challengeSolution);
+
+                    return res != null ? Ok(res) : BadRequest("Internal Server Error");
+                }
+            }
+            return BadRequest("Internal Server Error");
         }
 
         [HttpPost("solutions/delete/{solutionId}")]

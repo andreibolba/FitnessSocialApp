@@ -171,12 +171,12 @@ namespace API.Data
 
         public IEnumerable<PersonDto> GetAllInterns()
         {
-            return this.GetAllPerson().Where(g => g.Status == "Interns");
+            return this.GetAllPerson().Where(g => g.Status == "Intern");
         }
 
         public IEnumerable<PersonDto> GetAllTrainers()
         {
-            return this.GetAllPerson().Where(g => g.Status == "Trainers");
+            return this.GetAllPerson().Where(g => g.Status == "Trainer");
         }
 
         public PersonDto GetPersonByEmail(string email)

@@ -65,6 +65,11 @@ namespace API.Data
             return GetAllSolutions().Where(c => c.InternId == internId);
         }
 
+        public IEnumerable<ChallengeSolutionDto> GetAllSolutionsForInternForChallenge(int internId, int challengeId)
+        {
+            return GetAllSolutionsForIntern(internId).Where(c => c.ChallangeId == challengeId);
+        }
+
         public IEnumerable<ChallengeSolutionDto> GetAllSolutionsForSpecificDay(DateTime time)
         {
             return GetAllSolutions().Where(c => c.DateOfSolution.Day == time.Day && c.DateOfSolution.Month == time.Month && c.DateOfSolution.Year == time.Year);
@@ -82,15 +87,21 @@ namespace API.Data
 
         public ChallengeSolutionDto UpdateSolution(ChallengeSolutionDto solution)
         {
-            var sol = _mapper.Map<ChallangeSolution>(GetSolutionById(solution.ChallangeSolutionId));
+            var sol = _context.ChallangeSolutions.Where(c => c.InternId == solution.InternId 
+            && c.ChallangeId == solution.ChallangeId 
+            && c.Approved==null
+            && c.Deleted==false);
 
-            sol.SolutionFile = solution.SolutionFile == null ? sol.SolutionFile : solution.SolutionFile;
-            sol.DateOfSolution = DateTime.Now;
-            sol.Points = sol.Points;
+            foreach(var s in sol)
+            {
+                s.Deleted = true;
+                _context.ChallangeSolutions.Update(s);  
+            }
 
-            _context.ChallangeSolutions.Update(sol);
+            if (SaveAll() == false)
+                return null;
 
-            return SaveAll() ? _mapper.Map<ChallengeSolutionDto>(sol) : null;
+            return CreateSolution(solution);
         }
     }
 }

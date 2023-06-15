@@ -10,12 +10,13 @@ namespace API.Data
     {
         private readonly InternShipAppSystemContext _context;
         private readonly IMapper _mapper;
+        private readonly IPersonRepository _personRepository;
 
-        public ChallengeRepository(InternShipAppSystemContext context, 
-            IMapper mapper)
+        public ChallengeRepository(InternShipAppSystemContext context, IMapper mapper, IPersonRepository personRepository)
         {
             _context = context;
             _mapper = mapper;
+            _personRepository = personRepository;
         }
 
         public ChallengeDto CreateChallenge(ChallengeDto challange)
@@ -66,10 +67,9 @@ namespace API.Data
         {
             var challangeToUpdate = _mapper.Map<Challange>(GetChallengeById(challange.ChallangeId));
 
-            challange.Points = challangeToUpdate.Points==0? challange.Points : challangeToUpdate.Points;
+            challangeToUpdate.Points = challange.Points==0 ? challangeToUpdate.Points : challange.Points;
             challangeToUpdate.ChallangeName = challange.ChallangeName==null? challangeToUpdate.ChallangeName : challange.ChallangeName;
-            challangeToUpdate.ChallangeDescription = challange.ChallangeDescription == null? challangeToUpdate.ChallangeDescription : challange.ChallangeDescription;
-            challangeToUpdate.Deadline = challange.Deadline == null? challangeToUpdate.Deadline : challange.Deadline;
+            challangeToUpdate.ChallangeDescription = challange.ChallangeDescription == null? challangeToUpdate.ChallangeDescription : challange.ChallangeDescription;   
 
             _context.Challanges.Update(challangeToUpdate);
 
@@ -87,6 +87,47 @@ namespace API.Data
             if (challengeId == null)
                 return true;
             return false;
+        }
+
+        public IEnumerable<RankingDto> GetRankings()
+        {
+            var solutins = _context.ChallangeSolutions.Where(r => r.Deleted == false && r.Approved == true);
+            var getAllInterns = _personRepository.GetAllInterns().ToList();
+            var rankings = new List<RankingDto>();
+
+            foreach (var intern in getAllInterns)
+            {
+                var intSol = solutins.Where(s=>s.InternId == intern.PersonId);
+                int totalPoints = 0;
+
+                foreach(var p in intSol)
+                    totalPoints += p.Points;
+
+                rankings.Add(new RankingDto()
+                {
+                    Position = -1,
+                    PersonId = intern.PersonId,
+                    Person=intern,
+                    Points = totalPoints
+                });
+            }
+
+            var rankingsSort = rankings.OrderByDescending(r => r.Points).ThenBy(s => s.PersonId);
+
+            int pos = 1;
+            foreach (var item in rankingsSort)
+            {
+                item.Position= pos;
+                pos++;
+            }
+
+            return rankingsSort;
+        }
+
+        public IEnumerable<ChallengeDto> GetAllChallengesForInterns()
+        {
+            var res = GetAllChallenges().Where(r => r.Deadline < DateTime.Now.AddDays(1));
+            return res;
         }
     }
 }

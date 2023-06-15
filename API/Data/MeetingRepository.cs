@@ -44,7 +44,7 @@ namespace API.Data
 
         public IEnumerable<MeetingDto> GetAll()
         {
-            var result = _mapper.Map<IEnumerable<MeetingDto>>(_context.Meetings.Where(m => m.Deleted == false).Include(m => m.Trainer));
+            var result = _mapper.Map<IEnumerable<MeetingDto>>(_context.Meetings.Where(m => m.Deleted == false).Include(m => m.Trainer)).OrderBy(d=>d.MeetingStartTime);
             foreach (var r in result)
             {
                 var allPeopleInMeeting = new List<PersonDto>();
@@ -160,7 +160,7 @@ namespace API.Data
 
             if (count != null && allMeetingByPerson.Count() >= count.Value)
                 return allMeetingByPerson.Take(count.Value);
-
+            allMeetingByPerson = allMeetingByPerson.OrderBy(m => m.MeetingStartTime).ToList();
             return allMeetingByPerson;
         }
 

@@ -69,11 +69,11 @@ public partial class Person
 
     public virtual ICollection<SubTaskChecked> SubTaskCheckeds { get; } = new List<SubTaskChecked>();
 
-    public virtual ICollection<Task> TaskInterns { get; } = new List<Task>();
+    public virtual ICollection<TaskInternGroup> TaskInternGroups { get; } = new List<TaskInternGroup>();
 
     public virtual ICollection<TaskSolution> TaskSolutions { get; } = new List<TaskSolution>();
 
-    public virtual ICollection<Task> TaskTrainers { get; } = new List<Task>();
+    public virtual ICollection<Task> Tasks { get; } = new List<Task>();
 
     public virtual ICollection<TestGroupIntern> TestGroupInterns { get; } = new List<TestGroupIntern>();
 

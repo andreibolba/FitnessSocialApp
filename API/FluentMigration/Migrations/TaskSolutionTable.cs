@@ -24,7 +24,7 @@ namespace API.FluentMigration.Migrations
                 .WithColumn("TaskSolutionId").AsInt32().PrimaryKey().NotNullable().Identity()
                 .WithColumn("TaskId").AsInt32().NotNullable()
                 .WithColumn("InternId").AsInt32().NotNullable()
-                .WithColumn("SolutionContent").AsString().NotNullable()
+                .WithColumn("SolutionFile").AsBinary().NotNullable()
                 .WithColumn("DateOfSolution").AsDateTime().NotNullable()
                 .WithColumn("Deleted").AsBoolean().NotNullable();
 

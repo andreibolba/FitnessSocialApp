@@ -14,16 +14,6 @@ namespace API.Dtos
 
         public DateTime DateOfPost { get; set; }
 
-        public DateTime Deadline { get; set; }
-
-        public int? GroupId { get; set; }
-
-        public int? InternId { get; set; }
-
-        public GroupDto Group { get; set; }
-
-        public PersonDto Intern { get; set; }
-
         public PersonDto Trainer { get; set; }
     }
 }

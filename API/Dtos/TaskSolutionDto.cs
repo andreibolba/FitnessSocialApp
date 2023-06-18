@@ -10,7 +10,7 @@ namespace API.Dtos
 
         public int InternId { get; set; }
 
-        public string SolutionContent { get; set; }
+        public byte[] SolutionFile { get; set; }
 
         public DateTime DateOfSolution { get; set; }
 

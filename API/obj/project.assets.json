@@ -9301,11 +9301,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\InternShipApp\\API\\API.csproj",
+      "projectUniqueName": "Z:\\InternShipApp\\API\\API.csproj",
       "projectName": "API",
-      "projectPath": "G:\\InternShipApp\\API\\API.csproj",
+      "projectPath": "Z:\\InternShipApp\\API\\API.csproj",
       "packagesPath": "C:\\Users\\andreibo\\.nuget\\packages\\",
-      "outputPath": "G:\\InternShipApp\\API\\obj\\",
+      "outputPath": "Z:\\InternShipApp\\API\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\andreibo\\AppData\\Roaming\\NuGet\\NuGet.Config",

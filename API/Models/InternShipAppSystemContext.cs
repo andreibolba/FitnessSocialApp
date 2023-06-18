@@ -67,6 +67,8 @@ public partial class InternShipAppSystemContext : DbContext
 
     public virtual DbSet<Task> Tasks { get; set; }
 
+    public virtual DbSet<TaskInternGroup> TaskInternGroups { get; set; }
+
     public virtual DbSet<TaskSolution> TaskSolutions { get; set; }
 
     public virtual DbSet<Test> Tests { get; set; }
@@ -78,7 +80,8 @@ public partial class InternShipAppSystemContext : DbContext
     public virtual DbSet<VersionInfo> VersionInfos { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-       => optionsBuilder.UseSqlServer("Data Source=ANDREIB;Initial Catalog=InternShipAppSystem;User Id=sa;Password=1234%asd; TrustServerCertificate=True");
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+        => optionsBuilder.UseSqlServer("Data Source=ANDREIB;Initial Catalog=InternShipAppSystem;User Id=sa;Password=1234%asd; TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -519,24 +522,33 @@ public partial class InternShipAppSystemContext : DbContext
             entity.ToTable("Task");
 
             entity.Property(e => e.DateOfPost).HasColumnType("datetime");
-            entity.Property(e => e.Deadline).HasColumnType("datetime");
             entity.Property(e => e.TaskDescription).IsRequired();
             entity.Property(e => e.TaskName)
                 .IsRequired()
                 .HasMaxLength(255);
 
-            entity.HasOne(d => d.Group).WithMany(p => p.Tasks)
-                .HasForeignKey(d => d.GroupId)
-                .HasConstraintName("TaskGroupFK");
-
-            entity.HasOne(d => d.Intern).WithMany(p => p.TaskInterns)
-                .HasForeignKey(d => d.InternId)
-                .HasConstraintName("TaskInternFK");
-
-            entity.HasOne(d => d.Trainer).WithMany(p => p.TaskTrainers)
+            entity.HasOne(d => d.Trainer).WithMany(p => p.Tasks)
                 .HasForeignKey(d => d.TrainerId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("TaskrainerFK");
+        });
+
+        modelBuilder.Entity<TaskInternGroup>(entity =>
+        {
+            entity.ToTable("TaskInternGroup");
+
+            entity.HasOne(d => d.Group).WithMany(p => p.TaskInternGroups)
+                .HasForeignKey(d => d.GroupId)
+                .HasConstraintName("TaskInternGroupGroupFK");
+
+            entity.HasOne(d => d.Intern).WithMany(p => p.TaskInternGroups)
+                .HasForeignKey(d => d.InternId)
+                .HasConstraintName("TaskInternGroupInternFK");
+
+            entity.HasOne(d => d.Task).WithMany(p => p.TaskInternGroups)
+                .HasForeignKey(d => d.TaskId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("TaskTaskInternGroupFK");
         });
 
         modelBuilder.Entity<TaskSolution>(entity =>
@@ -544,9 +556,9 @@ public partial class InternShipAppSystemContext : DbContext
             entity.ToTable("TaskSolution");
 
             entity.Property(e => e.DateOfSolution).HasColumnType("datetime");
-            entity.Property(e => e.SolutionContent)
+            entity.Property(e => e.SolutionFile)
                 .IsRequired()
-                .HasMaxLength(255);
+                .HasMaxLength(8000);
 
             entity.HasOne(d => d.Intern).WithMany(p => p.TaskSolutions)
                 .HasForeignKey(d => d.InternId)

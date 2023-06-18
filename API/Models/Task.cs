@@ -15,21 +15,13 @@ public partial class Task
 
     public DateTime DateOfPost { get; set; }
 
-    public DateTime Deadline { get; set; }
-
-    public int? GroupId { get; set; }
-
-    public int? InternId { get; set; }
-
     public bool Deleted { get; set; }
 
     public virtual ICollection<Feedback> Feedbacks { get; } = new List<Feedback>();
 
-    public virtual Group Group { get; set; }
-
-    public virtual Person Intern { get; set; }
-
     public virtual ICollection<SubTask> SubTasks { get; } = new List<SubTask>();
+
+    public virtual ICollection<TaskInternGroup> TaskInternGroups { get; } = new List<TaskInternGroup>();
 
     public virtual ICollection<TaskSolution> TaskSolutions { get; } = new List<TaskSolution>();
 

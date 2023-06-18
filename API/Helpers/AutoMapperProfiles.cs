@@ -48,10 +48,11 @@ namespace API.Helpers
             CreateMap<Note, NoteDto>();
             CreateMap<Challange, ChallengeDto>();
             CreateMap<ChallangeSolution, ChallengeSolutionDto>();
-            CreateMap<Models.Task, TaskExtensions>();
+            CreateMap<Models.Task, TaskDto>();
             CreateMap<TaskSolution, TaskSolutionDto>();
             CreateMap<SubTask, SubTaskDto>();
             CreateMap<SubTaskChecked, SubTaskCheckedDto>();
+            CreateMap<TaskInternGroup, TaskInternGroupDto>();
 
 
             CreateMap<PersonDto, Person>()
@@ -91,6 +92,16 @@ namespace API.Helpers
             CreateMap<ChallengeSolutionDto, ChallangeSolution>()
                .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
             CreateMap<ChallengeDto, Challange>()
+               .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
+            CreateMap<TaskDto, Models.Task>()
+               .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
+            CreateMap<SubTaskDto, SubTask>()
+               .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
+            CreateMap<TaskSolutionDto, TaskSolution>()
+               .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
+            CreateMap<SubTaskCheckedDto, SubTaskChecked>()
+               .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
+            CreateMap<TaskInternGroupDto, TaskInternGroup>()
                .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
         }
     }

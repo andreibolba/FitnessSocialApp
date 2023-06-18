@@ -1,0 +1,37 @@
+<div id="main">
+    <div style="display: flex;">
+        <div style="display: flex; height: 10%; width:100%;">
+            <i class="uil uil-clipboard-notes" style="font-size: 35px; margin-top: -7px;"></i>
+            <h2>Tasks</h2>
+        </div>
+        <button class="btn btn-success" id="add" (click)="onAdd()">Add task</button>
+    </div>
+    <div class="tasks" *ngIf="tasks.length!=0">
+        <mat-accordion >
+            <mat-expansion-panel (opened)="panelOpenState = true"
+                                 (closed)="panelOpenState = false"
+                                 class="people"
+                                 *ngFor="let p of tasks; let i = index">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <h5>{{ i + 1 }}. {{ t.taskName }}</h5>
+                </mat-panel-title>
+                <button type="button" class="btn btn-danger" id="button" *ngIf="editMode" (click)="remove(q.questionId)"> Remove </button>
+              </mat-expansion-panel-header>
+              <div class="subtask" *ngFor="let s of subtask">
+                <div class="nume">
+
+                </div>
+                <div class="button">
+                    <button class="btn btn-success"> Edit </button>
+                </div>
+              </div>
+              <button class="btn btn-success" style="margin: auto;" (click)="onAdd()"> Add </button>
+            </mat-expansion-panel>
+        
+          </mat-accordion>
+    </div>
+
+    <p *ngIf="tasks.length==0">You don't have any tasks!</p>
+
+</div>

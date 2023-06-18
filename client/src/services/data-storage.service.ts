@@ -18,13 +18,16 @@ import { Note } from 'src/model/note.model';
 import { Challenge } from 'src/model/challenge.model';
 import { ChallengeSolution } from 'src/model/challengesolution.model';
 import { Ranking } from 'src/model/ranking.mode';
+import { Task } from 'src/model/task.model';
+import { TaskSolution } from 'src/model/tasksolution.model';
+import { SubTask } from 'src/model/subtask.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataStorageService {
   baseUrl = 'https://localhost:7191/api/';
-  people: Person[] = [];
+  people:Person[]=[];
   constructor(private http: HttpClient) { }
 
   //connection test
@@ -193,7 +196,7 @@ export class DataStorageService {
 
   updateInternInGroup(token: string, ids: string, groupId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    console.log(ids);
+
     return this.http.post(
       this.baseUrl + 'interngroup/interns/update/' + groupId,
       {
@@ -829,5 +832,99 @@ export class DataStorageService {
     window.URL.revokeObjectURL(url);
   }
 
+  //tasks
 
+  getAllTasks(token:string){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<Task[]>(this.baseUrl + 'tasks', { headers: headers });
+  }
+
+  getAllTasksForPerson(token:string, status:string,personId:number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<Task[]>(this.baseUrl + 'tasks/'+status+'/'+personId, { headers: headers });
+  }
+
+  addTask(token:string, task:Task){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post<Task>(this.baseUrl + 'tasks/add', {
+      taskName: task.taskName,
+      taskDescription: task.taskDescription,
+      trainerId: task.trainerId
+    }, { headers: headers });
+  }
+
+  editTask(token:string, task:Task){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post<Task>(this.baseUrl + 'tasks/edit', {
+      taskId:task.taskId,
+      taskName: task.taskName,
+      taskDescription: task.taskDescription,
+      trainerId: task.trainerId
+    }, { headers: headers });
+  }
+
+  deleteTask(token:string, taskId:number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post(this.baseUrl + 'tasks/delete/'+taskId, { headers: headers });
+  }
+
+  addeditSolution(token:string, taskSolutionId:number,taskId:number,personId:number, file: File) {
+    const headers = { Authorization: 'Bearer ' + token };
+    const formData: FormData = new FormData();
+    formData.append('file', file, file.name);
+    return this.http.post<TaskSolution>(this.baseUrl + 'tasks/addedit/solutions'+taskSolutionId+'/'+taskId+'/'+personId, formData, { headers: headers });
+  }
+
+  assignTask(token: string, idsIntern: string, idsGroups:string, taskid: number) {
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post(
+      this.baseUrl + 'tasks/assign' + taskid,
+      {
+        idsIntern: idsIntern,
+        idsGroups:idsGroups
+      },
+      {
+        headers: headers,
+      }
+    );
+  }
+
+  //subtasks
+
+  getAllSubTasks(token:string){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<SubTask[]>(this.baseUrl + 'subtasks', { headers: headers });
+  }
+
+  getAllSubtasksForTask(token:string, taskId:number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<SubTask[]>(this.baseUrl + 'subtasks/'+taskId, { headers: headers });
+  }
+
+  addSubTask(token:string, subTask:SubTask){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post<SubTask>(this.baseUrl + 'subtasks/add', {
+      subTaskNAme: subTask.subTaskName,
+      taskId: subTask.taskId
+    }, { headers: headers });
+  }
+
+  editSubTask(token:string, subTask:SubTask){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post<SubTask>(this.baseUrl + 'subtasks/add', {
+      subTaskId:subTask.subTaskId,
+      subTaskNAme: subTask.subTaskName,
+      taskId: subTask.taskId
+    }, { headers: headers });
+  }
+
+  deleteSubTask(token:string, subTaskId:number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post(this.baseUrl + 'subtasks/delete/'+subTaskId, { headers: headers });
+  }
+
+  checkSubTask(token:string, subTaskId:number, taskId:number) {
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post(this.baseUrl + 'subtasks/check'+subTaskId+'/'+taskId,{}, { headers: headers });
+  }
 }

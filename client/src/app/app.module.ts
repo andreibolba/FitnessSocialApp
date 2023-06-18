@@ -14,7 +14,7 @@ import { TrainerDashboardComponent } from './trainer/trainer.dashboard/trainer.d
 import { InternDashboardComponent } from './intern/intern.dashboard/intern.dashboard.component';
 import { ForumComponent } from './forum/forum/forum.component';
 import { GroupsComponent } from './admin/groups/groups.component';
-import { TaskComponent } from './shared/task/task.component';
+import { TaskComponent } from './shared/tasks/task/task.component';
 import { MeetingComponent } from './shared/meetings/meeting/meeting.component';
 import { ProfileComponent } from './shared/profile/profile.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
@@ -67,6 +67,10 @@ import { AddEditSolutionComponent } from './shared/challenge/add-edit-solution/a
 import { SolutionPointsComponent } from './shared/challenge/solution-points/solution-points.component';
 import { Ng5SliderModule } from 'ng5-slider';
 import { RankingsComponent } from './shared/challenge/rankings/rankings.component';
+import { AddEditTaskComponent } from './shared/tasks/add-edit-task/add-edit-task.component';
+import { AssignTaskComponent } from './shared/tasks/assign-task/assign-task.component';
+import { UploadTaskSolutionComponent } from './shared/tasks/upload-task-solution/upload-task-solution.component';
+import { AddEditSubtaskComponent } from './shared/tasks/add-edit-subtask/add-edit-subtask.component';
 
 @NgModule({
   declarations: [
@@ -117,7 +121,11 @@ import { RankingsComponent } from './shared/challenge/rankings/rankings.componen
     SeeSolutionsComponent,
     AddEditSolutionComponent,
     SolutionPointsComponent,
-    RankingsComponent
+    RankingsComponent,
+    AddEditTaskComponent,
+    AssignTaskComponent,
+    UploadTaskSolutionComponent,
+    AddEditSubtaskComponent
   ],
   imports: [
     Ng2SearchPipeModule,

@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    color: #515151;
+}
+
+
+#main {
+    width: 82%;
+    height: 84vh;
+}
+
+h2 {
+    color: #515151;
+    font-family: 'Poppins-Italic';
+}
+
+#add{
+    float: right;
+    height: 40px;
+    color: white;
+    width: 120px;
+    margin-right: 20px;
+}

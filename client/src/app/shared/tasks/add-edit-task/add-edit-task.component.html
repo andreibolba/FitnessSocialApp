@@ -1,0 +1,25 @@
+<h3>{{operation}} task</h3>
+<div id="main">
+  <form #registerForm="ngForm" (ngSubmit)="onSubmit()" autocomplete="off">
+
+    <div class="infos">
+      <div class="info">
+        <label for="taskName">Task Name</label>
+        <input type="text" id="taskName" placeholder="Task Name" name="taskName" [(ngModel)]="taskName"
+          required>
+      </div>
+      <div class="info">
+        <label for="taskDescription">Task Description</label>
+        <textarea id="taskDescription" placeholder="Task Description" name="taskDescription" [(ngModel)]="taskDescription"
+          required>
+        </textarea>
+      </div>
+    </div>
+
+
+    <mat-dialog-actions align="center">
+      <button mat-button mat-dialog-close>Cancel</button>
+      <button type="submit" [disabled]="!registerForm.valid" mat-button cdkFocusInitial> {{ operation }}</button>
+    </mat-dialog-actions>
+  </form>
+</div>

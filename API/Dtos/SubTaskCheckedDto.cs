@@ -10,8 +10,6 @@ namespace API.Dtos
 
         public int InternId { get; set; }
 
-        public bool Deleted { get; set; }
-
         public PersonDto Intern { get; set; }
 
         public SubTaskDto SubTask { get; set; }

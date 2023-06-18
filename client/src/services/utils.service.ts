@@ -15,6 +15,7 @@ import { GroupChatMessage } from 'src/model/groupchatmessage.model';
 import { Note } from 'src/model/note.model';
 import { Challenge } from 'src/model/challenge.model';
 import { ChallengeSolution } from 'src/model/challengesolution.model';
+import { Task } from 'src/model/task.model';
 
 @Injectable({
   providedIn: 'root'
@@ -50,6 +51,8 @@ export class UtilsService {
   challengeIdForSolutionsToEdit = new BehaviorSubject<number>(-1);
   pointToSolutionApprove = new BehaviorSubject<number | null>(null);
   maxpointToSolutionApprove = new BehaviorSubject<number>(-1);
+  taskToEdit = new BehaviorSubject<Task | null>(null);
+  taskIdToUpload = new BehaviorSubject<number>(-1);
   isOnChallanges=new BehaviorSubject<boolean>(true);
   dashboardChanged=new EventEmitter<boolean>(true);
 

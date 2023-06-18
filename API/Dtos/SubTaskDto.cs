@@ -10,8 +10,6 @@ namespace API.Dtos
 
         public int TaskId { get; set; }
 
-        public bool Deleted { get; set; }
-
         public virtual TaskDto Task { get; set; }
     }
 }

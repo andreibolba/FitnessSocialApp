@@ -13,7 +13,7 @@ import { MeetingComponent } from './shared/meetings/meeting/meeting.component';
 import { NoteComponent } from './shared/notes/note/note.component';
 import { ProfileComponent } from './shared/profile/profile.component';
 import { QuestionsComponent } from './shared/questions/question/question.component';
-import { TaskComponent } from './shared/task/task.component';
+import { TaskComponent } from './shared/tasks/task/task.component';
 import { TestComponent } from './shared/tests/test/test.component';
 import { ChatComponent } from './chat-system/chat/chat.component';
 import { ChallengesComponent } from './shared/challenge/challenges/challenges.component';

@@ -119,7 +119,7 @@ namespace API.Controllers
         {
             Dictionary<string, string> idsData = JsonConvert.DeserializeObject<Dictionary<string, string>>(ids.ToString());
 
-            var hasSomethingToSaveIntern = _taskInternGroupRepository.AssignTaskToStudents(idsData["idsintern"] += "!", groupId);
+            var hasSomethingToSaveIntern = _taskInternGroupRepository.AssignTaskToStudents(idsData["idsIntern"] += "!", groupId);
             var hasSomethingToSaveGroup = _taskInternGroupRepository.AssignTaskToGroups(idsData["idsGroups"] += "!", groupId);
             if (!hasSomethingToSaveIntern && !hasSomethingToSaveGroup)
                 return Ok();

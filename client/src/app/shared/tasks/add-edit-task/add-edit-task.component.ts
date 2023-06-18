@@ -65,7 +65,7 @@ export class AddEditTaskComponent implements OnInit, OnDestroy {
     task.taskName=this.taskName;
     task.taskDescription=this.taskDescription;
     task.trainerId=this.trainerId;
-    if(this.isEdit){
+    if(!this.isEdit){
       this.addEditTaskSubscription=this.dataStorage.addTask(this.token, task).subscribe(()=>{
         this.toastr.success("Task added successfully");
         this.dialog.close();

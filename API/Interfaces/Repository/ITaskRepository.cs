@@ -10,6 +10,8 @@ namespace API.Interfaces.Repository
         public TaskDto GetTaskById(int taskId);
         public IEnumerable<TaskDto> GetAllTasks();
         public IEnumerable<TaskDto> GetAllTasksForTrainer(int trainerId);
+        public IEnumerable<TaskInternDto> GetAllInternsChecked(int taskId);
+        public IEnumerable<TaskGroupDto> GetAllGroupsChecked(int taskId);
         public bool SaveAll();
 
     }

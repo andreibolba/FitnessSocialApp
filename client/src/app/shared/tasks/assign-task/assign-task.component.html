@@ -1,1 +1,19 @@
-<p>assign-task works!</p>
+<h1>Assign task</h1>
+<mat-dialog-content class="mat-typography">
+  <h4>Add and remove intern by select them:</h4>
+  <p><mat-checkbox *ngFor="let i of optionsInterns" [checked]="i.checked" (change)="valueChange(i)">
+      <div id="option"> {{ i.name }}</div>
+    </mat-checkbox></p>
+
+    <hr>
+    
+    <h4>Add and remove groups by select them:</h4>
+  <p><mat-checkbox *ngFor="let i of optionsGroups" [checked]="i.checked" (change)="valueChange(i)">
+      <div id="option"> {{ i.name }}</div>
+    </mat-checkbox></p>
+
+
+  <mat-dialog-actions align="center">
+    <button mat-button cdkFocusInitial (click)="save()"> Save </button>
+  </mat-dialog-actions>
+</mat-dialog-content>

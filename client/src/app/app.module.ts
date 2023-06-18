@@ -70,7 +70,7 @@ import { RankingsComponent } from './shared/challenge/rankings/rankings.componen
 import { AddEditTaskComponent } from './shared/tasks/add-edit-task/add-edit-task.component';
 import { AssignTaskComponent } from './shared/tasks/assign-task/assign-task.component';
 import { UploadTaskSolutionComponent } from './shared/tasks/upload-task-solution/upload-task-solution.component';
-import { AddEditSubtaskComponent } from './shared/tasks/add-edit-subtask/add-edit-subtask.component';
+import { SeeAllTaskSolutionsComponent } from './shared/tasks/see-all-task-solutions/see-all-task-solutions.component';
 
 @NgModule({
   declarations: [
@@ -125,7 +125,7 @@ import { AddEditSubtaskComponent } from './shared/tasks/add-edit-subtask/add-edi
     AddEditTaskComponent,
     AssignTaskComponent,
     UploadTaskSolutionComponent,
-    AddEditSubtaskComponent
+    SeeAllTaskSolutionsComponent
   ],
   imports: [
     Ng2SearchPipeModule,

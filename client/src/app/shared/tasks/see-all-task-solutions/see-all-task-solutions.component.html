@@ -1,0 +1,11 @@
+<h3>See challenges results</h3>
+<div id="main">
+  <mat-list role="list" *ngIf="solutions.length!=0">
+      <mat-list-item role="listitem" class="resultitem" *ngFor="let solution of solutions;let i=index">
+        <div style="display: flex;">
+          <div (click)="downloadFile(solution.taskSolutionId)" id="name">{{i+1}}. {{ solution.intern.username }}</div> 
+        </div>
+    </mat-list-item>
+  </mat-list>
+  <p *ngIf="solutions.length==0" style="text-align: center;"> No intern has finished this challenge</p>
+</div>

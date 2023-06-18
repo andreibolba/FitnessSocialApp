@@ -2,6 +2,7 @@
 using API.Interfaces.Repository;
 using API.Models;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
@@ -21,6 +22,7 @@ namespace API.Data
         public TaskDto AddTask(TaskDto taskDto)
         {
             var task = _mapper.Map<Models.Task>(taskDto);
+            task.DateOfPost = DateTime.Now;
             _context.Tasks.Add(task);
             return SaveAll() ? _mapper.Map<TaskDto>(task) : null;
         }
@@ -29,7 +31,76 @@ namespace API.Data
         {
             var res = _mapper.Map<Models.Task>(GetTaskById(taskId));
             res.Deleted = true;
-            _context.Update(res);
+            _context.Tasks.Update(res);
+
+            foreach(var subTask in _context.SubTasks.Where(t=>t.TaskId ==taskId)) { 
+                subTask.Deleted = true;
+                _context.SubTasks.Update(subTask);
+            }
+        }
+
+        public IEnumerable<TaskGroupDto> GetAllGroupsChecked(int taskId)
+        {
+            var groups = _context.TaskInternGroups.Where(g=>g.Deleted==false && g.TaskId == taskId && g.InternId==null).Include(f => f.Group).ToList();
+
+            var groupsCheck = new List<TaskGroupDto>();
+
+            foreach(var group in groups)
+            {
+                groupsCheck.Add(new TaskGroupDto()
+                {
+                    GroupId = group.GroupId.Value,
+                    Group = _mapper.Map<GroupDto>(group.Group),
+                    IsChecked = true
+                });
+            }
+
+            var allGroups = _context.Groups.Where(g => g.Deleted == false).ToList();
+
+            foreach (var group in allGroups)
+            { 
+                if(groupsCheck.Where(g=>g.GroupId == group.GroupId).Count()==0)
+                    groupsCheck.Add(new TaskGroupDto()
+                    {
+                        GroupId = group.GroupId,
+                        Group = _mapper.Map<GroupDto>(group),
+                        IsChecked = false
+                    });
+            }
+
+            return groupsCheck;
+        }
+
+        public IEnumerable<TaskInternDto> GetAllInternsChecked(int taskId)
+        {
+            var interns = _context.TaskInternGroups.Where(g => g.Deleted == false && g.TaskId == taskId && g.GroupId == null).Include(f=>f.Intern).ToList();
+
+            var internsCheck = new List<TaskInternDto>();
+
+            foreach (var intern in interns)
+            {
+                internsCheck.Add(new TaskInternDto()
+                {
+                    InternId = intern.InternId.Value,
+                    Intern = _mapper.Map<PersonDto>(intern.Intern),
+                    IsChecked = true
+                });
+            }
+
+            var allInterns = _context.People.Where(g => g.Deleted == false && g.Status=="Intern").ToList();
+
+            foreach (var intern in allInterns)
+            {
+                if (internsCheck.Where(g => g.InternId == intern.PersonId).Count() == 0)
+                    internsCheck.Add(new TaskInternDto()
+                    {
+                        InternId = intern.PersonId,
+                        Intern = _mapper.Map<PersonDto>(intern),
+                        IsChecked = false
+                    });
+            }
+
+            return internsCheck;
         }
 
         public IEnumerable<TaskDto> GetAllTasks()

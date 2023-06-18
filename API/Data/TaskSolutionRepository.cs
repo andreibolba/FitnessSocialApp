@@ -2,6 +2,7 @@
 using API.Interfaces.Repository;
 using API.Models;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace API.Data
 {
@@ -64,5 +65,17 @@ namespace API.Data
 
             return SaveAll() ? _mapper.Map<TaskSolutionDto>(sol) : null;
         }
+
+        public IEnumerable<TaskSolutionDto> GetAllSolutionsForTask(int taskId)
+        {
+            var res = _context.TaskSolutions.Where(t => t.Deleted == false && t.TaskId == taskId).Include(t=>t.Intern).ToList();
+            return _mapper.Map<IEnumerable<TaskSolutionDto>>(res);
+        }
+        public TaskSolutionDto GetAllSolutionsForTaskForAPerson(int taskId, int personId)
+        {
+            var res = _context.TaskSolutions.SingleOrDefault(t => t.Deleted == false && t.TaskId == taskId && t.InternId==personId);
+            return _mapper.Map<TaskSolutionDto>(res);
+        }
+
     }
 }

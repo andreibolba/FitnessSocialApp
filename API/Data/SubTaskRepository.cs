@@ -61,7 +61,7 @@ namespace API.Data
 
         public SubTaskDto GetSubTask(int subTaskId)
         {
-            return GetAllSubTasks().SingleOrDefault(s => s.TaskId == subTaskId);
+            return GetAllSubTasks().SingleOrDefault(s => s.SubTaskId == subTaskId);
         }
 
         public bool SaveAll()

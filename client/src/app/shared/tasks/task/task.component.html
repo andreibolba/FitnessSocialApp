@@ -11,22 +11,29 @@
             <mat-expansion-panel (opened)="panelOpenState = true"
                                  (closed)="panelOpenState = false"
                                  class="people"
-                                 *ngFor="let p of tasks; let i = index">
+                                 *ngFor="let t of tasks; let i = index">
               <mat-expansion-panel-header>
                 <mat-panel-title>
-                  <h5>{{ i + 1 }}. {{ t.taskName }}</h5>
+                  <h5>{{ i + 1 }}. {{ t.task.taskName }}</h5>
                 </mat-panel-title>
-                <button type="button" class="btn btn-danger" id="button" *ngIf="editMode" (click)="remove(q.questionId)"> Remove </button>
+                <button type="button" class="btn btn-danger" id="button" *ngIf="editMode" (click)="onDelete(t.task.taskId)"> Remove </button>
               </mat-expansion-panel-header>
-              <div class="subtask" *ngFor="let s of subtask">
-                <div class="nume">
-
+              <div class="subtask" style="width: 100%; margin-top: 10px; border-radius: 10px; border: 1px solid #5e5e5e; display: flex;" *ngFor="let s of t.subTasks">
+                <div class="nume" style="width: 94%;">
+                    <input type="text" id="subTaskName" placeholder="Sub Task Name" name="subTaskName" [(ngModel)]="s.subTask.subTaskName" *ngIf="s.editMode==true">
+                    <h5 *ngIf="s.editMode==false">{{ s.subTask.subTaskName }}</h5>
                 </div>
-                <div class="button">
-                    <button class="btn btn-success"> Edit </button>
+                <div class="button" style="display: flex;">
+                    <button class="btn btn-success" id="button" style="margin-top: 5px; margin-bottom: 5px;" *ngIf="editMode && s.editMode==true" (click)="onSaveSubTask(s,t.task.taskId)"> Save </button>
+                    <button class="btn btn-success" id="button" style="margin-top: 5px; margin-bottom: 5px;" *ngIf="editMode && s.editMode==false" (click)="onEditSubTask(s)"> Edit </button>
+                    <button class="btn btn-danger" id="button" style="margin-top: 5px; margin-bottom: 5px;" *ngIf="editMode" (click)="onDeleteSubTask(s)"> Delete </button>
                 </div>
               </div>
-              <button class="btn btn-success" style="margin: auto;" (click)="onAdd()"> Add </button>
+              <button class="btn btn-success" id="button_add_subtask" (click)="onAddSubTask(t.task.taskId)" style="margin-top: 10px;" *ngIf="editMode"> Add </button>
+              <button class="btn btn-success" id="button_add_subtask" (click)="onAssign(t.task)" style="margin-top: 10px;" *ngIf="editMode"> Assign task </button>
+              <button class="btn btn-success" id="button_add_subtask" (click)="onSeeSolutions(t.task)" style="margin-top: 10px;" *ngIf="editMode"> See all solutions </button>
+              <button class="btn btn-success" id="button_add_subtask" (click)="onDownload(t.task)" style="margin-top: 10px;" *ngIf="!editMode && t.solution.taskSolutionId !=-1"> Download solution </button>
+              <button class="btn btn-success" id="button_add_subtask" (click)="onUpload(t.task)" style="margin-top: 10px;" *ngIf="!editMode"> Add solution </button>
             </mat-expansion-panel>
         
           </mat-accordion>

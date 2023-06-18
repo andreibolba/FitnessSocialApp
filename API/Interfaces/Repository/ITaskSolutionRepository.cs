@@ -10,6 +10,8 @@ namespace API.Interfaces.Repository
         public TaskSolutionDto GetTaskSolutionById(int taskSolutionId);
         public TaskSolutionDto AddTaskSolution(TaskSolutionDto taskSolutionDto);
         public TaskSolutionDto UpdateTaskSolution(TaskSolutionDto taskSolutionDto);
+        public IEnumerable<TaskSolutionDto> GetAllSolutionsForTask(int taskId);
+        public TaskSolutionDto GetAllSolutionsForTaskForAPerson(int taskId, int personId);
         public void DeleteTaskSolution(int taskSolutionId);
     }
 }

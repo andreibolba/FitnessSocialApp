@@ -38,6 +38,10 @@ namespace API.Extensions
             services.AddScoped<INoteRepository,NoteRepository>();
             services.AddScoped<IChallengeRepository,ChallengeRepository>();
             services.AddScoped<IChallengeSolutionRepository,ChallengeSolutionRepository>();
+            services.AddScoped<ITaskRepository,TaskRepository>();
+            services.AddScoped<ITaskSolutionRepository,TaskSolutionRepository>();
+            services.AddScoped<ITaskInternGroupRepository,TaskInternGroupRepository>();
+            services.AddScoped<ISubTaskRepository,SubTaskRepository>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             return services;
         }

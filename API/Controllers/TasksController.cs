@@ -34,6 +34,18 @@ namespace API.Controllers
             return Ok(_taskRepository.GetTaskById(taskId));
         }
 
+        [HttpGet("checked/group/{taskId:int}")]
+        public ActionResult<IEnumerable<TaskGroupDto>> GetGroupsChecked(int taskId)
+        {
+            return Ok(_taskRepository.GetAllGroupsChecked(taskId));
+        }
+
+        [HttpGet("checked/intern/{taskId:int}")]
+        public ActionResult<IEnumerable<TaskInternDto>> GetInternshecked(int taskId)
+        {
+            return Ok(_taskRepository.GetAllInternsChecked(taskId));
+        }
+
         [HttpGet("{status}/{userId:int}")]
         public ActionResult<IEnumerable<TaskDto>> GetAllTasksForUser(string status, int userId)
         {
@@ -71,7 +83,7 @@ namespace API.Controllers
             return _taskRepository.SaveAll() ? Ok() : BadRequest("Internal Server error");
         }
 
-        [HttpPost("addedit/solution/{taskSolutionId:int}/{taskid:int}/{personId:int}")]
+        [HttpPost("addedit/solution/{taskSolutionId:int}/{taskId:int}/{personId:int}")]
         public ActionResult<TaskSolutionDto> UpdateSolutionTask(int taskSolutionId, int taskId, int personId)
         {
             IFormFile file = Request.Form.Files[0];
@@ -88,7 +100,7 @@ namespace API.Controllers
                     file.CopyTo(stream);
                     byte[] zipFile = stream.ToArray();
 
-                    if (taskSolutionId == -1)
+                    if (taskSolutionId != -1)
                     {
                         var challengeSolution = _taskSolutionRepository.GetTaskSolutionById(taskSolutionId);
                         challengeSolution.SolutionFile = zipFile;
@@ -115,15 +127,39 @@ namespace API.Controllers
         }
 
         [HttpPost("assign/{taskid:int}")]
-        public ActionResult Assigntask([FromBody] object ids, int groupId)
+        public ActionResult Assigntask([FromBody] object ids, int taskId)
         {
             Dictionary<string, string> idsData = JsonConvert.DeserializeObject<Dictionary<string, string>>(ids.ToString());
 
-            var hasSomethingToSaveIntern = _taskInternGroupRepository.AssignTaskToStudents(idsData["idsIntern"] += "!", groupId);
-            var hasSomethingToSaveGroup = _taskInternGroupRepository.AssignTaskToGroups(idsData["idsGroups"] += "!", groupId);
+            var hasSomethingToSaveIntern = _taskInternGroupRepository.AssignTaskToStudents(idsData["idsIntern"] += "!", taskId);
+            var hasSomethingToSaveGroup = _taskInternGroupRepository.AssignTaskToGroups(idsData["idsGroups"] += "!", taskId);
             if (!hasSomethingToSaveIntern && !hasSomethingToSaveGroup)
                 return Ok();
-            return _taskRepository.SaveAll() ? Ok() : BadRequest("Internal Server Error");
+            return _taskInternGroupRepository.SaveAll() ? Ok() : BadRequest("Internal Server Error");
+        }
+
+        [HttpGet("solutions/{taskId:int}")]
+        public ActionResult GetAllChallengeSolutinsForTask(int taskId)
+        {
+            return Ok(_taskSolutionRepository.GetAllSolutionsForTask(taskId));
+        }
+
+        [HttpGet("solutions/{taskId:int}/{personId:int}")]
+        public ActionResult GetAllChallengeSolutinsForTaskForPerson(int taskId, int personId)
+        {
+            return Ok(_taskSolutionRepository.GetAllSolutionsForTaskForAPerson(taskId,personId));
+        }
+
+        [HttpGet("solutions/download/{taskSolutionId:int}")]
+        public ActionResult GetSolutionFile(int taskSolutionId)
+        {
+            var sol = _taskSolutionRepository.GetTaskSolutionById(taskSolutionId);
+
+            string contentType = "application/octet-stream";
+            string fileName = "attempt_" + sol.Intern.Username + ".zip";
+
+            return File(sol.SolutionFile, contentType, fileName);
+
         }
     }
 }

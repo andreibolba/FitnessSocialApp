@@ -21,6 +21,8 @@ import { Ranking } from 'src/model/ranking.mode';
 import { Task } from 'src/model/task.model';
 import { TaskSolution } from 'src/model/tasksolution.model';
 import { SubTask } from 'src/model/subtask.model';
+import { TaskIntern } from 'src/model/taskintern.model';
+import { TaskGroup } from 'src/model/taskgroup.model';
 
 @Injectable({
   providedIn: 'root',
@@ -338,7 +340,7 @@ export class DataStorageService {
 
   publish(token: string, testId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'test/stop/' + testId, {
+    return this.http.post(this.baseUrl + 'test/stop/' + testId,{}, {
       headers: headers,
     });
   }
@@ -775,13 +777,11 @@ export class DataStorageService {
 
   getSolutionsForSpecificPerson(token: string, personId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    console.log(token);
     return this.http.get<ChallengeSolution[]>(this.baseUrl + 'challenge/solutions/mine/' + personId, { headers: headers });
   }
 
   getSolutionsForSpecificPersonForChallenge(token: string, personId: number, challengeId:number) {
     const headers = { Authorization: 'Bearer ' + token };
-    console.log(token);
     return this.http.get<ChallengeSolution[]>(this.baseUrl + 'challenge/solutions/mine/' + personId+'/'+challengeId, { headers: headers });
   }
 
@@ -865,20 +865,20 @@ export class DataStorageService {
 
   deleteTask(token:string, taskId:number){
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'tasks/delete/'+taskId, { headers: headers });
+    return this.http.post(this.baseUrl + 'tasks/delete/'+taskId,{}, { headers: headers });
   }
 
   addeditSolution(token:string, taskSolutionId:number,taskId:number,personId:number, file: File) {
     const headers = { Authorization: 'Bearer ' + token };
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
-    return this.http.post<TaskSolution>(this.baseUrl + 'tasks/addedit/solutions'+taskSolutionId+'/'+taskId+'/'+personId, formData, { headers: headers });
+    return this.http.post<TaskSolution>(this.baseUrl + 'tasks/addedit/solution/'+taskSolutionId+'/'+taskId+'/'+personId, formData, { headers: headers });
   }
 
   assignTask(token: string, idsIntern: string, idsGroups:string, taskid: number) {
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.post(
-      this.baseUrl + 'tasks/assign' + taskid,
+      this.baseUrl + 'tasks/assign/' + taskid,
       {
         idsIntern: idsIntern,
         idsGroups:idsGroups
@@ -888,6 +888,17 @@ export class DataStorageService {
       }
     );
   }
+
+  getCheckGroupForTask(token:string, taskId:number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<TaskGroup[]>(this.baseUrl + 'tasks/checked/group/'+taskId, { headers: headers });
+  }
+
+  getCheckInternForTask(token:string, taskId:number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<TaskIntern[]>(this.baseUrl + 'tasks/checked/intern/'+taskId, { headers: headers });
+  }
+
 
   //subtasks
 
@@ -911,7 +922,7 @@ export class DataStorageService {
 
   editSubTask(token:string, subTask:SubTask){
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post<SubTask>(this.baseUrl + 'subtasks/add', {
+    return this.http.post<SubTask>(this.baseUrl + 'subtasks/edit', {
       subTaskId:subTask.subTaskId,
       subTaskNAme: subTask.subTaskName,
       taskId: subTask.taskId
@@ -920,11 +931,30 @@ export class DataStorageService {
 
   deleteSubTask(token:string, subTaskId:number){
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'subtasks/delete/'+subTaskId, { headers: headers });
+    return this.http.post(this.baseUrl + 'subtasks/delete/'+subTaskId,{}, { headers: headers });
   }
 
   checkSubTask(token:string, subTaskId:number, taskId:number) {
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.post(this.baseUrl + 'subtasks/check'+subTaskId+'/'+taskId,{}, { headers: headers });
+  }
+
+  //solutions
+
+  getAllSolutionsForATask(token:string,taskId:number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<TaskSolution[]>(this.baseUrl + 'tasks/solutions/' + taskId, { headers: headers });
+  }
+
+  getAllSolutionsForATaskForAPerson(token:string,taskId:number, personId:number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<TaskSolution>(this.baseUrl + 'tasks/solutions/' + taskId+'/'+personId, { headers: headers });
+  }
+
+  downloadFileTask(token: string, solid: number) {
+    const headers = { Accept: 'application/octet-stream', Authorization: 'Bearer ' + token };
+    this.http.get(this.baseUrl + 'tasks/solutions/download/' + solid, { headers: headers, responseType: 'blob' }).subscribe(response => {
+      this.saveFile(response);
+    });
   }
 }

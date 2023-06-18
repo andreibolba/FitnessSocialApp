@@ -76,7 +76,7 @@ namespace API.Data
 
         public IEnumerable<TaskDto> GetAllTasksForGroup(int groupId)
         {
-            var res = _context.TaskInternGroups.Where(g => g.GroupId == groupId && g.Deleted==false).Include(g => g.Task).Select(g => g.Task);
+            var res = _context.TaskInternGroups.Where(g => g.GroupId == groupId && g.Deleted==false).Include(g => g.Task).Select(g => g.Task).ToList();
             var groups = _mapper.Map<IEnumerable<TaskDto>>(res);
 
             return groups.OrderBy(g=>g.DateOfPost);
@@ -87,11 +87,19 @@ namespace API.Data
             var resStudents = _context.TaskInternGroups.Where(g => g.InternId == studentId && g.Deleted == false).Include(g => g.Task).Select(g => g.Task);
             var tasks = _mapper.Map<List<TaskDto>>(resStudents);
 
-            var groupsId = _context.InternGroups.Where(g => g.InternId == studentId && g.Deleted == false).Select(g => g.GroupId);
+            var groupsId = _context.InternGroups.Where(g => g.InternId == studentId && g.Deleted == false).Select(g => g.Group);
 
-            foreach(var id in groupsId)
-                foreach(var task in GetAllTasksForGroup(id))
-                    tasks.Add(task);
+            var gropsIdDto = _mapper.Map<IEnumerable<GroupDto>>(groupsId);
+
+            foreach (var id in gropsIdDto)
+            {
+                var gr = _context.TaskInternGroups.Where(g => g.GroupId == id.GroupId && g.Deleted == false).Include(g => g.Task).Select(g => g.Task).ToList();
+                foreach (var task in gr)
+                {
+                    if(tasks.Where(t=>t.TaskId == task.TaskId).Count()==0)
+                    tasks.Add(_mapper.Map<TaskDto>(task));
+                }
+            }
 
             return tasks.OrderBy(g=>g.DateOfPost);
         }

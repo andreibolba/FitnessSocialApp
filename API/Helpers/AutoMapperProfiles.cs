@@ -53,6 +53,7 @@ namespace API.Helpers
             CreateMap<SubTask, SubTaskDto>();
             CreateMap<SubTaskChecked, SubTaskCheckedDto>();
             CreateMap<TaskInternGroup, TaskInternGroupDto>();
+            CreateMap<Feedback, FeedbackDto>();
 
 
             CreateMap<PersonDto, Person>()
@@ -102,6 +103,8 @@ namespace API.Helpers
             CreateMap<SubTaskCheckedDto, SubTaskChecked>()
                .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
             CreateMap<TaskInternGroupDto, TaskInternGroup>()
+               .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
+            CreateMap<FeedbackDto, Feedback>()
                .ForMember(dest => dest.Deleted, opt => opt.MapFrom(src => false));
         }
     }

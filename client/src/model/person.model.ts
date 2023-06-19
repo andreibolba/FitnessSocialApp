@@ -1,3 +1,5 @@
+import { Picture } from "./picture.model";
+
 export class Person{
   public personId: number;
   public firstName:string;
@@ -8,6 +10,8 @@ export class Person{
   public birthDate:Date;
   public karma:number;
   public answers: number;
+  public pictureId: number;
+  public picture: Picture;
   constructor(){
     this.personId=-1;
     this.firstName='';
@@ -18,5 +22,7 @@ export class Person{
     this.birthDate=new Date();
     this.karma=-1;
     this.answers=-1;
+    this.pictureId=-1;
+    this.picture=new Picture();
   }
 }

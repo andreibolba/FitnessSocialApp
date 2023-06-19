@@ -10,12 +10,14 @@ namespace API.Data
     {
         private readonly InternShipAppSystemContext _context;
         private readonly ITestRepository _testRepository;
+        private readonly IPictureRepository _pictureRepository;
         private readonly IMapper _mapper;
 
-        public GroupRepository(InternShipAppSystemContext context, ITestRepository testRepository, IMapper mapper)
+        public GroupRepository(InternShipAppSystemContext context, ITestRepository testRepository, IPictureRepository pictureRepository, IMapper mapper)
         {
             _context = context;
             _testRepository = testRepository;
+            _pictureRepository = pictureRepository;
             _mapper = mapper;
         }
 
@@ -45,6 +47,13 @@ namespace API.Data
         {
             var groups = _context.Groups.Include(g => g.Trainer).Include(g => g.InternGroups).ToList().Where(g => g.Deleted == false);
             var groupsToReturn = _mapper.Map<List<GroupDto>>(groups);
+
+            foreach(var group in groupsToReturn)
+            {
+                var pic = group.PictureId != null ? _pictureRepository.GetById(group.PictureId.Value) : null;
+                group.Picture = pic;
+            }
+
             foreach (var re in groupsToReturn)
             {
                 var interns = _context.InternGroups.Include(gi => gi.Intern).ToList().Where(gi => gi.Deleted == false && gi.GroupId == re.GroupId);
@@ -90,13 +99,15 @@ namespace API.Data
 
         public GroupDto Update(GroupDto groupdto)
         {
-            var groypFromDb = GetGroupById(groupdto.GroupId);
-            if (groupdto.GroupName == null) groupdto.GroupName = groypFromDb.GroupName;
-            if (groupdto.TrainerId == null) groupdto.TrainerId = groypFromDb.TrainerId.Value;
-            if (groupdto.Description == null) groupdto.Description = groypFromDb.Description;
-            _context.Groups.Update(_mapper.Map<Group>(groupdto));
+            var groypFromDb = _mapper.Map<Group>(_context.Groups.SingleOrDefault(g=>g.GroupId == groupdto.GroupId));
+            groypFromDb.GroupName = groupdto.GroupName==null? groypFromDb.GroupName :  groupdto.GroupName;
+            groypFromDb.TrainerId = groupdto.TrainerId == null? groypFromDb.TrainerId :  groupdto.TrainerId;
+            groypFromDb.Description = groupdto.Description == null? groypFromDb.Description :  groupdto.Description;
+            groypFromDb.PictureId = groupdto.PictureId == null? groypFromDb.PictureId :  groupdto.PictureId;
+ 
+            _context.Groups.Update(groypFromDb);
 
-            return SaveAll() ? _mapper.Map<GroupDto>(groypFromDb) : null;
+            return SaveAll() ? _mapper.Map<GroupDto>(GetGroupById(groypFromDb.GroupId)) : null;
         }
     }
 }

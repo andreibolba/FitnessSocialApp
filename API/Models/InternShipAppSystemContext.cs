@@ -49,6 +49,8 @@ public partial class InternShipAppSystemContext : DbContext
 
     public virtual DbSet<Person> People { get; set; }
 
+    public virtual DbSet<Picture> Pictures { get; set; }
+
     public virtual DbSet<Post> Posts { get; set; }
 
     public virtual DbSet<PostCommentReaction> PostCommentReactions { get; set; }
@@ -135,6 +137,10 @@ public partial class InternShipAppSystemContext : DbContext
                 .HasForeignKey(d => d.PersonSenderId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("ChatPersonSenderFK");
+
+            entity.HasOne(d => d.Picture).WithMany(p => p.Chats)
+                .HasForeignKey(d => d.PictureId)
+                .HasConstraintName("ChatPersonPictureFK");
         });
 
         modelBuilder.Entity<Comment>(entity =>
@@ -210,6 +216,10 @@ public partial class InternShipAppSystemContext : DbContext
                 .IsRequired()
                 .HasMaxLength(255);
 
+            entity.HasOne(d => d.Picture).WithMany(p => p.Groups)
+                .HasForeignKey(d => d.PictureId)
+                .HasConstraintName("GroupPictureFK");
+
             entity.HasOne(d => d.Trainer).WithMany(p => p.Groups)
                 .HasForeignKey(d => d.TrainerId)
                 .HasConstraintName("GroupTrainerFK");
@@ -245,6 +255,10 @@ public partial class InternShipAppSystemContext : DbContext
                 .HasForeignKey(d => d.PersonId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("GroupChatMessagePersonFK");
+
+            entity.HasOne(d => d.Picture).WithMany(p => p.GroupChatMessages)
+                .HasForeignKey(d => d.PictureId)
+                .HasConstraintName("GroupChatMessagePictureFK");
         });
 
         modelBuilder.Entity<GroupChatPerson>(entity =>
@@ -386,6 +400,22 @@ public partial class InternShipAppSystemContext : DbContext
             entity.Property(e => e.Username)
                 .IsRequired()
                 .HasMaxLength(255);
+
+            entity.HasOne(d => d.PictureNavigation).WithMany(p => p.People)
+                .HasForeignKey(d => d.PictureId)
+                .HasConstraintName("PersonPictureFK");
+        });
+
+        modelBuilder.Entity<Picture>(entity =>
+        {
+            entity.ToTable("Picture");
+
+            entity.Property(e => e.PublicId)
+                .IsRequired()
+                .HasMaxLength(255);
+            entity.Property(e => e.Url)
+                .IsRequired()
+                .HasMaxLength(255);
         });
 
         modelBuilder.Entity<Post>(entity =>
@@ -401,6 +431,10 @@ public partial class InternShipAppSystemContext : DbContext
                 .HasForeignKey(d => d.PersonId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("PostPersonFK");
+
+            entity.HasOne(d => d.Picture).WithMany(p => p.Posts)
+                .HasForeignKey(d => d.PictureId)
+                .HasConstraintName("PostPhotoFK");
         });
 
         modelBuilder.Entity<PostCommentReaction>(entity =>

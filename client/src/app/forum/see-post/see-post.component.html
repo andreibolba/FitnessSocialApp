@@ -30,7 +30,10 @@
         </div>
         <div class="information">
           <div class="person">
-            <div class="pic"></div>
+            <div class="pic">
+              <img [src]="person.picture.url" *ngIf="person.picture!=null" style="border-radius: 50%; margin: auto;" height="100%" width="100%"/>
+              <img src="../../../assets/img/user.png" *ngIf="person.picture==null" style="border-radius: 50%;" height="100%" width="100%"/>
+            </div>
             <div class="person-info">
               <div class="name">{{ post.person.firstName+ ' ' +post.person.lastName}}</div>
               <div class="posted">posted on {{post.dateOfPost | date:'medium'}} </div>
@@ -63,7 +66,10 @@
           </div>
           <div class="information">
             <div class="person">
-              <div class="pic"></div>
+              <div class="pic">
+                <img [src]="c.person.picture.url" *ngIf="c.person.picture!=null" style="border-radius: 50%; margin: auto;" height="100%" width="100%"/>
+                <img src="../../../assets/img/user.png" *ngIf="c.person.picture==null" style="border-radius: 50%;" height="100%" width="100%"/>
+              </div>
               <div class="person-info">
                 <div class="name"> {{ c.person.firstName + ' ' + c.person.lastName}} </div>
                 <div class="posted">posted on {{c.dateOfComment | date:'medium'}} </div>

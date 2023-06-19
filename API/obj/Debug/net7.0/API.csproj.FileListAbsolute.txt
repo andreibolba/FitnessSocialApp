@@ -516,3 +516,4 @@ Z:\InternShipApp\API\obj\Debug\net7.0\refint\API.dll
 Z:\InternShipApp\API\obj\Debug\net7.0\API.pdb
 Z:\InternShipApp\API\obj\Debug\net7.0\API.genruntimeconfig.cache
 Z:\InternShipApp\API\obj\Debug\net7.0\ref\API.dll
+Z:\InternShipApp\API\bin\Debug\net7.0\CloudinaryDotNet.dll

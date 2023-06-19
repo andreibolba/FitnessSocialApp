@@ -72,6 +72,7 @@ import { AssignTaskComponent } from './shared/tasks/assign-task/assign-task.comp
 import { UploadTaskSolutionComponent } from './shared/tasks/upload-task-solution/upload-task-solution.component';
 import { SeeAllTaskSolutionsComponent } from './shared/tasks/see-all-task-solutions/see-all-task-solutions.component';
 import { AddEditFeedbackComponent } from './shared/feedbacks/add-edit-feedback/add-edit-feedback.component';
+import { UploadPhotoComponent } from './shared/upload-photo/upload-photo.component';
 
 @NgModule({
   declarations: [
@@ -127,7 +128,8 @@ import { AddEditFeedbackComponent } from './shared/feedbacks/add-edit-feedback/a
     AssignTaskComponent,
     UploadTaskSolutionComponent,
     SeeAllTaskSolutionsComponent,
-    AddEditFeedbackComponent
+    AddEditFeedbackComponent,
+    UploadPhotoComponent
   ],
   imports: [
     Ng2SearchPipeModule,

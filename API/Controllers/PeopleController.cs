@@ -1,6 +1,7 @@
 using System.Security.Cryptography;
 using System.Text;
 using API.Dtos;
+using API.Interfaces;
 using API.Interfaces.Repository;
 using API.Models;
 using API.Utils;
@@ -14,11 +15,15 @@ namespace API.Controllers
     {
         private readonly IPersonRepository _personRepository;
         private readonly IPasswordLinkRepository _passwordLinkRepository;
+        private readonly IPhotoService _photoService;
+        private readonly IPictureRepository _pictureRepository;
 
-        public PeopleController(IPersonRepository personRepository, IPasswordLinkRepository passwordLinkRepository)
+        public PeopleController(IPersonRepository personRepository, IPasswordLinkRepository passwordLinkRepository, IPhotoService photoService, IPictureRepository pictureRepository)
         {
             _personRepository = personRepository;
             _passwordLinkRepository = passwordLinkRepository;
+            _photoService = photoService;
+            _pictureRepository = pictureRepository;
         }
 
         [HttpGet]
@@ -141,13 +146,58 @@ namespace API.Controllers
                 return BadRequest("Email exists!");
 
             _personRepository.Update(person);
-            return _personRepository.SaveAll() ? Ok() : BadRequest("Internal Server Error"); ;
+            return _personRepository.SaveAll() ? Ok() : BadRequest("Internal Server Error");
         }
 
         [HttpGet("tests/{personId:int}")]
         public ActionResult GetAllInternTest(int personId)
         {
             return Ok(_personRepository.GetAllInternTests(personId));
+        }
+
+        [HttpPost("picture/add/{personId:int}")]
+        public ActionResult AddPicture(int personId)
+        {
+            var user = _personRepository.GetPersonById(personId);
+
+            if (user == null)
+            {
+                return NotFound("User is now found");
+            }
+
+            IFormFile file = Request.Form.Files[0];
+
+            if (file == null || file.Length == 0)
+                return BadRequest("No image received!");
+
+            if (!file.ContentType.StartsWith("image/"))
+                return BadRequest("File is not a valid image!");
+
+            if (user.PictureId != null)
+            {
+                var res = _photoService.DeleleteImage(_pictureRepository.GetById(user.PictureId.Value).PublicId);
+                if (res.Error != null) return BadRequest(res.Error.Message);
+
+            }
+
+            var result = _photoService.AddImage(file,"InternHub/Users");
+
+            if (result.Error != null) return BadRequest(result.Error.Message);
+
+            var pic = _pictureRepository.AddPicture(new PictureDto
+            {
+                Url = result.SecureUrl.AbsoluteUri,
+                PublicId = result.PublicId
+            });
+
+            if(pic == null)
+                BadRequest("Internal Server Error");
+
+            user.PictureId = pic.PictureId;
+
+            _personRepository.Update(user);
+
+            return _personRepository.SaveAll() ? Ok() : BadRequest("Internal Server Error");
         }
     }
 }

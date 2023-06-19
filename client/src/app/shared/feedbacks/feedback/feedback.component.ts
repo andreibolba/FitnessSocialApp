@@ -43,6 +43,7 @@ export class FeedbackComponent implements OnInit, OnDestroy {
       this.personSubscription = this.dataStorage.getPerson(this.username, this.token).subscribe((data)=>{
         this.feedbackSubscription = this.dataStorage.getAllFeedbacksForSpecificForPerson(this.token,data.personId,data.status.toLocaleLowerCase()).subscribe((res)=>{
           this.feedbacks=res;
+          console.log(res);
         });
       });
     }

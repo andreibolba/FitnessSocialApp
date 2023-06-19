@@ -12,6 +12,10 @@ namespace API.Dtos
 
         public string Message { get; set; }
 
+        public int? PictureId { get; set; }
+
+        public PictureDto Picture { get; set; }
+
         public DateTime SendDate { get; set; }
 
         public GroupChatDto GroupChat { get; set; }

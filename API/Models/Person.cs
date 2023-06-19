@@ -25,6 +25,8 @@ public partial class Person
 
     public DateTime BirthDate { get; set; }
 
+    public int? PictureId { get; set; }
+
     public bool Deleted { get; set; }
 
     public virtual ICollection<ChallangeSolution> ChallangeSolutions { get; } = new List<ChallangeSolution>();
@@ -56,6 +58,8 @@ public partial class Person
     public virtual ICollection<Meeting> Meetings { get; } = new List<Meeting>();
 
     public virtual ICollection<Note> Notes { get; } = new List<Note>();
+
+    public virtual Picture PictureNavigation { get; set; }
 
     public virtual ICollection<PostCommentReaction> PostCommentReactions { get; } = new List<PostCommentReaction>();
 

@@ -49,6 +49,10 @@
               "target": "Package",
               "version": "[12.0.0, )"
             },
+            "CloudinaryDotNet": {
+              "target": "Package",
+              "version": "[1.21.0, )"
+            },
             "FluentMigrator": {
               "target": "Package",
               "version": "[3.3.2, )"

@@ -16,6 +16,10 @@
 
         public bool Downvote { get; set; }
 
+        public int? PictureId { get; set; }
+
+        public PictureDto Picture { get; set; }
+
         public DateTime? DateOfPost { get; set; }
 
         public int Karma { get; set; }

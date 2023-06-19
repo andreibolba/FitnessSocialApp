@@ -14,12 +14,14 @@ namespace API.Data
         private readonly InternShipAppSystemContext _context;
         private readonly IMapper _mapper;
         private readonly ITokenService _token;
+        private readonly IPictureRepository _pictureRepository;
 
-        public PersonRepository(InternShipAppSystemContext context, IMapper mapper, ITokenService token)
+        public PersonRepository(InternShipAppSystemContext context, IMapper mapper, ITokenService token, IPictureRepository pictureRepository)
         {
             _context = context;
             _mapper = mapper;
             _token = token;
+            _pictureRepository = pictureRepository;
         }
 
         public bool Create(PersonDto person)
@@ -77,11 +79,13 @@ namespace API.Data
 
         public IEnumerable<PersonDto> GetAllPerson()
         {
-            var allPerson = _mapper.Map<IEnumerable<PersonDto>>(_context.People.ToList().Where(g => g.Deleted == false));
+            var ppl = _context.People.Where(g => g.Deleted == false);
+            var allPerson = _mapper.Map<IEnumerable<PersonDto>>(ppl);
             foreach(var pers in allPerson)
             {
                 var allReactionsPosts = _context.PostCommentReactions.Where(r => r.Deleted == false && r.PostId!=null).Include(r => r.Post).ToList();
                 var allReactionsComments = _context.PostCommentReactions.Where(r => r.Deleted == false && r.CommentId !=null).Include(r => r.Comment).ToList();
+                var picture = pers.PictureId !=null ? _pictureRepository.GetById(pers.PictureId.Value): null;
 
                 var likesPost = allReactionsPosts.Where(p =>
                 p.Post.PersonId == pers.PersonId
@@ -101,6 +105,7 @@ namespace API.Data
                 && p.Upvote == false
                 && p.DownVote == true).Count();
 
+                pers.Picture = picture;
                 pers.Karma = (likesComment+ likesPost) - (dislikesComment+dislikesPost);
                 pers.Answers = _context.Comments.Where(c => c.Deleted == false && c.PersonId == pers.PersonId).Count();
             }

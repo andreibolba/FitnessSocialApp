@@ -10,7 +10,8 @@
         <div class="row">
             <div class="announcement" *ngFor="let note of notes">
                 <div class="pic">
-                    <img src="../../../assets/img/temp_user_photo.jpg" class="picture" />
+                    <img [src]="note.person.picture.url" *ngIf="note.person.picture!=null" style="border-radius: 50%; margin: auto;" height="100%" width="100%"/>
+                    <img src="../../../assets/img/user.png" *ngIf="note.person.picture==null" style="border-radius: 50%;" height="100%" width="100%"/>
                 </div>
                 <div class="note-title">
                     <h4 *ngIf="username != note.person.username"> {{ note.noteTitle }}</h4>

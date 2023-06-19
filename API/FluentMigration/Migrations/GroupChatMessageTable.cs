@@ -9,11 +9,13 @@ namespace API.FluentMigration.Migrations
         public const string tableName = "GroupChatMessage";
         public const string fkNamePerson = "GroupChatMessagePersonFK";
         public const string fkNameGroupChat = "GroupChatMessageGroupChatFK";
+        public const string fkPictureGroupChat = "GroupChatMessagePictureFK";
         public override void Down()
         {
             Delete.Table(tableName);
             Delete.ForeignKey(fkNamePerson);
             Delete.ForeignKey(fkNameGroupChat);
+            Delete.ForeignKey(fkPictureGroupChat);
         }
 
         public override void Up()
@@ -24,6 +26,7 @@ namespace API.FluentMigration.Migrations
                 .WithColumn("GroupChatId").AsInt32().NotNullable()
                 .WithColumn("Message").AsString(int.MaxValue).NotNullable()
                 .WithColumn("SendDate").AsDateTime().NotNullable()
+                .WithColumn("PictureId").AsInt32().Nullable()
                 .WithColumn("Deleted").AsBoolean().NotNullable();
 
             Create.ForeignKey(fkNamePerson)
@@ -33,6 +36,10 @@ namespace API.FluentMigration.Migrations
             Create.ForeignKey(fkNameGroupChat)
                 .FromTable(tableName).ForeignColumn("GroupChatId")
                 .ToTable(GroupChatTable.tableName).PrimaryColumn("GroupChatId");
+
+            Create.ForeignKey(fkPictureGroupChat)
+                .FromTable(tableName).ForeignColumn("PictureId")
+                .ToTable(PictureTable.tableName).PrimaryColumn("PictureId");
         }
     }
 }

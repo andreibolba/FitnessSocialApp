@@ -9,8 +9,9 @@
     <div class="announcements">
         <div class="row" *ngIf="feedbacks.length!=0">
             <div class="announcement" *ngFor="let feedback of feedbacks">
-                <div class="pic">
-                    <img src="../../../assets/img/temp_user_photo.jpg" class="picture" />
+                <div class="pic" style="border-radius: 50%; background-color: white;">
+                    <img [src]="feedback.intern.picture.url" *ngIf="feedback.intern.picture!=null" style="border-radius: 50%; margin: auto;" height="100%" width="100%"/>
+                    <img src="../../../assets/img/user.png" *ngIf="feedback.intern.picture==null" style="border-radius: 50%;" height="100%" width="100%"/>
                 </div>
                 <div class="note-title">
                     <h4 *ngIf="username != feedback.trainer.username"> {{ feedback.intern.firstName + ' ' + feedback.intern.lastName }}</h4>

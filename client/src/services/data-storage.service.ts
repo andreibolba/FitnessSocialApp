@@ -47,6 +47,12 @@ export class DataStorageService {
     });
   }
 
+  sendPictureForPerson(token:string,fd:FormData,personId:number){
+    const headers = { Authorization: 'Bearer ' + token, Accept: 'application/json'};
+    return this.http.post(this.baseUrl + 'people/picture/add/'+personId, fd, { headers: headers });
+  }
+
+
   getPersonById(id: number, token: string) {
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.get<Person>(this.baseUrl + 'people/' + id, {
@@ -136,6 +142,11 @@ export class DataStorageService {
   getGroupById(token: string, groupId: number) {
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.get<Object>(this.baseUrl + 'group/' + groupId, { headers: headers });
+  }
+
+  sendPictureForGroup(token:string,fd:FormData,groupId:number){
+    const headers = { Authorization: 'Bearer ' + token, Accept: 'application/json'};
+    return this.http.post(this.baseUrl + 'group/picture/add/'+groupId, fd, { headers: headers });
   }
 
   addGroup(token: string, group: Group) {

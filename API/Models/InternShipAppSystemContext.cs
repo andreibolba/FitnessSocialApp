@@ -160,6 +160,7 @@ public partial class InternShipAppSystemContext : DbContext
             entity.ToTable("Feedback");
 
             entity.Property(e => e.Content).IsRequired();
+            entity.Property(e => e.DateOfPost).HasColumnType("datetime");
 
             entity.HasOne(d => d.Challange).WithMany(p => p.Feedbacks)
                 .HasForeignKey(d => d.ChallangeId)
@@ -556,9 +557,7 @@ public partial class InternShipAppSystemContext : DbContext
             entity.ToTable("TaskSolution");
 
             entity.Property(e => e.DateOfSolution).HasColumnType("datetime");
-            entity.Property(e => e.SolutionFile)
-                .IsRequired()
-                .HasMaxLength(8000);
+            entity.Property(e => e.SolutionFile).IsRequired();
 
             entity.HasOne(d => d.Intern).WithMany(p => p.TaskSolutions)
                 .HasForeignKey(d => d.InternId)

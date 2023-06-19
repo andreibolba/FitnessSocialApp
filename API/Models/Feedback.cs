@@ -19,6 +19,8 @@ public partial class Feedback
 
     public string Content { get; set; }
 
+    public DateTime DateOfPost { get; set; }
+
     public bool Deleted { get; set; }
 
     public virtual Challange Challange { get; set; }

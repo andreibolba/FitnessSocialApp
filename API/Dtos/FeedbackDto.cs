@@ -18,6 +18,8 @@ namespace API.Dtos
 
         public string Content { get; set; }
 
+        public DateTime DateOfPost { get; set; }
+
         public ChallengeDto Challange { get; set; }
 
         public PersonDto Intern { get; set; }

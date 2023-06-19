@@ -32,6 +32,7 @@ namespace API.FluentMigration.Migrations
                 .WithColumn("ChallangeId").AsInt32().Nullable()
                 .WithColumn("TestId").AsInt32().Nullable()
                 .WithColumn("Content").AsString(int.MaxValue).NotNullable()
+                .WithColumn("DateOfPost").AsDateTime().NotNullable()
                 .WithColumn("Deleted").AsBoolean().NotNullable();
 
             Create.ForeignKey(fkNameIntern)

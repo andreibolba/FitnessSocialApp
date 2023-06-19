@@ -58,7 +58,7 @@ export class SeeSolutionsComponent implements OnInit, OnDestroy {
           });
         }else{
           this.getIdSubscription = this.utils.challengeIdForSolutionsToEdit.subscribe((res) => {
-            this.challengeSubscription = this.dataStorage.getAllChallenges(this.token, data.status).subscribe((ch)=>{
+            this.challengeSubscription = this.dataStorage.getAllChallengesForPeople(this.token, data.status).subscribe((ch)=>{
               let challenge = ch.find(f=>f.challangeId == res);
               this.maxPoints = challenge?.points!;
             });

@@ -48,7 +48,7 @@ export class ChallengesComponent implements OnInit, OnDestroy {
       this.getPersonSubscription = this.dataStorage.getPerson(person.username, person.token).subscribe((res) => {
         this.canAddEdit = res.status == 'Trainer';
         this.isIntern = res.status =="Intern";
-        this.getChallengesSubscription = this.dataStorage.getAllChallenges(this.token, res.status).subscribe((data) => {
+        this.getChallengesSubscription = this.dataStorage.getAllChallengesForPeople(this.token, res.status).subscribe((data) => {
           this.challenges = data;
           this.challenges.forEach(element => {
             element.canDelete = new Date(element.deadline) > new Date;

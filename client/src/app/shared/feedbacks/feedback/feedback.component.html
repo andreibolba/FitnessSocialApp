@@ -1,0 +1,36 @@
+<div id="main">
+    <div style="display: flex;">
+        <div style="display: flex; height: 10%; width:100%;">
+            <i class="uil uil-feedback" style="font-size: 35px; margin-top: -7px;"></i>
+            <h2>Feedback</h2>
+        </div>
+        <button class="btn btn-success" id="add" (click)="onAdd()">Add feedback</button>
+    </div>
+    <div class="announcements">
+        <div class="row" *ngIf="feedbacks.length!=0">
+            <div class="announcement" *ngFor="let feedback of feedbacks">
+                <div class="pic">
+                    <img src="../../../assets/img/temp_user_photo.jpg" class="picture" />
+                </div>
+                <div class="note-title">
+                    <h4 *ngIf="username != feedback.trainer.username"> {{ feedback.intern.firstName + ' ' + feedback.intern.lastName }}</h4>
+                    <h4 *ngIf="username == feedback.trainer.username" (click)="onEdit(feedback)"
+                     style="text-decoration: underline;" class="link"> {{ feedback.intern.firstName + ' ' + feedback.intern.lastName }}</h4>
+                </div>
+                <div class="note-body">
+                    <p>
+                        {{ feedback.content }}
+                    </p>
+                </div>
+                <div class="footer">
+                    created by {{ feedback.trainer.lastName + ' ' + feedback.trainer.firstName }} at {{ feedback.dateOfPost | date:'medium' }}<br>
+                    <div *ngIf="username == feedback.trainer.username" class="title-click" (click)="onDelete(feedback)">
+                        delete feedback
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p *ngIf="feedbacks.length==0">You don't have feedbacks!</p>
+    </div>
+
+</div>

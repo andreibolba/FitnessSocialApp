@@ -16,6 +16,7 @@ import { Note } from 'src/model/note.model';
 import { Challenge } from 'src/model/challenge.model';
 import { ChallengeSolution } from 'src/model/challengesolution.model';
 import { Task } from 'src/model/task.model';
+import { Feedback } from 'src/model/feedback.model';
 
 @Injectable({
   providedIn: 'root'
@@ -54,6 +55,7 @@ export class UtilsService {
   taskToEdit = new BehaviorSubject<Task | null>(null);
   taskIdToUpload = new BehaviorSubject<number>(-1);
   isOnChallanges=new BehaviorSubject<boolean>(true);
+  feedbackToEdit = new BehaviorSubject<Feedback | null>(null);
   dashboardChanged=new EventEmitter<boolean>(true);
 
   error=new BehaviorSubject<{errorCode:number,errorTitle:string,errorMessage:string} | null>(null);

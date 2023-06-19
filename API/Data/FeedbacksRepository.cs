@@ -2,15 +2,16 @@
 using API.Interfaces.Repository;
 using API.Models;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 
 namespace API.Data
 {
-    public class FeedbackRepository : IFeedbackRepository
+    public class FeedbacksRepository : IFeedbackRepository
     {
         private readonly InternShipAppSystemContext _context;
         private readonly IMapper _mapper;
 
-        public FeedbackRepository(InternShipAppSystemContext context, IMapper mapper)
+        public FeedbacksRepository(InternShipAppSystemContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
@@ -38,24 +39,41 @@ namespace API.Data
             var feebdack = _mapper.Map<Feedback>(GetFeedbackById(feedbackDto.FeedbackId));
 
             feebdack.Content = feedbackDto.Content==null ? feebdack.Content : feedbackDto.Content;
+            feebdack.Grade = feedbackDto.Grade != null ? feebdack.Grade : feedbackDto.Grade.Value;
             feebdack.ChallangeId = feedbackDto.ChallangeId;
             feebdack.TaskId = feedbackDto.TaskId;
             feebdack.TestId = feedbackDto.TestId;
 
             _context.Feedbacks.Update(feebdack);
 
-            return SaveAll()? _mapper.Map<FeedbackDto>(feebdack) : null;
+            return SaveAll() ? _mapper.Map<FeedbackDto>(feebdack) : null;
         }
 
         public IEnumerable<FeedbackDto> GetAllFeedback()
         {
-            var res = _context.Feedbacks.Where(f => f.Deleted == false);
+            var res = _context.Feedbacks.Where(f => f.Deleted == false).OrderBy(t=>t.DateOfPost)
+                .Include(t => t.Task)
+                .Include(t => t.Challange)
+                .Include(t => t.Intern)
+                .Include(t => t.Trainer)
+                .Include(t => t.Test);
             return _mapper.Map<IEnumerable<FeedbackDto>>(res);
         }
 
-        public IEnumerable<FeedbackDto> GetAllFeedbackForSpecificPerson(int personId)
+        public IEnumerable<FeedbackDto> GetAllFeedbackForSpecificPerson(int personId, int? count = null)
         {
-            return GetAllFeedback().Where(f=>f.InternId==personId);
+            var getAllFeedback = GetAllFeedback().Where(f => f.InternId == personId);
+            if (count != null && getAllFeedback.Count() >= count.Value)
+                return getAllFeedback.Take(count.Value);
+            return getAllFeedback;
+        }
+
+        public IEnumerable<FeedbackDto> GetAllFeedbackForSpecificTrainer(int trainerId, int? count = null)
+        {
+            var getAllFeedback = GetAllFeedback().Where(f => f.TrainerId == trainerId);
+            if (count != null && getAllFeedback.Count() >= count.Value)
+                return getAllFeedback.Take(count.Value);
+            return getAllFeedback;
         }
 
         public FeedbackDto GetFeedbackById(int id)

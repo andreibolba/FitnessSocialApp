@@ -42,7 +42,7 @@ namespace API.Extensions
             services.AddScoped<ITaskSolutionRepository,TaskSolutionRepository>();
             services.AddScoped<ITaskInternGroupRepository,TaskInternGroupRepository>();
             services.AddScoped<ISubTaskRepository,SubTaskRepository>();
-            services.AddScoped<IFeedbackRepository,FeedbackRepository>();
+            services.AddScoped<IFeedbackRepository,FeedbacksRepository>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             return services;
         }

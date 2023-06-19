@@ -20,7 +20,7 @@ import { ProfileComponent } from './shared/profile/profile.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { NoteComponent } from './shared/notes/note/note.component';
-import { FeedbackComponent } from './shared/feedback/feedback.component';
+import { FeedbackComponent } from './shared/feedbacks/feedback/feedback.component';
 import { TestComponent } from './shared/tests/test/test.component';
 import { ToastrModule } from 'ngx-toastr';
 import { MatTableModule } from '@angular/material/table';
@@ -71,6 +71,7 @@ import { AddEditTaskComponent } from './shared/tasks/add-edit-task/add-edit-task
 import { AssignTaskComponent } from './shared/tasks/assign-task/assign-task.component';
 import { UploadTaskSolutionComponent } from './shared/tasks/upload-task-solution/upload-task-solution.component';
 import { SeeAllTaskSolutionsComponent } from './shared/tasks/see-all-task-solutions/see-all-task-solutions.component';
+import { AddEditFeedbackComponent } from './shared/feedbacks/add-edit-feedback/add-edit-feedback.component';
 
 @NgModule({
   declarations: [
@@ -125,7 +126,8 @@ import { SeeAllTaskSolutionsComponent } from './shared/tasks/see-all-task-soluti
     AddEditTaskComponent,
     AssignTaskComponent,
     UploadTaskSolutionComponent,
-    SeeAllTaskSolutionsComponent
+    SeeAllTaskSolutionsComponent,
+    AddEditFeedbackComponent
   ],
   imports: [
     Ng2SearchPipeModule,

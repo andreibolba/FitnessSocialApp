@@ -16,6 +16,8 @@ namespace API.Dtos
 
         public int? TestId { get; set; }
 
+        public double? Grade { get; set; }
+
         public string Content { get; set; }
 
         public DateTime DateOfPost { get; set; }

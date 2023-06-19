@@ -7,7 +7,7 @@ import { AuthentificationComponent } from './authentification/authentification.c
 import { ErrorComponent } from './error/error.component';
 import { ForumComponent } from './forum/forum/forum.component';
 import { HomeComponent } from './home/home.component';
-import { FeedbackComponent } from './shared/feedback/feedback.component';
+import { FeedbackComponent } from './shared/feedbacks/feedback/feedback.component';
 import { DashboardComponent } from './shared/groups/groups-dashboard/dashboard/dashboard.component';
 import { MeetingComponent } from './shared/meetings/meeting/meeting.component';
 import { NoteComponent } from './shared/notes/note/note.component';

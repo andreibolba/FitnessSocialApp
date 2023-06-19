@@ -1,0 +1,57 @@
+<h3>{{operation}} feedback</h3>
+<div id="main">
+    <form #registerForm="ngForm" (ngSubmit)="onSignUpSubmit()" autocomplete="off">
+
+        <div class="infos">
+            <div class="info">
+                <label for="feedbackContent">Feedback Content</label>
+                <textarea id="feedbackContent" placeholder="Feedback Content" name="feedbackContent"
+                    [(ngModel)]="content" required>
+        </textarea>
+            </div>
+        </div>
+        <div class="infos" style="display: flex;">
+
+            <div class="info" id="combo2">
+                <label for="intern">Intern</label>
+                <select #intern (change)="selectIntern(intern.value)" id="intern" name="intern" size="1">
+                    <option *ngFor="let i of interns" [value]="i.InternId">{{ i.InternName }}</option>
+                </select>
+            </div>
+            <div class="info" id="combo2">
+                <label for="grade">Grade</label>
+                <input type="number" id="grade" ngModel placeholder="Grade" [(ngModel)]="grade" name="grade" required autocomplete="off">
+            </div>
+        </div>
+
+        <div class="infos" style="display: flex;">
+
+            <div class="info" id="combo">
+                <label for="intern">Task</label>
+                <select #intern (change)="selectTask(intern.value)" id="intern" name="intern" size="1">
+                    <option *ngFor="let t of tasks" [value]="t.TaskId">{{ t.TaskName }}</option>
+                </select>
+            </div>
+            <div class="info" id="combo">
+                <label for="test">Test</label>
+                <select #test (change)="selectTest(test.value)" id="test" name="test" size="1" min="1" max="10">
+                    <option *ngFor="let t of tests" [value]="t.TestId">{{ t.TestName }}</option>
+                </select>
+            </div>
+            <div class="info" id="combo">
+                <label for="challenge">Challenge</label>
+                <select #challenge (change)="selectChallenge(challenge.value)" id="challenge" name="challenge" size="1">
+                    <option *ngFor="let c of challenges" [value]="c.ChallengeId">{{ c.ChallengeName }}</option>
+                </select>
+            </div>
+        </div>
+
+
+
+
+        <mat-dialog-actions align="center">
+            <button mat-button mat-dialog-close>Cancel</button>
+            <button type="submit" [disabled]="!registerForm.valid" mat-button cdkFocusInitial> {{ operation }}</button>
+        </mat-dialog-actions>
+    </form>
+</div>

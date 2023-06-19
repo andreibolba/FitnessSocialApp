@@ -23,6 +23,7 @@ import { TaskSolution } from 'src/model/tasksolution.model';
 import { SubTask } from 'src/model/subtask.model';
 import { TaskIntern } from 'src/model/taskintern.model';
 import { TaskGroup } from 'src/model/taskgroup.model';
+import { Feedback } from 'src/model/feedback.model';
 
 @Injectable({
   providedIn: 'root',
@@ -276,6 +277,12 @@ export class DataStorageService {
 
   //tests
 
+  getAllTests(token: string) {
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<Test[]>(this.baseUrl + 'test', {
+      headers: headers,
+    });
+  }
 
   getMyTests(token: string, trainerId: number, status: string) {
     const headers = { Authorization: 'Bearer ' + token };
@@ -725,7 +732,12 @@ export class DataStorageService {
 
   //challenge
 
-  getAllChallenges(token: string, status: string) {
+  getAllChallenges(token: string) {
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<Challenge[]>(this.baseUrl + 'challenge', { headers: headers });
+  }
+
+  getAllChallengesForPeople(token: string, status: string) {
     const headers = { Authorization: 'Bearer ' + token };
     return status == "Trainer" ? this.http.get<Challenge[]>(this.baseUrl + 'challenge', { headers: headers }) : this.http.get<Challenge[]>(this.baseUrl + 'challenge/intern', { headers: headers });
   }
@@ -956,5 +968,59 @@ export class DataStorageService {
     this.http.get(this.baseUrl + 'tasks/solutions/download/' + solid, { headers: headers, responseType: 'blob' }).subscribe(response => {
       this.saveFile(response);
     });
+  }
+
+  //feedback
+
+  getAllFeedbacks(token:string){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<Feedback[]>(this.baseUrl + 'feedbacks', { headers: headers });
+  }
+
+  getfeedbackById(token:string, feedbacksId:number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<Feedback>(this.baseUrl + 'feedbacks/'+feedbacksId, { headers: headers });
+  }
+
+  getAllFeedbacksForSpecificForPerson(token:string, personid:number,status:string){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<Feedback[]>(this.baseUrl + 'feedbacks/'+ personid +'/'+status, { headers: headers });
+  }
+
+  getAllFeedbacksForSpecificForPersonFirstCount(token:string, personid:number,status:string, count:number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<Feedback[]>(this.baseUrl + 'feedbacks/'+ personid +'/'+status +'/'+count, { headers: headers });
+  }
+
+  addFeedback(token:string, feedback:Feedback){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post<Feedback>(this.baseUrl + 'feedbacks/add', {
+      trainerId:feedback.trainerId,
+      internId:feedback.internId,
+      taskId:feedback.taskId,
+      challangeId:feedback.challangeId,
+      testId:feedback.testId,
+      grade:feedback.grade,
+      content:feedback.content
+    }, { headers: headers });
+  }
+
+  editFeedback(token:string, feedback:Feedback){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post<Feedback>(this.baseUrl + 'feedbacks/edit', {
+      feedbackId:feedback.feedbackId,
+      trainerId:feedback.trainerId,
+      internId:feedback.internId,
+      taskId:feedback.taskId,
+      challangeId:feedback.challangeId,
+      testId:feedback.testId,
+      grade:feedback.grade,
+      content:feedback.content
+    }, { headers: headers });
+  }
+
+  deleteFeedback(token:string, feedbackId:number){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post(this.baseUrl + 'feedbacks/delete/'+feedbackId,{}, { headers: headers });
   }
 }

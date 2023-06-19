@@ -32,6 +32,7 @@ namespace API.FluentMigration.Migrations
                 .WithColumn("ChallangeId").AsInt32().Nullable()
                 .WithColumn("TestId").AsInt32().Nullable()
                 .WithColumn("Content").AsString(int.MaxValue).NotNullable()
+                .WithColumn("Grade").AsDouble().NotNullable()
                 .WithColumn("DateOfPost").AsDateTime().NotNullable()
                 .WithColumn("Deleted").AsBoolean().NotNullable();
 

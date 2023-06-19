@@ -10,12 +10,14 @@ namespace API.Data
     {
         private readonly InternShipAppSystemContext _context;
         private readonly IPersonRepository _personRepository;
+        private readonly IPictureRepository _pictureRepository;
         private readonly IMapper _mapper;
 
-        public PostRepository(InternShipAppSystemContext context, IPersonRepository personRepository, IMapper mapper)
+        public PostRepository(InternShipAppSystemContext context, IPersonRepository personRepository, IPictureRepository pictureRepository, IMapper mapper)
         {
             _context = context;
             _personRepository = personRepository;
+            _pictureRepository = pictureRepository;
             _mapper = mapper;
         }
 
@@ -76,6 +78,8 @@ namespace API.Data
                 && p.CommentId == null
                 && p.Upvote == false
                 && p.DownVote == true).Count();
+
+                a.Picture = a.PictureId == null ? null : _pictureRepository.GetById(a.PictureId.Value);
                 a.Karma = likes - dislikes;
                 a.Views = _context.PostViews.Where(pw => pw.Deleted == false && pw.PostId == a.PostId).Count();
             }

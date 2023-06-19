@@ -4,6 +4,8 @@ import { LoggedPerson } from 'src/model/loggedperson.model';
 import { Person } from 'src/model/person.model';
 import { DataStorageService } from 'src/services/data-storage.service';
 import { UtilsService } from 'src/services/utils.service';
+import { UploadPhotoComponent } from '../upload-photo/upload-photo.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-profile',
@@ -16,7 +18,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
   person!: Person;
   isLoading=true;
 
-  constructor(private dataService: DataStorageService, private utils:UtilsService) {}
+  constructor(private dataService: DataStorageService, private utils:UtilsService, private dialog:MatDialog) {}
 
   ngOnInit(): void {
     this.utils.initializeError();
@@ -48,5 +50,18 @@ export class ProfileComponent implements OnInit, OnDestroy {
   }
   ngOnDestroy(): void {
     if(this.dataSub) this.dataSub.unsubscribe();
+  }
+
+  openDialog() {
+    const dialogRef =this.dialog.open(UploadPhotoComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  onChangePicture(id:number){
+    this.utils.idToPictureUpload.next(0);
+    this.openDialog();
   }
 }

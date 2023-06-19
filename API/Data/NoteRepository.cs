@@ -10,11 +10,13 @@ namespace API.Data
     {
         private readonly InternShipAppSystemContext _context;
         private readonly IMapper _mapper;
+        private readonly IPictureRepository _pictureRepository;
 
-        public NoteRepository(InternShipAppSystemContext context, IMapper mapper)
+        public NoteRepository(InternShipAppSystemContext context, IMapper mapper, IPictureRepository pictureRepository)
         {
             _context = context;
             _mapper = mapper;
+            _pictureRepository = pictureRepository;
         }
 
         public NoteDto CreateNote(NoteDto note)
@@ -36,7 +38,15 @@ namespace API.Data
         public IEnumerable<NoteDto> GetAllNotes()
         {
             var allNotes = _context.Notes.Where(n => n.Deleted == false).Include(n => n.Person).OrderByDescending(n=>n.PostingDate);
-            return _mapper.Map<IEnumerable<NoteDto>>(allNotes);
+
+            var result = _mapper.Map<IEnumerable<NoteDto>>(allNotes);
+
+            foreach (var item in result)
+            {
+                item.Person.Picture = item.Person.PictureId != null ? _pictureRepository.GetById(item.Person.PictureId.Value) : null;
+            }
+
+            return result;
         }
 
         public NoteDto GetNoteById(int noteId)

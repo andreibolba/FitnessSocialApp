@@ -15,11 +15,15 @@ public partial class Post
 
     public DateTime DateOfPost { get; set; }
 
+    public int? PictureId { get; set; }
+
     public bool Deleted { get; set; }
 
     public virtual ICollection<Comment> Comments { get; } = new List<Comment>();
 
     public virtual Person Person { get; set; }
+
+    public virtual Picture Picture { get; set; }
 
     public virtual ICollection<PostCommentReaction> PostCommentReactions { get; } = new List<PostCommentReaction>();
 

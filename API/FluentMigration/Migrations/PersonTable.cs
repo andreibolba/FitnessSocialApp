@@ -6,9 +6,11 @@ namespace API.FluentMigration.Migrations
     public class PersonTable:Migration
     {
         public const string tableName = "Person";
+        public const string picturePersonFK = "PersonPictureFK";
         public override void Down()
         {
             Delete.Table(tableName);
+            Delete.Table(picturePersonFK);
         }
 
         public override void Up()
@@ -24,7 +26,12 @@ namespace API.FluentMigration.Migrations
                 .WithColumn("Status").AsString().NotNullable()
                 .WithColumn("Picture").AsString(int.MaxValue).Nullable()
                 .WithColumn("BirthDate").AsDateTime().NotNullable()
+                .WithColumn("PictureId").AsInt32().Nullable()
                 .WithColumn("Deleted").AsBoolean().NotNullable();
+
+            Create.ForeignKey(picturePersonFK)
+                .FromTable(tableName).ForeignColumn("PictureId")
+                .ToTable(PictureTable.tableName).PrimaryColumn("PictureId");
         }
     }
 }

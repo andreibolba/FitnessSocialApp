@@ -37,9 +37,9 @@ namespace API.Data
 
         public void DeleteMessage(int id)
         {
-            var message = GetMessageById(id);
+            var message = _mapper.Map<Chat>(GetMessageById(id));
             message.Deleted = true;
-            _context.Chats.Update(_mapper.Map<Chat>(message));
+            _context.Chats.Update(message);
         }
 
         public IEnumerable<MessageDto> GetAllMessages()

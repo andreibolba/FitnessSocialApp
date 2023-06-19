@@ -24,7 +24,7 @@
   background-color: rgb(53, 53, 53);
   border-radius: 18px;
   margin-top: -80px;
-  margin-left: 178px;
+  margin-left: 198px;
 }
 
 .edit:hover{
@@ -41,7 +41,6 @@
   height: 130px;
   width: 130px;
   border-radius: 65px;
-  background-image: url('../../../../../../img/Microsoft_.NET_logo.svg.png');
   background-size: cover;
 }
 

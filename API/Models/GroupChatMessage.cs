@@ -15,9 +15,13 @@ public partial class GroupChatMessage
 
     public DateTime SendDate { get; set; }
 
+    public int? PictureId { get; set; }
+
     public bool Deleted { get; set; }
 
     public virtual GroupChat GroupChat { get; set; }
 
     public virtual Person Person { get; set; }
+
+    public virtual Picture Picture { get; set; }
 }

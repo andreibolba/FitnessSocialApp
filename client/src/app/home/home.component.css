@@ -83,7 +83,6 @@
   width: 40px;
   border-radius: 6px;
   object-fit: cover;
-  background-image: url("../../../img/temp_user_photo.jpg");
   background-size: cover;
 }
 .top  .profile-details .admin_name{

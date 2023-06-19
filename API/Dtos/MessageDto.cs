@@ -14,7 +14,9 @@ namespace API.Dtos
 
         public DateTime SendDate { get; set; }
 
-        public bool Deleted { get; set; }
+        public int? PictureId { get; set; }
+
+        public PictureDto Picture { get; set; }
 
         public PersonDto PersonReceiver { get; set; }
 

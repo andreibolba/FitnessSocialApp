@@ -9,11 +9,13 @@ namespace API.Data
     public class FeedbacksRepository : IFeedbackRepository
     {
         private readonly InternShipAppSystemContext _context;
+        private readonly IPictureRepository _pictureRepository;
         private readonly IMapper _mapper;
 
-        public FeedbacksRepository(InternShipAppSystemContext context, IMapper mapper)
+        public FeedbacksRepository(InternShipAppSystemContext context, IPictureRepository pictureRepository, IMapper mapper)
         {
             _context = context;
+            _pictureRepository = pictureRepository;
             _mapper = mapper;
         }
 
@@ -57,7 +59,15 @@ namespace API.Data
                 .Include(t => t.Intern)
                 .Include(t => t.Trainer)
                 .Include(t => t.Test);
-            return _mapper.Map<IEnumerable<FeedbackDto>>(res);
+
+            var result = _mapper.Map<IEnumerable<FeedbackDto>>(res);
+
+            foreach(var item in result)
+            {
+                item.Intern.Picture = item.Intern.PictureId!=null? _pictureRepository.GetById(item.Intern.PictureId.Value): null;
+            }
+
+            return result;
         }
 
         public IEnumerable<FeedbackDto> GetAllFeedbackForSpecificPerson(int personId, int? count = null)

@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { EditGroupDialogComponent } from 'src/app/admin/edit-group-dialog/edit-group-dialog.component';
+import { UploadPhotoComponent } from 'src/app/shared/upload-photo/upload-photo.component';
 import { Group } from 'src/model/group.model';
 import { LoggedPerson } from 'src/model/loggedperson.model';
 import { Person } from 'src/model/person.model';
@@ -63,11 +64,12 @@ export class GroupComponent implements OnInit, OnDestroy {
   }
 
   edit(){
-    console.log("Click");
+    this.utils.idToPictureUpload.next(this.group.groupId);
+    this.openDialog(2);
   }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(EditGroupDialogComponent);
+  openDialog(op:number) {
+    const dialogRef = op==1 ? this.dialog.open(EditGroupDialogComponent):this.dialog.open(UploadPhotoComponent);
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
@@ -76,6 +78,6 @@ export class GroupComponent implements OnInit, OnDestroy {
 
   editGroup(group:Group){
     this.utils.groupToEdit.next(group);
-    this.openDialog();
+    this.openDialog(1);
   }
 }

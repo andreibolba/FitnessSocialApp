@@ -10,7 +10,10 @@
 <div id="main">
   <div class="forum" *ngFor="let post of posts">
     <div class="person">
-      <div class="picture"></div>
+      <div class="picture">
+        <img [src]="person.picture.url" *ngIf="person.picture!=null" style="border-radius: 50%; margin: auto;" height="100%" width="100%"/>
+        <img src="../../../assets/img/user.png" *ngIf="person.picture==null" style="border-radius: 50%;" height="100%" width="100%"/>
+      </div>
       <div class="name">
         {{ post.person.firstName + ' ' + post.person.lastName}}
       </div>

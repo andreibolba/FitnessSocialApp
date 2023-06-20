@@ -10,13 +10,13 @@ import { UtilsService } from 'src/services/utils.service';
 import { AddEditNoteComponent } from '../../notes/add-edit-note/add-edit-note.component';
 import { Feedback } from 'src/model/feedback.model';
 
-export class InternCombo {
-  public InternId: number;
-  public InternName: string;
+export class PersonCombo {
+  public PersonId: number;
+  public PersonName: string;
 
   constructor() {
-    this.InternId = -1;
-    this.InternName = '';
+    this.PersonId = -1;
+    this.PersonName = '';
   }
 }
 
@@ -67,13 +67,13 @@ export class AddEditFeedbackComponent implements OnInit, OnDestroy {
   grade: number = 1;
   operation: string = '';
   person: Person = new Person();
-  interns: InternCombo[] = [];
+  people: PersonCombo[] = [];
   tasks: TaskCombo[] = [];
   challenges: ChallengeCombo[] = [];
   tests: TestCombo[] = [];
   private token: string = '';
   private feedbackId: number = -1;
-  private currentInternId: number = -1;
+  private currentPersonId: number = -1;
   private currentTestId: number = -1;
   private currentTaskId: number = -1;
   private currentChallengeId: number = -1;
@@ -110,19 +110,18 @@ export class AddEditFeedbackComponent implements OnInit, OnDestroy {
           if (data) {
             this.person = data;
             this.getPeopleSubscription = this.dataStorage.getPeople(this.token).subscribe((ppl) => {
-              ppl = ppl.filter(p => p.status == "Intern");
               ppl.forEach(element => {
-                let ic = new InternCombo;
-                ic.InternId = element.personId;
-                ic.InternName = element.firstName + ' ' + element.lastName;
-                this.interns.push(ic);
+                let ic = new PersonCombo;
+                ic.PersonId = element.personId;
+                ic.PersonName = element.firstName + ' ' + element.lastName;
+                this.people.push(ic);
               });
-              this.currentInternId = ppl[0].personId;
+              this.currentPersonId = ppl[0].personId;
             }, () => { }, () => {
               if (res != null) {
-                let indexIntern = this.interns.findIndex(g => g.InternId == res.internId);
-                if (indexIntern != -1) {
-                  [this.interns[0], this.interns[indexIntern]] = [this.interns[indexIntern], this.interns[0]];
+                let indexPerson = this.people.findIndex(g => g.PersonId == res.personReceiverId);
+                if (indexPerson != -1) {
+                  [this.people[0], this.people[indexPerson]] = [this.people[indexPerson], this.people[0]];
                 }
               }
             });
@@ -193,8 +192,8 @@ export class AddEditFeedbackComponent implements OnInit, OnDestroy {
   onSignUpSubmit() {
     let feedback = new Feedback();
     feedback.content = this.content;
-    feedback.trainerId = this.person.personId;
-    feedback.internId = this.currentInternId;
+    feedback.personSenderId = this.person.personId;
+    feedback.personReceiverId = this.currentPersonId;
     feedback.challangeId = this.currentChallengeId == -1 ? null : this.currentChallengeId;
     feedback.taskId = this.currentTaskId == -1 ? null : this.currentTaskId;
     feedback.testId = this.currentTestId == -1 ? null : this.currentTestId;
@@ -218,7 +217,7 @@ export class AddEditFeedbackComponent implements OnInit, OnDestroy {
   }
 
   selectIntern(id: string) {
-    this.currentInternId = +id;
+    this.currentPersonId = +id;
   }
 
   selectTest(id: string) {

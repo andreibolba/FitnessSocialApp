@@ -40,7 +40,7 @@ export class SeeFeedbackComponent implements OnInit, OnDestroy {
       this.getFeedbakSubscription = this.utils.feedbackToEdit.subscribe((res) => {
         if(res)
           this.feedback=res;
-          this.fullName = res?.trainer.firstName + ' '+res?.trainer.lastName;
+          this.fullName = res?.personSender.firstName + ' '+res?.personSender.lastName;
       });
 
     }

@@ -13,9 +13,9 @@
         <div class="infos" style="display: flex;">
 
             <div class="info" id="combo2">
-                <label for="intern">Intern</label>
-                <select #intern (change)="selectIntern(intern.value)" id="intern" name="intern" size="1">
-                    <option *ngFor="let i of interns" [value]="i.InternId">{{ i.InternName }}</option>
+                <label for="person">Person</label>
+                <select #person (change)="selectIntern(person.value)" id="person" name="person" size="1">
+                    <option *ngFor="let i of people" [value]="i.PersonId">{{ i.PersonName }}</option>
                 </select>
             </div>
             <div class="info" id="combo2">

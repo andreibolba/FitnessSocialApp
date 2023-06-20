@@ -83,7 +83,7 @@ public partial class InternShipAppSystemContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=ANDREIB;Initial Catalog=InternShipAppSystem;User Id=sa;Password=1234%asd; TrustServerCertificate=True");
+        => optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=InternShipAppSystem;User Id=sa;Password=1234%asd; TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -172,10 +172,15 @@ public partial class InternShipAppSystemContext : DbContext
                 .HasForeignKey(d => d.ChallangeId)
                 .HasConstraintName("FeedbackChallangeFK");
 
-            entity.HasOne(d => d.Intern).WithMany(p => p.FeedbackInterns)
-                .HasForeignKey(d => d.InternId)
+            entity.HasOne(d => d.PersonReceiver).WithMany(p => p.FeedbackPersonReceivers)
+                .HasForeignKey(d => d.PersonReceiverId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FeedbackInternFK");
+                .HasConstraintName("FeedbackReceiverFK");
+
+            entity.HasOne(d => d.PersonSender).WithMany(p => p.FeedbackPersonSenders)
+                .HasForeignKey(d => d.PersonSenderId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FeedbackSenderFK");
 
             entity.HasOne(d => d.Task).WithMany(p => p.Feedbacks)
                 .HasForeignKey(d => d.TaskId)
@@ -184,11 +189,6 @@ public partial class InternShipAppSystemContext : DbContext
             entity.HasOne(d => d.Test).WithMany(p => p.Feedbacks)
                 .HasForeignKey(d => d.TestId)
                 .HasConstraintName("FeedbackTestFK");
-
-            entity.HasOne(d => d.Trainer).WithMany(p => p.FeedbackTrainers)
-                .HasForeignKey(d => d.TrainerId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FeedbackTrainerFK");
         });
 
         modelBuilder.Entity<GetPeopleInGroupMeeting>(entity =>

@@ -7,32 +7,50 @@
         <button class="btn btn-success" id="add" (click)="onAdd()">Add feedback</button>
     </div>
     <div class="announcements">
-        <div class="row" *ngIf="feedbacks.length!=0">
-            <div class="announcement" *ngFor="let feedback of feedbacks">
-                <div class="pic" style="border-radius: 50%; background-color: white;" *ngIf="status=='Trainer'">
-                    <img [src]="feedback.intern.picture.url" *ngIf="feedback.intern.picture!=null" style="border-radius: 50%; margin: auto;" height="100%" width="100%"/>
-                    <img src="../../../assets/img/user.png" *ngIf="feedback.intern.picture==null" style="border-radius: 50%;" height="100%" width="100%"/>
+        <h4 *ngIf="myFeedbacks.length!=0">The feedback you gave:</h4>
+        <div class="row" *ngIf="myFeedbacks.length!=0">
+            <div class="announcement" *ngFor="let feedback of myFeedbacks">
+                <div class="pic" style="border-radius: 50%; background-color: white;">
+                    <img [src]="feedback.personReceiver.picture.url" *ngIf="feedback.personReceiver.picture!=null" style="border-radius: 50%; margin: auto;" height="100%" width="100%"/>
+                    <img src="../../../assets/img/user.png" *ngIf="feedback.personReceiver.picture==null" style="border-radius: 50%;" height="100%" width="100%"/>
                 </div>
-                <div class="pic" style="border-radius: 50%; background-color: white;" *ngIf="status=='Intern'">
-                    <img [src]="feedback.trainer.picture.url" *ngIf="feedback.trainer.picture!=null" style="border-radius: 50%; margin: auto;" height="100%" width="100%"/>
-                    <img src="../../../assets/img/user.png" *ngIf="feedback.trainer.picture==null" style="border-radius: 50%;" height="100%" width="100%"/>
-                </div>
-                <div class="note-title">
+                <div class="note-title" style="height: 85px;">
                     <h4>Feedback for:</h4>
-                    <h4> {{ feedback.intern.firstName + ' ' + feedback.intern.lastName }}</h4>
+                    <h4> {{ feedback.personReceiver.firstName + ' ' + feedback.personReceiver.lastName }}</h4>
                 </div>
                 <div class="btns">
-                    <button class="btn btn-success" *ngIf="username == feedback.trainer.username" id="btn-feedback" (click)="onEdit(feedback)">Edit</button>
+                    <button class="btn btn-success" id="btn-feedback" (click)="onEdit(feedback)">Edit</button>
                     <button class="btn btn-info" id="btn-feedback" (click)="onSee(feedback)">See</button>
-                    <button class="btn btn-danger" *ngIf="username == feedback.trainer.username" id="btn-feedback" (click)="onDelete(feedback)">Delete</button>
+                    <button class="btn btn-danger" id="btn-feedback" (click)="onDelete(feedback)">Delete</button>
                 </div>
                 <div class="footer">
-                    From: {{ feedback.trainer.lastName + ' ' + feedback.trainer.firstName }} <br>
+                    From: {{ feedback.personSender.lastName + ' ' + feedback.personSender.firstName }} <br>
                     Date: {{ feedback.dateOfPost | date:'medium' }}<br>
                 </div>
             </div>
         </div>
-        <p *ngIf="feedbacks.length==0">You don't have feedbacks!</p>
+        <p *ngIf="myFeedbacks.length==0">You don't have feedbacks!</p>
+        <hr>
+        <h4 *ngIf="myFeedbacks.length!=0">The feedback you rceiver:</h4>
+        <div class="row" *ngIf="feedbacksForMe.length!=0">
+            <div class="announcement" style="height: 200px;" *ngFor="let feedback of feedbacksForMe">
+                <div class="pic" style="border-radius: 50%; background-color: white;">
+                    <img [src]="feedback.personSender.picture.url" *ngIf="feedback.personSender.picture!=null" style="border-radius: 50%; margin: auto;" height="100%" width="100%"/>
+                    <img src="../../../assets/img/user.png" *ngIf="feedback.personSender.picture==null" style="border-radius: 50%;" height="100%" width="100%"/>
+                </div>
+                <div class="note-title" style="height: 85px;">
+                    <h4>Feedback from:</h4>
+                    <h4> {{ feedback.personSender.firstName + ' ' + feedback.personSender.lastName }}</h4>
+                </div>
+                <div class="btns">
+                    <button class="btn btn-info" id="btn-feedback-receiver" (click)="onSee(feedback)">See</button>
+                </div>
+                <div class="footer">
+                    Date: {{ feedback.dateOfPost | date:'medium' }}<br>
+                </div>
+            </div>
+        </div>
+        <p *ngIf="feedbacksForMe.length==0">You don't have feedbacks!</p>
     </div>
 
 </div>

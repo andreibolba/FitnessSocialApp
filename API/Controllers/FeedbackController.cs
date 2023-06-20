@@ -32,10 +32,10 @@ namespace API.Controllers
         {
             switch (status)
             {
-                case "trainer":
-                    return Ok(_feedbackRepository.GetAllFeedbackForSpecificTrainer(id, count));
-                case "intern":
-                    return Ok(_feedbackRepository.GetAllFeedbackForSpecificPerson(id, count));
+                case "receiver":
+                    return Ok(_feedbackRepository.GetAllFeedbackForReceiver(id, count));
+                case "sender":
+                    return Ok(_feedbackRepository.GetAllFeedbackForSender(id, count));
                 default:
                     return BadRequest("Invalid option");
             }

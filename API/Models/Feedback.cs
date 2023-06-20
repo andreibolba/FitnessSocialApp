@@ -7,9 +7,9 @@ public partial class Feedback
 {
     public int FeedbackId { get; set; }
 
-    public int TrainerId { get; set; }
+    public int PersonSenderId { get; set; }
 
-    public int InternId { get; set; }
+    public int PersonReceiverId { get; set; }
 
     public int? TaskId { get; set; }
 
@@ -27,11 +27,11 @@ public partial class Feedback
 
     public virtual Challange Challange { get; set; }
 
-    public virtual Person Intern { get; set; }
+    public virtual Person PersonReceiver { get; set; }
+
+    public virtual Person PersonSender { get; set; }
 
     public virtual Task Task { get; set; }
 
     public virtual Test Test { get; set; }
-
-    public virtual Person Trainer { get; set; }
 }

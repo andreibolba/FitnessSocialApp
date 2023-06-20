@@ -6,8 +6,8 @@ namespace API.FluentMigration.Migrations
     public class FeedbackTable:Migration
     {
         public const string tableName = "Feedback";
-        public const string fkNameIntern = "FeedbackInternFK";
-        public const string fkNameTrainer = "FeedbackTrainerFK";
+        public const string fkNameSender= "FeedbackSenderFK";
+        public const string fkNameReceiver = "FeedbackReceiverFK";
         public const string fkNameTask = "FeedbackTaskFK";
         public const string fkNameTest = "FeedbackTestFK";
         public const string fkNameChallange = "FeedbackChallangeFK";
@@ -15,8 +15,8 @@ namespace API.FluentMigration.Migrations
         public override void Down()
         {
             Delete.Table(tableName);
-            Delete.ForeignKey(fkNameIntern);
-            Delete.ForeignKey(fkNameTrainer);
+            Delete.ForeignKey(fkNameSender);
+            Delete.ForeignKey(fkNameReceiver);
             Delete.ForeignKey(fkNameTask);
             Delete.ForeignKey(fkNameTest);
             Delete.ForeignKey(fkNameChallange);
@@ -26,8 +26,8 @@ namespace API.FluentMigration.Migrations
         {
             Create.Table(tableName)
                 .WithColumn("FeedbackId").AsInt32().PrimaryKey().NotNullable().Identity()
-                .WithColumn("TrainerId").AsInt32().NotNullable()
-                .WithColumn("InternId").AsInt32().NotNullable()
+                .WithColumn("PersonSenderId").AsInt32().NotNullable()
+                .WithColumn("PersonReceiverId").AsInt32().NotNullable()
                 .WithColumn("TaskId").AsInt32().Nullable()
                 .WithColumn("ChallangeId").AsInt32().Nullable()
                 .WithColumn("TestId").AsInt32().Nullable()
@@ -36,12 +36,12 @@ namespace API.FluentMigration.Migrations
                 .WithColumn("DateOfPost").AsDateTime().NotNullable()
                 .WithColumn("Deleted").AsBoolean().NotNullable();
 
-            Create.ForeignKey(fkNameIntern)
-                .FromTable(tableName).ForeignColumn("InternId")
+            Create.ForeignKey(fkNameSender)
+                .FromTable(tableName).ForeignColumn("PersonSenderId")
                 .ToTable(PersonTable.tableName).PrimaryColumn("PersonId");
 
-            Create.ForeignKey(fkNameTrainer)
-                .FromTable(tableName).ForeignColumn("TrainerId")
+            Create.ForeignKey(fkNameReceiver)
+                .FromTable(tableName).ForeignColumn("PersonReceiverId")
                 .ToTable(PersonTable.tableName).PrimaryColumn("PersonId");
 
             Create.ForeignKey(fkNameTask)

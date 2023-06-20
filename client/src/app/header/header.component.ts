@@ -89,6 +89,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
                     link: 'tasks',
                   },
                   { name: 'Forum', logo: 'uil uil-font', link: 'forum' },
+                  { name: 'Feedback', logo: 'uil uil-feedback', link: 'feedback' }
                 ];
                 break;
               case 'Trainer':

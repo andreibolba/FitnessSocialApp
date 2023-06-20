@@ -6,9 +6,9 @@ namespace API.Dtos
     {
         public int FeedbackId { get; set; }
 
-        public int TrainerId { get; set; }
+        public int PersonSenderId { get; set; }
 
-        public int InternId { get; set; }
+        public int PersonReceiverId { get; set; }
 
         public int? TaskId { get; set; }
 
@@ -24,12 +24,12 @@ namespace API.Dtos
 
         public ChallengeDto Challange { get; set; }
 
-        public PersonDto Intern { get; set; }
+        public PersonDto PersonSender { get; set; }
 
         public TaskDto Task { get; set; }
 
         public TestDto Test { get; set; }
 
-        public PersonDto Trainer { get; set; }
+        public PersonDto PersonReceiver { get; set; }
     }
 }

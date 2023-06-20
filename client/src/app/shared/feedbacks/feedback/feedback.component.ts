@@ -17,13 +17,14 @@ import { SeeFeedbackComponent } from '../see-feedback/see-feedback.component';
   styleUrls: ['./feedback.component.css']
 })
 export class FeedbackComponent implements OnInit, OnDestroy {
-  feedbackSubscription!: Subscription;
+  myFeedbackSubscription!: Subscription;
+  feedbacksForMeSubscription!: Subscription;
   personSubscription!: Subscription;
   deletefeedbackSubscription!: Subscription;
-  feedbacks:Feedback[]=[];
+  myFeedbacks:Feedback[]=[];
+  feedbacksForMe:Feedback[]=[];
   private token: string = '';
   username: string='';
-  status:string='';
 
   constructor(
     private utils: UtilsService, 
@@ -43,9 +44,11 @@ export class FeedbackComponent implements OnInit, OnDestroy {
       this.token = person.token;
       this.username = person.username;
       this.personSubscription = this.dataStorage.getPerson(this.username, this.token).subscribe((data)=>{
-        this.feedbackSubscription = this.dataStorage.getAllFeedbacksForSpecificForPerson(this.token,data.personId,data.status.toLocaleLowerCase()).subscribe((res)=>{
-          this.feedbacks=res;
-          this.status=data.status;
+        this.myFeedbackSubscription = this.dataStorage.getAllFeedbacksForSpecificForPerson(this.token,data.personId,"sender").subscribe((res)=>{
+          this.myFeedbacks=res;
+        });
+        this.feedbacksForMeSubscription = this.dataStorage.getAllFeedbacksForSpecificForPerson(this.token,data.personId,"receiver").subscribe((res)=>{
+          this.feedbacksForMe=res;
         });
       });
     }
@@ -53,7 +56,8 @@ export class FeedbackComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     if (this.deletefeedbackSubscription != null) this.deletefeedbackSubscription.unsubscribe();
-    if (this.feedbackSubscription != null) this.feedbackSubscription.unsubscribe();
+    if (this.myFeedbackSubscription != null) this.myFeedbackSubscription.unsubscribe();
+    if (this.feedbacksForMeSubscription != null) this.feedbacksForMeSubscription.unsubscribe();
     if (this.personSubscription != null) this.personSubscription.unsubscribe();
   }
 
@@ -78,9 +82,9 @@ export class FeedbackComponent implements OnInit, OnDestroy {
   onDelete(feedback: Feedback) {
     this.deletefeedbackSubscription = this.dataStorage.deleteFeedback(this.token, feedback.feedbackId).subscribe(() => {
       this.toastr.success("Feedback was deleted succesfully!");
-      let index = this.feedbacks.findIndex(c=>c.feedbackId == feedback.feedbackId);
+      let index = this.myFeedbacks.findIndex(c=>c.feedbackId == feedback.feedbackId);
       if(index!=-1)
-        this.feedbacks.splice(index,1);
+        this.myFeedbacks.splice(index,1);
     }, (error) => {
       this.toastr.error(error.error);
     });

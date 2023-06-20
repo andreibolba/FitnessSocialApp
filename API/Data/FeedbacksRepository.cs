@@ -56,32 +56,32 @@ namespace API.Data
             var res = _context.Feedbacks.Where(f => f.Deleted == false).OrderByDescending(t=>t.DateOfPost)
                 .Include(t => t.Task)
                 .Include(t => t.Challange)
-                .Include(t => t.Intern)
-                .Include(t => t.Trainer)
+                .Include(t => t.PersonReceiver)
+                .Include(t => t.PersonSender)
                 .Include(t => t.Test);
 
             var result = _mapper.Map<IEnumerable<FeedbackDto>>(res);
 
             foreach(var item in result)
             {
-                item.Intern.Picture = item.Intern.PictureId!=null? _pictureRepository.GetById(item.Intern.PictureId.Value): null;
-                item.Trainer.Picture = item.Trainer.PictureId!=null? _pictureRepository.GetById(item.Trainer.PictureId.Value): null;
+                item.PersonSender.Picture = item.PersonSender.PictureId!=null? _pictureRepository.GetById(item.PersonSender.PictureId.Value): null;
+                item.PersonReceiver.Picture = item.PersonReceiver.PictureId!=null? _pictureRepository.GetById(item.PersonReceiver.PictureId.Value): null;
             }
 
             return result;
         }
 
-        public IEnumerable<FeedbackDto> GetAllFeedbackForSpecificPerson(int personId, int? count = null)
+        public IEnumerable<FeedbackDto> GetAllFeedbackForSender(int senderId, int? count = null)
         {
-            var getAllFeedback = GetAllFeedback().Where(f => f.InternId == personId);
+            var getAllFeedback = GetAllFeedback().Where(f => f.PersonSenderId == senderId);
             if (count != null && getAllFeedback.Count() >= count.Value)
                 return getAllFeedback.Take(count.Value);
             return getAllFeedback;
         }
 
-        public IEnumerable<FeedbackDto> GetAllFeedbackForSpecificTrainer(int trainerId, int? count = null)
+        public IEnumerable<FeedbackDto> GetAllFeedbackForReceiver(int receiverId, int? count = null)
         {
-            var getAllFeedback = GetAllFeedback().Where(f => f.TrainerId == trainerId);
+            var getAllFeedback = GetAllFeedback().Where(f => f.PersonReceiverId == receiverId);
             if (count != null && getAllFeedback.Count() >= count.Value)
                 return getAllFeedback.Take(count.Value);
             return getAllFeedback;

@@ -1006,8 +1006,8 @@ export class DataStorageService {
   addFeedback(token:string, feedback:Feedback){
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.post<Feedback>(this.baseUrl + 'feedbacks/add', {
-      trainerId:feedback.trainerId,
-      internId:feedback.internId,
+      personSenderId:feedback.personSenderId,
+      personReceiverId:feedback.personReceiverId,
       taskId:feedback.taskId,
       challangeId:feedback.challangeId,
       testId:feedback.testId,
@@ -1020,8 +1020,8 @@ export class DataStorageService {
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.post<Feedback>(this.baseUrl + 'feedbacks/edit', {
       feedbackId:feedback.feedbackId,
-      trainerId:feedback.trainerId,
-      internId:feedback.internId,
+      personSenderId:feedback.personSenderId,
+      personReceiverId:feedback.personReceiverId,
       taskId:feedback.taskId,
       challangeId:feedback.challangeId,
       testId:feedback.testId,

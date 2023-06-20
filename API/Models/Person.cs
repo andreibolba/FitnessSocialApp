@@ -37,9 +37,9 @@ public partial class Person
 
     public virtual ICollection<Comment> Comments { get; } = new List<Comment>();
 
-    public virtual ICollection<Feedback> FeedbackInterns { get; } = new List<Feedback>();
+    public virtual ICollection<Feedback> FeedbackPersonReceivers { get; } = new List<Feedback>();
 
-    public virtual ICollection<Feedback> FeedbackTrainers { get; } = new List<Feedback>();
+    public virtual ICollection<Feedback> FeedbackPersonSenders { get; } = new List<Feedback>();
 
     public virtual ICollection<GroupChatMessage> GroupChatMessages { get; } = new List<GroupChatMessage>();
 

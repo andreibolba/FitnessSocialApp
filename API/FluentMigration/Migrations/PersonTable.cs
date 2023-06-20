@@ -24,7 +24,6 @@ namespace API.FluentMigration.Migrations
                 .WithColumn("PasswordHash").AsBinary().NotNullable()
                 .WithColumn("PasswordSalt").AsBinary().NotNullable()
                 .WithColumn("Status").AsString().NotNullable()
-                .WithColumn("Picture").AsString(int.MaxValue).Nullable()
                 .WithColumn("BirthDate").AsDateTime().NotNullable()
                 .WithColumn("PictureId").AsInt32().Nullable()
                 .WithColumn("Deleted").AsBoolean().NotNullable();

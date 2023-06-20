@@ -38,7 +38,7 @@ namespace API.Data
 
         public FeedbackDto EditFeedback(FeedbackDto feedbackDto)
         {
-            var feebdack = _mapper.Map<Feedback>(GetFeedbackById(feedbackDto.FeedbackId));
+            var feebdack = _mapper.Map<Feedback>(_context.Feedbacks.SingleOrDefault(f=>f.FeedbackId==feedbackDto.FeedbackId));
 
             feebdack.Content = feedbackDto.Content==null ? feebdack.Content : feedbackDto.Content;
             feebdack.Grade = feedbackDto.Grade != null ? feebdack.Grade : feedbackDto.Grade.Value;

@@ -401,7 +401,7 @@ public partial class InternShipAppSystemContext : DbContext
                 .IsRequired()
                 .HasMaxLength(255);
 
-            entity.HasOne(d => d.PictureNavigation).WithMany(p => p.People)
+            entity.HasOne(d => d.Picture).WithMany(p => p.People)
                 .HasForeignKey(d => d.PictureId)
                 .HasConstraintName("PersonPictureFK");
         });

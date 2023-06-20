@@ -79,9 +79,8 @@ namespace API.Data
 
         public IEnumerable<PersonDto> GetAllPerson()
         {
-            var ppl = _context.People.Where(g => g.Deleted == false);
-            var allPerson = _mapper.Map<IEnumerable<PersonDto>>(ppl);
-            foreach(var pers in allPerson)
+            var allPerson = _mapper.Map<IEnumerable<PersonDto>>(_context.People.ToList().Where(g => g.Deleted == false));
+            foreach (var pers in allPerson)
             {
                 var allReactionsPosts = _context.PostCommentReactions.Where(r => r.Deleted == false && r.PostId!=null).Include(r => r.Post).ToList();
                 var allReactionsComments = _context.PostCommentReactions.Where(r => r.Deleted == false && r.CommentId !=null).Include(r => r.Comment).ToList();

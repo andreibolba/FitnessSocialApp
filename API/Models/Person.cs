@@ -21,8 +21,6 @@ public partial class Person
 
     public string Status { get; set; }
 
-    public string Picture { get; set; }
-
     public DateTime BirthDate { get; set; }
 
     public int? PictureId { get; set; }
@@ -59,7 +57,7 @@ public partial class Person
 
     public virtual ICollection<Note> Notes { get; } = new List<Note>();
 
-    public virtual Picture PictureNavigation { get; set; }
+    public virtual Picture Picture { get; set; }
 
     public virtual ICollection<PostCommentReaction> PostCommentReactions { get; } = new List<PostCommentReaction>();
 

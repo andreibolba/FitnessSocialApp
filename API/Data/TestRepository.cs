@@ -114,7 +114,7 @@ namespace API.Data
 
         public void Update(TestDto test)
         {
-            var testUpdate = _mapper.Map<Test>(GetTestById(test.TestId));
+            var testUpdate = _context.Tests.SingleOrDefault(t=>t.TestId == test.TestId);
             testUpdate.TestName = test.TestName == null ? testUpdate.TestName : test.TestName;
             testUpdate.Deadline = test.Deadline == null ? testUpdate.Deadline : test.Deadline.Value;
             testUpdate.CanBeEdited = test.CanBeEdited == null ? testUpdate.CanBeEdited : test.CanBeEdited.Value;

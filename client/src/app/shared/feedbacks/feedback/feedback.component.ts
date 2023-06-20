@@ -9,6 +9,7 @@ import { UtilsService } from 'src/services/utils.service';
 import { AddEditNoteComponent } from '../../notes/add-edit-note/add-edit-note.component';
 import { AddEditFeedbackComponent } from '../add-edit-feedback/add-edit-feedback.component';
 import { Feedback } from 'src/model/feedback.model';
+import { SeeFeedbackComponent } from '../see-feedback/see-feedback.component';
 
 @Component({
   selector: 'app-feedback',
@@ -22,6 +23,7 @@ export class FeedbackComponent implements OnInit, OnDestroy {
   feedbacks:Feedback[]=[];
   private token: string = '';
   username: string='';
+  status:string='';
 
   constructor(
     private utils: UtilsService, 
@@ -43,7 +45,7 @@ export class FeedbackComponent implements OnInit, OnDestroy {
       this.personSubscription = this.dataStorage.getPerson(this.username, this.token).subscribe((data)=>{
         this.feedbackSubscription = this.dataStorage.getAllFeedbacksForSpecificForPerson(this.token,data.personId,data.status.toLocaleLowerCase()).subscribe((res)=>{
           this.feedbacks=res;
-          console.log(res);
+          this.status=data.status;
         });
       });
     }
@@ -55,8 +57,8 @@ export class FeedbackComponent implements OnInit, OnDestroy {
     if (this.personSubscription != null) this.personSubscription.unsubscribe();
   }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(AddEditFeedbackComponent);
+  openDialog(op:number) {
+    const dialogRef = op==1? this.dialog.open(AddEditFeedbackComponent): this.dialog.open(SeeFeedbackComponent);
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
@@ -65,12 +67,12 @@ export class FeedbackComponent implements OnInit, OnDestroy {
 
   onAdd() {
     this.utils.feedbackToEdit.next(null);
-    this.openDialog();
+    this.openDialog(1);
   }
 
   onEdit(feedback: Feedback) {
     this.utils.feedbackToEdit.next(feedback);
-    this.openDialog();
+    this.openDialog(1);
   }
 
   onDelete(feedback: Feedback) {
@@ -82,5 +84,10 @@ export class FeedbackComponent implements OnInit, OnDestroy {
     }, (error) => {
       this.toastr.error(error.error);
     });
+  }
+
+  onSee(feedback:Feedback){
+    this.utils.feedbackToEdit.next(feedback);
+    this.openDialog(2);
   }
 }

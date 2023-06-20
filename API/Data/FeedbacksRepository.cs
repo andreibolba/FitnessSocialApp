@@ -53,7 +53,7 @@ namespace API.Data
 
         public IEnumerable<FeedbackDto> GetAllFeedback()
         {
-            var res = _context.Feedbacks.Where(f => f.Deleted == false).OrderBy(t=>t.DateOfPost)
+            var res = _context.Feedbacks.Where(f => f.Deleted == false).OrderByDescending(t=>t.DateOfPost)
                 .Include(t => t.Task)
                 .Include(t => t.Challange)
                 .Include(t => t.Intern)
@@ -65,6 +65,7 @@ namespace API.Data
             foreach(var item in result)
             {
                 item.Intern.Picture = item.Intern.PictureId!=null? _pictureRepository.GetById(item.Intern.PictureId.Value): null;
+                item.Trainer.Picture = item.Trainer.PictureId!=null? _pictureRepository.GetById(item.Trainer.PictureId.Value): null;
             }
 
             return result;

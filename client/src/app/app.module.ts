@@ -73,6 +73,7 @@ import { UploadTaskSolutionComponent } from './shared/tasks/upload-task-solution
 import { SeeAllTaskSolutionsComponent } from './shared/tasks/see-all-task-solutions/see-all-task-solutions.component';
 import { AddEditFeedbackComponent } from './shared/feedbacks/add-edit-feedback/add-edit-feedback.component';
 import { UploadPhotoComponent } from './shared/upload-photo/upload-photo.component';
+import { SeeFeedbackComponent } from './shared/feedbacks/see-feedback/see-feedback.component';
 
 @NgModule({
   declarations: [
@@ -129,7 +130,8 @@ import { UploadPhotoComponent } from './shared/upload-photo/upload-photo.compone
     UploadTaskSolutionComponent,
     SeeAllTaskSolutionsComponent,
     AddEditFeedbackComponent,
-    UploadPhotoComponent
+    UploadPhotoComponent,
+    SeeFeedbackComponent
   ],
   imports: [
     Ng2SearchPipeModule,

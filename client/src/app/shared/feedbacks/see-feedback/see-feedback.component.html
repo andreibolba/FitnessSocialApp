@@ -1,0 +1,71 @@
+<h3>See feedback</h3>
+<div id="main">
+    <div class="infos">
+        <div class="info">
+            <label for="feedbackContent">Feedback Content</label>
+            <textarea id="feedbackContent" placeholder="Feedback Content" name="feedbackContent" [(ngModel)]="feedback.content"
+                readonly>
+        </textarea>
+        </div>
+    </div>
+    <div class="infos" style="display: flex;">
+
+        <div class="info" id="combo2">
+            <label for="person">Feedback from:</label>
+            <input type="text" id="person" ngModel placeholder="person" [(ngModel)]="fullName" name="person" readonly
+                autocomplete="off">
+        </div>
+        <div class="info" id="combo2">
+            <label for="grade">Grade</label>
+            <input type="number" id="grade" ngModel placeholder="Grade" [(ngModel)]="feedback.grade" name="grade" readonly
+                autocomplete="off">
+        </div>
+    </div>
+
+    <div class="infos" style="display: flex;">
+
+        <div class="info" id="combo">
+            <label for="task">Task:</label>
+            <input type="checkbox" id="scales" name="scales" disabled [checked]="feedback.task!=null">
+        </div>
+        <div class="info" id="combo">
+            <label for="test">Test:</label>
+            <input type="checkbox" id="scales" name="scales" disabled [checked]="feedback.test!=null">
+        </div>
+        <div class="info" id="combo">
+            <label for="challenge">Challenge:</label>
+            <input type="checkbox" id="scales" name="scales" disabled [checked]="feedback.challange!=null">
+        </div>
+    </div>
+
+    <div class="infos" *ngIf="feedback.task!=null">
+        <div class="info">
+            <label for="task">Task</label>
+            <textarea id="task" placeholder="task" name="task" [(ngModel)]="feedback.task.taskName"
+                readonly>
+        </textarea>
+        </div>
+    </div>
+
+    <div class="infos" *ngIf="feedback.test!=null">
+        <div class="info">
+            <label for="feedbackContent">Test</label>
+            <textarea id="feedbackContent" placeholder="Feedback Content" name="feedbackContent" [(ngModel)]="feedback.test.testName"
+                readonly>
+        </textarea>
+        </div>
+    </div>
+
+    <div class="infos" *ngIf="feedback.challange!=null">
+        <div class="info">
+            <label for="challange">Challenge</label>
+            <textarea id="challange" placeholder="challange" name="challange" [(ngModel)]="feedback.challange.challangeName"
+                readonly>
+        </textarea>
+        </div>
+    </div>
+
+    <mat-dialog-actions align="center">
+        <button mat-button mat-dialog-close>Close</button>
+    </mat-dialog-actions>
+</div>

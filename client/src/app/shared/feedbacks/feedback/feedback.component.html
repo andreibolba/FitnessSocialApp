@@ -9,25 +9,26 @@
     <div class="announcements">
         <div class="row" *ngIf="feedbacks.length!=0">
             <div class="announcement" *ngFor="let feedback of feedbacks">
-                <div class="pic" style="border-radius: 50%; background-color: white;">
+                <div class="pic" style="border-radius: 50%; background-color: white;" *ngIf="status=='Trainer'">
                     <img [src]="feedback.intern.picture.url" *ngIf="feedback.intern.picture!=null" style="border-radius: 50%; margin: auto;" height="100%" width="100%"/>
                     <img src="../../../assets/img/user.png" *ngIf="feedback.intern.picture==null" style="border-radius: 50%;" height="100%" width="100%"/>
                 </div>
-                <div class="note-title">
-                    <h4 *ngIf="username != feedback.trainer.username"> {{ feedback.intern.firstName + ' ' + feedback.intern.lastName }}</h4>
-                    <h4 *ngIf="username == feedback.trainer.username" (click)="onEdit(feedback)"
-                     style="text-decoration: underline;" class="link"> {{ feedback.intern.firstName + ' ' + feedback.intern.lastName }}</h4>
+                <div class="pic" style="border-radius: 50%; background-color: white;" *ngIf="status=='Intern'">
+                    <img [src]="feedback.trainer.picture.url" *ngIf="feedback.trainer.picture!=null" style="border-radius: 50%; margin: auto;" height="100%" width="100%"/>
+                    <img src="../../../assets/img/user.png" *ngIf="feedback.trainer.picture==null" style="border-radius: 50%;" height="100%" width="100%"/>
                 </div>
-                <div class="note-body">
-                    <p>
-                        {{ feedback.content }}
-                    </p>
+                <div class="note-title">
+                    <h4>Feedback for:</h4>
+                    <h4> {{ feedback.intern.firstName + ' ' + feedback.intern.lastName }}</h4>
+                </div>
+                <div class="btns">
+                    <button class="btn btn-success" *ngIf="username == feedback.trainer.username" id="btn-feedback" (click)="onEdit(feedback)">Edit</button>
+                    <button class="btn btn-info" id="btn-feedback" (click)="onSee(feedback)">See</button>
+                    <button class="btn btn-danger" *ngIf="username == feedback.trainer.username" id="btn-feedback" (click)="onDelete(feedback)">Delete</button>
                 </div>
                 <div class="footer">
-                    created by {{ feedback.trainer.lastName + ' ' + feedback.trainer.firstName }} at {{ feedback.dateOfPost | date:'medium' }}<br>
-                    <div *ngIf="username == feedback.trainer.username" class="title-click" (click)="onDelete(feedback)">
-                        delete feedback
-                    </div>
+                    From: {{ feedback.trainer.lastName + ' ' + feedback.trainer.firstName }} <br>
+                    Date: {{ feedback.dateOfPost | date:'medium' }}<br>
                 </div>
             </div>
         </div>

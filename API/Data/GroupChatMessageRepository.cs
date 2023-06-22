@@ -3,6 +3,7 @@ using API.Interfaces.Repository;
 using API.Models;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
+using System.Drawing;
 
 namespace API.Data
 {
@@ -11,13 +12,15 @@ namespace API.Data
         private readonly InternShipAppSystemContext _context;
         private readonly IGroupChatRepository _groupChatRepository;
         private readonly IPersonRepository _personRepository;
+        private readonly IPictureRepository _pictureRepository;
         private readonly IMapper _mapper;
 
-        public GroupChatMessageRepository(InternShipAppSystemContext context, IGroupChatRepository groupChatRepository, IPersonRepository personRepository, IMapper mapper)
+        public GroupChatMessageRepository(InternShipAppSystemContext context, IGroupChatRepository groupChatRepository, IPersonRepository personRepository, IPictureRepository pictureRepository, IMapper mapper)
         {
             _context = context;
             _groupChatRepository = groupChatRepository;
             _personRepository = personRepository;
+            _pictureRepository = pictureRepository;
             _mapper = mapper;
         }
 
@@ -31,7 +34,14 @@ namespace API.Data
         public IEnumerable<GroupChatMessageDto> GetAllMessages()
         {
             var allMessages = _context.GroupChatMessages.Where(m => m.Deleted == false).Include(m => m.GroupChat).Include(m => m.Person);
-            return _mapper.Map<IEnumerable<GroupChatMessageDto>>(allMessages);
+            var mess = _mapper.Map<IEnumerable<GroupChatMessageDto>>(allMessages);
+
+            foreach (var m in mess)
+            {
+                m.Person.Picture = m.Person.PictureId == null ? null : _pictureRepository.GetById(m.Person.PictureId.Value);
+            }
+
+            return mess;
         }
 
         public IEnumerable<GroupChatMessageDto> GetAllMessagesForAGroup(int groupChatId)

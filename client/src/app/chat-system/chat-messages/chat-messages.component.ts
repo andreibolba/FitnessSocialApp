@@ -2,12 +2,12 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
-import { GroupChat } from 'src/model/groupchat.model';
 import { LoggedPerson } from 'src/model/loggedperson.model';
 import { Message } from 'src/model/message.model';
 import { Person } from 'src/model/person.model';
 import { DataStorageService } from 'src/services/data-storage.service';
 import { UtilsService } from 'src/services/utils.service';
+
 
 @Component({
   selector: 'app-chat-messages',
@@ -113,7 +113,6 @@ export class ChatMessagesComponent implements OnInit, OnDestroy {
   }
 
   onDetails(){
-    this.utils.userToSeeDetailst.next(this.chatPerson.username);
-    this.router.navigate(["dashboard/profile"]);
+    this.router.navigate(["dashboard/profile/"+this.chatPerson.personId]);
   }
 }

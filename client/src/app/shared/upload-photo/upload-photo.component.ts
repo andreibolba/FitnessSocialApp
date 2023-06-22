@@ -16,10 +16,13 @@ export class UploadPhotoComponent implements OnInit, OnDestroy {
   text: string = 'No file selected';
   canUpload: boolean = false;
   sendPictureSubscription!: Subscription;
-  GetPeronSubscription!: Subscription;
+  getPeronSubscription!: Subscription;
   getIdSubscription!: Subscription;
+  getGroupIdSubscription!: Subscription;
+  getGroupChatIdSubscription!: Subscription;
   private token: string = '';
   private groupId: number | null = null;
+  private grouChatId: number | null = null;
   private personId: number | null = null;
 
 
@@ -27,9 +30,9 @@ export class UploadPhotoComponent implements OnInit, OnDestroy {
     private dataStorage: DataStorageService,
     private dialog: MatDialogRef<UploadPhotoComponent>,
     private utils: UtilsService,
-    private toastr:ToastrService,
-    private uitls:UtilsService
-  ) {}
+    private toastr: ToastrService,
+    private uitls: UtilsService
+  ) { }
 
   ngOnInit(): void {
     this.utils.initializeError();
@@ -39,15 +42,31 @@ export class UploadPhotoComponent implements OnInit, OnDestroy {
     } else {
       const person: LoggedPerson = JSON.parse(personString);
       this.token = person.token;
-      this.getIdSubscription = this.uitls.idToPictureUpload.subscribe((res)=>{
-        if(res==0){
-          this.GetPeronSubscription = this.dataStorage.getPerson(person.username,person.token).subscribe((res)=>{
-            this.personId = res.personId;
-            this.groupId = null;
-          })
-        }else{
-          this.groupId = res;
-          this.personId = null;
+      this.getIdSubscription = this.uitls.idToPictureUpload.subscribe((res) => {
+        switch (res) {
+          case 0:
+            this.getIdSubscription = this.dataStorage.getPerson(person.username, person.token).subscribe((res) => {
+              this.personId = res.personId;
+              this.groupId = null;
+              this.grouChatId=null;
+            });
+            break;
+          case 1:
+            this.getGroupIdSubscription = this.utils.idOfGroupToPictureUpload.subscribe((res) => {
+              this.groupId = res;
+              this.grouChatId = null;
+              this.personId = null;
+            });
+            break;
+          case 2:
+            this.getGroupChatIdSubscription = this.utils.idOfGroupChatToPictureUpload.subscribe((res) => {
+              this.grouChatId = res;
+              this.groupId = null;
+              this.personId = null;
+            });
+            break;
+          default:
+            break;
         }
       });
     }
@@ -61,23 +80,30 @@ export class UploadPhotoComponent implements OnInit, OnDestroy {
   onUpload() {
     const fd = new FormData();
     if (this.selectedFile) {
-      if(this.groupId){
+      if (this.groupId) {
         fd.append('image', this.selectedFile, this.selectedFile['name']);
-        this.sendPictureSubscription = this.dataStorage.sendPictureForGroup(this.token,fd,this.groupId).subscribe(()=>{
-          this.toastr.success("Photo was uplodede succesfully");
+        this.sendPictureSubscription = this.dataStorage.sendPictureForGroup(this.token, fd, this.groupId).subscribe(() => {
+          this.toastr.success("Photo was uploded succesfully");
           this.dialog.close();
-        },(error)=>{
+        }, (error) => {
           this.toastr.error(error.error);
         });
-      }else if(this.personId){
+      } else if (this.personId) {
         fd.append('image', this.selectedFile, this.selectedFile['name']);
-        this.sendPictureSubscription = this.dataStorage.sendPictureForPerson(this.token,fd,this.personId).subscribe(()=>{
-          this.toastr.success("Photo was uplodede succesfully");
+        this.sendPictureSubscription = this.dataStorage.sendPictureForPerson(this.token, fd, this.personId).subscribe(() => {
+          this.toastr.success("Photo was uploded succesfully");
           this.dialog.close();
-        },(error)=>{
+        }, (error) => {
           this.toastr.error(error.error);
         });
-
+      }else if(this.grouChatId){
+        fd.append('image', this.selectedFile, this.selectedFile['name']);
+        this.sendPictureSubscription = this.dataStorage.sendPictureForGroupChat(this.token, fd, this.grouChatId).subscribe(() => {
+          this.toastr.success("Photo was uploded succesfully");
+          this.dialog.close();
+        }, (error) => {
+          this.toastr.error(error.error);
+        });
       }
     }
   }

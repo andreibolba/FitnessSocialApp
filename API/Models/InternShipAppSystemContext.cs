@@ -237,6 +237,10 @@ public partial class InternShipAppSystemContext : DbContext
                 .HasForeignKey(d => d.AdminId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("GroupChatPersonFK");
+
+            entity.HasOne(d => d.Picture).WithMany(p => p.GroupChats)
+                .HasForeignKey(d => d.PictureId)
+                .HasConstraintName("GroupChatPictureFK");
         });
 
         modelBuilder.Entity<GroupChatMessage>(entity =>

@@ -12,15 +12,15 @@ namespace API.Data
     public class GroupChatRepository : IGroupChatRepository
     {
         private readonly InternShipAppSystemContext _context;
-        private readonly IPersonRepository _person;
+        private readonly IPersonRepository _personRepository;
+        private readonly IPictureRepository _pictureRepository;
         private readonly IMapper _mapper;
 
-        public GroupChatRepository(InternShipAppSystemContext context, 
-            IPersonRepository person, 
-            IMapper mapper)
+        public GroupChatRepository(InternShipAppSystemContext context, IPersonRepository personRepository, IPictureRepository pictureRepository, IMapper mapper)
         {
             _context = context;
-            _person = person;
+            _personRepository = personRepository;
+            _pictureRepository = pictureRepository;
             _mapper = mapper;
         }
 
@@ -84,7 +84,13 @@ namespace API.Data
             foreach(var g in allGroupChats)
             {
                 var allParticipants = _context.GroupChatPeople.Where(gcp => gcp.Deleted == false && gcp.GroupChatId == g.GroupChatId).Include(gcp => gcp.Person).Select(gcp => gcp.Person);
-                g.Participants = _mapper.Map<IEnumerable<PersonDto>>(allParticipants);
+                var pas = _mapper.Map<IEnumerable<PersonDto>>(allParticipants);
+                foreach(var person in pas)
+                {
+                    person.Picture = person.PictureId == null ? null : _pictureRepository.GetById(person.PictureId.Value);
+                }
+                g.Participants = pas;
+                g.Picture = g.PictureId == null ? null : _pictureRepository.GetById(g.PictureId.Value);
             }
             return allGroupChats;
         }
@@ -116,7 +122,7 @@ namespace API.Data
                 var orderedMessages = g.GroupChatMessages.OrderByDescending(g => g.SendDate).ToList();
                 var orderedMessages2 = g.GroupChatMessages.OrderBy(g => g.SendDate).ToList();
                 var newest = orderedMessages.First();
-                newest.Person = _person.GetPersonById(newest.PersonId);
+                newest.Person = _personRepository.GetPersonById(newest.PersonId);
                 lastMessages.Add(newest);
             }
             return lastMessages;
@@ -159,6 +165,7 @@ namespace API.Data
             groupChat.GroupChatName = model.GroupChatName == null ? groupChat.GroupChatName : model.GroupChatName;
             groupChat.GroupChatDescription = model.GroupChatDescription;
             groupChat.AdminId = model.AdminId == null ? groupChat.AdminId : model.AdminId.Value;
+            groupChat.PictureId = model.PictureId == null ? groupChat.PictureId : model.PictureId.Value;
 
             _context.GroupChats.Update(groupChat);
 

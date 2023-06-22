@@ -45,8 +45,8 @@ namespace API.Extensions
             services.AddScoped<ISubTaskRepository,SubTaskRepository>();
             services.AddScoped<IFeedbackRepository,FeedbacksRepository>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            services.Configure<CloudinarySettings>(config.GetSection("CloudinarySettings"));
             services.AddScoped<IPhotoService, PhotoService>();
+            services.Configure<CloudinarySettings>(config.GetSection("CloudinarySettings"));
             services.AddScoped<IPictureRepository, PictureRepository>();
             return services;
         }

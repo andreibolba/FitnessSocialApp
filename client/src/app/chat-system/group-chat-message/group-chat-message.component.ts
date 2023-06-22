@@ -53,6 +53,7 @@ export class GroupChatMessageComponent implements OnInit, OnDestroy {
           this.getGroupSubscription = this.utils.groupChatPersonChat.subscribe(
             (res) => {
               if (res) {
+                
                 this.groupChat = res;
                 this.groupId = res.groupChatId;
                 this.participants = '';
@@ -75,6 +76,7 @@ export class GroupChatMessageComponent implements OnInit, OnDestroy {
                 this.getMessagesSubscription = this.dataStorage
                   .getAllMessagesForGroup(this.token, res.groupChatId)
                   .subscribe((mess) => {
+                    console.log(mess);
                     this.messages = mess;
                     setTimeout(() => {
                       var objDiv = document.getElementById('chat_content');

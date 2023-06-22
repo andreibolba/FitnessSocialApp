@@ -1,39 +1,46 @@
 <div class="details">
   <div class="header">
-    <img src="../../../assets/img/Microsoft_.NET_logo.svg.png" class="main"/>
+    <div class="header_pic" style="height: 75px; width: 75px; margin-top: 20px; border-radius: 50%;">
+      <img class="profile" [src]="groupChat.picture.url" *ngIf="groupChat.picture!=null"
+        style="border-radius: 50%; margin: auto;" height="100%" width="100%" />
+      <img src="../../../assets/img/user.png" *ngIf="groupChat.picture==null" style="border-radius: 50%;" height="100%"
+        width="100%" />
+      <div class="middle">
+        <div class="text" (click)="onEditPic(groupChat)">Edit</div>
+      </div>
+    </div>
     <h4>{{ groupChat.groupChatName }}</h4>
+
   </div>
   <div class="description">
     <h4>Description: </h4>
-    <textarea id="groupDescription" name="groupName" [(ngModel)]="groupChat.groupChatDescription" readonly ></textarea>
+    <textarea id="groupDescription" name="groupName" [(ngModel)]="groupChat.groupChatDescription" readonly></textarea>
   </div>
   <div class="participants">
     <h4>Participants: </h4>
     <mat-accordion class="people">
-      <mat-expansion-panel (opened)="panelOpenState = true"
-                           (closed)="panelOpenState = false"
-                           class="people"
-                           *ngFor="let p of groupChat.participants let i = index">
+      <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false" class="people"
+        *ngFor="let p of groupChat.participants let i = index">
         <mat-expansion-panel-header>
           <mat-panel-title>
             <h5>{{ i + 1 }}. {{ p.firstName + ' ' + p.lastName }}</h5>
           </mat-panel-title>
-          <button class="btn btn-success" id="button" *ngIf="loggedPerson.personId == groupChat.adminId" (click)="onMakeAdmin(p)"> Make Admin </button>
-          <button class="btn btn-danger" id="button" *ngIf="loggedPerson.personId == groupChat.adminId" (click)="onRemove(p)"> Remove </button>
+          <button class="btn btn-success" id="button" *ngIf="loggedPerson.personId == groupChat.adminId"
+            (click)="onMakeAdmin(p)"> Make Admin </button>
+          <button class="btn btn-danger" id="button" *ngIf="loggedPerson.personId == groupChat.adminId"
+            (click)="onRemove(p)"> Remove </button>
         </mat-expansion-panel-header>
         <div class="row">
           <div class="answer">
             <div class="info">
               <label for="trainer">Username</label>
-              <input type="text" id="trainer" name="trainer" readonly [value]="p.username" required
-                autocomplete="off">
+              <input type="text" id="trainer" name="trainer" readonly [value]="p.username" required autocomplete="off">
             </div>
           </div>
           <div class="answer">
             <div class="info">
               <label for="trainer">Email</label>
-              <input type="text" id="trainer" name="trainer" readonly [value]="p.email" required
-                autocomplete="off">
+              <input type="text" id="trainer" name="trainer" readonly [value]="p.email" required autocomplete="off">
             </div>
           </div>
           <div class="answer">
@@ -48,22 +55,19 @@
           <div class="answer">
             <div class="info">
               <label for="trainer">Status</label>
-              <input type="text" id="trainer" name="trainer" readonly [value]="p.status" required
-                autocomplete="off">
+              <input type="text" id="trainer" name="trainer" readonly [value]="p.status" required autocomplete="off">
             </div>
           </div>
           <div class="answer">
             <div class="info">
               <label for="trainer">Challanges</label>
-              <input type="text" id="trainer" name="trainer" readonly value="0/5 ( 0 %)" required
-                autocomplete="off">
+              <input type="text" id="trainer" name="trainer" readonly value="0/5 ( 0 %)" required autocomplete="off">
             </div>
           </div>
           <div class="answer">
             <div class="info">
               <label for="trainer">Tests</label>
-              <input type="text" id="trainer" name="trainer" readonly value="0/5 ( 0 %)" required
-                autocomplete="off">
+              <input type="text" id="trainer" name="trainer" readonly value="0/5 ( 0 %)" required autocomplete="off">
             </div>
           </div>
         </div>
@@ -74,8 +78,10 @@
   </div>
   <div class="footer">
     <button class="btn btn-info" (click)="onEdit()">Edit group</button>
-    <button class="btn btn-success" *ngIf="loggedPerson.personId == groupChat.adminId" (click)="onAdd()">Add people</button>
-    <button class="btn btn-danger" *ngIf="loggedPerson.personId == groupChat.adminId" (click)="onDelete()" >Delete</button>
+    <button class="btn btn-success" *ngIf="loggedPerson.personId == groupChat.adminId" (click)="onAdd()">Add
+      people</button>
+    <button class="btn btn-danger" *ngIf="loggedPerson.personId == groupChat.adminId"
+      (click)="onDelete()">Delete</button>
     <button class="btn btn-danger" *ngIf="loggedPerson.personId != groupChat.adminId" (click)="onLeave()">Leave</button>
     <button class="btn btn-danger" (click)="onBack()">Back</button>
   </div>

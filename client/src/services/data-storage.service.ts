@@ -666,6 +666,11 @@ export class DataStorageService {
     }, { headers: headers });
   }
 
+  sendPictureForGroupChat(token:string,fd:FormData,groupChatId:number){
+    const headers = { Authorization: 'Bearer ' + token, Accept: 'application/json'};
+    return this.http.post(this.baseUrl + 'groupchat/picture/add/'+groupChatId, fd, { headers: headers });
+  }
+
   getAllGroupChatsLastMessages(token: string, personId: number) {
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.get<GroupChatMessage[]>(this.baseUrl + 'groupchat/' + personId, { headers: headers });

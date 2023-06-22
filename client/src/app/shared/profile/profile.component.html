@@ -12,7 +12,7 @@
       <i>
         {{ person.status }}
       </i><bR>
-      <button class="btn btn-success" style="height: 40px; width: 150px; margin-top: 5px;" (click)="onChangePicture(person.personId)"> Change picture </button>
+      <button class="btn btn-success" style="height: 40px; width: 150px; margin-top: 5px;" (click)="onChangePicture(person.personId)" *ngIf="canEdit"> Change picture </button>
     </div>
   </div>
   <div class="infos">

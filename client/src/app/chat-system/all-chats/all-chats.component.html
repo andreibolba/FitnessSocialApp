@@ -1,8 +1,23 @@
 <div class="person_chats">
   <h5>People:</h5>
   <div class="chat_message" *ngFor="let message of allChats" (click)="onChatClick(message.chatPerson.personId)">
-    <div class="pic">
-      <img src="../../../assets/img/temp_user_photo.jpg"/>
+    <div class="pic" *ngIf="currentPerson.personId == message.personSenderId">
+      <img class="profile" [src]="message.personReceiver.picture.url" *ngIf="message.personReceiver.picture!=null" style="border-radius: 50%; margin: auto;" height="100%" width="100%" 
+      style="height: 44px;
+      width: 44px;
+      margin-top: 5px;
+      margin-left: 5px;
+      border-radius: 50%;"/>
+      <img src="../../../assets/img/user.png" *ngIf="message.personReceiver.picture==null" style="border-radius: 50%;" height="100%" width="100%"/>
+    </div>
+    <div class="pic" *ngIf="currentPerson.personId == message.personReceiverId">
+      <img class="profile" [src]="message.personSender.picture.url" *ngIf="message.personSender.picture!=null" style="border-radius: 50%; margin: auto;" height="100%" width="100%"
+      style="height: 44px;
+      width: 44px;
+      margin-top: 5px;
+      margin-left: 5px;
+      border-radius: 50%;"/>
+      <img src="../../../assets/img/user.png" *ngIf="message.personSender.picture==null" style="border-radius: 50%;" height="100%" width="100%"/>
     </div>
     <div class="message">
       <div class="full-name">
@@ -21,7 +36,13 @@
   </div>
   <div class="chat_message" *ngFor="let chat of allGroupChats"  (click)="onGroupChatClick(chat.groupChat)">
     <div class="pic">
-      <img src="../../../assets/img/temp_user_photo.jpg"/>
+      <img class="profile" [src]="chat.groupChat.picture.url" *ngIf="chat.groupChat.picture!=null" style="border-radius: 50%; margin: auto;" height="100%" width="100%" 
+      style="height: 44px;
+      width: 44px;
+      margin-top: 5px;
+      margin-left: 5px;
+      border-radius: 50%;"/>
+      <img src="../../../assets/img/user.png" *ngIf="chat.groupChat.picture==null" style="border-radius: 50%;" height="100%" width="100%"/>
     </div>
     <div class="message">
       <div class="full-name">

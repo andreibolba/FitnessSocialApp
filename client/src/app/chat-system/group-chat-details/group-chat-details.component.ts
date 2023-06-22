@@ -10,6 +10,7 @@ import { Person } from 'src/model/person.model';
 import { DataStorageService } from 'src/services/data-storage.service';
 import { UtilsService } from 'src/services/utils.service';
 import { AddEditGroupChatComponent } from '../add-edit-group-chat/add-edit-group-chat.component';
+import { UploadPhotoComponent } from 'src/app/shared/upload-photo/upload-photo.component';
 
 @Component({
   selector: 'app-group-chat-details',
@@ -102,8 +103,8 @@ export class GroupChatDetailsComponent implements OnInit, OnDestroy {
     });
   }
 
-  openDialog() {
-    const dialogRef = this.dialog.open(AddEditGroupChatComponent);
+  openDialog(op:number) {
+    const dialogRef = op==1?  this.dialog.open(AddEditGroupChatComponent): this.dialog.open(UploadPhotoComponent);
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
@@ -113,13 +114,19 @@ export class GroupChatDetailsComponent implements OnInit, OnDestroy {
   onAdd() {
     this.utils.editGroupChatOption.next(3);
     this.utils.groupChatPersonChat.next(this.groupChat);
-    this.openDialog();
+    this.openDialog(1);
   }
 
   onEdit() {
     this.utils.editGroupChatOption.next(2);
     this.utils.groupChatPersonChat.next(this.groupChat);
-    this.openDialog();
+    this.openDialog(1);
+  }
+
+  onEditPic(groupChat:GroupChat){
+    this.utils.idToPictureUpload.next(2);
+    this.utils.idOfGroupChatToPictureUpload.next(groupChat.groupChatId);
+    this.openDialog(2);
   }
 
 }

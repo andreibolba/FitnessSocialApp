@@ -17,6 +17,8 @@ public partial class Picture
 
     public virtual ICollection<GroupChatMessage> GroupChatMessages { get; } = new List<GroupChatMessage>();
 
+    public virtual ICollection<GroupChat> GroupChats { get; } = new List<GroupChat>();
+
     public virtual ICollection<Group> Groups { get; } = new List<Group>();
 
     public virtual ICollection<Person> People { get; } = new List<Person>();

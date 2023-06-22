@@ -64,7 +64,8 @@ export class GroupComponent implements OnInit, OnDestroy {
   }
 
   edit(){
-    this.utils.idToPictureUpload.next(this.group.groupId);
+    this.utils.idToPictureUpload.next(2);
+    this.utils.idOfGroupToPictureUpload.next(this.group.groupId);
     this.openDialog(2);
   }
 

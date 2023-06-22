@@ -17,13 +17,56 @@
   flex-direction: column;
 }
 
+.header_pic{
+  margin: auto;
+  position: relative;
+}
+
 img{
   margin-right: auto;
   margin-left: auto;
-  margin-top: 20px;
   height: 75px;
   width: 75px;
   border-radius: 50%;
+  opacity: 1;
+  display: block;
+  transition: .5s ease;
+  backface-visibility: hidden;
+  
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.header_pic:hover .image {
+  opacity: 0.3;
+}
+
+.header_pic:hover .middle {
+  opacity: 1;
+}
+
+.text {
+  background-color: #04AA6D;
+  color: white;
+  font-size: 10px;
+  margin-left: 5px;
+  padding: 5px;
+  border-radius: 5px;
+
+}
+
+.text:hover{
+  cursor: pointer;
 }
 
 .header h4{

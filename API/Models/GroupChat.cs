@@ -13,6 +13,8 @@ public partial class GroupChat
 
     public int AdminId { get; set; }
 
+    public int? PictureId { get; set; }
+
     public bool Deleted { get; set; }
 
     public virtual Person Admin { get; set; }
@@ -20,4 +22,6 @@ public partial class GroupChat
     public virtual ICollection<GroupChatMessage> GroupChatMessages { get; } = new List<GroupChatMessage>();
 
     public virtual ICollection<GroupChatPerson> GroupChatPeople { get; } = new List<GroupChatPerson>();
+
+    public virtual Picture Picture { get; set; }
 }

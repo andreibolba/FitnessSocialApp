@@ -54,7 +54,10 @@ export class UtilsService {
   maxpointToSolutionApprove = new BehaviorSubject<number>(-1);
   taskToEdit = new BehaviorSubject<Task | null>(null);
   taskIdToUpload = new BehaviorSubject<number>(-1);
+  //0-person,1-group,2-groupchat
   idToPictureUpload = new BehaviorSubject<number>(-1);
+  idOfGroupChatToPictureUpload = new BehaviorSubject<number>(-1);
+  idOfGroupToPictureUpload = new BehaviorSubject<number>(-1);
   isOnChallanges=new BehaviorSubject<boolean>(true);
   feedbackToEdit = new BehaviorSubject<Feedback | null>(null);
   dashboardChanged=new EventEmitter<boolean>(true);

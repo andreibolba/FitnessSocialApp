@@ -1,5 +1,7 @@
+import { NumberValueAccessor } from "@angular/forms";
 import { GroupChatMessage } from "./groupchatmessage.model";
 import { Person } from "./person.model";
+import { Picture } from "./picture.model";
 
 export class GroupChat{
   public groupChatId:number;
@@ -8,6 +10,8 @@ export class GroupChat{
   public adminId:number;
   public admin:Person;
   public participants:Person[];
+  public pictureId:number;
+  public picture:Picture;
 
   constructor(){
     this.groupChatId = -1;
@@ -16,5 +20,7 @@ export class GroupChat{
     this.adminId = -1;
     this.admin = new Person();
     this.participants = [];
+    this.pictureId=-1;
+    this.picture=new Picture();
   }
 }

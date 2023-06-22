@@ -9,11 +9,13 @@ namespace API.Data
     public class MessageRepository : IMessageRepository
     {
         private readonly InternShipAppSystemContext _context;
+        private readonly IPictureRepository _pictureRepo;
         private readonly IMapper _mapper;
 
-        public MessageRepository(InternShipAppSystemContext context, IMapper mapper)
+        public MessageRepository(InternShipAppSystemContext context, IPictureRepository pictureRepo, IMapper mapper)
         {
             _context = context;
+            _pictureRepo = pictureRepo;
             _mapper = mapper;
         }
 
@@ -45,7 +47,13 @@ namespace API.Data
         public IEnumerable<MessageDto> GetAllMessages()
         {
             var allMessages = _context.Chats.Where(c => c.Deleted == false).Include(m=>m.PersonReceiver).Include(m=>m.PersonSender);
-            return _mapper.Map<IEnumerable<MessageDto>>(allMessages);
+            var allMessagesDTO = _mapper.Map<IEnumerable<MessageDto>>(allMessages);
+            foreach (var message in allMessagesDTO)
+            {
+                message.PersonReceiver.Picture = message.PersonReceiver.PictureId ==null? null : _pictureRepo.GetById(message.PersonReceiver.PictureId.Value);
+                message.PersonSender.Picture = message.PersonSender.PictureId==null? null : _pictureRepo.GetById(message.PersonSender.PictureId.Value);
+            }
+            return allMessagesDTO;
         }
 
         public IEnumerable<MessageDto> GetLastMessages(int currentPersonId)

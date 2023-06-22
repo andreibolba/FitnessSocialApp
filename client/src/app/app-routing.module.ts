@@ -46,7 +46,10 @@ const routes: Routes = [
         path: 'main',
         children: [{ path: ':id', component: DashboardComponent }],
       },
-      { path: 'profile', component: ProfileComponent },
+      {
+        path: 'profile', component: ProfileComponent,
+        children: [{ path: ':id', component: ProfileComponent }]
+      },
       { path: 'questions', component: QuestionsComponent },
     ],
   },

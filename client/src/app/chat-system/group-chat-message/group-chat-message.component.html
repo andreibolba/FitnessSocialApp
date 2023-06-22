@@ -1,7 +1,10 @@
 <div class="chat">
   <div class="chat_header">
     <div class="chat_header_left">
-      <img src="../../../assets/img/temp_user_photo.jpg" />
+      <img [src]="groupChat.picture.url" *ngIf="groupChat.picture!=null" style="border-radius: 50%; margin: auto;"
+        height="100%" width="100%" style="margin-top: 7px; margin-left: 7px;" />
+      <img src="../../../assets/img/user.png" *ngIf="groupChat.picture==null" style="border-radius: 50%;" height="100%"
+        width="100%" />
     </div>
     <div class="chat_header_right">
       <div class="full-name">
@@ -19,7 +22,12 @@
     <div class="message" *ngFor="let message of messages">
       <div class="big_message" *ngIf="message.personId != loggedPerson.personId">
         <div class="pic">
-          <img src="../../../assets/img/temp_user_photo.jpg" />
+          <img class="profile" [src]="message.person.picture.url" *ngIf="message.person.picture!=null"
+            style="border-radius: 50%; margin: auto;" height="100%" width="100%" style=" height: 30px;
+            width: 30px;
+            border-radius: 50%;" />
+          <img src="../../../assets/img/user.png" *ngIf="message.person.picture==null" style="border-radius: 50%;"
+            height="100%" width="100%" />
         </div>
         <div class="messages">
           <p>{{ 'sent by ' + message.person.lastName + ' at '}} {{ message.sendDate | date: 'short' }}</p>
@@ -41,6 +49,6 @@
   </div>
   <div class="chat_send">
     <input type="text" placeholder="Type someting..." [(ngModel)]="message" (keyup.enter)="onSend()">
-    <button class="btn btn-info" (click)="onSend()"> Send </button>
+    <button class="btn btn-info" (click)="onSend()" [disabled]="message.length==0"> Send </button>
   </div>
 </div>

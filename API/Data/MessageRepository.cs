@@ -10,12 +10,14 @@ namespace API.Data
     {
         private readonly InternShipAppSystemContext _context;
         private readonly IPictureRepository _pictureRepo;
+        private readonly IPersonRepository _personRepo;
         private readonly IMapper _mapper;
 
-        public MessageRepository(InternShipAppSystemContext context, IPictureRepository pictureRepo, IMapper mapper)
+        public MessageRepository(InternShipAppSystemContext context, IPictureRepository pictureRepo, IPersonRepository personRepo, IMapper mapper)
         {
             _context = context;
             _pictureRepo = pictureRepo;
+            _personRepo = personRepo;
             _mapper = mapper;
         }
 
@@ -46,7 +48,7 @@ namespace API.Data
 
         public IEnumerable<MessageDto> GetAllMessages()
         {
-            var allMessages = _context.Chats.Where(c => c.Deleted == false).Include(m=>m.PersonReceiver).Include(m=>m.PersonSender);
+            var allMessages = _context.Chats.Where(c => c.Deleted == false && c.PersonReceiver.Deleted==false).Include(m=>m.PersonReceiver).Include(m=>m.PersonSender);
             var allMessagesDTO = _mapper.Map<IEnumerable<MessageDto>>(allMessages);
             foreach (var message in allMessagesDTO)
             {
@@ -83,9 +85,22 @@ namespace API.Data
             || (m.PersonReceiverId == chatPersonId && m.PersonSenderId == currentPersonId)).OrderBy(m => m.SendDate);
         }
 
+        public IEnumerable<MessageDto> GetMessagesByUseranem(string currentPersonUsername, string chatPersonUsername)
+        {
+            var s = _personRepo.GetPersonByUsername(currentPersonUsername).PersonId;
+            var r = _personRepo.GetPersonByUsername(chatPersonUsername).PersonId;
+            var a = 0;
+            return GetMessages(_personRepo.GetPersonByUsername(currentPersonUsername).PersonId, _personRepo.GetPersonByUsername(chatPersonUsername).PersonId);
+        }
+
         public bool SaveAll()
         {
             return _context.SaveChanges() > 0;
+        }
+
+        public async Task<bool> SaveAllAsync()
+        {
+            return await _context.SaveChangesAsync()>0;
         }
     }
 }

@@ -44,7 +44,6 @@ export class UtilsService {
   editGroupChatOption = new BehaviorSubject<number>(-1);
   chatPersonChat = new BehaviorSubject<number>(-1);
   groupChatPersonChat = new BehaviorSubject<GroupChat | null>(null);
-  newChat = new BehaviorSubject<Message | null>(null);
   newGroupChatMessage = new BehaviorSubject<GroupChatMessage | null>(null);
   noteToEdit = new BehaviorSubject<Note | null>(null);
   challengeToEdit = new BehaviorSubject<Challenge | null>(null);

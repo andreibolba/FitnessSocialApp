@@ -18,22 +18,24 @@ export class AppComponent implements OnInit {
   getCurrentPersonSubscription!: Subscription;
 
   constructor(private router: Router, private utils: UtilsService, private presenceService: PresenceService, private dataStorage: DataStorageService) {
-    this.subscription = router.events.subscribe((event) => {
-      if (event instanceof NavigationStart) {
-        browserRefresh = !router.navigated; 
-        const personString = localStorage.getItem('person');
-        if (!personString) {
-          return;
-        } else {
-          const person: LoggedPerson = JSON.parse(personString);
-          this.getCurrentPersonSubscription = this.dataStorage
-            .getPerson(person.username, person.token)
-            .subscribe((data) => {
-              this.presenceService.createHubConnection(data, person.token);
-            });
+    setTimeout(()=>{
+      this.subscription = router.events.subscribe((event) => {
+        if (event instanceof NavigationStart) {
+          browserRefresh = !router.navigated; 
+          const personString = localStorage.getItem('person');
+          if (!personString) {
+            return;
+          } else {
+            const person: LoggedPerson = JSON.parse(personString);
+            this.getCurrentPersonSubscription = this.dataStorage
+              .getPerson(person.username, person.token)
+              .subscribe((data) => {
+                this.presenceService.createHubConnection(data, person.token);
+              });
+          }
         }
-      }
     });
+    }, 100);
   }
 
   ngOnInit(): void {

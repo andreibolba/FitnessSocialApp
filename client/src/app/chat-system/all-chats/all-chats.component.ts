@@ -44,6 +44,7 @@ export class AllChatsComponent implements OnInit, OnDestroy {
       this.getCurrentPersonSubscription = this.dataStorage
         .getPerson(person.username, person.token)
         .subscribe((data) => {
+          this.presenceService.createHubConnection(data,person.token);
           this.currentPerson = data;
           this.getAllChatsSubscription = this.dataStorage
             .getLastMessagesFormChatForCurrentPerson(
@@ -67,7 +68,7 @@ export class AllChatsComponent implements OnInit, OnDestroy {
               this.allGroupChats = chats;
             });
         });
-      this.newChatSubscription = this.utils.newChat.subscribe(
+      this.newChatSubscription = this.dataStorage.newChat.subscribe(
         (res) => {
           if (res != null) {
             res.chatPerson =
@@ -90,7 +91,7 @@ export class AllChatsComponent implements OnInit, OnDestroy {
         },
         () => { },
         () => {
-          this.utils.newChat.next(null);
+          this.dataStorage.newChat.next(null);
         }
       );
       this.newGroupChatSubscription = this.utils.newGroupChatMessage.subscribe(

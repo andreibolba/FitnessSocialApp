@@ -24,13 +24,23 @@ import { SubTask } from 'src/model/subtask.model';
 import { TaskIntern } from 'src/model/taskintern.model';
 import { TaskGroup } from 'src/model/taskgroup.model';
 import { Feedback } from 'src/model/feedback.model';
+import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
+import { BehaviorSubject, take } from 'rxjs';
+import { UtilsService } from './utils.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataStorageService {
   baseUrl = 'https://localhost:7191/api/';
-  people:Person[]=[];
+  hubUrl = 'https://localhost:7191/hubs/'
+  people: Person[] = [];
+
+  private hubConnection?: HubConnection;
+  newChat = new BehaviorSubject<Message | null>(null);
+  private messageThreadSource = new BehaviorSubject<Message[]>([]);
+  messageThread$ = this.messageThreadSource.asObservable();
+
   constructor(private http: HttpClient) { }
 
   //connection test
@@ -47,9 +57,9 @@ export class DataStorageService {
     });
   }
 
-  sendPictureForPerson(token:string,fd:FormData,personId:number){
-    const headers = { Authorization: 'Bearer ' + token, Accept: 'application/json'};
-    return this.http.post(this.baseUrl + 'people/picture/add/'+personId, fd, { headers: headers });
+  sendPictureForPerson(token: string, fd: FormData, personId: number) {
+    const headers = { Authorization: 'Bearer ' + token, Accept: 'application/json' };
+    return this.http.post(this.baseUrl + 'people/picture/add/' + personId, fd, { headers: headers });
   }
 
 
@@ -144,9 +154,9 @@ export class DataStorageService {
     return this.http.get<Object>(this.baseUrl + 'group/' + groupId, { headers: headers });
   }
 
-  sendPictureForGroup(token:string,fd:FormData,groupId:number){
-    const headers = { Authorization: 'Bearer ' + token, Accept: 'application/json'};
-    return this.http.post(this.baseUrl + 'group/picture/add/'+groupId, fd, { headers: headers });
+  sendPictureForGroup(token: string, fd: FormData, groupId: number) {
+    const headers = { Authorization: 'Bearer ' + token, Accept: 'application/json' };
+    return this.http.post(this.baseUrl + 'group/picture/add/' + groupId, fd, { headers: headers });
   }
 
   addGroup(token: string, group: Group) {
@@ -358,7 +368,7 @@ export class DataStorageService {
 
   publish(token: string, testId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'test/stop/' + testId,{}, {
+    return this.http.post(this.baseUrl + 'test/stop/' + testId, {}, {
       headers: headers,
     });
   }
@@ -630,18 +640,48 @@ export class DataStorageService {
     return this.http.get<Message[]>(this.baseUrl + 'chat/messages/' + currentPersonId + '/' + chatPersonId, { headers: headers });
   }
 
-  addMessage(token: string, message: Message) {
+  async addMessage(token: string, message: Message) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post<Message>(this.baseUrl + 'chat/add', {
+    return this.hubConnection?.invoke('AddMessage', {
       PersonSenderId: message.personSenderId,
       PersonReceiverId: message.personReceiverId,
       Message: message.message
-    }, { headers: headers });
+    }).catch(error=>console.log(error));
   }
 
   deleteChat(token: string, personId: number, chatPersonId: number) {
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.post(this.baseUrl + 'chat/deletechat/' + personId + '/' + chatPersonId, {}, { headers: headers });
+  }
+
+  createHubConnection(user: Person, otherUsername: string, token: string) {
+    console.log(this.hubUrl);
+    this.hubConnection = new HubConnectionBuilder().withUrl(this.hubUrl + 'message?user=' + otherUsername, {
+      accessTokenFactory: () => token
+    })
+      .withAutomaticReconnect()
+      .build();
+
+    this.hubConnection.start().catch(error => console.log(error));
+
+    this.hubConnection.on('ReceiveMessageThread', messages => {
+      this.messageThreadSource.next(messages);
+    });
+
+    this.hubConnection.on('NewMessage', message => {
+      this.messageThread$.pipe(take(1)).subscribe({
+        next: messages => {
+          this.messageThreadSource.next([...messages, message]);
+          this.newChat.next(message);
+        }
+      });
+    })
+
+  }
+
+  stopHubConnetion() {
+    if (this.hubConnection)
+      this.hubConnection.stop();
   }
 
   //groupchat
@@ -666,9 +706,9 @@ export class DataStorageService {
     }, { headers: headers });
   }
 
-  sendPictureForGroupChat(token:string,fd:FormData,groupChatId:number){
-    const headers = { Authorization: 'Bearer ' + token, Accept: 'application/json'};
-    return this.http.post(this.baseUrl + 'groupchat/picture/add/'+groupChatId, fd, { headers: headers });
+  sendPictureForGroupChat(token: string, fd: FormData, groupChatId: number) {
+    const headers = { Authorization: 'Bearer ' + token, Accept: 'application/json' };
+    return this.http.post(this.baseUrl + 'groupchat/picture/add/' + groupChatId, fd, { headers: headers });
   }
 
   getAllGroupChatsLastMessages(token: string, personId: number) {
@@ -808,9 +848,9 @@ export class DataStorageService {
     return this.http.get<ChallengeSolution[]>(this.baseUrl + 'challenge/solutions/mine/' + personId, { headers: headers });
   }
 
-  getSolutionsForSpecificPersonForChallenge(token: string, personId: number, challengeId:number) {
+  getSolutionsForSpecificPersonForChallenge(token: string, personId: number, challengeId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.get<ChallengeSolution[]>(this.baseUrl + 'challenge/solutions/mine/' + personId+'/'+challengeId, { headers: headers });
+    return this.http.get<ChallengeSolution[]>(this.baseUrl + 'challenge/solutions/mine/' + personId + '/' + challengeId, { headers: headers });
   }
 
   approveSolution(token: string, solutionId: number, points: number,) {
@@ -840,7 +880,7 @@ export class DataStorageService {
     const headers = { Authorization: 'Bearer ' + token };
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
-    return this.http.post<ChallengeSolution>(this.baseUrl + 'challenge/solutions/edit/'+personId+'/'+challangeId, formData, { headers: headers });
+    return this.http.post<ChallengeSolution>(this.baseUrl + 'challenge/solutions/edit/' + personId + '/' + challangeId, formData, { headers: headers });
   }
 
   downloadFile(token: string, solid: number) {
@@ -862,17 +902,17 @@ export class DataStorageService {
 
   //tasks
 
-  getAllTasks(token:string){
+  getAllTasks(token: string) {
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.get<Task[]>(this.baseUrl + 'tasks', { headers: headers });
   }
 
-  getAllTasksForPerson(token:string, status:string,personId:number){
+  getAllTasksForPerson(token: string, status: string, personId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.get<Task[]>(this.baseUrl + 'tasks/'+status+'/'+personId, { headers: headers });
+    return this.http.get<Task[]>(this.baseUrl + 'tasks/' + status + '/' + personId, { headers: headers });
   }
 
-  addTask(token:string, task:Task){
+  addTask(token: string, task: Task) {
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.post<Task>(this.baseUrl + 'tasks/add', {
       taskName: task.taskName,
@@ -881,35 +921,35 @@ export class DataStorageService {
     }, { headers: headers });
   }
 
-  editTask(token:string, task:Task){
+  editTask(token: string, task: Task) {
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.post<Task>(this.baseUrl + 'tasks/edit', {
-      taskId:task.taskId,
+      taskId: task.taskId,
       taskName: task.taskName,
       taskDescription: task.taskDescription,
       trainerId: task.trainerId
     }, { headers: headers });
   }
 
-  deleteTask(token:string, taskId:number){
+  deleteTask(token: string, taskId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'tasks/delete/'+taskId,{}, { headers: headers });
+    return this.http.post(this.baseUrl + 'tasks/delete/' + taskId, {}, { headers: headers });
   }
 
-  addeditSolution(token:string, taskSolutionId:number,taskId:number,personId:number, file: File) {
+  addeditSolution(token: string, taskSolutionId: number, taskId: number, personId: number, file: File) {
     const headers = { Authorization: 'Bearer ' + token };
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
-    return this.http.post<TaskSolution>(this.baseUrl + 'tasks/addedit/solution/'+taskSolutionId+'/'+taskId+'/'+personId, formData, { headers: headers });
+    return this.http.post<TaskSolution>(this.baseUrl + 'tasks/addedit/solution/' + taskSolutionId + '/' + taskId + '/' + personId, formData, { headers: headers });
   }
 
-  assignTask(token: string, idsIntern: string, idsGroups:string, taskid: number) {
+  assignTask(token: string, idsIntern: string, idsGroups: string, taskid: number) {
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.post(
       this.baseUrl + 'tasks/assign/' + taskid,
       {
         idsIntern: idsIntern,
-        idsGroups:idsGroups
+        idsGroups: idsGroups
       },
       {
         headers: headers,
@@ -917,30 +957,30 @@ export class DataStorageService {
     );
   }
 
-  getCheckGroupForTask(token:string, taskId:number){
+  getCheckGroupForTask(token: string, taskId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.get<TaskGroup[]>(this.baseUrl + 'tasks/checked/group/'+taskId, { headers: headers });
+    return this.http.get<TaskGroup[]>(this.baseUrl + 'tasks/checked/group/' + taskId, { headers: headers });
   }
 
-  getCheckInternForTask(token:string, taskId:number){
+  getCheckInternForTask(token: string, taskId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.get<TaskIntern[]>(this.baseUrl + 'tasks/checked/intern/'+taskId, { headers: headers });
+    return this.http.get<TaskIntern[]>(this.baseUrl + 'tasks/checked/intern/' + taskId, { headers: headers });
   }
 
 
   //subtasks
 
-  getAllSubTasks(token:string){
+  getAllSubTasks(token: string) {
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.get<SubTask[]>(this.baseUrl + 'subtasks', { headers: headers });
   }
 
-  getAllSubtasksForTask(token:string, taskId:number){
+  getAllSubtasksForTask(token: string, taskId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.get<SubTask[]>(this.baseUrl + 'subtasks/'+taskId, { headers: headers });
+    return this.http.get<SubTask[]>(this.baseUrl + 'subtasks/' + taskId, { headers: headers });
   }
 
-  addSubTask(token:string, subTask:SubTask){
+  addSubTask(token: string, subTask: SubTask) {
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.post<SubTask>(this.baseUrl + 'subtasks/add', {
       subTaskNAme: subTask.subTaskName,
@@ -948,35 +988,35 @@ export class DataStorageService {
     }, { headers: headers });
   }
 
-  editSubTask(token:string, subTask:SubTask){
+  editSubTask(token: string, subTask: SubTask) {
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.post<SubTask>(this.baseUrl + 'subtasks/edit', {
-      subTaskId:subTask.subTaskId,
+      subTaskId: subTask.subTaskId,
       subTaskNAme: subTask.subTaskName,
       taskId: subTask.taskId
     }, { headers: headers });
   }
 
-  deleteSubTask(token:string, subTaskId:number){
+  deleteSubTask(token: string, subTaskId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'subtasks/delete/'+subTaskId,{}, { headers: headers });
+    return this.http.post(this.baseUrl + 'subtasks/delete/' + subTaskId, {}, { headers: headers });
   }
 
-  checkSubTask(token:string, subTaskId:number, taskId:number) {
+  checkSubTask(token: string, subTaskId: number, taskId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'subtasks/check'+subTaskId+'/'+taskId,{}, { headers: headers });
+    return this.http.post(this.baseUrl + 'subtasks/check' + subTaskId + '/' + taskId, {}, { headers: headers });
   }
 
   //solutions
 
-  getAllSolutionsForATask(token:string,taskId:number){
+  getAllSolutionsForATask(token: string, taskId: number) {
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.get<TaskSolution[]>(this.baseUrl + 'tasks/solutions/' + taskId, { headers: headers });
   }
 
-  getAllSolutionsForATaskForAPerson(token:string,taskId:number, personId:number){
+  getAllSolutionsForATaskForAPerson(token: string, taskId: number, personId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.get<TaskSolution>(this.baseUrl + 'tasks/solutions/' + taskId+'/'+personId, { headers: headers });
+    return this.http.get<TaskSolution>(this.baseUrl + 'tasks/solutions/' + taskId + '/' + personId, { headers: headers });
   }
 
   downloadFileTask(token: string, solid: number) {
@@ -988,62 +1028,62 @@ export class DataStorageService {
 
   //feedback
 
-  getAllFeedbacks(token:string){
+  getAllFeedbacks(token: string) {
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.get<Feedback[]>(this.baseUrl + 'feedbacks', { headers: headers });
   }
 
-  getfeedbackById(token:string, feedbacksId:number){
+  getfeedbackById(token: string, feedbacksId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.get<Feedback>(this.baseUrl + 'feedbacks/'+feedbacksId, { headers: headers });
+    return this.http.get<Feedback>(this.baseUrl + 'feedbacks/' + feedbacksId, { headers: headers });
   }
 
-  getAllFeedbacksForSpecificForPerson(token:string, personid:number,status:string){
+  getAllFeedbacksForSpecificForPerson(token: string, personid: number, status: string) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.get<Feedback[]>(this.baseUrl + 'feedbacks/'+ personid +'/'+status, { headers: headers });
+    return this.http.get<Feedback[]>(this.baseUrl + 'feedbacks/' + personid + '/' + status, { headers: headers });
   }
 
-  getAllFeedbacksForSpecificForPersonFirstCount(token:string, personid:number,status:string, count:number){
+  getAllFeedbacksForSpecificForPersonFirstCount(token: string, personid: number, status: string, count: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.get<Feedback[]>(this.baseUrl + 'feedbacks/'+ personid +'/'+status +'/'+count, { headers: headers });
+    return this.http.get<Feedback[]>(this.baseUrl + 'feedbacks/' + personid + '/' + status + '/' + count, { headers: headers });
   }
 
-  addFeedback(token:string, feedback:Feedback){
+  addFeedback(token: string, feedback: Feedback) {
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.post<Feedback>(this.baseUrl + 'feedbacks/add', {
-      personSenderId:feedback.personSenderId,
-      personReceiverId:feedback.personReceiverId,
-      taskId:feedback.taskId,
-      challangeId:feedback.challangeId,
-      testId:feedback.testId,
-      grade:feedback.grade,
-      content:feedback.content
+      personSenderId: feedback.personSenderId,
+      personReceiverId: feedback.personReceiverId,
+      taskId: feedback.taskId,
+      challangeId: feedback.challangeId,
+      testId: feedback.testId,
+      grade: feedback.grade,
+      content: feedback.content
     }, { headers: headers });
   }
 
-  editFeedback(token:string, feedback:Feedback){
+  editFeedback(token: string, feedback: Feedback) {
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.post<Feedback>(this.baseUrl + 'feedbacks/edit', {
-      feedbackId:feedback.feedbackId,
-      personSenderId:feedback.personSenderId,
-      personReceiverId:feedback.personReceiverId,
-      taskId:feedback.taskId,
-      challangeId:feedback.challangeId,
-      testId:feedback.testId,
-      grade:feedback.grade,
-      content:feedback.content
+      feedbackId: feedback.feedbackId,
+      personSenderId: feedback.personSenderId,
+      personReceiverId: feedback.personReceiverId,
+      taskId: feedback.taskId,
+      challangeId: feedback.challangeId,
+      testId: feedback.testId,
+      grade: feedback.grade,
+      content: feedback.content
     }, { headers: headers });
   }
 
-  deleteFeedback(token:string, feedbackId:number){
+  deleteFeedback(token: string, feedbackId: number) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'feedbacks/delete/'+feedbackId,{}, { headers: headers });
+    return this.http.post(this.baseUrl + 'feedbacks/delete/' + feedbackId, {}, { headers: headers });
   }
 
   //log
-  log(token:string, log:any){
+  log(token: string, log: any) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(this.baseUrl + 'logging/log',{logDto:log }, { headers: headers });
+    return this.http.post(this.baseUrl + 'logging/log', { logDto: log }, { headers: headers });
   }
 
 }

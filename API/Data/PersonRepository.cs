@@ -200,5 +200,12 @@ namespace API.Data
             }
             return resultReturn;
         }
+
+        public async Task<PersonDto> GetPersonByIdAsync(int id)
+        {
+            var allPeople =  _mapper.Map<IEnumerable<PersonDto>>(_context.People.Where(p => p.Deleted == false));
+            var ppl = await _context.People.Include(p=>p.Picture).SingleOrDefaultAsync(p=>p.Deleted == false && p.PersonId == id);
+            return _mapper.Map<PersonDto>(ppl);
+        }
     }
 }

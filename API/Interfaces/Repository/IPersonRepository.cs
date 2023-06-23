@@ -10,6 +10,7 @@ namespace API.Interfaces.Repository
         IEnumerable<PersonDto> GetAllInterns();
         IEnumerable<PersonDto> GetAllTrainers();
         PersonDto GetPersonById(int id);
+        Task<PersonDto> GetPersonByIdAsync(int id);
         PersonDto GetPersonByUsername(string username);
         PersonDto GetPersonByEmail(string email);
         void Update(PersonDto person);

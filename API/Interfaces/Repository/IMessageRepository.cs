@@ -6,11 +6,13 @@ namespace API.Interfaces.Repository
     {
         public IEnumerable<MessageDto> GetAllMessages();
         public IEnumerable<MessageDto> GetMessages(int currentPersonId,int chatPersonId);
+        public IEnumerable<MessageDto> GetMessagesByUseranem(string currentPersonUsername, string chatPersonUsername);
         public IEnumerable<MessageDto> GetLastMessages(int currentPersonId);
         public MessageDto GetMessageById(int id);
         public MessageDto AddMessage(MessageDto chat);
         public void DeleteMessage(int id);
         public void DeleteChat(int personId,int chatPersonId);
         public bool SaveAll();
+        public Task<bool> SaveAllAsync();
     }
 }

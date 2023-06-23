@@ -31,11 +31,9 @@ export class PresenceService{
     this.hubConnection.on('UserIsOffline',username=>{
       //this.toastr.warning(username + 'has disconnected')
     });
-
-    console.log("Before online users func");
+    
     this.hubConnection.on('GetOnlineUsers', users=>{
       this.onlineUsersSource.next(users);
-      console.log("Inside online users func");
     })
     
   }

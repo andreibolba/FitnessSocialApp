@@ -6,6 +6,7 @@ import { LoggedPerson } from 'src/model/loggedperson.model';
 import { Message } from 'src/model/message.model';
 import { Person } from 'src/model/person.model';
 import { DataStorageService } from 'src/services/data-storage.service';
+import { PresenceService } from 'src/services/presence.service';
 import { UtilsService } from 'src/services/utils.service';
 
 
@@ -32,7 +33,8 @@ export class ChatMessagesComponent implements OnInit, OnDestroy {
     private utils: UtilsService,
     private dataStorage: DataStorageService,
     private toastr:ToastrService,
-    private router:Router
+    private router:Router,
+    private presenceService:PresenceService
   ) {}
 
   ngOnInit(): void {
@@ -114,5 +116,15 @@ export class ChatMessagesComponent implements OnInit, OnDestroy {
 
   onDetails(){
     this.router.navigate(["dashboard/profile/"+this.chatPerson.personId]);
+  }
+
+  isOnline(usename:string):boolean{
+    let online=false;
+    this.presenceService.onlineUsers$.pipe()
+    this.presenceService.onlineUsers$.forEach(element=>{
+      if(element.includes(usename))
+        online=true;
+    });
+    return online;
   }
 }

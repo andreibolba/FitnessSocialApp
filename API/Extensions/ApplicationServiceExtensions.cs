@@ -4,6 +4,7 @@ using API.Interfaces;
 using API.Interfaces.Repository;
 using API.Models;
 using API.Services;
+using API.SignalR;
 using Microsoft.EntityFrameworkCore;
 
 namespace API.Extensions
@@ -48,6 +49,16 @@ namespace API.Extensions
             services.AddScoped<IPhotoService, PhotoService>();
             services.Configure<CloudinarySettings>(config.GetSection("CloudinarySettings"));
             services.AddScoped<IPictureRepository, PictureRepository>();
+            services.AddSignalR();
+            services.AddSingleton<PresenceTracker>();
+            services.AddCors(options => options.AddPolicy("CorsPolicy",
+            builder =>
+            {
+                builder.AllowAnyHeader()
+                       .AllowAnyMethod()
+                       .SetIsOriginAllowed((host) => true)
+                       .AllowCredentials();
+            }));
             return services;
         }
     }

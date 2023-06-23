@@ -75,7 +75,6 @@ export class AuthentificationComponent implements OnInit {
     const email = form.value.email;
     const password = form.value.password;
     let model = { email, password };
-
     this.authService.login(model).subscribe(
       (resData) => {
         this.router.navigate(['/dashboard']);

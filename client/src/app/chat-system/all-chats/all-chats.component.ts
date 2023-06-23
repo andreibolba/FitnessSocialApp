@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Subscription, elementAt } from 'rxjs';
 import { LoggedPerson } from 'src/model/loggedperson.model';
 import { Message } from 'src/model/message.model';
 import { Person } from 'src/model/person.model';
@@ -9,6 +9,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { AddEditGroupChatComponent } from '../add-edit-group-chat/add-edit-group-chat.component';
 import { GroupChatMessage } from 'src/model/groupchatmessage.model';
 import { GroupChat } from 'src/model/groupchat.model';
+import { PresenceService } from 'src/services/presence.service';
 
 @Component({
   selector: 'app-all-chats',
@@ -29,7 +30,8 @@ export class AllChatsComponent implements OnInit, OnDestroy {
   constructor(
     private utils: UtilsService,
     private dataStorage: DataStorageService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private presenceService:PresenceService
   ) { }
 
   ngOnInit(): void {
@@ -142,5 +144,15 @@ export class AllChatsComponent implements OnInit, OnDestroy {
   addGroup() {
     this.utils.editGroupChatOption.next(1);
     this.openDialog();
+  }
+
+  isOnline(usename:string):boolean{
+    let online=false;
+    this.presenceService.onlineUsers$.pipe()
+    this.presenceService.onlineUsers$.forEach(element=>{
+      if(element.includes(usename))
+        online=true;
+    });
+    return online;
   }
 }

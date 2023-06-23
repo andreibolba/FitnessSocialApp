@@ -1,6 +1,7 @@
 using System.Text.Json.Serialization;
 using API.Extensions;
 using API.FluentMigration;
+using API.SignalR;
 
 internal class Program
 {
@@ -17,12 +18,13 @@ internal class Program
 
         Database.RunMigrations();
 
-        app.UseCors(b => b.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+        app.UseCors("CorsPolicy");
 
         app.UseAuthentication();
         app.UseAuthorization();
 
         app.MapControllers();
+        app.MapHub<PresenceHub>("hubs/presence");
 
         app.Run();
     }

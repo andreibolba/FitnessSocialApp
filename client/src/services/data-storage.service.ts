@@ -1039,4 +1039,11 @@ export class DataStorageService {
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.post(this.baseUrl + 'feedbacks/delete/'+feedbackId,{}, { headers: headers });
   }
+
+  //log
+  log(token:string, log:any){
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.post(this.baseUrl + 'logging/log',{logDto:log }, { headers: headers });
+  }
+
 }

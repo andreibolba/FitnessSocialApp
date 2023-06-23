@@ -9,6 +9,8 @@
       margin-left: 5px;
       border-radius: 50%;"/>
       <img src="../../../assets/img/user.png" *ngIf="message.personReceiver.picture==null" style="border-radius: 50%;" height="100%" width="100%"/>
+      <div class="onlineState" *ngIf="isOnline(message.personReceiver.username)"></div>
+      <div class="offlineState" *ngIf="!isOnline(message.personReceiver.username)"></div>
     </div>
     <div class="pic" *ngIf="currentPerson.personId == message.personReceiverId">
       <img class="profile" [src]="message.personSender.picture.url" *ngIf="message.personSender.picture!=null" style="border-radius: 50%; margin: auto;" height="100%" width="100%"
@@ -16,8 +18,11 @@
       width: 44px;
       margin-top: 5px;
       margin-left: 5px;
-      border-radius: 50%;"/>
+      border-radius: 50%;
+      z-index: -100;"/>
       <img src="../../../assets/img/user.png" *ngIf="message.personSender.picture==null" style="border-radius: 50%;" height="100%" width="100%"/>
+      <div class="onlineState" *ngIf="isOnline(message.personSender.username)"></div>
+      <div class="offlineState" *ngIf="!isOnline(message.personSender.username)"></div>
     </div>
     <div class="message">
       <div class="full-name">
@@ -43,6 +48,7 @@
       margin-left: 5px;
       border-radius: 50%;"/>
       <img src="../../../assets/img/user.png" *ngIf="chat.groupChat.picture==null" style="border-radius: 50%;" height="100%" width="100%"/>
+      
     </div>
     <div class="message">
       <div class="full-name">

@@ -9,6 +9,6 @@ export class LogService {
   constructor(private http: HttpClient) { }
 
   log(model:any){
-    return this.http.post(this.baseUrl + 'logging/Log', model);
+    return this.http.post(this.baseUrl + 'logging/log', model);
   }
 }

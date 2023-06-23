@@ -11,8 +11,10 @@
         {{ chatPerson.firstName + ' ' +chatPerson.lastName }}
       </div>
       <div class="active-last-time">
-        <div class="circle" style="background-color: grey;"></div>
-        Active Since 1 hour ago
+        <div class="circle" style="background-color:red;" *ngIf="isOnline(chatPerson.username)==false"></div>
+        <div class="circle" style="background-color:chartreuse;" *ngIf="isOnline(chatPerson.username)"></div>
+        <h6 *ngIf="isOnline(chatPerson.username)==false" style="color: red;"> Not active</h6>
+        <h6 *ngIf="isOnline(chatPerson.username)" style="color:chartreuse;">Active</h6>
       </div>
     </div>
     <div class="buttons-people" style="display: flex;">

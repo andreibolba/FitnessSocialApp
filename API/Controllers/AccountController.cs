@@ -33,7 +33,7 @@ namespace API.Controllers
 
             var res = _repository.Create(person);
             if (res!=null)
-                return Ok();
+                return Ok(res);
             else
                 return BadRequest("Account was created, but the mail was not sent!");
         }

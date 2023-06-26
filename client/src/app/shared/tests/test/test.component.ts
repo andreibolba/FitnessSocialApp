@@ -146,7 +146,7 @@ export class TestComponent implements OnInit, OnDestroy {
       const person: LoggedPerson = JSON.parse(personString);
       this.token = person.token;
       let id = -1;
-      this.trainerSub = this.dataService
+      this.trainerSub = this.dataService.personData
         .getPerson(person.username, this.token)
         .subscribe((data) => {
           id = data.personId;

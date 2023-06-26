@@ -147,7 +147,7 @@ namespace API.Data
             return _context.SaveChanges() > 0;
         }
 
-        public void Update(PersonDto person)
+        public PersonDto Update(PersonDto person)
         {
             var personFromDb = GetPersonById(person.PersonId);
             if (person.FirstName == null) person.FirstName = personFromDb.FirstName;
@@ -167,7 +167,9 @@ namespace API.Data
                 person.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(person.Password));
                 person.PasswordSalt = hmac.Key;
             }
-            _context.People.Update(_mapper.Map<Person>(person));
+            var res = _context.People.Update(_mapper.Map<Person>(person));
+
+            return SaveAll() ? _mapper.Map<PersonDto>(res) : null;
         }
 
         public IEnumerable<PersonDto> GetAllAdmins()
@@ -208,11 +210,6 @@ namespace API.Data
             var allPeople =  _mapper.Map<IEnumerable<PersonDto>>(_context.People.Where(p => p.Deleted == false));
             var ppl = await _context.People.Include(p=>p.Picture).SingleOrDefaultAsync(p=>p.Deleted == false && p.PersonId == id);
             return _mapper.Map<PersonDto>(ppl);
-        }
-
-        public async Task<bool> SaveAllAsync()
-        {
-            return await _context.SaveChangesAsync() > 0;
         }
     }
 }

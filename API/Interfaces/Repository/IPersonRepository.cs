@@ -4,20 +4,19 @@ namespace API.Interfaces.Repository
 {
     public interface IPersonRepository
     {
-        PersonDto Create(PersonDto person);
-        IEnumerable<PersonDto> GetAllPerson();
-        IEnumerable<PersonDto> GetAllAdmins();
-        IEnumerable<PersonDto> GetAllInterns();
-        IEnumerable<PersonDto> GetAllTrainers();
-        PersonDto GetPersonById(int id);
-        Task<PersonDto> GetPersonByIdAsync(int id);
-        PersonDto GetPersonByUsername(string username);
-        PersonDto GetPersonByEmail(string email);
-        void Update(PersonDto person);
-        void Delete(int personId);
-        PersonDto LogIn(string email, string password);
-        bool SaveAll();
-        Task<bool> SaveAllAsync();
-        IEnumerable<TestDto> GetAllInternTests(int personId);
+        public PersonDto Create(PersonDto person);
+        public IEnumerable<PersonDto> GetAllPerson();
+        public IEnumerable<PersonDto> GetAllAdmins();
+        public IEnumerable<PersonDto> GetAllInterns();
+        public IEnumerable<PersonDto> GetAllTrainers();
+        public PersonDto GetPersonById(int id);
+        public Task<PersonDto> GetPersonByIdAsync(int id);
+        public PersonDto GetPersonByUsername(string username);
+        public PersonDto GetPersonByEmail(string email);
+        public PersonDto Update(PersonDto person);
+        public void Delete(int personId);
+        public PersonDto LogIn(string email, string password);
+        public bool SaveAll();
+        public IEnumerable<TestDto> GetAllInternTests(int personId);
     }
 }

@@ -36,7 +36,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
         console.log(idString);
         let id =+idString;
         if(!Number.isNaN(id)){
-        this.dataSub = this.dataService
+        this.dataSub = this.dataService.personData
         .getPersonById(id, person.token)
         .subscribe(
           (res) => {
@@ -51,7 +51,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
           }
         );
         }else{
-          this.dataSub = this.dataService
+          this.dataSub = this.dataService.personData
         .getPerson(person.username, person.token)
         .subscribe(
           (res) => {

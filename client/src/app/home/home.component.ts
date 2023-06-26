@@ -47,7 +47,7 @@ export class HomeComponent implements OnInit, OnDestroy {
       return;
     } else {
       const person: LoggedPerson = JSON.parse(personString);
-      this.dataSub = this.dataService
+      this.dataSub = this.dataService.personData
         .getPerson(person.username, person.token)
         .subscribe(
           (res) => {

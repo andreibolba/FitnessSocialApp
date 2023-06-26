@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
             return;
           } else {
             const person: LoggedPerson = JSON.parse(personString);
-            this.getCurrentPersonSubscription = this.dataStorage
+            this.getCurrentPersonSubscription = this.dataStorage.personData
               .getPerson(person.username, person.token)
               .subscribe((data) => {
                 this.presenceService.createHubConnection(data, person.token);

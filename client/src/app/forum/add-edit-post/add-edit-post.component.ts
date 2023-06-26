@@ -41,7 +41,7 @@ export class AddEditPostComponent implements OnInit, OnDestroy {
     } else {
       const person: LoggedPerson = JSON.parse(personString);
       this.token = person.token;
-      this.dataSub = this.dataService
+      this.dataSub = this.dataService.personData
         .getPerson(person.username, person.token)
         .subscribe((res) => {
           this.person = res;

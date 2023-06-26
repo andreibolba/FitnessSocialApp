@@ -97,7 +97,7 @@ export class CreateEditDialogComponent implements OnInit, OnDestroy {
     person.status = this.status;
 
     if (this.opration == 'Add') {
-      this.dataService.addperson(person, this.token).subscribe(
+      this.dataService.personData.addperson(person, this.token).subscribe(
         () => {
           this.toastr.success('An ' + status + ' was added succesfully!');
           this.dialogRef.close();
@@ -109,7 +109,7 @@ export class CreateEditDialogComponent implements OnInit, OnDestroy {
       );
     } else {
       person.personId = this.person!.personId;
-      this.dataService.editperson(person, this.token).subscribe(
+      this.dataService.personData.editperson(person, this.token).subscribe(
         () => {
           this.toastr.success('The edit was succesfully!');
           this.dialogRef.close();

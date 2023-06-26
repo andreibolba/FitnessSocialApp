@@ -145,8 +145,8 @@ namespace API.Controllers
             if (_personRepository.GetPersonByEmail(person.Email)!=null && (person.Email != personCheck.Email))
                 return BadRequest("Email exists!");
 
-            _personRepository.Update(person);
-            return _personRepository.SaveAll() ? Ok() : BadRequest("Internal Server Error");
+            var res = _personRepository.Update(person);
+            return res!=null? Ok(res) : BadRequest("Internal Server Error");
         }
 
         [HttpGet("tests/{personId:int}")]

@@ -45,7 +45,7 @@ export class UploadPhotoComponent implements OnInit, OnDestroy {
       this.getIdSubscription = this.uitls.idToPictureUpload.subscribe((res) => {
         switch (res) {
           case 0:
-            this.getIdSubscription = this.dataStorage.getPerson(person.username, person.token).subscribe((res) => {
+            this.getIdSubscription = this.dataStorage.personData.getPerson(person.username, person.token).subscribe((res) => {
               this.personId = res.personId;
               this.groupId = null;
               this.grouChatId=null;
@@ -90,7 +90,7 @@ export class UploadPhotoComponent implements OnInit, OnDestroy {
         });
       } else if (this.personId) {
         fd.append('image', this.selectedFile, this.selectedFile['name']);
-        this.sendPictureSubscription = this.dataStorage.sendPictureForPerson(this.token, fd, this.personId).subscribe(() => {
+        this.sendPictureSubscription = this.dataStorage.personData.sendPictureForPerson(this.token, fd, this.personId).subscribe(() => {
           this.toastr.success("Photo was uploded succesfully");
           this.dialog.close();
         }, (error) => {

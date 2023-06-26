@@ -45,7 +45,7 @@ export class AuthentificationComponent implements OnInit {
       this.sub = this.activatedRoute.paramMap.subscribe((params) => {
         this.linkId = params.get('linkid');
         if (this.linkId)
-          this.dataService.isLinkValid(+this.linkId).subscribe(
+          this.dataService.personData.isLinkValid(+this.linkId).subscribe(
             () => {},
             (error) => {
               this.toastr.error(error.error);
@@ -127,7 +127,7 @@ export class AuthentificationComponent implements OnInit {
       form.reset();
     }
 
-    this.dataService.resetPassword(+this.linkId!, password).subscribe(
+    this.dataService.personData.resetPassword(+this.linkId!, password).subscribe(
       () => {
         this.toastr.success('Password reset succesfully!');
         this.router.navigate(['']);
@@ -141,7 +141,7 @@ export class AuthentificationComponent implements OnInit {
 
   onForgot(form: NgForm) {
     let email = form.value.email;
-    this.dataService.sendEmail(email).subscribe(
+    this.dataService.personData.sendEmail(email).subscribe(
       () => {
         this.toastr.success('Mail was sent succesfully!');
         this.router.navigate(['']);

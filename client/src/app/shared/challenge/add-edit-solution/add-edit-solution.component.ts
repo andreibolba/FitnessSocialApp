@@ -41,7 +41,7 @@ export class AddEditSolutionComponent implements OnInit, OnDestroy {
     } else {
       const person: LoggedPerson = JSON.parse(personString);
       this.token = person.token;
-      this.getPersonSubscription = this.dataStorage.getPerson(person.username, this.token).subscribe((res) => {
+      this.getPersonSubscription = this.dataStorage.personData.getPerson(person.username, this.token).subscribe((res) => {
         this.person = res;
         this.getChallangeIdSubecription = this.utils.challengeIdForSolutionsToEdit.subscribe((id) => {
           this.challangeId=id;

@@ -47,7 +47,7 @@ export class SeeSolutionsComponent implements OnInit, OnDestroy {
     } else {
       const person: LoggedPerson = JSON.parse(personString);
       this.token = person.token;
-      this.getPersonSubscription = this.dataStorage.getPerson(person.username,person.token).subscribe((data)=>{
+      this.getPersonSubscription = this.dataStorage.personData.getPerson(person.username,person.token).subscribe((data)=>{
         this.personId = data.personId;
         this.isReadOnly =  data.status == "Intern";
         if(this.isReadOnly){

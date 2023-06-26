@@ -58,7 +58,7 @@ export class EditGroupDialogComponent implements OnInit, OnDestroy {
     } else {
       const person: LoggedPerson = JSON.parse(personString);
       this.token = person.token;
-      this.dataPeopleSub = this.dataService
+      this.dataPeopleSub = this.dataService.personData
         .getPeople(person.token)
         .subscribe((data) => {
           let obj = data.find((t)=>t.username ==person.username);

@@ -44,13 +44,13 @@ export class ChatComponent implements OnInit, OnDestroy {
       return;
     } else {
       const person: LoggedPerson = JSON.parse(personString);
-      this.getCurrentPersonSubscription = this.dataStorage
+      this.getCurrentPersonSubscription = this.dataStorage.personData
         .getPerson(person.username, person.token)
         .subscribe((data) => {
           this.loggedPerson=data;
           this.haveChatSubscription = this.utils.selectChat.subscribe((data) => {
             this.haveChat = data;
-            this.getPeopleSubscription = this.dataStorage.getPeople(person.token).subscribe((res) => {
+            this.getPeopleSubscription = this.dataStorage.personData.getPeople(person.token).subscribe((res) => {
               res.forEach(element => {
                 let searchPerson = new SearchPeople();
                 searchPerson.id = element.personId;

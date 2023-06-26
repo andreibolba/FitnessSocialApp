@@ -149,7 +149,7 @@ export class StartTestComponent implements OnInit, OnDestroy {
     } else {
       const person: LoggedPerson = JSON.parse(personString);
       this.token = person.token;
-      this.peopleSub = this.data
+      this.peopleSub = this.data.personData
         .getPerson(person.username, person.token)
         .subscribe((data) => {
           if (data) this.internId = data.personId;

@@ -46,7 +46,7 @@ export class GroupsComponent {
     } else {
       const person: LoggedPerson = JSON.parse(personString);
       this.token = person.token;
-      this.peopleSub=this.dataService.getPerson(person.username,this.token).subscribe((res)=>{
+      this.peopleSub=this.dataService.personData.getPerson(person.username,this.token).subscribe((res)=>{
         this.isAdmin=res.status=="Admin";
         this.dataGroupSub = this.dataService
           .getGroups(person.token)

@@ -36,7 +36,7 @@ export class AuthService {
 
   setCurentPerson(person: LoggedPerson) {
     this.currentPersonSource.next(person);
-    this.personSubscription = this.dataStorage
+    this.personSubscription = this.dataStorage.personData
         .getPerson(person.username, person.token)
         .subscribe((res) => {
           this.presenceService.createHubConnection(res, person.token);

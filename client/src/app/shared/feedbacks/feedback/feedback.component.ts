@@ -43,7 +43,7 @@ export class FeedbackComponent implements OnInit, OnDestroy {
       const person: LoggedPerson = JSON.parse(personString);
       this.token = person.token;
       this.username = person.username;
-      this.personSubscription = this.dataStorage.getPerson(this.username, this.token).subscribe((data)=>{
+      this.personSubscription = this.dataStorage.personData.getPerson(this.username, this.token).subscribe((data)=>{
         this.myFeedbackSubscription = this.dataStorage.getAllFeedbacksForSpecificForPerson(this.token,data.personId,"sender").subscribe((res)=>{
           this.myFeedbacks=res;
         });

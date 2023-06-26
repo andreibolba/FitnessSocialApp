@@ -45,7 +45,7 @@ export class GroupChatMessageComponent implements OnInit, OnDestroy {
     } else {
       const person: LoggedPerson = JSON.parse(personString);
       this.token = person.token;
-      this.getCurrentPersonSubscription = this.dataStorage
+      this.getCurrentPersonSubscription = this.dataStorage.personData
         .getPerson(person.username, person.token)
         .subscribe((data) => {
           this.loggedPerson = data;

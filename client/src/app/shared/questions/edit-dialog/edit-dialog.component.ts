@@ -76,7 +76,7 @@ export class EditDialogComponent implements OnInit, OnDestroy {
     } else {
       const person: LoggedPerson = JSON.parse(personString);
       this.token = person.token;
-      this.getIdSub = this.dataService
+      this.getIdSub = this.dataService.personData
         .getPerson(person.username, this.token)
         .subscribe((data) => {
           this.trainerId = data.personId;

@@ -64,7 +64,7 @@ export class MeetingComponent implements OnInit, OnDestroy {
             this.isFromGroup = true;
             this.route.params.subscribe((params: Params) => {
               let groupId = +params['id'];
-              this.personSub = this.dataService
+              this.personSub = this.dataService.personData
               .getPerson(person.username, this.token)
               .subscribe((data) => {
                 this.isTrainer = data.status == 'Trainer';
@@ -79,7 +79,7 @@ export class MeetingComponent implements OnInit, OnDestroy {
             this.mainId = 'main';
             this.buttonsClass = 'buttons';
             this.isFromGroup = false;
-            this.personSub = this.dataService
+            this.personSub = this.dataService.personData
             .getPerson(person.username, this.token)
             .subscribe((data) => {
               this.isTrainer = data.status == 'Trainer';

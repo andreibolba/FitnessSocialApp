@@ -47,10 +47,10 @@ export class ChatMessagesComponent implements OnInit, OnDestroy {
     } else {
       const person: LoggedPerson = JSON.parse(personString);
       this.token = person.token;
-      this.getCurrentPersonSubscription = this.dataStorage.getPerson(person.username, person.token).subscribe((data) => {
+      this.getCurrentPersonSubscription = this.dataStorage.personData.getPerson(person.username, person.token).subscribe((data) => {
         this.loggedPerson = data;
         this.getChatPersonIdSubcription = this.utils.chatPersonChat.subscribe((personId) => {
-          this.getChatPersonSubscription = this.dataStorage.getPersonById(personId, this.token).subscribe((otherPerson) => {
+          this.getChatPersonSubscription = this.dataStorage.personData.getPersonById(personId, this.token).subscribe((otherPerson) => {
             this.chatPerson = otherPerson;
             this.dataStorage.createHubConnection(data, otherPerson.username, person.token);
             this.dataStorage.messageThread$.forEach(element => {

@@ -45,7 +45,7 @@ export class ChallengesComponent implements OnInit, OnDestroy {
     } else {
       const person: LoggedPerson = JSON.parse(personString);
       this.token = person.token;
-      this.getPersonSubscription = this.dataStorage.getPerson(person.username, person.token).subscribe((res) => {
+      this.getPersonSubscription = this.dataStorage.personData.getPerson(person.username, person.token).subscribe((res) => {
         this.canAddEdit = res.status == 'Trainer';
         this.isIntern = res.status =="Intern";
         this.getChallengesSubscription = this.dataStorage.getAllChallengesForPeople(this.token, res.status).subscribe((data) => {

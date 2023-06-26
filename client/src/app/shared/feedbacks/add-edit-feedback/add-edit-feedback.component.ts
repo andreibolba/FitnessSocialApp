@@ -106,10 +106,10 @@ export class AddEditFeedbackComponent implements OnInit, OnDestroy {
           this.grade = 1;
         }
 
-        this.getPersonSubscription = this.dataStorage.getPerson(person.username, this.token).subscribe((data) => {
+        this.getPersonSubscription = this.dataStorage.personData.getPerson(person.username, this.token).subscribe((data) => {
           if (data) {
             this.person = data;
-            this.getPeopleSubscription = this.dataStorage.getPeople(this.token).subscribe((ppl) => {
+            this.getPeopleSubscription = this.dataStorage.personData.getPeople(this.token).subscribe((ppl) => {
               ppl.forEach(element => {
                 let ic = new PersonCombo;
                 ic.PersonId = element.personId;

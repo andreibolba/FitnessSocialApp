@@ -59,12 +59,12 @@ export class AddEditGroupChatComponent implements OnInit, OnDestroy {
     } else {
       const person: LoggedPerson = JSON.parse(personString);
       this.token = person.token;
-      this.getPersonSubcription = this.dataStorage
+      this.getPersonSubcription = this.dataStorage.personData
         .getPerson(person.username, person.token)
         .subscribe((data) => {
           this.adminId = data.personId;
-          this.getAllPersonSubcription = this.dataStorage
-            .getPeople(person.token)
+          this.getAllPersonSubcription = this.dataStorage.personData
+        .getPeople(person.token)
             .subscribe((res) => {
               res.forEach((element) => {
                 if (element.personId != data.personId)

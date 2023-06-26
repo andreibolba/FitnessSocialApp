@@ -69,7 +69,7 @@ export class EditTestsComponent implements OnInit, OnDestroy {
     } else {
       const person: LoggedPerson = JSON.parse(personString);
       this.token = person.token;
-      this.trainerSub = this.dataService
+      this.trainerSub = this.dataService.personData
         .getPerson(person.username, this.token)
         .subscribe((data) => {
           this.trainerId = data.personId;

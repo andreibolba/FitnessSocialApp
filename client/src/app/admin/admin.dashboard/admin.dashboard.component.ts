@@ -48,7 +48,7 @@ export class AdminDashboardComponent implements OnInit, OnDestroy {
       return;
     } else {
       const person: LoggedPerson = JSON.parse(personString);
-      this.dataPeopleSub = this.dataService.getPeople(person.token).subscribe(
+      this.dataPeopleSub = this.dataService.personData.getPeople(person.token).subscribe(
         (res) => {
           let people: Person[] = res;
           this.internsNumber = people.filter(p=>p.status=='Intern').length;

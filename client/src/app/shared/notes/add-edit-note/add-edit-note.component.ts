@@ -40,7 +40,7 @@ export class AddEditNoteComponent implements OnInit, OnDestroy {
     } else {
       const person: LoggedPerson = JSON.parse(personString);
       this.token = person.token;
-      this.getPersonSubscription = this.dataStorage.getPerson(person.username, this.token).subscribe((data) => {
+      this.getPersonSubscription = this.dataStorage.personData.getPerson(person.username, this.token).subscribe((data) => {
         if (data) {
           this.person = data;
         }

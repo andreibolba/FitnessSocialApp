@@ -40,7 +40,7 @@ export class AddEditCommentComponent implements OnInit, OnDestroy {
     } else {
       const person: LoggedPerson = JSON.parse(personString);
       this.token = person.token;
-      this.personSubscription = this.dataService
+      this.personSubscription = this.dataService.personData
         .getPerson(person.username, person.token)
         .subscribe((data) => {
           if (data != null) {

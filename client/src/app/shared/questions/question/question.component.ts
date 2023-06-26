@@ -68,7 +68,7 @@ export class QuestionsComponent implements OnInit, OnDestroy{
       const person: LoggedPerson = JSON.parse(personString);
       this.token = person.token;
       let id=-1;
-      this.dataService.getPerson(person.username,this.token).subscribe((data)=>{
+      this.dataService.personData.getPerson(person.username,this.token).subscribe((data)=>{
         id=data.personId;
       },()=>{},()=>{
         this.dataGroupSub = this.dataService

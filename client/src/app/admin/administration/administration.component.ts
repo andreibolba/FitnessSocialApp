@@ -71,7 +71,7 @@ export class AdministrationComponent implements OnInit, OnDestroy, OnChanges {
     } else {
       const person: LoggedPerson = JSON.parse(personString);
       this.token = person.token;
-      this.dataPeopleSub = this.dataService
+      this.dataPeopleSub = this.dataService.personData
         .getPeople(person.token)
         .subscribe((data) => {
           this.people = data;
@@ -94,7 +94,7 @@ export class AdministrationComponent implements OnInit, OnDestroy, OnChanges {
 
   onDelete(obj: Person) {
     let id: number = +obj.personId;
-    this.dataService.deletePerson(id, this.token).subscribe(
+    this.dataService.personData.deletePerson(id, this.token).subscribe(
       () => {
         this.toastr.success('Delete was done successfully!');
         if(this.dataSource.data.length==1){

@@ -4,7 +4,7 @@ namespace API.Interfaces.Repository
 {
     public interface IPersonRepository
     {
-        bool Create(PersonDto person);
+        PersonDto Create(PersonDto person);
         IEnumerable<PersonDto> GetAllPerson();
         IEnumerable<PersonDto> GetAllAdmins();
         IEnumerable<PersonDto> GetAllInterns();
@@ -17,6 +17,7 @@ namespace API.Interfaces.Repository
         void Delete(int personId);
         PersonDto LogIn(string email, string password);
         bool SaveAll();
+        Task<bool> SaveAllAsync();
         IEnumerable<TestDto> GetAllInternTests(int personId);
     }
 }

@@ -31,8 +31,8 @@ namespace API.Controllers
             person.PasswordHash=hmac.ComputeHash(Encoding.UTF8.GetBytes(Utils.Utils.CreatePassword(20)));
             person.PasswordSalt=hmac.Key;
 
-
-            if (_repository.Create(person))
+            var res = _repository.Create(person);
+            if (res!=null)
                 return Ok();
             else
                 return BadRequest("Account was created, but the mail was not sent!");

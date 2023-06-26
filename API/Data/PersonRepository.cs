@@ -24,7 +24,7 @@ namespace API.Data
             _pictureRepository = pictureRepository;
         }
 
-        public bool Create(PersonDto person)
+        public PersonDto Create(PersonDto person)
         {
             using var hmac = new HMACSHA512();
             person.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(Utils.Utils.CreatePassword(20)));
@@ -43,7 +43,7 @@ namespace API.Data
 
             if (this.SaveAll()==false)
             {
-                return false;
+                return null;
             }
 
             Utils.EmailFields details = new Utils.EmailFields
@@ -61,7 +61,9 @@ namespace API.Data
 
             };
 
-            return Utils.Utils.SendEmail(details);
+            var send =  Utils.Utils.SendEmail(details);
+
+            return send ? _mapper.Map<PersonDto>(person) : null;
         }
 
         public void Delete(int personId)
@@ -206,6 +208,11 @@ namespace API.Data
             var allPeople =  _mapper.Map<IEnumerable<PersonDto>>(_context.People.Where(p => p.Deleted == false));
             var ppl = await _context.People.Include(p=>p.Picture).SingleOrDefaultAsync(p=>p.Deleted == false && p.PersonId == id);
             return _mapper.Map<PersonDto>(ppl);
+        }
+
+        public async Task<bool> SaveAllAsync()
+        {
+            return await _context.SaveChangesAsync() > 0;
         }
     }
 }

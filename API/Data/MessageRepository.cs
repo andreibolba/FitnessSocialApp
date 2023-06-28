@@ -89,7 +89,6 @@ namespace API.Data
         {
             var s = _personRepo.GetPersonByUsername(currentPersonUsername).PersonId;
             var r = _personRepo.GetPersonByUsername(chatPersonUsername).PersonId;
-            var a = 0;
             return GetMessages(_personRepo.GetPersonByUsername(currentPersonUsername).PersonId, _personRepo.GetPersonByUsername(chatPersonUsername).PersonId);
         }
 

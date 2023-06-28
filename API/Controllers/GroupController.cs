@@ -13,14 +13,24 @@ namespace API.Controllers
     {
         private readonly IGroupRepository _groupRepository;
         private readonly ITestRepository _testRepository;
+        private readonly IChallengeRepository _chalengeRepository;
+        private readonly ITaskRepository _taskRepository;
         private readonly IPhotoService _photoService;
         private readonly IPictureRepository _pictureRepository;
         private readonly IPersonRepository _personRepository;
 
-        public GroupController(IGroupRepository groupRepository, ITestRepository testRepository, IPhotoService photoService, IPictureRepository pictureRepository, IPersonRepository personRepository)
+        public GroupController(IGroupRepository groupRepository, 
+            ITestRepository testRepository, 
+            IChallengeRepository chalengeRepository, 
+            ITaskRepository taskRepository, 
+            IPhotoService photoService, 
+            IPictureRepository pictureRepository, 
+            IPersonRepository personRepository)
         {
             _groupRepository = groupRepository;
             _testRepository = testRepository;
+            _chalengeRepository = chalengeRepository;
+            _taskRepository = taskRepository;
             _photoService = photoService;
             _pictureRepository = pictureRepository;
             _personRepository = personRepository;
@@ -39,8 +49,8 @@ namespace API.Controllers
             {
                 Tests = _testRepository.GetTestForGroup(groupId),
                 Participants = _groupRepository.GetAllParticipants(groupId).Count(),
-                Tasks = 0,
-                Challanges = 0,
+                Challenges = _chalengeRepository.GetAllChallenges().Count(),
+                Tasks = _taskRepository.GetAllTasksForGroup(groupId).Count(),
                 Group = _groupRepository.GetGroupById(groupId),
             });
         }

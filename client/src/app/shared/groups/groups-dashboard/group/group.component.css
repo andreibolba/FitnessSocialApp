@@ -16,6 +16,7 @@
   width: 30%;
   padding-top: 130px;
   border-right: 0.2px solid #b6b6b6;
+  background-image: url('../../../../../assets/img/autehtification-bg.jpg');
 }
 
 .edit{
@@ -56,6 +57,7 @@
   margin-top: 15px;
   text-align: center;
   font-size: larger;
+  color: white;
 }
 
 

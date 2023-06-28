@@ -79,17 +79,20 @@
         </div>
         <div class="feedback-content">
           <div class="statement" *ngIf="hasFeedback==true">
-            <div class="feedback-place" *ngFor="let f of feedback">
-              <div class="pictureOfTrainer"></div>
+            <div class="feedback-place" *ngFor="let f of feedbacks">
+              <div class="pictureOfTrainer">
+                <img [src]="f.personSender.picture.url" *ngIf="f.personSender.picture!=null" style="border-radius: 50%; margin: auto;" height="100%" width="100%"/>
+                <img src="../../../assets/img/user.png" *ngIf="f.personSender.picture==null" style="border-radius: 50%;" height="100%" width="100%"/>
+              </div>
               <div class="feedback-message">
                 <div class="trainer-name">
-                  andreibolba
+                  {{ f.personSender.firstName + ' ' +f.personSender.lastName }}
                 </div>
                 <div class="message">
-                  {{ f.feedback }}
+                  {{ f.content }}
                 </div>
                 <div class="date">
-                  {{ f.date }}
+                  {{ f.dateOfPost | date }}
                 </div>
               </div>
             </div>

@@ -138,8 +138,7 @@
 .pictureOfTrainer {
   width: 52px;
   height: 52px;
-  background-image: url('../../../../img/temp_user_photo.jpg');
-  background-size: cover;
+  background-color: #515151;
   border-radius: 26px;
   margin-top: 2px;
   margin-bottom: 2px;

@@ -18,6 +18,11 @@ export class FeedbackServiceData {
     return this.http.get<Feedback[]>(this.baseUrl + 'feedbacks', { headers: headers });
   }
 
+  getFirstThreeFeedbacks(token: string, personId:number, count:number) {
+    const headers = { Authorization: 'Bearer ' + token };
+    return this.http.get<Feedback[]>(this.baseUrl + 'feedbacks/'+personId+'/receiver/'+count, { headers: headers });
+  }
+
   getfeedbackById(token: string, feedbacksId: number) {
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.get<Feedback>(this.baseUrl + 'feedbacks/' + feedbacksId, { headers: headers });

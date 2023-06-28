@@ -43,7 +43,7 @@ namespace API.Data
 
         public IEnumerable<MeetingDto> GetAll()
         {
-            var result = _mapper.Map<IEnumerable<MeetingDto>>(_context.Meetings.Where(m => m.Deleted == false).Include(m => m.Trainer)).OrderBy(d=>d.MeetingStartTime);
+            var result = _mapper.Map<IEnumerable<MeetingDto>>(_context.Meetings.Where(m => m.Deleted == false).Include(m => m.Trainer)).OrderBy(d => d.MeetingStartTime);
             foreach (var r in result)
             {
                 var allPeopleInMeeting = new List<PersonDto>();
@@ -107,7 +107,7 @@ namespace API.Data
             var result = op == 1
                ? _context.MeetingInternGroups.Where(t => t.Deleted == false && t.MeetingId == meetingId && t.GroupId == null)
                : _context.MeetingInternGroups.Where(t => t.Deleted == false && t.MeetingId == meetingId && t.InternId == null);
-            if (obj==null || obj.Length == 0)
+            if (obj == null || obj.Length == 0)
                 return false;
             List<int> idList = Utils.Utils.FromStringToInt(obj + "!");
             if (result.Count() == 0 && idList.Count() == 0)
@@ -139,24 +139,32 @@ namespace API.Data
         //ce dracu ai scris aici? Dar partea buna e ca merge:))))
         public IEnumerable<MeetingDto> GetAllByInternId(int internId, int? count = null)
         {
-            var allMeetings=GetAll();
+            var allMeetings = GetAll();
             var allGroupsInMeeting = _context.MeetingInternGroups.Where(mg => mg.GroupId != null && mg.Deleted == false).ToList();
             List<MeetingDto> allMeetingByPerson = new List<MeetingDto>();
             var allPeople = _context.InternGroups.Where(ig => ig.InternId == internId && ig.Deleted == false).ToList();
             foreach (var person in allPeople)
             {
-                var allMeetingsWithGroupId = allGroupsInMeeting.Where(gm=>gm.GroupId==person.GroupId);
+                var allMeetingsWithGroupId = allGroupsInMeeting.Where(gm => gm.GroupId == person.GroupId);
                 foreach (var meet in allMeetingsWithGroupId)
                 {
                     if (allMeetingByPerson.FirstOrDefault(m => m.MeetingId == meet.MeetingId) == null)
-                        allMeetingByPerson.Add(allMeetings.FirstOrDefault(m=>m.MeetingId==meet.MeetingId));
+                    {
+                        var meeting = allMeetings.FirstOrDefault(m => m.MeetingId == meet.MeetingId);
+                        if (Utils.Utils.IsValidDate(meeting))
+                            allMeetingByPerson.Add(meeting);
+                    }
                 }
             }
 
             var allMeetingWithPerson = _context.MeetingInternGroups.Where(m => m.Deleted == false && m.InternId == internId).Include(m => m.Meeting).Select(m => m.Meeting);
             foreach (var meet in allMeetingWithPerson)
                 if (allMeetingByPerson.FirstOrDefault(m => m.MeetingId == meet.MeetingId) == null)
-                    allMeetingByPerson.Add(allMeetings.FirstOrDefault(m=>m.MeetingId==meet.MeetingId));
+                {
+                    var meeting = allMeetings.FirstOrDefault(m => m.MeetingId == meet.MeetingId);
+                    if (Utils.Utils.IsValidDate(meeting))
+                        allMeetingByPerson.Add(meeting);
+                }
 
             if (count != null && allMeetingByPerson.Count() >= count.Value)
                 return allMeetingByPerson.Take(count.Value);
@@ -166,13 +174,13 @@ namespace API.Data
 
         public IEnumerable<MeetingDto> GetAllByGroupId(int groupId, int? count = null)
         {
-            var allMeetings= GetFutureMeetings();
+            var allMeetings = GetFutureMeetings();
             var gettAllGroupsInMeeting = _context.MeetingInternGroups.Where(mg => mg.GroupId == groupId && mg.Deleted == false);
-            List<MeetingDto> allMetingsWithGroupId=new List<MeetingDto>();
+            List<MeetingDto> allMetingsWithGroupId = new List<MeetingDto>();
             foreach (var a in gettAllGroupsInMeeting)
             {
                 var meet = allMeetings.FirstOrDefault(m => m.MeetingId == a.MeetingId);
-                if (meet!=null)
+                if (meet != null)
                     allMetingsWithGroupId.Add(meet);
             }
             if (count != null && gettAllGroupsInMeeting.Count() >= count.Value)

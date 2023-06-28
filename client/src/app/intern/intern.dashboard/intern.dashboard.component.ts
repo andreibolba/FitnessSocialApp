@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { SeeMeetingParticipantsComponent } from 'src/app/shared/meetings/see-meeting-participants/see-meeting-participants.component';
 import { Day } from 'src/model/day.model';
+import { Feedback } from 'src/model/feedback.model';
 import { LoggedPerson } from 'src/model/loggedperson.model';
 import { Meeting } from 'src/model/meeting.model';
 import { Person } from 'src/model/person.model';
@@ -17,18 +18,7 @@ import { UtilsService } from 'src/services/utils.service';
   styleUrls: ['./intern.dashboard.component.css'],
 })
 export class InternDashboardComponent implements OnInit, OnDestroy {
-  feedback = [
-    {
-      feedback: 'Very good job! Keep up with the good work!',
-      date: ' 15-Feb-2023',
-    },
-    {
-      feedback:
-        'Very good job! Keep up with the good work!Very good job! Keep up with the good work!',
-      date: ' 15-Feb-2023',
-    },
-    { feedback: 'Very good job!', date: ' 15-Feb-2023' },
-  ];
+  feedbacks:Feedback[] = [];
   hasFeedback = true;
   feedbackLink = 'feedback';
   meetings:Meeting[]=[];
@@ -40,6 +30,7 @@ export class InternDashboardComponent implements OnInit, OnDestroy {
   weekDaysName: string[] = [];
   dataSub!: Subscription;
   meetingSub!: Subscription;
+  feedbackSub!: Subscription;
   person!: Person;
   isLoading=true;
 
@@ -110,12 +101,17 @@ export class InternDashboardComponent implements OnInit, OnDestroy {
                   });
                 }
               });
+              this.feedbackSub = this.dataService.feedbackData.getFirstThreeFeedbacks(person.token,res.personId,3).subscribe((data)=>{
+                this.feedbacks=data;
+                this.hasFeedback = data.length>0;
+              });
             },(error) => {
               console.log(error.error);
             },
             ()=>{
               this.isLoading=false;
             })
+            
           },
           (error) => {
             console.log(error.error);

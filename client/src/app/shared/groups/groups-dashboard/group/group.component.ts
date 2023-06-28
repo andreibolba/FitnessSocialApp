@@ -50,6 +50,8 @@ export class GroupComponent implements OnInit, OnDestroy {
         .subscribe((res:any) => {
           if (res != null){
             this.tests=res.tests;
+            this.tasks=res.tasks;
+            this.challanges=res.challenges;
             this.participants=res.participants;
             this.group=res.group;
             this.person = res.group.trainer;

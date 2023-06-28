@@ -26,6 +26,7 @@ export class TaskDataService {
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.get<Task[]>(this.baseUrl + 'tasks/' + status + '/' + personId, { headers: headers });
   }
+  
 
   addTask(token: string, task: Task) {
     const headers = { Authorization: 'Bearer ' + token };

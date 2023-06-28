@@ -1,5 +1,5 @@
 <router-outlet></router-outlet>
-<div id="main" *ngIf="isOnChallanges">
+<div [id]="mainId" *ngIf="isOnChallanges">
     <div style="display: flex;">
         <div style="display: flex; height: 10%; width:20%;">
             <i class="uil uil-brackets-curly" style="font-size: 35px; margin-top: -7px;"></i>
@@ -12,20 +12,20 @@
         </h3>
         </div>
         <button class="btn btn-success" id="add" *ngIf="canAddEdit"(click)="onAdd()">Add challenge</button>
-        <button class="btn btn-success" id="add" (click)="onRanking()" routerLink="ranking">Rankings</button>
+        <button class="btn btn-success" id="add" (click)="onRanking()" *ngIf="isFromGroup==false" routerLink="ranking">Rankings</button>
     </div>
     <div class="challenges" *ngIf="challenges.length!=0">
         <div class="row">
-            <div class="challenge" *ngFor="let challenge of challenges">
+            <div [class]="challengeClass" *ngFor="let challenge of challenges">
                 <div class="challenge-title">
                     <h4 *ngIf="!canAddEdit || !challenge.canDelete"> {{ challenge.challangeName }}</h4>
                     <h4 *ngIf="canAddEdit && challenge.canDelete" class="title-click" (click)="onEdit(challenge)"> {{ challenge.challangeName }}</h4>
                 </div>
                 <div class="info" style="display: flex;">
-                    <div class="deadline" style="text-align: center; width: 70%;">
+                    <div class="deadline" style="text-align: center; width: 75%;">
                         <h6 style="font-weight: bold;"> Deadline:<br> {{ challenge.deadline | date:'medium' }}</h6>
                     </div>
-                    <div class="points" style="text-align: center; width: 30%;">
+                    <div class="points" style="text-align: center; width: 25%;">
                         <h6 style="font-weight: bold; text-align: center;"> Points:<br> {{ challenge.points }}</h6>
                     </div>
                 </div>

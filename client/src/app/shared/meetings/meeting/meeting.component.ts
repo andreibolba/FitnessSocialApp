@@ -9,7 +9,7 @@ import { DataStorageService } from 'src/services/data-storage.service';
 import { UtilsService } from 'src/services/utils.service';
 import { EditMeetingDialogComponent } from '../edit-meeting-dialog/edit-meeting-dialog.component';
 import { SeeMeetingParticipantsComponent } from '../see-meeting-participants/see-meeting-participants.component';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 @Component({
   selector: 'app-meeting',
@@ -37,7 +37,8 @@ export class MeetingComponent implements OnInit, OnDestroy {
     private dialog: MatDialog,
     private dataService: DataStorageService,
     private toastr: ToastrService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router:Router
   ) {}
   ngOnDestroy(): void {
     if (this.personSub != null) this.personSub.unsubscribe();
@@ -55,7 +56,7 @@ export class MeetingComponent implements OnInit, OnDestroy {
       this.token = person.token;
       this.fromGroupSub = this.utils.isFromGroupDashboard.subscribe(
         (res) => {
-          this.isFromGroup = res;
+          this.isFromGroup = res || !this.router.url.endsWith('meetings');
           if (this.isFromGroup) {
             this.mainId = 'maingroup';
             this.buttonsClass = 'buttonsgroup';

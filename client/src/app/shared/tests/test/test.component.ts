@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { LoggedPerson } from 'src/model/loggedperson.model';
@@ -38,7 +38,8 @@ export class TestComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private dialog: MatDialog,
     private dataService: DataStorageService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private router:Router
   ) {}
 
   ngOnDestroy(): void {
@@ -156,7 +157,7 @@ export class TestComponent implements OnInit, OnDestroy {
           this.isTrainer = data.status == 'Trainer';
           this.fromGroupSub = this.utils.isFromGroupDashboard.subscribe(
             (res) => {
-              this.isFromGroup = res;
+              this.isFromGroup = res || !this.router.url.endsWith('tests');
               if (this.isFromGroup) {
                 this.mainId = 'maingroup';
                 this.buttonsClass = 'buttonsgroup';

@@ -34,6 +34,12 @@ namespace API.Controllers
             return Ok(_taskRepository.GetTaskById(taskId));
         }
 
+        [HttpGet("group/{groupId:int}")]
+        public ActionResult<IEnumerable<TaskDto>> GetTasksForGroup(int groupId)
+        {
+            return Ok(_taskRepository.GetAllTasksForGroup(groupId));
+        }
+
         [HttpGet("checked/group/{taskId:int}")]
         public ActionResult<IEnumerable<TaskGroupDto>> GetGroupsChecked(int taskId)
         {

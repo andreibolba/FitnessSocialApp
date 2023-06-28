@@ -114,6 +114,12 @@ namespace API.Data
             return GetAllTasks().Where(t=>t.TrainerId == trainerId);
         }
 
+        public IEnumerable<TaskDto> GetAllTasksForGroup(int groupId)
+        {
+            var res = _context.TaskInternGroups.Where(d=>d.Deleted == false && d.GroupId == groupId && d.InternId==null).Select(g=>g.Task).AsEnumerable();
+            return _mapper.Map<IEnumerable<TaskDto>>(res);
+        }
+
         public TaskDto GetTaskById(int taskId)
         {
             return GetAllTasks().SingleOrDefault(t => t.TaskId == taskId);

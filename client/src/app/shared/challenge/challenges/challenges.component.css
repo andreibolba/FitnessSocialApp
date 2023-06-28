@@ -6,10 +6,18 @@
     color: #515151;
 }
 
-
 #main {
     width: 82%;
     height: 84vh;
+    scroll-behavior: smooth;
+    overflow-y: scroll;
+
+}
+
+#maingroup {
+    height: 80vh;
+    scroll-behavior: smooth;
+    overflow-y: scroll;
 }
 
 h2 {
@@ -45,6 +53,18 @@ h2 {
     margin-right: 10px;
     margin-top: 40px;
     height: 96%;
+    background-color: #e9e7e7;
+    border-radius: 7px;
+    border: 1px solid #d4d4d4;
+    padding-top: 10px;
+}
+
+.challengeFromGroup {
+    width: calc(100%/4 - 20px);
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 40px;
+    height: 100%;
     background-color: #e9e7e7;
     border-radius: 7px;
     border: 1px solid #d4d4d4;

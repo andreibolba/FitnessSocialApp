@@ -12,6 +12,7 @@ import { SubTask } from 'src/model/subtask.model';
 import { UploadTaskSolutionComponent } from '../upload-task-solution/upload-task-solution.component';
 import { SeeAllTaskSolutionsComponent } from '../see-all-task-solutions/see-all-task-solutions.component';
 import { TaskSolution } from 'src/model/tasksolution.model';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 
 export class SubTaskClient {
   subTask: SubTask = new SubTask();
@@ -39,12 +40,16 @@ export class TaskComponent implements OnInit, OnDestroy {
   deleteSubTaskSubscription!: Subscription;
   addSubTaskSubscription!: Subscription;
   taskSubscription!: Subscription;
+  fromGroupSubscription!: Subscription;
   tasks: TaskClient[] = [];
   editMode: boolean = false;
+  isFromGroup: boolean = false;
   panelOpenState = false;
   private token: string = '';
+  buttonsClass: string = '';
+  mainId: string = '';
 
-  constructor(private utils: UtilsService, private dataStorage: DataStorageService, private toastr: ToastrService, private dialog: MatDialog) {
+  constructor(private utils: UtilsService, private dataStorage: DataStorageService, private toastr: ToastrService, private dialog: MatDialog, private router: Router, private route: ActivatedRoute) {
 
   }
 
@@ -58,34 +63,70 @@ export class TaskComponent implements OnInit, OnDestroy {
       this.token = person.token;
       this.getPersonSubscription = this.dataStorage.personData.getPerson(person.username, person.token).subscribe((res) => {
         this.editMode = res.status == "Trainer";
-        this.getTasksSubscription = this.dataStorage.taskData.getAllTasksForPerson(this.token, res.status.toLocaleLowerCase(), res.personId).subscribe((data) => {
-          data.forEach(element => {
-            let taskCl = new TaskClient();
-            taskCl.task = element;
-            this.getSubTasksSubscription = this.dataStorage.subTaskData.getAllSubtasksForTask(this.token, element.taskId).subscribe((sub) => {
-              sub.forEach(element => {
-                let cl = new SubTaskClient();
-                cl.subTask = element;
-                cl.editMode = false;
-                taskCl.subTasks.push(cl);
+        this.fromGroupSubscription = this.utils.isFromGroupDashboard.subscribe(
+          (data) => {
+            this.isFromGroup = data || !this.router.url.endsWith('tests');
+            if (this.isFromGroup) {
+              this.mainId = 'maingroup';
+              this.buttonsClass = 'buttonsgroup';
+              this.isFromGroup = true;
+              this.route.params.subscribe((params: Params) => {
+                let groupId = +params['id'];
+                this.getTasksSubscription = this.dataStorage.taskData.getAllTasksForPerson(this.token, 'group', groupId).subscribe((data) => {
+                  data.forEach(element => {
+                    let taskCl = new TaskClient();
+                    taskCl.task = element;
+                    this.getSubTasksSubscription = this.dataStorage.subTaskData.getAllSubtasksForTask(this.token, element.taskId).subscribe((sub) => {
+                      sub.forEach(element => {
+                        let cl = new SubTaskClient();
+                        cl.subTask = element;
+                        cl.editMode = false;
+                        taskCl.subTasks.push(cl);
+                      });
+                    });
+                    this.getSolutionTaskSubscription = this.dataStorage.taskSolutionData.getAllSolutionsForATaskForAPerson(this.token, element.taskId, res.personId).subscribe((sol) => {
+                      taskCl.solution = sol == null ? new TaskSolution() : sol;
+                    });
+                    this.tasks.push(taskCl);
+                  });
+                });
               });
-            });
-            this.getSolutionTaskSubscription = this.dataStorage.taskSolutionData.getAllSolutionsForATaskForAPerson(this.token, element.taskId, res.personId).subscribe((sol) => {
-              taskCl.solution = sol == null ? new TaskSolution() : sol;
-            });
-            this.tasks.push(taskCl);
-          });
-        });
+            } else {
+              this.mainId = 'main';
+              this.buttonsClass = 'buttons';
+              this.isFromGroup = false;
+              this.getTasksSubscription = this.dataStorage.taskData.getAllTasksForPerson(this.token, res.status.toLocaleLowerCase(), res.personId).subscribe((data) => {
+                data.forEach(element => {
+                  let taskCl = new TaskClient();
+                  taskCl.task = element;
+                  this.getSubTasksSubscription = this.dataStorage.subTaskData.getAllSubtasksForTask(this.token, element.taskId).subscribe((sub) => {
+                    sub.forEach(element => {
+                      let cl = new SubTaskClient();
+                      cl.subTask = element;
+                      cl.editMode = false;
+                      taskCl.subTasks.push(cl);
+                    });
+                  });
+                  this.getSolutionTaskSubscription = this.dataStorage.taskSolutionData.getAllSolutionsForATaskForAPerson(this.token, element.taskId, res.personId).subscribe((sol) => {
+                    taskCl.solution = sol == null ? new TaskSolution() : sol;
+                  });
+                  this.tasks.push(taskCl);
+                });
+              });
+            }
+          }
+        );
       });
-      this.taskSubscription = this.dataStorage.taskData.taskAdded.subscribe((res)=>{
-        if(res){
-          let index= this.tasks.findIndex(t=>t.task.taskId == res.taskId);
-          if(index==-1){
+
+      this.taskSubscription = this.dataStorage.taskData.taskAdded.subscribe((res) => {
+        if (res) {
+          let index = this.tasks.findIndex(t => t.task.taskId == res.taskId);
+          if (index == -1) {
             let task = new TaskClient();
-            task.task=res;
+            task.task = res;
             this.tasks.unshift(task);
-          }else{
-            this.tasks[index].task=res;
+          } else {
+            this.tasks[index].task = res;
           }
         }
       })

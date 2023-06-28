@@ -9,14 +9,17 @@ import { AddEditChallengeComponent } from '../add-edit-challenge/add-edit-challe
 import { ToastrService } from 'ngx-toastr';
 import { SeeSolutionsComponent } from '../see-solutions/see-solutions.component';
 import { AddEditSolutionComponent } from '../add-edit-solution/add-edit-solution.component';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-challenges',
   templateUrl: './challenges.component.html',
   styleUrls: ['./challenges.component.css']
 })
+
 export class ChallengesComponent implements OnInit, OnDestroy {
   getChallengesSubscription!: Subscription;
+  fromGroupSub!: Subscription;
   getPersonSubscription!: Subscription;
   deleteChallengesSubscription!: Subscription;
   challengesSubscription!: Subscription;
@@ -27,13 +30,17 @@ export class ChallengesComponent implements OnInit, OnDestroy {
   canAddEdit: boolean = false;
   isOnChallanges:boolean=false;
   isIntern:boolean=false;
+  isFromGroup:boolean=false;
   text:string='';
+  mainId='';
+  challengeClass='';
   private token: string = '';
 
   constructor(
     private utils: UtilsService,
     private toastr: ToastrService,
     private dataStorage: DataStorageService,
+    private router: Router,
     private dialog: MatDialog) {
   }
 
@@ -60,6 +67,18 @@ export class ChallengesComponent implements OnInit, OnDestroy {
           this.challengesSubscription = this.utils.isOnChallanges.subscribe((result)=>{
             this.isOnChallanges=result;
           });
+           this.fromGroupSub = this.utils.isFromGroupDashboard.subscribe(
+            (res) => {
+              this.isFromGroup = res || !this.router.url.endsWith('challenges');
+              if (this.isFromGroup) {
+                this.mainId = 'maingroup';
+                this.challengeClass='challengeFromGroup';
+              } else {
+                this.mainId = 'main';
+                this.challengeClass='challenge';
+              }
+            }
+          );
           this.getRankingPositionSubscription = this.dataStorage.challengeData.rankings(this.token).subscribe((rank)=>{
             let personRank = rank.find(p=>p.personId == res.personId);
             let posTest = personRank?.position ==1 ? "1st": personRank?.position == 2? "2nd":

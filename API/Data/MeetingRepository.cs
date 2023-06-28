@@ -25,8 +25,7 @@ namespace API.Data
                 return null;
             CreateUpdateDelete(meeting.InterndIds, meet.MeetingId, 1);
             CreateUpdateDelete(meeting.GroupIds, meet.MeetingId, 2);
-            _context.SaveChanges();
-            return _mapper.Map<MeetingDto>(meet);
+            return SaveAll() ? _mapper.Map<MeetingDto>(meet) : null;
         }
 
         public void Delete(int id)
@@ -83,7 +82,7 @@ namespace API.Data
             return _context.SaveChanges() > 0;
         }
 
-        public void Update(MeetingDto meeting)
+        public MeetingDto Update(MeetingDto meeting)
         {
             var meet = _mapper.Map<Meeting>(GetMeetingById(meeting.MeetingId));
             meet.MeetingLink = meeting.MeetingLink;
@@ -93,6 +92,7 @@ namespace API.Data
             _context.Meetings.Update(meet);
             CreateUpdateDelete(meeting.InterndIds, meeting.MeetingId, 1);
             CreateUpdateDelete(meeting.GroupIds, meeting.MeetingId, 2);
+            return SaveAll() ? _mapper.Map<MeetingDto>(meet) : null;
         }
 
         public IEnumerable<MeetingDto> GetFutureMeetings()
@@ -107,7 +107,7 @@ namespace API.Data
             var result = op == 1
                ? _context.MeetingInternGroups.Where(t => t.Deleted == false && t.MeetingId == meetingId && t.GroupId == null)
                : _context.MeetingInternGroups.Where(t => t.Deleted == false && t.MeetingId == meetingId && t.InternId == null);
-            if (obj.Length == 0 || obj == null)
+            if (obj==null || obj.Length == 0)
                 return false;
             List<int> idList = Utils.Utils.FromStringToInt(obj + "!");
             if (result.Count() == 0 && idList.Count() == 0)

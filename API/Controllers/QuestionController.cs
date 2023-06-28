@@ -37,8 +37,8 @@ namespace API.Controllers
         [HttpPost("add")]
         public ActionResult AddQuestion([FromBody] QuestionDto question)
         {
-            _question.Create(question);
-            return _question.SaveAll() ? Ok() : BadRequest("Internal Server Error");
+            var res = _question.Create(question);
+            return res!=null ? Ok(_question.GetQuestionById(res.QuestionId)) : BadRequest("Internal Server Error");
         }
 
         [HttpPost("delete/{questionId:int}")]
@@ -58,8 +58,8 @@ namespace API.Controllers
         [HttpPost("update")]
         public ActionResult UpdateQuestion([FromBody] QuestionDto question)
         {
-            _question.Update(question);
-            return _question.SaveAll() ? Ok() : BadRequest("Internal Server Error"); ;
+            var res = _question.Update(question);
+            return res!=null ? Ok(_question.GetQuestionById(res.QuestionId)) : BadRequest("Internal Server Error"); ;
         }
     }
 }

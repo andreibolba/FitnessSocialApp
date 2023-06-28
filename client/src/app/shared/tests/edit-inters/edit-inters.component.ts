@@ -59,7 +59,7 @@ export class EditIntersComponent implements OnInit, OnDestroy {
       this.isInternSub=this.utils.isInternTest.subscribe((res)=>{
         this.isIntern=res;
         if(res==true){
-          this.dataPeopleSub = this.dataService
+          this.dataPeopleSub = this.dataService.quizData.testsData
           .getAllInternsForTest(this.token, this.test!.testId)
           .subscribe((res) => {
             res.forEach((element) => {
@@ -73,7 +73,7 @@ export class EditIntersComponent implements OnInit, OnDestroy {
             });
           });
         }else{
-          this.dataPeopleSub = this.dataService
+          this.dataPeopleSub = this.dataService.quizData.testsData
           .getAllGroupsForTest(this.token, this.test!.testId)
           .subscribe((res) => {
             res.forEach((element) => {
@@ -109,7 +109,7 @@ export class EditIntersComponent implements OnInit, OnDestroy {
       ids += element.id.toString() + '_';
     });
     if(this.isIntern){
-    this.dataService
+    this.dataService.quizData.testsData
       .updateAllInternsFromTest(this.token, this.test!.testId,ids)
       .subscribe(
         () => {
@@ -122,7 +122,7 @@ export class EditIntersComponent implements OnInit, OnDestroy {
         }
       );
     }else{
-      this.dataService
+      this.dataService.quizData.testsData
       .updateAllGroupsFromTest(this.token, this.test!.testId,ids)
       .subscribe(
         () => {

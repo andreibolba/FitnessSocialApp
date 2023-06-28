@@ -15,6 +15,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class NoteComponent implements OnInit, OnDestroy {
   notesSubscription!: Subscription;
+  noteSubscription!: Subscription;
   deleteNoteSubscription!: Subscription;
   notes:Note[]=[];
   private token: string = '';
@@ -37,16 +38,26 @@ export class NoteComponent implements OnInit, OnDestroy {
       const person: LoggedPerson = JSON.parse(personString);
       this.token = person.token;
       this.username = person.username;
-      this.notesSubscription = this.dataStorage.getAllNotes(this.token).subscribe((res)=>{
+      this.notesSubscription = this.dataStorage.noteData.getAllNotes(this.token).subscribe((res)=>{
         this.notes=res;
-        console.log(res);
       });
+      this.noteSubscription = this.dataStorage.noteData.noteAdded.subscribe((res)=>{
+        if(res){
+          let index = this.notes.findIndex(n=>n.noteId == res.noteId);
+          if(index==-1){
+            this.notes.unshift(res);
+          }else{
+            this.notes[index]=res;
+          }
+        }
+      })
     }
   }
 
   ngOnDestroy(): void {
     if (this.deleteNoteSubscription != null) this.deleteNoteSubscription.unsubscribe();
     if (this.notesSubscription != null) this.notesSubscription.unsubscribe();
+    if (this.noteSubscription != null) this.noteSubscription.unsubscribe();
   }
 
   openDialog() {
@@ -68,7 +79,7 @@ export class NoteComponent implements OnInit, OnDestroy {
   }
 
   onDelete(note: Note) {
-    this.deleteNoteSubscription = this.dataStorage.deleteNote(this.token, note.noteId).subscribe(() => {
+    this.deleteNoteSubscription = this.dataStorage.noteData.deleteNote(this.token, note.noteId).subscribe(() => {
       this.toastr.success("Note was deleted succesfully!");
       let index = this.notes.findIndex(c=>c.noteId == note.noteId);
       if(index!=-1)

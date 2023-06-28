@@ -45,7 +45,7 @@ export class GroupComponent implements OnInit, OnDestroy {
       this.token = person.token;
       this.route.params.subscribe((params: Params) => {
         let id = +params['id'];
-        this.groupSubscription = this.dataService
+        this.groupSubscription = this.dataService.groupData
         .getGroupById(this.token, id)
         .subscribe((res:any) => {
           if (res != null){

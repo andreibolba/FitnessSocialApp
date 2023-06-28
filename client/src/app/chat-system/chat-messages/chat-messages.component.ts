@@ -52,8 +52,8 @@ export class ChatMessagesComponent implements OnInit, OnDestroy {
         this.getChatPersonIdSubcription = this.utils.chatPersonChat.subscribe((personId) => {
           this.getChatPersonSubscription = this.dataStorage.personData.getPersonById(personId, this.token).subscribe((otherPerson) => {
             this.chatPerson = otherPerson;
-            this.dataStorage.createHubConnection(data, otherPerson.username, person.token);
-            this.dataStorage.messageThread$.forEach(element => {
+            this.dataStorage.chatData.createHubConnection(data, otherPerson.username, person.token);
+            this.dataStorage.chatData.messageThread$.forEach(element => {
               this.allChats = element;
             });
             setTimeout(() => {
@@ -69,7 +69,7 @@ export class ChatMessagesComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.dataStorage.stopHubConnetion();
+    this.dataStorage.chatData.stopHubConnetion();
     if (this.getCurrentPersonSubscription != null) this.getCurrentPersonSubscription.unsubscribe();
     if (this.getChatPersonIdSubcription != null) this.getChatPersonIdSubcription.unsubscribe();
     if (this.getMessagesFromChatSubscription != null) this.getMessagesFromChatSubscription.unsubscribe();
@@ -82,7 +82,7 @@ export class ChatMessagesComponent implements OnInit, OnDestroy {
     messageToSend.personReceiverId = this.chatPerson.personId;
     messageToSend.personReceiver = this.chatPerson;
     messageToSend.message = this.message;
-    this.dataStorage.addMessage(this.token, messageToSend).then(() => {
+    this.dataStorage.chatData.addMessage(this.token, messageToSend).then(() => {
       this.message = '';
       setTimeout(() => {
         var objDiv = document.getElementById("chat_content");
@@ -94,13 +94,13 @@ export class ChatMessagesComponent implements OnInit, OnDestroy {
 
   delete() {
     this.utils.selectChat.next(-1);
-    this.deleteChatSubscription = this.dataStorage.deleteChat(this.token, this.loggedPerson.personId, this.chatPerson.personId).subscribe(() => {
+    this.deleteChatSubscription = this.dataStorage.chatData.deleteChat(this.token, this.loggedPerson.personId, this.chatPerson.personId).subscribe(() => {
       this.toastr.success("Delete chat successfully!");
       this.utils.selectChat.next(-1);
       let lenght = this.allChats.length;
       let mess = this.allChats[lenght - 1];
       mess.message = '';
-      this.dataStorage.newChat.next(mess);
+      this.dataStorage.chatData.newChat.next(mess);
     }, (error) => {
       this.toastr.success(error.error);
     });

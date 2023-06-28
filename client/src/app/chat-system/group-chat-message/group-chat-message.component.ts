@@ -73,7 +73,7 @@ export class GroupChatMessageComponent implements OnInit, OnDestroy {
                       person.firstName + ' ' + person.lastName + ', ';
                   });
                 }
-                this.getMessagesSubscription = this.dataStorage
+                this.getMessagesSubscription = this.dataStorage.groupChatData
                   .getAllMessagesForGroup(this.token, res.groupChatId)
                   .subscribe((mess) => {
                     console.log(mess);
@@ -110,7 +110,7 @@ export class GroupChatMessageComponent implements OnInit, OnDestroy {
   }
 
   onSend() {
-    this.sendMessagesSubscription = this.dataStorage
+    this.sendMessagesSubscription = this.dataStorage.groupChatData
       .sendMessageToGroupChat(
         this.token,
         this.personId,

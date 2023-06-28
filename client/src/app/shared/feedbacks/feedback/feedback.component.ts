@@ -18,6 +18,7 @@ import { SeeFeedbackComponent } from '../see-feedback/see-feedback.component';
 })
 export class FeedbackComponent implements OnInit, OnDestroy {
   myFeedbackSubscription!: Subscription;
+  feedbackSubscription!: Subscription;
   feedbacksForMeSubscription!: Subscription;
   personSubscription!: Subscription;
   deletefeedbackSubscription!: Subscription;
@@ -44,13 +45,18 @@ export class FeedbackComponent implements OnInit, OnDestroy {
       this.token = person.token;
       this.username = person.username;
       this.personSubscription = this.dataStorage.personData.getPerson(this.username, this.token).subscribe((data)=>{
-        this.myFeedbackSubscription = this.dataStorage.getAllFeedbacksForSpecificForPerson(this.token,data.personId,"sender").subscribe((res)=>{
+        this.myFeedbackSubscription = this.dataStorage.feedbackData.getAllFeedbacksForSpecificForPerson(this.token,data.personId,"sender").subscribe((res)=>{
           this.myFeedbacks=res;
         });
-        this.feedbacksForMeSubscription = this.dataStorage.getAllFeedbacksForSpecificForPerson(this.token,data.personId,"receiver").subscribe((res)=>{
+        this.feedbacksForMeSubscription = this.dataStorage.feedbackData.getAllFeedbacksForSpecificForPerson(this.token,data.personId,"receiver").subscribe((res)=>{
           this.feedbacksForMe=res;
         });
       });
+      this.feedbackSubscription = this.dataStorage.feedbackData.feedbackAdded.subscribe((res)=>{
+        if(res){
+            this.myFeedbacks.unshift(res);
+        }
+      })
     }
   }
 
@@ -80,7 +86,7 @@ export class FeedbackComponent implements OnInit, OnDestroy {
   }
 
   onDelete(feedback: Feedback) {
-    this.deletefeedbackSubscription = this.dataStorage.deleteFeedback(this.token, feedback.feedbackId).subscribe(() => {
+    this.deletefeedbackSubscription = this.dataStorage.feedbackData.deleteFeedback(this.token, feedback.feedbackId).subscribe(() => {
       this.toastr.success("Feedback was deleted succesfully!");
       let index = this.myFeedbacks.findIndex(c=>c.feedbackId == feedback.feedbackId);
       if(index!=-1)

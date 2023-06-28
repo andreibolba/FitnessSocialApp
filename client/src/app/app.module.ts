@@ -74,6 +74,7 @@ import { SeeAllTaskSolutionsComponent } from './shared/tasks/see-all-task-soluti
 import { AddEditFeedbackComponent } from './shared/feedbacks/add-edit-feedback/add-edit-feedback.component';
 import { UploadPhotoComponent } from './shared/upload-photo/upload-photo.component';
 import { SeeFeedbackComponent } from './shared/feedbacks/see-feedback/see-feedback.component';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -154,8 +155,8 @@ import { SeeFeedbackComponent } from './shared/feedbacks/see-feedback/see-feedba
     MatFormFieldModule,
     ToastrModule.forRoot(),
     NgxMatSelectSearchModule ,
-    Ng5SliderModule
-
+    Ng5SliderModule,
+    MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent],

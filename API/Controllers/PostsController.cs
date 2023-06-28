@@ -10,23 +10,19 @@ namespace API.Controllers
     {
         private readonly IPostRepository _post;
         private readonly IStatsRepository _stats;
+        private readonly IPersonRepository _personRepository;
 
-        public PostsController(IPostRepository post, IStatsRepository stats)
+        public PostsController(IPostRepository post, IStatsRepository stats, IPersonRepository personRepository)
         {
             _post = post;
             _stats = stats;
+            _personRepository = personRepository;
         }
 
         [HttpGet]
         public ActionResult GetAllPosts()
         {
             return Ok(_post.GetAllPosts());
-        }
-
-        [HttpGet("completed/{personId:int}")]
-        public ActionResult GetAllPostsCompleted(int personId)
-        {
-            return Ok(_post.GetAllPostsByPersonId(personId));
         }
 
         [HttpGet("{postId:int}")]
@@ -42,8 +38,11 @@ namespace API.Controllers
                 || post.Title == null
                 || post.Content == null)
                 return BadRequest("There are some empty fields!");
-            _post.CreatePost(post);
-            return _post.SaveAll() ? Ok() : BadRequest("Internal server error");
+            var res = _post.CreatePost(post);
+            if(res==null)
+                return BadRequest("Internal server error");
+            res.Person = _personRepository.GetPersonById(res.PersonId.Value);
+            return res!=null ? Ok(res) : BadRequest("Internal server error");
         }
 
 
@@ -59,11 +58,10 @@ namespace API.Controllers
         {
             if (post.PersonId == null
                 || post.Title == null
-                || post.Content == null
-                || post.PostId == null)
+                || post.Content == null)
                 return BadRequest("There are some empty fields!");
-            _post.UpdatePost(post);
-            return _post.SaveAll() ? Ok() : BadRequest("Internal server error");
+            var res = _post.UpdatePost(post);
+            return res!=null ? Ok(res) : BadRequest("Internal server error");
         }
 
         [HttpPost("view")]

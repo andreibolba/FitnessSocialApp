@@ -23,7 +23,7 @@
                     </p>
                 </div>
                 <div class="footer">
-                    created by {{ note.person.username }} at {{ note.postingDate | date:'medium' }}<br>
+                    post by {{ note.person.username }} at {{ note.postingDate | date:'medium' }}<br>
                     <div *ngIf="username == note.person.username" class="title-click" (click)="onDelete(note)">
                         delete note
                     </div>

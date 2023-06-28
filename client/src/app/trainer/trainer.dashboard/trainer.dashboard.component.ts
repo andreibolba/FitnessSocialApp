@@ -83,7 +83,7 @@ export class TrainerDashboardComponent {
         .subscribe(
           (res) => {
             this.person = res;
-            this.meetingSub=this.dataService.getANumberOfMeetingsForPerson(person.token,res.personId,res.status.toLocaleLowerCase(),3).subscribe((data)=>{
+            this.meetingSub=this.dataService.meetingData.getANumberOfMeetingsForPerson(person.token,res.personId,res.status.toLocaleLowerCase(),3).subscribe((data)=>{
               this.meetings=data;
               this.meetings.forEach(element => {
                 element.participants='';

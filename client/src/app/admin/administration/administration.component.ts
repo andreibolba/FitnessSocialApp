@@ -7,7 +7,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
-import {MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { CreateEditDialogComponent } from '../create-edit-dialog/create-edit-dialog.component';
 import { UtilsService } from 'src/services/utils.service';
 
@@ -25,10 +25,11 @@ export class AdministrationComponent implements OnInit, OnDestroy, OnChanges {
     'birthDate',
     'edit'
   ];
-  hasTableValues:boolean=false;
+  hasTableValues: boolean = false;
   dataSource!: MatTableDataSource<Person>;
   people!: Person[];
   dataPeopleSub!: Subscription;
+  actionPersonSub!: Subscription;
   status: string = '';
   icon: string = '';
   private token: string = '';
@@ -39,8 +40,8 @@ export class AdministrationComponent implements OnInit, OnDestroy, OnChanges {
     private toastr: ToastrService,
     private router: Router,
     private dialog: MatDialog,
-    private utils:UtilsService
-  ) {}
+    private utils: UtilsService
+  ) { }
   ngOnChanges(changes: SimpleChanges): void {
     console.log(changes);
   }
@@ -79,12 +80,25 @@ export class AdministrationComponent implements OnInit, OnDestroy, OnChanges {
             this.people.filter((p) => p.status == this.status)
           );
           this.dataSource.paginator = this.paginator;
-          if(this.dataSource.data.length==0){
-            this.hasTableValues=false;
-          }else{
+          if (this.dataSource.data.length == 0) {
+            this.hasTableValues = false;
+          } else {
             this.hasTableValues = true;
           }
         });
+      this.actionPersonSub = this.dataService.personData.personAdded.subscribe((res) => {
+        if (res) {
+          let index = this.people.findIndex(p => p.personId == res.personId);
+          if (index == -1)
+            this.people.push(res);
+          else
+            this.people[index] = res;
+          this.dataSource = new MatTableDataSource(
+            this.people.filter((p) => p.status == this.status)
+          );
+          this.dataSource.paginator = this.paginator;
+        }
+      })
     }
   }
 
@@ -97,12 +111,17 @@ export class AdministrationComponent implements OnInit, OnDestroy, OnChanges {
     this.dataService.personData.deletePerson(id, this.token).subscribe(
       () => {
         this.toastr.success('Delete was done successfully!');
-        if(this.dataSource.data.length==1){
-          this.dataSource=new MatTableDataSource<Person>();
-          this.hasTableValues=false;
-        }else{
-        this.hasTableValues = true;
+        let index = this.people.findIndex(p => p.personId == id);
+        this.people.splice(index,1);
+        this.dataSource = new MatTableDataSource(
+          this.people.filter((p) => p.status == this.status)
+        );
+        if (this.dataSource.data.length == 0) {
+          this.hasTableValues = false;
+        } else {
+          this.hasTableValues = true;
         }
+        this.dataSource.paginator = this.paginator;
       },
       () => {
         this.toastr.error('Delete was not! An error has occured!');
@@ -115,7 +134,7 @@ export class AdministrationComponent implements OnInit, OnDestroy, OnChanges {
     this.openDialog();
   }
 
-  onAdd(){
+  onAdd() {
     this.utils.userToEdit.next(null);
     this.openDialog();
   }

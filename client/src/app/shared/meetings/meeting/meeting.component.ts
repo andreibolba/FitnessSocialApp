@@ -26,6 +26,7 @@ export class MeetingComponent implements OnInit, OnDestroy {
   personSub!: Subscription;
   fromGroupSub!: Subscription;
   meetingSub!: Subscription;
+  meetingsSub!: Subscription;
   deleteSub!: Subscription;
   mainId: string = '';
   buttonsClass: string = '';
@@ -52,12 +53,9 @@ export class MeetingComponent implements OnInit, OnDestroy {
     } else {
       const person: LoggedPerson = JSON.parse(personString);
       this.token = person.token;
-      let id = -1;
-
       this.fromGroupSub = this.utils.isFromGroupDashboard.subscribe(
         (res) => {
           this.isFromGroup = res;
-          console.log(res);
           if (this.isFromGroup) {
             this.mainId = 'maingroup';
             this.buttonsClass = 'buttonsgroup';
@@ -68,7 +66,7 @@ export class MeetingComponent implements OnInit, OnDestroy {
               .getPerson(person.username, this.token)
               .subscribe((data) => {
                 this.isTrainer = data.status == 'Trainer';
-                this.meetingSub = this.dataService.getAllMeetingsForPerson(person.token,groupId,"group")
+                this.meetingsSub = this.dataService.meetingData.getAllMeetingsForPerson(person.token,groupId,"group")
                   .subscribe((res) => {
                     this.allMeetings = this.getAllMeetings(res);
                   });
@@ -83,7 +81,7 @@ export class MeetingComponent implements OnInit, OnDestroy {
             .getPerson(person.username, this.token)
             .subscribe((data) => {
               this.isTrainer = data.status == 'Trainer';
-              this.meetingSub = this.dataService
+              this.meetingsSub = this.dataService.meetingData
                 .getAllMeetingsForPerson(
                   this.token,
                   data.personId,
@@ -97,6 +95,16 @@ export class MeetingComponent implements OnInit, OnDestroy {
           }
         }
       );
+      this.meetingSub = this.dataService.meetingData.meetignAdded.subscribe((res)=>{
+        if(res){
+          let index=this.allMeetings.findIndex(m=>m.meetingId==res.meetingId);
+          if(index==-1){
+            this.allMeetings.unshift(res);
+          }else{
+            this.allMeetings[index]=res;
+          }
+        }
+      });
     }
   }
 
@@ -127,10 +135,12 @@ export class MeetingComponent implements OnInit, OnDestroy {
   }
 
   onDelete(meetingId: number) {
-    this.deleteSub = this.dataService
+    this.deleteSub = this.dataService.meetingData
       .deleteMeeting(this.token, meetingId)
       .subscribe(
         () => {
+          let index=this.allMeetings.findIndex(m=>m.meetingId==meetingId);
+          this.allMeetings.splice(index,1);
           this.toastr.success('Deleted was made succesfully!');
         },
         (error) => {

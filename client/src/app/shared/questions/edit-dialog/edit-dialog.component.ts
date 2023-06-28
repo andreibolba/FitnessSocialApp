@@ -145,10 +145,11 @@ export class EditDialogComponent implements OnInit, OnDestroy {
         question.f = question.f == '' ? null : question.f;
         question.trainerId = this.trainerId;
         if(this.operation=='Add'){
-        this.addQuestion = this.dataService
+        this.addQuestion = this.dataService.quizData.questionData
           .addQuestion(this.token, question)
           .subscribe(
-            () => {
+            (res) => {
+              this.dataService.quizData.questionData.questionAdded.next(res);
               this.toastr.success('Question was added with success!');
               this.dialogRef.close();
             },
@@ -158,16 +159,16 @@ export class EditDialogComponent implements OnInit, OnDestroy {
           );
         }else{
           question.questionId=this.question!.questionId;
-          this.addQuestion = this.dataService
+          this.addQuestion = this.dataService.quizData.questionData
           .editQuestion(this.token, question)
           .subscribe(
-            () => {
+            (res) => {
+              this.dataService.quizData.questionData.questionAdded.next(res);
               this.toastr.success('Question was edited with success!');
               this.dialogRef.close();
             },
             (error) => {
               this.toastr.error(error.error);
-              console.log(error.error);
             }
           );
         }

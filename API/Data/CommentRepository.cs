@@ -24,7 +24,7 @@ namespace API.Data
             var comm = _mapper.Map<Comment>(comment);
             comm.DateOfComment = DateTime.Now;
             _context.Comments.Add(comm);
-            return _mapper.Map<CommentDto>(comm);
+            return SaveAll() ? _mapper.Map<CommentDto>(comm) : null;
         }
 
         public void DeleteComm(int commId)
@@ -99,7 +99,7 @@ namespace API.Data
             var commFromDb = _mapper.Map<Comment>(GetCommById(comment.CommentId.Value));
             commFromDb.CommentContent = comment.CommentContent == null ? commFromDb.CommentContent : comment.CommentContent;
             _context.Comments.Update(commFromDb);
-            return _mapper.Map<CommentDto>(commFromDb);
+            return SaveAll() ? _mapper.Map<CommentDto>(commFromDb) : null;
         }
     }
 }

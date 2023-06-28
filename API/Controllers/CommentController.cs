@@ -37,7 +37,7 @@ namespace API.Controllers
                 || comment.CommentContent == null)
                 return BadRequest("There are some empty fields!");
             var res = _comment.AddComm(comment);
-            return _comment.SaveAll() ? Ok(res) : BadRequest("Internal Server error");
+            return res!=null ? Ok(_comment.GetCommById(res.CommentId.Value)) : BadRequest("Internal Server error");
         }
 
         [HttpPost("edit")]
@@ -50,7 +50,7 @@ namespace API.Controllers
                 || comment.CommentId == null )
                 return BadRequest("There are some empty fields!");
             var res = _comment.UpdateComm(comment);
-            return _comment.SaveAll() ? Ok(res) : BadRequest("Internal Server error");
+            return res != null ? Ok(_comment.GetCommById(res.CommentId.Value)) : BadRequest("Internal Server error");
         }
 
         [HttpPost("delete/{commId:int}")]

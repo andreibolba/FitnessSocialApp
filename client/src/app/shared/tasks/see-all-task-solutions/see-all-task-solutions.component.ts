@@ -37,7 +37,7 @@ export class SeeAllTaskSolutionsComponent implements OnInit, OnDestroy {
       this.token = person.token;
       this.getPersonSubscription = this.dataStorage.personData.getPerson(person.username, person.token).subscribe((data) => {
         this.getIdSubscription = this.utils.taskIdToUpload.subscribe((res) => {
-          this.getSolutionsSubscription = this.dataStorage.getAllSolutionsForATask(this.token, res).subscribe((data) => {
+          this.getSolutionsSubscription = this.dataStorage.taskSolutionData.getAllSolutionsForATask(this.token, res).subscribe((data) => {
             this.solutions = data;
           });
         });
@@ -51,6 +51,6 @@ export class SeeAllTaskSolutionsComponent implements OnInit, OnDestroy {
   }
 
   downloadFile(solid: number) {
-    this.dataStorage.downloadFileTask(this.token, solid);
+    this.dataStorage.taskSolutionData.downloadFileTask(this.token, solid);
   }
 }

@@ -20,6 +20,7 @@ export class AddEditPostComponent implements OnInit, OnDestroy {
   sendSub!: Subscription;
   getSub!: Subscription;
   person!: Person;
+  isLoading=false;
 
   private token: string = '';
 
@@ -35,6 +36,7 @@ export class AddEditPostComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.isLoading=true;
     const personString = localStorage.getItem('person');
     if (!personString) {
       return;
@@ -57,7 +59,10 @@ export class AddEditPostComponent implements OnInit, OnDestroy {
               this.operation='Add';
             }
           })
+        },()=>{},()=>{
+          this.isLoading=false;
         });
+
     }
   }
   ngOnDestroy(): void {
@@ -68,25 +73,32 @@ export class AddEditPostComponent implements OnInit, OnDestroy {
   }
 
   onSignUpSubmit() {
+    this.isLoading = true;
     var post = new Post();
     post.title = this.title;
     post.content = this.content;
     post.person = this.person;
 
     if(this.operation=="Add"){
-    this.sendSub = this.dataService.addPost(this.token, post).subscribe(
-      () => {
+    this.sendSub = this.dataService.forumData.postData.addPost(this.token, post).subscribe(
+      (res) => {
+        res.canEdit=true;
+        this.dataService.forumData.postData.postAdded.next(res);
         this.toastr.success('Your post was added succefully!');
         this.dialogRef.close();
       },
       (error) => {
         this.toastr.error(error.error);
+      },()=>{
+        this.isLoading=false;
       }
     );
     }else{
       post.postId = this.postId;
-      this.sendSub = this.dataService.editPost(this.token, post).subscribe(
-        () => {
+      this.sendSub = this.dataService.forumData.postData.editPost(this.token, post).subscribe(
+        (res) => {
+          res.canEdit=true;
+          this.dataService.forumData.postData.postAdded.next(res);
           this.toastr.success('Your post was edited succefully!');
           this.dialogRef.close();
         },
@@ -94,7 +106,9 @@ export class AddEditPostComponent implements OnInit, OnDestroy {
           console.log(error);
           this.toastr.error(error.error);
         }
-      );
+      ),()=>{
+        this.isLoading=false;
+      };
     }
 
   }

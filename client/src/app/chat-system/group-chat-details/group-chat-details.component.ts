@@ -67,7 +67,7 @@ export class GroupChatDetailsComponent implements OnInit, OnDestroy {
   }
 
   onDelete() {
-    this.deleteGroupChatSubscription = this.dataStorage.deleteGroupChat(this.token, this.groupChat.groupChatId).subscribe(() => {
+    this.deleteGroupChatSubscription = this.dataStorage.groupChatData.deleteGroupChat(this.token, this.groupChat.groupChatId).subscribe(() => {
       this.toastr.success("GroupChat deleted succesfully!");
       let res = new GroupChatMessage();
       res.groupChatId = this.groupChat.groupChatId;
@@ -77,7 +77,7 @@ export class GroupChatDetailsComponent implements OnInit, OnDestroy {
   }
 
   onRemove(person: Person) {
-    this.deleteMemberGroupChatSubscription = this.dataStorage.removeMemberFromGroupChat(this.token, this.groupChat.groupChatId, person.personId).subscribe(() => {
+    this.deleteMemberGroupChatSubscription = this.dataStorage.groupChatData.removeMemberFromGroupChat(this.token, this.groupChat.groupChatId, person.personId).subscribe(() => {
       this.toastr.success("Member removed succesfully!");
       let index = this.groupChat.participants.findIndex((r) => r.personId == person.personId);
       this.groupChat.participants.splice(index, 1);
@@ -85,14 +85,14 @@ export class GroupChatDetailsComponent implements OnInit, OnDestroy {
   }
 
   onMakeAdmin(person: Person) {
-    this.makeAdminGroupChatSubscription = this.dataStorage.makeAdminGroupChat(this.token, this.groupChat.groupChatId, person.personId).subscribe(() => {
+    this.makeAdminGroupChatSubscription = this.dataStorage.groupChatData.makeAdminGroupChat(this.token, this.groupChat.groupChatId, person.personId).subscribe(() => {
       this.toastr.success("Made admin succesfully!");
       this.groupChat.adminId = person.personId;
     });
   }
 
   onLeave() {
-    this.leaveGroupChatSubscription = this.dataStorage.removeMemberFromGroupChat(this.token, this.groupChat.groupChatId, this.loggedPerson.personId).subscribe(() => {
+    this.leaveGroupChatSubscription = this.dataStorage.groupChatData.removeMemberFromGroupChat(this.token, this.groupChat.groupChatId, this.loggedPerson.personId).subscribe(() => {
       this.toastr.success("Group leaved succesfully!");
       let index = this.groupChat.participants.findIndex((r) => r.personId == this.loggedPerson.personId);
       this.groupChat.participants.splice(index, 1);

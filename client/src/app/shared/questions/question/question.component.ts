@@ -16,8 +16,9 @@ import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 export class QuestionsComponent implements OnInit, OnDestroy{
   panelOpenState = false;
   deleteQuestion!:Subscription;
-  questions:Question[] | null | undefined =null;
+  questions:Question[]=[];
   dataGroupSub!: Subscription;
+  questionSub!: Subscription;
   token:string='';
 
   constructor(
@@ -45,10 +46,10 @@ export class QuestionsComponent implements OnInit, OnDestroy{
   }
 
   deletequestion(questionId:number){
-      this.deleteQuestion = this.dataService.deleteQuestion(this.token,questionId).subscribe(()=>{
+      this.deleteQuestion = this.dataService.quizData.questionData.deleteQuestion(this.token,questionId).subscribe(()=>{
         this.toastr.success("A question was deleted succesfully!");
-        // const index=this.questions?.findIndex(q=>q.questionId==questionId);
-        // this.questions=this.questions?.splice(index!,1);
+        let index=this.questions.findIndex(q=>q.questionId==questionId);
+        this.questions.splice(index,1);
       },(error)=>{
         this.toastr.error(error.error);
       });
@@ -71,11 +72,21 @@ export class QuestionsComponent implements OnInit, OnDestroy{
       this.dataService.personData.getPerson(person.username,this.token).subscribe((data)=>{
         id=data.personId;
       },()=>{},()=>{
-        this.dataGroupSub = this.dataService
+        this.dataGroupSub = this.dataService.quizData.questionData
           .getAllQuestionsByTrainer(person.token,id)
           .subscribe((data) => {
             this.questions=data;
           });
+      });
+      this.questionSub = this.dataService.quizData.questionData.questionAdded.subscribe((res)=>{
+        if(res){
+          let index = this.questions.findIndex(t=>t.questionId == res.questionId);
+          if(index==-1){
+            this.questions.unshift(res);
+          }else{
+            this.questions[index]=res;
+          }
+        }
       });
     }
   }

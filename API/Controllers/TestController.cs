@@ -47,7 +47,7 @@ namespace API.Controllers
         public ActionResult AddTest([FromBody] TestDto test)
         {
             var res=_test.Create(test);
-            return res!=new TestDto() ? Ok(res) : BadRequest("Internal Server Error");
+            return res!=null ? Ok(_test.GetTestById(res.TestId)) : BadRequest("Internal Server Error");
         }
 
         [HttpPost("delete/{questionId:int}")]
@@ -67,8 +67,8 @@ namespace API.Controllers
         [HttpPost("update")]
         public ActionResult Update([FromBody] TestDto test)
         {
-            _test.Update(test);
-            return _test.SaveAll() ? Ok() : BadRequest("Internal Server Error"); ;
+            var res = _test.Update(test);
+            return res!=null ? Ok(_test.GetTestById(res.TestId)) : BadRequest("Internal Server Error"); ;
         }
 
 

@@ -13,7 +13,8 @@ namespace API.Dtos
         public int? PictureId { get; set; }
         public PictureDto Picture { get; set; }
         public int Karma { get; set; }
-        public int Answers { get; set; }
+        public int PostsNumber { get; set; }
+        public int CommentsNumber { get; set; }
         public DateTime? BirthDate { get; set; }
         public DateTime Created { get; set; }
         public byte[] PasswordHash { get; set; }

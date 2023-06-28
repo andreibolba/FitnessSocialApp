@@ -20,12 +20,13 @@ import { EditGroupMembersDialogComponent } from '../edit-group-members-dialog/ed
 export class GroupsComponent {
   displayedColumns: string[] = [];
 
-  hasTableValues:boolean=false;
+  hasTableValues: boolean = false;
   dataSource!: MatTableDataSource<Group>;
   groups!: Group[];
   dataGroupSub!: Subscription;
   peopleSub!: Subscription;
-  isAdmin=false;
+  groupSub!: Subscription;
+  isAdmin = false;
   private token: string = '';
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -33,10 +34,10 @@ export class GroupsComponent {
     private dataService: DataStorageService,
     private toastr: ToastrService,
     private dialog: MatDialog,
-    private utils:UtilsService,
+    private utils: UtilsService,
     private router: Router,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.utils.initializeError();
@@ -46,39 +47,53 @@ export class GroupsComponent {
     } else {
       const person: LoggedPerson = JSON.parse(personString);
       this.token = person.token;
-      this.peopleSub=this.dataService.personData.getPerson(person.username,this.token).subscribe((res)=>{
-        this.isAdmin=res.status=="Admin";
-        this.dataGroupSub = this.dataService
+      this.peopleSub = this.dataService.personData.getPerson(person.username, this.token).subscribe((res) => {
+        this.isAdmin = res.status == "Admin";
+        this.dataGroupSub = this.dataService.groupData
           .getGroups(person.token)
           .subscribe((data) => {
-            if(this.isAdmin==false)
-              {data=data.filter(g=>g.trainerId==res.personId);
-                this.displayedColumns=[
-                  'groupName',
-                  'trainer',
-                  'membersCount',
-                  'seeInfo'
-                ];
-              }else{
-                this.displayedColumns=[
-                  'groupName',
-                  'trainer',
-                  'membersCount',
-                  'editMembers',
-                  'edit',
-                  'delete',
-                ];
-              }
+            if (this.isAdmin == false) {
+              data = data.filter(g => g.trainerId == res.personId);
+              this.displayedColumns = [
+                'groupName',
+                'trainer',
+                'membersCount',
+                'seeInfo'
+              ];
+            } else {
+              this.displayedColumns = [
+                'groupName',
+                'trainer',
+                'membersCount',
+                'editMembers',
+                'edit',
+                'delete',
+              ];
+            }
+            this.groups = data;
             this.dataSource = new MatTableDataSource(data);
             this.dataSource.paginator = this.paginator;
-            if(this.dataSource.data.length==0){
-              this.hasTableValues=false;
-            }else{
+            if (this.dataSource.data.length == 0) {
+              this.hasTableValues = false;
+            } else {
               this.hasTableValues = true;
             }
           });
-      })
-
+      });
+      this.groupSub = this.dataService.groupData.groupAdded.subscribe((data) => {
+        if (data) {
+          let index = this.groups.findIndex(g => g.groupId == data.groupId);
+          if (index == -1) {
+            this.groups.push(data);
+            this.dataSource = new MatTableDataSource(this.groups);
+            this.dataSource.paginator = this.paginator;
+          } else {
+            this.groups[index] = data;
+            this.dataSource = new MatTableDataSource(this.groups);
+            this.dataSource.paginator = this.paginator;
+          }
+        }
+      });
     }
   }
 
@@ -88,14 +103,17 @@ export class GroupsComponent {
 
   onDelete(obj: Group) {
     let id: number = +obj.groupId;
-    this.dataService.deleteGroup(this.token,id).subscribe(
+    this.dataService.groupData.deleteGroup(this.token, id).subscribe(
       () => {
         this.toastr.success('Delete was done successfully!');
-        if(this.dataSource.data.length==1){
-          this.dataSource=new MatTableDataSource<Group>();
-          this.hasTableValues=false;
-        }else{
-        this.hasTableValues = true;
+        let index = this.groups.findIndex(g => g.groupId == id);
+        this.groups.splice(index, 1);
+        this.dataSource = new MatTableDataSource(this.groups);
+        this.dataSource.paginator = this.paginator;
+        if (this.dataSource.data.length == 0) {
+          this.hasTableValues = false;
+        } else {
+          this.hasTableValues = true;
         }
       },
       (error) => {
@@ -115,22 +133,22 @@ export class GroupsComponent {
     this.openDialog(2);
   }
 
-  onAdd(){
+  onAdd() {
     this.utils.groupToEdit.next(null);
     this.openDialog(1);
   }
 
-  openDialog(op:number) {
-    const dialogRef = op==1? this.dialog.open(EditGroupDialogComponent): this.dialog.open(EditGroupMembersDialogComponent);
+  openDialog(op: number) {
+    const dialogRef = op == 1 ? this.dialog.open(EditGroupDialogComponent) : this.dialog.open(EditGroupMembersDialogComponent);
 
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });
   }
 
-  seeGroupDetails(group:Group){
+  seeGroupDetails(group: Group) {
     this.utils.isFromGroupDashboard.next(true);
-    this.router.navigate(['main/'+group.groupId], { relativeTo: this.route.parent });
+    this.router.navigate(['main/' + group.groupId], { relativeTo: this.route.parent });
   }
 
 }

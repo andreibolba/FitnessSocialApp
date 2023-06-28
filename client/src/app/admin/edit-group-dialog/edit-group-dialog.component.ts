@@ -35,6 +35,7 @@ export class EditGroupDialogComponent implements OnInit, OnDestroy {
   utilsSub!: Subscription;
   opration: string = '';
   show:boolean=false;
+  isLoading=false;
 
   trainers: TrainerCombo[] = [];
   group!: Group | null;
@@ -106,35 +107,42 @@ export class EditGroupDialogComponent implements OnInit, OnDestroy {
 
   selectOrganization(id:string){
     this.currentId=+id;
+    console.log(this.currentId);
   }
 
   onSignUpSubmit(form: NgForm) {
+    this.isLoading=true;
     let group = new Group();
     group.groupName = form.value.groupName;
     group.description = form.value.groupDescription;
     group.trainerId = this.currentId;
-
+    console.log(group);
     if (this.opration == 'Add') {
-      this.dataService.addGroup(this.token,group).subscribe(
-        () => {
+      this.dataService.groupData.addGroup(this.token,group).subscribe(
+        (res) => {
+          this.dataService.groupData.groupAdded.next(res);
           this.toastr.success('A group was added succesfully!');
-          this.dialogRef.close();;
+          this.dialogRef.close();
         },
         (error) => {
           this.toastr.error(error.error);
+        },()=>{
+          this.isLoading=false;
         }
       );
     } else {
       group.groupId = this.group!.groupId;
-      console.log(group);
-      this.dataService.editGroup(this.token,group).subscribe(
-        () => {
+      this.dataService.groupData.editGroup(this.token,group).subscribe(
+        (res) => {
+          this.dataService.groupData.groupAdded.next(res);
           this.toastr.success('The edit was succesfully!');
           this.dialogRef.close();
         },
         (error) => {
           console.log(error.error);
           this.toastr.error(error.error);
+        },()=>{
+          this.isLoading=false;
         }
       );
     }

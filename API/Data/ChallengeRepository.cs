@@ -78,7 +78,7 @@ namespace API.Data
 
         public bool ExistsChallengeForSpecificDate(int year, int month, int day, int id = -1)
         {
-            var challenge = _context.Challanges.Where(c => c.Deadline.Year == year && c.Deadline.Month == month && c.Deadline.Day == day);
+            var challenge = _context.Challanges.Where(c => c.Deadline.Year == year && c.Deadline.Month == month && c.Deadline.Day == day && c.Deleted==false);
             if (id == -1)
             {
                 return challenge.Count() > 0;

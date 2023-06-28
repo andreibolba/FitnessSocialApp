@@ -51,7 +51,7 @@ namespace API.Controllers
                 return BadRequest("You can't have a challenge with a dealine that is overdue!");
             var res = _challangeRepository.CreateChallenge(challenge);
 
-            return res!=null ? Ok(res): BadRequest("Internal Server Error");
+            return res!=null ? Ok(_challangeRepository.GetChallengeById(res.ChallangeId)): BadRequest("Internal Server Error");
         }
 
         [HttpPost("edit")]
@@ -64,7 +64,7 @@ namespace API.Controllers
                 return BadRequest("You can't have a challenge with a dealine that is overdue!");
             var res = _challangeRepository.UpdateChallenge(challenge);
 
-            return res != null ? Ok(res) : BadRequest("Internal Server Error");
+            return res != null ? Ok(_challangeRepository.GetChallengeById(challenge.ChallangeId)) : BadRequest("Internal Server Error");
         }
 
         [HttpPost("delete/{challangeId}")]

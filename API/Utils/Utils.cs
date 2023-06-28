@@ -20,7 +20,7 @@ namespace API.Utils
             return res.ToString();
         }
 
-        public static bool SendEmail(EmailFields details)
+        public static string SendEmail(EmailFields details)
         {
             String SendMailFrom = "noreply.internhub@gmail.com";
             String SendMailTo = details.EmailTo;
@@ -40,17 +40,14 @@ namespace API.Utils
                 SmtpServer.Timeout = 5000;
                 SmtpServer.EnableSsl = true;
                 SmtpServer.UseDefaultCredentials = false;
-                SmtpServer.Credentials = new NetworkCredential(SendMailFrom, "iofawdzjcufnnbso");
+                SmtpServer.Credentials = new NetworkCredential(SendMailFrom, "jtutegtaomdparac");
                 SmtpServer.Send(email);
-                return true;
+                return string.Empty;
             }
             catch (Exception ex)
             {
-                switch (ex)
-                {
-                    default:
-                        return false;
-                }
+                return ex.Message;
+
             }
 
         }
@@ -73,7 +70,7 @@ namespace API.Utils
             while (ids != "!")
             {
                 string id = ids.Substring(0, ids.IndexOf("_"));
-                int internId=Int32.Parse(id);
+                int internId = Int32.Parse(id);
                 idsInt.Add(internId);
                 ids = ids.Substring(ids.IndexOf("_") + 1);
             }

@@ -66,7 +66,8 @@ export class AddEditTaskComponent implements OnInit, OnDestroy {
     task.taskDescription=this.taskDescription;
     task.trainerId=this.trainerId;
     if(!this.isEdit){
-      this.addEditTaskSubscription=this.dataStorage.addTask(this.token, task).subscribe(()=>{
+      this.addEditTaskSubscription=this.dataStorage.taskData.addTask(this.token, task).subscribe((res)=>{
+        this.dataStorage.taskData.taskAdded.next(res);
         this.toastr.success("Task added successfully");
         this.dialog.close();
       },(error)=>{
@@ -74,7 +75,8 @@ export class AddEditTaskComponent implements OnInit, OnDestroy {
       });
     }else{
       task.taskId=this.task.taskId;
-      this.addEditTaskSubscription=this.dataStorage.editTask(this.token, task).subscribe(()=>{
+      this.addEditTaskSubscription=this.dataStorage.taskData.editTask(this.token, task).subscribe((res)=>{
+        this.dataStorage.taskData.taskAdded.next(res);
         this.toastr.success("Task added successfully");
         this.dialog.close();
       },(error)=>{

@@ -37,7 +37,7 @@ export class SeeAllResultsComponent implements OnInit, OnDestroy {
       this.testSub = this.utils.testToSeeAllResult.subscribe((data) => {
         if (data != null) {
           this.test = data;
-          this.internsSub = this.dataService
+          this.internsSub = this.dataService.quizData.testsData
             .getPeopleRezolvingTest(this.token, data.testId)
             .subscribe((res) => {
               this.interns = res;

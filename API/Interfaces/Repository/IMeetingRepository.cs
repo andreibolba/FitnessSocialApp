@@ -13,7 +13,7 @@ namespace API.Interfaces.Repository
         IEnumerable<MeetingDto> GetAllByTrainerId(int trainerId, int? count = null);
         IEnumerable<T> GettAllChecked<T>(int meetingId,int? trainerId=null);
         MeetingDto GetMeetingById(int id);
-        void Update(MeetingDto meeting);
+        MeetingDto Update(MeetingDto meeting);
         void Delete(int id);
         bool SaveAll();
     }

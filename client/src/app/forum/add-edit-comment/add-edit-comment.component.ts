@@ -17,6 +17,7 @@ import { Comment } from 'src/model/comment.model';
 export class AddEditCommentComponent implements OnInit, OnDestroy {
   operation: string = 'Add';
   content!: string;
+  isLoading = false;
   addSubscription!: Subscription;
   editSubscription!: Subscription;
   commentSubscription!: Subscription;
@@ -26,14 +27,15 @@ export class AddEditCommentComponent implements OnInit, OnDestroy {
   private loggedPerson: Person = new Person();
   private commentId: number = -1;
   private postId: number = -1;
-  private datefComment: Date=new Date();
+  private datefComment: Date = new Date();
   constructor(
     private dataService: DataStorageService,
     private toastr: ToastrService,
     private dialogRef: MatDialogRef<AddEditPostComponent>,
     private utils: UtilsService
-  ) {}
+  ) { }
   ngOnInit(): void {
+    this.isLoading=true;
     const personString = localStorage.getItem('person');
     if (!personString) {
       return;
@@ -49,19 +51,23 @@ export class AddEditCommentComponent implements OnInit, OnDestroy {
               (res) => {
                 if (res == null) {
                   this.operation = 'Add';
-                  this.postIdSubscription = this.utils.postIdToComment.subscribe((id)=>{
-                    if(id!=null)
-                      this.postId=id;
+                  this.postIdSubscription = this.utils.postIdToComment.subscribe((id) => {
+                    if (id != null)
+                      this.postId = id;
                   });
+                  this.isLoading = false;
                 } else {
                   this.operation = 'Edit';
                   this.content = res.commentContent;
                   this.commentId = res.commentId;
                   this.postId = res.postId;
                   this.datefComment = res.dateOfComment;
+                  this.isLoading = false;
                 }
               }
-            );
+            ), () => { }, () => {
+              this.isLoading = false;
+            };
           }
         });
     }
@@ -72,26 +78,31 @@ export class AddEditCommentComponent implements OnInit, OnDestroy {
   }
 
   onSignUpSubmit() {
+    this.isLoading = true;
     let comment = new Comment();
     comment.commentContent = this.content;
     comment.person = this.loggedPerson;
-    comment.postId=this.postId;
+    comment.postId = this.postId;
 
-    if(this.operation=='Add'){
-      this.addSubscription = this.dataService.addComment(this.token, comment).subscribe((res)=>{
+    if (this.operation == 'Add') {
+      this.addSubscription = this.dataService.forumData.commentData.addComment(this.token, comment).subscribe((res) => {
+        this.dataService.forumData.commentData.commentAdded.next(res);
         this.toastr.success("Comment added succesfully!");
         this.dialogRef.close();
-      },(error)=>{
+      }, (error) => {
         this.toastr.error(error.error);
       });
-    }else{
+    } else {
       comment.commentId = this.commentId;
       comment.dateOfComment = this.datefComment
-      this.editSubscription = this.dataService.editComment(this.token, comment).subscribe((res)=>{
+      this.editSubscription = this.dataService.forumData.commentData.editComment(this.token, comment).subscribe((res) => {
+        this.dataService.forumData.commentData.commentAdded.next(res);
         this.toastr.success("Comment edited succesfully!");
         this.dialogRef.close();
-      },(error)=>{
+      }, (error) => {
         this.toastr.error(error.error);
+      }, () => {
+        this.isLoading = false;
       });
     }
   }

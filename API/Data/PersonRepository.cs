@@ -63,7 +63,7 @@ namespace API.Data
 
             var send =  Utils.Utils.SendEmail(details);
 
-            return send ? _mapper.Map<PersonDto>(person) : null;
+            return send==string.Empty ? _mapper.Map<PersonDto>(person) : null;
         }
 
         public void Delete(int personId)
@@ -108,7 +108,8 @@ namespace API.Data
 
                 pers.Picture = picture;
                 pers.Karma = (likesComment+ likesPost) - (dislikesComment+dislikesPost);
-                pers.Answers = _context.Comments.Where(c => c.Deleted == false && c.PersonId == pers.PersonId).Count();
+                pers.PostsNumber = _context.Posts.Where(p =>p.Deleted==false && p.PersonId == pers.PersonId).Count();
+                pers.CommentsNumber = _context.Comments.Where(c => c.Deleted == false && c.PersonId == pers.PersonId).Count();
             }
             return allPerson;
         }
@@ -167,9 +168,10 @@ namespace API.Data
                 person.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(person.Password));
                 person.PasswordSalt = hmac.Key;
             }
-            var res = _context.People.Update(_mapper.Map<Person>(person));
+            
+            _context.People.Update(_mapper.Map<Person>(person));
 
-            return SaveAll() ? _mapper.Map<PersonDto>(res) : null;
+            return SaveAll() ? _mapper.Map<PersonDto>(person) : null;
         }
 
         public IEnumerable<PersonDto> GetAllAdmins()

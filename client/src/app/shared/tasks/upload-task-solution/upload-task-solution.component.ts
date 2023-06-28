@@ -61,14 +61,14 @@ constructor(
   onUpload() {
     if (this.selectedFile) {
       if(this.hasSolution){
-        this.sendFileSubscription = this.dataStorage.addeditSolution(this.token, this.taskSolutionId, -1, -1, this.selectedFile).subscribe((res) => {
+        this.sendFileSubscription = this.dataStorage.taskSolutionData.addeditSolution(this.token, this.taskSolutionId, -1, -1, this.selectedFile).subscribe((res) => {
           this.toastr.success("Solution uploaded succesfully");
           this.dialog.close();
         },(error)=>{
           this.toastr.error(error.error);
         });
       }else{
-        this.sendFileSubscription = this.dataStorage.addeditSolution(this.token, -1, this.taskId, this.person.personId, this.selectedFile).subscribe((res) => {
+        this.sendFileSubscription = this.dataStorage.taskSolutionData.addeditSolution(this.token, -1, this.taskId, this.person.personId, this.selectedFile).subscribe((res) => {
           this.toastr.success("Solution added succesfully");
           this.dialog.close();
         },(error)=>{

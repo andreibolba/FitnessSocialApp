@@ -31,10 +31,8 @@ namespace API.Controllers
         {
             Dictionary<string, string> idsData = JsonConvert.DeserializeObject<Dictionary<string, string>>(ids.ToString());
 
-            var hasSomethingToSave = _repository.UpdateAllInternsInGroup(idsData["ids"] += "!", groupId);
-            if (hasSomethingToSave == false)
-                return Ok();
-            return _repository.SaveAll() ? Ok() : BadRequest("Internal Server Error");
+            var res = _repository.UpdateAllInternsInGroup(idsData["ids"] += "!", groupId);
+            return res!=null ? Ok(res) : BadRequest("Internal Server Error");
         }
     }
 }

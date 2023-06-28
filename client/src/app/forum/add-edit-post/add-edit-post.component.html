@@ -1,25 +1,29 @@
-<h3>{{operation}} post</h3>
-<div id="main">
-  <form #registerForm="ngForm" (ngSubmit)="onSignUpSubmit()" autocomplete="off">
-
-    <div class="infos">
-      <div class="info">
-        <label for="postTitle">Post Title</label>
-        <input type="text" id="postTitle" placeholder="Post Title" name="postTitle" [(ngModel)]="title"
-          required>
+<div *ngIf="isLoading==false">
+  <h3>{{operation}} post</h3>
+  <div id="main">
+    <form #registerForm="ngForm" (ngSubmit)="onSignUpSubmit()" autocomplete="off">
+  
+      <div class="infos">
+        <div class="info">
+          <label for="postTitle">Post Title</label>
+          <input type="text" id="postTitle" placeholder="Post Title" name="postTitle" [(ngModel)]="title"
+            required>
+        </div>
+        <div class="info">
+          <label for="postContent">Post Content</label>
+          <textarea id="postContent" placeholder="Post Content" name="postContent" [(ngModel)]="content"
+            required>
+          </textarea>
+        </div>
       </div>
-      <div class="info">
-        <label for="postContent">Post Content</label>
-        <textarea id="postContent" placeholder="Post Content" name="postContent" [(ngModel)]="content"
-          required>
-        </textarea>
-      </div>
-    </div>
-
-
-    <mat-dialog-actions align="center">
-      <button mat-button mat-dialog-close>Cancel</button>
-      <button type="submit" [disabled]="!registerForm.valid" mat-button cdkFocusInitial> {{ operation }}</button>
-    </mat-dialog-actions>
-  </form>
+  
+  
+      <mat-dialog-actions align="center">
+        <button mat-button mat-dialog-close>Cancel</button>
+        <button type="submit" [disabled]="!registerForm.valid" mat-button cdkFocusInitial> {{ operation }}</button>
+      </mat-dialog-actions>
+    </form>
+  </div>
 </div>
+
+<mat-spinner *ngIf="isLoading" style="background-color: transparent;"></mat-spinner>

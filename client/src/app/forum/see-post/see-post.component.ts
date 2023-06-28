@@ -23,12 +23,14 @@ export class SeePostComponent implements OnInit, OnDestroy {
   upvoteSub!: Subscription;
   downvoteSub!: Subscription;
   commentsSub!: Subscription;
+  commentSub!: Subscription;
   deleteSub!: Subscription;
   person: Person = new Person();
   up: string = '';
   down: string = '';
   token: string = '';
   comments: Comment[] = [];
+  isLoading=false;
 
   constructor(
     private utils: UtilsService,
@@ -38,6 +40,7 @@ export class SeePostComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.isLoading=true;
     const personString = localStorage.getItem('person');
     if (!personString) {
       return;
@@ -53,7 +56,7 @@ export class SeePostComponent implements OnInit, OnDestroy {
               this.post = res;
               this.up = res.upvote == true ? 'up-checked' : 'up';
               this.down = res.downvote == true ? 'down-checked' : 'down';
-              this.commentsSub = this.dataService
+              this.commentsSub = this.dataService.forumData.commentData
                 .getAllCommForPostAndPerson(this.token, res.postId, this.person.personId)
                 .subscribe((data) => {
                   if (data) {
@@ -70,6 +73,18 @@ export class SeePostComponent implements OnInit, OnDestroy {
                 });
             }
           });
+        },()=>{},()=>{
+          this.isLoading=false;
+        });
+        this.commentSub = this.dataService.forumData.commentData.commentAdded.subscribe((res)=>{
+          if(res){
+            let index = this.comments.findIndex(c=>c.commentId==res.commentId);
+            if(index==-1){
+              this.comments.push(res);
+            }else{
+              this.comments[index]=res;
+            }
+          }
         });
     }
   }
@@ -84,7 +99,7 @@ export class SeePostComponent implements OnInit, OnDestroy {
       this.up = 'up';
       post.karma--;
       this.person.karma--;
-      this.upvoteSub = this.dataService
+      this.upvoteSub = this.dataService.forumData.postData
         .votePost(this.token, post.postId, this.person.personId, false, false)
         .subscribe();
     } else {
@@ -95,7 +110,7 @@ export class SeePostComponent implements OnInit, OnDestroy {
       }
       post.karma++;
       this.person.karma++;
-      this.upvoteSub = this.dataService
+      this.upvoteSub = this.dataService.forumData.postData
         .votePost(this.token, post.postId, this.person.personId, true, false)
         .subscribe();
     }
@@ -107,7 +122,7 @@ export class SeePostComponent implements OnInit, OnDestroy {
       this.down = 'down';
       post.karma++;
       this.person.karma++;
-      this.upvoteSub = this.dataService
+      this.upvoteSub = this.dataService.forumData.postData
         .votePost(this.token, post.postId, this.person.personId, false, false)
         .subscribe();
     } else {
@@ -118,7 +133,7 @@ export class SeePostComponent implements OnInit, OnDestroy {
       }
       post.karma--;
       this.person.karma--;
-      this.upvoteSub = this.dataService
+      this.upvoteSub = this.dataService.forumData.postData
         .votePost(this.token, post.postId, this.person.personId, false, true)
         .subscribe();
     }
@@ -130,7 +145,7 @@ export class SeePostComponent implements OnInit, OnDestroy {
       comment.up = 'up';
       comment.karma--;
       comment.person.karma--;
-      this.upvoteSub = this.dataService
+      this.upvoteSub = this.dataService.forumData.commentData
         .voteComment(this.token, comment.commentId, this.person.personId, false, false)
         .subscribe();
     } else {
@@ -141,7 +156,7 @@ export class SeePostComponent implements OnInit, OnDestroy {
       }
       comment.karma++;
       comment.person.karma++;
-      this.upvoteSub = this.dataService
+      this.upvoteSub = this.dataService.forumData.commentData
         .voteComment(this.token, comment.commentId, this.person.personId, true, false)
         .subscribe();
     }
@@ -153,7 +168,7 @@ export class SeePostComponent implements OnInit, OnDestroy {
       comment.down = 'down';
       comment.karma++;
       comment.person.karma++;
-      this.upvoteSub = this.dataService
+      this.upvoteSub = this.dataService.forumData.commentData
         .voteComment(this.token, comment.commentId, this.person.personId, false, false)
         .subscribe();
     } else {
@@ -164,7 +179,7 @@ export class SeePostComponent implements OnInit, OnDestroy {
       }
       comment.karma--;
       comment.person.karma--;
-      this.upvoteSub = this.dataService
+      this.upvoteSub = this.dataService.forumData.commentData
         .voteComment(this.token, comment.commentId, this.person.personId, false, true)
         .subscribe();
     }
@@ -190,7 +205,7 @@ export class SeePostComponent implements OnInit, OnDestroy {
   }
 
   onDelete(commentId:number){
-    this.deleteSub = this.dataService.deleteComment(this.token, commentId).subscribe((res)=>{
+    this.deleteSub = this.dataService.forumData.commentData.deleteComment(this.token, commentId).subscribe((res)=>{
       this.toastr.success("Comment deleted succesfully");
     },(error)=>{
       this.toastr.error(error.error);

@@ -19,6 +19,7 @@ export class ForumComponent implements OnInit, OnDestroy {
   date!: Date;
   token: string = '';
   postsSubscription!: Subscription;
+  postSubscription!: Subscription;
   viewSubscription!: Subscription;
   personSubscription!: Subscription;
   deletePostSubscription!: Subscription;
@@ -48,8 +49,8 @@ export class ForumComponent implements OnInit, OnDestroy {
         .getPerson(person.username, person.token)
         .subscribe((res) => {
           if (res) this.person = res;
-          this.postsSubscription = this.dataStorage
-            .getAllPostsCompleted(this.token,res.personId)
+          this.postsSubscription = this.dataStorage.forumData.postData
+            .getAllPosts(this.token,res.personId)
             .subscribe((res) => {
               if (res != null) {
                 this.posts = res;
@@ -58,6 +59,17 @@ export class ForumComponent implements OnInit, OnDestroy {
                 });
               }
             });
+        });
+        this.postSubscription = this.dataStorage.forumData.postData.postAdded.subscribe((res)=>{
+          if(res){
+            let index = this.posts.findIndex(p=>p.postId == res.postId);
+            if(index==-1){
+              this.posts.unshift(res);
+            }else{
+              this.posts[index]=res;
+            }
+            console.log(this.posts);
+          }
         });
     }
   }
@@ -78,7 +90,7 @@ export class ForumComponent implements OnInit, OnDestroy {
   }
 
   onSeePost(post: Post) {
-    this.viewSubscription = this.dataStorage
+    this.viewSubscription = this.dataStorage.forumData.postData
       .addView(this.token, post.postId, this.person.personId)
       .subscribe(
         (res) => {
@@ -98,8 +110,10 @@ export class ForumComponent implements OnInit, OnDestroy {
   }
 
   onDelete(post: Post) {
-    this.deletePostSubscription = this.dataStorage.deletePost(this.token, post.postId).subscribe(
+    this.deletePostSubscription = this.dataStorage.forumData.postData.deletePost(this.token, post.postId).subscribe(
       () => {
+        let index = this.posts.findIndex(p=>p.postId == post.postId);
+        this.posts.splice(index,1);
         this.toastr.success("Post was deleted succesfully delete!");
       },(error)=>{
         this.toastr.error(error.error);}

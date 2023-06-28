@@ -77,7 +77,9 @@ export class AddEditChallengeComponent implements OnInit, OnDestroy {
     challenge.trainerId = this.person.personId;
     challenge.points = this.challengePoints;
     if(this.operation=="Add"){
-      this.addEditChallengeSubscription =this.dataStorage.addChallenge(this.token,challenge).subscribe((res)=>{
+      this.addEditChallengeSubscription =this.dataStorage.challengeData.addChallenge(this.token,challenge).subscribe((res)=>{
+        res.canDelete = true;
+        this.dataStorage.challengeData.challengeAdded.next(res);
         this.toastr.success("Challenge was added succesfully!");
         this.dialog.close();
       },(error)=>{
@@ -85,7 +87,9 @@ export class AddEditChallengeComponent implements OnInit, OnDestroy {
       });
     }else{
       challenge.challangeId = this.challengeId;
-      this.addEditChallengeSubscription =this.dataStorage.editChallenge(this.token,challenge).subscribe((res)=>{
+      this.addEditChallengeSubscription =this.dataStorage.challengeData.editChallenge(this.token,challenge).subscribe((res)=>{
+        res.canDelete = true;
+        this.dataStorage.challengeData.challengeAdded.next(res);
         this.toastr.success("Challenge was updated succesfully!");
         this.dialog.close();
       },(error)=>{

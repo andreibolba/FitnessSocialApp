@@ -9,11 +9,13 @@ namespace API.Data
     public sealed class InternGroupRepository : IInternGroupRepository
     {
         private readonly InternShipAppSystemContext _context;
+        private readonly IGroupRepository _groupRepository;
         private readonly IMapper _mapper;
 
-        public InternGroupRepository(InternShipAppSystemContext context, IMapper mapper)
+        public InternGroupRepository(InternShipAppSystemContext context, IGroupRepository groupRepository, IMapper mapper)
         {
             _context = context;
+            _groupRepository = groupRepository;
             _mapper = mapper;
         }
 
@@ -57,12 +59,12 @@ namespace API.Data
             return _context.SaveChanges() > 0;
         }
 
-        public bool UpdateAllInternsInGroup(string ids, int groupId)
+        public GroupDto UpdateAllInternsInGroup(string ids, int groupId)
         {
             var result = _context.InternGroups.Where(g => g.Deleted == false && g.GroupId == groupId);
             List<int> idList = Utils.Utils.FromStringToInt(ids);
             if(result.Count()==0&& idList.Count()==0)
-            return false;
+            return null;
             foreach (var res in result)
             {
                 bool delete = idList.IndexOf(res.InternId) == -1 ? true : false;
@@ -81,7 +83,7 @@ namespace API.Data
                     Deleted = false
                 });
             }
-            return true;
+            return SaveAll()? _groupRepository.GetGroupById(groupId) : null;
         }
 
 

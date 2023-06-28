@@ -1,3 +1,4 @@
+<div *ngIf="!isLoading" >
 <h3>{{operation}} post</h3>
 <div id="main">
   <form #registerForm="ngForm" (ngSubmit)="onSignUpSubmit()" autocomplete="off">
@@ -17,4 +18,6 @@
     </mat-dialog-actions>
   </form>
 </div>
+</div>
+<mat-spinner *ngIf="isLoading" style="background-color: transparent;"></mat-spinner>
 

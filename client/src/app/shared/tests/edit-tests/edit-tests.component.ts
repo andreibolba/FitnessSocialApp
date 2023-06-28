@@ -75,7 +75,7 @@ export class EditTestsComponent implements OnInit, OnDestroy {
           this.trainerId = data.personId;
           console.log("Edit "+ this.token);
         });
-        this.unseledtedQuestionsSub = this.dataService.unselectedQuestions(this.token,id).subscribe((data)=>{
+        this.unseledtedQuestionsSub = this.dataService.quizData.testsData.unselectedQuestions(this.token,id).subscribe((data)=>{
           this.questionsUnselected = data;
         });
 
@@ -101,8 +101,9 @@ export class EditTestsComponent implements OnInit, OnDestroy {
     if (this.test != null) {
       test.testId = this.test.testId;
       test.dateOfPost = this.test.dateOfPost;
-      this.saveSub=this.dataService.updateTest(this.token,test).subscribe( () => {
-        this.saveQuestionSub=this.dataService.saveSelectedQuestion(this.token,test.testId,ids).subscribe(() => {
+      this.saveSub=this.dataService.quizData.testsData.updateTest(this.token,test).subscribe( (res) => {
+        this.saveQuestionSub=this.dataService.quizData.testsData.saveSelectedQuestion(this.token,test.testId,ids).subscribe(() => {
+          this.dataService.quizData.testsData.testAdded.next(res);
           this.toastr.success("The operations is done succesfully!");
           this.dialogRef.close();
          },
@@ -116,8 +117,9 @@ export class EditTestsComponent implements OnInit, OnDestroy {
     );
     }else{
       test.dateOfPost=new Date();
-      this.saveSub=this.dataService.addTest(this.token,test).subscribe( (data) => {
-        this.saveQuestionSub=this.dataService.saveSelectedQuestion(this.token,data.testId,ids).subscribe(() => {
+      this.saveSub=this.dataService.quizData.testsData.addTest(this.token,test).subscribe( (data) => {
+        this.saveQuestionSub=this.dataService.quizData.testsData.saveSelectedQuestion(this.token,data.testId,ids).subscribe((res) => {
+          this.dataService.quizData.testsData.testAdded.next(data);
           this.toastr.success("The operations is done succesfully!");
           this.dialogRef.close();
          },

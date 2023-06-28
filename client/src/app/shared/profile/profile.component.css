@@ -19,7 +19,7 @@
   height: 100%;
   width: 40%;
   border-radius: 10px 0px 0px 10px;
-  background-color: rgb(133, 169, 232);
+  background-image: url('../../../assets/img/autehtification-bg.jpg');
 }
 
 .picture{
@@ -34,7 +34,7 @@
 .name{
   text-align: center;
   margin-top: 20px;
-  color: #303030;
+  color: #e7e7e7;
   font-size: 20px;
 }
 

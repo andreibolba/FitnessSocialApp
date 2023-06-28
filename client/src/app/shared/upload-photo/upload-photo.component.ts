@@ -82,7 +82,7 @@ export class UploadPhotoComponent implements OnInit, OnDestroy {
     if (this.selectedFile) {
       if (this.groupId) {
         fd.append('image', this.selectedFile, this.selectedFile['name']);
-        this.sendPictureSubscription = this.dataStorage.sendPictureForGroup(this.token, fd, this.groupId).subscribe(() => {
+        this.sendPictureSubscription = this.dataStorage.groupData.sendPictureForGroup(this.token, fd, this.groupId).subscribe(() => {
           this.toastr.success("Photo was uploded succesfully");
           this.dialog.close();
         }, (error) => {
@@ -98,7 +98,7 @@ export class UploadPhotoComponent implements OnInit, OnDestroy {
         });
       }else if(this.grouChatId){
         fd.append('image', this.selectedFile, this.selectedFile['name']);
-        this.sendPictureSubscription = this.dataStorage.sendPictureForGroupChat(this.token, fd, this.grouChatId).subscribe(() => {
+        this.sendPictureSubscription = this.dataStorage.groupChatData.sendPictureForGroupChat(this.token, fd, this.grouChatId).subscribe(() => {
           this.toastr.success("Photo was uploded succesfully");
           this.dialog.close();
         }, (error) => {

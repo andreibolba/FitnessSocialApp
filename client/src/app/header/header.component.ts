@@ -70,7 +70,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
                     link: 'administrators',
                   },
                   { name: 'Trainer', logo: 'uil uil-user', link: 'trainers' },
-                  { name: 'Teacher', logo: 'uil uil-user', link: 'trainers' },
+                  //{ name: 'Teacher', logo: 'uil uil-user', link: 'trainers' },
                   {
                     name: 'Intern',
                     logo: 'uil uil-book-reader',

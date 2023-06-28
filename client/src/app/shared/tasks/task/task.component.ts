@@ -38,6 +38,7 @@ export class TaskComponent implements OnInit, OnDestroy {
   deleteTaskSubscription!: Subscription;
   deleteSubTaskSubscription!: Subscription;
   addSubTaskSubscription!: Subscription;
+  taskSubscription!: Subscription;
   tasks: TaskClient[] = [];
   editMode: boolean = false;
   panelOpenState = false;
@@ -57,11 +58,11 @@ export class TaskComponent implements OnInit, OnDestroy {
       this.token = person.token;
       this.getPersonSubscription = this.dataStorage.personData.getPerson(person.username, person.token).subscribe((res) => {
         this.editMode = res.status == "Trainer";
-        this.getTasksSubscription = this.dataStorage.getAllTasksForPerson(this.token, res.status.toLocaleLowerCase(), res.personId).subscribe((data) => {
+        this.getTasksSubscription = this.dataStorage.taskData.getAllTasksForPerson(this.token, res.status.toLocaleLowerCase(), res.personId).subscribe((data) => {
           data.forEach(element => {
             let taskCl = new TaskClient();
             taskCl.task = element;
-            this.getSubTasksSubscription = this.dataStorage.getAllSubtasksForTask(this.token, element.taskId).subscribe((sub) => {
+            this.getSubTasksSubscription = this.dataStorage.subTaskData.getAllSubtasksForTask(this.token, element.taskId).subscribe((sub) => {
               sub.forEach(element => {
                 let cl = new SubTaskClient();
                 cl.subTask = element;
@@ -69,13 +70,25 @@ export class TaskComponent implements OnInit, OnDestroy {
                 taskCl.subTasks.push(cl);
               });
             });
-            this.getSolutionTaskSubscription = this.dataStorage.getAllSolutionsForATaskForAPerson(this.token, element.taskId, res.personId).subscribe((sol) => {
+            this.getSolutionTaskSubscription = this.dataStorage.taskSolutionData.getAllSolutionsForATaskForAPerson(this.token, element.taskId, res.personId).subscribe((sol) => {
               taskCl.solution = sol == null ? new TaskSolution() : sol;
             });
             this.tasks.push(taskCl);
           });
         });
       });
+      this.taskSubscription = this.dataStorage.taskData.taskAdded.subscribe((res)=>{
+        if(res){
+          let index= this.tasks.findIndex(t=>t.task.taskId == res.taskId);
+          if(index==-1){
+            let task = new TaskClient();
+            task.task=res;
+            this.tasks.unshift(task);
+          }else{
+            this.tasks[index].task=res;
+          }
+        }
+      })
     }
   }
 
@@ -111,7 +124,7 @@ export class TaskComponent implements OnInit, OnDestroy {
   }
 
   onDelete(taskId: number) {
-    this.deleteTaskSubscription = this.dataStorage.deleteTask(this.token, taskId).subscribe(() => {
+    this.deleteTaskSubscription = this.dataStorage.taskData.deleteTask(this.token, taskId).subscribe(() => {
       this.toastr.success("Task deleted succesfully!");
       let index = this.tasks.findIndex(t => t.task.taskId == taskId);
       this.tasks.splice(index, 1);
@@ -147,7 +160,7 @@ export class TaskComponent implements OnInit, OnDestroy {
     subtask.subTask.taskId = taskId;
 
     if (subtask.subTask.subTaskId == -1) {
-      this.addSubTaskSubscription = this.dataStorage.addSubTask(this.token, subtask.subTask).subscribe((res) => {
+      this.addSubTaskSubscription = this.dataStorage.subTaskData.addSubTask(this.token, subtask.subTask).subscribe((res) => {
         this.toastr.success("SubTask added succesfully!");
         subtask.subTask = res;
         subtask.editMode = false;
@@ -156,7 +169,7 @@ export class TaskComponent implements OnInit, OnDestroy {
       });
     } else {
       console.log("edit");
-      this.addSubTaskSubscription = this.dataStorage.editSubTask(this.token, subtask.subTask).subscribe((res) => {
+      this.addSubTaskSubscription = this.dataStorage.subTaskData.editSubTask(this.token, subtask.subTask).subscribe((res) => {
         this.toastr.success("SubTask edited succesfully!");
         subtask.subTask = res;
         subtask.editMode = false;
@@ -171,7 +184,7 @@ export class TaskComponent implements OnInit, OnDestroy {
   }
 
   onDeleteSubTask(subtask: SubTaskClient) {
-    this.deleteSubTaskSubscription = this.dataStorage.deleteSubTask(this.token, subtask.subTask.subTaskId).subscribe(() => {
+    this.deleteSubTaskSubscription = this.dataStorage.subTaskData.deleteSubTask(this.token, subtask.subTask.subTaskId).subscribe(() => {
       this.toastr.success("SubTask deleted succesfully!");
       let index = this.tasks.findIndex(t => t.task.taskId == subtask.subTask.taskId);
       let indexSubTask = this.tasks[index].subTasks.findIndex(t => t.subTask.subTaskId == subtask.subTask.subTaskId);

@@ -40,7 +40,7 @@ export class RankingsComponent implements OnInit, OnDestroy {
       return;
     } else {
       const person: LoggedPerson = JSON.parse(personString);
-      this.getRankingsSubscription = this.dataStorage.rankings(person.token).subscribe((res)=>{
+      this.getRankingsSubscription = this.dataStorage.challengeData.rankings(person.token).subscribe((res)=>{
         this.rankings=res;
         this.dataSource = new MatTableDataSource(this.rankings);
         this.dataSource.paginator = this.paginator;

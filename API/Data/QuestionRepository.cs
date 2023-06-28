@@ -17,9 +17,11 @@ namespace API.Data
             _mapper = mapper;
         }
 
-        public void Create(QuestionDto questionDto)
+        public QuestionDto Create(QuestionDto questionDto)
         {
-            _context.Questions.Add(_mapper.Map<Question>(questionDto));
+            var question = _mapper.Map<Question>(questionDto);
+            _context.Questions.Add(question);
+            return SaveAll() ? _mapper.Map<QuestionDto>(question) : null;
         }
 
         public void Delete(int questionid)
@@ -64,7 +66,7 @@ namespace API.Data
             _context.Questions.Update(question);
         }
 
-        public void Update(QuestionDto questionDto)
+        public QuestionDto Update(QuestionDto questionDto)
         {
             var question = _mapper.Map<Question>(this.GetQuestionById(questionDto.QuestionId));
             question.QuestionName = questionDto.QuestionName == null ? question.QuestionName : questionDto.QuestionName;
@@ -79,6 +81,8 @@ namespace API.Data
             question.TrainerId = questionDto.TrainerId == null ? question.TrainerId : questionDto.TrainerId.Value;
 
             _context.Questions.Update(question);
+
+            return SaveAll() ? _mapper.Map<QuestionDto>(question) : null;
         }
     }
 }

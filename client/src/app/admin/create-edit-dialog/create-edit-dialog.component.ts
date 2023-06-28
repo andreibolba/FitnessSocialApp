@@ -30,6 +30,7 @@ export class CreateEditDialogComponent implements OnInit, OnDestroy {
   status: string = '';
   opration: string = '';
   person!: Person | null;
+  isLoading=false;
   private token: string = '';
 
   constructor(
@@ -41,6 +42,7 @@ export class CreateEditDialogComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    this.isLoading=true;
     this.utils.initializeError();
     this.utilsSub = this.utils.userToEdit.subscribe((res) => {
       this.person = res;
@@ -78,6 +80,7 @@ export class CreateEditDialogComponent implements OnInit, OnDestroy {
     } else {
       const person: LoggedPerson = JSON.parse(personString);
       this.token = person.token;
+      this.isLoading=false;
     }
   }
 
@@ -88,6 +91,7 @@ export class CreateEditDialogComponent implements OnInit, OnDestroy {
   }
 
   onSignUpSubmit(form: NgForm) {
+    this.isLoading=true;
     let person = new Person();
     person.firstName = form.value.fName;
     person.lastName = form.value.lName;
@@ -98,25 +102,30 @@ export class CreateEditDialogComponent implements OnInit, OnDestroy {
 
     if (this.opration == 'Add') {
       this.dataService.personData.addperson(person, this.token).subscribe(
-        () => {
-          this.toastr.success('An ' + status + ' was added succesfully!');
+        (res) => {
+          this.toastr.success('An ' + res.status + ' was added succesfully!');
           this.dialogRef.close();
-          this.utils.addedPerson.next(person);
+          this.dataService.personData.personAdded.next(person);
         },
         (error) => {
           this.toastr.error(error.error);
+        },()=>{
+          this.isLoading=false;
         }
       );
     } else {
       person.personId = this.person!.personId;
       this.dataService.personData.editperson(person, this.token).subscribe(
-        () => {
+        (res) => {
           this.toastr.success('The edit was succesfully!');
           this.dialogRef.close();
+          this.dataService.personData.personAdded.next(person);
         },
         (error) => {
           console.log(error.error);
           this.toastr.error(error.error);
+        },()=>{
+          this.isLoading=false;
         }
       );
     }

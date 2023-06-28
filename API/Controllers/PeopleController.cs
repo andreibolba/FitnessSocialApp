@@ -62,7 +62,7 @@ namespace API.Controllers
             PasswordkLink link = new PasswordkLink
             {
                 PersonUsername = person.Username,
-                Time = password.Time.AddHours(2),
+                Time = DateTime.Now.AddHours(1),
                 Deleted = false
             };
 
@@ -85,11 +85,11 @@ namespace API.Controllers
 
             };
 
-
-            if (Utils.Utils.SendEmail(details))
+            var res = Utils.Utils.SendEmail(details);
+            if (res==string.Empty)
                 return Ok();
             else
-                return BadRequest();
+                return BadRequest(res);
         }
 
         [AllowAnonymous]
@@ -99,8 +99,7 @@ namespace API.Controllers
             var link = _passwordLinkRepository.GetById(password.LinkId);
             if (link == null)
                 return BadRequest("Invalid link");
-            password.Time.AddHours(2);
-            if (link.Time < password.Time)
+            if (link.Time < DateTime.Now)
             {
                 _passwordLinkRepository.Delete(link);
                 if (_passwordLinkRepository.SaveAll() == false)

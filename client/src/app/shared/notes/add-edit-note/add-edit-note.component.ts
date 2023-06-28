@@ -17,6 +17,7 @@ export class AddEditNoteComponent implements OnInit, OnDestroy {
   getNoteSubscription!: Subscription;
   getPersonSubscription!: Subscription;
   addEditSubscription!: Subscription;
+  isLoading=false;
   title: string = '';
   content: string = '';
   operation: string = '';
@@ -33,6 +34,7 @@ export class AddEditNoteComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    this.isLoading=true;
     this.utils.initializeError();
     const personString = localStorage.getItem('person');
     if (!personString) {
@@ -54,6 +56,10 @@ export class AddEditNoteComponent implements OnInit, OnDestroy {
             this.operation = "Add";
           }
         });
+      },()=>{
+
+      },()=>{
+        this.isLoading=false;
       });
 
     }
@@ -66,24 +72,32 @@ export class AddEditNoteComponent implements OnInit, OnDestroy {
   }
 
   onSignUpSubmit() {
+    this.isLoading=true;
     let note = new Note();
     note.noteTitle = this.title;
     note.noteBody = this.content;
     note.personId = this.person.personId;
     if (this.operation == "Add") {
-      this.addEditSubscription = this.dataStorage.createNote(this.token,note).subscribe(()=>{
+      this.addEditSubscription = this.dataStorage.noteData.createNote(this.token,note).subscribe((res)=>{
+        this.dataStorage.noteData.noteAdded.next(res);
         this.toastr.success("Note was added succesfully!");
         this.dialog.close();
       },(error)=>{
         this.toastr.error(error.error);
+      },()=>{
+        this.isLoading=false;
       });
     }else{
       note.noteId = this.noteId;
-      this.addEditSubscription = this.dataStorage.updateNote(this.token,note).subscribe(()=>{
+      this.addEditSubscription = this.dataStorage.noteData.updateNote(this.token,note).subscribe((res)=>{
+        console.log(res);
+        this.dataStorage.noteData.noteAdded.next(res);
         this.toastr.success("Note was updated succesfully!");
         this.dialog.close();
       },(error)=>{
         this.toastr.error(error.error);
+      },()=>{
+        this.isLoading=false;
       });
     }
   }

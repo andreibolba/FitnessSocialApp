@@ -24,6 +24,7 @@ export class TestComponent implements OnInit, OnDestroy {
   trainerSub!: Subscription;
   deleteSub!: Subscription;
   publishSub!: Subscription;
+  testSubs!: Subscription;
   fromGroupSub!: Subscription;
   isTrainer: boolean = false;
   isFromGroup: boolean = false;
@@ -49,8 +50,10 @@ export class TestComponent implements OnInit, OnDestroy {
   }
 
   deletetest(id: number) {
-    this.deleteSub = this.dataService.deleteOneTest(this.token, id).subscribe(
+    this.deleteSub = this.dataService.quizData.testsData.deleteOneTest(this.token, id).subscribe(
       () => {
+        let index = this.tests.findIndex(t=>t.testId==id);
+        this.tests.splice(index,1);
         this.toastr.success('Test was deleted succesfully!');
       },
       (error) => {
@@ -125,7 +128,7 @@ export class TestComponent implements OnInit, OnDestroy {
       alert("You can't publish a test with no questions!");
       return;
     } else {
-      this.publishSub = this.dataService.publish(this.token, testId).subscribe(
+      this.publishSub = this.dataService.quizData.testsData.publish(this.token, testId).subscribe(
         () => {
           this.toastr.success('Test was published succesfully!');
           this.tests[index].canBeEdited = false;
@@ -160,7 +163,7 @@ export class TestComponent implements OnInit, OnDestroy {
                 this.isFromGroup=true;
                 this.route.params.subscribe((params: Params) => {
                   let groupId = +params['id'];
-                  this.testSub = this.dataService
+                  this.testSub = this.dataService.quizData.testsData
                     .getMyTestsByGroupId(person.token, groupId)
                     .subscribe(
                       (data) => {
@@ -180,13 +183,11 @@ export class TestComponent implements OnInit, OnDestroy {
                 this.mainId = 'main';
                 this.buttonsClass = 'buttons';
                 this.isFromGroup=false;
-                this.testSub = this.dataService
+                this.testSub = this.dataService.quizData.testsData
                   .getMyTests(person.token, id,data.status)
                   .subscribe(
                     (data) => {
                       this.tests = data;
-                      console.log(data);
-                      console.log(this.tests);
                     },
                     () => {},
                     () => {
@@ -201,6 +202,16 @@ export class TestComponent implements OnInit, OnDestroy {
             }
           );
         });
+        this.testSubs = this.dataService.quizData.testsData.testAdded.subscribe((res)=>{
+          if(res){
+            let index = this.tests.findIndex(t=>t.testId==res.testId);
+            if(index==-1){
+              this.tests.push(res);
+            }else{
+              this.tests[index]=res;
+            }
+          }
+        })
     }
   }
 }

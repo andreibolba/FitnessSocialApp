@@ -9,10 +9,12 @@ namespace API.Controllers
     public class NoteController:BaseAPIController
     {
         private readonly INoteRepository _noteRepository;
+        private readonly IPersonRepository _personRepository;
 
-        public NoteController(INoteRepository noteRepository)
+        public NoteController(INoteRepository noteRepository, IPersonRepository personRepository)
         {
             _noteRepository = noteRepository;
+            _personRepository = personRepository;
         }
 
         [HttpGet]
@@ -31,16 +33,20 @@ namespace API.Controllers
         public ActionResult AddNote([FromBody] NoteDto note)
         {
             var res = _noteRepository.CreateNote(note);
-
-            return res != null? Ok(res) : BadRequest("Internal Server Error");
+            if(res==null)
+                return BadRequest("Internal Server Error");
+            res.Person = _personRepository.GetPersonById(note.PersonId);
+            return Ok(res);
         }
 
         [HttpPost("edit")]
         public ActionResult EditNote([FromBody] NoteDto note)
         {
             var res = _noteRepository.UpdateNote(note);
-
-            return res != null ? Ok(res) : BadRequest("Internal Server Error");
+            if (res == null)
+                return BadRequest("Internal Server Error");
+            res.Person = _personRepository.GetPersonById(note.PersonId);
+            return Ok(res);
         }
 
         [HttpPost("delete/{noteId}")]

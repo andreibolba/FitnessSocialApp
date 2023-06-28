@@ -48,7 +48,7 @@ export class AssignTaskComponent implements OnInit, OnDestroy {
       const person: LoggedPerson = JSON.parse(personString);
       this.token = person.token;
 
-      this.dataPeopleSub = this.dataService
+      this.dataPeopleSub = this.dataService.taskData
         .getCheckInternForTask(this.token, this.task.taskId)
         .subscribe((res) => {
           console.log(res);
@@ -62,7 +62,7 @@ export class AssignTaskComponent implements OnInit, OnDestroy {
             );
           });
         });
-      this.groupPeopleSub = this.dataService
+      this.groupPeopleSub = this.dataService.taskData
         .getCheckGroupForTask(this.token, this.task.taskId)
         .subscribe((res) => {
           res.forEach((element) => {
@@ -103,7 +103,7 @@ export class AssignTaskComponent implements OnInit, OnDestroy {
       idsGroups += element.id.toString() + '_';
     });
 
-    this.assignTaskSub = this.dataService.assignTask(this.token,idsInterns,idsGroups,this.task.taskId).subscribe(
+    this.assignTaskSub = this.dataService.taskData.assignTask(this.token,idsInterns,idsGroups,this.task.taskId).subscribe(
         () => {
           this.toastr.success('Dates are update succesfully!');
           this.dialogRef.close();

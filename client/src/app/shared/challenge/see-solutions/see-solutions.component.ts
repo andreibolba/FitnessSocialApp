@@ -52,17 +52,17 @@ export class SeeSolutionsComponent implements OnInit, OnDestroy {
         this.isReadOnly =  data.status == "Intern";
         if(this.isReadOnly){
           this.getIdSubscription = this.utils.challengeIdForSolutionsToEdit.subscribe((res) => {
-            this.getSolutionsSubscription = this.dataStorage.getSolutionsForSpecificPersonForChallenge(this.token,data.personId, res).subscribe((data) => {
+            this.getSolutionsSubscription = this.dataStorage.challengeSolutionData.getSolutionsForSpecificPersonForChallenge(this.token,data.personId, res).subscribe((data) => {
               this.solutions = data;
             });
           });
         }else{
           this.getIdSubscription = this.utils.challengeIdForSolutionsToEdit.subscribe((res) => {
-            this.challengeSubscription = this.dataStorage.getAllChallengesForPeople(this.token, data.status).subscribe((ch)=>{
+            this.challengeSubscription = this.dataStorage.challengeData.getAllChallengesForPeople(this.token, data.status).subscribe((ch)=>{
               let challenge = ch.find(f=>f.challangeId == res);
               this.maxPoints = challenge?.points!;
             });
-            this.getSolutionsSubscription = this.dataStorage.getSolutionsForSpecificChallenge(this.token, res).subscribe((data) => {
+            this.getSolutionsSubscription = this.dataStorage.challengeSolutionData.getSolutionsForSpecificChallenge(this.token, res).subscribe((data) => {
               this.solutions = data;
             });
           });
@@ -86,7 +86,7 @@ export class SeeSolutionsComponent implements OnInit, OnDestroy {
   }
 
   decline(solution: ChallengeSolution) {
-    this.declineSubscription = this.dataStorage.declineSolution(this.token, solution.challangeSolutionId).subscribe(() => {
+    this.declineSubscription = this.dataStorage.challengeSolutionData.declineSolution(this.token, solution.challangeSolutionId).subscribe(() => {
       this.toastr.success("Solution was declined!");
       solution.approved = false;
     }, (error) => {
@@ -95,7 +95,7 @@ export class SeeSolutionsComponent implements OnInit, OnDestroy {
   }
 
   delete(solution: ChallengeSolution) {
-    this.deleteSubscription = this.dataStorage.deleteSolution(this.token, solution.challangeSolutionId).subscribe(() => {
+    this.deleteSubscription = this.dataStorage.challengeSolutionData.deleteSolution(this.token, solution.challangeSolutionId).subscribe(() => {
       this.toastr.success("Solution was declined!");
       solution.approved = false;
       this.dial.close();
@@ -105,7 +105,7 @@ export class SeeSolutionsComponent implements OnInit, OnDestroy {
   }
 
   downloadFile(solid: number) {
-    this.dataStorage.downloadFile(this.token, solid);
+    this.dataStorage.challengeSolutionData.downloadFile(this.token, solid);
   }
 
   openDialog(solution: ChallengeSolution) {
@@ -115,7 +115,7 @@ export class SeeSolutionsComponent implements OnInit, OnDestroy {
       console.log(`Dialog result: ${result}`);
       this.pointsSubscription = this.utils.pointToSolutionApprove.subscribe((data) => {
         if (data) {
-          this.approveSubscription = this.dataStorage.approveSolution(this.token, solution.challangeSolutionId, data).subscribe(() => {
+          this.approveSubscription = this.dataStorage.challengeSolutionData.approveSolution(this.token, solution.challangeSolutionId, data).subscribe(() => {
             this.toastr.success("Solution was accepted!");
             solution.approved = true;
             solution.points = data;

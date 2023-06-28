@@ -45,7 +45,7 @@ export class AddEditSolutionComponent implements OnInit, OnDestroy {
         this.person = res;
         this.getChallangeIdSubecription = this.utils.challengeIdForSolutionsToEdit.subscribe((id) => {
           this.challangeId=id;
-          this.getSolutionSubecription = this.dataStorage.getSolutionsForSpecificPersonForChallenge(this.token,res.personId, id).subscribe((res) => {
+          this.getSolutionSubecription = this.dataStorage.challengeSolutionData.getSolutionsForSpecificPersonForChallenge(this.token,res.personId, id).subscribe((res) => {
             let ans = res.filter(r=>r.approved==null).length;
             if(ans>0)
             {
@@ -69,14 +69,14 @@ export class AddEditSolutionComponent implements OnInit, OnDestroy {
   onUpload() {
     if (this.selectedFile) {
       if(this.hasSolution){
-        this.sendFileSubscription = this.dataStorage.editSolution(this.token, this.person.personId,this.challangeId, this.selectedFile).subscribe((res) => {
+        this.sendFileSubscription = this.dataStorage.challengeSolutionData.editSolution(this.token, this.person.personId,this.challangeId, this.selectedFile).subscribe((res) => {
           this.toastr.success("Solution uploaded succesfully");
           this.dialog.close();
         },(error)=>{
           this.toastr.error(error.error);
         });
       }else{
-        this.sendFileSubscription = this.dataStorage.addSolution(this.token, this.person.personId, this.challangeId, this.selectedFile).subscribe((res) => {
+        this.sendFileSubscription = this.dataStorage.challengeSolutionData.addSolution(this.token, this.person.personId, this.challangeId, this.selectedFile).subscribe((res) => {
           this.toastr.success("Solution added succesfully");
           this.dialog.close();
         },(error)=>{

@@ -9,10 +9,12 @@ namespace API.Controllers
     public class FeedbacksController : BaseAPIController
     {
         private readonly IFeedbackRepository _feedbackRepository;
+        private readonly IPersonRepository _personRepository;
 
-        public FeedbacksController(IFeedbackRepository feedbackRepository)
+        public FeedbacksController(IFeedbackRepository feedbackRepository, IPersonRepository personRepository)
         {
             _feedbackRepository = feedbackRepository;
+            _personRepository = personRepository;
         }
 
         [HttpGet]
@@ -45,7 +47,7 @@ namespace API.Controllers
         public ActionResult Create([FromBody] FeedbackDto feedbackDto)
         {
             var feedback = _feedbackRepository.AddFeedback(feedbackDto);
-            return feedback != null ? Ok(feedback) : BadRequest("Internal Server Error");
+            return feedback != null ? Ok(_feedbackRepository.GetFeedbackById(feedback.FeedbackId)) : BadRequest("Internal Server Error");
         }
 
         [HttpPost("edit")]

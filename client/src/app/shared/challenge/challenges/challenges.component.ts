@@ -20,6 +20,7 @@ export class ChallengesComponent implements OnInit, OnDestroy {
   getPersonSubscription!: Subscription;
   deleteChallengesSubscription!: Subscription;
   challengesSubscription!: Subscription;
+  challengeSubscription!: Subscription;
   getSolutionSubecription!: Subscription;
   getRankingPositionSubscription!: Subscription;
   challenges: Challenge[] = [];
@@ -48,18 +49,18 @@ export class ChallengesComponent implements OnInit, OnDestroy {
       this.getPersonSubscription = this.dataStorage.personData.getPerson(person.username, person.token).subscribe((res) => {
         this.canAddEdit = res.status == 'Trainer';
         this.isIntern = res.status =="Intern";
-        this.getChallengesSubscription = this.dataStorage.getAllChallengesForPeople(this.token, res.status).subscribe((data) => {
+        this.getChallengesSubscription = this.dataStorage.challengeData.getAllChallengesForPeople(this.token, res.status).subscribe((data) => {
           this.challenges = data;
           this.challenges.forEach(element => {
             element.canDelete = new Date(element.deadline) > new Date;
-            this.getSolutionSubecription = this.dataStorage.getSolutionsForSpecificPersonForChallenge(this.token,res.personId, element.challangeId).subscribe((r) => {
+            this.getSolutionSubecription = this.dataStorage.challengeSolutionData.getSolutionsForSpecificPersonForChallenge(this.token,res.personId, element.challangeId).subscribe((r) => {
               element.canAddSolution = r.filter(s=>s.approved==true).length>0? false:true;
             });
           });
           this.challengesSubscription = this.utils.isOnChallanges.subscribe((result)=>{
             this.isOnChallanges=result;
           });
-          this.getRankingPositionSubscription = this.dataStorage.rankings(this.token).subscribe((rank)=>{
+          this.getRankingPositionSubscription = this.dataStorage.challengeData.rankings(this.token).subscribe((rank)=>{
             let personRank = rank.find(p=>p.personId == res.personId);
             let posTest = personRank?.position ==1 ? "1st": personRank?.position == 2? "2nd":
             personRank?.position == 3? "3rd" : personRank?.position.toString()+"th";
@@ -67,6 +68,16 @@ export class ChallengesComponent implements OnInit, OnDestroy {
           })
         });
       });
+      this.challengeSubscription = this.dataStorage.challengeData.challengeAdded.subscribe((res)=>{
+        if(res){
+          let index = this.challenges.findIndex(p=>p.challangeId == res.challangeId);
+          if(index==-1){
+            this.challenges.unshift(res);
+          }else{
+            this.challenges[index];
+          }
+        }
+      })
     }
   }
 
@@ -101,7 +112,7 @@ export class ChallengesComponent implements OnInit, OnDestroy {
   }
 
   onDelete(challenge: Challenge) {
-    this.deleteChallengesSubscription = this.dataStorage.deleteChallenge(this.token, challenge.challangeId).subscribe(() => {
+    this.deleteChallengesSubscription = this.dataStorage.challengeData.deleteChallenge(this.token, challenge.challangeId).subscribe(() => {
       this.toastr.success("Note was deleted succesfully!");
       let index = this.challenges.findIndex(c => c.challangeId == challenge.challangeId);
       if (index != -1)

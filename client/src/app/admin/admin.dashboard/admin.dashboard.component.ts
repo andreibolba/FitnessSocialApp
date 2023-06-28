@@ -61,7 +61,7 @@ export class AdminDashboardComponent implements OnInit, OnDestroy {
           console.log(error.error);
         }
       );
-      this.dataGroupsSub = this.dataService.getGroups(person.token).subscribe(
+      this.dataGroupsSub = this.dataService.groupData.getGroups(person.token).subscribe(
         (res) => {
           let groups: Group[] = res;
           this.groupsNumber = groups.length;

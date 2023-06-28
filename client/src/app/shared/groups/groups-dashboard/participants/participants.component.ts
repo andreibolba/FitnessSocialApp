@@ -44,7 +44,7 @@ export class ParticipantsComponent implements OnInit, OnDestroy{
       let groupId=-1;
       this.route.params.subscribe((params: Params) => {
         groupId = +params['id'];
-        this.dataPeopleSub = this.dataService.getAllPeopleInGroup(this.token,groupId).subscribe((data)=>{
+        this.dataPeopleSub = this.dataService.groupData.getAllPeopleInGroup(this.token,groupId).subscribe((data)=>{
           this.people=data;
         });
       });

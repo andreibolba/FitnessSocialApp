@@ -121,7 +121,7 @@ export class StartTestComponent implements OnInit, OnDestroy {
   finishTest() {
     if (this.results.length == 0) {
       console.log(this.answers);
-      this.finishSub = this.data
+      this.finishSub = this.data.quizData.questionSolutionData
         .sendTest(this.token, this.internId, this.test.testId, this.answers)
         .subscribe(
           () => {
@@ -163,7 +163,7 @@ export class StartTestComponent implements OnInit, OnDestroy {
             this.personIdSub = this.utils.personIdForResult.subscribe(
               (result) => {
                 let id = result == -1? this.internId : result;
-                this.resultsSub = this.data
+                this.resultsSub = this.data.quizData.questionSolutionData
                   .getResult(this.token, id, this.test.testId)
                   .subscribe((data) => {
                     this.results = data;

@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { Person } from 'src/model/person.model';
 
 
@@ -7,8 +8,10 @@ import { Person } from 'src/model/person.model';
   providedIn: 'root',
 })
 export class PersonDataService {
-  baseUrl = 'https://localhost:7191/api/';
-  people: Person[] = [];
+  private baseUrl = 'https://localhost:7191/api/';
+
+  personAdded=new BehaviorSubject<Person | null>(null);
+
   constructor(private http: HttpClient) { }
   getPerson(username: string, token: string) {
     const headers = { Authorization: 'Bearer ' + token };
@@ -50,7 +53,7 @@ export class PersonDataService {
 
   addperson(person: Person, token: string) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(
+    return this.http.post<Person>(
       this.baseUrl + 'account/register',
       {
         FirstName: person.firstName,
@@ -67,7 +70,7 @@ export class PersonDataService {
 
   editperson(person: Person, token: string) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post(
+    return this.http.post<Person>(
       this.baseUrl + 'people/update',
       {
         PersonId: person.personId,
@@ -84,15 +87,13 @@ export class PersonDataService {
 
   sendEmail(email: string) {
     return this.http.post(this.baseUrl + 'people/forgot', {
-      email: email,
-      time: new Date(),
+      email: email
     });
   }
 
   isLinkValid(linkid: number) {
     return this.http.post(this.baseUrl + 'people/link', {
-      linkid: linkid,
-      time: new Date(),
+      linkid: linkid
     });
   }
 

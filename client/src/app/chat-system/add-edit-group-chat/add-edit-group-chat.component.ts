@@ -111,7 +111,7 @@ export class AddEditGroupChatComponent implements OnInit, OnDestroy {
         if (element.checked) ids.push(element.id);
       });
       ids.push(this.adminId);
-      this.addGroupchatSubcription = this.dataStorage
+      this.addGroupchatSubcription = this.dataStorage.groupChatData
         .addGroupChat(
           this.token,
           this.nameOfGroup,
@@ -139,7 +139,7 @@ export class AddEditGroupChatComponent implements OnInit, OnDestroy {
     if (this.option == 2) {
       this.group.groupChatName = this.nameOfGroup;
       this.group.groupChatDescription = this.descriptionOfGroup == '' ? null : this.descriptionOfGroup;
-      this.saveEditGroupSubcription = this.dataStorage.editGroupChat(this.token, this.group).subscribe(() => {
+      this.saveEditGroupSubcription = this.dataStorage.groupChatData.editGroupChat(this.token, this.group).subscribe(() => {
         this.toastr.success("Group updates successfully!");
         this.dialog.close();
       }, (error) => {
@@ -152,7 +152,7 @@ export class AddEditGroupChatComponent implements OnInit, OnDestroy {
         ids += element.id.toString() + "_";
       });
       ids+= this.adminId+"_";
-      this.updateMembersGroupSubcription = this.dataStorage.updateMembersGroupChat(this.token, this.group.groupChatId, ids).subscribe((res) => {
+      this.updateMembersGroupSubcription = this.dataStorage.groupChatData.updateMembersGroupChat(this.token, this.group.groupChatId, ids).subscribe((res) => {
         this.utils.groupChatPersonChat.next(res);
         this.toastr.success("Group members updates successfully!");
         this.dialog.close();

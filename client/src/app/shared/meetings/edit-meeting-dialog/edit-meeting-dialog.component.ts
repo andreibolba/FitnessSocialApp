@@ -104,7 +104,7 @@ export class EditMeetingDialogComponent implements OnInit, OnDestroy {
               this.meetingId = -1;
             }
 
-            this.optionsInternsSub = this.dataService
+            this.optionsInternsSub = this.dataService.meetingData
               .getAllInternsInMeeting(this.token, this.meetingId)
               .subscribe((res) => {
                 res.forEach((element) => {
@@ -116,10 +116,9 @@ export class EditMeetingDialogComponent implements OnInit, OnDestroy {
                     )
                   );
                 });
-                console.log(this.optionsInterns);
               });
 
-              this.optionsGroupSub = this.dataService
+              this.optionsGroupSub = this.dataService.meetingData
               .getAllGroupsInMeeting(this.token, this.meetingId,this.trainerId)
               .subscribe((res) => {
                 res.forEach((element) => {
@@ -131,7 +130,6 @@ export class EditMeetingDialogComponent implements OnInit, OnDestroy {
                     )
                   );
                 });
-                console.log(this.optionsGroups);
               });
           });
         });
@@ -180,11 +178,13 @@ export class EditMeetingDialogComponent implements OnInit, OnDestroy {
     meet.groupIds=groupIds;
 
     if (this.operation == 'Edit') {
+      console.log(meet);
       meet.meetingId = this.meetingId;
-      this.modifyMeetingSub = this.dataService
+      this.modifyMeetingSub = this.dataService.meetingData
         .updateMeeting(this.token, meet)
         .subscribe(
-          () => {
+          (res) => {
+            this.dataService.meetingData.meetignAdded.next(res);
             this.toastr.success('Meeting was edited succesfully!');
             this.dialogRef.close();
           },
@@ -194,10 +194,12 @@ export class EditMeetingDialogComponent implements OnInit, OnDestroy {
           }
         );
     } else {
-      this.modifyMeetingSub = this.dataService
+      console.log(meet);
+      this.modifyMeetingSub = this.dataService.meetingData
         .addMeeting(this.token, meet)
         .subscribe(
-          () => {
+          (res) => {
+            this.dataService.meetingData.meetignAdded.next(res);
             this.toastr.success('Meeting was added succesfully!');
             this.dialogRef.close();
           },

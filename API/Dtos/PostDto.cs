@@ -2,7 +2,7 @@
 {
     public class PostDto
     {
-        public int? PostId { get; set; }
+        public int PostId { get; set; }
 
         public int? PersonId { get; set; }
 

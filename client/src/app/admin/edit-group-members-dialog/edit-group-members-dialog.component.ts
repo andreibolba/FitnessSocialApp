@@ -55,7 +55,7 @@ export class EditGroupMembersDialogComponent {
       const person: LoggedPerson = JSON.parse(personString);
       this.token = person.token;
 
-      this.dataPeopleSub = this.dataService
+      this.dataPeopleSub = this.dataService.groupData
         .getAllInternsInGroup(this.token, this.group!.groupId)
         .subscribe((res) => {
           res.forEach((element) => {
@@ -83,7 +83,9 @@ export class EditGroupMembersDialogComponent {
     selected.forEach(element => {
       ids+=element.id.toString()+"_";
     });
-    this.dataService.updateInternInGroup(this.token,ids,this.group!.groupId).subscribe(()=>{
+    this.dataService.groupData.updateInternInGroup(this.token,ids,this.group!.groupId).subscribe((res)=>{
+      console.log(res);
+      this.dataService.groupData.groupAdded.next(res);
       this.toastr.success("Dates are update succesfully!");
       this.dialogRef.close();
     },(error)=>{

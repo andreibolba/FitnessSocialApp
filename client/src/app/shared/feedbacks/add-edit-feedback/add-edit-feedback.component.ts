@@ -126,7 +126,7 @@ export class AddEditFeedbackComponent implements OnInit, OnDestroy {
               }
             });
 
-            this.getChallengesSubscription = this.dataStorage.getAllChallenges(this.token).subscribe((ppl) => {
+            this.getChallengesSubscription = this.dataStorage.challengeData.getAllChallenges(this.token).subscribe((ppl) => {
               this.challenges.push(new ChallengeCombo());
               ppl.forEach(element => {
                 let ic = new ChallengeCombo;
@@ -143,7 +143,7 @@ export class AddEditFeedbackComponent implements OnInit, OnDestroy {
               }
             });
 
-            this.getTestsSubscription = this.dataStorage.getAllTests(this.token).subscribe((ppl) => {
+            this.getTestsSubscription = this.dataStorage.quizData.testsData.getAllTests(this.token).subscribe((ppl) => {
               this.tests.push(new TestCombo());
               ppl.forEach(element => {
                 let ic = new TestCombo;
@@ -160,7 +160,7 @@ export class AddEditFeedbackComponent implements OnInit, OnDestroy {
               }
             });
 
-            this.getTasksSubscription = this.dataStorage.getAllTasks(this.token).subscribe((ppl) => {
+            this.getTasksSubscription = this.dataStorage.taskData.getAllTasks(this.token).subscribe((ppl) => {
               this.tasks.push(new TaskCombo());
               ppl.forEach(element => {
                 let ic = new TaskCombo;
@@ -199,7 +199,8 @@ export class AddEditFeedbackComponent implements OnInit, OnDestroy {
     feedback.testId = this.currentTestId == -1 ? null : this.currentTestId;
     feedback.grade = this.grade;
     if (this.operation == "Add") {
-      this.addEditSubscription = this.dataStorage.addFeedback(this.token, feedback).subscribe(() => {
+      this.addEditSubscription = this.dataStorage.feedbackData.addFeedback(this.token, feedback).subscribe((res) => {
+        this.dataStorage.feedbackData.feedbackAdded.next(res);
         this.toastr.success("Feedback was added succesfully!");
         this.dialog.close();
       }, (error) => {
@@ -207,7 +208,8 @@ export class AddEditFeedbackComponent implements OnInit, OnDestroy {
       });
     } else {
       feedback.feedbackId = this.feedbackId;
-      this.addEditSubscription = this.dataStorage.editFeedback(this.token, feedback).subscribe(() => {
+      this.addEditSubscription = this.dataStorage.feedbackData.editFeedback(this.token, feedback).subscribe((res) => {
+        this.dataStorage.feedbackData.feedbackAdded.next(res);
         this.toastr.success("Feedback was updated succesfully!");
         this.dialog.close();
       }, (error) => {

@@ -15,13 +15,15 @@ namespace API.Controllers
         private readonly ITestRepository _testRepository;
         private readonly IPhotoService _photoService;
         private readonly IPictureRepository _pictureRepository;
+        private readonly IPersonRepository _personRepository;
 
-        public GroupController(IGroupRepository groupRepository, ITestRepository testRepository, IPhotoService photoService, IPictureRepository pictureRepository)
+        public GroupController(IGroupRepository groupRepository, ITestRepository testRepository, IPhotoService photoService, IPictureRepository pictureRepository, IPersonRepository personRepository)
         {
             _groupRepository = groupRepository;
             _testRepository = testRepository;
             _photoService = photoService;
             _pictureRepository = pictureRepository;
+            _personRepository = personRepository;
         }
 
         [HttpGet]
@@ -47,7 +49,11 @@ namespace API.Controllers
         public ActionResult AddGroup([FromBody] GroupDto group)
         {
             var res = _groupRepository.Create(group);
-            return res!=null ? Ok(res) : BadRequest("Internal Server Error");
+            if(res==null)
+                return BadRequest("Internal Server Error");
+            res.AllInterns = new List<PersonDto>(0);
+            res.Trainer = res.TrainerId != null ? _personRepository.GetPersonById(res.TrainerId.Value) : null ;
+            return Ok(res);
         }
 
         [HttpPost("delete/{groupId:int}")]
@@ -61,7 +67,10 @@ namespace API.Controllers
         public ActionResult UpdateGroup([FromBody] GroupDto group)
         {
             var res = _groupRepository.Update(group);
-            return res!=null ? Ok(res) : BadRequest("Internal Server Error"); ;
+            if (res == null)
+                return BadRequest("Internal Server Error");
+            res.Trainer = res.TrainerId != null ? _personRepository.GetPersonById(res.TrainerId.Value) : null;
+            return Ok(res);
         }
 
         [HttpGet("tests/{groupId:int}")]

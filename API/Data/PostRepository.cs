@@ -21,11 +21,12 @@ namespace API.Data
             _mapper = mapper;
         }
 
-        public void CreatePost(PostDto post)
+        public PostDto CreatePost(PostDto post)
         {
             var postToAdd = _mapper.Map<Post>(post);
             postToAdd.DateOfPost = DateTime.Now;
             _context.Posts.Add(postToAdd);
+            return SaveAll() ? _mapper.Map<PostDto>(postToAdd) : null;
         }
 
         public bool DeletePost(int postId)
@@ -47,7 +48,7 @@ namespace API.Data
         public IEnumerable<PostDto> GetAllPosts()
         {
             var allPosts = _context.Posts.Where(p => p.Deleted == false)
-                .OrderBy(p => p.DateOfPost);
+                .OrderByDescending(p => p.DateOfPost);
             var allPostsDto = _mapper.Map<IEnumerable<PostDto>>(allPosts);
             foreach (var a in allPostsDto)
             {
@@ -101,15 +102,15 @@ namespace API.Data
             return _context.SaveChanges() > 0;
         }
 
-        public bool UpdatePost(PostDto post)
+        public PostDto UpdatePost(PostDto post)
         {
-            var postToUpdate = GetPost(post.PostId.Value);
+            var postToUpdate = GetPost(post.PostId);
             if (postToUpdate == null)
-                return false;
+                return null;
             postToUpdate.Title = post.Title == null ? postToUpdate.Title : post.Title;
             postToUpdate.Content = post.Content == null ? postToUpdate.Content : post.Content;
             _context.Posts.Update(_mapper.Map<Post>(postToUpdate));
-            return true;
+            return SaveAll() ? GetPost(post.PostId) : null;
         }
     }
 }

@@ -6,42 +6,47 @@
   <button class="btn btn-success" mat-button (click)="onAdd()"> Add forum </button>
 </div>
 
-
-<div id="main">
-  <div class="forum" *ngFor="let post of posts">
-    <div class="person">
-      <div class="picture">
-        <img [src]="person.picture.url" *ngIf="person.picture!=null" style="border-radius: 50%; margin: auto;" height="100%" width="100%"/>
-        <img src="../../../assets/img/user.png" *ngIf="person.picture==null" style="border-radius: 50%;" height="100%" width="100%"/>
-      </div>
-      <div class="name">
-        {{ post.person.firstName + ' ' + post.person.lastName}}
-      </div>
-      <div class="btns">
-        <button class="btn-info" *ngIf="post.canEdit" (click)="onEdit(post)">Edit</button>
-        <button class="btn-danger" *ngIf="post.canEdit" (click)="onDelete(post)">Delete</button>
-      </div>
-    </div>
-    <div class="post">
-      <div class="title" (click)="onSeePost(post)">
-        {{ post.title }}
-      </div>
-      <div class="content">
-        {{post.content}}
-      </div>
-    </div>
-    <div class="stats">
-      <div class="karma">
-        <div class="place">
-          <p class="karmaPoints">{{post.karma}}</p>
+<div>
+  <div *ngIf = "posts.length!=0">
+    <div id="main">
+      <div class="forum" *ngFor="let post of posts">
+        <div class="person">
+          <div class="picture">
+            <img [src]="post.person.picture.url" *ngIf="post.person.picture!=null" style="border-radius: 50%; margin: auto;" height="100%" width="100%"/>
+            <img src="../../../assets/img/user.png" *ngIf="post.person.picture==null" style="border-radius: 50%;" height="100%" width="100%"/>
+          </div>
+          <div class="name">
+            {{ post.person.firstName + ' ' + post.person.lastName}}
+          </div>
+          <div class="btns">
+            <button class="btn-info" *ngIf="post.canEdit" (click)="onEdit(post)">Edit</button>
+            <button class="btn-danger" *ngIf="post.canEdit" (click)="onDelete(post)">Delete</button>
+          </div>
         </div>
-        <div id="triangle"></div>
+        <div class="post">
+          <div class="title" (click)="onSeePost(post)">
+            {{ post.title }}
+          </div>
+          <div class="content">
+            {{post.content}}
+          </div>
+        </div>
+        <div class="stats">
+          <div class="karma">
+            <div class="place">
+              <p class="karmaPoints">{{post.karma}}</p>
+            </div>
+            <div id="triangle"></div>
+          </div>
+          <div class="views">
+            <i class="uil uil-eye"></i>{{post.views}}
+          </div>
+          <div class="date">
+            {{post.dateOfPost | date:'medium' }}
+          </div>
+        </div>
       </div>
-      <div class="views">
-        <i class="uil uil-eye"></i>{{post.views}}
-      </div>
-      <div class="date">
-        {{post.dateOfPost | date:'medium' }}
-      </div>
-    </div>
   </div>
+</div>
+
+<p *ngIf = "posts.length==0">No posts yet!</p>

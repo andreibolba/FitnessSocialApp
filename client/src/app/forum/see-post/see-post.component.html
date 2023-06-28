@@ -1,81 +1,46 @@
-<div id="main">
-  <div class="post">
-    <div class="post-header">
-      <div class="title">
-        {{post.title}}
-      </div>
-      <div class="dates">
-        <div class="date-of-post">
-          <div class="text">Asked</div>{{post.dateOfPost | date:'medium'}}
+<div *ngIf="!isLoading">
+  <div id="main">
+    <div class="post">
+      <div class="post-header">
+        <div class="title">
+          {{post.title}}
         </div>
-        <div class="date-of-edit">
-          <div class="text">Edited </div> {{post.dateOfPost | date:'medium'}}
-        </div>
-        <div class="views">
-          <div class="text">Viewed </div> {{post.views}}
-        </div>
-      </div>
-    </div>
-
-    <div class="post-content">
-      <div class="karma">
-        <div [id]="up" (click)="upvote(post)"></div>
-        <div class="point">{{post.karma}}</div>
-        <div [id]="down" (click)="downvote(post)"></div>
-        <button class="btn-info" (click)="onAddAnswer(post.postId)">Answer</button>
-      </div>
-      <div class="content-of-post">
-        <div class="content">
-          {{post.content}}
-        </div>
-        <div class="information">
-          <div class="person">
-            <div class="pic">
-              <img [src]="person.picture.url" *ngIf="person.picture!=null" style="border-radius: 50%; margin: auto;" height="100%" width="100%"/>
-              <img src="../../../assets/img/user.png" *ngIf="person.picture==null" style="border-radius: 50%;" height="100%" width="100%"/>
-            </div>
-            <div class="person-info">
-              <div class="name">{{ post.person.firstName+ ' ' +post.person.lastName}}</div>
-              <div class="posted">posted on {{post.dateOfPost | date:'medium'}} </div>
-              <div class="stats">
-                <div class="karma-person">Karma: {{person.karma}}</div>
-                <div class="answers">Asnwers: {{person.answers}}</div>
-              </div>
-            </div>
+        <div class="dates">
+          <div class="date-of-post">
+            <div class="text">Asked</div>{{post.dateOfPost | date:'medium'}}
+          </div>
+          <div class="date-of-edit">
+            <div class="text">Edited </div> {{post.dateOfPost | date:'medium'}}
+          </div>
+          <div class="views">
+            <div class="text">Viewed </div> {{post.views}}
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  <br>
-  <hr>
-  <br>
-  <div class="comm" *ngIf="comments.length != 0">
-    <div class="post" *ngFor="let c of comments">
+  
       <div class="post-content">
         <div class="karma">
-          <div [id]="c.up" (click)="upvoteComment(c)"></div>
-          <div class="point">{{c.karma}}</div>
-          <div [id]="c.down" (click)="downvoteComment(c)"></div>
-          <button class="btn-info" *ngIf="c.canEdit" (click)="onEdit(c)">Edit</button>
-          <button class="btn-danger" *ngIf="c.canEdit" (click)="onDelete(c.commentId)">Delete</button>
+          <div [id]="up" (click)="upvote(post)"></div>
+          <div class="point">{{post.karma}}</div>
+          <div [id]="down" (click)="downvote(post)"></div>
+          <button class="btn-info" (click)="onAddAnswer(post.postId)">Answer</button>
         </div>
         <div class="content-of-post">
           <div class="content">
-            {{ c.commentContent }}
+            {{post.content}}
           </div>
           <div class="information">
             <div class="person">
               <div class="pic">
-                <img [src]="c.person.picture.url" *ngIf="c.person.picture!=null" style="border-radius: 50%; margin: auto;" height="100%" width="100%"/>
-                <img src="../../../assets/img/user.png" *ngIf="c.person.picture==null" style="border-radius: 50%;" height="100%" width="100%"/>
+                <img [src]="post.person.picture.url" *ngIf="post.person.picture!=null" style="border-radius: 50%; margin: auto;" height="100%" width="100%"/>
+                <img src="../../../assets/img/user.png" *ngIf="post.person.picture==null" style="border-radius: 50%;" height="100%" width="100%"/>
               </div>
               <div class="person-info">
-                <div class="name"> {{ c.person.firstName + ' ' + c.person.lastName}} </div>
-                <div class="posted">posted on {{c.dateOfComment | date:'medium'}} </div>
+                <div class="name">{{ post.person.firstName+ ' ' +post.person.lastName}}</div>
+                <div class="posted">posted on {{post.dateOfPost | date:'medium'}} </div>
                 <div class="stats">
-                  <div class="karma-person">Karma: {{ c.person.karma}}</div>
-                  <div class="answers">Asnwers: {{ c.person.answers}}</div>
+                  <div class="karma-person">Karma: {{person.karma}}</div>
+                  <div class="answers">Asnwers: {{person.commentsNumber}}</div>
                 </div>
               </div>
             </div>
@@ -83,6 +48,45 @@
         </div>
       </div>
     </div>
+    <br>
+    <hr>
+    <br>
+    <div class="comm" *ngIf="comments.length != 0">
+      <div class="post" *ngFor="let c of comments">
+        <div class="post-content">
+          <div class="karma">
+            <div [id]="c.up" (click)="upvoteComment(c)"></div>
+            <div class="point">{{c.karma}}</div>
+            <div [id]="c.down" (click)="downvoteComment(c)"></div>
+            <button class="btn-info" *ngIf="c.canEdit" (click)="onEdit(c)">Edit</button>
+            <button class="btn-danger" *ngIf="c.canEdit" (click)="onDelete(c.commentId)">Delete</button>
+          </div>
+          <div class="content-of-post">
+            <div class="content">
+              {{ c.commentContent }}
+            </div>
+            <div class="information">
+              <div class="person">
+                <div class="pic">
+                  <img [src]="c.person.picture.url" *ngIf="c.person.picture!=null" style="border-radius: 50%; margin: auto;" height="100%" width="100%"/>
+                  <img src="../../../assets/img/user.png" *ngIf="c.person.picture==null" style="border-radius: 50%;" height="100%" width="100%"/>
+                </div>
+                <div class="person-info">
+                  <div class="name"> {{ c.person.firstName + ' ' + c.person.lastName}} </div>
+                  <div class="posted">posted on {{c.dateOfComment | date:'medium'}} </div>
+                  <div class="stats">
+                    <div class="karma-person">Karma: {{ c.person.karma}}</div>
+                    <div class="answers">Asnwers: {{ c.person.commentsNumber}}</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p *ngIf="comments.length == 0">No comments</p>
   </div>
-  <p *ngIf="comments.length == 0">No comments</p>
 </div>
+
+<mat-spinner *ngIf="isLoading" style="background-color: transparent;"></mat-spinner>

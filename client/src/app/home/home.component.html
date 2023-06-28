@@ -11,10 +11,12 @@
       <div class="chat">
         <i class="uil uil-chat" (click)="onChatClick()" routerLink="chat"></i><br>
       </div>
-      <div class="profile-details" (click)="onProfile()" [routerLink]="[profile]" >
+      <div class="profile-details" (click)="onProfile()" [routerLink]="[profile]">
         <div class="profile_pic">
-          <img [src]="person.picture.url" *ngIf="person.picture!=null" style="border-radius: 50%; margin: auto;" height="100%" width="100%"/>
-          <img src="../../../assets/img/user.png" *ngIf="person.picture==null" style="border-radius: 50%;" height="100%" width="100%"/>
+          <img [src]="person.picture.url" *ngIf="person.picture!=null" style="border-radius: 50%; margin: auto;"
+            height="100%" width="100%" />
+          <img src="../../../assets/img/user.png" *ngIf="person.picture==null" style="border-radius: 50%;" height="100%"
+            width="100%" />
         </div>
         <span class="admin_name">{{ person.firstName }} {{ person.lastName }}</span>
       </div>
@@ -29,4 +31,5 @@
     <router-outlet></router-outlet>
   </div>
 </div>
-<p *ngIf="isLoading">Loading</p>
+<mat-spinner *ngIf="isLoading" style="background-color: transparent; margin: auto;top: 50%;
+transform: translate(0, -50%);"></mat-spinner>

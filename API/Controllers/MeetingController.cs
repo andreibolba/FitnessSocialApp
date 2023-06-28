@@ -46,14 +46,14 @@ namespace API.Controllers
         public ActionResult Create([FromBody] MeetingDto meeting)
         {
             var meet = _repository.Create(meeting);
-            return meet!=null ? Ok(meet) : BadRequest("Internal Server Error");
+            return meet!=null ? Ok(_repository.GetMeetingById(meet.MeetingId)) : BadRequest("Internal Server Error");
         }
 
         [HttpPost("update")]
         public ActionResult Update([FromBody] MeetingDto meeting)
         {
-            _repository.Update(meeting);
-            return _repository.SaveAll() ? Ok() : BadRequest("Internal Server Error");
+            var meet = _repository.Update(meeting);
+            return meet != null ? Ok(_repository.GetMeetingById(meet.MeetingId)) : BadRequest("Internal Server Error");
         }
 
         [HttpPost("delete/{meetId:int}")]

@@ -23,9 +23,7 @@ namespace API.Data
         {
             var testToAdd = _mapper.Map<Test>(test);
             _context.Tests.Add(testToAdd);
-            if (SaveAll() == true)
-                return _mapper.Map<TestDto>(testToAdd);
-            return new TestDto();
+            return SaveAll() ? _mapper.Map<TestDto>(testToAdd) : null;
         }
 
         public void Delete(int testId)
@@ -112,7 +110,7 @@ namespace API.Data
             }
         }
 
-        public void Update(TestDto test)
+        public TestDto Update(TestDto test)
         {
             var testUpdate = _context.Tests.SingleOrDefault(t=>t.TestId == test.TestId);
             testUpdate.TestName = test.TestName == null ? testUpdate.TestName : test.TestName;
@@ -121,6 +119,8 @@ namespace API.Data
             testUpdate.TrainerId = test.Trainer == null ? testUpdate.TrainerId : test.Trainer.PersonId;
 
             _context.Tests.Update(testUpdate);
+
+            return SaveAll() ? _mapper.Map<TestDto>(testUpdate) : null;
         }
     }
 }

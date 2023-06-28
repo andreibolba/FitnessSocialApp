@@ -9,7 +9,8 @@ export class Person{
   public status:string;
   public birthDate:Date;
   public karma:number;
-  public answers: number;
+  public postsNumber: number;
+  public commentsNumber: number;
   public pictureId: number;
   public picture: Picture;
   constructor(){
@@ -21,7 +22,8 @@ export class Person{
     this.status='';
     this.birthDate=new Date();
     this.karma=-1;
-    this.answers=-1;
+    this.postsNumber=-1;
+    this.commentsNumber=-1;
     this.pictureId=-1;
     this.picture=new Picture();
   }

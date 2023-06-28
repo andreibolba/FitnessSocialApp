@@ -10,5 +10,6 @@ namespace API.Interfaces.Repository
         public GroupChatMessageDto GetMessageById(int groupChatMessageId);
         public void DeleteMessage(int groupChatMessageId);
         public bool SaveAll();
+        public Task<bool> SaveAllAsync();
     }
 }

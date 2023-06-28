@@ -98,9 +98,10 @@ namespace API.Data
         public IEnumerable<GroupChatDto> GetAllGroupChatsForAPerson(int personId)
         {
             var group = GetAllGroupChats().Where(g => g.AdminId == personId).ToList();
-            var groupThatIAmNotAdmin = _context.GroupChatMessages.Where(g=>g.PersonId == personId && g.Deleted==false).ToList();
+            var groupThatIAmNotAdmin = _context.GroupChatPeople.Where(g=>g.PersonId == personId && g.Deleted==false).Select(g=>g.GroupChat).ToList();
+            var groupThatIAmNotAdminDto =_mapper.Map<List<GroupChatDto>>(groupThatIAmNotAdmin);
 
-            foreach(var o in groupThatIAmNotAdmin)
+            foreach (var o in groupThatIAmNotAdmin)
             {
                 if (group.Where(g => g.GroupChatId == o.GroupChatId).Count() == 0)
                 {
@@ -115,14 +116,22 @@ namespace API.Data
 
         public IEnumerable<GroupChatMessageDto> GetAllLastMessagesForAPerson(int personId)
         {
-            var group = GetAllGroupChatsForAPerson(personId);
+            var groups = GetAllGroupChatsForAPerson(personId);
             var lastMessages = new List<GroupChatMessageDto>();
-            foreach(var g in group)
+            foreach(var group in groups)
             {
-                var orderedMessages = g.GroupChatMessages.OrderByDescending(g => g.SendDate).ToList();
-                var orderedMessages2 = g.GroupChatMessages.OrderBy(g => g.SendDate).ToList();
-                var newest = orderedMessages.First();
+                var orderedMessages = _context.GroupChatMessages.Where(g=>g.GroupChatId== group.GroupChatId).Include(g=>g.GroupChat).OrderByDescending(g => g.SendDate).ToList();
+                var newest = _mapper.Map<GroupChatMessageDto>(orderedMessages.First());
                 newest.Person = _personRepository.GetPersonById(newest.PersonId);
+                newest.Picture = newest.PictureId!=null ? _pictureRepository.GetById(newest.PictureId.Value):null;
+                newest.GroupChat.Picture = newest.GroupChat.PictureId != null ? _pictureRepository.GetById(newest.GroupChat.PictureId.Value) : null;
+                var ppl = _mapper.Map<IEnumerable<PersonDto>>(
+                    _context.GroupChatPeople.Where(g => g.Deleted == false && g.GroupChatId == group.GroupChatId).Include(g => g.Person).Select(g => g.Person));
+                foreach(var person in ppl)
+                {
+                    person.Picture = person.PictureId!=null ? _pictureRepository.GetById(person.PictureId.Value):null; 
+                }
+                newest.GroupChat.Participants = ppl;
                 lastMessages.Add(newest);
             }
             return lastMessages;
@@ -131,6 +140,12 @@ namespace API.Data
         public GroupChatDto GetGroupChatById(int groupChatId)
         {
             return GetAllGroupChats().SingleOrDefault(g => g.GroupChatId == groupChatId);
+        }
+
+        public async Task<GroupChatDto> GetGroupChatByIdAsync(int groupChatId)
+        {
+            var groupChats = await _context.GroupChats.Include(p => p.Picture).SingleOrDefaultAsync(p => p.Deleted == false && p.GroupChatId == groupChatId);
+            return _mapper.Map<GroupChatDto>(groupChats);
         }
 
         public void MakeAdmin(int personId, int groupChatId)

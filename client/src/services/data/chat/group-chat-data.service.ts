@@ -1,19 +1,52 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
+import { BehaviorSubject, take } from 'rxjs';
 import { Feedback } from 'src/model/feedback.model';
 import { GroupChat } from 'src/model/groupchat.model';
 import { GroupChatMessage } from 'src/model/groupchatmessage.model';
+import { Person } from 'src/model/person.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class GroupChatDataService {
   private baseUrl = 'https://localhost:7191/api/';
-
-  feedbackAdded = new BehaviorSubject<Feedback | null>(null);
+  private hubUrl = 'https://localhost:7191/hubs/';
+  private hubConnection?: HubConnection;
+  private messageThreadSource = new BehaviorSubject<GroupChatMessage[]>([]);
+  messageThread$ = this.messageThreadSource.asObservable();
+  newGroupChatMessage = new BehaviorSubject<GroupChatMessage | null>(null);
 
   constructor(private http: HttpClient) { }
+
+  createHubConnection(user: Person, groupId: number, token: string) {
+    console.log(this.hubUrl);
+    this.hubConnection = new HubConnectionBuilder().withUrl(this.hubUrl + 'groupmessage?group=' + groupId, {
+      accessTokenFactory: () => token
+    })
+      .withAutomaticReconnect()
+      .build();
+
+    this.hubConnection.start().catch(error => console.log(error));
+
+    this.hubConnection.on('ReceiveGroupMessageThread', messages => {
+      this.messageThreadSource.next(messages);
+    });
+
+    this.hubConnection.on('NewGroupChatMessage', message => {
+      this.messageThread$.pipe(take(1)).subscribe({
+        next: messages => {
+          this.messageThreadSource.next([...messages, message]);
+          this.newGroupChatMessage.next(message);
+        }
+      });
+    })
+
+  }
+
+
+
   addGroupChat(token: string, nameOfGroup: string, descriptionOfGroup: string, adminId: number, ids: number[]) {
     const headers = { Authorization: 'Bearer ' + token };
     return this.http.post<GroupChatMessage>(this.baseUrl + 'groupchat/add', {
@@ -49,13 +82,13 @@ export class GroupChatDataService {
     return this.http.get<GroupChatMessage[]>(this.baseUrl + 'groupchat/messages/' + geroupId, { headers: headers });
   }
 
-  sendMessageToGroupChat(token: string, personId: number, groupId: number, message: string) {
+  async sendMessageToGroupChat(token: string, personId: number, groupId: number, message: string) {
     const headers = { Authorization: 'Bearer ' + token };
-    return this.http.post<GroupChatMessage>(this.baseUrl + 'groupchat/message/add', {
+    return this.hubConnection?.invoke('AddGroupChatMessage', {
       PersonId: personId,
       GroupChatId: groupId,
       Message: message
-    }, { headers: headers });
+    }).catch(error=>console.log(error));
   }
 
   deleteGroupChat(token: string, groupChatId: number) {

@@ -6,6 +6,7 @@ namespace API.Interfaces.Repository
     {
         public IEnumerable<GroupChatDto> GetAllGroupChats(); 
         public GroupChatDto GetGroupChatById(int groupChatId);
+        public Task<GroupChatDto> GetGroupChatByIdAsync(int groupChatId);
         public IEnumerable<GroupChatMessageDto> GetAllLastMessagesForAPerson(int personId);
         public IEnumerable<GroupChatDto> GetAllGroupChatsForAPerson(int personId);
         public GroupChatDto CreateGroupChat(GroupChatDto model, List<int> groupMembers);

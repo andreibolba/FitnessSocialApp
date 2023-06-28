@@ -60,6 +60,11 @@ namespace API.Data
             return _context.SaveChanges() > 0;
         }
 
+        public async Task<bool> SaveAllAsync()
+        {
+            return await _context.SaveChangesAsync() > 0;
+        }
+
         public GroupChatMessageDto SendMessage(GroupChatMessageDto message)
         {
             var messageToDb = _mapper.Map<GroupChatMessage>(message);

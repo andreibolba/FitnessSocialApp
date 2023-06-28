@@ -88,7 +88,7 @@ export class ChatMessagesComponent implements OnInit, OnDestroy {
         var objDiv = document.getElementById("chat_content");
         if (objDiv)
           objDiv.scrollTop = objDiv.scrollHeight - objDiv.clientHeight;
-      }, 0);
+      }, 540);
     });
   }
 

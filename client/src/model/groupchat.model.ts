@@ -1,5 +1,3 @@
-import { NumberValueAccessor } from "@angular/forms";
-import { GroupChatMessage } from "./groupchatmessage.model";
 import { Person } from "./person.model";
 import { Picture } from "./picture.model";
 

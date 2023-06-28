@@ -12,6 +12,5 @@ namespace API.Dtos
         public int? PictureId { get; set; }
         public PictureDto Picture { get; set; }
         public IEnumerable<PersonDto> Participants { get; set; }
-        public IEnumerable<GroupChatMessageDto> GroupChatMessages { get; set; }
     }
 }

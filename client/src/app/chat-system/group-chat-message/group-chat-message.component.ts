@@ -35,7 +35,7 @@ export class GroupChatMessageComponent implements OnInit, OnDestroy {
     private dataStorage: DataStorageService,
     private taostr: ToastrService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.utils.initializeError();
@@ -53,7 +53,7 @@ export class GroupChatMessageComponent implements OnInit, OnDestroy {
           this.getGroupSubscription = this.utils.groupChatPersonChat.subscribe(
             (res) => {
               if (res) {
-                
+
                 this.groupChat = res;
                 this.groupId = res.groupChatId;
                 this.participants = '';
@@ -73,23 +73,23 @@ export class GroupChatMessageComponent implements OnInit, OnDestroy {
                       person.firstName + ' ' + person.lastName + ', ';
                   });
                 }
-                this.getMessagesSubscription = this.dataStorage.groupChatData
-                  .getAllMessagesForGroup(this.token, res.groupChatId)
-                  .subscribe((mess) => {
-                    console.log(mess);
-                    this.messages = mess;
-                    setTimeout(() => {
-                      var objDiv = document.getElementById('chat_content');
-                      if (objDiv) {
-                        objDiv.scrollTop = objDiv.scrollHeight - objDiv.clientHeight;
-                      }
-                    }, 0);
-                  });                 
+
+                this.dataStorage.groupChatData.createHubConnection(data, res.groupChatId, this.token);
+                this.dataStorage.groupChatData.messageThread$.forEach(element => {
+                  this.messages = element;
+                });
+                setTimeout(() => {
+                  console.log("send");
+                  var objDiv = document.getElementById('chat_content');
+                  if (objDiv) {
+                    objDiv.scrollTop = objDiv.scrollHeight - objDiv.clientHeight;
+                  }
+                }, 540);
               }
             }
           );
         });
-        
+
     }
   }
 
@@ -104,33 +104,22 @@ export class GroupChatMessageComponent implements OnInit, OnDestroy {
       this.sendMessagesSubscription.unsubscribe();
   }
 
-  seeDetails(groupChat : GroupChat){
+  seeDetails(groupChat: GroupChat) {
     this.utils.selectChat.next(3);
     this.utils.groupChatPersonChat.next(groupChat);
   }
 
   onSend() {
-    this.sendMessagesSubscription = this.dataStorage.groupChatData
-      .sendMessageToGroupChat(
-        this.token,
-        this.personId,
-        this.groupId,
-        this.message
-      )
-      .subscribe(
-        (res) => {
-          this.messages.push(res);
-          this.utils.newGroupChatMessage.next(res);
-          this.message = '';
-          setTimeout(() => {
-            var objDiv = document.getElementById('chat_content');
-            if (objDiv)
-              objDiv.scrollTop = objDiv.scrollHeight - objDiv.clientHeight;
-          }, 0);
-        },
-        (error) => {
-          this.taostr.error(error.error);
-        }
-      );
+    this.dataStorage.groupChatData.sendMessageToGroupChat(this.token,
+      this.personId,
+      this.groupId,
+      this.message).then(()=>{
+        this.message='';
+        setTimeout(() => {
+          var objDiv = document.getElementById('chat_content');
+          if (objDiv)
+            objDiv.scrollTop = objDiv.scrollHeight - objDiv.clientHeight;
+        }, 540);
+      });
   }
 }

@@ -17,10 +17,11 @@ namespace API.Data
             _context.PasswordkLinks.Add(link);
         }
 
-        public void Delete(PasswordkLink link)
+        public PasswordkLink Delete(PasswordkLink link)
         {
             link.Deleted = true;
             _context.PasswordkLinks.Update(link);
+            return SaveAll() ? link : null;
         }
 
         public IEnumerable<PasswordkLink> GetAll()

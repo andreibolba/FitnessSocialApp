@@ -28,8 +28,8 @@ export class AuthentificationComponent implements OnInit {
     private log: LogService,
     private toastr: ToastrService,
     private activatedRoute: ActivatedRoute,
-    private utils:UtilsService
-  ) {}
+    private utils: UtilsService
+  ) { }
 
   ngOnInit(): void {
     this.utils.initializeError();
@@ -46,7 +46,7 @@ export class AuthentificationComponent implements OnInit {
         this.linkId = params.get('linkid');
         if (this.linkId)
           this.dataService.personData.isLinkValid(+this.linkId).subscribe(
-            () => {},
+            () => { },
             (error) => {
               this.toastr.error(error.error);
               this.router.navigate(['']);
@@ -122,21 +122,22 @@ export class AuthentificationComponent implements OnInit {
       this.toastr.error('Passwords does not match!');
       form.reset();
     }
-
-    if (this.verifyPassword(password)) {
-      form.reset();
-    }
-
-    this.dataService.personData.resetPassword(+this.linkId!, password).subscribe(
-      () => {
-        this.toastr.success('Password reset succesfully!');
-        this.router.navigate(['']);
-      },
-      (error) => {
-        this.error = error;
-        this.toastr.error(error.error);
+    else {
+      console.log("here");
+      if (this.verifyPassword(password)) {
+        form.reset();
+        this.dataService.personData.resetPassword(+this.linkId!, password).subscribe(
+          () => {
+            this.toastr.success('Password reset succesfully!');
+            this.router.navigate(['']);
+          },
+          (error) => {
+            this.error = error;
+            this.toastr.error(error.error);
+          }
+        );
       }
-    );
+    }
   }
 
   onForgot(form: NgForm) {

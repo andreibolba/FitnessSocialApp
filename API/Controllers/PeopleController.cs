@@ -17,13 +17,17 @@ namespace API.Controllers
         private readonly IPasswordLinkRepository _passwordLinkRepository;
         private readonly IPhotoService _photoService;
         private readonly IPictureRepository _pictureRepository;
+        private readonly IGroupRepository _groupRepository;
+        private readonly IGroupChatRepository _groupChatRepository;
 
-        public PeopleController(IPersonRepository personRepository, IPasswordLinkRepository passwordLinkRepository, IPhotoService photoService, IPictureRepository pictureRepository)
+        public PeopleController(IPersonRepository personRepository, IPasswordLinkRepository passwordLinkRepository, IPhotoService photoService, IPictureRepository pictureRepository, IGroupRepository groupRepository, IGroupChatRepository groupChatRepository)
         {
             _personRepository = personRepository;
             _passwordLinkRepository = passwordLinkRepository;
             _photoService = photoService;
             _pictureRepository = pictureRepository;
+            _groupRepository = groupRepository;
+            _groupChatRepository = groupChatRepository;
         }
 
         [HttpGet]
@@ -115,14 +119,16 @@ namespace API.Controllers
         {
             var link = _passwordLinkRepository.GetById(password.LinkId);
             var person = _personRepository.GetPersonByUsername(link.PersonUsername);
+
             if (link == null && person == null)
                 return BadRequest();
-            _passwordLinkRepository.Delete(link);
-            using var hmac = new HMACSHA512();
-            person.PasswordHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(password.Password));
-            person.PasswordSalt = hmac.Key;
-            _personRepository.Update(person);
-            if (_personRepository.SaveAll() && _passwordLinkRepository.SaveAll())
+            
+            person.Password = password.Password;
+            var res = _personRepository.Update(person);
+            if(res==null)
+                return BadRequest("Internal Serve Error!");
+            var resPas = _passwordLinkRepository.Delete(link);
+            if (resPas!=null)
                 return Ok();
             return BadRequest("Internal Serve Error!");
         }
@@ -130,6 +136,12 @@ namespace API.Controllers
         [HttpPost("delete/{personId:int}")]
         public ActionResult DeleteAccount(int personId)
         {
+            var gropus = _groupRepository.GetAllGroups().Where(g=>g.TrainerId==personId).Any();
+            var gropusChat = _groupChatRepository.GetAllGroupChats().Where(g=>g.AdminId == personId).Any();
+            if (gropus)
+                return BadRequest("You can't delete a person that is admin in a group!");
+            if (gropus)
+                return BadRequest("You can't delete a person that is admin in a group chat!");
             _personRepository.Delete(personId);
             return _personRepository.SaveAll() ? Ok() : BadRequest("Internal Server Error");
         }

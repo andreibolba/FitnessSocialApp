@@ -77,6 +77,44 @@ namespace API.Data
                 a.Deleted = true;
                 _context.InternGroups.Update(a);
             }
+            var allMeetings = _context.MeetingInternGroups.Where(m=>m.InternId== personId);
+            foreach (var m in allMeetings)
+            {
+                m.Deleted = true;
+                _context.MeetingInternGroups.Update(m);
+            }
+            var allMyMeetings = _context.Meetings.Where(m => m.TrainerId == personId);
+            foreach (var m in allMyMeetings)
+            {
+                m.Deleted = true;
+                _context.Meetings.Update(m);
+            }
+            var allTasks = _context.TaskInternGroups.Where(m => m.InternId == personId);
+            foreach (var m in allTasks)
+            {
+                m.Deleted = true;
+                _context.TaskInternGroups.Update(m);
+            }
+            var allMyTasks = _context.Tasks.Where(m => m.TrainerId == personId);
+            foreach (var m in allMyTasks)
+            {
+                m.Deleted = true;
+                _context.Tasks.Update(m);
+            }
+            var allFeedback = _context.Feedbacks.Where(m => m.PersonReceiverId == personId);
+            foreach (var m in allFeedback)
+            {
+                m.Deleted = true;
+                _context.Feedbacks.Update(m);
+            }
+            var allGroupChats = _context.GroupChatPeople.Where(m => m.PersonId == personId);
+            foreach (var m in allGroupChats)
+            {
+                m.Deleted = true;
+                _context.GroupChatPeople.Update(m);
+            }
+            
+
         }
 
         public IEnumerable<PersonDto> GetAllPerson()

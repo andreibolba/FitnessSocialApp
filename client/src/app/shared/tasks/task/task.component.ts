@@ -65,7 +65,7 @@ export class TaskComponent implements OnInit, OnDestroy {
         this.editMode = res.status == "Trainer";
         this.fromGroupSubscription = this.utils.isFromGroupDashboard.subscribe(
           (data) => {
-            this.isFromGroup = data || !this.router.url.endsWith('tests');
+            this.isFromGroup = data || !this.router.url.endsWith('tasks');
             if (this.isFromGroup) {
               this.mainId = 'maingroup';
               this.buttonsClass = 'buttonsgroup';
@@ -241,7 +241,7 @@ export class TaskComponent implements OnInit, OnDestroy {
   }
 
   onDownload(task: Task) {
-
+    this.dataStorage.taskData.downloadFile(this.token, task.taskId);
   }
 
 }
